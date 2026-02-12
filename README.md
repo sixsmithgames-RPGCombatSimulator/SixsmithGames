@@ -11,8 +11,8 @@ A professional marketing and subscription website for the Sixsmith Games suite o
 
 ```bash
 # Clone the repository
-git clone <your-repo-url>
-cd sixsmith-games-website
+git clone https://github.com/sixsmithgames-RPGCombatSimulator/SixsmithGames.git
+cd SixsmithGames
 
 # Run with Docker Compose
 docker-compose up -d
