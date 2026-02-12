@@ -7,10 +7,11 @@
 
 interface SubscribeButtonProps {
   className?: string;
+  style?: React.CSSProperties;
   children: React.ReactNode;
 }
 
-export default function SubscribeButton({ className, children }: SubscribeButtonProps) {
+export default function SubscribeButton({ className, style, children }: SubscribeButtonProps) {
   const handleClick = () => {
     alert('Stripe integration coming soon! This will redirect to a secure checkout page.');
   };
@@ -18,6 +19,7 @@ export default function SubscribeButton({ className, children }: SubscribeButton
   return (
     <button
       className={className}
+      style={style}
       onClick={handleClick}
     >
       {children}

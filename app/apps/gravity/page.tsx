@@ -3,13 +3,11 @@
  * Copyright (c) 2025 Sixsmith Games. All rights reserved.
  */
 
-import Link from 'next/link';
-import type { Metadata } from 'next';
+'use client';
 
-export const metadata: Metadata = {
-  title: 'Gravity - Asynchronous Multiplayer Strategy | Sixsmith Games',
-  description: 'Deep, tactical turn-based sci-fi board game built for asynchronous multiplayer. Play with friends on your own schedule—no coordination required.',
-};
+import Link from 'next/link';
+import ModernBackground from '@/components/ModernBackground';
+import SubscribeButton from '@/components/SubscribeButton';
 
 export default function GravityPage() {
   const features = [
@@ -50,57 +48,126 @@ export default function GravityPage() {
 
   return (
     <div>
-      {/* Hero Section with Gravity theme */}
-      <section className="bg-gradient-to-br from-blue-950 via-indigo-900 to-purple-900 py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
+      {/* Hero Section */}
+      <section style={{
+        background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #14b8a6 100%)',
+        padding: '80px 0',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <ModernBackground />
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.2)',
+          backdropFilter: 'blur(100px)',
+          zIndex: 2
+        }} />
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 3}}>
+          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
             <div>
-              <div className="inline-block bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-4 py-2 rounded-full text-sm font-semibold mb-4">
+              <div style={{
+                display: 'inline-block',
+                background: 'rgba(255, 255, 255, 0.2)',
+                backdropFilter: 'blur(10px)',
+                color: 'white',
+                padding: '0.5rem 1.5rem',
+                borderRadius: '50px',
+                fontSize: '0.875rem',
+                fontWeight: '600',
+                marginBottom: '1.5rem',
+                border: '1px solid rgba(255, 255, 255, 0.3)'
+              }}>
                 🚀 ASYNCHRONOUS STRATEGY
               </div>
-              <h1 className="text-5xl md:text-6xl font-bold mb-6">
+              <h1 style={{
+                fontSize: 'clamp(2.5rem, 7vw, 4rem)',
+                fontWeight: '900',
+                color: 'white',
+                marginBottom: '1.5rem',
+                textShadow: '0 4px 20px rgba(0,0,0,0.3)',
+                lineHeight: '1.1'
+              }}>
                 Strategy Without Scheduling
               </h1>
-              <p className="text-xl text-blue-100 mb-8">
+              <p style={{
+                fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
+                color: 'rgba(255, 255, 255, 0.95)',
+                marginBottom: '2rem',
+                textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              }}>
                 Gravity is a deep, tactical turn-based sci-fi board game built for asynchronous multiplayer.
                 Take your turn when you have time, coordinate with your crew, and outplay opponents—without
                 needing everyone online at once.
               </p>
-              <div className="flex flex-col sm:flex-row gap-4">
+              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <Link
                   href="/pricing"
-                  className="bg-gradient-to-r from-blue-500 to-cyan-500 text-white px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-shadow text-center"
+                  style={{
+                    background: 'white',
+                    color: '#3b82f6',
+                    padding: '1rem 2.5rem',
+                    borderRadius: '50px',
+                    fontSize: '1.125rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+                    transition: 'all 0.3s ease',
+                    maxWidth: '200px'
+                  }}
+                  onMouseOver={(e) => {
+                    e.currentTarget.style.transform = 'translateY(-3px)';
+                    e.currentTarget.style.boxShadow = '0 15px 50px rgba(0,0,0,0.4)';
+                  }}
+                  onMouseOut={(e) => {
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
+                  }}
                 >
                   Join the Fleet
                 </Link>
               </div>
             </div>
-            <div className="bg-blue-900/50 backdrop-blur rounded-2xl shadow-2xl p-8 border-2 border-blue-500/30">
-              <h3 className="text-2xl font-bold mb-4">Your crew. Your ship. Your move.</h3>
-              <ul className="space-y-3">
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+            <div style={{
+              background: 'rgba(255, 255, 255, 0.15)',
+              backdropFilter: 'blur(20px)',
+              borderRadius: '30px',
+              padding: '2.5rem',
+              boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
+              border: '2px solid rgba(255, 255, 255, 0.2)'
+            }}>
+              <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: 'white', marginBottom: '1.5rem'}}>
+                Your crew. Your ship. Your move.
+              </h3>
+              <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Play with friends across time zones</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Play with friends across time zones</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Deep tactics without the time commitment</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Deep tactics without the time commitment</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>Every decision matters, every turn counts</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Every decision matters, every turn counts</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-6 h-6 text-cyan-400 mr-2 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span>No scheduling, no waiting, no coordination needed</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>No scheduling, no waiting, no coordination needed</span>
                 </li>
               </ul>
             </div>
@@ -109,22 +176,32 @@ export default function GravityPage() {
       </section>
 
       {/* Problem/Solution Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="max-w-3xl mx-auto text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-6">
+      <section style={{padding: '80px 0', background: 'white'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{maxWidth: '900px', margin: '0 auto', textAlign: 'center'}}>
+            <h2 style={{
+              fontSize: 'clamp(2rem, 5vw, 3rem)',
+              fontWeight: '800',
+              color: '#1a202c',
+              marginBottom: '1.5rem'
+            }}>
               Your Group Loves Strategy Games. Your Schedules Don't.
             </h2>
-            <div className="space-y-6 text-lg text-gray-600">
-              <p>
+            <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
+              <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
                 Scheduling is the final boss. Your group wants deep games, but real-time sessions fall apart.
                 Most "async" games feel shallow, removing tension and meaningful interaction.
               </p>
-              <div className="bg-gradient-to-r from-blue-50 to-cyan-50 rounded-xl p-8 border-2 border-blue-200">
-                <p className="text-2xl font-bold text-blue-700 mb-4">
+              <div style={{
+                background: 'linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%)',
+                borderRadius: '20px',
+                padding: '2.5rem',
+                border: '2px solid #93c5fd'
+              }}>
+                <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1e40af', marginBottom: '1rem'}}>
                   Gravity delivers serious tactical gameplay designed for async from day one.
                 </p>
-                <p className="text-gray-700">
+                <p style={{color: '#4b5563'}}>
                   Make one great decision at a time. See the board clearly. Trust the rules. Keep the game moving.
                 </p>
               </div>
@@ -134,19 +211,31 @@ export default function GravityPage() {
       </section>
 
       {/* Features Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <section style={{padding: '80px 0', background: '#f8f9fa'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+            <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               What Makes Gravity Compelling
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2rem'
+          }}>
             {features.map((feature, index) => (
-              <div key={index} className="bg-white rounded-xl p-8 shadow-lg border-2 border-blue-100">
-                <h3 className="text-xl font-bold text-gray-900 mb-3">{feature.title}</h3>
-                <p className="text-gray-700">{feature.description}</p>
+              <div key={index} style={{
+                background: 'white',
+                borderRadius: '20px',
+                padding: '2.5rem',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
+                border: '2px solid #bfdbfe'
+              }}>
+                <h3 style={{fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '0.75rem'}}>
+                  {feature.title}
+                </h3>
+                <p style={{color: '#4b5563'}}>{feature.description}</p>
               </div>
             ))}
           </div>
@@ -154,47 +243,79 @@ export default function GravityPage() {
       </section>
 
       {/* Gameplay Section */}
-      <section className="py-20 bg-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <section style={{padding: '80px 0', background: 'white'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+            <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               High-Stakes Decision Loops
             </h2>
-            <p className="text-xl text-gray-600 max-w-3xl mx-auto">
+            <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', maxWidth: '900px', margin: '0 auto'}}>
               Every turn asks a hard question. Each action creates real tradeoffs that evolve across the match.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gap: '1.5rem',
+            marginBottom: '3rem'
+          }}>
             {actions.map((action, index) => (
               <div
                 key={index}
-                className="bg-gradient-to-br from-blue-50 to-cyan-50 rounded-xl p-6 border-2 border-blue-200 hover:border-blue-400 hover:shadow-lg transition-all"
+                style={{
+                  background: 'linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%)',
+                  borderRadius: '15px',
+                  padding: '2rem',
+                  border: '2px solid #93c5fd',
+                  transition: 'all 0.3s ease'
+                }}
+                onMouseOver={(e) => {
+                  e.currentTarget.style.borderColor = '#3b82f6';
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(59, 130, 246, 0.15)';
+                }}
+                onMouseOut={(e) => {
+                  e.currentTarget.style.borderColor = '#93c5fd';
+                  e.currentTarget.style.boxShadow = 'none';
+                }}
               >
-                <h3 className="text-lg font-bold text-gray-900 mb-2">{action.name}</h3>
-                <p className="text-gray-700">{action.description}</p>
+                <h3 style={{fontSize: '1.125rem', fontWeight: '700', color: '#1a202c', marginBottom: '0.5rem'}}>
+                  {action.name}
+                </h3>
+                <p style={{color: '#4b5563'}}>{action.description}</p>
               </div>
             ))}
           </div>
 
-          <div className="mt-12 bg-blue-900 text-white rounded-xl p-8">
-            <h3 className="text-2xl font-bold mb-4">Every Turn Matters</h3>
-            <ul className="grid grid-cols-1 md:grid-cols-2 gap-4">
-              <li className="flex items-start">
-                <span className="text-cyan-400 mr-2">→</span>
-                <span>Do you repair now or gamble for resources?</span>
+          <div style={{
+            background: 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)',
+            color: 'white',
+            borderRadius: '20px',
+            padding: '3rem'
+          }}>
+            <h3 style={{fontSize: '1.75rem', fontWeight: '800', marginBottom: '1.5rem', textAlign: 'center'}}>
+              Every Turn Matters
+            </h3>
+            <ul style={{
+              display: 'grid',
+              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gap: '1.5rem'
+            }}>
+              <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you repair now or gamble for resources?</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-cyan-400 mr-2">→</span>
-                <span>Do you maneuver for position or power systems for defense?</span>
+              <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you maneuver for position or power systems for defense?</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-cyan-400 mr-2">→</span>
-                <span>Do you scan/acquire to get ahead or attack to keep others from stabilizing?</span>
+              <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you scan/acquire to get ahead or attack to keep others from stabilizing?</span>
               </li>
-              <li className="flex items-start">
-                <span className="text-cyan-400 mr-2">→</span>
-                <span>Your ship is a living system with power, damage, and repair tradeoffs</span>
+              <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Your ship is a living system with power, damage, and repair tradeoffs</span>
               </li>
             </ul>
           </div>
@@ -202,71 +323,89 @@ export default function GravityPage() {
       </section>
 
       {/* Who It's For Section */}
-      <section className="py-20 bg-gray-50">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center mb-16">
-            <h2 className="text-4xl font-bold text-gray-900 mb-4">
+      <section style={{padding: '80px 0', background: '#f8f9fa'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{textAlign: 'center', marginBottom: '3rem'}}>
+            <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Built For Strategic Minds
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Perfect For:</h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gap: '2rem'
+          }}>
+            <div style={{
+              background: 'white',
+              borderRadius: '20px',
+              padding: '2.5rem',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
+            }}>
+              <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
+                Perfect For:
+              </h3>
+              <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Busy adults who love strategy but can't guarantee a 2-4 hour session
+                  <span style={{color: '#4b5563'}}>Busy adults who love strategy but can't guarantee a 2-4 hour session</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Tabletop groups that want ongoing games across time zones
+                  <span style={{color: '#4b5563'}}>Tabletop groups that want ongoing games across time zones</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Strategy gamers who want meaningful choices, not clicker progression
+                  <span style={{color: '#4b5563'}}>Strategy gamers who want meaningful choices, not clicker progression</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-blue-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  Competitive friends who want clear rules and fair outcomes
+                  <span style={{color: '#4b5563'}}>Competitive friends who want clear rules and fair outcomes</span>
                 </li>
               </ul>
             </div>
 
-            <div className="bg-white rounded-xl p-8 shadow-lg">
-              <h3 className="text-2xl font-bold text-gray-900 mb-4">Why Gravity Over Alternatives:</h3>
-              <ul className="space-y-3 text-gray-700">
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-cyan-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+            <div style={{
+              background: 'white',
+              borderRadius: '20px',
+              padding: '2.5rem',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
+            }}>
+              <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
+                Why Gravity Over Alternatives:
+              </h3>
+              <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  Designed for async from day one (not real-time awkwardly slowed down)
+                  <span style={{color: '#4b5563'}}>Designed for async from day one (not real-time awkwardly slowed down)</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-cyan-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  Crunchy strategy without the meeting invite
+                  <span style={{color: '#4b5563'}}>Crunchy strategy without the meeting invite</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-cyan-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  Rules you can trust: deterministic logic and validation-focused design
+                  <span style={{color: '#4b5563'}}>Rules you can trust: deterministic logic and validation-focused design</span>
                 </li>
-                <li className="flex items-start">
-                  <svg className="w-5 h-5 text-cyan-500 mr-2 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
+                <li style={{display: 'flex', alignItems: 'flex-start'}}>
+                  <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  Modern web delivery: no installs, jump in fast
+                  <span style={{color: '#4b5563'}}>Modern web delivery: no installs, jump in fast</span>
                 </li>
               </ul>
             </div>
@@ -275,20 +414,61 @@ export default function GravityPage() {
       </section>
 
       {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-r from-blue-600 via-indigo-600 to-purple-600">
-        <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-          <h2 className="text-4xl font-bold text-white mb-6">
+      <section style={{
+        padding: '100px 0',
+        background: 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 50%, #14b8a6 100%)',
+        position: 'relative',
+        overflow: 'hidden'
+      }}>
+        <div style={{
+          position: 'absolute',
+          top: 0,
+          left: 0,
+          right: 0,
+          bottom: 0,
+          background: 'rgba(0, 0, 0, 0.1)'
+        }} />
+        <div style={{
+          maxWidth: '900px',
+          margin: '0 auto',
+          padding: '0 2rem',
+          textAlign: 'center',
+          position: 'relative',
+          zIndex: 1
+        }}>
+          <h2 style={{
+            fontSize: 'clamp(2rem, 5vw, 3rem)',
+            fontWeight: '800',
+            color: 'white',
+            marginBottom: '1.5rem',
+            textShadow: '0 4px 20px rgba(0,0,0,0.3)'
+          }}>
             A Board Game That Fits Real Life
           </h2>
-          <p className="text-xl text-blue-100 mb-8">
+          <p style={{
+            fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
+            color: 'rgba(255, 255, 255, 0.95)',
+            marginBottom: '2.5rem',
+            textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+          }}>
             Join strategists who play serious games on their own schedule.
           </p>
-          <Link
-            href="/pricing"
-            className="inline-block bg-white text-blue-600 px-8 py-4 rounded-full text-lg font-semibold hover:shadow-2xl transition-shadow"
-          >
+          <SubscribeButton style={{
+            background: 'white',
+            color: '#3b82f6',
+            padding: '1.25rem 3rem',
+            borderRadius: '50px',
+            fontSize: '1.25rem',
+            fontWeight: '700',
+            textDecoration: 'none',
+            display: 'inline-block',
+            boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+            transition: 'all 0.3s ease',
+            border: 'none',
+            cursor: 'pointer'
+          }}>
             Take Your First Turn
-          </Link>
+          </SubscribeButton>
         </div>
       </section>
     </div>
