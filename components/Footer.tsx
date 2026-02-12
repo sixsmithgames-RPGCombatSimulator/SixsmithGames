@@ -94,26 +94,10 @@ export default function Footer() {
         </div>
 
         <div className="border-t border-gray-800 mt-8 pt-8">
-          <div className="text-center text-gray-400 text-sm mb-4">
+          <div className="text-center text-gray-400 text-sm">
             <p>&copy; {currentYear} Sixsmith Games. All rights reserved.</p>
-            <p className="mt-2">
+            <p className="mt-2 text-xs">
               VirtualCombatSimulator, ContentCraft, MasterTyping, Gravity, and FourStarGeneral are trademarks of Sixsmith Games.
-            </p>
-          </div>
-          <div className="text-center text-gray-500 text-xs">
-            <p>
-              Hosted on{' '}
-              <a href="https://vercel.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline">
-                Vercel
-              </a>
-              {' '}• Frontend • Backend services on{' '}
-              <a href="https://railway.app" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline">
-                Railway
-              </a>
-              {' '}• Data storage on{' '}
-              <a href="https://aws.amazon.com" target="_blank" rel="noopener noreferrer" className="hover:text-gray-300 underline">
-                AWS
-              </a>
             </p>
           </div>
         </div>

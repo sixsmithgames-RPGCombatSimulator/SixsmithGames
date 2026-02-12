@@ -9,6 +9,7 @@
 'use client';
 
 import Link from 'next/link';
+import ModernBackground from '@/components/ModernBackground';
 
 export default function Home() {
   const apps = [
@@ -68,16 +69,18 @@ export default function Home() {
         position: 'relative',
         overflow: 'hidden'
       }}>
+        <ModernBackground />
         <div style={{
           position: 'absolute',
           top: 0,
           left: 0,
           right: 0,
           bottom: 0,
-          background: 'rgba(255, 255, 255, 0.1)',
-          backdropFilter: 'blur(100px)'
+          background: 'rgba(255, 255, 255, 0.05)',
+          backdropFilter: 'blur(100px)',
+          zIndex: 2
         }} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{position: 'relative', zIndex: 1}}>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{position: 'relative', zIndex: 3}}>
           <div className="text-center max-w-4xl mx-auto">
             <h1 style={{
               fontSize: 'clamp(2.5rem, 8vw, 5rem)',
