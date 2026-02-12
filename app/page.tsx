@@ -6,6 +6,8 @@
  * LICENSE file in the root directory of this source tree.
  */
 
+'use client';
+
 import Link from 'next/link';
 
 export default function Home() {
@@ -97,7 +99,7 @@ export default function Home() {
               Transform your workflow with our suite of five innovative applications. From D&D battle
               management to AI-powered content creation, we've got everything you need.
             </p>
-            <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyCenter: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
+            <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
               <Link
                 href="/pricing"
                 style={{
