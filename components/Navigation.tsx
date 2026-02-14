@@ -7,6 +7,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
+import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -60,6 +61,16 @@ export default function Navigation() {
             >
               Subscribe
             </Link>
+            <SignedOut>
+              <SignInButton mode="modal">
+                <button className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+                  Sign In
+                </button>
+              </SignInButton>
+            </SignedOut>
+            <SignedIn>
+              <UserButton afterSignOutUrl="/" />
+            </SignedIn>
           </div>
 
           {/* Mobile menu button */}
@@ -124,6 +135,21 @@ export default function Navigation() {
                 >
                   Subscribe
                 </Link>
+              </div>
+              <div className="px-4 pt-3">
+                <SignedOut>
+                  <SignInButton mode="modal">
+                    <button className="block w-full text-center text-gray-700 hover:text-blue-600 font-medium py-2">
+                      Sign In
+                    </button>
+                  </SignInButton>
+                </SignedOut>
+                <SignedIn>
+                  <div className="flex items-center gap-2 py-2">
+                    <UserButton afterSignOutUrl="/" />
+                    <span className="text-gray-700 font-medium">Account</span>
+                  </div>
+                </SignedIn>
               </div>
             </div>
           </div>
