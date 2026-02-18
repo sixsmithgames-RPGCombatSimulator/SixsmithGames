@@ -5,83 +5,74 @@
 
 'use client';
 
-import { useState, useEffect } from 'react';
-import { useUser, SignInButton } from '@clerk/nextjs';
+import { useEffect } from 'react';
+import { useUser, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
 import { canAccessApps, APP_URLS } from '@/lib/subscription';
 
 interface LaunchAppButtonProps {
   appSlug: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
+  autoLaunch?: boolean;
 }
 
-export default function LaunchAppButton({ appSlug, style, children }: LaunchAppButtonProps) {
-  const [mounted, setMounted] = useState(false);
-  useEffect(() => { setMounted(true); }, []);
+function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppButtonProps) {
+  const { user, isLoaded } = useUser();
 
-  const { isSignedIn, user, isLoaded } = useUser();
+  const email = user?.primaryEmailAddress?.emailAddress;
+  const hasAccess = isLoaded ? canAccessApps(user?.publicMetadata, email) : false;
+  const appUrl = APP_URLS[appSlug];
 
-  if (!mounted || !isLoaded) {
+  useEffect(() => {
+    if (autoLaunch && isLoaded && hasAccess && appUrl) {
+      window.location.href = appUrl;
+    }
+  }, [autoLaunch, isLoaded, hasAccess, appUrl]);
+
+  if (!isLoaded) {
     return (
-      <button
-        style={{
-          ...style,
-          opacity: 0.6,
-          cursor: 'not-allowed',
-        }}
-        disabled
-      >
+      <button style={{ ...style, opacity: 0.6, cursor: 'not-allowed' }} disabled>
         Loading...
       </button>
     );
   }
 
-  // Not signed in — prompt sign in
-  if (!isSignedIn) {
-    return (
-      <SignInButton mode="modal">
-        <button style={style}>
-          Sign In to Launch
-        </button>
-      </SignInButton>
-    );
-  }
-
-  const email = user?.primaryEmailAddress?.emailAddress;
-  const hasAccess = canAccessApps(user?.publicMetadata, email);
-  const appUrl = APP_URLS[appSlug];
-
-  // Has access — launch the app
   if (hasAccess && appUrl) {
     return (
       <a
         href={appUrl}
         target="_blank"
         rel="noopener noreferrer"
-        style={{
-          ...style,
-          textDecoration: 'none',
-          display: 'inline-block',
-          textAlign: 'center',
-        }}
+        style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
         {children}
       </a>
     );
   }
 
-  // Signed in but no subscription — go to pricing
   return (
     <a
       href="/pricing"
-      style={{
-        ...style,
-        textDecoration: 'none',
-        display: 'inline-block',
-        textAlign: 'center',
-      }}
+      style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
     >
       Subscribe to Launch
     </a>
+  );
+}
+
+export default function LaunchAppButton(props: LaunchAppButtonProps) {
+  return (
+    <>
+      <SignedIn>
+        <LaunchButtonInner {...props} />
+      </SignedIn>
+      <SignedOut>
+        <SignInButton mode="modal">
+          <button style={props.style}>
+            Sign In to Launch
+          </button>
+        </SignInButton>
+      </SignedOut>
+    </>
   );
 }
