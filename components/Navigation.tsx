@@ -6,11 +6,16 @@
 'use client';
 
 import Link from 'next/link';
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
+import { useUser, UserButton } from '@clerk/nextjs';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
+  const [mounted, setMounted] = useState(false);
+  const { isSignedIn, user, isLoaded } = useUser();
+
+  useEffect(() => { setMounted(true); }, []);
 
   const apps = [
     { name: 'VirtualCombatSimulator', href: '/apps/virtual-combat-simulator' },
@@ -168,19 +173,53 @@ export default function Navigation() {
               Pricing
             </Link>
 
-            <Link href="/sign-in" style={signInStyle}
-              onMouseEnter={e => { e.currentTarget.style.borderColor = '#2563eb'; e.currentTarget.style.color = '#2563eb'; }}
-              onMouseLeave={e => { e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.color = '#374151'; }}
-            >
-              Sign In
-            </Link>
-
-            <Link href="/sign-up" style={ctaStyle}
-              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.5)')}
-              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(124,58,237,0.35)')}
-            >
-              Get Started →
-            </Link>
+            {/* Auth section */}
+            {!mounted || !isLoaded ? (
+              <div style={{ width: '120px', height: '36px' }} />
+            ) : isSignedIn ? (
+              <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
+                <Link href="/account" style={{
+                  color: '#374151',
+                  textDecoration: 'none',
+                  fontWeight: '500',
+                  fontSize: '0.9375rem',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '0.375rem',
+                }}
+                  onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+                  onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+                >
+                  <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+                    <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2" /><circle cx="12" cy="7" r="4" />
+                  </svg>
+                  {user?.firstName || 'Account'}
+                </Link>
+                <UserButton
+                  afterSignOutUrl="/"
+                  appearance={{
+                    elements: {
+                      avatarBox: { width: '36px', height: '36px', borderRadius: '50%', border: '2px solid #e5e7eb' },
+                    },
+                  }}
+                />
+              </div>
+            ) : (
+              <>
+                <Link href="/sign-in" style={signInStyle}
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = '#2563eb'; e.currentTarget.style.color = '#2563eb'; }}
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.color = '#374151'; }}
+                >
+                  Sign In
+                </Link>
+                <Link href="/sign-up" style={ctaStyle}
+                  onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.5)')}
+                  onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(124,58,237,0.35)')}
+                >
+                  Get Started →
+                </Link>
+              </>
+            )}
           </div>
 
           {/* Mobile hamburger */}
@@ -235,16 +274,34 @@ export default function Navigation() {
             Pricing
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.25rem' }}>
-            <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}
-              style={{ display: 'block', textAlign: 'center', padding: '0.75rem', border: '1.5px solid #d1d5db', borderRadius: '8px', color: '#374151', textDecoration: 'none', fontWeight: '600', fontSize: '1rem' }}
-            >
-              Sign In
-            </Link>
-            <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}
-              style={{ display: 'block', textAlign: 'center', padding: '0.75rem', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '8px', color: '#ffffff', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}
-            >
-              Get Started →
-            </Link>
+            {mounted && isLoaded && isSignedIn ? (
+              <>
+                <Link href="/account" onClick={() => setMobileMenuOpen(false)}
+                  style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', padding: '0.875rem 1rem', border: '1.5px solid #e5e7eb', borderRadius: '8px', color: '#374151', textDecoration: 'none', fontWeight: '600', fontSize: '1rem', backgroundColor: '#f9fafb' }}
+                >
+                  {user?.imageUrl && (
+                    <img src={user.imageUrl} alt="" style={{ width: '28px', height: '28px', borderRadius: '50%' }} />
+                  )}
+                  <span>{user?.firstName || 'My Account'}</span>
+                </Link>
+                <div style={{ display: 'flex', justifyContent: 'center', padding: '0.5rem 0' }}>
+                  <UserButton afterSignOutUrl="/" />
+                </div>
+              </>
+            ) : (
+              <>
+                <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}
+                  style={{ display: 'block', textAlign: 'center', padding: '0.75rem', border: '1.5px solid #d1d5db', borderRadius: '8px', color: '#374151', textDecoration: 'none', fontWeight: '600', fontSize: '1rem' }}
+                >
+                  Sign In
+                </Link>
+                <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}
+                  style={{ display: 'block', textAlign: 'center', padding: '0.75rem', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '8px', color: '#ffffff', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}
+                >
+                  Get Started →
+                </Link>
+              </>
+            )}
           </div>
         </div>
       )}
