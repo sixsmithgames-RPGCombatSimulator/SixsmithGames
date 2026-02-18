@@ -10,6 +10,7 @@ import { useState } from 'react';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const [appsDropdownOpen, setAppsDropdownOpen] = useState(false);
 
   const apps = [
     { name: 'VirtualCombatSimulator', href: '/apps/virtual-combat-simulator' },
@@ -19,129 +20,241 @@ export default function Navigation() {
     { name: 'FourStarGeneral', href: '/apps/fourstargeneral' },
   ];
 
+  const navStyle: React.CSSProperties = {
+    position: 'fixed',
+    top: 0,
+    left: 0,
+    right: 0,
+    width: '100%',
+    height: '68px',
+    backgroundColor: '#ffffff',
+    borderBottom: '1px solid #e5e7eb',
+    boxShadow: '0 1px 12px rgba(0,0,0,0.08)',
+    zIndex: 9999,
+    display: 'flex',
+    alignItems: 'center',
+  };
+
+  const innerStyle: React.CSSProperties = {
+    maxWidth: '1280px',
+    margin: '0 auto',
+    padding: '0 2rem',
+    width: '100%',
+    display: 'flex',
+    alignItems: 'center',
+    justifyContent: 'space-between',
+  };
+
+  const logoStyle: React.CSSProperties = {
+    fontSize: '1.375rem',
+    fontWeight: '800',
+    background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+    backgroundClip: 'text',
+    textDecoration: 'none',
+    letterSpacing: '-0.02em',
+  };
+
+  const linkStyle: React.CSSProperties = {
+    color: '#374151',
+    textDecoration: 'none',
+    fontWeight: '500',
+    fontSize: '0.9375rem',
+    padding: '0.25rem 0',
+    transition: 'color 0.15s',
+  };
+
+  const signInStyle: React.CSSProperties = {
+    color: '#374151',
+    textDecoration: 'none',
+    fontWeight: '600',
+    fontSize: '0.9375rem',
+    padding: '0.5rem 1.25rem',
+    borderRadius: '8px',
+    border: '1.5px solid #d1d5db',
+    transition: 'all 0.15s',
+    backgroundColor: 'transparent',
+  };
+
+  const ctaStyle: React.CSSProperties = {
+    background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
+    color: '#ffffff',
+    textDecoration: 'none',
+    fontWeight: '700',
+    fontSize: '0.9375rem',
+    padding: '0.5rem 1.5rem',
+    borderRadius: '8px',
+    boxShadow: '0 2px 8px rgba(124,58,237,0.35)',
+    transition: 'all 0.15s',
+    whiteSpace: 'nowrap',
+  };
+
+  const dropdownStyle: React.CSSProperties = {
+    position: 'absolute',
+    top: 'calc(100% + 8px)',
+    left: 0,
+    backgroundColor: '#ffffff',
+    border: '1px solid #e5e7eb',
+    borderRadius: '12px',
+    boxShadow: '0 8px 32px rgba(0,0,0,0.12)',
+    minWidth: '220px',
+    zIndex: 10000,
+    overflow: 'hidden',
+  };
+
   return (
-    <nav className="fixed top-0 left-0 w-full z-[9999] bg-white border-b border-gray-200 shadow-sm">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
-        <div className="flex justify-between items-center h-16 w-full">
+    <>
+      <nav style={navStyle}>
+        <div style={innerStyle}>
           {/* Logo */}
-          <Link href="/" className="flex items-center space-x-2">
-            <span className="text-2xl font-bold bg-gradient-to-r from-blue-600 to-purple-600 bg-clip-text text-transparent">
-              Sixsmith Games
-            </span>
+          <Link href="/" style={logoStyle}>
+            Sixsmith Games
           </Link>
 
-          {/* Desktop Navigation */}
-          <div className="hidden md:flex items-center space-x-8">
-            <div className="relative group">
-              <button className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
+          {/* Desktop nav */}
+          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            {/* Apps dropdown */}
+            <div style={{ position: 'relative' }}>
+              <button
+                onClick={() => setAppsDropdownOpen(!appsDropdownOpen)}
+                onBlur={() => setTimeout(() => setAppsDropdownOpen(false), 150)}
+                style={{
+                  ...linkStyle,
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '4px',
+                }}
+              >
                 Apps
+                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
+                  <path d="M6 9l6 6 6-6" />
+                </svg>
               </button>
-              <div className="absolute left-0 mt-2 w-64 bg-white border border-gray-200 rounded-lg shadow-lg opacity-0 invisible group-hover:opacity-100 group-hover:visible transition-all duration-200">
-                {apps.map((app) => (
-                  <Link
-                    key={app.href}
-                    href={app.href}
-                    className="block px-4 py-3 hover:bg-gray-50 transition-colors first:rounded-t-lg last:rounded-b-lg"
-                  >
-                    {app.name}
-                  </Link>
-                ))}
-              </div>
+              {appsDropdownOpen && (
+                <div style={dropdownStyle}>
+                  {apps.map((app) => (
+                    <Link
+                      key={app.href}
+                      href={app.href}
+                      onClick={() => setAppsDropdownOpen(false)}
+                      style={{
+                        display: 'block',
+                        padding: '0.75rem 1.25rem',
+                        color: '#374151',
+                        textDecoration: 'none',
+                        fontSize: '0.9375rem',
+                        fontWeight: '500',
+                        borderBottom: '1px solid #f3f4f6',
+                        transition: 'background 0.1s',
+                      }}
+                      onMouseEnter={e => (e.currentTarget.style.backgroundColor = '#f9fafb')}
+                      onMouseLeave={e => (e.currentTarget.style.backgroundColor = 'transparent')}
+                    >
+                      {app.name}
+                    </Link>
+                  ))}
+                </div>
+              )}
             </div>
-            <Link
-              href="/pricing"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+
+            <Link href="/pricing" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
             >
               Pricing
             </Link>
-            <Link
-              href="/sign-in"
-              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+
+            <Link href="/sign-in" style={signInStyle}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#2563eb'; e.currentTarget.style.color = '#2563eb'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.color = '#374151'; }}
             >
               Sign In
             </Link>
-            <Link
-              href="/sign-up"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow"
+
+            <Link href="/sign-up" style={ctaStyle}
+              onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.5)')}
+              onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(124,58,237,0.35)')}
             >
-              Get Started
+              Get Started →
             </Link>
           </div>
 
-          {/* Mobile menu button */}
+          {/* Mobile hamburger */}
           <button
-            className="md:hidden p-2"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            style={{
+              display: 'none',
+              background: 'none',
+              border: 'none',
+              cursor: 'pointer',
+              padding: '0.5rem',
+            }}
+            className="mobile-menu-btn"
           >
-            <svg
-              className="w-6 h-6"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
-              {mobileMenuOpen ? (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M6 18L18 6M6 6l12 12"
-                />
-              ) : (
-                <path
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  strokeWidth={2}
-                  d="M4 6h16M4 12h16M4 18h16"
-                />
-              )}
+            <svg width="24" height="24" fill="none" stroke="#374151" strokeWidth="2" viewBox="0 0 24 24">
+              {mobileMenuOpen
+                ? <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                : <path strokeLinecap="round" strokeLinejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+              }
             </svg>
           </button>
         </div>
+      </nav>
 
-        {/* Mobile menu */}
-        {mobileMenuOpen && (
-          <div className="md:hidden py-4 border-t border-gray-200">
-            <div className="space-y-1">
-              <div className="px-4 py-2 text-sm font-semibold text-gray-500 uppercase">
-                Apps
-              </div>
-              {apps.map((app) => (
-                <Link
-                  key={app.href}
-                  href={app.href}
-                  className="block px-4 py-2 hover:bg-gray-50"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  {app.name}
-                </Link>
-              ))}
-              <Link
-                href="/pricing"
-                className="block px-4 py-2 hover:bg-gray-50"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Pricing
-              </Link>
-              <div className="px-4 pt-3 space-y-2">
-                <Link
-                  href="/sign-in"
-                  className="block w-full text-center text-gray-700 hover:text-blue-600 font-medium py-2"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Sign In
-                </Link>
-                <Link
-                  href="/sign-up"
-                  className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Get Started
-                </Link>
-              </div>
-            </div>
+      {/* Mobile menu overlay */}
+      {mobileMenuOpen && (
+        <div style={{
+          position: 'fixed',
+          top: '68px',
+          left: 0,
+          right: 0,
+          backgroundColor: '#ffffff',
+          borderBottom: '1px solid #e5e7eb',
+          boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
+          zIndex: 9998,
+          padding: '1rem 2rem 1.5rem',
+        }}>
+          <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+            Apps
           </div>
-        )}
-      </div>
-    </nav>
+          {apps.map((app) => (
+            <Link key={app.href} href={app.href}
+              onClick={() => setMobileMenuOpen(false)}
+              style={{ display: 'block', padding: '0.625rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+            >
+              {app.name}
+            </Link>
+          ))}
+          <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            Pricing
+          </Link>
+          <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.25rem' }}>
+            <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}
+              style={{ display: 'block', textAlign: 'center', padding: '0.75rem', border: '1.5px solid #d1d5db', borderRadius: '8px', color: '#374151', textDecoration: 'none', fontWeight: '600', fontSize: '1rem' }}
+            >
+              Sign In
+            </Link>
+            <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}
+              style={{ display: 'block', textAlign: 'center', padding: '0.75rem', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '8px', color: '#ffffff', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}
+            >
+              Get Started →
+            </Link>
+          </div>
+        </div>
+      )}
+
+      <style>{`
+        @media (max-width: 768px) {
+          .mobile-menu-btn { display: block !important; }
+          .desktop-nav { display: none !important; }
+        }
+      `}</style>
+    </>
   );
 }

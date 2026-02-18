@@ -17,9 +17,9 @@ export default function RootLayout({
   return (
     <ClerkProvider>
       <html lang="en">
-        <body className="antialiased">
+        <body style={{ margin: 0, padding: 0, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
           <Navigation />
-          <main className="min-h-screen pt-16">{children}</main>
+          <main style={{ minHeight: '100vh', paddingTop: '68px' }}>{children}</main>
           <Footer />
         </body>
       </html>
