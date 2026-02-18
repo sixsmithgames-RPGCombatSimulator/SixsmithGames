@@ -20,7 +20,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200">
+    <nav className="fixed top-0 left-0 w-full z-[9999] bg-white border-b border-gray-200 shadow-sm">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex justify-between items-center h-16 w-full">
           {/* Logo */}
