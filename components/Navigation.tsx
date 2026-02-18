@@ -7,7 +7,6 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,15 +20,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav
-      className="bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-gray-200 shadow-sm fixed top-0 left-0 w-full z-[9999] h-16 flex items-center pointer-events-auto"
-      style={{
-        WebkitBackdropFilter: 'blur(12px)',
-        backdropFilter: 'blur(12px)',
-        backgroundColor: 'rgba(255,255,255,0.95)',
-        boxShadow: '0 8px 24px rgba(0,0,0,0.08)',
-      }}
-    >
+    <nav className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full">
         <div className="flex justify-between items-center h-16 w-full">
           {/* Logo */}
@@ -63,27 +54,18 @@ export default function Navigation() {
             >
               Pricing
             </Link>
-            <SignedOut>
-              <SignInButton mode="modal">
-                <button className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
-                  Sign In
-                </button>
-              </SignInButton>
-              <SignUpButton mode="modal">
-                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow">
-                  Get Started
-                </button>
-              </SignUpButton>
-            </SignedOut>
-            <SignedIn>
-              <Link
-                href="/account"
-                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
-              >
-                My Apps
-              </Link>
-              <UserButton afterSignOutUrl="/" />
-            </SignedIn>
+            <Link
+              href="/sign-in"
+              className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+            >
+              Sign In
+            </Link>
+            <Link
+              href="/sign-up"
+              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow"
+            >
+              Get Started
+            </Link>
           </div>
 
           {/* Mobile menu button */}
@@ -141,31 +123,20 @@ export default function Navigation() {
                 Pricing
               </Link>
               <div className="px-4 pt-3 space-y-2">
-                <SignedOut>
-                  <SignInButton mode="modal">
-                    <button className="block w-full text-center text-gray-700 hover:text-blue-600 font-medium py-2">
-                      Sign In
-                    </button>
-                  </SignInButton>
-                  <SignUpButton mode="modal">
-                    <button className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium">
-                      Get Started
-                    </button>
-                  </SignUpButton>
-                </SignedOut>
-                <SignedIn>
-                  <Link
-                    href="/account"
-                    className="block px-0 py-2 text-gray-700 hover:text-blue-600 font-medium"
-                    onClick={() => setMobileMenuOpen(false)}
-                  >
-                    My Apps
-                  </Link>
-                  <div className="flex items-center gap-2 py-2">
-                    <UserButton afterSignOutUrl="/" />
-                    <span className="text-gray-700 font-medium">Account</span>
-                  </div>
-                </SignedIn>
+                <Link
+                  href="/sign-in"
+                  className="block w-full text-center text-gray-700 hover:text-blue-600 font-medium py-2"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Sign In
+                </Link>
+                <Link
+                  href="/sign-up"
+                  className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium"
+                  onClick={() => setMobileMenuOpen(false)}
+                >
+                  Get Started
+                </Link>
               </div>
             </div>
           </div>
