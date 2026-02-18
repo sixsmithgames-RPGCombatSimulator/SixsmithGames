@@ -90,7 +90,7 @@ export function canAccessApps(
   publicMetadata: Record<string, unknown> | undefined | null,
   email: string | undefined | null
 ): boolean {
-  return isAdminEmail(email) || hasActiveSubscription(publicMetadata);
+  return isAdminEmail(email) || isDummySubscriber(email) || hasActiveSubscription(publicMetadata);
 }
 
 // App subdomain map
