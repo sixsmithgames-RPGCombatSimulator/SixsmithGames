@@ -8,6 +8,7 @@
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
+import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function VirtualCombatSimulatorPage() {
   const features = [
@@ -106,8 +107,8 @@ export default function VirtualCombatSimulatorPage() {
                 the table aligned with grid-snapped maps, token control, and turn tracking—online or in-person.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <Link
-                  href="/pricing"
+                <LaunchAppButton
+                  appSlug="virtual-combat-simulator"
                   style={{
                     background: 'white',
                     color: '#ef4444',
@@ -120,19 +121,13 @@ export default function VirtualCombatSimulatorPage() {
                     textAlign: 'center',
                     boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
                     transition: 'all 0.3s ease',
-                    maxWidth: '200px'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-3px)';
-                    e.currentTarget.style.boxShadow = '0 15px 50px rgba(0,0,0,0.4)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
+                    maxWidth: '250px',
+                    border: 'none',
+                    cursor: 'pointer',
                   }}
                 >
-                  Get Started
-                </Link>
+                  Launch App →
+                </LaunchAppButton>
               </div>
             </div>
             <div style={{

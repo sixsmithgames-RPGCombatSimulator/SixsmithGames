@@ -8,6 +8,7 @@
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
+import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function ContentCraftPage() {
   const coreFeatures = [
@@ -117,8 +118,8 @@ export default function ContentCraftPage() {
                 Organize your work, maintain consistency, and harness AI without losing your creative vision.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <Link
-                  href="/pricing"
+                <LaunchAppButton
+                  appSlug="contentcraft"
                   style={{
                     background: 'white',
                     color: '#a855f7',
@@ -131,19 +132,13 @@ export default function ContentCraftPage() {
                     textAlign: 'center',
                     boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
                     transition: 'all 0.3s ease',
-                    maxWidth: '220px'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-3px)';
-                    e.currentTarget.style.boxShadow = '0 15px 50px rgba(0,0,0,0.4)';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
+                    maxWidth: '250px',
+                    border: 'none',
+                    cursor: 'pointer',
                   }}
                 >
-                  Start Creating
-                </Link>
+                  Launch App →
+                </LaunchAppButton>
               </div>
             </div>
             <div style={{

@@ -7,7 +7,7 @@
 
 import Link from 'next/link';
 import { useState } from 'react';
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/nextjs';
+import { SignedIn, SignedOut, SignInButton, SignUpButton, UserButton } from '@clerk/nextjs';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -21,7 +21,7 @@ export default function Navigation() {
   ];
 
   return (
-    <nav className="bg-white border-b border-gray-200 sticky top-0 z-50">
+    <nav className="bg-white/95 backdrop-blur supports-[backdrop-filter]:bg-white/80 border-b border-gray-200 shadow-sm fixed top-0 left-0 w-full z-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex justify-between items-center h-16">
           {/* Logo */}
@@ -55,20 +55,25 @@ export default function Navigation() {
             >
               Pricing
             </Link>
-            <Link
-              href="/pricing"
-              className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow"
-            >
-              Subscribe
-            </Link>
             <SignedOut>
               <SignInButton mode="modal">
                 <button className="text-gray-700 hover:text-blue-600 font-medium transition-colors">
                   Sign In
                 </button>
               </SignInButton>
+              <SignUpButton mode="modal">
+                <button className="bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium hover:shadow-lg transition-shadow">
+                  Get Started
+                </button>
+              </SignUpButton>
             </SignedOut>
             <SignedIn>
+              <Link
+                href="/account"
+                className="text-gray-700 hover:text-blue-600 font-medium transition-colors"
+              >
+                My Apps
+              </Link>
               <UserButton afterSignOutUrl="/" />
             </SignedIn>
           </div>
@@ -127,24 +132,27 @@ export default function Navigation() {
               >
                 Pricing
               </Link>
-              <div className="px-4 pt-2">
-                <Link
-                  href="/pricing"
-                  className="block text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium"
-                  onClick={() => setMobileMenuOpen(false)}
-                >
-                  Subscribe
-                </Link>
-              </div>
-              <div className="px-4 pt-3">
+              <div className="px-4 pt-3 space-y-2">
                 <SignedOut>
                   <SignInButton mode="modal">
                     <button className="block w-full text-center text-gray-700 hover:text-blue-600 font-medium py-2">
                       Sign In
                     </button>
                   </SignInButton>
+                  <SignUpButton mode="modal">
+                    <button className="block w-full text-center bg-gradient-to-r from-blue-600 to-purple-600 text-white px-6 py-2 rounded-full font-medium">
+                      Get Started
+                    </button>
+                  </SignUpButton>
                 </SignedOut>
                 <SignedIn>
+                  <Link
+                    href="/account"
+                    className="block px-0 py-2 text-gray-700 hover:text-blue-600 font-medium"
+                    onClick={() => setMobileMenuOpen(false)}
+                  >
+                    My Apps
+                  </Link>
                   <div className="flex items-center gap-2 py-2">
                     <UserButton afterSignOutUrl="/" />
                     <span className="text-gray-700 font-medium">Account</span>
