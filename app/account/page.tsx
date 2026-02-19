@@ -6,7 +6,7 @@
 'use client';
 
 import { useUser, SignInButton } from '@clerk/nextjs';
-import { getSubscriptionInfo, canAccessApps, APP_URLS } from '@/lib/subscription';
+import { getSubscriptionInfo, APP_URLS, PLANS } from '@/lib/subscription';
 
 const appDetails = [
   { slug: 'virtual-combat-simulator', name: 'Virtual Combat Simulator', desc: 'Tactical military combat', icon: '⚔️', color: '#ef4444', bg: '#fef2f2' },
@@ -71,8 +71,7 @@ export default function AccountPage() {
 
   const email = user?.primaryEmailAddress?.emailAddress;
   const sub = getSubscriptionInfo(user?.publicMetadata, email);
-  const hasAccess = canAccessApps(user?.publicMetadata, email);
-  const isActive = hasAccess;
+  const isActive = sub.accessibleApps.length > 0 || sub.isAdmin;
 
   const card: React.CSSProperties = {
     background: 'white', borderRadius: '16px', padding: '1.75rem 2rem',
@@ -119,11 +118,20 @@ export default function AccountPage() {
 
               {isActive ? (
                 <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1.25rem' }}>
-                  {sub.plan && (
+                  {sub.plans.length > 0 && (
                     <div>
-                      <p style={{ fontSize: '0.75rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 0.25rem' }}>Plan</p>
-                      <p style={{ fontSize: '1rem', fontWeight: '700', color: '#111827', margin: 0 }}>Sixsmith Games {sub.plan}</p>
-                      <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0.125rem 0 0' }}>$19.99 / month</p>
+                      <p style={{ fontSize: '0.75rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 0.25rem' }}>
+                        {sub.plans.length === 1 ? 'Plan' : 'Plans'}
+                      </p>
+                      {sub.plans.map((planId) => {
+                        const plan = PLANS[planId];
+                        return plan ? (
+                          <div key={planId} style={{ marginBottom: '0.25rem' }}>
+                            <p style={{ fontSize: '1rem', fontWeight: '700', color: '#111827', margin: 0 }}>{plan.name}</p>
+                            <p style={{ fontSize: '0.875rem', color: '#6b7280', margin: '0.125rem 0 0' }}>${plan.price.toFixed(2)} / month</p>
+                          </div>
+                        ) : null;
+                      })}
                     </div>
                   )}
                   {sub.nextBillingDate && (
@@ -164,7 +172,7 @@ export default function AccountPage() {
           <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '1.25rem' }}>
             <h2 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#111827', margin: 0 }}>Your Apps</h2>
             {isActive && (
-              <span style={{ fontSize: '0.8125rem', color: '#22c55e', fontWeight: '600' }}>✓ Full Access</span>
+              <span style={{ fontSize: '0.8125rem', color: '#22c55e', fontWeight: '600' }}>✓ {sub.accessibleApps.length === 5 ? 'Full Access' : `${sub.accessibleApps.length} App${sub.accessibleApps.length !== 1 ? 's' : ''}`}</span>
             )}
           </div>
 
@@ -176,7 +184,7 @@ export default function AccountPage() {
             }}>
               <span>🔒</span>
               <p style={{ color: '#92400e', fontSize: '0.9rem', margin: 0 }}>
-                Subscribe to unlock all apps.{' '}
+                Subscribe to unlock apps.{' '}
                 <a href="/pricing" style={{ color: '#b45309', fontWeight: '700' }}>View plans</a>
               </p>
             </div>
@@ -184,7 +192,7 @@ export default function AccountPage() {
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
             {appDetails.map((app) => {
-              const locked = !hasAccess;
+              const locked = !sub.accessibleApps.includes(app.slug as never) && !sub.isAdmin;
               return (
                 <div key={app.slug} style={{
                   border: `1.5px solid ${locked ? '#e5e7eb' : app.color + '33'}`,

@@ -13,9 +13,10 @@ interface SubscribeButtonProps {
   className?: string;
   style?: React.CSSProperties;
   children: React.ReactNode;
+  planId?: string;
 }
 
-export default function SubscribeButton({ className, style, children }: SubscribeButtonProps) {
+export default function SubscribeButton({ className, style, children, planId }: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
@@ -56,9 +57,10 @@ export default function SubscribeButton({ className, style, children }: Subscrib
     );
   }
 
-  // Signed in but not subscribed — Stripe checkout (placeholder for now)
+  // Signed in but not subscribed — Stripe checkout (placeholder)
   const handleClick = () => {
-    alert('Stripe checkout coming soon! You will be redirected to a secure payment page.');
+    const plan = planId || 'bundle';
+    alert(`Stripe checkout coming soon!\nPlan: ${plan}\nYou will be redirected to a secure payment page.`);
   };
 
   return (
