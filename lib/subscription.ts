@@ -12,6 +12,7 @@ export interface PlanInfo {
   name: string;
   price: number;
   apps: AppSlug[];
+  stripePriceId: string;
 }
 
 export const PLANS: Record<string, PlanInfo> = {
@@ -20,36 +21,42 @@ export const PLANS: Record<string, PlanInfo> = {
     name: 'All-Access Bundle',
     price: 19.99,
     apps: ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || '',
   },
   contentcraft: {
     id: 'contentcraft',
     name: 'ContentCraft',
     price: 9.99,
     apps: ['contentcraft'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CONTENTCRAFT || '',
   },
   'virtual-combat-simulator': {
     id: 'virtual-combat-simulator',
     name: 'VirtualCombatSimulator',
     price: 9.99,
     apps: ['virtual-combat-simulator'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_VCS || '',
   },
   gravity: {
     id: 'gravity',
     name: 'Gravity',
-    price: 4.99,
+    price: 1.99,
     apps: ['gravity'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_GRAVITY || '',
   },
   fourstargeneral: {
     id: 'fourstargeneral',
     name: 'Four Star General',
-    price: 4.99,
+    price: 1.99,
     apps: ['fourstargeneral'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_FSG || '',
   },
   mastertyping: {
     id: 'mastertyping',
     name: 'MasterTyping',
     price: 4.99,
     apps: ['mastertyping'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_MASTERTYPING || '',
   },
 };
 

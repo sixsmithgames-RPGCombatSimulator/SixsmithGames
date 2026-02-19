@@ -33,7 +33,7 @@ const individualPlans = [
     slug: 'gravity',
     name: 'Gravity',
     icon: '🚀',
-    price: 4.99,
+    price: 1.99,
     color: '#2563eb',
     gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
     description: 'Asynchronous multiplayer tactical space survival board game.',
@@ -43,7 +43,7 @@ const individualPlans = [
     slug: 'fourstargeneral',
     name: 'Four Star General',
     icon: '🎖️',
-    price: 4.99,
+    price: 1.99,
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f5c46d)',
     description: 'WWII strategic and tactical war simulation with deep campaign play.',
@@ -119,7 +119,7 @@ export default function PricingPage() {
               <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', margin: '0.25rem 0 1.5rem' }}>
-              vs. $34.95 individually
+              vs. $28.95 individually
             </p>
             <SubscribeButton planId="bundle" style={{
               background: 'white', color: '#4c1d95',

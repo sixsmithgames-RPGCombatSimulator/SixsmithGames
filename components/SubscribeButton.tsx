@@ -18,9 +18,31 @@ interface SubscribeButtonProps {
 
 export default function SubscribeButton({ className, style, children, planId }: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
+  const [loading, setLoading] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
   const { isSignedIn, user, isLoaded } = useUser();
+
+  const handleClick = async () => {
+    setLoading(true);
+    try {
+      const res = await fetch('/api/checkout', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ planId: planId || 'bundle' }),
+      });
+      const data = await res.json();
+      if (data.url) {
+        window.location.href = data.url;
+      } else {
+        alert('Could not start checkout. Please try again.');
+      }
+    } catch {
+      alert('Could not start checkout. Please try again.');
+    } finally {
+      setLoading(false);
+    }
+  };
 
   if (!mounted || !isLoaded) {
     return (
@@ -30,7 +52,6 @@ export default function SubscribeButton({ className, style, children, planId }: 
     );
   }
 
-  // Not signed in — prompt sign in first
   if (!isSignedIn) {
     return (
       <SignInButton mode="modal">
@@ -44,7 +65,6 @@ export default function SubscribeButton({ className, style, children, planId }: 
   const email = user?.primaryEmailAddress?.emailAddress;
   const hasAccess = canAccessApps(user?.publicMetadata, email);
 
-  // Already subscribed or admin
   if (hasAccess) {
     return (
       <a
@@ -57,19 +77,14 @@ export default function SubscribeButton({ className, style, children, planId }: 
     );
   }
 
-  // Signed in but not subscribed — Stripe checkout (placeholder)
-  const handleClick = () => {
-    const plan = planId || 'bundle';
-    alert(`Stripe checkout coming soon!\nPlan: ${plan}\nYou will be redirected to a secure payment page.`);
-  };
-
   return (
     <button
       className={className}
-      style={style}
+      style={{ ...style, opacity: loading ? 0.7 : 1 }}
       onClick={handleClick}
+      disabled={loading}
     >
-      {children}
+      {loading ? 'Redirecting...' : children}
     </button>
   );
 }
