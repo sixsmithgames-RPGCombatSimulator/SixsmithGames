@@ -12,39 +12,31 @@ import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function MasterTypingPage() {
   const characters = [
-    '🧙‍♂️ Wizard - Magic projectiles',
-    '🦧 Ape - Banana slicks',
-    '👵 Grandma - Yarn zones',
-    '🦄 Unicorn - Rainbow bonuses',
-    '🐲 Dragon - Fire zones',
-    '🥷 Ninja - Vortex traps',
-    '🤖 Robot - Magnetic clumps',
-    '👨‍🍳 Chef - Food effects',
-    '🧛 Vampire - Bat swarms',
-    '👽 Alien - Abduction beams',
+    'Wizard — Magic projectiles',
+    'Ape — Banana slicks',
+    'Grandma — Yarn zones',
+    'Unicorn — Rainbow bonuses',
+    'Dragon — Fire zones',
+    'Ninja — Vortex traps',
+    'Robot — Magnetic clumps',
+    'Chef — Food effects',
+    'Vampire — Bat swarms',
+    'Alien — Abduction beams',
   ];
 
+  const ModeIcon = ({ type }: { type: string }) => {
+    const s = { width: '36px', height: '36px', color: '#22c55e' };
+    if (type === 'game') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M11 4a2 2 0 114 0v1a1 1 0 001 1h3a1 1 0 011 1v3a1 1 0 01-1 1h-1a2 2 0 100 4h1a1 1 0 011 1v3a1 1 0 01-1 1h-3a1 1 0 01-1-1v-1a2 2 0 10-4 0v1a1 1 0 01-1 1H7a1 1 0 01-1-1v-3a1 1 0 00-1-1H4a2 2 0 110-4h1a1 1 0 001-1V7a1 1 0 011-1h3a1 1 0 001-1V4z" /></svg>;
+    if (type === 'target') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" /></svg>;
+    if (type === 'chart') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z" /></svg>;
+    return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z" /></svg>;
+  };
+
   const gameModes = [
-    {
-      name: 'Video Game Mode',
-      description: 'Defeat words with projectiles, unlock characters, and collect coins',
-      icon: '🎮',
-    },
-    {
-      name: 'Pro Mode',
-      description: 'Skill-focused practice with power-ups and strategic gameplay',
-      icon: '🎯',
-    },
-    {
-      name: 'Assessment Mode',
-      description: 'Comprehensive typing evaluation with detailed metrics',
-      icon: '📊',
-    },
-    {
-      name: 'Practice Mode',
-      description: 'Traditional typing practice with adjustable difficulty levels',
-      icon: '📝',
-    },
+    { name: 'Video Game Mode', description: 'Defeat words with projectiles, unlock characters, and collect coins', iconType: 'game' },
+    { name: 'Pro Mode', description: 'Skill-focused practice with power-ups and strategic gameplay', iconType: 'target' },
+    { name: 'Assessment Mode', description: 'Comprehensive typing evaluation with detailed metrics', iconType: 'chart' },
+    { name: 'Practice Mode', description: 'Traditional typing practice with adjustable difficulty levels', iconType: 'edit' },
   ];
 
   return (
@@ -82,7 +74,7 @@ export default function MasterTypingPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                ⌨️ GAME-BASED TYPING PRACTICE
+                GAME-BASED TYPING PRACTICE
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -225,7 +217,7 @@ export default function MasterTypingPage() {
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 border: '2px solid #d1fae5'
               }}>
-                <div style={{fontSize: '3rem', marginBottom: '1rem'}}>{mode.icon}</div>
+                <div style={{ marginBottom: '1rem' }}><ModeIcon type={mode.iconType} /></div>
                 <h3 style={{fontSize: '1.5rem', fontWeight: '700', color: '#1a202c', marginBottom: '0.75rem'}}>
                   {mode.name}
                 </h3>
@@ -338,11 +330,12 @@ export default function MasterTypingPage() {
                 Perfect For:
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '0.75rem', color: '#4b5563'}}>
-                <li>✓ Parents seeking engaging homework tools</li>
-                <li>✓ K-12 Teachers needing classroom resources</li>
-                <li>✓ Homeschool families</li>
-                <li>✓ Adult learners improving professional skills</li>
-                <li>✓ ESL/Language learners building vocabulary</li>
+                {['Parents seeking engaging homework tools', 'K-12 Teachers needing classroom resources', 'Homeschool families', 'Adult learners improving professional skills', 'ESL/Language learners building vocabulary'].map(item => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
+                    <svg style={{ width: '18px', height: '18px', color: '#22c55e', flexShrink: 0, marginTop: '2px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

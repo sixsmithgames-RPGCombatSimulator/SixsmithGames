@@ -85,7 +85,7 @@ export default function VirtualCombatSimulatorPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                ⚔️ D&D BATTLE MANAGEMENT
+                D&D BATTLE MANAGEMENT
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -272,12 +272,12 @@ export default function VirtualCombatSimulatorPage() {
                 gap: '1rem',
                 color: '#4b5563'
               }}>
-                <li>✓ React + TypeScript frontend</li>
-                <li>✓ Express + TypeScript backend</li>
-                <li>✓ MongoDB persistence</li>
-                <li>✓ Socket.IO multiplayer</li>
-                <li>✓ JWT authentication</li>
-                <li>✓ Stripe integration</li>
+                {['React + TypeScript frontend', 'Express + TypeScript backend', 'MongoDB persistence', 'Socket.IO multiplayer', 'JWT authentication', 'Stripe integration'].map(item => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <svg style={{ width: '16px', height: '16px', color: '#ef4444', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                    {item}
+                  </li>
+                ))}
               </ul>
             </div>
           </div>

@@ -165,7 +165,7 @@ export default function Home() {
                     boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
                     overflow: 'hidden',
                   }}>
-                    <Image src={app.icon.replace('.png', '-optimized.png')} alt={app.name} width={96} height={96} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+                    <Image src={app.icon} alt={app.name} width={96} height={96} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                   </div>
                   <h3 style={{
                     fontSize: '1.75rem',
