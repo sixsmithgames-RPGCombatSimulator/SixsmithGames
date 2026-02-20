@@ -158,18 +158,14 @@ export default function Home() {
                   className="app-card"
                 >
                   <div style={{
-                    background: gradient,
-                    width: '80px',
-                    height: '80px',
-                    borderRadius: '16px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
+                    width: '96px',
+                    height: '96px',
+                    borderRadius: '20px',
                     marginBottom: '1.5rem',
-                    boxShadow: '0 8px 16px rgba(0,0,0,0.15)',
+                    boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
                     overflow: 'hidden',
                   }}>
-                    <Image src={app.icon} alt={app.name} width={64} height={64} style={{ objectFit: 'cover', borderRadius: '12px' }} />
+                    <Image src={app.icon.replace('.png', '-optimized.png')} alt={app.name} width={96} height={96} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                   </div>
                   <h3 style={{
                     fontSize: '1.75rem',
