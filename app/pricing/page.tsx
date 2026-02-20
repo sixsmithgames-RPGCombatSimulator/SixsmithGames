@@ -115,11 +115,11 @@ export default function PricingPage() {
           <div style={{ textAlign: 'center', flex: '0 0 auto' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '4px' }}>
               <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', marginTop: '0.5rem' }}>$</span>
-              <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>19.99</span>
+              <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>22.99</span>
               <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', margin: '0.25rem 0 1.5rem' }}>
-              vs. $28.95 individually
+              vs. $28.95 if purchased separately
             </p>
             <SubscribeButton planId="bundle" style={{
               background: 'white', color: '#4c1d95',
@@ -127,7 +127,7 @@ export default function PricingPage() {
               fontSize: '1.0625rem', fontWeight: '800', border: 'none', cursor: 'pointer',
               boxShadow: '0 8px 24px rgba(0,0,0,0.25)', whiteSpace: 'nowrap',
             }}>
-              Get All-Access — $19.99/mo
+              Get All-Access — $22.99/mo
             </SubscribeButton>
             <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', marginTop: '0.75rem' }}>Cancel anytime</p>
           </div>
@@ -196,7 +196,7 @@ export default function PricingPage() {
           fontSize: '1.125rem', fontWeight: '800', border: 'none', cursor: 'pointer',
           boxShadow: '0 8px 30px rgba(0,0,0,0.25)',
         }}>
-          Get All-Access Bundle — $19.99/mo
+          Get All-Access Bundle — $22.99/mo
         </SubscribeButton>
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', marginTop: '1rem' }}>
           Cancel anytime. No long-term commitment required.

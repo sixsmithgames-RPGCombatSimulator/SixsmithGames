@@ -19,7 +19,7 @@ export const PLANS: Record<string, PlanInfo> = {
   bundle: {
     id: 'bundle',
     name: 'All-Access Bundle',
-    price: 19.99,
+    price: 22.99,
     apps: ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1T2dslGeOb0qevnhF2aQK5H3',
   },
