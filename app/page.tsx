@@ -6,10 +6,9 @@
  * LICENSE file in the root directory of this source tree.
  */
 
-'use client';
-
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
+import { getRecentPosts } from '@/lib/blog';
 
 export default function Home() {
   const apps = [
@@ -103,56 +102,10 @@ export default function Home() {
               management to AI-assisted content creation, we've got the tools you didn't know you needed.
             </p>
             <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
-              <Link
-                href="/pricing"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.95)',
-                  color: '#667eea',
-                  padding: '1.25rem 3rem',
-                  borderRadius: '50px',
-                  fontSize: '1.25rem',
-                  fontWeight: '700',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-                  transition: 'all 0.3s ease',
-                  border: 'none'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                  e.currentTarget.style.boxShadow = '0 15px 50px rgba(0,0,0,0.4)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)';
-                  e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
-                }}
-              >
+              <Link href="/pricing" className="hero-btn-primary">
                 Start Your Subscription
               </Link>
-              <a
-                href="#apps"
-                style={{
-                  background: 'rgba(255, 255, 255, 0.2)',
-                  color: 'white',
-                  padding: '1.25rem 3rem',
-                  borderRadius: '50px',
-                  fontSize: '1.25rem',
-                  fontWeight: '700',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  border: '2px solid rgba(255, 255, 255, 0.8)',
-                  backdropFilter: 'blur(10px)',
-                  transition: 'all 0.3s ease'
-                }}
-                onMouseOver={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.3)';
-                  e.currentTarget.style.transform = 'translateY(-2px)';
-                }}
-                onMouseOut={(e) => {
-                  e.currentTarget.style.background = 'rgba(255, 255, 255, 0.2)';
-                  e.currentTarget.style.transform = 'translateY(0)';
-                }}
-              >
+              <a href="#apps" className="hero-btn-secondary">
                 Explore Our Apps
               </a>
             </div>
@@ -201,27 +154,7 @@ export default function Home() {
                 <Link
                   key={app.name}
                   href={app.href}
-                  style={{
-                    background: 'white',
-                    borderRadius: '20px',
-                    padding: '2.5rem',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    boxShadow: '0 4px 20px rgba(0,0,0,0.08)',
-                    transition: 'all 0.3s ease',
-                    display: 'block',
-                    border: '2px solid transparent'
-                  }}
-                  onMouseOver={(e) => {
-                    e.currentTarget.style.transform = 'translateY(-8px)';
-                    e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
-                    e.currentTarget.style.borderColor = '#e5e7eb';
-                  }}
-                  onMouseOut={(e) => {
-                    e.currentTarget.style.transform = 'translateY(0)';
-                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(0,0,0,0.08)';
-                    e.currentTarget.style.borderColor = 'transparent';
-                  }}
+                  className="app-card"
                 >
                   <div style={{
                     background: gradient,
@@ -275,222 +208,378 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Features Section */}
-      <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
-          <div style={{textAlign: 'center', marginBottom: '4rem'}}>
-            <h2 style={{
-              fontSize: 'clamp(2rem, 5vw, 3rem)',
-              fontWeight: '800',
-              color: '#1a202c',
-              marginBottom: '1rem'
-            }}>
-              Why Choose Sixsmith Games?
+      {/* Audience Personas */}
+      <section style={{ padding: '100px 0', background: 'white' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+              WHO IT&apos;S FOR
+            </p>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', marginBottom: '1rem', lineHeight: 1.2 }}>
+              Built for Every Kind of Creator
+            </h2>
+            <p style={{ fontSize: '1.125rem', color: '#6b7280', maxWidth: '650px', margin: '0 auto', lineHeight: 1.7 }}>
+              Whether you run campaigns, write fiction, play strategy games, or teach kids — we made something for you.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
+            {[
+              {
+                emoji: '🐉',
+                title: 'Dungeon Masters',
+                desc: 'Run faster, clearer combats. Track initiative, manage the battlefield, and generate lore that fits your world — all without breaking flow.',
+                apps: ['VirtualCombatSimulator', 'ContentCraft'],
+                gradient: 'linear-gradient(135deg, #fef2f2, #fff7ed)',
+                accent: '#dc2626',
+              },
+              {
+                emoji: '✍️',
+                title: 'Fantasy & Sci-Fi Writers',
+                desc: 'Build deep, consistent worlds with AI that remembers your canon. Generate characters, locations, and lore that never contradict your story.',
+                apps: ['ContentCraft'],
+                gradient: 'linear-gradient(135deg, #f5f3ff, #fdf2f8)',
+                accent: '#7c3aed',
+              },
+              {
+                emoji: '🎯',
+                title: 'Strategy Gamers',
+                desc: 'Command fleets in space or armies in WWII. Deep tactical gameplay designed for async multiplayer — play on your own schedule.',
+                apps: ['Gravity', 'Four Star General'],
+                gradient: 'linear-gradient(135deg, #eff6ff, #ecfeff)',
+                accent: '#2563eb',
+              },
+              {
+                emoji: '📚',
+                title: 'Parents & Educators',
+                desc: 'Turn typing practice into an adventure. Game-based learning with real K-12 vocabulary, character abilities, and progress tracking.',
+                apps: ['MasterTyping'],
+                gradient: 'linear-gradient(135deg, #ecfdf5, #f0fdf4)',
+                accent: '#059669',
+              },
+            ].map((persona) => (
+              <div key={persona.title} style={{
+                background: persona.gradient,
+                borderRadius: '20px',
+                padding: '2.25rem',
+                border: '1px solid rgba(0,0,0,0.04)',
+                transition: 'transform 0.2s',
+              }}>
+                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{persona.emoji}</div>
+                <h3 style={{ fontSize: '1.375rem', fontWeight: '800', color: '#111827', marginBottom: '0.75rem' }}>
+                  {persona.title}
+                </h3>
+                <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
+                  {persona.desc}
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
+                  {persona.apps.map(app => (
+                    <span key={app} style={{
+                      background: 'rgba(255,255,255,0.8)',
+                      color: persona.accent,
+                      fontSize: '0.75rem',
+                      fontWeight: '700',
+                      padding: '0.25rem 0.625rem',
+                      borderRadius: '999px',
+                      border: `1px solid ${persona.accent}22`,
+                    }}>
+                      {app}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* Social Proof Stats */}
+      <section style={{
+        padding: '60px 0',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
+      }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gap: '2rem',
+            textAlign: 'center',
+          }}>
+            {[
+              { value: '5', label: 'Applications', sub: 'Covering RPGs, writing, strategy & education' },
+              { value: '1', label: 'Subscription', sub: 'All-access or subscribe per app' },
+              { value: '24/7', label: 'Cloud Access', sub: 'Play and create from any device' },
+              { value: '0', label: 'Long-Term Contracts', sub: 'Cancel anytime, no lock-in' },
+            ].map((stat) => (
+              <div key={stat.label}>
+                <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#818cf8', lineHeight: 1, marginBottom: '0.5rem' }}>
+                  {stat.value}
+                </div>
+                <div style={{ color: '#ffffff', fontWeight: '700', fontSize: '1rem', marginBottom: '0.25rem' }}>
+                  {stat.label}
+                </div>
+                <div style={{ color: '#64748b', fontSize: '0.8125rem', lineHeight: 1.5 }}>
+                  {stat.sub}
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      {/* App Deep Dives */}
+      <section style={{ padding: '100px 0', background: '#fafafa' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
+            <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+              WHAT YOU GET
+            </p>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', lineHeight: 1.2 }}>
+              Tools That Actually Solve Your Problems
             </h2>
           </div>
 
+          {/* VCS + ContentCraft spotlight */}
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
-            gap: '3rem'
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))',
+            gap: '2rem', marginBottom: '2rem',
           }}>
-            <div style={{textAlign: 'center'}}>
-              <div style={{
-                background: 'linear-gradient(135deg, #dbeafe 0%, #bfdbfe 100%)',
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.5rem',
-                boxShadow: '0 8px 16px rgba(59, 130, 246, 0.2)'
-              }}>
-                <svg
-                  style={{width: '40px', height: '40px', color: '#2563eb'}}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M13 10V3L4 14h7v7l9-11h-7z"
-                  />
-                </svg>
-              </div>
-              <h3 style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                color: '#1a202c',
-                marginBottom: '1rem'
-              }}>
-                Professional Quality
-              </h3>
-              <p style={{
-                fontSize: '1.05rem',
-                color: '#4b5563',
-                lineHeight: '1.7'
-              }}>
-                Enterprise-grade applications built with modern technology stacks, deployed on reliable infrastructure.
+            <div style={{
+              background: 'linear-gradient(160deg, #1c1917, #292524)', borderRadius: '24px',
+              padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
+            }}>
+              <div style={{ position: 'absolute', top: '-40px', right: '-40px', fontSize: '10rem', opacity: 0.05, lineHeight: 1 }}>⚔️</div>
+              <span style={{ background: 'rgba(239,68,68,0.15)', color: '#fca5a5', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
+                D&D Combat
+              </span>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>VirtualCombatSimulator</h3>
+              <p style={{ color: '#a8a29e', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+                Drag-and-drop initiative. Real-time tabletop. Fog of war. Everything you need to run combat without the bookkeeping killing your momentum.
               </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
+                {['Real-time multiplayer battle rooms', 'Drag-and-drop initiative tracker', 'Character sheets & ruleset editor', 'Responsive virtual tabletop'].map(f => (
+                  <li key={f} style={{ color: '#d6d3d1', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ color: '#f87171', fontSize: '0.75rem' }}>●</span> {f}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/apps/virtual-combat-simulator" style={{
+                display: 'inline-block', marginTop: '1.5rem', color: '#fca5a5',
+                fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
+              }}>
+                Learn more →
+              </Link>
             </div>
 
-            <div style={{textAlign: 'center'}}>
-              <div style={{
-                background: 'linear-gradient(135deg, #f3e8ff 0%, #e9d5ff 100%)',
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.5rem',
-                boxShadow: '0 8px 16px rgba(168, 85, 247, 0.2)'
-              }}>
-                <svg
-                  style={{width: '40px', height: '40px', color: '#9333ea'}}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"
-                  />
-                </svg>
-              </div>
-              <h3 style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                color: '#1a202c',
-                marginBottom: '1rem'
-              }}>
-                All-Access Subscription
-              </h3>
-              <p style={{
-                fontSize: '1.05rem',
-                color: '#4b5563',
-                lineHeight: '1.7'
-              }}>
-                One monthly subscription gives you unlimited access to all five applications.
+            <div style={{
+              background: 'linear-gradient(160deg, #1e1b4b, #312e81)', borderRadius: '24px',
+              padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
+            }}>
+              <div style={{ position: 'absolute', top: '-40px', right: '-40px', fontSize: '10rem', opacity: 0.05, lineHeight: 1 }}>✨</div>
+              <span style={{ background: 'rgba(168,85,247,0.15)', color: '#c4b5fd', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
+                AI Worldbuilding
+              </span>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>ContentCraft</h3>
+              <p style={{ color: '#a5b4fc', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
+                AI that remembers your world. Generate NPCs, locations, encounters, and lore that never contradict your established canon.
               </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
+                {['Canon-aware AI generation', 'Lore & NPC consistency tracking', 'World maps & faction management', 'Export-ready for your campaign'].map(f => (
+                  <li key={f} style={{ color: '#c7d2fe', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
+                    <span style={{ color: '#a78bfa', fontSize: '0.75rem' }}>●</span> {f}
+                  </li>
+                ))}
+              </ul>
+              <Link href="/apps/contentcraft" style={{
+                display: 'inline-block', marginTop: '1.5rem', color: '#c4b5fd',
+                fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
+              }}>
+                Learn more →
+              </Link>
+            </div>
+          </div>
+
+          {/* Gravity + FSG + MasterTyping row */}
+          <div style={{
+            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '1.5rem',
+          }}>
+            <div style={{
+              background: 'white', borderRadius: '20px', padding: '2rem',
+              border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div style={{
+                  width: '48px', height: '48px', borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem',
+                }}>🚀</div>
+                <div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Gravity</h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Async sci-fi strategy</p>
+                </div>
+              </div>
+              <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+                Deep, tactical turn-based board game. Command fleets, manage resources, and outmaneuver opponents — all on your own schedule. No coordination required.
+              </p>
+              <Link href="/apps/gravity" style={{ color: '#3b82f6', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
+                Learn more →
+              </Link>
             </div>
 
-            <div style={{textAlign: 'center'}}>
-              <div style={{
-                background: 'linear-gradient(135deg, #fce7f3 0%, #fbcfe8 100%)',
-                width: '80px',
-                height: '80px',
-                borderRadius: '50%',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                margin: '0 auto 1.5rem',
-                boxShadow: '0 8px 16px rgba(236, 72, 153, 0.2)'
-              }}>
-                <svg
-                  style={{width: '40px', height: '40px', color: '#db2777'}}
-                  fill="none"
-                  stroke="currentColor"
-                  viewBox="0 0 24 24"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth={2.5}
-                    d="M7 8h10M7 12h4m1 8l-4-4H5a2 2 0 01-2-2V6a2 2 0 012-2h14a2 2 0 012 2v8a2 2 0 01-2 2h-3l-4 4z"
-                  />
-                </svg>
+            <div style={{
+              background: 'white', borderRadius: '20px', padding: '2rem',
+              border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div style={{
+                  width: '48px', height: '48px', borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #f59e0b, #eab308)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem',
+                }}>🎖️</div>
+                <div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Four Star General</h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>WWII war simulation</p>
+                </div>
               </div>
-              <h3 style={{
-                fontSize: '1.5rem',
-                fontWeight: '700',
-                color: '#1a202c',
-                marginBottom: '1rem'
-              }}>
-                Continuous Innovation
-              </h3>
-              <p style={{
-                fontSize: '1.05rem',
-                color: '#4b5563',
-                lineHeight: '1.7'
-              }}>
-                Regular updates and new features based on user feedback and emerging needs.
+              <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+                Strategic and tactical turn-based gameplay set in the WWII era. Plan operations, manage your general roster, and fight through campaigns that test every decision.
               </p>
+              <Link href="/apps/fourstargeneral" style={{ color: '#d97706', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
+                Learn more →
+              </Link>
+            </div>
+
+            <div style={{
+              background: 'white', borderRadius: '20px', padding: '2rem',
+              border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
+            }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+                <div style={{
+                  width: '48px', height: '48px', borderRadius: '12px',
+                  background: 'linear-gradient(135deg, #22c55e, #10b981)',
+                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem',
+                }}>⌨️</div>
+                <div>
+                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>MasterTyping</h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Game-based typing</p>
+                </div>
+              </div>
+              <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
+                10 unique characters with special abilities. K-12 vocabulary. Typing practice that kids actually ask to do again — because it feels like a real game.
+              </p>
+              <Link href="/apps/mastertyping" style={{ color: '#059669', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
+                Learn more →
+              </Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* CTA Section */}
+      {/* Blog Preview */}
+      <section style={{ padding: '100px 0', background: 'white' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
+            <div>
+              <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
+                FROM THE BLOG
+              </p>
+              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '900', color: '#111827', margin: 0, lineHeight: 1.2 }}>
+                Guides & Inspiration
+              </h2>
+            </div>
+            <Link href="/blog" style={{
+              color: '#6366f1', fontWeight: '700', fontSize: '0.9375rem',
+              textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.375rem',
+            }}>
+              View all articles →
+            </Link>
+          </div>
+
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
+            gap: '1.5rem',
+          }}>
+            {getRecentPosts(3).map(post => {
+              const catColors: Record<string, { bg: string; text: string }> = {
+                'D&D': { bg: '#fef2f2', text: '#dc2626' },
+                'Writing': { bg: '#f5f3ff', text: '#7c3aed' },
+                'Gaming': { bg: '#eff6ff', text: '#2563eb' },
+                'Education': { bg: '#ecfdf5', text: '#059669' },
+              };
+              const cat = catColors[post.category] || { bg: '#f3f4f6', text: '#374151' };
+              return (
+                <Link key={post.slug} href={`/blog/${post.slug}`} style={{
+                  background: '#fafafa', borderRadius: '16px', padding: '2rem',
+                  textDecoration: 'none', color: 'inherit',
+                  border: '1px solid #f0f0f0',
+                  display: 'flex', flexDirection: 'column', gap: '0.75rem',
+                  transition: 'transform 0.2s, box-shadow 0.2s',
+                }}>
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
+                    <span style={{ fontSize: '1.5rem' }}>{post.heroEmoji}</span>
+                    <span style={{
+                      background: cat.bg, color: cat.text,
+                      padding: '0.2rem 0.625rem', borderRadius: '999px',
+                      fontSize: '0.6875rem', fontWeight: '700',
+                    }}>{post.category}</span>
+                    <span style={{ color: '#9ca3af', fontSize: '0.75rem' }}>{post.readTime}</span>
+                  </div>
+                  <h3 style={{ fontSize: '1.125rem', fontWeight: '800', color: '#111827', lineHeight: 1.35, margin: 0 }}>
+                    {post.title}
+                  </h3>
+                  <p style={{ color: '#6b7280', fontSize: '0.875rem', lineHeight: 1.65, margin: 0, flex: 1 }}>
+                    {post.excerpt}
+                  </p>
+                  <span style={{ color: '#6366f1', fontWeight: '700', fontSize: '0.8125rem', marginTop: '0.25rem' }}>
+                    Read article →
+                  </span>
+                </Link>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
+      {/* Final CTA */}
       <section style={{
-        padding: '100px 0',
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)',
+        padding: '120px 0',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%)',
         position: 'relative',
-        overflow: 'hidden'
+        overflow: 'hidden',
       }}>
         <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(0, 0, 0, 0.1)'
+          position: 'absolute', inset: 0,
+          background: 'radial-gradient(ellipse at 30% 50%, rgba(99,102,241,0.15), transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(168,85,247,0.1), transparent 60%)',
         }} />
         <div style={{
-          maxWidth: '900px',
-          margin: '0 auto',
-          padding: '0 2rem',
-          textAlign: 'center',
-          position: 'relative',
-          zIndex: 1
+          maxWidth: '800px', margin: '0 auto', padding: '0 2rem',
+          textAlign: 'center', position: 'relative', zIndex: 1,
         }}>
+          <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
+            READY TO START?
+          </p>
           <h2 style={{
-            fontSize: 'clamp(2rem, 5vw, 3rem)',
-            fontWeight: '800',
-            color: 'white',
-            marginBottom: '1.5rem',
-            textShadow: '0 4px 20px rgba(0,0,0,0.3)'
+            fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900',
+            color: 'white', marginBottom: '1.25rem', lineHeight: 1.2,
           }}>
-            Ready to Transform Your Workflow?
+            Your Next Campaign Starts Here
           </h2>
           <p style={{
-            fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
-            color: 'rgba(255, 255, 255, 0.95)',
-            marginBottom: '2.5rem',
-            textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+            fontSize: '1.125rem', color: '#94a3b8',
+            marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 2.5rem',
           }}>
-            Join game masters, content creators, and strategy enthusiasts who trust Sixsmith Games.
+            Join dungeon masters, fantasy writers, strategy gamers, and educators using Sixsmith Games to level up their craft.
           </p>
-          <Link
-            href="/pricing"
-            style={{
-              background: 'white',
-              color: '#667eea',
-              padding: '1.25rem 3rem',
-              borderRadius: '50px',
-              fontSize: '1.25rem',
-              fontWeight: '700',
-              textDecoration: 'none',
-              display: 'inline-block',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-              transition: 'all 0.3s ease'
-            }}
-            onMouseOver={(e) => {
-              e.currentTarget.style.transform = 'translateY(-3px) scale(1.02)';
-              e.currentTarget.style.boxShadow = '0 15px 50px rgba(0,0,0,0.4)';
-            }}
-            onMouseOut={(e) => {
-              e.currentTarget.style.transform = 'translateY(0) scale(1)';
-              e.currentTarget.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
-            }}
-          >
-            View Pricing & Subscribe
-          </Link>
+          <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
+            <Link href="/pricing" className="cta-primary">
+              View Pricing & Subscribe
+            </Link>
+            <Link href="/blog" className="cta-secondary">
+              Read the Blog
+            </Link>
+          </div>
         </div>
       </section>
     </div>

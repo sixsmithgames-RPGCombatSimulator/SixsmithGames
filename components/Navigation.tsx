@@ -170,6 +170,13 @@ export default function Navigation() {
               Pricing
             </Link>
 
+            <Link href="/blog" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              Blog
+            </Link>
+
             {/* Auth section */}
             <SignedIn>
               <div style={{ display: 'flex', alignItems: 'center', gap: '1rem' }}>
@@ -266,6 +273,11 @@ export default function Navigation() {
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             Pricing
+          </Link>
+          <Link href="/blog" onClick={() => setMobileMenuOpen(false)}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            Blog
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.25rem' }}>
             <SignedIn>
