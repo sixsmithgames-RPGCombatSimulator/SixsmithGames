@@ -11,23 +11,13 @@ import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function FourStarGeneralPage() {
-  const FeatureIcon = ({ type }: { type: string }) => {
-    const s = { width: '36px', height: '36px', color: '#f59e0b' };
-    if (type === 'map') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7" /></svg>;
-    if (type === 'sword') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M14.121 14.121L19 19m-7-7l7-7-7 7zm-5.657 5.657l-1.414-1.414M6.343 6.343L4.929 4.929M19 5l-7 7M5 19l7-7" /></svg>;
-    if (type === 'scroll') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" /></svg>;
-    if (type === 'cog') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z" /><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" /></svg>;
-    if (type === 'star') return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M11.049 2.927c.3-.921 1.603-.921 1.902 0l1.519 4.674a1 1 0 00.95.69h4.915c.969 0 1.371 1.24.588 1.81l-3.976 2.888a1 1 0 00-.363 1.118l1.518 4.674c.3.922-.755 1.688-1.538 1.118l-3.976-2.888a1 1 0 00-1.176 0l-3.976 2.888c-.783.57-1.838-.197-1.538-1.118l1.518-4.674a1 1 0 00-.363-1.118l-3.976-2.888c-.784-.57-.38-1.81.588-1.81h4.914a1 1 0 00.951-.69l1.519-4.674z" /></svg>;
-    return <svg style={s} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.75} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" /></svg>;
-  };
-
   const features = [
-    { title: 'Strategic Campaign Management', description: 'Plan large-scale operations across multiple theaters of war', iconType: 'map' },
-    { title: 'Tactical Combat Resolution', description: 'Command units in detailed turn-based battles', iconType: 'sword' },
-    { title: 'Historical WWII Setting', description: 'Authentic units, equipment, and historical scenarios', iconType: 'scroll' },
-    { title: 'Resource Management', description: 'Balance production, supply lines, and force deployment', iconType: 'cog' },
-    { title: 'Command Structure', description: 'Organize your forces with realistic military hierarchies', iconType: 'star' },
-    { title: 'Multiple Victory Conditions', description: 'Achieve victory through conquest, economic dominance, or strategic objectives', iconType: 'check' },
+    { title: 'Strategic Campaign Management', description: 'Plan large-scale operations across multiple theaters of war' },
+    { title: 'Tactical Combat Resolution', description: 'Command units in detailed turn-based battles' },
+    { title: 'Historical WWII Setting', description: 'Authentic units, equipment, and historical scenarios' },
+    { title: 'Resource Management', description: 'Balance production, supply lines, and force deployment' },
+    { title: 'Command Structure', description: 'Organize your forces with realistic military hierarchies' },
+    { title: 'Multiple Victory Conditions', description: 'Achieve victory through conquest, economic dominance, or strategic objectives' },
   ];
 
   const unitTypes = [
@@ -277,7 +267,6 @@ export default function FourStarGeneralPage() {
                 e.currentTarget.style.borderColor = '#fde68a';
                 e.currentTarget.style.boxShadow = '0 10px 30px rgba(0,0,0,0.08)';
               }}>
-                <div style={{ marginBottom: '1rem' }}><FeatureIcon type={feature.iconType} /></div>
                 <h3 style={{fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '0.75rem'}}>
                   {feature.title}
                 </h3>
