@@ -90,7 +90,7 @@ export default function Home() {
               textShadow: '0 4px 20px rgba(0,0,0,0.3)',
               lineHeight: '1.2'
             }}>
-              Professional Tools for Game Masters & Creators
+              For Game Masters & Creators
             </h1>
             <p style={{
               fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -99,8 +99,8 @@ export default function Home() {
               fontWeight: '500',
               textShadow: '0 2px 10px rgba(0,0,0,0.2)'
             }}>
-              Transform your workflow with our suite of five innovative applications. From D&D battle
-              management to AI-powered content creation, we've got everything you need.
+              Time to level up! Make your gaming and writing so much easier with our suite of fun and useful applications. From D&D battle
+              management to AI-assisted content creation, we've got the tools you didn't know you needed.
             </p>
             <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
               <Link
