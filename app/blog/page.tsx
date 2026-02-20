@@ -78,7 +78,6 @@ export default function BlogPage() {
                     }}
                   >
                     <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <span style={{ fontSize: '2rem' }}>{post.heroEmoji}</span>
                       <span style={{
                         background: cat.bg, color: cat.text,
                         padding: '0.25rem 0.75rem', borderRadius: '999px',
@@ -131,7 +130,7 @@ export default function BlogPage() {
                   flexWrap: 'wrap',
                 }}
               >
-                <span style={{ fontSize: '1.75rem', flex: '0 0 auto' }}>{post.heroEmoji}</span>
+                <div style={{ width: '4px', alignSelf: 'stretch', borderRadius: '4px', background: cat.text, flex: '0 0 4px' }} />
                 <div style={{ flex: 1, minWidth: '200px' }}>
                   <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#111827', margin: '0 0 0.25rem', lineHeight: 1.3 }}>
                     {post.title}

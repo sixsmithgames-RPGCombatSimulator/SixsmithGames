@@ -5,6 +5,7 @@
 
 'use client';
 
+import Image from 'next/image';
 import SubscribeButton from '@/components/SubscribeButton';
 import ModernBackground from '@/components/ModernBackground';
 
@@ -12,7 +13,7 @@ const individualPlans = [
   {
     slug: 'contentcraft',
     name: 'ContentCraft',
-    icon: '✨',
+    icon: '/icons/contentcraft.png',
     price: 9.99,
     color: '#7c3aed',
     gradient: 'linear-gradient(135deg, #7c3aed, #ec4899)',
@@ -22,7 +23,7 @@ const individualPlans = [
   {
     slug: 'virtual-combat-simulator',
     name: 'VirtualCombatSimulator',
-    icon: '⚔️',
+    icon: '/icons/vcs.png',
     price: 9.99,
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
@@ -32,7 +33,7 @@ const individualPlans = [
   {
     slug: 'gravity',
     name: 'Gravity',
-    icon: '🚀',
+    icon: '/icons/gravity.png',
     price: 1.99,
     color: '#2563eb',
     gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
@@ -42,7 +43,7 @@ const individualPlans = [
   {
     slug: 'fourstargeneral',
     name: 'Four Star General',
-    icon: '🎖️',
+    icon: '/icons/fourstargeneral.png',
     price: 1.99,
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f5c46d)',
@@ -52,7 +53,7 @@ const individualPlans = [
   {
     slug: 'mastertyping',
     name: 'MasterTyping',
-    icon: '⌨️',
+    icon: '/icons/mastertyping.png',
     price: 4.99,
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #84cc16)',
@@ -106,8 +107,8 @@ export default function PricingPage() {
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {individualPlans.map(p => (
-                <span key={p.slug} style={{ background: 'rgba(255,255,255,0.12)', color: 'white', borderRadius: '999px', padding: '0.3rem 0.875rem', fontSize: '0.875rem', fontWeight: '600' }}>
-                  {p.icon} {p.name}
+                <span key={p.slug} style={{ background: 'rgba(255,255,255,0.12)', color: 'white', borderRadius: '999px', padding: '0.3rem 0.875rem', fontSize: '0.875rem', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.375rem' }}>
+                  <Image src={p.icon} alt={p.name} width={16} height={16} style={{ borderRadius: '3px', objectFit: 'cover' }} /> {p.name}
                 </span>
               ))}
             </div>
@@ -151,7 +152,9 @@ export default function PricingPage() {
               border: '1px solid #f3f4f6',
             }}>
               <div style={{ background: plan.gradient, padding: '1.75rem 1.75rem 1.5rem' }}>
-                <div style={{ fontSize: '2.25rem', marginBottom: '0.5rem' }}>{plan.icon}</div>
+                <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
+                  <Image src={plan.icon} alt={plan.name} width={56} height={56} style={{ objectFit: 'cover' }} />
+                </div>
                 <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{plan.name}</h3>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{plan.description}</p>
               </div>

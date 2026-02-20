@@ -151,7 +151,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
             ← Back to Blog
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
-            <span style={{ fontSize: '2.5rem' }}>{post.heroEmoji}</span>
             <span style={{ background: cat.bg, color: cat.text, padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>{post.category}</span>
             <span style={{ color: '#64748b', fontSize: '0.8125rem' }}>{post.readTime}</span>
           </div>
@@ -210,7 +209,6 @@ export default function BlogPostPage({ params }: { params: { slug: string } }) {
                   transition: 'transform 0.15s',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', marginBottom: '0.5rem' }}>
-                    <span style={{ fontSize: '1.25rem' }}>{r.heroEmoji}</span>
                     <span style={{ color: '#9ca3af', fontSize: '0.75rem' }}>{r.readTime}</span>
                   </div>
                   <h4 style={{ fontSize: '1rem', fontWeight: '700', color: '#111827', margin: 0, lineHeight: 1.4 }}>

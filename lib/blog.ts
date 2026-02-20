@@ -3,6 +3,9 @@
  * Copyright (c) 2025 Sixsmith Games. All rights reserved.
  */
 
+import fs from 'fs';
+import path from 'path';
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -14,7 +17,6 @@ export interface BlogPost {
   category: string;
   tags: string[];
   featured?: boolean;
-  heroEmoji: string;
 }
 
 export const BLOG_POSTS: BlogPost[] = [
@@ -63,7 +65,6 @@ The right tools don't replace your creativity — they amplify it. Spend less ti
     category: 'D&D',
     tags: ['dungeon master', 'dnd', 'tools', 'virtual tabletop', 'worldbuilding'],
     featured: true,
-    heroEmoji: '🐉',
   },
   {
     slug: 'ai-worldbuilding-for-fantasy-writers',
@@ -110,7 +111,6 @@ The worlds we build deserve tools that respect their complexity. AI isn't going 
     category: 'Writing',
     tags: ['worldbuilding', 'fantasy', 'ai', 'writing', 'contentcraft'],
     featured: true,
-    heroEmoji: '✨',
   },
   {
     slug: 'async-board-games-play-on-your-schedule',
@@ -156,7 +156,6 @@ The best games are the ones you actually get to play. Async multiplayer makes de
     readTime: '5 min read',
     category: 'Gaming',
     tags: ['board games', 'async', 'strategy', 'multiplayer', 'gravity'],
-    heroEmoji: '🚀',
   },
   {
     slug: 'gamification-typing-practice-kids',
@@ -202,7 +201,6 @@ Typing is one of the most practical skills we can teach kids. Making it fun isn'
     readTime: '5 min read',
     category: 'Education',
     tags: ['typing', 'gamification', 'education', 'kids', 'mastertyping'],
-    heroEmoji: '⌨️',
   },
   {
     slug: 'building-better-combat-encounters',
@@ -260,7 +258,6 @@ Great combat encounters are designed, not improvised. Put the work in before the
     readTime: '8 min read',
     category: 'D&D',
     tags: ['dnd', 'combat', 'encounter design', 'dungeon master', 'tips'],
-    heroEmoji: '⚔️',
   },
   {
     slug: 'wargaming-digital-age',
@@ -300,22 +297,38 @@ The wargaming community has always been driven by people who love to think deepl
     readTime: '5 min read',
     category: 'Gaming',
     tags: ['wargaming', 'strategy', 'wwii', 'fourstargeneral', 'digital'],
-    heroEmoji: '🎖️',
   },
 ];
 
+function loadDynamicPosts(): BlogPost[] {
+  try {
+    const file = path.join(process.cwd(), 'data', 'posts.json');
+    const raw = fs.readFileSync(file, 'utf-8');
+    return JSON.parse(raw) as BlogPost[];
+  } catch {
+    return [];
+  }
+}
+
+function allPosts(): BlogPost[] {
+  const dynamic = loadDynamicPosts();
+  const dynamicSlugs = new Set(dynamic.map(p => p.slug));
+  const seed = BLOG_POSTS.filter(p => !dynamicSlugs.has(p.slug));
+  return [...dynamic, ...seed].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+}
+
 export function getAllPosts(): BlogPost[] {
-  return BLOG_POSTS.sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return allPosts();
 }
 
 export function getFeaturedPosts(): BlogPost[] {
-  return BLOG_POSTS.filter(p => p.featured).sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
+  return allPosts().filter(p => p.featured);
 }
 
 export function getPostBySlug(slug: string): BlogPost | undefined {
-  return BLOG_POSTS.find(p => p.slug === slug);
+  return allPosts().find(p => p.slug === slug);
 }
 
 export function getRecentPosts(count: number): BlogPost[] {
-  return getAllPosts().slice(0, count);
+  return allPosts().slice(0, count);
 }

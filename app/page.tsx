@@ -7,6 +7,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 import ModernBackground from '@/components/ModernBackground';
 import { getRecentPosts } from '@/lib/blog';
 
@@ -19,7 +20,7 @@ export default function Home() {
         'A modern battle management system combining responsive virtual tabletop, initiative tracking, and real-time multiplayer for faster, clearer D&D combats.',
       href: '/apps/virtual-combat-simulator',
       color: 'from-red-500 to-orange-500',
-      icon: '⚔️',
+      icon: '/icons/vcs.png',
     },
     {
       name: 'ContentCraft',
@@ -28,7 +29,7 @@ export default function Home() {
         'AI-powered content engine for game masters and authors. Generate D&D content that fits together, track canon automatically, and never contradict yourself again.',
       href: '/apps/contentcraft',
       color: 'from-purple-500 to-pink-500',
-      icon: '✨',
+      icon: '/icons/contentcraft.png',
     },
     {
       name: 'MasterTyping',
@@ -37,7 +38,7 @@ export default function Home() {
         'Game-based typing practice with 10 unique characters, special abilities, and K-12 vocabulary. Make learning keyboard skills exciting and engaging.',
       href: '/apps/mastertyping',
       color: 'from-green-500 to-emerald-500',
-      icon: '⌨️',
+      icon: '/icons/mastertyping.png',
     },
     {
       name: 'Gravity',
@@ -46,7 +47,7 @@ export default function Home() {
         'Deep, tactical turn-based sci-fi board game built for asynchronous multiplayer. Play with friends on your own schedule—no coordination required.',
       href: '/apps/gravity',
       color: 'from-blue-500 to-cyan-500',
-      icon: '🚀',
+      icon: '/icons/gravity.png',
     },
     {
       name: 'FourStarGeneral',
@@ -55,7 +56,7 @@ export default function Home() {
         'Strategic and tactical turn-based war game set in the WWII era. Plan operations, manage resources, and outmaneuver your opponents.',
       href: '/apps/fourstargeneral',
       color: 'from-amber-500 to-yellow-500',
-      icon: '🎖️',
+      icon: '/icons/fourstargeneral.png',
     },
   ];
 
@@ -164,11 +165,11 @@ export default function Home() {
                     display: 'flex',
                     alignItems: 'center',
                     justifyContent: 'center',
-                    fontSize: '2.5rem',
                     marginBottom: '1.5rem',
-                    boxShadow: '0 8px 16px rgba(0,0,0,0.15)'
+                    boxShadow: '0 8px 16px rgba(0,0,0,0.15)',
+                    overflow: 'hidden',
                   }}>
-                    {app.icon}
+                    <Image src={app.icon} alt={app.name} width={64} height={64} style={{ objectFit: 'cover', borderRadius: '12px' }} />
                   </div>
                   <h3 style={{
                     fontSize: '1.75rem',
@@ -226,7 +227,6 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
             {[
               {
-                emoji: '🐉',
                 title: 'Dungeon Masters',
                 desc: 'Run faster, clearer combats. Track initiative, manage the battlefield, and generate lore that fits your world — all without breaking flow.',
                 apps: ['VirtualCombatSimulator', 'ContentCraft'],
@@ -234,7 +234,6 @@ export default function Home() {
                 accent: '#dc2626',
               },
               {
-                emoji: '✍️',
                 title: 'Fantasy & Sci-Fi Writers',
                 desc: 'Build deep, consistent worlds with AI that remembers your canon. Generate characters, locations, and lore that never contradict your story.',
                 apps: ['ContentCraft'],
@@ -242,7 +241,6 @@ export default function Home() {
                 accent: '#7c3aed',
               },
               {
-                emoji: '🎯',
                 title: 'Strategy Gamers',
                 desc: 'Command fleets in space or armies in WWII. Deep tactical gameplay designed for async multiplayer — play on your own schedule.',
                 apps: ['Gravity', 'Four Star General'],
@@ -250,7 +248,6 @@ export default function Home() {
                 accent: '#2563eb',
               },
               {
-                emoji: '📚',
                 title: 'Parents & Educators',
                 desc: 'Turn typing practice into an adventure. Game-based learning with real K-12 vocabulary, character abilities, and progress tracking.',
                 apps: ['MasterTyping'],
@@ -265,7 +262,6 @@ export default function Home() {
                 border: '1px solid rgba(0,0,0,0.04)',
                 transition: 'transform 0.2s',
               }}>
-                <div style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>{persona.emoji}</div>
                 <h3 style={{ fontSize: '1.375rem', fontWeight: '800', color: '#111827', marginBottom: '0.75rem' }}>
                   {persona.title}
                 </h3>
@@ -348,7 +344,9 @@ export default function Home() {
               background: 'linear-gradient(160deg, #1c1917, #292524)', borderRadius: '24px',
               padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
             }}>
-              <div style={{ position: 'absolute', top: '-40px', right: '-40px', fontSize: '10rem', opacity: 0.05, lineHeight: 1 }}>⚔️</div>
+              <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '160px', height: '160px', opacity: 0.07, overflow: 'hidden', borderRadius: '24px' }}>
+                <Image src="/icons/vcs.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
+              </div>
               <span style={{ background: 'rgba(239,68,68,0.15)', color: '#fca5a5', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
                 D&D Combat
               </span>
@@ -375,7 +373,9 @@ export default function Home() {
               background: 'linear-gradient(160deg, #1e1b4b, #312e81)', borderRadius: '24px',
               padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
             }}>
-              <div style={{ position: 'absolute', top: '-40px', right: '-40px', fontSize: '10rem', opacity: 0.05, lineHeight: 1 }}>✨</div>
+              <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '160px', height: '160px', opacity: 0.07, overflow: 'hidden', borderRadius: '24px' }}>
+                <Image src="/icons/contentcraft.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
+              </div>
               <span style={{ background: 'rgba(168,85,247,0.15)', color: '#c4b5fd', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
                 AI Worldbuilding
               </span>
@@ -412,8 +412,9 @@ export default function Home() {
                 <div style={{
                   width: '48px', height: '48px', borderRadius: '12px',
                   background: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem',
-                }}>🚀</div>
+                  overflow: 'hidden',
+                }}>
+                  <Image src="/icons/gravity.png" alt="Gravity" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Gravity</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Async sci-fi strategy</p>
@@ -435,8 +436,9 @@ export default function Home() {
                 <div style={{
                   width: '48px', height: '48px', borderRadius: '12px',
                   background: 'linear-gradient(135deg, #f59e0b, #eab308)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem',
-                }}>🎖️</div>
+                  overflow: 'hidden',
+                }}>
+                  <Image src="/icons/fourstargeneral.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Four Star General</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>WWII war simulation</p>
@@ -458,8 +460,9 @@ export default function Home() {
                 <div style={{
                   width: '48px', height: '48px', borderRadius: '12px',
                   background: 'linear-gradient(135deg, #22c55e, #10b981)',
-                  display: 'flex', alignItems: 'center', justifyContent: 'center', fontSize: '1.5rem',
-                }}>⌨️</div>
+                  overflow: 'hidden',
+                }}>
+                  <Image src="/icons/mastertyping.png" alt="MasterTyping" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>MasterTyping</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Game-based typing</p>
@@ -518,7 +521,6 @@ export default function Home() {
                   transition: 'transform 0.2s, box-shadow 0.2s',
                 }}>
                   <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-                    <span style={{ fontSize: '1.5rem' }}>{post.heroEmoji}</span>
                     <span style={{
                       background: cat.bg, color: cat.text,
                       padding: '0.2rem 0.625rem', borderRadius: '999px',
