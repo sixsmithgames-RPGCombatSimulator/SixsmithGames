@@ -4,6 +4,7 @@
  */
 
 import Link from 'next/link';
+import Image from 'next/image';
 
 const linkStyle: React.CSSProperties = {
   color: '#9ca3af',
@@ -40,13 +41,14 @@ export default function Footer() {
 
           {/* Brand */}
           <div style={{ gridColumn: 'span 2', minWidth: '220px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem', marginBottom: '1rem' }}>
-              <div style={{
-                width: '32px', height: '32px', borderRadius: '8px',
-                background: 'linear-gradient(135deg, #667eea, #764ba2)',
-                display: 'flex', alignItems: 'center', justifyContent: 'center',
-                fontSize: '1rem',
-              }}>🎮</div>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+              <Image
+                src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto/sixsmith-games/sixsmith-games/logo/sixsmith-logo.png"
+                alt="Sixsmith Games"
+                width={40}
+                height={40}
+                style={{ display: 'block' }}
+              />
               <span style={{ color: '#ffffff', fontSize: '1.125rem', fontWeight: '800', letterSpacing: '-0.01em' }}>
                 Sixsmith Games
               </span>

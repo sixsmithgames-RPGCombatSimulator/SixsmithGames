@@ -6,6 +6,7 @@
 'use client';
 
 import Link from 'next/link';
+import Image from 'next/image';
 import { useState } from 'react';
 import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs';
 
@@ -110,8 +111,15 @@ export default function Navigation() {
       <nav style={navStyle}>
         <div style={innerStyle}>
           {/* Logo */}
-          <Link href="/" style={logoStyle}>
-            Sixsmith Games
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+            <Image
+              src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto/sixsmith-games/sixsmith-games/logo/sixsmith-logo.png"
+              alt="Sixsmith Games"
+              width={40}
+              height={40}
+              style={{ display: 'block' }}
+            />
+            <span style={logoStyle}>Sixsmith Games</span>
           </Link>
 
           {/* Desktop nav */}
