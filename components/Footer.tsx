@@ -41,17 +41,14 @@ export default function Footer() {
 
           {/* Brand */}
           <div style={{ gridColumn: 'span 2', minWidth: '220px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
+            <div style={{ marginBottom: '1rem' }}>
               <Image
                 src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto/sixsmith-games/sixsmith-games/logo/sixsmith-logo.png"
                 alt="Sixsmith Games"
-                width={40}
-                height={40}
-                style={{ display: 'block' }}
+                width={256}
+                height={256}
+                style={{ display: 'block', maxWidth: '100%', height: 'auto' }}
               />
-              <span style={{ color: '#ffffff', fontSize: '1.125rem', fontWeight: '800', letterSpacing: '-0.01em' }}>
-                Sixsmith Games
-              </span>
             </div>
             <p style={{ color: '#6b7280', fontSize: '0.9375rem', lineHeight: '1.7', maxWidth: '320px', margin: '0 0 1.5rem' }}>
               Professional tools for game masters, content creators, and strategy enthusiasts.

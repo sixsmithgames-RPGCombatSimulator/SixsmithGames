@@ -110,6 +110,19 @@ export default function Home() {
                 Explore Our Apps
               </a>
             </div>
+            <div style={{marginTop: '4rem', display: 'flex', justifyContent: 'center'}}>
+              <Image
+                src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto/sixsmith-games/sixsmith-games/logo/sixsmith-logo.png"
+                alt="Sixsmith Games"
+                width={200}
+                height={200}
+                style={{
+                  filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.2))',
+                  opacity: 0.95
+                }}
+                priority
+              />
+            </div>
           </div>
         </div>
       </section>
