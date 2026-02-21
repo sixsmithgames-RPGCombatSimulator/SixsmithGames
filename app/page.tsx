@@ -64,8 +64,8 @@ export default function Home() {
     <div>
       {/* Hero Section */}
       <section style={{
-        background: 'linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%)',
-        padding: '100px 0',
+        background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 25%, #dc143c 50%, #f59e0b 75%, #d4af37 100%)',
+        padding: '60px 0 70px',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -85,7 +85,7 @@ export default function Home() {
             <h1 style={{
               fontSize: 'clamp(2.5rem, 8vw, 5rem)',
               fontWeight: '900',
-              marginBottom: '2rem',
+              marginBottom: '1.5rem',
               color: 'white',
               textShadow: '0 4px 20px rgba(0,0,0,0.3)',
               lineHeight: '1.2'
@@ -95,7 +95,7 @@ export default function Home() {
             <p style={{
               fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
               color: 'rgba(255, 255, 255, 0.95)',
-              marginBottom: '3rem',
+              marginBottom: '2rem',
               fontWeight: '500',
               textShadow: '0 2px 10px rgba(0,0,0,0.2)'
             }}>
@@ -110,15 +110,15 @@ export default function Home() {
                 Explore Our Apps
               </a>
             </div>
-            <div style={{marginTop: '4rem', display: 'flex', justifyContent: 'center'}}>
+            <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'center'}}>
               <Image
                 src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto/sixsmith-games/sixsmith-games/logo/sixsmith-logo.png"
                 alt="Sixsmith Games"
                 width={200}
                 height={200}
                 style={{
-                  filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.2))',
-                  opacity: 0.95
+                  filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.3))',
+                  opacity: 1
                 }}
                 priority
               />
