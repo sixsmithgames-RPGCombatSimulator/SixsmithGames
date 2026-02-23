@@ -37,7 +37,7 @@ function renderMarkdown(content: string) {
           fontSize: '1.25rem', fontWeight: '700', color: '#111827',
           margin: '2rem 0 0.75rem', lineHeight: 1.3,
         }}>
-          {line.slice(4)}
+          {renderInline(line.slice(4))}
         </h3>
       );
     } else if (line.startsWith('## ')) {
@@ -46,7 +46,7 @@ function renderMarkdown(content: string) {
           fontSize: '1.5rem', fontWeight: '800', color: '#111827',
           margin: '2.5rem 0 1rem', lineHeight: 1.3,
         }}>
-          {line.slice(3)}
+          {renderInline(line.slice(3))}
         </h2>
       );
     } else if (line.startsWith('# ')) {
@@ -55,7 +55,7 @@ function renderMarkdown(content: string) {
           fontSize: '1.75rem', fontWeight: '900', color: '#111827',
           margin: '2.5rem 0 1rem', lineHeight: 1.2,
         }}>
-          {line.slice(2)}
+          {renderInline(line.slice(2))}
         </h2>
       );
     } else if (line.startsWith('---')) {
@@ -83,6 +83,23 @@ function renderMarkdown(content: string) {
           {renderInline(line.slice(2))}
         </li>
       );
+    } else if (line.match(/^\d+\.\s+\*\*/)) {
+      // Numbered list with bold at start (e.g., "1. **Title**")
+      const match = line.match(/^\d+\.\s+\*\*(.+?)\*\*\s*(.*)$/);
+      if (match) {
+        elements.push(
+          <li key={key++} style={{ marginBottom: '0.5rem', color: '#374151', lineHeight: 1.7, fontSize: '1.0625rem', listStyleType: 'decimal' }}>
+            <strong style={{ color: '#111827' }}>{match[1]}</strong> {renderInline(match[2])}
+          </li>
+        );
+      } else {
+        const text = line.replace(/^\d+\.\s*/, '');
+        elements.push(
+          <li key={key++} style={{ marginBottom: '0.5rem', color: '#374151', lineHeight: 1.7, fontSize: '1.0625rem', listStyleType: 'decimal' }}>
+            {renderInline(text)}
+          </li>
+        );
+      }
     } else if (line.match(/^\d+\. /)) {
       const text = line.replace(/^\d+\.\s*/, '');
       elements.push(
