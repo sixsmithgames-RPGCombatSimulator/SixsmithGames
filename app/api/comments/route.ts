@@ -82,19 +82,19 @@ Approve or moderate at: https://www.sixsmithgames.com/blog/${comment.postSlug}
   
   // TODO: Integrate with email service
   // Example with Resend:
-  // await fetch('https://api.resend.com/emails', {
-  //   method: 'POST',
-  //   headers: {
-  //     'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
-  //     'Content-Type': 'application/json',
-  //   },
-  //   body: JSON.stringify({
-  //     from: 'noreply@sixsmithgames.com',
-  //     to: 'sixsmithgames@gmail.com',
-  //     subject: `New blog comment on ${comment.postSlug}`,
-  //     text: emailBody,
-  //   }),
-  // });
+  await fetch('https://api.resend.com/emails', {
+  method: 'POST',
+    headers: {
+    'Authorization': `Bearer ${process.env.RESEND_API_KEY}`,
+    'Content-Type': 'application/json',
+    },
+    body: JSON.stringify({
+      from: 'noreply@sixsmithgames.com',
+      to: 'sixsmithgames@gmail.com',
+      subject: `New blog comment on ${comment.postSlug}`,
+      text: emailBody,
+    }),
+  });
 }
 
 // GET /api/comments?postSlug=slug - Get comments for a post
