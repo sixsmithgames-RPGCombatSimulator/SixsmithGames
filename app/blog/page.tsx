@@ -11,9 +11,9 @@ export const metadata = {
   description: 'Tips, guides, and insights for game masters, fantasy writers, strategy gamers, and educators.',
 };
 
-export default function BlogPage() {
-  const allPosts = getAllPosts();
-  const featured = getFeaturedPosts();
+export default async function BlogPage() {
+  const allPosts = await getAllPosts();
+  const featured = await getFeaturedPosts();
   const rest = allPosts.filter(p => !p.featured);
 
   const categoryColors: Record<string, { bg: string; text: string }> = {

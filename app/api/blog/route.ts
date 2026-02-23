@@ -1,31 +1,57 @@
 /**
  * Blog API — for AI agent to publish new posts
- * POST /api/blog  — create a new post
- * GET  /api/blog  — list all posts (seed + dynamic)
+ * POST   /api/blog          — create a new post
+ * GET    /api/blog          — list all posts (seed + dynamic)
+ * DELETE /api/blog?slug=... — remove a dynamic post
  *
  * Requires header:  Authorization: Bearer <BLOG_API_SECRET>
+ *
+ * Posts are stored in a GitHub Gist (BLOG_GIST_ID) so they persist
+ * across Vercel deployments. The Gist contains a single file: posts.json
  */
 
 import { NextRequest, NextResponse } from 'next/server';
-import fs from 'fs';
-import path from 'path';
 import { getAllPosts, BlogPost } from '@/lib/blog';
 
-const DATA_FILE = path.join(process.cwd(), 'data', 'posts.json');
-const SECRET = process.env.BLOG_API_SECRET;
+const SECRET   = process.env.BLOG_API_SECRET;
+const GIST_ID  = process.env.BLOG_GIST_ID;
+const GH_TOKEN = process.env.BLOG_GITHUB_TOKEN;
+const GIST_FILENAME = 'posts.json';
 
-function readDynamicPosts(): BlogPost[] {
+const GIST_HEADERS = {
+  Accept: 'application/vnd.github+json',
+  Authorization: `Bearer ${GH_TOKEN}`,
+  'X-GitHub-Api-Version': '2022-11-28',
+  'Content-Type': 'application/json',
+};
+
+async function readDynamicPosts(): Promise<BlogPost[]> {
+  if (!GIST_ID || !GH_TOKEN) return [];
   try {
-    const raw = fs.readFileSync(DATA_FILE, 'utf-8');
+    const res = await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+      headers: GIST_HEADERS,
+      cache: 'no-store',
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const raw = data.files?.[GIST_FILENAME]?.content ?? '[]';
     return JSON.parse(raw) as BlogPost[];
   } catch {
     return [];
   }
 }
 
-function writeDynamicPosts(posts: BlogPost[]): void {
-  fs.mkdirSync(path.dirname(DATA_FILE), { recursive: true });
-  fs.writeFileSync(DATA_FILE, JSON.stringify(posts, null, 2), 'utf-8');
+async function writeDynamicPosts(posts: BlogPost[]): Promise<void> {
+  if (!GIST_ID || !GH_TOKEN) throw new Error('BLOG_GIST_ID or BLOG_GITHUB_TOKEN not configured');
+  await fetch(`https://api.github.com/gists/${GIST_ID}`, {
+    method: 'PATCH',
+    headers: GIST_HEADERS,
+    body: JSON.stringify({
+      files: {
+        [GIST_FILENAME]: { content: JSON.stringify(posts, null, 2) },
+      },
+    }),
+  });
 }
 
 function slugify(title: string): string {
@@ -54,9 +80,10 @@ export async function GET(req: NextRequest) {
   if (!authorize(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
   }
-  const seed = getAllPosts();
-  const dynamic = readDynamicPosts();
-  const all = [...dynamic, ...seed].sort(
+  const dynamic = await readDynamicPosts();
+  const seed = await getAllPosts();
+  const dynamicSlugs = new Set(dynamic.map((p: BlogPost) => p.slug));
+  const all = [...dynamic, ...seed.filter((p: BlogPost) => !dynamicSlugs.has(p.slug))].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
   );
   return NextResponse.json(all);
@@ -65,6 +92,13 @@ export async function GET(req: NextRequest) {
 export async function POST(req: NextRequest) {
   if (!authorize(req)) {
     return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });
+  }
+
+  if (!GIST_ID || !GH_TOKEN) {
+    return NextResponse.json(
+      { error: 'Server not configured: BLOG_GIST_ID and BLOG_GITHUB_TOKEN must be set in Vercel env vars' },
+      { status: 503 }
+    );
   }
 
   let body: Partial<BlogPost>;
@@ -80,7 +114,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'title and content are required' }, { status: 400 });
   }
 
-  const existing = readDynamicPosts();
+  const existing = await readDynamicPosts();
   const slug = slugify(title as string);
 
   if (existing.find(p => p.slug === slug)) {
@@ -100,7 +134,7 @@ export async function POST(req: NextRequest) {
     featured: (featured as boolean) || false,
   };
 
-  writeDynamicPosts([post, ...existing]);
+  await writeDynamicPosts([post, ...existing]);
 
   return NextResponse.json({ success: true, slug: post.slug, post }, { status: 201 });
 }
@@ -116,12 +150,12 @@ export async function DELETE(req: NextRequest) {
     return NextResponse.json({ error: 'slug query param required' }, { status: 400 });
   }
 
-  const existing = readDynamicPosts();
+  const existing = await readDynamicPosts();
   const filtered = existing.filter(p => p.slug !== slug);
   if (filtered.length === existing.length) {
     return NextResponse.json({ error: 'Post not found in dynamic posts' }, { status: 404 });
   }
 
-  writeDynamicPosts(filtered);
+  await writeDynamicPosts(filtered);
   return NextResponse.json({ success: true, deleted: slug });
 }

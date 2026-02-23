@@ -11,7 +11,7 @@ import Image from 'next/image';
 import ModernBackground from '@/components/ModernBackground';
 import { getRecentPosts } from '@/lib/blog';
 
-export default function Home() {
+export default async function Home() {
   const apps = [
     {
       name: 'VirtualCombatSimulator',
@@ -513,7 +513,7 @@ export default function Home() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
             gap: '1.5rem',
           }}>
-            {getRecentPosts(3).map(post => {
+            {(await getRecentPosts(3)).map(post => {
               const catColors: Record<string, { bg: string; text: string }> = {
                 'D&D': { bg: '#fef2f2', text: '#dc2626' },
                 'Writing': { bg: '#f5f3ff', text: '#7c3aed' },

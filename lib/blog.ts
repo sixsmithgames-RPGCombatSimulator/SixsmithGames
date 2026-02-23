@@ -3,8 +3,6 @@
  * Copyright (c) 2025 Sixsmith Games. All rights reserved.
  */
 
-import fs from 'fs';
-import path from 'path';
 
 export interface BlogPost {
   slug: string;
@@ -300,35 +298,47 @@ The wargaming community has always been driven by people who love to think deepl
   },
 ];
 
-function loadDynamicPosts(): BlogPost[] {
+async function loadDynamicPosts(): Promise<BlogPost[]> {
+  const gistId = process.env.BLOG_GIST_ID;
+  const token  = process.env.BLOG_GITHUB_TOKEN;
+  if (!gistId || !token) return [];
   try {
-    const file = path.join(process.cwd(), 'data', 'posts.json');
-    const raw = fs.readFileSync(file, 'utf-8');
+    const res = await fetch(`https://api.github.com/gists/${gistId}`, {
+      headers: {
+        Accept: 'application/vnd.github+json',
+        Authorization: `Bearer ${token}`,
+        'X-GitHub-Api-Version': '2022-11-28',
+      },
+      next: { revalidate: 60 },
+    });
+    if (!res.ok) return [];
+    const data = await res.json();
+    const raw = data.files?.['posts.json']?.content ?? '[]';
     return JSON.parse(raw) as BlogPost[];
   } catch {
     return [];
   }
 }
 
-function allPosts(): BlogPost[] {
-  const dynamic = loadDynamicPosts();
+async function allPosts(): Promise<BlogPost[]> {
+  const dynamic = await loadDynamicPosts();
   const dynamicSlugs = new Set(dynamic.map(p => p.slug));
   const seed = BLOG_POSTS.filter(p => !dynamicSlugs.has(p.slug));
   return [...dynamic, ...seed].sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 }
 
-export function getAllPosts(): BlogPost[] {
+export async function getAllPosts(): Promise<BlogPost[]> {
   return allPosts();
 }
 
-export function getFeaturedPosts(): BlogPost[] {
-  return allPosts().filter(p => p.featured);
+export async function getFeaturedPosts(): Promise<BlogPost[]> {
+  return (await allPosts()).filter(p => p.featured);
 }
 
-export function getPostBySlug(slug: string): BlogPost | undefined {
-  return allPosts().find(p => p.slug === slug);
+export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  return (await allPosts()).find(p => p.slug === slug);
 }
 
-export function getRecentPosts(count: number): BlogPost[] {
-  return allPosts().slice(0, count);
+export async function getRecentPosts(count: number): Promise<BlogPost[]> {
+  return (await allPosts()).slice(0, count);
 }

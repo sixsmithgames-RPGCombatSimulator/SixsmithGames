@@ -7,12 +7,14 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts, getRecentPosts } from '@/lib/blog';
 
-export function generateStaticParams() {
-  return getAllPosts().map(post => ({ slug: post.slug }));
+export async function generateStaticParams() {
+  const posts = await getAllPosts();
+  return posts.map(post => ({ slug: post.slug }));
 }
 
-export function generateMetadata({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
   return {
     title: `${post.title} — Sixsmith Games`,
@@ -123,11 +125,12 @@ function renderInline(text: string): React.ReactNode {
   return parts.length === 1 ? parts[0] : <>{parts}</>;
 }
 
-export default function BlogPostPage({ params }: { params: { slug: string } }) {
-  const post = getPostBySlug(params.slug);
+export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+  const { slug } = await params;
+  const post = await getPostBySlug(slug);
   if (!post) notFound();
 
-  const related = getRecentPosts(3).filter(p => p.slug !== post.slug).slice(0, 2);
+  const related = (await getRecentPosts(3)).filter(p => p.slug !== post!.slug).slice(0, 2);
 
   const categoryColors: Record<string, { bg: string; text: string }> = {
     'D&D': { bg: '#fef2f2', text: '#dc2626' },
