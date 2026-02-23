@@ -6,6 +6,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts, getRecentPosts } from '@/lib/blog';
+import BlogComments from '@/components/BlogComments';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -30,13 +31,31 @@ function renderMarkdown(content: string) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
-    if (line.startsWith('## ')) {
+    if (line.startsWith('### ')) {
+      elements.push(
+        <h3 key={key++} style={{
+          fontSize: '1.25rem', fontWeight: '700', color: '#111827',
+          margin: '2rem 0 0.75rem', lineHeight: 1.3,
+        }}>
+          {line.slice(4)}
+        </h3>
+      );
+    } else if (line.startsWith('## ')) {
       elements.push(
         <h2 key={key++} style={{
           fontSize: '1.5rem', fontWeight: '800', color: '#111827',
           margin: '2.5rem 0 1rem', lineHeight: 1.3,
         }}>
           {line.slice(3)}
+        </h2>
+      );
+    } else if (line.startsWith('# ')) {
+      elements.push(
+        <h2 key={key++} style={{
+          fontSize: '1.75rem', fontWeight: '900', color: '#111827',
+          margin: '2.5rem 0 1rem', lineHeight: 1.2,
+        }}>
+          {line.slice(2)}
         </h2>
       );
     } else if (line.startsWith('---')) {
@@ -222,6 +241,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
         )}
+
+        {/* Comments */}
+        <BlogComments postSlug={post.slug} />
 
         {/* CTA */}
         <div style={{
