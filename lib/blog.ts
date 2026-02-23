@@ -19,136 +19,160 @@ export interface BlogPost {
 
 export const BLOG_POSTS: BlogPost[] = [
   {
-    slug: '5-tools-every-dungeon-master-needs',
-    title: '5 Tools Every Dungeon Master Needs in 2026',
-    excerpt: 'Running a great D&D session means juggling maps, monsters, initiative, and story — all at once. Here are the five tools that will change how you run the table.',
-    content: `Running a tabletop RPG session is one of the most rewarding creative experiences you can have. It's also one of the most chaotic. You're part storyteller, part referee, part improv actor — and you're doing it all while tracking hit points, spell slots, and whether the rogue remembered to declare sneak attack.
+    slug: 'dms-stop-fighting-your-vtt',
+    title: 'DMs: Stop Fighting Your VTT',
+    excerpt: 'Your virtual tabletop should run combat, not ruin it. Here\'s why DMs are ditching bloated tools for something that actually works.',
+    content: `Look, we need to talk about your VTT.
 
-The good news? You don't have to do it all in your head anymore. Here are five categories of tools every Dungeon Master should have in their toolkit in 2026.
+You know the one. The software that crashes mid-boss fight. The interface that requires three clicks to move a token. The fog of war that reveals the entire dungeon when you drag it wrong. The tool that makes you feel like you need a CS degree just to run a goblin ambush.
 
-## 1. A Virtual Tabletop That Doesn't Get in the Way
+Yeah. That one.
 
-The days of clunky, laggy VTTs are over. What you need is something that loads fast, shows the battle clearly, and lets you focus on the story — not on fighting the software. Look for drag-and-drop initiative, fog of war, and real-time sync so your players see exactly what you want them to see.
+## The VTT Problem Nobody Talks About
 
-**Our pick:** [VirtualCombatSimulator](/apps/virtual-combat-simulator) was built specifically for this. No bloated feature lists — just clean, fast combat management with a responsive tabletop.
+Here's the dirty secret of online D&D: most virtual tabletops are designed by people who think "more features" equals "better product." So you get dynamic lighting systems that tank your framerate, automation that breaks when players multiclass, and enough buttons to pilot a spaceship.
 
-## 2. AI-Assisted Worldbuilding (That Actually Remembers Your Lore)
+Meanwhile, you just want to know whose turn it is and whether the fighter is in melee range.
 
-Generic AI tools are fine for brainstorming, but they don't know your world. They'll contradict your established canon, forget that the Dwarven king died two sessions ago, and generate content that feels disconnected from your campaign.
+## What DMs Actually Need
 
-What you need is AI that understands context — your factions, your NPCs, your plot threads — and generates content that fits seamlessly into what you've already built.
+After running hundreds of sessions online, here's what actually matters:
 
-**Our pick:** [ContentCraft](/apps/contentcraft) tracks your canon automatically and generates lore, encounters, and NPCs that are consistent with your world.
+**Fast initiative tracking** — No spreadsheets, no manual sorting, just "who goes next?"
 
-## 3. Encounter Balancing That Goes Beyond CR
+**Clear battle maps** — Players see what they need to see. You control what they don't.
 
-Challenge Rating is a starting point, but experienced DMs know it's unreliable. Action economy, terrain, party composition, and resource expenditure all matter more than a single number.
+**Drag-and-drop everything** — Moving tokens, adjusting HP, changing turn order. If it takes more than one click, it's too slow.
 
-The best encounter tools let you model these variables and give you a feel for how deadly the fight will actually be — not just what the math says on paper.
+**Real-time sync** — What you see is what they see. No refresh bugs, no desync issues.
 
-## 4. Session Notes That Connect the Dots
+That's it. Everything else is feature creep.
 
-Your campaign is a living story. NPCs recur, plot threads weave together, and players make choices that ripple forward. You need notes that aren't just a list of what happened — you need notes that show you the connections between events, characters, and locations.
+## The "Just Works" Standard
 
-## 5. A Way to Keep Players Engaged Between Sessions
+[VirtualCombatSimulator](/apps/virtual-combat-simulator) was built by DMs who got tired of fighting their tools. No 50-page manual. No subscription tiers that lock basic features. Just a clean tabletop that loads in seconds and runs combat at full speed.
 
-The best campaigns don't end when the session does. Whether it's a shared recap, a downtime activity system, or an async side quest, finding ways to keep the story alive between sessions keeps engagement high and reduces "where were we?" moments.
+Because here's the thing: your players don't remember the fancy lighting effects. They remember the story you told and the clutch nat 20 that saved the party.
 
----
+Your VTT should help you deliver that. Not get in the way.
 
-The right tools don't replace your creativity — they amplify it. Spend less time managing logistics and more time telling the story your players will remember for years.`,
+## The Bottom Line
+
+If you're spending more time troubleshooting your virtual tabletop than running the game, you're using the wrong tool.
+
+Switch to something built for speed. Your players will thank you.`,
     author: 'Sixsmith Games',
     date: '2026-02-18',
-    readTime: '6 min read',
+    readTime: '4 min read',
     category: 'D&D',
-    tags: ['dungeon master', 'dnd', 'tools', 'virtual tabletop', 'worldbuilding'],
+    tags: ['dungeon master', 'dnd', 'virtual tabletop', 'tools'],
     featured: true,
   },
   {
-    slug: 'ai-worldbuilding-for-fantasy-writers',
-    title: 'How AI Is Changing Worldbuilding for Fantasy Writers',
-    excerpt: 'Fantasy writers spend months building worlds before writing a single chapter. AI worldbuilding tools are changing that — but only if they understand your canon.',
-    content: `Every fantasy writer knows the feeling: you're 40,000 words into your novel and you realize you contradicted your own magic system. Or you mentioned a city in chapter three that doesn't appear on the map you drew in your notebook. Or you forgot whether the protagonist's mentor was from the Northern Reaches or the Eastern Wastes.
+    slug: 'ai-that-remembers-your-lore',
+    title: 'AI That Actually Remembers Your Lore',
+    excerpt: 'ChatGPT forgot your magic system again. Here\'s why fantasy writers need AI that tracks canon, not just generates content.',
+    content: `Chapter 23. You're on a roll. The protagonist just discovered the ancient artifact that will turn the tide of the war. You ask your AI assistant to generate the inscription on it.
 
-Worldbuilding is the backbone of fantasy fiction. It's also one of the most time-consuming parts of the writing process. And when your world has inconsistencies, readers notice.
+The AI gives you something beautiful. Poetic. Completely wrong.
 
-## The Promise of AI Worldbuilding
+Because it forgot that in Chapter 4, you established that this civilization used pictographic writing, not runes. And in Chapter 11, you mentioned that artifacts from this era never contain direct instructions.
 
-AI tools have exploded in popularity for writers. They're great for brainstorming, generating names, and breaking through writer's block. But most general-purpose AI tools have a critical flaw for worldbuilders: **they don't remember your world.**
+Your AI doesn't remember. And now you're rewriting.
 
-You can tell ChatGPT about your magic system in one conversation, but start a new conversation and it's gone. You can describe your political factions in detail, but the AI won't cross-reference them when you ask it to generate a new city.
+## The Canon Problem
 
-## What Worldbuilders Actually Need
+Every fantasy writer builds a world. Factions, magic systems, histories, languages, geography. You spend months on worldbuilding before you write a single chapter. You track it all in notebooks, wikis, spreadsheets.
 
-The ideal AI worldbuilding tool would:
+Then you use AI to help generate content... and it contradicts everything.
 
-- **Track your canon** — every faction, character, location, and rule you've established
-- **Cross-reference new content** against existing lore to prevent contradictions
-- **Generate content that fits** — not generic fantasy, but content that feels like it belongs in *your* world
-- **Scale with your project** — from a short story to a multi-book epic
+Because general-purpose AI tools don't remember your world. Each conversation is a blank slate. You can describe your magic system in detail, then start a new chat and it's gone.
 
-## The ContentCraft Approach
+## What Writers Actually Need
 
-This is exactly why we built [ContentCraft](/apps/contentcraft). Instead of starting from scratch every time, ContentCraft maintains a living model of your world. When you generate a new NPC, it knows which factions exist. When you create a new location, it knows the geography. When you write a scene, it can flag potential contradictions with established canon.
+Not AI that generates generic fantasy. AI that generates *your* fantasy.
 
-It's not about replacing the writer — it's about giving the writer a collaborator that actually remembers the conversation.
+That means:
 
-## Tips for Using AI in Your Worldbuilding Process
+**Canon tracking** — The AI knows every faction, character, location, and rule you've established.
 
-1. **Start with your rules.** Feed the tool your magic system, political structure, and core conflicts first. Everything else flows from there.
-2. **Iterate, don't accept.** Use AI output as a starting point, then refine it in your own voice.
-3. **Check for contradictions early.** The earlier you catch a lore conflict, the less rewriting you'll do later.
-4. **Keep a canon document.** Even with AI tracking, having a master reference is invaluable.
+**Automatic cross-referencing** — When you generate a new city, it knows which kingdom it belongs to and what resources are available there.
 
----
+**Consistency checking** — It flags contradictions before they make it into your manuscript.
 
-The worlds we build deserve tools that respect their complexity. AI isn't going to write your fantasy novel for you — but it can make sure your world holds together while you do.`,
+**Memory that scales** — From short stories to epic multi-book series.
+
+## How [ContentCraft](/apps/contentcraft) Solves This
+
+ContentCraft maintains a living model of your world. Add a faction once, and it remembers forever. Create an NPC, and the AI knows their relationships, motivations, and history.
+
+Generate a new scene? The AI suggests content that fits your established canon. No more "wait, did I say the king was dead or just missing?"
+
+It's not about replacing the writer. It's about giving you a collaborator that actually remembers the conversation.
+
+## The Bottom Line
+
+Your world deserves better than AI with amnesia.
+
+Use tools that respect your canon. Your readers will notice the difference.`,
     author: 'Sixsmith Games',
     date: '2026-02-15',
-    readTime: '7 min read',
+    readTime: '5 min read',
     category: 'Writing',
-    tags: ['worldbuilding', 'fantasy', 'ai', 'writing', 'contentcraft'],
+    tags: ['worldbuilding', 'fantasy', 'ai', 'writing'],
     featured: true,
   },
   {
     slug: 'async-board-games-play-on-your-schedule',
-    title: 'The Rise of Async Board Games: Play Strategy on Your Schedule',
-    excerpt: 'You love deep strategy games but can\'t get four friends in the same room at the same time. Async multiplayer is the answer — here\'s why it works.',
-    content: `If you've ever tried to schedule a board game night with adults, you know the struggle. Between work schedules, kids, time zones, and the simple reality that everyone's busy, getting four people around a table at the same time feels like a logistics puzzle harder than the game itself.
+    title: 'Strategy Games Without the Scheduling Nightmare',
+    excerpt: 'Love deep strategy but hate coordinating schedules? Async multiplayer lets you play epic campaigns on your own time.',
 
-But what if you didn't have to?
+    content: `"Hey, want to play a board game this weekend?"
 
-## What Is Asynchronous Multiplayer?
+"Sure! What time?"
 
-Async multiplayer means players take turns on their own schedule. You make your move when you have time. Your opponent makes theirs when they have time. The game progresses at a pace that fits everyone's life.
+*Three hours of text messages later, nobody can agree on a time.*
 
-It's the same model that made Words With Friends and chess apps so popular — but applied to deeper, more strategic games.
+Sound familiar?
 
-## Why Async Works for Strategy Games
+You love deep strategy games. Your friends love deep strategy games. But coordinating four adult schedules is harder than the actual game.
 
-Real-time strategy games are exciting, but they demand hours of uninterrupted attention. Async games offer something different:
+## Enter: Async Multiplayer
 
-- **Think deeper.** With no clock ticking, you can actually analyze the board and plan several turns ahead.
-- **Play more games.** You can run multiple games simultaneously, each with different opponents.
-- **No scheduling.** A game between someone in New York and someone in Tokyo works perfectly when nobody needs to be online at the same time.
-- **Fits your life.** Take your turn during lunch, on the train, or before bed. Five minutes here and there adds up to epic campaigns.
+Asynchronous multiplayer is simple: you take your turn when you have time. Your opponent takes theirs when they have time. No scheduling required.
 
-## Strategy Without Sacrifice
+It's the same model that made chess apps and Words With Friends work. But now it's coming to real strategy games.
 
-The challenge for async game designers is preserving the depth and tension of real-time play. A great async game needs:
+## Why This Actually Works
 
-- **Meaningful decisions** on every turn, so each move matters even without real-time pressure
-- **Clear information** about the game state, so you can make smart moves without being online when things happen
-- **Push notifications** so you know when it's your turn without constantly checking
-- **Games that resolve** in a reasonable number of turns, so campaigns don't drag on for months
+**You think deeper.** No timer pressure means you can actually analyze the board and plan ahead.
 
-## Gravity: Built for Async from Day One
+**You play more games.** Run multiple campaigns with different opponents simultaneously.
 
-[Gravity](/apps/gravity) was designed specifically for asynchronous play. It's a tactical sci-fi board game where you command fleets, manage resources, and outmaneuver opponents — all on your own schedule. Each turn presents real strategic choices, and games are designed to reach satisfying conclusions without requiring anyone to clear their calendar.
+**Time zones don't matter.** New York vs Tokyo? No problem.
 
----
+**Life-friendly.** Take your turn during lunch, on the train, before bed. Five minutes here and there adds up to epic campaigns.
 
-The best games are the ones you actually get to play. Async multiplayer makes deep strategy accessible to people with real lives — and that's something worth exploring.`,
+## The Catch
+
+Async only works if the game is designed for it. You need:
+
+- Meaningful decisions every turn (not just "move and attack")
+- Clear game state info (so you can make smart moves without being there when things happen)
+- Push notifications (so you know it's your turn)
+- Games that actually finish (not 6-month slogs)
+
+## [Gravity](/apps/gravity): Strategy That Fits Your Life
+
+Gravity is a tactical sci-fi game built for async from day one. Command fleets, manage resources, outmaneuver opponents — all on your schedule.
+
+Each turn matters. Games resolve in weeks, not months. And you never have to coordinate a single calendar invite.
+
+## The Bottom Line
+
+The best games are the ones you actually get to play.
+
+Async multiplayer makes deep strategy accessible to people with real lives. And that's a win for everyone.`,
     author: 'Sixsmith Games',
     date: '2026-02-10',
     readTime: '5 min read',
@@ -156,101 +180,123 @@ The best games are the ones you actually get to play. Async multiplayer makes de
     tags: ['board games', 'async', 'strategy', 'multiplayer', 'gravity'],
   },
   {
-    slug: 'gamification-typing-practice-kids',
-    title: 'Why Gamification Makes Kids Actually Want to Practice Typing',
-    excerpt: 'Typing is a critical skill, but traditional typing tutors are boring. Here\'s the science behind why game-based practice works — and how to pick the right one.',
-    content: `Ask any kid to sit through a traditional typing tutor and watch their eyes glaze over. "Type the quick brown fox jumped over the lazy dog" fifty times isn't anyone's idea of fun. But ask them to defeat a boss by typing spell words correctly? Now you've got their attention.
+    slug: 'kids-actually-want-typing-practice',
+    title: 'Kids Actually Want Typing Practice Now',
+    excerpt: '"The quick brown fox" is not engaging. Defeating bosses with spell words? Now you have their attention.',
+    content: `"Mom, can I practice typing?"
 
-## The Problem with Traditional Typing Practice
+Said no kid ever. Until now.
 
-Most typing programs treat practice like medicine — something you have to do, not something you want to do. They focus on repetition without context, accuracy without excitement, and speed without meaning.
+## The Typing Tutor Problem
 
-The result? Kids do the minimum required and then never open the program again.
+Traditional typing programs are digital vegetables. Kids know they're supposed to be good for them, but nobody wants to eat them.
 
-## Why Gamification Works
+"Type 'the quick brown fox jumped over the lazy dog' fifty times."
 
-Game-based learning isn't just a buzzword — there's real research behind it:
+Thrilling.
 
-- **Intrinsic motivation.** Games create their own motivation through challenge, progress, and reward. Kids practice more because they want to, not because they have to.
-- **Flow state.** Well-designed games put players in a flow state where difficulty matches skill level. This is the optimal zone for learning.
-- **Spaced repetition.** Games naturally revisit skills through level progression, reinforcing learning without feeling repetitive.
-- **Immediate feedback.** Every keystroke has a consequence in a game, creating a tight feedback loop that accelerates improvement.
+The result? Kids do the bare minimum, then never open the program again. They learn to hunt-and-peck their way through life.
 
-## What Makes a Good Typing Game
+## Why Games Work (And Drills Don't)
 
-Not all gamified typing tools are created equal. The best ones have:
+Game-based learning isn't magic. It's psychology:
 
-- **Real vocabulary.** Kids should be typing words they'll actually use, not random letter combinations.
-- **Progressive difficulty.** Start with home row and gradually introduce more keys and faster speeds.
-- **Characters and story.** Even a simple narrative gives kids a reason to come back.
-- **Multiple game modes.** Different activities keep practice fresh and engage different skill areas.
+**Intrinsic motivation** — Games create their own rewards. Kids practice because they want to level up, not because they have to.
 
-## The MasterTyping Approach
+**Flow state** — When challenge matches skill level, learning happens naturally. Too easy = boring. Too hard = frustrating. Games adjust.
 
-[MasterTyping](/apps/mastertyping) turns typing practice into an adventure with 10 unique characters, each with special abilities that activate when kids type accurately and quickly. The vocabulary is aligned with K-12 standards, so kids are reinforcing real language skills while they play.
+**Immediate feedback** — Every keystroke matters in a game. Miss a letter? The spell fizzles. Type fast? Your character powers up.
 
-The result: kids ask to practice typing instead of being told to. And that's when real improvement happens.
+**Spaced repetition** — Games naturally revisit skills through level progression. Kids practice without realizing they're practicing.
 
----
+## What Actually Works
 
-Typing is one of the most practical skills we can teach kids. Making it fun isn't just nice — it's necessary. When practice feels like play, kids put in the hours that actually build proficiency.`,
+Not all typing games are created equal. The good ones have:
+
+- Real vocabulary (not "asdf jkl;")
+- Progressive difficulty (home row → full keyboard)
+- Characters and story (give kids a reason to care)
+- Multiple game modes (variety keeps it fresh)
+
+## [MasterTyping](/apps/mastertyping): Homework They'll Actually Do
+
+MasterTyping turns typing practice into an adventure. Ten unique characters. Special abilities that activate when you type accurately. Boss battles. Power-ups.
+
+The vocabulary is K-12 aligned, so kids are learning real words while they play.
+
+The result? Kids ask to practice. Parents don't have to nag. Teachers see actual improvement.
+
+## The Bottom Line
+
+Typing is one of the most practical skills we can teach kids. Making it fun isn't optional — it's necessary.
+
+When practice feels like play, kids put in the hours that actually build proficiency.`,
     author: 'Sixsmith Games',
     date: '2026-02-05',
-    readTime: '5 min read',
+    readTime: '4 min read',
     category: 'Education',
-    tags: ['typing', 'gamification', 'education', 'kids', 'mastertyping'],
+    tags: ['typing', 'gamification', 'education', 'kids'],
   },
   {
-    slug: 'building-better-combat-encounters',
-    title: 'Building Better D&D Combat Encounters: A DM\'s Guide',
-    excerpt: 'Your players deserve combat that feels dangerous, dramatic, and meaningful. Here\'s how to design encounters that go beyond "roll initiative and hit things."',
-    content: `Combat encounters are the heartbeat of most D&D campaigns. They're where tension peaks, where characters shine, and where stories take unexpected turns. But too many encounters fall into the same pattern: roll initiative, stand in a line, trade blows until something dies.
+    slug: 'combat-encounters-beyond-hit-things',
+    title: 'Combat Beyond "Roll Initiative, Hit Things"',
+    excerpt: 'Your players deserve better than standing in a line trading blows. Here\'s how to design encounters that actually matter.',
+    content: `Roll initiative. Stand in a line. Trade blows until something dies.
 
-Great combat is about more than damage numbers. It's about stakes, environment, and tough choices.
+If that's your combat formula, your players deserve better.
 
-## Start with the Stakes
+## The Problem with "Just Add Monsters"
 
-Before you design a single monster, ask yourself: **what happens if the players lose?** If the answer is "nothing much," then the combat has no tension regardless of how many hit points the enemies have.
+Too many D&D encounters are just math problems. "The party is level 5, so I'll throw CR 5 worth of enemies at them."
 
-The best encounters have stakes beyond survival:
-- A hostage that will be harmed if combat takes too long
-- A ritual that completes in 5 rounds unless the players stop it
-- A collapsing structure that forces the fight to keep moving
-- An NPC ally who might die if the players don't protect them
+Then everyone stands in a hallway and rolls dice until the HP reaches zero.
 
-## Design the Environment, Not Just the Enemies
+Boring.
 
-A flat room with nothing in it is the worst possible combat arena. The environment should be part of the encounter:
+## What Actually Makes Combat Interesting
 
-- **Elevation.** Archers on balconies, melee fighters below. Instantly more interesting.
-- **Hazards.** Lava, acid pools, crumbling floors. Players have to think about positioning.
-- **Cover.** Pillars, overturned tables, ruined walls. Gives ranged characters something to do besides "I shoot it."
-- **Interactive elements.** Chandeliers to swing from, bridges to collapse, levers to pull. Let creative players be creative.
+**Stakes beyond survival.** Before you design the encounter, ask: what happens if they lose? If the answer is "nothing," the fight has no tension.
 
-## Action Economy Is King
+Try:
+- A hostage who dies if combat takes too long
+- A ritual that completes in 5 rounds
+- A collapsing bridge forcing constant movement
+- An NPC ally who needs protection
 
-The single most important factor in encounter balance isn't CR — it's action economy. Five goblins are more dangerous than one ogre because they get five turns per round.
+**Environment matters.** A flat empty room is the worst combat arena.
 
-Rules of thumb:
-- **Match the number of enemies to the party size** when you want a fair fight
-- **Use legendary actions and lair actions** to give solo monsters more turns
-- **Add minions** (1 HP creatures that go down in one hit) for spectacle without bookkeeping
+Add:
+- Elevation (archers on balconies, melee below)
+- Hazards (lava, acid, crumbling floors)
+- Cover (pillars, overturned tables, ruins)
+- Interactive elements (chandeliers to swing from, levers to pull)
 
-## Manage the Combat, Don't Just Run It
+Let creative players be creative.
 
-This is where the right tools make a real difference. When you're tracking initiative for 8 players and 12 monsters, managing conditions, and remembering which goblin has 3 HP left, you're not thinking about the story. You're doing bookkeeping.
+**Action economy > CR.** Five goblins are more dangerous than one ogre. They get five turns per round.
 
-[VirtualCombatSimulator](/apps/virtual-combat-simulator) handles the logistics — initiative tracking, HP management, real-time tabletop display — so you can focus on making the combat feel alive. Describe the environment, voice the villain's taunts, react to player creativity. That's the DM's job. Let the software handle the spreadsheet.
+Quick rules:
+- Match enemy count to party size for fair fights
+- Give solo bosses legendary actions
+- Add minions (1 HP creatures) for spectacle without bookkeeping
 
-## End Combat Before It Gets Boring
+## Stop Doing Spreadsheets, Start Telling Stories
 
-Not every fight needs to go to the last hit point. When the outcome is clear — the boss is bloodied and surrounded, the goblins are routing — consider narrating the conclusion rather than rolling through six more rounds of mop-up.
+When you're tracking initiative for 8 players and 12 monsters, managing conditions, and remembering which goblin has 3 HP left, you're not DMing. You're doing bookkeeping.
 
-Your players' time is valuable. Respect it by ending combat at the dramatic peak, not the mathematical one.
+[VirtualCombatSimulator](/apps/virtual-combat-simulator) handles the logistics. You handle the story.
 
----
+Describe the environment. Voice the villain's taunts. React to player creativity. That's the DM's job.
 
-Great combat encounters are designed, not improvised. Put the work in before the session — stakes, environment, enemy tactics, exit conditions — and the table will thank you with stories they retell for years.`,
+## End Before It Gets Boring
+
+Not every fight needs to go to the last HP. When the outcome is clear, narrate the conclusion.
+
+Your players' time is valuable. End combat at the dramatic peak, not the mathematical one.
+
+## The Bottom Line
+
+Great combat is designed, not improvised. Put in the work before the session — stakes, environment, enemy tactics — and your players will tell stories about it for years.`,
     author: 'Sixsmith Games',
     date: '2026-01-28',
     readTime: '8 min read',
@@ -258,43 +304,52 @@ Great combat encounters are designed, not improvised. Put the work in before the
     tags: ['dnd', 'combat', 'encounter design', 'dungeon master', 'tips'],
   },
   {
-    slug: 'wargaming-digital-age',
-    title: 'Wargaming in the Digital Age: From Tabletop to Screen',
-    excerpt: 'The wargaming hobby is thriving online. Here\'s how digital platforms are preserving what makes tabletop wargaming great while solving its biggest problems.',
-    content: `Wargaming has been around for centuries — from Prussian Kriegsspiel to Avalon Hill classics to the massive miniature battles of today. It's a hobby built on deep thinking, historical appreciation, and the satisfaction of outmaneuvering an opponent through superior strategy.
+    slug: 'wargaming-goes-digital',
+    title: 'Wargaming Goes Digital (Finally)',
+    excerpt: 'Love tabletop wargames but hate the setup time? Digital platforms are solving the hobby\'s biggest problems without sacrificing the strategy.',
+    content: `You love wargaming. The deep strategy. The historical scenarios. The satisfaction of outmaneuvering your opponent through superior tactics.
 
-But traditional wargaming has always had friction. Setting up a game takes hours. Finding an opponent who plays the same system is hard. And storing a collection of miniatures, terrain, and rulebooks requires a dedicated room.
+You hate the setup time.
 
-Digital wargaming doesn't replace the tabletop experience — but it solves many of its problems while preserving the strategic depth that makes the hobby rewarding.
+Forty-five minutes placing terrain and deploying units before you even start playing. Finding an opponent who plays the same system. Storing a collection that requires a dedicated room.
+
+Digital wargaming solves these problems without sacrificing what makes the hobby great.
 
 ## What Digital Gets Right
 
-- **Instant setup.** No more spending 45 minutes placing terrain and deploying units. Jump straight into the strategy.
-- **Rules enforcement.** The computer handles line of sight, range calculations, and modifier stacking. No more rulebook arguments.
-- **Opponent matching.** Play against someone across the world who loves the same era and scale you do.
-- **Replay and analysis.** Review your games turn by turn. See where the battle turned and learn from mistakes.
+**Instant setup** — Jump straight into the strategy. No more spending half your game night arranging hexes.
+
+**Rules enforcement** — The computer handles line of sight, range calculations, modifier stacking. No more rulebook arguments.
+
+**Opponent matching** — Play someone across the world who loves the same era and scale you do.
+
+**Replay and analysis** — Review your games turn by turn. See where the battle turned. Learn from mistakes.
 
 ## What Makes a Good Digital Wargame
 
-Not all digital wargames capture the spirit of tabletop play. The best ones have:
+Not all digital wargames capture the tabletop spirit. The good ones have:
 
-- **Meaningful decisions** at both strategic and tactical levels
-- **Clear visual presentation** — you should be able to read the battlefield at a glance
-- **Historical grounding** that respects the source material
-- **Manageable complexity** — deep enough to reward study, accessible enough to learn by playing
+- Meaningful decisions at strategic and tactical levels
+- Clear visual presentation (read the battlefield at a glance)
+- Historical grounding that respects the source material
+- Manageable complexity (deep enough to reward study, accessible enough to learn by playing)
 
-## Four Star General: WWII Strategy Done Right
+## [Four Star General](/apps/fourstargeneral): WWII Strategy Without the Setup
 
-[Four Star General](/apps/fourstargeneral) brings World War II strategic and tactical gameplay to your browser. Command operations, manage unit rosters, and fight through campaigns that test your generalship at every level. It's built for players who want the depth of a tabletop wargame without the setup time.
+Command operations. Manage unit rosters. Fight through campaigns that test your generalship at every level.
 
----
+All the depth of a tabletop wargame. None of the setup time.
 
-The wargaming community has always been driven by people who love to think deeply about strategy, history, and tactics. Digital platforms are making it possible for more people to join that community — and that's good for everyone who loves the hobby.`,
+## The Bottom Line
+
+The wargaming community has always been driven by people who love deep strategy, history, and tactics.
+
+Digital platforms are making it possible for more people to join that community. And that's good for everyone who loves the hobby.`,
     author: 'Sixsmith Games',
     date: '2026-01-20',
-    readTime: '5 min read',
+    readTime: '4 min read',
     category: 'Gaming',
-    tags: ['wargaming', 'strategy', 'wwii', 'fourstargeneral', 'digital'],
+    tags: ['wargaming', 'strategy', 'wwii', 'digital'],
   },
 ];
 
