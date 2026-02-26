@@ -129,6 +129,7 @@ function renderInline(text: string): React.ReactNode {
   while (remaining.length > 0) {
     const boldMatch = remaining.match(/\*\*(.+?)\*\*/);
     const linkMatch = remaining.match(/\[(.+?)\]\((.+?)\)/);
+    const italicMatch = remaining.match(/\*(?!\*)(.+?)\*(?!\*)/);
 
     const candidates: { index: number; length: number; node: React.ReactNode }[] = [];
 
@@ -140,6 +141,13 @@ function renderInline(text: string): React.ReactNode {
         index: linkMatch.index,
         length: linkMatch[0].length,
         node: <Link key={`l${k++}`} href={linkMatch[2]} style={{ color: '#6366f1', fontWeight: '600', textDecoration: 'underline', textUnderlineOffset: '2px' }}>{linkMatch[1]}</Link>,
+      });
+    }
+    if (italicMatch && italicMatch.index !== undefined) {
+      candidates.push({
+        index: italicMatch.index,
+        length: italicMatch[0].length,
+        node: <em key={`i${k++}`} style={{ fontStyle: 'italic' }}>{italicMatch[1]}</em>,
       });
     }
 
