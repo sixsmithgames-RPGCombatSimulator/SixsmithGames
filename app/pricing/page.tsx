@@ -63,6 +63,10 @@ const individualPlans = [
 ];
 
 export default function PricingPage() {
+  const bundlePrice = 22.99;
+  const totalIndividual = individualPlans.reduce((sum, plan) => sum + plan.price, 0);
+  const savings = totalIndividual - bundlePrice;
+
   const check = (color: string) => (
     <svg style={{ width: '18px', height: '18px', flexShrink: 0, marginTop: '2px' }} fill="none" stroke={color} viewBox="0 0 24 24">
       <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
@@ -103,7 +107,7 @@ export default function PricingPage() {
               All-Access Bundle
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.0625rem', margin: '0 0 1.5rem', lineHeight: 1.6 }}>
-              All five apps for one low price. Save over $14/month vs. subscribing individually.
+              All five apps for one low price. Save ${savings.toFixed(2)}/month vs. subscribing individually.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {individualPlans.map(p => (
@@ -116,11 +120,11 @@ export default function PricingPage() {
           <div style={{ textAlign: 'center', flex: '0 0 auto' }}>
             <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '4px' }}>
               <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', marginTop: '0.5rem' }}>$</span>
-              <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>22.99</span>
+              <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>{bundlePrice.toFixed(2)}</span>
               <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', margin: '0.25rem 0 1.5rem' }}>
-              vs. $28.95 if purchased separately
+              vs. ${totalIndividual.toFixed(2)} if purchased separately
             </p>
             <SubscribeButton planId="bundle" style={{
               background: 'white', color: '#4c1d95',
