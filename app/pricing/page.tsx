@@ -54,18 +54,26 @@ const individualPlans = [
     slug: 'mastertyping',
     name: 'MasterTyping',
     icon: '/icons/mastertyping.png',
-    price: 4.99,
+    price: 0,
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #84cc16)',
-    description: 'Game-based typing practice with K-12 vocabulary and progress tracking.',
+    description: 'FREE lead magnet — game-based typing practice with K-12 vocabulary and progress tracking.',
     features: ['Game mode', 'Pro mode', 'Assessment mode', 'Progress stats'],
   },
 ];
 
 export default function PricingPage() {
   const bundlePrice = 22.99;
+  const bundleOriginal = bundlePrice + 5;
   const totalIndividual = individualPlans.reduce((sum, plan) => sum + plan.price, 0);
+  const totalIndividualOriginal = individualPlans.reduce((sum, plan) => sum + plan.price + 5, 0);
   const savings = totalIndividual - bundlePrice;
+
+  const betaLabel = (slug: string) => {
+    if (slug === 'contentcraft' || slug === 'virtual-combat-simulator') return 'Beta';
+    if (slug === 'gravity' || slug === 'fourstargeneral') return 'Early Beta';
+    return null;
+  };
 
   const check = (color: string) => (
     <svg style={{ width: '18px', height: '18px', flexShrink: 0, marginTop: '2px' }} fill="none" stroke={color} viewBox="0 0 24 24">
@@ -118,13 +126,20 @@ export default function PricingPage() {
             </div>
           </div>
           <div style={{ textAlign: 'center', flex: '0 0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '4px' }}>
-              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', marginTop: '0.5rem' }}>$</span>
-              <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>{bundlePrice.toFixed(2)}</span>
-              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '8px' }}>
+              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '4px' }}>
+                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', marginTop: '0.5rem' }}>$</span>
+                <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>{bundlePrice.toFixed(2)}</span>
+                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
+              </div>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
+                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', textDecoration: 'line-through', textDecorationColor: '#ef4444' }}>
+                  ${bundleOriginal.toFixed(2)}
+                </span>
+              </div>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', margin: '0.25rem 0 1.5rem' }}>
-              vs. ${totalIndividual.toFixed(2)} if purchased separately
+              vs. ${totalIndividual.toFixed(2)} if purchased separately (orig ${totalIndividualOriginal.toFixed(2)})
             </p>
             <SubscribeButton planId="bundle" style={{
               background: 'white', color: '#4c1d95',
@@ -163,9 +178,19 @@ export default function PricingPage() {
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{plan.description}</p>
               </div>
               <div style={{ padding: '1.5rem 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                  <span style={{ fontSize: '2.25rem', fontWeight: '900', color: '#111827' }}>${plan.price.toFixed(2)}</span>
-                  <span style={{ color: '#6b7280', fontSize: '1rem' }}>/month</span>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                    <span style={{ fontSize: '2.25rem', fontWeight: '900', color: '#111827' }}>${plan.price.toFixed(2)}</span>
+                    <span style={{ color: '#6b7280', fontSize: '1rem' }}>/month</span>
+                  </div>
+                  <span style={{ color: '#9ca3af', fontSize: '0.95rem', textDecoration: 'line-through', textDecorationColor: '#ef4444' }}>
+                    ${(plan.price + 5).toFixed(2)}
+                  </span>
+                  {betaLabel(plan.slug) && (
+                    <span style={{ background: '#fef3c7', color: '#b45309', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
+                      {betaLabel(plan.slug)}
+                    </span>
+                  )}
                 </div>
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem', flex: 1 }}>
                   {plan.features.map((f) => (
