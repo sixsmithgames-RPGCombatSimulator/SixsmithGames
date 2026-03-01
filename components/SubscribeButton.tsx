@@ -14,9 +14,10 @@ interface SubscribeButtonProps {
   style?: React.CSSProperties;
   children: React.ReactNode;
   planId?: string;
+  signInLabel?: string;
 }
 
-export default function SubscribeButton({ className, style, children, planId }: SubscribeButtonProps) {
+export default function SubscribeButton({ className, style, children, planId, signInLabel }: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   useEffect(() => { setMounted(true); }, []);
@@ -56,7 +57,7 @@ export default function SubscribeButton({ className, style, children, planId }: 
     return (
       <SignInButton mode="modal">
         <button className={className} style={style}>
-          Sign Up to Subscribe
+          {signInLabel || 'Sign Up to Subscribe'}
         </button>
       </SignInButton>
     );

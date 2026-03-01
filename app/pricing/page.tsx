@@ -57,7 +57,7 @@ const individualPlans = [
     price: 0,
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #84cc16)',
-    description: 'FREE lead magnet — game-based typing practice with K-12 vocabulary and progress tracking.',
+    description: 'FREE game-based typing practice with K-12 vocabulary and progress tracking.',
     features: ['Game mode', 'Pro mode', 'Assessment mode', 'Progress stats'],
   },
 ];
@@ -207,12 +207,16 @@ export default function PricingPage() {
                   ))}
                 </ul>
                 {plan.slug === 'mastertyping' ? (
-                  <SubscribeButton planId={plan.slug} style={{
-                    background: plan.gradient, color: 'white',
-                    padding: '0.875rem 1.5rem', borderRadius: '12px',
-                    fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
-                    boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
-                  }}>
+                  <SubscribeButton
+                    planId={plan.slug}
+                    signInLabel="Sign Up"
+                    style={{
+                      background: plan.gradient, color: 'white',
+                      padding: '0.875rem 1.5rem', borderRadius: '12px',
+                      fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
+                      boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
+                    }}
+                  >
                     Sign up
                   </SubscribeButton>
                 ) : (
