@@ -181,9 +181,6 @@ export default function PricingPage() {
                 {plan.slug === 'mastertyping' ? (
                   <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
                     <span style={{ fontSize: '2rem', fontWeight: '900', color: '#16a34a' }}>FREE</span>
-                    <span style={{ background: '#ecfdf3', color: '#16a34a', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
-                      Lead Magnet
-                    </span>
                   </div>
                 ) : (
                   <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
