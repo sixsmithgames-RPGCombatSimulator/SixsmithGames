@@ -6,6 +6,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import SubscribeButton from '@/components/SubscribeButton';
 import ModernBackground from '@/components/ModernBackground';
 
@@ -171,10 +172,12 @@ export default function PricingPage() {
               border: '1px solid #f3f4f6',
             }}>
               <div style={{ background: plan.gradient, padding: '1.75rem 1.75rem 1.5rem' }}>
-                <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
-                  <Image src={plan.icon} alt={plan.name} width={56} height={56} style={{ objectFit: 'cover' }} />
-                </div>
-                <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{plan.name}</h3>
+                <Link href={`/apps/${plan.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
+                    <Image src={plan.icon} alt={plan.name} width={56} height={56} style={{ objectFit: 'cover' }} />
+                  </div>
+                  <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{plan.name}</h3>
+                </Link>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{plan.description}</p>
               </div>
               <div style={{ padding: '1.5rem 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
