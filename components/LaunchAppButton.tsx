@@ -20,7 +20,10 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
   const { user, isLoaded } = useUser();
 
   const email = user?.primaryEmailAddress?.emailAddress;
-  const hasAccess = isLoaded ? canAccessApps(user?.publicMetadata, email) : false;
+  const hasPaidAccess = isLoaded ? canAccessApps(user?.publicMetadata, email) : false;
+  // MasterTyping is free for all signed-in users
+  const isMasterTyping = appSlug === 'mastertyping';
+  const hasAccess = isMasterTyping || hasPaidAccess;
   const appUrl = APP_URLS[appSlug];
 
   useEffect(() => {
