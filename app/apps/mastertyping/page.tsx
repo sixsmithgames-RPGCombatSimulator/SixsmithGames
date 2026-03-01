@@ -428,7 +428,7 @@ export default function MasterTypingPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Start Learning Today
+            Start Getting Better and Faster at Typing Now
           </SubscribeButton>
         </div>
       </section>

@@ -187,8 +187,8 @@ export default function ContentCraftPage() {
               Writing Tools Are Broken. We Fixed Them.
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', maxWidth: '900px', margin: '0 auto'}}>
-              Traditional writing software ignores AI. AI tools forget everything between sessions. You need both—
-              organized project management AND intelligent content generation that actually remembers your world.
+              Traditional writing ignores the power of AI to help writers do the research, preparation, and organziation. Sure, AI can help with the creative aspects as well, but you decide when to use it. One problem I had with using AI tools forget. Maybe one day they will remember everything between sessions. But right now you need both—
+              organized project content AND intelligent content generation that actually remembers the universe you create.
             </p>
           </div>
 
@@ -204,7 +204,7 @@ export default function ContentCraftPage() {
               border: '2px solid #e9d5ff'
             }}>
               <h3 style={{fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem'}}>
-                The Old Way: Scrivener
+                The Old Way: Content organizing apps.
               </h3>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <div>
@@ -217,7 +217,7 @@ export default function ContentCraftPage() {
                   <p style={{fontSize: '0.875rem', fontWeight: '600', color: '#dc2626', marginBottom: '0.25rem'}}>
                     Missing:
                   </p>
-                  <p style={{color: '#4b5563'}}>No AI integration. No consistency checking. No automatic canon tracking.</p>
+                  <p style={{color: '#4b5563'}}>AI integration. Consistency checking. Automatic canon tracking.</p>
                 </div>
               </div>
             </div>
@@ -229,7 +229,7 @@ export default function ContentCraftPage() {
               border: '2px solid #e9d5ff'
             }}>
               <h3 style={{fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem'}}>
-                The New Way: ChatGPT
+                The New Way: AI tools
               </h3>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <div>
@@ -242,7 +242,7 @@ export default function ContentCraftPage() {
                   <p style={{fontSize: '0.875rem', fontWeight: '600', color: '#dc2626', marginBottom: '0.25rem'}}>
                     Missing:
                   </p>
-                  <p style={{color: '#4b5563'}}>No memory. No organization. Contradicts itself constantly.</p>
+                  <p style={{color: '#4b5563'}}>Consistent memory. Flexible organization. Checks for contradictions.</p>
                 </div>
               </div>
             </div>
@@ -263,7 +263,7 @@ export default function ContentCraftPage() {
                     You get:
                   </p>
                   <p style={{color: 'rgba(255, 255, 255, 0.95)'}}>
-                    Scrivener's organization + AI that remembers your entire world + automatic consistency checking
+                    Flexible organization + AI that remembers your entire world + automatic consistency checking
                   </p>
                 </div>
               </div>
@@ -376,7 +376,7 @@ export default function ContentCraftPage() {
               <div style={{background: '#faf5ff', padding: '1.5rem', borderRadius: '10px', borderLeft: '4px solid #a855f7'}}>
                 <p style={{fontWeight: '600', color: '#6b21a8', marginBottom: '0.5rem'}}>Traditional Method:</p>
                 <p style={{fontSize: '0.875rem', color: '#4b5563'}}>
-                  45 minutes: ChatGPT generation → copy/paste → format → balance → cross-reference wiki → fix contradictions
+                  45 minutes: Look up rules → copy/paste → format → cross-reference rules → fix contradictions
                 </p>
               </div>
               <div style={{background: '#f0fdf4', padding: '1.5rem', borderRadius: '10px', borderLeft: '4px solid #22c55e'}}>
