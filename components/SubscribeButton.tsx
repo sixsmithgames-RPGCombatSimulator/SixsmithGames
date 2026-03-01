@@ -66,14 +66,29 @@ export default function SubscribeButton({ className, style, children, planId, si
   const email = user?.primaryEmailAddress?.emailAddress;
   const hasAccess = canAccessApps(user?.publicMetadata, email);
 
-  if (hasAccess) {
+  // MasterTyping is free for all signed-in users
+  const isMasterTyping = planId === 'mastertyping';
+  const canAccessThisApp = isMasterTyping || hasAccess;
+
+  if (canAccessThisApp) {
+    // Map planId to app route
+    const appRoutes: Record<string, string> = {
+      'contentcraft': '/apps/contentcraft',
+      'virtual-combat-simulator': '/apps/virtual-combat-simulator',
+      'gravity': '/apps/gravity',
+      'fourstargeneral': '/apps/fourstargeneral',
+      'mastertyping': '/apps/mastertyping',
+    };
+    
+    const appUrl = planId && appRoutes[planId] ? appRoutes[planId] : '/account';
+    
     return (
       <a
-        href="/account"
+        href={appUrl}
         className={className}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
-        View Your Account
+        Open App
       </a>
     );
   }
