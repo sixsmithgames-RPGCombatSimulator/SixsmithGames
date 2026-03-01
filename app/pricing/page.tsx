@@ -178,20 +178,29 @@ export default function PricingPage() {
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{plan.description}</p>
               </div>
               <div style={{ padding: '1.5rem 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                    <span style={{ fontSize: '2.25rem', fontWeight: '900', color: '#111827' }}>${plan.price.toFixed(2)}</span>
-                    <span style={{ color: '#6b7280', fontSize: '1rem' }}>/month</span>
-                  </div>
-                  <span style={{ color: '#9ca3af', fontSize: '0.95rem', textDecoration: 'line-through', textDecorationColor: '#ef4444' }}>
-                    ${(plan.price + 5).toFixed(2)}
-                  </span>
-                  {betaLabel(plan.slug) && (
-                    <span style={{ background: '#fef3c7', color: '#b45309', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
-                      {betaLabel(plan.slug)}
+                {plan.slug === 'mastertyping' ? (
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                    <span style={{ fontSize: '2rem', fontWeight: '900', color: '#16a34a' }}>FREE</span>
+                    <span style={{ background: '#ecfdf3', color: '#16a34a', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
+                      Lead Magnet
                     </span>
-                  )}
-                </div>
+                  </div>
+                ) : (
+                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
+                      <span style={{ fontSize: '2.25rem', fontWeight: '900', color: '#111827' }}>${plan.price.toFixed(2)}</span>
+                      <span style={{ color: '#6b7280', fontSize: '1rem' }}>/month</span>
+                    </div>
+                    <span style={{ color: '#9ca3af', fontSize: '0.95rem', textDecoration: 'line-through', textDecorationColor: '#ef4444' }}>
+                      ${(plan.price + 5).toFixed(2)}
+                    </span>
+                    {betaLabel(plan.slug) && (
+                      <span style={{ background: '#fef3c7', color: '#b45309', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
+                        {betaLabel(plan.slug)}
+                      </span>
+                    )}
+                  </div>
+                )}
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem', flex: 1 }}>
                   {plan.features.map((f) => (
                     <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: '#374151' }}>
@@ -200,14 +209,25 @@ export default function PricingPage() {
                     </li>
                   ))}
                 </ul>
-                <SubscribeButton planId={plan.slug} style={{
-                  background: plan.gradient, color: 'white',
-                  padding: '0.875rem 1.5rem', borderRadius: '12px',
-                  fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
-                  boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
-                }}>
-                  Subscribe — ${plan.price.toFixed(2)}/mo
-                </SubscribeButton>
+                {plan.slug === 'mastertyping' ? (
+                  <SubscribeButton planId={plan.slug} style={{
+                    background: plan.gradient, color: 'white',
+                    padding: '0.875rem 1.5rem', borderRadius: '12px',
+                    fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
+                    boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
+                  }}>
+                    Sign up
+                  </SubscribeButton>
+                ) : (
+                  <SubscribeButton planId={plan.slug} style={{
+                    background: plan.gradient, color: 'white',
+                    padding: '0.875rem 1.5rem', borderRadius: '12px',
+                    fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
+                    boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
+                  }}>
+                    Subscribe — ${plan.price.toFixed(2)}/mo
+                  </SubscribeButton>
+                )}
               </div>
             </div>
           ))}
