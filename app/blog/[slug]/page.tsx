@@ -31,7 +31,16 @@ function renderMarkdown(content: string) {
   for (let i = 0; i < lines.length; i++) {
     const line = lines[i];
 
-    if (line.startsWith('### ')) {
+    if (line.startsWith('#### ')) {
+      elements.push(
+        <h4 key={key++} style={{
+          fontSize: '1.125rem', fontWeight: '700', color: '#111827',
+          margin: '1.75rem 0 0.75rem', lineHeight: 1.3,
+        }}>
+          {renderInline(line.slice(5))}
+        </h4>
+      );
+    } else if (line.startsWith('### ')) {
       elements.push(
         <h3 key={key++} style={{
           fontSize: '1.25rem', fontWeight: '700', color: '#111827',
