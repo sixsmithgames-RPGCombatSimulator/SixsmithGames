@@ -397,3 +397,29 @@ export async function getPostBySlug(slug: string): Promise<BlogPost | undefined>
 export async function getRecentPosts(count: number): Promise<BlogPost[]> {
   return (await allPosts()).slice(0, count);
 }
+
+/**
+ * Purpose: Retrieve a deduplicated list of blog tags across all posts for static generation and navigation.
+ * Change reason: Enable tag index pages for improved internal linking and topical clusters.
+ * Parameters: None.
+ * Returns: Array of unique tag strings sorted alphabetically.
+ * Side effects: None.
+ */
+export async function getAllTags(): Promise<string[]> {
+  const posts = await allPosts();
+  const tags = new Set<string>();
+  posts.forEach(p => p.tags.forEach(t => tags.add(t)));
+  return Array.from(tags).sort((a, b) => a.localeCompare(b));
+}
+
+/**
+ * Purpose: Fetch posts that include a specific tag for tag landing pages.
+ * Change reason: Support tag-based navigation and internal linking for SEO.
+ * Parameters: tag - the tag to filter by.
+ * Returns: Array of BlogPost objects that contain the tag.
+ * Side effects: None.
+ */
+export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
+  const posts = await allPosts();
+  return posts.filter(p => p.tags.includes(tag));
+}

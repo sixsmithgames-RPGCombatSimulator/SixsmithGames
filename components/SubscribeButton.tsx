@@ -24,6 +24,27 @@ export default function SubscribeButton({ className, style, children, planId, si
 
   const { isSignedIn, user, isLoaded } = useUser();
 
+  /**
+   * Purpose: Provide a predictable, crawlable destination when auth state has not hydrated.
+   * Change reason: Replace "Loading..." placeholder with a functional CTA for SEO and user clarity.
+   * Parameters: targetPlanId - optional plan identifier used to map to a meaningful href.
+   * Returns: Href string pointing to pricing or a specific app route.
+   * Side effects: None.
+   */
+  const resolveInitialHref = (targetPlanId?: string) => {
+    const appRoutes: Record<string, string> = {
+      'contentcraft': '/apps/contentcraft',
+      'virtual-combat-simulator': '/apps/virtual-combat-simulator',
+      'gravity': '/apps/gravity',
+      'fourstargeneral': '/apps/fourstargeneral',
+      'mastertyping': '/apps/mastertyping',
+    };
+    if (targetPlanId && appRoutes[targetPlanId]) {
+      return appRoutes[targetPlanId];
+    }
+    return '/pricing';
+  };
+
   const handleClick = async () => {
     setLoading(true);
     try {
@@ -47,9 +68,13 @@ export default function SubscribeButton({ className, style, children, planId, si
 
   if (!mounted || !isLoaded) {
     return (
-      <button className={className} style={{ ...style, opacity: 0.6 }} disabled>
-        Loading...
-      </button>
+      <a
+        href={resolveInitialHref(planId)}
+        className={className}
+        style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
+      >
+        {children || 'View pricing'}
+      </a>
     );
   }
 
@@ -79,9 +104,9 @@ export default function SubscribeButton({ className, style, children, planId, si
       'fourstargeneral': '/apps/fourstargeneral',
       'mastertyping': '/apps/mastertyping',
     };
-    
+
     const appUrl = planId && appRoutes[planId] ? appRoutes[planId] : '/account';
-    
+
     return (
       <a
         href={appUrl}

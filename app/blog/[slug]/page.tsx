@@ -239,13 +239,18 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* Tags */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '2rem' }}>
           {post.tags.map(tag => (
-            <span key={tag} style={{
-              background: '#f3f4f6', color: '#6b7280',
-              padding: '0.3rem 0.75rem', borderRadius: '999px',
-              fontSize: '0.75rem', fontWeight: '600',
-            }}>
+            <Link
+              key={tag}
+              href={`/blog/tag/${encodeURIComponent(tag)}`}
+              style={{
+                background: '#f3f4f6', color: '#6b7280',
+                padding: '0.3rem 0.75rem', borderRadius: '999px',
+                fontSize: '0.75rem', fontWeight: '600', textDecoration: 'none',
+                display: 'inline-block'
+              }}
+            >
               #{tag}
-            </span>
+            </Link>
           ))}
         </div>
 
