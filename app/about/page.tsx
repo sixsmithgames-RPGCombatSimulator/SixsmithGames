@@ -21,7 +21,7 @@ export default function AboutPage() {
             About Sixsmith Games
           </div>
           <h1 style={{ fontSize: 'clamp(2.5rem, 5vw, 3.5rem)', lineHeight: 1.1, margin: '0 0 1rem', fontWeight: 800 }}>
-            Crafted worlds. Polished play. Built by people who love games.
+            Built by people who love games.
           </h1>
           <p style={{ maxWidth: '820px', fontSize: '1.2rem', lineHeight: 1.7, color: 'rgba(229,231,235,0.85)', margin: 0 }}>
             Sixsmith Games is an independent game studio dedicated to creating fun, high-quality experiences for board game fans, TTRPG players, game masters, and storytellers. Our work is driven by a love of clever mechanics, immersive worlds, and the kind of design that makes people want to come back for one more session, one more round, or one more adventure.
@@ -37,8 +37,8 @@ export default function AboutPage() {
               <div style={{ color: '#e5e7eb', fontWeight: 700, fontSize: '1.05rem' }}>Craft, continuity, and playability</div>
             </div>
             <div style={{ padding: '1.25rem 1.5rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '18px' }}>
-              <div style={{ fontSize: '0.95rem', letterSpacing: '0.04em', color: '#c084fc', marginBottom: '0.35rem', fontWeight: 700 }}>Players</div>
-              <div style={{ color: '#e5e7eb', fontWeight: 700, fontSize: '1.05rem' }}>Board gamers, TTRPG storytellers, game masters</div>
+              <div style={{ fontSize: '0.95rem', letterSpacing: '0.04em', color: '#c084fc', marginBottom: '0.35rem', fontWeight: 700 }}>Who We Serve</div>
+              <div style={{ color: '#e5e7eb', fontWeight: 700, fontSize: '1.05rem' }}>Table top gamers, storytellers, and video game lovers</div>
             </div>
             <div style={{ padding: '1.25rem 1.5rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '18px' }}>
               <div style={{ fontSize: '0.95rem', letterSpacing: '0.04em', color: '#c084fc', marginBottom: '0.35rem', fontWeight: 700 }}>Approach</div>
