@@ -72,8 +72,8 @@ const freeApps = [
 ];
 
 export default function PricingPage() {
-  const creatorBundlePrice = 17.99;
-  const creatorBundleYearlyPrice = 179;
+  const creatorBundlePrice = 15.99;
+  const creatorBundleYearlyPrice = 159;
   const creatorBundleSavings = creatorPlans.reduce((sum, plan) => sum + plan.price, 0) - creatorBundlePrice;
 
   const betaLabel = (slug: string) => {
@@ -122,7 +122,7 @@ export default function PricingPage() {
               Creator Bundle
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.0625rem', margin: '0 0 1.5rem', lineHeight: 1.6 }}>
-              Get ContentCraft Creator and VCS Game Master together. Save ${creatorBundleSavings.toFixed(2)}/month and keep your lore, prep, maps, and encounters together.
+              Get ContentCraft Creator and Virtual Combat Simulator Game Master together. Save ${creatorBundleSavings.toFixed(2)}/month and keep your lore, prep, maps, and encounters together.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {creatorPlans.map(p => (
@@ -149,7 +149,7 @@ export default function PricingPage() {
             }}>
               See Creator Plans
             </Link>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', marginTop: '0.75rem' }}>Best value if you use both every month</p>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', marginTop: '0.75rem' }}>Best value every month</p>
           </div>
         </div>
       </section>
@@ -329,10 +329,10 @@ export default function PricingPage() {
             <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Bundle</div>
             <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Creator Bundle</h3>
             <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle for worldbuilding, session prep, and running the table.</p>
-            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$17.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}>/month</span></div>
-            <div style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '1rem' }}>or $179/year</div>
+            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$15.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}>/month</span></div>
+            <div style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '1rem' }}>or ${creatorBundleYearlyPrice}/year</div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {['ContentCraft Creator', 'VCS Game Master', 'Best value if you use both every month', 'Best place to start'].map((item) => (
+              {['ContentCraft Creator', 'Virtual Combat Simulator Game Master', 'Best value every month', 'Best place to start'].map((item) => (
                 <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', color: '#374151' }}>
                   {check('#4c1d95')}
                   {item}
@@ -344,10 +344,10 @@ export default function PricingPage() {
           <div style={{ background: 'white', borderRadius: '20px', padding: '2rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
             <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Bundle</div>
             <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Strategy Bundle</h3>
-            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle that opens up all launch content in Gravity and Four Star General.</p>
+            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle that opens up all content in Gravity and Four Star General.</p>
             <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$29.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}> one-time</span></div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {['All launch Gravity unlocks', 'All launch Four Star General unlocks', 'Buy once, keep it', 'Best pick if you want both strategy games fully opened up'].map((item) => (
+              {['All Gravity unlocks', 'All Four Star General unlocks', 'Buy it once: get all founder unlocks + special founder captain character', 'Best pick'].map((item) => (
                 <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', color: '#374151' }}>
                   {check('#1e3a8a')}
                   {item}
