@@ -8,33 +8,32 @@
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
-import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function ContentCraftPage() {
   const coreFeatures = [
     {
-      title: 'AI-Powered Writing Assistant',
-      description: 'Work with OpenAI, Anthropic Claude, or Google Gemini to generate, edit, and enhance your content.',
+      title: 'AI Writing Assistant',
+      description: 'Work with OpenAI, Anthropic Claude, or Google Gemini to draft, revise, brainstorm, refine, and expand with your project context in view.',
     },
     {
-      title: 'Canon Management & Consistency',
-      description: 'Automatically track characters, locations, items, and relationships across your entire work.',
+      title: 'Lore & Continuity Tracking',
+      description: 'Track characters, locations, items, factions, timelines, and relationships across your work.',
     },
     {
-      title: 'Smart Organization',
-      description: 'Hierarchical project structure keeps chapters, scenes, characters, and research organized.',
+      title: 'Structured Project Space',
+      description: 'Keep chapters, scenes, notes, research, story elements, and world details organized in one connected studio.',
     },
     {
       title: 'Version History & Rollback',
-      description: 'See every edit, compare versions, and roll back changes with full revision history.',
+      description: 'Compare edits, revisit earlier drafts, and restore previous versions with confidence.',
     },
     {
       title: 'Relationship Mapping',
-      description: 'Visualize and manage connections between characters, locations, and plot elements.',
+      description: 'See how people, places, groups, and plot threads connect across the world of your project.',
     },
     {
       title: 'Export & Integration',
-      description: 'Export to standard formats or integrate with your existing writing workflow.',
+      description: 'Export your work in standard formats and fit ContentCraft into the creative process you already use.',
     },
   ];
 
@@ -47,10 +46,10 @@ export default function ContentCraftPage() {
   };
 
   const dndFeatures = [
-    { title: 'Complete D&D 5e Stat Blocks', description: 'Generate balanced NPCs, monsters, and encounters with proper formatting.', iconType: 'sword' },
-    { title: 'Campaign Canon Tracking', description: 'Never contradict yourself—track every NPC, location, item, and event automatically.', iconType: 'book' },
-    { title: 'NPC Relationship Networks', description: 'Characters automatically know each other and form living social networks.', iconType: 'network' },
-    { title: 'Encounter Building', description: 'AI-generated encounters balanced for your party level and composition.', iconType: 'encounter' },
+    { title: 'Complete Stat Blocks', description: 'Generate NPCs, monsters, and encounter-ready content with clean, usable structure.', iconType: 'sword' },
+    { title: 'Campaign Lore Tracking', description: 'Keep track of who matters, what happened, where it happened, and what the players still do not know.', iconType: 'book' },
+    { title: 'Relationship Networks', description: 'See alliances, rivalries, loyalties, betrayals, and social connections across your setting.', iconType: 'network' },
+    { title: 'Encounter Building', description: 'Generate encounters shaped by party level, campaign tone, and the needs of the moment.', iconType: 'encounter' },
   ];
 
   return (
@@ -88,7 +87,7 @@ export default function ContentCraftPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                AI-POWERED WRITING PLATFORM
+                AI-WRITING STUDIO
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -98,7 +97,7 @@ export default function ContentCraftPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Your Writing Studio. Powered by AI.
+                A Creative Studio With Memory
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -106,12 +105,11 @@ export default function ContentCraftPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                ContentCraft is the intelligent writing platform for novelists, screenwriters, and worldbuilders.
-                Organize your work, maintain consistency, and harness AI without losing your creative vision.
+                ContentCraft brings writing, lore, continuity, and AI together in one place—so your novel, screenplay, or campaign world stays organized, consistent, and alive as it grows.
               </p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <LaunchAppButton
-                  appSlug="contentcraft"
+              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+                <SubscribeButton
+                  planId="contentcraft"
                   style={{
                     background: 'white',
                     color: '#a855f7',
@@ -124,13 +122,26 @@ export default function ContentCraftPage() {
                     textAlign: 'center',
                     boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
                     transition: 'all 0.3s ease',
-                    maxWidth: '250px',
                     border: 'none',
                     cursor: 'pointer',
                   }}
                 >
-                  Launch App →
-                </LaunchAppButton>
+                  Start Your Free Trial
+                </SubscribeButton>
+                <Link href="/pricing" style={{
+                  background: 'rgba(255, 255, 255, 0.16)',
+                  color: 'white',
+                  padding: '1rem 2.5rem',
+                  borderRadius: '50px',
+                  fontSize: '1.125rem',
+                  fontWeight: '700',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center',
+                  border: '1px solid rgba(255, 255, 255, 0.3)'
+                }}>
+                  See Creator Plan
+                </Link>
               </div>
             </div>
             <div style={{
@@ -141,32 +152,32 @@ export default function ContentCraftPage() {
               border: '2px solid rgba(168, 85, 247, 0.2)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Like Scrivener. But Smarter.
+                For projects that outgrow documents, folders, and stateless AI
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Organize novels, scripts, and complex worldbuilding projects</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>A serious writing space for serious projects</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>AI integration that remembers your characters and world</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>AI that works within the world you are building</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Automatic consistency checking across your entire work</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Lore and continuity tracking across your project</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Version history and change tracking built-in</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Revision history that protects the work as it evolves</span>
                 </li>
               </ul>
             </div>
@@ -184,90 +195,39 @@ export default function ContentCraftPage() {
               color: '#1a202c',
               marginBottom: '1rem'
             }}>
-              Writing Tools Are Broken. We Fixed Them.
+              Built for work that needs memory, structure, and continuity
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', maxWidth: '900px', margin: '0 auto'}}>
-              Traditional writing ignores the power of AI to help writers do the research, preparation, and organziation. Sure, AI can help with the creative aspects as well, but you decide when to use it. One problem I had with using AI tools forget. Maybe one day they will remember everything between sessions. But right now you need both—
-              organized project content AND intelligent content generation that actually remembers the universe you create.
+              Most writing tools handle structure well but know nothing about the world behind the work. Most AI tools generate quickly but lose track of the details that matter. ContentCraft brings those two strengths together, so your project stays organized and your AI-assisted writing stays grounded in the world you are building.
             </p>
           </div>
 
           <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-            gap: '2rem'
+            background: 'linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%)',
+            borderRadius: '24px',
+            padding: '3rem',
+            border: '2px solid #e9d5ff',
+            maxWidth: '980px',
+            margin: '0 auto'
           }}>
-            <div style={{
-              background: 'linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%)',
-              borderRadius: '20px',
-              padding: '2.5rem',
-              border: '2px solid #e9d5ff'
-            }}>
-              <h3 style={{fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem'}}>
-                The Old Way: Content organizing apps.
-              </h3>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <div>
-                  <p style={{fontSize: '0.875rem', fontWeight: '600', color: '#059669', marginBottom: '0.25rem'}}>
-                    Great at:
-                  </p>
-                  <p style={{color: '#4b5563'}}>Organization, structure, and project management</p>
-                </div>
-                <div>
-                  <p style={{fontSize: '0.875rem', fontWeight: '600', color: '#dc2626', marginBottom: '0.25rem'}}>
-                    Missing:
-                  </p>
-                  <p style={{color: '#4b5563'}}>AI integration. Consistency checking. Automatic canon tracking.</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{
-              background: 'linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%)',
-              borderRadius: '20px',
-              padding: '2.5rem',
-              border: '2px solid #e9d5ff'
-            }}>
-              <h3 style={{fontSize: '1.25rem', fontWeight: '700', color: '#1a202c', marginBottom: '1.5rem'}}>
-                The New Way: AI tools
-              </h3>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <div>
-                  <p style={{fontSize: '0.875rem', fontWeight: '600', color: '#059669', marginBottom: '0.25rem'}}>
-                    Great at:
-                  </p>
-                  <p style={{color: '#4b5563'}}>Generating content quickly with AI assistance</p>
-                </div>
-                <div>
-                  <p style={{fontSize: '0.875rem', fontWeight: '600', color: '#dc2626', marginBottom: '0.25rem'}}>
-                    Missing:
-                  </p>
-                  <p style={{color: '#4b5563'}}>Consistent memory. Flexible organization. Checks for contradictions.</p>
-                </div>
-              </div>
-            </div>
-
-            <div style={{
-              background: 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-              borderRadius: '20px',
-              padding: '2.5rem',
-              border: '2px solid #a855f7',
-              color: 'white'
-            }}>
-              <h3 style={{fontSize: '1.25rem', fontWeight: '700', marginBottom: '1.5rem'}}>
-                ContentCraft: Both
-              </h3>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <div>
-                  <p style={{fontSize: '0.875rem', fontWeight: '600', marginBottom: '0.25rem'}}>
-                    You get:
-                  </p>
-                  <p style={{color: 'rgba(255, 255, 255, 0.95)'}}>
-                    Flexible organization + AI that remembers your entire world + automatic consistency checking
-                  </p>
-                </div>
-              </div>
-            </div>
+            <h3 style={{fontSize: '1.5rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem', textAlign: 'center'}}>
+              Why ContentCraft Works
+            </h3>
+            <ul style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', listStyle: 'none', padding: 0, margin: 0}}>
+              {[
+                'A serious writing space for serious projects',
+                'AI that works within the world you are building',
+                'Lore and continuity tracking across your project',
+                'Revision history that protects the work as it evolves'
+              ].map((item) => (
+                <li key={item} style={{display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#4b5563'}}>
+                  <svg style={{width: '22px', height: '22px', color: '#a855f7', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                  </svg>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
           </div>
         </div>
       </section>
@@ -277,10 +237,10 @@ export default function ContentCraftPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Professional Writing Features
+              Professional Creative Features
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              Everything you need to write novels, screenplays, and complex narrative works
+              Everything you need to write, refine, expand, and manage ambitious narrative work
             </p>
           </div>
 
@@ -318,6 +278,93 @@ export default function ContentCraftPage() {
       {/* D&D Special Features Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+          <div style={{
+            display: 'grid',
+            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gap: '2rem',
+            marginBottom: '4rem',
+            alignItems: 'start'
+          }}>
+            <div style={{
+              background: 'white',
+              borderRadius: '24px',
+              padding: '2.5rem',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+              border: '1px solid #f3e8ff'
+            }}>
+              <div style={{fontSize: '0.85rem', fontWeight: '800', color: '#a855f7', letterSpacing: '0.08em', marginBottom: '1rem'}}>
+                FOR NOVELISTS, SCREENWRITERS, AND WORLDBUILDERS
+              </div>
+              <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
+                Built for Long-Form Fiction
+              </h2>
+              <p style={{fontSize: '1.1rem', color: '#6b7280', marginBottom: '1.25rem', lineHeight: 1.7}}>
+                ContentCraft is designed for creators working on projects with depth: novels, series, scripts, settings, and story worlds that grow more complex over time.
+              </p>
+              <p style={{fontSize: '1.05rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: 1.7}}>
+                Instead of scattering your manuscript, notes, world lore, and revisions across disconnected tools, you can keep everything in one place and work with AI that stays grounded in the project itself.
+              </p>
+              <div style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.875rem'}}>Use ContentCraft to:</div>
+              <ul style={{display: 'flex', flexDirection: 'column', gap: '0.875rem', padding: 0, margin: 0, listStyle: 'none'}}>
+                {[
+                  'manage long-form manuscripts and multi-book series',
+                  'maintain story bibles and world lore',
+                  'track character arcs, locations, items, and timelines',
+                  'reduce contradictions during drafting and revision',
+                  'brainstorm and revise with more project context in view'
+                ].map((item) => (
+                  <li key={item} style={{display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#4b5563'}}>
+                    <svg style={{width: '20px', height: '20px', color: '#a855f7', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <p style={{fontSize: '1rem', color: '#6b7280', margin: '1.5rem 0 0', lineHeight: 1.7}}>
+                Whether you are writing a standalone novel or building a world across multiple books, ContentCraft helps you protect continuity without slowing down the creative process.
+              </p>
+            </div>
+
+            <div style={{
+              background: 'white',
+              borderRadius: '24px',
+              padding: '2.5rem',
+              boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
+              border: '1px solid #f3e8ff'
+            }}>
+              <div style={{fontSize: '0.85rem', fontWeight: '800', color: '#a855f7', letterSpacing: '0.08em', marginBottom: '1rem'}}>
+                FOR GAME MASTERS AND D&D WORLDBUILDERS
+              </div>
+              <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
+                Built for Campaign Worlds
+              </h2>
+              <p style={{fontSize: '1.1rem', color: '#6b7280', marginBottom: '1.25rem', lineHeight: 1.7}}>
+                ContentCraft is also built for game masters running deep campaigns, layered settings, and evolving casts of characters. It helps you keep campaign lore coherent while creating new material faster.
+              </p>
+              <p style={{fontSize: '1.05rem', color: '#6b7280', marginBottom: '1.5rem', lineHeight: 1.7}}>
+                From NPCs and factions to encounter ideas and world events, ContentCraft gives you a connected place to build your setting and generate game-ready material without losing track of what is already true in your world.
+              </p>
+              <div style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.875rem'}}>Use ContentCraft to:</div>
+              <ul style={{display: 'flex', flexDirection: 'column', gap: '0.875rem', padding: 0, margin: 0, listStyle: 'none'}}>
+                {[
+                  'track NPCs, factions, locations, items, and secrets',
+                  'generate stat blocks and campaign content faster',
+                  'maintain continuity across long-running campaigns',
+                  'map character relationships and faction dynamics',
+                  'build encounters shaped around your party and setting'
+                ].map((item) => (
+                  <li key={item} style={{display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#4b5563'}}>
+                    <svg style={{width: '20px', height: '20px', color: '#a855f7', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
+                    </svg>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <div style={{
               display: 'inline-block',
@@ -329,14 +376,13 @@ export default function ContentCraftPage() {
               fontWeight: '600',
               marginBottom: '1rem'
             }}>
-                GAME MASTERS SPECIAL
+                FOR GAME MASTERS AND D&D WORLDBUILDERS
             </div>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              The D&D Differentiator
+              D&D 5e Support That Actually Fits Campaign Prep
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', maxWidth: '900px', margin: '0 auto'}}>
-              ContentCraft is the only writing platform with native D&D 5e integration. Generate complete stat blocks,
-              balanced encounters, and campaign content—all while maintaining perfect consistency with your world.
+              The more your campaign grows, the more valuable connected memory becomes. ContentCraft helps you prep faster without losing continuity.
             </p>
           </div>
 
@@ -370,24 +416,14 @@ export default function ContentCraftPage() {
             border: '2px solid #e9d5ff'
           }}>
             <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem', textAlign: 'center'}}>
-              From Idea to Stat Block in 60 Seconds
+              From First Idea to Finished Draft, Lore Entry, or Stat Block
             </h3>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '2rem'}}>
-              <div style={{background: '#faf5ff', padding: '1.5rem', borderRadius: '10px', borderLeft: '4px solid #a855f7'}}>
-                <p style={{fontWeight: '600', color: '#6b21a8', marginBottom: '0.5rem'}}>Traditional Method:</p>
-                <p style={{fontSize: '0.875rem', color: '#4b5563'}}>
-                  45 minutes: Look up rules → copy/paste → format → cross-reference rules → fix contradictions
-                </p>
-              </div>
-              <div style={{background: '#f0fdf4', padding: '1.5rem', borderRadius: '10px', borderLeft: '4px solid #22c55e'}}>
-                <p style={{fontWeight: '600', color: '#166534', marginBottom: '0.5rem'}}>ContentCraft:</p>
-                <p style={{fontSize: '0.875rem', color: '#4b5563'}}>
-                  1 minute: Describe what you need → complete CR-appropriate stat block, properly formatted, canon-consistent, ready to use
-                </p>
-              </div>
-            </div>
-            <p style={{textAlign: 'center', fontSize: '1.5rem', fontWeight: '700', color: '#a855f7', marginTop: '2rem'}}>
-              Save 75% of prep time. Never contradict yourself again.
+            <p style={{fontSize: '1.125rem', color: '#4b5563', textAlign: 'center', marginBottom: '1rem'}}>Creative momentum matters. So does continuity.</p>
+            <p style={{fontSize: '1rem', color: '#6b7280', textAlign: 'center', maxWidth: '920px', margin: '0 auto 1rem', lineHeight: 1.8}}>
+              Without a connected system, it is easy to lose time moving between notes, research, drafts, rules references, and disconnected AI chats. ContentCraft brings those pieces together, so you can move from idea to usable output with far less friction.
+            </p>
+            <p style={{fontSize: '1rem', color: '#6b7280', textAlign: 'center', maxWidth: '920px', margin: '0 auto', lineHeight: 1.8}}>
+              Whether you are revising a chapter, expanding a setting, outlining a faction, or building an encounter, the work stays connected to the larger world it belongs to.
             </p>
           </div>
         </div>
@@ -398,7 +434,7 @@ export default function ContentCraftPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Built For Creators
+              Why Creators Choose ContentCraft
             </h2>
           </div>
 
@@ -414,38 +450,38 @@ export default function ContentCraftPage() {
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Perfect For:
+                Ideal for:
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Novelists writing complex multi-book series</span>
+                  <span style={{color: '#4b5563'}}>A creative studio built for complex projects</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Screenwriters managing scripts and worldbuilding</span>
+                  <span style={{color: '#4b5563'}}>AI that works with your world instead of outside it</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Game masters running long-term campaigns</span>
+                  <span style={{color: '#4b5563'}}>Continuity support for stories, settings, and campaigns</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Worldbuilders creating detailed fictional universes</span>
+                  <span style={{color: '#4b5563'}}>Cloud access, version history, and connected project memory</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Content creators who need AI that remembers context</span>
+                  <span style={{color: '#4b5563'}}>A modern experience built for today’s creators</span>
                 </li>
               </ul>
             </div>
@@ -457,40 +493,11 @@ export default function ContentCraftPage() {
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Why Switch from Scrivener:
+                For projects that need depth
               </h3>
-              <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
-                <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '20px', height: '20px', color: '#ec4899', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span style={{color: '#4b5563'}}>AI integration that actually understands your project</span>
-                </li>
-                <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '20px', height: '20px', color: '#ec4899', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span style={{color: '#4b5563'}}>Automatic consistency checking catches contradictions</span>
-                </li>
-                <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '20px', height: '20px', color: '#ec4899', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span style={{color: '#4b5563'}}>Cloud-based: access from anywhere, automatic backups</span>
-                </li>
-                <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '20px', height: '20px', color: '#ec4899', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span style={{color: '#4b5563'}}>Living canon database that grows with your work</span>
-                </li>
-                <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '20px', height: '20px', color: '#ec4899', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                  </svg>
-                  <span style={{color: '#4b5563'}}>Modern interface designed for 2025, not 2005</span>
-                </li>
-              </ul>
+              <p style={{color: '#6b7280', lineHeight: 1.8, margin: 0}}>
+                ContentCraft is a creative studio for novelists, screenwriters, game masters, and worldbuilders who need more than a blank page. Bring writing, lore, continuity, and AI together in one place without giving up creative control.
+              </p>
             </div>
           </div>
         </div>
@@ -526,7 +533,7 @@ export default function ContentCraftPage() {
             marginBottom: '1.5rem',
             textShadow: '0 4px 20px rgba(0,0,0,0.3)'
           }}>
-            Write Smarter. Create Faster. Stay Consistent.
+            Write With More Control. Build With More Depth.
           </h2>
           <p style={{
             fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -534,7 +541,7 @@ export default function ContentCraftPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with a 14-day free trial, then upgrade to Creator when you need unlimited projects and full canon tools.
+            Start with a 14-day free trial, then upgrade to Creator when you want unlimited projects, full lore tools, and deeper AI-assisted creation.
           </p>
           <SubscribeButton planId="contentcraft" style={{
             background: 'white',
