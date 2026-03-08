@@ -322,24 +322,45 @@ export default function VirtualCombatSimulatorPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start free as a Player, then upgrade to Game Master when you need custom monsters, custom rulesets, and private campaign hosting.
+            Start free as a Player. Upgrade to Game Master when you need custom monsters, custom rulesets, and private campaign hosting.
           </p>
-          <SubscribeButton planId="virtual-combat-simulator" style={{
-            background: 'white',
-            color: '#ef4444',
-            padding: '1.25rem 3rem',
-            borderRadius: '50px',
-            fontSize: '1.25rem',
-            fontWeight: '700',
-            textDecoration: 'none',
-            display: 'inline-block',
-            boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-            transition: 'all 0.3s ease',
-            border: 'none',
-            cursor: 'pointer'
-          }}>
-            Upgrade to Game Master
-          </SubscribeButton>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <LaunchAppButton
+              appSlug="virtual-combat-simulator"
+              style={{
+                background: 'rgba(255, 255, 255, 0.12)',
+                color: 'white',
+                padding: '1.1rem 2.5rem',
+                borderRadius: '50px',
+                fontSize: '1.1rem',
+                fontWeight: '700',
+                textDecoration: 'none',
+                display: 'inline-block',
+                boxShadow: '0 8px 30px rgba(0,0,0,0.25)',
+                transition: 'all 0.3s ease',
+                border: '1px solid rgba(255, 255, 255, 0.35)',
+                cursor: 'pointer'
+              }}
+            >
+              Launch Free Player
+            </LaunchAppButton>
+            <SubscribeButton planId="virtual-combat-simulator" style={{
+              background: 'white',
+              color: '#ef4444',
+              padding: '1.25rem 3rem',
+              borderRadius: '50px',
+              fontSize: '1.25rem',
+              fontWeight: '700',
+              textDecoration: 'none',
+              display: 'inline-block',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+              transition: 'all 0.3s ease',
+              border: 'none',
+              cursor: 'pointer'
+            }}>
+              Upgrade to Game Master
+            </SubscribeButton>
+          </div>
         </div>
       </section>
     </div>
