@@ -75,6 +75,7 @@ export default function Footer() {
           <div>
             <p style={headingStyle}>Company</p>
             <Link href="/pricing" style={linkStyle}>Pricing</Link>
+            <Link href="/about" style={linkStyle}>About</Link>
             <Link href="/blog" style={linkStyle}>Blog</Link>
             <Link href="/account" style={linkStyle}>My Account</Link>
             <Link href="/sign-in" style={linkStyle}>Sign In</Link>

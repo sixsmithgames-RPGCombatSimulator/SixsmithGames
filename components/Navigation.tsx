@@ -178,6 +178,13 @@ export default function Navigation() {
               Pricing
             </Link>
 
+            <Link href="/about" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              About
+            </Link>
+
             <Link href="/blog" style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
               onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
@@ -281,6 +288,11 @@ export default function Navigation() {
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             Pricing
+          </Link>
+          <Link href="/about" onClick={() => setMobileMenuOpen(false)}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            About
           </Link>
           <Link href="/blog" onClick={() => setMobileMenuOpen(false)}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
