@@ -7,7 +7,6 @@
 
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
-import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function GravityPage() {
@@ -446,9 +445,9 @@ export default function GravityPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Join strategists who play serious games on their own schedule.
+            Start with the free core game, then unlock captains, crew packs, and ship designs when you want new playstyles.
           </p>
-          <SubscribeButton style={{
+          <Link href="/pricing" style={{
             background: 'white',
             color: '#3b82f6',
             padding: '1.25rem 3rem',
@@ -462,8 +461,8 @@ export default function GravityPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Take Your First Turn
-          </SubscribeButton>
+            View Unlock Options
+          </Link>
         </div>
       </section>
     </div>

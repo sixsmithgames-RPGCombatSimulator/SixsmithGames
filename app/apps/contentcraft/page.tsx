@@ -534,9 +534,9 @@ export default function ContentCraftPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Join novelists, screenwriters, and game masters who've transformed their creative workflow.
+            Start with a 14-day free trial, then upgrade to Creator when you need unlimited projects and full canon tools.
           </p>
-          <SubscribeButton style={{
+          <SubscribeButton planId="contentcraft" style={{
             background: 'white',
             color: '#a855f7',
             padding: '1.25rem 3rem',
@@ -550,7 +550,7 @@ export default function ContentCraftPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Start Creating with ContentCraft
+            Start Your Free Trial
           </SubscribeButton>
         </div>
       </section>

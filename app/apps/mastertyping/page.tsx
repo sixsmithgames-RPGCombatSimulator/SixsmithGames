@@ -153,7 +153,7 @@ export default function MasterTypingPage() {
                   <svg style={{width: '24px', height: '24px', color: '#22c55e', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>One purchase, unlimited practice—no subscriptions</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Free access for signed-in users—no subscription required</span>
                 </li>
               </ul>
             </div>
@@ -347,7 +347,7 @@ export default function MasterTypingPage() {
         <div style={{maxWidth: '900px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Stop Paying Monthly for Typing Practice
+              Typing Practice Should Not Be Paywalled
             </h2>
           </div>
           <div style={{
@@ -365,9 +365,9 @@ export default function MasterTypingPage() {
               </div>
               <div>
                 <p style={{fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.5rem'}}>MasterTyping</p>
-                <p style={{fontSize: '3rem', fontWeight: '900', color: '#22c55e', marginBottom: '0.5rem'}}>Included</p>
-                <p style={{fontSize: '0.875rem', color: '#6b7280'}}>in subscription</p>
-                <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1a202c', marginTop: '1rem'}}>+ 4 More Apps</p>
+                <p style={{fontSize: '3rem', fontWeight: '900', color: '#22c55e', marginBottom: '0.5rem'}}>FREE</p>
+                <p style={{fontSize: '0.875rem', color: '#6b7280'}}>for any signed-in user</p>
+                <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1a202c', marginTop: '1rem'}}>Unlimited practice</p>
               </div>
             </div>
           </div>
@@ -414,7 +414,7 @@ export default function MasterTypingPage() {
           }}>
             Join families and teachers who've made typing practice fun with MasterTyping.
           </p>
-          <SubscribeButton style={{
+          <SubscribeButton planId="mastertyping" signInLabel="Sign Up" style={{
             background: 'white',
             color: '#22c55e',
             padding: '1.25rem 3rem',
@@ -428,7 +428,7 @@ export default function MasterTypingPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Start Getting Better and Faster at Typing Now
+            Sign up and start typing
           </SubscribeButton>
         </div>
       </section>

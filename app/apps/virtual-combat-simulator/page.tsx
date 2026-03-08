@@ -322,9 +322,9 @@ export default function VirtualCombatSimulatorPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Join game masters who've transformed their D&D sessions with VirtualCombatSimulator.
+            Start free as a Player, then upgrade to Game Master when you need custom monsters, custom rulesets, and private campaign hosting.
           </p>
-          <SubscribeButton style={{
+          <SubscribeButton planId="virtual-combat-simulator" style={{
             background: 'white',
             color: '#ef4444',
             padding: '1.25rem 3rem',
@@ -338,7 +338,7 @@ export default function VirtualCombatSimulatorPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Subscribe Now
+            Upgrade to Game Master
           </SubscribeButton>
         </div>
       </section>

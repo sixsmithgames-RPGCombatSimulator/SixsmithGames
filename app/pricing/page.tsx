@@ -10,52 +10,60 @@ import Link from 'next/link';
 import SubscribeButton from '@/components/SubscribeButton';
 import ModernBackground from '@/components/ModernBackground';
 
-const individualPlans = [
+const creatorPlans = [
   {
     slug: 'contentcraft',
     name: 'ContentCraft',
     icon: '/icons/contentcraft.png',
     price: 9.99,
+    yearlyPrice: 99,
     color: '#7c3aed',
     gradient: 'linear-gradient(135deg, #7c3aed, #ec4899)',
-    description: 'AI-powered content creation for game masters and storytellers.',
-    features: ['Unlimited projects', 'AI writing assistant', 'Canon management', 'Export tools'],
+    description: 'Creator plan for writers, game masters, and worldbuilders using AI-enabled workflows.',
+    features: ['Unlimited projects', 'Canon management', 'Relationship tracking', 'Templates + workflows'],
+    secondaryFeatures: ['BYOK support', 'Export tools', '100 included monthly credits', 'Credits expire after 60 days if included'],
+    trial: ['1 project', 'Limited export', 'Limited canon tools', 'Sample AI credits'],
   },
   {
     slug: 'virtual-combat-simulator',
     name: 'VirtualCombatSimulator',
     icon: '/icons/vcs.png',
     price: 9.99,
+    yearlyPrice: 99,
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
-    description: 'D&D battle management with virtual tabletop and real-time combat.',
-    features: ['Battle rooms', 'Character sheets', 'Ruleset editor', 'Real-time sync'],
+    description: 'Game Master plan for advanced encounter building, custom content, and private campaigns.',
+    features: ['Unlimited active games', 'Custom monsters', 'Custom rulesets', 'Campaign libraries'],
+    secondaryFeatures: ['Encounter templates', 'Real-time sync', 'Imports/exports', 'Map uploads'],
+    freePlan: ['Join unlimited games', 'Create 1 sandbox room or 1 active game', 'Up to 4 custom characters', 'SRD/basic rules content'],
   },
+];
+
+const freeApps = [
   {
     slug: 'gravity',
     name: 'Gravity',
     icon: '/icons/gravity.png',
-    price: 1.99,
     color: '#2563eb',
     gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
-    description: 'Asynchronous multiplayer tactical space survival board game.',
-    features: ['Multiplayer matches', 'Fleet management', 'Strategic campaigns', 'Leaderboards'],
+    description: 'Free core async strategy game with permanent one-time unlock packs and bundles.',
+    freeCore: ['Starter captain', 'Starter crew set', 'Starter upgrade pool', '3 starter ship designs'],
+    monetization: ['Captains from $2.99', 'Crew packs from $1.99', 'Doctrine packs from $2.99', 'Founder Collection $24.99'],
   },
   {
     slug: 'fourstargeneral',
     name: 'Four Star General',
     icon: '/icons/fourstargeneral.png',
-    price: 1.99,
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f5c46d)',
-    description: 'WWII strategic and tactical war simulation with deep campaign play.',
-    features: ['Campaign missions', 'Unit management', 'Tactical combat', 'General roster'],
+    description: 'Free core WWII strategy game with one-time unlocks for branches, factions, campaigns, and scenarios.',
+    freeCore: ['Tutorial', '2 starter colleges', '2 starter factions', 'Core unit roster'],
+    monetization: ['Colleges from $2.99', 'Factions from $2.99', 'Branch packs from $1.99', 'Complete Launch Roster $24.99'],
   },
   {
     slug: 'mastertyping',
     name: 'MasterTyping',
     icon: '/icons/mastertyping.png',
-    price: 0,
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #84cc16)',
     description: 'FREE game-based typing practice with K-12 vocabulary and progress tracking.',
@@ -64,11 +72,9 @@ const individualPlans = [
 ];
 
 export default function PricingPage() {
-  const bundlePrice = 22.99;
-  const bundleOriginal = bundlePrice + 5;
-  const totalIndividual = individualPlans.reduce((sum, plan) => sum + plan.price, 0);
-  const totalIndividualOriginal = individualPlans.reduce((sum, plan) => sum + plan.price + 5, 0);
-  const savings = totalIndividual - bundlePrice;
+  const creatorBundlePrice = 17.99;
+  const creatorBundleYearlyPrice = 179;
+  const creatorBundleSavings = creatorPlans.reduce((sum, plan) => sum + plan.price, 0) - creatorBundlePrice;
 
   const betaLabel = (slug: string) => {
     if (slug === 'contentcraft' || slug === 'virtual-combat-simulator') return 'Beta';
@@ -90,10 +96,10 @@ export default function PricingPage() {
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.15)', zIndex: 1 }} />
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <h1 style={{ fontSize: 'clamp(2.5rem, 7vw, 4rem)', fontWeight: '900', color: 'white', marginBottom: '1rem', textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-            Simple, Transparent Pricing
+            Pricing That Matches The Product
           </h1>
           <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.375rem)', color: 'rgba(255,255,255,0.92)', margin: 0 }}>
-            Subscribe to individual apps or save with the All-Access Bundle.
+            Creator tools use recurring plans. Strategy games use free core access plus one-time unlocks.
           </p>
         </div>
       </section>
@@ -110,16 +116,16 @@ export default function PricingPage() {
           <div style={{ position: 'absolute', top: '-40px', right: '-40px', width: '200px', height: '200px', borderRadius: '50%', background: 'rgba(255,255,255,0.05)' }} />
           <div style={{ flex: '1 1 340px' }}>
             <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', background: 'rgba(255,255,255,0.15)', borderRadius: '999px', padding: '0.3rem 1rem', marginBottom: '1rem' }}>
-              <span style={{ fontSize: '0.8rem', fontWeight: '700', color: '#fde68a', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Best Value</span>
+              <span style={{ fontSize: '0.8rem', fontWeight: '700', color: '#fde68a', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Hero Offer</span>
             </div>
             <h2 style={{ color: 'white', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '900', margin: '0 0 0.75rem' }}>
-              All-Access Bundle
+              Creator Bundle
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.0625rem', margin: '0 0 1.5rem', lineHeight: 1.6 }}>
-              All five apps for one low price. Save ${savings.toFixed(2)}/month vs. subscribing individually.
+              ContentCraft Creator plus VCS Game Master. Save ${creatorBundleSavings.toFixed(2)}/month and keep your recurring offer focused on your strongest creator tools.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-              {individualPlans.map(p => (
+              {creatorPlans.map(p => (
                 <span key={p.slug} style={{ background: 'rgba(255,255,255,0.12)', color: 'white', borderRadius: '999px', padding: '0.3rem 0.875rem', fontSize: '0.875rem', fontWeight: '600', display: 'inline-flex', alignItems: 'center', gap: '0.375rem' }}>
                   <Image src={p.icon} alt={p.name} width={16} height={16} style={{ borderRadius: '3px', objectFit: 'cover' }} /> {p.name}
                 </span>
@@ -127,50 +133,38 @@ export default function PricingPage() {
             </div>
           </div>
           <div style={{ textAlign: 'center', flex: '0 0 auto' }}>
-            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '8px' }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '4px' }}>
-                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', marginTop: '0.5rem' }}>$</span>
-                <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>{bundlePrice.toFixed(2)}</span>
-                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
-              </div>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '4px' }}>
-                <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '0.9rem', textDecoration: 'line-through', textDecorationColor: '#ef4444' }}>
-                  ${bundleOriginal.toFixed(2)}
-                </span>
-              </div>
+            <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'center', gap: '4px' }}>
+              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.5rem', marginTop: '0.5rem' }}>$</span>
+              <span style={{ color: 'white', fontSize: 'clamp(3.5rem, 8vw, 5rem)', fontWeight: '900', lineHeight: 1 }}>{creatorBundlePrice.toFixed(2)}</span>
+              <span style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1.25rem', alignSelf: 'flex-end', marginBottom: '0.5rem' }}>/mo</span>
             </div>
             <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', margin: '0.25rem 0 1.5rem' }}>
-              vs. ${totalIndividual.toFixed(2)} if purchased separately (orig ${totalIndividualOriginal.toFixed(2)})
+              or ${creatorBundleYearlyPrice}/year
             </p>
-            <SubscribeButton planId="bundle" style={{
+            <Link href="/apps/contentcraft" style={{
               background: 'white', color: '#4c1d95',
               padding: '1rem 2.5rem', borderRadius: '50px',
-              fontSize: '1.0625rem', fontWeight: '800', border: 'none', cursor: 'pointer',
-              boxShadow: '0 8px 24px rgba(0,0,0,0.25)', whiteSpace: 'nowrap',
+              fontSize: '1.0625rem', fontWeight: '800', textDecoration: 'none',
+              boxShadow: '0 8px 24px rgba(0,0,0,0.25)', whiteSpace: 'nowrap', display: 'inline-block',
             }}>
-              Get All-Access — $22.99/mo
-            </SubscribeButton>
-            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', marginTop: '0.75rem' }}>Cancel anytime</p>
+              Explore Creator Plans
+            </Link>
+            <p style={{ color: 'rgba(255,255,255,0.5)', fontSize: '0.8rem', marginTop: '0.75rem' }}>All Access is no longer the hero offer</p>
           </div>
         </div>
       </section>
 
-      {/* Individual plans */}
-      <section style={{ padding: '60px 2rem 80px', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Creator plans */}
+      <section style={{ padding: '60px 2rem 40px', maxWidth: '1200px', margin: '0 auto' }}>
         <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
-          Or Subscribe to Individual Apps
+          Creator Tool Plans
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
-          Only pay for what you use.
+          Recurring pricing for the products people use as ongoing workflow tools.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
-          {individualPlans.map((plan) => (
-            <div key={plan.slug} style={{
-              background: 'white', borderRadius: '20px',
-              boxShadow: '0 4px 20px rgba(0,0,0,0.08)', overflow: 'hidden',
-              display: 'flex', flexDirection: 'column',
-              border: '1px solid #f3f4f6',
-            }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.5rem' }}>
+          {creatorPlans.map((plan) => (
+            <div key={plan.slug} style={{ background: 'white', borderRadius: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid #f3f4f6' }}>
               <div style={{ background: plan.gradient, padding: '1.75rem 1.75rem 1.5rem' }}>
                 <Link href={`/apps/${plan.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
@@ -180,57 +174,147 @@ export default function PricingPage() {
                 </Link>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{plan.description}</p>
               </div>
-              <div style={{ padding: '1.5rem 1.75rem', flex: 1, display: 'flex', flexDirection: 'column', gap: '1.25rem' }}>
-                {plan.slug === 'mastertyping' ? (
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
-                    <span style={{ fontSize: '2rem', fontWeight: '900', color: '#16a34a' }}>FREE</span>
-                  </div>
-                ) : (
-                  <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
-                    <div style={{ display: 'flex', alignItems: 'baseline', gap: '4px' }}>
-                      <span style={{ fontSize: '2.25rem', fontWeight: '900', color: '#111827' }}>${plan.price.toFixed(2)}</span>
-                      <span style={{ color: '#6b7280', fontSize: '1rem' }}>/month</span>
-                    </div>
-                    <span style={{ color: '#9ca3af', fontSize: '0.95rem', textDecoration: 'line-through', textDecorationColor: '#ef4444' }}>
-                      ${(plan.price + 5).toFixed(2)}
+              <div style={{ padding: '1.5rem 1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '2.25rem', fontWeight: '900', color: '#111827' }}>${plan.price.toFixed(2)}</span>
+                  <span style={{ color: '#6b7280', fontSize: '1rem' }}>/month</span>
+                  <span style={{ color: '#6b7280', fontSize: '0.95rem' }}>or ${plan.yearlyPrice}/year</span>
+                  {betaLabel(plan.slug) && (
+                    <span style={{ background: '#fef3c7', color: '#b45309', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
+                      {betaLabel(plan.slug)}
                     </span>
-                    {betaLabel(plan.slug) && (
-                      <span style={{ background: '#fef3c7', color: '#b45309', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
-                        {betaLabel(plan.slug)}
-                      </span>
-                    )}
+                  )}
+                </div>
+
+                {'trial' in plan && plan.trial ? (
+                  <div style={{ background: '#f8fafc', borderRadius: '14px', padding: '1rem', border: '1px solid #e5e7eb' }}>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#111827', marginBottom: '0.625rem' }}>Free trial includes</div>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {plan.trial.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9rem', color: '#374151' }}>
+                          {check(plan.color)}
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
                   </div>
-                )}
+                ) : null}
+
+                {'freePlan' in plan && plan.freePlan ? (
+                  <div style={{ background: '#f8fafc', borderRadius: '14px', padding: '1rem', border: '1px solid #e5e7eb' }}>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#111827', marginBottom: '0.625rem' }}>Free Player tier includes</div>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {plan.freePlan.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9rem', color: '#374151' }}>
+                          {check(plan.color)}
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
                 <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem', flex: 1 }}>
-                  {plan.features.map((f) => (
-                    <li key={f} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: '#374151' }}>
+                  {plan.features.map((item) => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: '#374151' }}>
                       {check(plan.color)}
-                      {f}
+                      {item}
+                    </li>
+                  ))}
+                  {plan.secondaryFeatures.map((item) => (
+                    <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: '#374151' }}>
+                      {check(plan.color)}
+                      {item}
                     </li>
                   ))}
                 </ul>
+
+                <SubscribeButton planId={plan.slug} style={{ background: plan.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%' }}>
+                  Subscribe — ${plan.price.toFixed(2)}/mo
+                </SubscribeButton>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* Free core games */}
+      <section style={{ padding: '20px 2rem 40px', maxWidth: '1200px', margin: '0 auto' }}>
+        <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
+          Free Core Games + One-Time Unlocks
+        </h2>
+        <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
+          No ads at launch. No premium currency. Permanent account-level unlocks built around new playstyles, not power creep.
+        </p>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
+          {freeApps.map((plan) => (
+            <div key={plan.slug} style={{ background: 'white', borderRadius: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid #f3f4f6' }}>
+              <div style={{ background: plan.gradient, padding: '1.75rem 1.75rem 1.5rem' }}>
+                <Link href={`/apps/${plan.slug}`} style={{ textDecoration: 'none', color: 'inherit' }}>
+                  <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
+                    <Image src={plan.icon} alt={plan.name} width={56} height={56} style={{ objectFit: 'cover' }} />
+                  </div>
+                  <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{plan.name}</h3>
+                </Link>
+                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{plan.description}</p>
+              </div>
+              <div style={{ padding: '1.5rem 1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
+                <div style={{ display: 'flex', alignItems: 'center', gap: '8px', flexWrap: 'wrap' }}>
+                  <span style={{ fontSize: '2rem', fontWeight: '900', color: '#111827' }}>{plan.slug === 'mastertyping' ? 'FREE' : 'FREE CORE'}</span>
+                  {betaLabel(plan.slug) && (
+                    <span style={{ background: '#fef3c7', color: '#b45309', borderRadius: '999px', padding: '0.2rem 0.6rem', fontSize: '0.75rem', fontWeight: 700 }}>
+                      {betaLabel(plan.slug)}
+                    </span>
+                  )}
+                </div>
+
+                {'freeCore' in plan && plan.freeCore ? (
+                  <div>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#111827', marginBottom: '0.625rem' }}>Free core includes</div>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {plan.freeCore.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9rem', color: '#374151' }}>
+                          {check(plan.color)}
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {'monetization' in plan && plan.monetization ? (
+                  <div>
+                    <div style={{ fontSize: '0.9rem', fontWeight: 800, color: '#111827', marginBottom: '0.625rem' }}>Unlock pricing</div>
+                    <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+                      {plan.monetization.map((item) => (
+                        <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9rem', color: '#374151' }}>
+                          {check(plan.color)}
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ) : null}
+
+                {'features' in plan && plan.features ? (
+                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.625rem', flex: 1 }}>
+                    {plan.features.map((item) => (
+                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9375rem', color: '#374151' }}>
+                        {check(plan.color)}
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                ) : <div style={{ flex: 1 }} />}
+
                 {plan.slug === 'mastertyping' ? (
-                  <SubscribeButton
-                    planId={plan.slug}
-                    signInLabel="Sign Up"
-                    style={{
-                      background: plan.gradient, color: 'white',
-                      padding: '0.875rem 1.5rem', borderRadius: '12px',
-                      fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
-                      boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
-                    }}
-                  >
+                  <SubscribeButton planId={plan.slug} signInLabel="Sign Up" style={{ background: plan.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%' }}>
                     Sign up
                   </SubscribeButton>
                 ) : (
-                  <SubscribeButton planId={plan.slug} style={{
-                    background: plan.gradient, color: 'white',
-                    padding: '0.875rem 1.5rem', borderRadius: '12px',
-                    fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer',
-                    boxShadow: `0 4px 14px rgba(0,0,0,0.18)`, width: '100%',
-                  }}>
-                    Subscribe — ${plan.price.toFixed(2)}/mo
-                  </SubscribeButton>
+                  <Link href={`/apps/${plan.slug}`} style={{ background: plan.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', textDecoration: 'none', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%', display: 'inline-block' }}>
+                    Explore Unlocks
+                  </Link>
                 )}
               </div>
             </div>
@@ -238,24 +322,55 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Bottom CTA */}
+      {/* Company bundles */}
+      <section style={{ padding: '20px 2rem 50px', maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ background: 'white', borderRadius: '20px', padding: '2rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Company Bundle</div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Creator Bundle</h3>
+            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>Includes ContentCraft Creator and VCS Game Master.</p>
+            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$17.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}>/month</span></div>
+            <div style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '1rem' }}>or $179/year</div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {['ContentCraft Creator', 'VCS Game Master', 'Best recurring value for creators', 'Hero offer for launch'].map((item) => (
+                <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', color: '#374151' }}>
+                  {check('#4c1d95')}
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          <div style={{ background: 'white', borderRadius: '20px', padding: '2rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
+            <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Company Bundle</div>
+            <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Strategy Founder Bundle</h3>
+            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One-time purchase for all launch Gravity and Four Star General unlocks.</p>
+            <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$29.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}> one-time</span></div>
+            <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
+              {['All launch Gravity unlocks', 'All launch Four Star General unlocks', 'No subscription required', 'Best fit for strategy-first players'].map((item) => (
+                <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', color: '#374151' }}>
+                  {check('#1e3a8a')}
+                  {item}
+                </li>
+              ))}
+            </ul>
+          </div>
+        </div>
+      </section>
+
+      {/* Launch guidance */}
       <section style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)', padding: '80px 2rem', textAlign: 'center' }}>
         <h2 style={{ color: 'white', fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '800', margin: '0 0 1rem', textShadow: '0 2px 12px rgba(0,0,0,0.2)' }}>
-          Ready to Play?
+          Best Launch Version
         </h2>
-        <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '1.125rem', margin: '0 0 2rem' }}>
-          Join game masters, content creators, and strategists using Sixsmith Games today.
+        <p style={{ color: 'rgba(255,255,255,0.88)', fontSize: '1.125rem', margin: '0 0 2rem', maxWidth: '860px', marginInline: 'auto' }}>
+          Launch ContentCraft Creator, VCS Free + Game Master, Gravity Free + unlocks, Four Star General Free + unlocks, and lead with Creator Bundle. Skip ads, premium currency, and overly fragmented paid tiers for now.
         </p>
-        <SubscribeButton planId="bundle" style={{
-          background: 'white', color: '#4c1d95',
-          padding: '1.125rem 3rem', borderRadius: '50px',
-          fontSize: '1.125rem', fontWeight: '800', border: 'none', cursor: 'pointer',
-          boxShadow: '0 8px 30px rgba(0,0,0,0.25)',
-        }}>
-          Get All-Access Bundle — $22.99/mo
-        </SubscribeButton>
+        <Link href="/apps/contentcraft" style={{ background: 'white', color: '#4c1d95', padding: '1.125rem 3rem', borderRadius: '50px', fontSize: '1.125rem', fontWeight: '800', textDecoration: 'none', boxShadow: '0 8px 30px rgba(0,0,0,0.25)', display: 'inline-block' }}>
+          Review Product Pages
+        </Link>
         <p style={{ color: 'rgba(255,255,255,0.6)', fontSize: '0.875rem', marginTop: '1rem' }}>
-          Cancel anytime. No long-term commitment required.
+          Checkout and Stripe plan config still need backend alignment before the full pricing model is purchasable.
         </p>
       </section>
     </div>

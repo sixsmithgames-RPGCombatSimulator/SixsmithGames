@@ -7,7 +7,6 @@
 
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
-import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function FourStarGeneralPage() {
@@ -433,9 +432,9 @@ export default function FourStarGeneralPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Lead your forces to victory in the most challenging conflict of the 20th century.
+            Start with the free core game, then unlock colleges, factions, branch packs, and campaigns when you want more strategic breadth.
           </p>
-          <SubscribeButton style={{
+          <Link href="/pricing" style={{
             background: 'white',
             color: '#f59e0b',
             padding: '1.25rem 3rem',
@@ -449,8 +448,8 @@ export default function FourStarGeneralPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Begin Your Campaign
-          </SubscribeButton>
+            View Unlock Options
+          </Link>
         </div>
       </section>
     </div>
