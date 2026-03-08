@@ -24,15 +24,15 @@ export default function ContentCraftPage() {
       description: 'Keep chapters, scenes, notes, research, story elements, and world details organized in one connected studio.',
     },
     {
-      title: 'Version History & Rollback',
+      title: 'Safe Revision Workflows',
       description: 'Compare edits, revisit earlier drafts, and restore previous versions with confidence.',
     },
     {
-      title: 'Relationship Mapping',
+      title: 'Relationship Tracking',
       description: 'See how people, places, groups, and plot threads connect across the world of your project.',
     },
     {
-      title: 'Export & Integration',
+      title: 'Flexible Export Options',
       description: 'Export your work in standard formats and fit ContentCraft into the creative process you already use.',
     },
   ];
@@ -97,7 +97,7 @@ export default function ContentCraftPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                A Creative Studio With Memory
+                A Connected Creative Studio
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -165,7 +165,7 @@ export default function ContentCraftPage() {
                   <svg style={{width: '24px', height: '24px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>AI that works within the world you are building</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>AI guided by your project’s lore and structure</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#a855f7', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -296,7 +296,7 @@ export default function ContentCraftPage() {
                 FOR NOVELISTS, SCREENWRITERS, AND WORLDBUILDERS
               </div>
               <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-                Built for Long-Form Fiction
+                Designed for Expanding Story Worlds
               </h2>
               <p style={{fontSize: '1.1rem', color: '#6b7280', marginBottom: '1.25rem', lineHeight: 1.7}}>
                 ContentCraft is designed for creators working on projects with depth: novels, series, scripts, settings, and story worlds that grow more complex over time.
@@ -310,7 +310,7 @@ export default function ContentCraftPage() {
                   'manage long-form manuscripts and multi-book series',
                   'maintain story bibles and world lore',
                   'track character arcs, locations, items, and timelines',
-                  'reduce contradictions during drafting and revision',
+                  'Helps keep project details consistent as your world grows',
                   'brainstorm and revise with more project context in view'
                 ].map((item) => (
                   <li key={item} style={{display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#4b5563'}}>
