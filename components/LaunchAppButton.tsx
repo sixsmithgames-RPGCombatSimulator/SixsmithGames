@@ -21,9 +21,10 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
 
   const email = user?.primaryEmailAddress?.emailAddress;
   const hasPaidAccess = isLoaded ? canAccessApps(user?.publicMetadata, email) : false;
-  // MasterTyping is free for all signed-in users
-  const isMasterTyping = appSlug === 'mastertyping';
-  const hasAccess = isMasterTyping || hasPaidAccess;
+  // Free-core titles: always launchable for signed-in users without paid plans
+  const freeAppSlugs = ['mastertyping', 'gravity', 'fourstargeneral', 'virtual-combat-simulator'];
+  const isFreeApp = freeAppSlugs.includes(appSlug);
+  const hasAccess = isFreeApp || hasPaidAccess;
   const appUrl = APP_URLS[appSlug];
 
   useEffect(() => {
