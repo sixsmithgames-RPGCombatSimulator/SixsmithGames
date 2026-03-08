@@ -71,6 +71,18 @@ export default function RootLayout({
     <ClerkProvider>
       <html lang="en">
         <body style={{ margin: 0, padding: 0, fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+          <Script id="org-ld-json" type="application/ld+json" strategy="afterInteractive">
+            {JSON.stringify({
+              '@context': 'https://schema.org',
+              '@type': 'Organization',
+              name: 'Sixsmith Games',
+              url: 'https://www.sixsmithgames.com',
+              logo: 'https://www.sixsmithgames.com/apple-icon.png',
+              sameAs: [
+                'https://www.sixsmithgames.com',
+              ],
+            })}
+          </Script>
           {/* Google Analytics */}
           <Script
             src="https://www.googletagmanager.com/gtag/js?id=G-QWPPFGCSHD"
