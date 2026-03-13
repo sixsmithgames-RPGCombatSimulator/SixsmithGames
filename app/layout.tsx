@@ -14,9 +14,9 @@ import Footer from '@/components/Footer';
  */
 export const metadata: Metadata = {
   metadataBase: new URL('https://sixsmithgames.com'),
-  title: 'Sixsmith Games - Professional Tools for Game Masters & Creators',
+  title: 'Sixsmith Games - Games and Tools for People Who Take Play Seriously',
   description:
-    'Discover Sixsmith Games applications including VirtualCombatSimulator, ContentCraft, MasterTyping, Gravity, and FourStarGeneral with one flexible subscription.',
+    'Run tighter sessions, build better worlds, and dig into strategy games with Sixsmith Games titles including Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General.',
   keywords: [
     'Sixsmith Games',
     'VirtualCombatSimulator',
@@ -30,9 +30,9 @@ export const metadata: Metadata = {
     'strategy game',
   ],
   openGraph: {
-    title: 'Sixsmith Games - Professional Tools for Game Masters & Creators',
+    title: 'Sixsmith Games - Games and Tools for People Who Take Play Seriously',
     description:
-      'One subscription for VirtualCombatSimulator, ContentCraft, MasterTyping, Gravity, and FourStarGeneral. Tools for game masters, writers, strategists, and educators.',
+      'Tools for game masters, worldbuilders, strategy players, and educators: run the table, build your world, or jump into deeper play with the Sixsmith Games lineup.',
     url: '/',
     siteName: 'Sixsmith Games',
     locale: 'en_US',
@@ -48,9 +48,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sixsmith Games - Professional Tools for Game Masters & Creators',
+    title: 'Sixsmith Games - Games and Tools for People Who Take Play Seriously',
     description:
-      'Access VirtualCombatSimulator, ContentCraft, MasterTyping, Gravity, and FourStarGeneral with a single subscription.',
+      'Run sessions, build worlds, and jump into strategy with the Sixsmith Games lineup.',
     images: ['/apple-icon.png'],
   },
   alternates: {

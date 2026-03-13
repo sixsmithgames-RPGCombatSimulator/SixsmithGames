@@ -51,7 +51,7 @@ export default function Footer() {
               />
             </div>
             <p style={{ color: '#6b7280', fontSize: '0.9375rem', lineHeight: '1.7', maxWidth: '320px', margin: '0 0 1.5rem' }}>
-              Professional tools for game masters, content creators, and strategy enthusiasts.
+              Games and tools for people who take play seriously, from worldbuilding and session prep to strategy and learning.
             </p>
             <a
               href="mailto:info@sixsmithgames.com"
@@ -63,7 +63,7 @@ export default function Footer() {
 
           {/* Apps */}
           <div>
-            <p style={headingStyle}>Applications</p>
+            <p style={headingStyle}>Lineup</p>
             <Link href="/apps/virtual-combat-simulator" style={linkStyle}>Virtual Combat Simulator</Link>
             <Link href="/apps/contentcraft" style={linkStyle}>ContentCraft</Link>
             <Link href="/apps/mastertyping" style={linkStyle}>MasterTyping</Link>
@@ -79,7 +79,7 @@ export default function Footer() {
             <Link href="/blog" style={linkStyle}>Blog</Link>
             <Link href="/account" style={linkStyle}>My Account</Link>
             <Link href="/sign-in" style={linkStyle}>Sign In</Link>
-            <Link href="/sign-up" style={linkStyle}>Get Started</Link>
+            <Link href="/sign-up" style={linkStyle}>Start Here</Link>
           </div>
 
         </div>

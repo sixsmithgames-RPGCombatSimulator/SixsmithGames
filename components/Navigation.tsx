@@ -16,11 +16,11 @@ export default function Navigation() {
   const { user } = useUser();
 
   const apps = [
-    { name: 'VirtualCombatSimulator', href: '/apps/virtual-combat-simulator' },
+    { name: 'Virtual Combat Simulator', href: '/apps/virtual-combat-simulator' },
     { name: 'ContentCraft', href: '/apps/contentcraft' },
     { name: 'MasterTyping', href: '/apps/mastertyping' },
     { name: 'Gravity', href: '/apps/gravity' },
-    { name: 'FourStarGeneral', href: '/apps/fourstargeneral' },
+    { name: 'Four Star General', href: '/apps/fourstargeneral' },
   ];
 
   const navStyle: React.CSSProperties = {
@@ -139,7 +139,7 @@ export default function Navigation() {
                   gap: '4px',
                 }}
               >
-                Apps
+                Lineup
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M6 9l6 6 6-6" />
                 </svg>
@@ -233,7 +233,7 @@ export default function Navigation() {
                 onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.5)')}
                 onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(124,58,237,0.35)')}
               >
-                Get Started →
+                Start Here →
               </Link>
             </SignedOut>
           </div>
@@ -274,7 +274,7 @@ export default function Navigation() {
           padding: '1rem 2rem 1.5rem',
         }}>
           <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            Apps
+            Lineup
           </div>
           {apps.map((app) => (
             <Link key={app.href} href={app.href}
@@ -322,7 +322,7 @@ export default function Navigation() {
               <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}
                 style={{ display: 'block', textAlign: 'center', padding: '0.75rem', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '8px', color: '#ffffff', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}
               >
-                Get Started →
+                Start Here →
               </Link>
             </SignedOut>
           </div>

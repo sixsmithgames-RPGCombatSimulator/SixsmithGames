@@ -15,27 +15,27 @@ export default async function Home() {
   const apps = [
     {
       name: 'VirtualCombatSimulator',
-      tagline: 'Your D&D combat control room',
+      tagline: 'Your combat control room',
       description:
-        'A modern battle management system combining responsive virtual tabletop, initiative tracking, and real-time multiplayer for faster, clearer D&D combats.',
+        'Run D&D encounters with a responsive battle map, initiative tracking, and shared table state that keeps everyone on the same page.',
       href: '/apps/virtual-combat-simulator',
       color: 'from-red-500 to-orange-500',
       icon: '/icons/vcs.png',
     },
     {
       name: 'ContentCraft',
-      tagline: 'Stop Fighting Your AI. Start Creating Your World.',
+      tagline: 'Build worlds with memory',
       description:
-        'AI-powered content engine for game masters and authors. Generate D&D content that fits together, track canon automatically, and never contradict yourself again.',
+        'Write lore, shape campaigns, and work with AI that can stay grounded in your canon instead of forgetting what matters.',
       href: '/apps/contentcraft',
       color: 'from-purple-500 to-pink-500',
       icon: '/icons/contentcraft.png',
     },
     {
       name: 'MasterTyping',
-      tagline: 'Turn typing practice into an epic adventure',
+      tagline: 'Typing practice that plays like a game',
       description:
-        'Game-based typing practice with 10 unique characters, special abilities, and K-12 vocabulary. Make learning keyboard skills exciting and engaging.',
+        'Character-based typing lessons, challenge modes, and K-12 vocabulary that make practice feel like progress instead of homework.',
       href: '/apps/mastertyping',
       color: 'from-green-500 to-emerald-500',
       icon: '/icons/mastertyping.png',
@@ -44,16 +44,16 @@ export default async function Home() {
       name: 'Gravity',
       tagline: 'Strategy without scheduling',
       description:
-        'Deep, tactical turn-based sci-fi board game built for asynchronous multiplayer. Play with friends on your own schedule—no coordination required.',
+        'A deep, async sci-fi strategy game built around tough tradeoffs, clear rules, and turns you can take on your own schedule.',
       href: '/apps/gravity',
       color: 'from-blue-500 to-cyan-500',
       icon: '/icons/gravity.png',
     },
     {
       name: 'FourStarGeneral',
-      tagline: 'Command your forces in WWII',
+      tagline: 'WWII strategy with weight',
       description:
-        'Strategic and tactical turn-based war game set in the WWII era. Plan operations, manage resources, and outmaneuver your opponents.',
+        'Command armies through layered WWII campaigns with meaningful logistics, tactical decisions, and room for long-term planning.',
       href: '/apps/fourstargeneral',
       color: 'from-amber-500 to-yellow-500',
       icon: '/icons/fourstargeneral.png',
@@ -64,7 +64,7 @@ export default async function Home() {
     <div>
       {/* Hero Section */}
       <section style={{
-        background: 'linear-gradient(135deg, #1e3a8a 0%, #3b82f6 25%, #dc143c 50%, #f59e0b 75%, #d4af37 100%)',
+        background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 35%, #312e81 70%, #7c2d12 100%)',
         padding: '60px 0 70px',
         position: 'relative',
         overflow: 'hidden'
@@ -90,7 +90,7 @@ export default async function Home() {
               textShadow: '0 4px 20px rgba(0,0,0,0.3)',
               lineHeight: '1.2'
             }}>
-              For Game Masters & Creators
+              Games and tools for people who take play seriously
             </h1>
             <p style={{
               fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -99,15 +99,14 @@ export default async function Home() {
               fontWeight: '500',
               textShadow: '0 2px 10px rgba(0,0,0,0.2)'
             }}>
-              Time to level up! Make your gaming and writing so much easier with our suite of fun and useful applications. From D&D battle
-              management to AI-assisted content creation, we've got the tools you didn't know you needed.
+              Run tighter sessions, build better worlds, and sink your teeth into strategy games built around clear systems, strong flavor, and smart decisions.
             </p>
             <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
               <Link href="/pricing" className="hero-btn-primary">
-                Start Your Subscription
+                See Pricing
               </Link>
               <a href="#apps" className="hero-btn-secondary">
-                Explore Our Apps
+                Explore the Lineup
               </a>
             </div>
             <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'center'}}>
@@ -137,7 +136,7 @@ export default async function Home() {
               color: '#1a202c',
               marginBottom: '1rem'
             }}>
-              Our Applications
+              Choose Your Arena
             </h2>
             <p style={{
               fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
@@ -145,7 +144,7 @@ export default async function Home() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              Professional solutions designed for game masters, content creators, and strategy enthusiasts
+              From GM prep to worldbuilding to async strategy, every title is built to make play smoother, richer, or more interesting.
             </p>
           </div>
 
@@ -226,39 +225,39 @@ export default async function Home() {
               WHO IT&apos;S FOR
             </p>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Built for Every Kind of Creator
+              Pick Your Path
             </h2>
             <p style={{ fontSize: '1.125rem', color: '#6b7280', maxWidth: '650px', margin: '0 auto', lineHeight: 1.7 }}>
-              Whether you run campaigns, write fiction, play strategy games, or teach kids — we made something for you.
+              Whether you run the table, build the world, command the board, or teach through play, there is a strong starting point here.
             </p>
           </div>
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
             {[
               {
-                title: 'Dungeon Masters',
-                desc: 'Run faster, clearer combats. Track initiative, manage the battlefield, and generate lore that fits your world — all without breaking flow.',
+                title: 'Run the Table',
+                desc: 'Keep combat moving, prep faster, and stay on top of maps, initiative, and lore without breaking the session rhythm.',
                 apps: ['VirtualCombatSimulator', 'ContentCraft'],
                 gradient: 'linear-gradient(135deg, #fef2f2, #fff7ed)',
                 accent: '#dc2626',
               },
               {
-                title: 'Fantasy & Sci-Fi Writers',
-                desc: 'Build deep, consistent worlds with AI that remembers your canon. Generate characters, locations, and lore that never contradict your story.',
+                title: 'Build the World',
+                desc: 'Write with memory. Track canon, characters, factions, and locations so your setting grows without turning into a mess.',
                 apps: ['ContentCraft'],
                 gradient: 'linear-gradient(135deg, #f5f3ff, #fdf2f8)',
                 accent: '#7c3aed',
               },
               {
-                title: 'Strategy Gamers',
-                desc: 'Command fleets in space or armies in WWII. Deep tactical gameplay designed for async multiplayer — play on your own schedule.',
+                title: 'Command the Board',
+                desc: 'Play strategy games built around tough calls, clear rules, and long-term planning instead of busywork.',
                 apps: ['Gravity', 'Four Star General'],
                 gradient: 'linear-gradient(135deg, #eff6ff, #ecfeff)',
                 accent: '#2563eb',
               },
               {
-                title: 'Parents & Educators',
-                desc: 'Turn typing practice into an adventure. Game-based learning with real K-12 vocabulary, character abilities, and progress tracking.',
+                title: 'Learn Through Play',
+                desc: 'Give kids typing practice that feels like a real game, with characters, progression, and reasons to come back.',
                 apps: ['MasterTyping'],
                 gradient: 'linear-gradient(135deg, #ecfdf5, #f0fdf4)',
                 accent: '#059669',
@@ -311,10 +310,10 @@ export default async function Home() {
             textAlign: 'center',
           }}>
             {[
-              { value: '5', label: 'Applications', sub: 'Covering RPGs, writing, strategy & education' },
-              { value: '1', label: 'Subscription', sub: 'All-access or subscribe per app' },
-              { value: '24/7', label: 'Cloud Access', sub: 'Play and create from any device' },
-              { value: '0', label: 'Long-Term Contracts', sub: 'Cancel anytime, no lock-in' },
+              { value: '5', label: 'Titles', sub: 'Covering GM tools, worldbuilding, strategy, and learning' },
+              { value: '2', label: 'Ways to Start', sub: 'Subscribe for creator tools or jump into free core games' },
+              { value: '24/7', label: 'Access', sub: 'Prep, write, or take your turn whenever you have time' },
+              { value: '0', label: 'Lock-In', sub: 'Stay because the lineup earns it' },
             ].map((stat) => (
               <div key={stat.label}>
                 <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#818cf8', lineHeight: 1, marginBottom: '0.5rem' }}>
@@ -337,10 +336,10 @@ export default async function Home() {
         <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
             <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              WHAT YOU GET
+              WHERE TO START
             </p>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', lineHeight: 1.2 }}>
-              Tools That Actually Solve Your Problems
+              The lineup at a glance
             </h2>
           </div>
 
@@ -497,7 +496,7 @@ export default async function Home() {
                 FROM THE BLOG
               </p>
               <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '900', color: '#111827', margin: 0, lineHeight: 1.2 }}>
-                Guides & Inspiration
+                Playbooks, design notes, and campaign fuel
               </h2>
             </div>
             <Link href="/blog" style={{
@@ -569,23 +568,23 @@ export default async function Home() {
           textAlign: 'center', position: 'relative', zIndex: 1,
         }}>
           <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-            READY TO START?
+            YOUR STARTING POINT
           </p>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900',
             color: 'white', marginBottom: '1.25rem', lineHeight: 1.2,
           }}>
-            Your Next Campaign Starts Here
+            Find your lane
           </h2>
           <p style={{
             fontSize: '1.125rem', color: '#94a3b8',
             marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 2.5rem',
           }}>
-            Join dungeon masters, fantasy writers, strategy gamers, and educators using Sixsmith Games to level up their craft.
+            Start with the tool or game that matches how you play: run sessions, build worlds, command the board, or learn through play.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/pricing" className="cta-primary">
-              View Pricing & Subscribe
+              See Pricing & Paths
             </Link>
             <Link href="/blog" className="cta-secondary">
               Read the Blog
