@@ -12,12 +12,12 @@ import LaunchAppButton from '@/components/LaunchAppButton';
 export default function GravityPage() {
   const features = [
     {
-      title: 'Asynchronous Multiplayer',
-      description: 'Take your turn when you have time. No scheduling, no coordination, no waiting.',
+      title: 'Simultaneous-Turn Multiplayer',
+      description: 'Everyone submits orders for the turn, then the engine resolves once all orders are locked.',
     },
     {
-      title: 'Deep Tactical Gameplay',
-      description: 'Ship systems, crew roles, and high-impact actions create meaningful strategic depth.',
+      title: 'Single-Player: Instant Progress',
+      description: 'Solo runs resolve immediately—plan, submit, and keep moving without waits.',
     },
     {
       title: 'Turn-Based Board Game',
@@ -81,7 +81,7 @@ export default function GravityPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                🚀 ASYNCHRONOUS STRATEGY
+                🚀 SIMULTANEOUS TURNS
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -91,7 +91,7 @@ export default function GravityPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Strategy Without Scheduling
+                Strategy Without Initiative Order
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -99,9 +99,8 @@ export default function GravityPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                Gravity is a deep, tactical turn-based sci-fi board game built for asynchronous multiplayer.
-                Take your turn when you have time, coordinate with your crew, and outplay opponents—without
-                needing everyone online at once.
+                Gravity is a deep, tactical turn-based sci-fi board game with simultaneous-turn multiplayer.
+                In single-player you submit and resolve immediately. In multiplayer everyone locks orders, then the turn resolves once all are in.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <LaunchAppButton
@@ -143,25 +142,25 @@ export default function GravityPage() {
                   <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Play with friends across time zones</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Single-player: submit and resolve immediately</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Deep tactics without the time commitment</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Multiplayer: simultaneous planning, then locked resolution</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Every decision matters, every turn counts</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Every decision matters; no initiative order advantage</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>No scheduling, no waiting, no coordination needed</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Play across time zones with clear turn locks</span>
                 </li>
               </ul>
             </div>
@@ -184,7 +183,7 @@ export default function GravityPage() {
             <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
               <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
                 Scheduling is the final boss. Your group wants deep games, but real-time sessions fall apart.
-                Most "async" games feel shallow, removing tension and meaningful interaction.
+                Many so-called async games feel shallow, removing tension and meaningful interaction.
               </p>
               <div style={{
                 background: 'linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%)',
@@ -193,7 +192,7 @@ export default function GravityPage() {
                 border: '2px solid #93c5fd'
               }}>
                 <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1e40af', marginBottom: '1rem'}}>
-                  Gravity delivers serious tactical gameplay designed for async from day one.
+                  Gravity delivers serious tactical gameplay built around simultaneous turns.
                 </p>
                 <p style={{color: '#4b5563'}}>
                   Make one great decision at a time. See the board clearly. Trust the rules. Keep the game moving.
@@ -381,7 +380,7 @@ export default function GravityPage() {
                   <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Designed for async from day one (not real-time awkwardly slowed down)</span>
+                  <span style={{color: '#4b5563'}}>Designed for simultaneous-turn play from day one</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
