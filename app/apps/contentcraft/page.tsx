@@ -8,6 +8,7 @@
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
+import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function ContentCraftPage() {
   const coreFeatures = [
@@ -142,6 +143,26 @@ export default function ContentCraftPage() {
                 }}>
                   See Creator Plan
                 </Link>
+                <LaunchAppButton
+                  appSlug="contentcraft"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.12)',
+                    color: 'white',
+                    padding: '1rem 2.5rem',
+                    borderRadius: '50px',
+                    fontSize: '1.125rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.25)',
+                    transition: 'all 0.3s ease',
+                    cursor: 'pointer',
+                  }}
+                >
+                  Launch App →
+                </LaunchAppButton>
               </div>
             </div>
             <div style={{
