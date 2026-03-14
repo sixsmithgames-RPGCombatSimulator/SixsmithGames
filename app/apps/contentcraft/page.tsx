@@ -88,7 +88,7 @@ export default function ContentCraftPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                CANON-SAFE CREATIVE WORKSPACE
+                AI ASSISTED WORKSPACE
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -109,40 +109,6 @@ export default function ContentCraftPage() {
                 ContentCraft keeps campaigns, novels, and connected settings coherent while you write, prep, and publish, with staged AI workflows that stay grounded in your canon.
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
-                <SubscribeButton
-                  planId="contentcraft"
-                  style={{
-                    background: 'white',
-                    color: '#a855f7',
-                    padding: '1rem 2.5rem',
-                    borderRadius: '50px',
-                    fontSize: '1.125rem',
-                    fontWeight: '700',
-                    textDecoration: 'none',
-                    display: 'inline-block',
-                    textAlign: 'center',
-                    boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-                    transition: 'all 0.3s ease',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Start Your Free Trial
-                </SubscribeButton>
-                <Link href="/pricing" style={{
-                  background: 'rgba(255, 255, 255, 0.16)',
-                  color: 'white',
-                  padding: '1rem 2.5rem',
-                  borderRadius: '50px',
-                  fontSize: '1.125rem',
-                  fontWeight: '700',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  textAlign: 'center',
-                  border: '1px solid rgba(255, 255, 255, 0.3)'
-                }}>
-                  See Creator Plan
-                </Link>
                 <LaunchAppButton
                   appSlug="contentcraft"
                   style={{
