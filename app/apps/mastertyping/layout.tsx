@@ -10,19 +10,20 @@ import type { Metadata } from 'next';
 export const metadata: Metadata = {
   title: 'MasterTyping — Game-Based Typing Lessons | Sixsmith Games',
   description:
-    'MasterTyping turns typing practice into an adventure with characters, abilities, and real K-12 vocabulary. Ideal for students, parents, and educators.',
+    'MasterTyping turns typing practice into a light adventure with game mode, pro mode, a six-step assessment, exercise drills, and progress tracking for students, families, and educators.',
   keywords: [
     'MasterTyping',
     'typing game',
     'typing practice for kids',
     'educational game',
-    'K-12 typing lessons',
+    'typing assessments',
+    'typing exercises',
     'Sixsmith Games',
   ],
   openGraph: {
     title: 'MasterTyping — Game-Based Typing Lessons | Sixsmith Games',
     description:
-      'Typing practice that feels like a game. Characters, abilities, and vocabulary-driven lessons for K-12 students, parents, and educators.',
+      'Typing practice that feels like play, with game mode, pro mode, a six-step assessment, targeted exercises, and optional deeper analytics for home or classroom use.',
     url: '/apps/mastertyping',
     type: 'website',
     siteName: 'Sixsmith Games',
@@ -38,7 +39,7 @@ export const metadata: Metadata = {
   twitter: {
     card: 'summary_large_image',
     title: 'MasterTyping — Game-Based Typing Lessons | Sixsmith Games',
-    description: 'Playful typing practice with characters, abilities, and K-12 vocabulary.',
+    description: 'Game-based typing practice with lessons, a six-step assessment, exercises, and optional deeper analytics.',
     images: ['/icons/mastertyping.png'],
   },
   alternates: {

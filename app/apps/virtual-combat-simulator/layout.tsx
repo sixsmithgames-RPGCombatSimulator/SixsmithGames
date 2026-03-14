@@ -8,11 +8,11 @@ import type { Metadata } from 'next';
  * Side effects: None.
  */
 export const metadata: Metadata = {
-  title: 'VirtualCombatSimulator — D&D Combat Control Room | Sixsmith Games',
+  title: 'Virtual Combat Simulator — D&D Combat Control Room | Sixsmith Games',
   description:
-    'VirtualCombatSimulator is a modern battle management system for D&D. Run combats faster with real-time tabletop, initiative tracking, and multiplayer rooms.',
+    'Virtual Combat Simulator is a map-first battle control room for D&D 5e with initiative, action economy, rules checks, imports, and shared table state.',
   keywords: [
-    'VirtualCombatSimulator',
+    'Virtual Combat Simulator',
     'D&D virtual tabletop',
     'initiative tracker',
     'battle manager',
@@ -20,9 +20,9 @@ export const metadata: Metadata = {
     'Sixsmith Games',
   ],
   openGraph: {
-    title: 'VirtualCombatSimulator — D&D Combat Control Room | Sixsmith Games',
+    title: 'Virtual Combat Simulator — D&D Combat Control Room | Sixsmith Games',
     description:
-      'Run D&D combats with real-time virtual tabletop, drag-and-drop initiative, and multiplayer battle rooms.',
+      'Run D&D combats with a map-first control room built around initiative, rules fidelity, combat logs, imports, and live table sync.',
     url: '/apps/virtual-combat-simulator',
     type: 'website',
     siteName: 'Sixsmith Games',
@@ -31,14 +31,14 @@ export const metadata: Metadata = {
         url: '/icons/vcs.png',
         width: 512,
         height: 512,
-        alt: 'VirtualCombatSimulator icon',
+        alt: 'Virtual Combat Simulator icon',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'VirtualCombatSimulator — D&D Combat Control Room | Sixsmith Games',
-    description: 'Responsive VTT with drag-and-drop initiative and real-time multiplayer rooms.',
+    title: 'Virtual Combat Simulator — D&D Combat Control Room | Sixsmith Games',
+    description: 'Map-first D&D combat control with initiative, rules checks, imports, and live table sync.',
     images: ['/icons/vcs.png'],
   },
   alternates: {

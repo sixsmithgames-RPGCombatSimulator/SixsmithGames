@@ -8,20 +8,20 @@ import type { Metadata } from 'next';
  * Side effects: None.
  */
 export const metadata: Metadata = {
-  title: 'Gravity — Async Sci-Fi Strategy Board Game | Sixsmith Games',
+  title: 'Gravity — Simultaneous-Turn Sci-Fi Strategy | Sixsmith Games',
   description:
-    'Gravity is a deep, asynchronous sci-fi strategy board game. Command fleets, manage resources, and play on your schedule with friends.',
+    'Gravity is a simultaneous-turn sci-fi strategy game where captains route power, lock orders, and resolve the whole turn at once under tabletop-parity rules.',
   keywords: [
     'Gravity board game',
     'sci-fi strategy game',
-    'asynchronous multiplayer',
+    'simultaneous-turn multiplayer',
     'turn-based strategy',
     'Sixsmith Games',
   ],
   openGraph: {
-    title: 'Gravity — Async Sci-Fi Strategy Board Game | Sixsmith Games',
+    title: 'Gravity — Simultaneous-Turn Sci-Fi Strategy | Sixsmith Games',
     description:
-      'Tactical turn-based sci-fi strategy with asynchronous multiplayer. Command fleets and outmaneuver opponents on your schedule.',
+      'Route power, assign crew actions, and lock orders before the whole turn resolves at once in this tactical sci-fi strategy game.',
     url: '/apps/gravity',
     type: 'website',
     siteName: 'Sixsmith Games',
@@ -36,8 +36,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Gravity — Async Sci-Fi Strategy Board Game | Sixsmith Games',
-    description: 'Asynchronous sci-fi strategy board game with deep tactics and flexible playtimes.',
+    title: 'Gravity — Simultaneous-Turn Sci-Fi Strategy | Sixsmith Games',
+    description: 'Tactical sci-fi strategy built around locked simultaneous turns, power routing, and escape pressure.',
     images: ['/icons/gravity.png'],
   },
   alternates: {

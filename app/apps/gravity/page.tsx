@@ -20,20 +20,20 @@ export default function GravityPage() {
       description: 'Solo runs resolve immediately—plan, submit, and keep moving without waits.',
     },
     {
-      title: 'Turn-Based Board Game',
-      description: 'One great decision at a time. Clear board state, transparent rules, fair outcomes.',
+      title: 'Tabletop-Parity Rules Engine',
+      description: 'The digital client mirrors the current tabletop rules so outcomes stay clear, transparent, and consistent.',
     },
     {
       title: 'Ship Systems Management',
-      description: 'Power routing, damage control, and repairs create real tradeoffs every turn.',
+      description: 'Power routing, conduits, shields, damage control, and repairs create real tradeoffs every turn.',
     },
     {
       title: 'Crew Roles & Abilities',
-      description: 'Captain abilities and crew coordination change how you approach each match.',
+      description: 'Captains, officers, basic crew, and specialists change how you restore power, repair, maneuver, revive, and attack.',
     },
     {
-      title: 'Cross-Platform Play',
-      description: 'Web-based client with shared engine for consistency and portability.',
+      title: 'Hazards, Orbit, and Escape Pressure',
+      description: 'Environmental damage, object movement, and escape timing force hard choices instead of passive turtling.',
     },
   ];
 
@@ -91,7 +91,7 @@ export default function GravityPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Strategy Without Initiative Order
+                Plan in parallel. Survive the gravity well.
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -99,8 +99,7 @@ export default function GravityPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                Gravity is a deep, tactical turn-based sci-fi board game with simultaneous-turn multiplayer.
-                In single-player you submit and resolve immediately. In multiplayer everyone locks orders, then the turn resolves once all are in.
+                Gravity is a tactical simultaneous-turn sci-fi strategy game. Route power, assign crew actions, lock orders, and watch the whole turn resolve at once under the same rules as the tabletop game.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <LaunchAppButton
@@ -154,13 +153,13 @@ export default function GravityPage() {
                   <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Every decision matters; no initiative order advantage</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Power routing, repairs, and attacks all compete for the same turn window</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Play across time zones with clear turn locks</span>
+                  <span style={{color: 'rgba(255, 255, 255, 0.95)', fontSize: '1rem'}}>Hazards, orbit movement, and escape timing keep the pressure on</span>
                 </li>
               </ul>
             </div>
@@ -178,12 +177,11 @@ export default function GravityPage() {
               color: '#1a202c',
               marginBottom: '1.5rem'
             }}>
-              Your Group Loves Strategy Games. Your Schedules Don't.
+              Tactical pressure without initiative-order drift
             </h2>
             <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
               <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-                Scheduling is the final boss. Your group wants deep games, but real-time sessions fall apart.
-                Many so-called async games feel shallow, removing tension and meaningful interaction.
+                Strategy gets flatter when every action resolves in a vacuum. Gravity keeps the tension by making every captain commit before the turn flips and the board answers back.
               </p>
               <div style={{
                 background: 'linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%)',
@@ -192,10 +190,10 @@ export default function GravityPage() {
                 border: '2px solid #93c5fd'
               }}>
                 <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1e40af', marginBottom: '1rem'}}>
-                  Gravity delivers serious tactical gameplay built around simultaneous turns.
+                  Gravity delivers serious tactical play built around locked simultaneous turns.
                 </p>
                 <p style={{color: '#4b5563'}}>
-                  Make one great decision at a time. See the board clearly. Trust the rules. Keep the game moving.
+                  The rules are transparent, the turn order is shared, and the pressure comes from systems, hazards, and escape timing instead of hidden bookkeeping.
                 </p>
               </div>
             </div>
@@ -208,7 +206,7 @@ export default function GravityPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              What Makes Gravity Compelling
+              What makes Gravity bite
             </h2>
           </div>
 
@@ -243,7 +241,7 @@ export default function GravityPage() {
               High-Stakes Decision Loops
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', maxWidth: '900px', margin: '0 auto'}}>
-              Every turn asks a hard question. Each action creates real tradeoffs that evolve across the match.
+              Every turn asks a hard question. Each action competes with another system you also need to keep alive.
             </p>
           </div>
 
@@ -296,19 +294,19 @@ export default function GravityPage() {
             }}>
               <li style={{display: 'flex', alignItems: 'flex-start'}}>
                 <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
-                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you repair now or gamble for resources?</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you repair now or gamble on surviving one more volley?</span>
               </li>
               <li style={{display: 'flex', alignItems: 'flex-start'}}>
                 <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
-                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you maneuver for position or power systems for defense?</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you maneuver for position or route power to shields and life support?</span>
               </li>
               <li style={{display: 'flex', alignItems: 'flex-start'}}>
                 <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
-                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you scan/acquire to get ahead or attack to keep others from stabilizing?</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Do you scan and acquire resources, or attack before another ship stabilizes?</span>
               </li>
               <li style={{display: 'flex', alignItems: 'flex-start'}}>
                 <span style={{color: '#06b6d4', marginRight: '0.5rem', fontSize: '1.25rem'}}>→</span>
-                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Your ship is a living system with power, damage, and repair tradeoffs</span>
+                <span style={{color: 'rgba(255, 255, 255, 0.95)'}}>Your ship is a living system of sections, conduits, crew, and escape pressure</span>
               </li>
             </ul>
           </div>
@@ -320,7 +318,7 @@ export default function GravityPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Built For Strategic Minds
+              Built for players who like visible systems
             </h2>
           </div>
 
@@ -343,25 +341,25 @@ export default function GravityPage() {
                   <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Busy adults who love strategy but can't guarantee a 2-4 hour session</span>
+                  <span style={{color: '#4b5563'}}>Strategy players who want hard tradeoffs without real-time scheduling</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Tabletop groups that want ongoing games across time zones</span>
+                  <span style={{color: '#4b5563'}}>Groups who like simultaneous planning more than initiative ladders</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Strategy gamers who want meaningful choices, not clicker progression</span>
+                  <span style={{color: '#4b5563'}}>Players who want deterministic outcomes and readable system pressure</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#3b82f6', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Competitive friends who want clear rules and fair outcomes</span>
+                  <span style={{color: '#4b5563'}}>Solo captains who want instant turn resolution and clean post-turn info</span>
                 </li>
               </ul>
             </div>
@@ -386,19 +384,19 @@ export default function GravityPage() {
                   <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Crunchy strategy without the meeting invite</span>
+                  <span style={{color: '#4b5563'}}>Digital client stays in lockstep with the current tabletop rules</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Rules you can trust: deterministic logic and validation-focused design</span>
+                  <span style={{color: '#4b5563'}}>Deterministic logic, validation-focused design, and transparent scoring</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#06b6d4', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M13 10V3L4 14h7v7l9-11h-7z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Modern web delivery: no installs, jump in fast</span>
+                  <span style={{color: '#4b5563'}}>Web delivery makes it easy to jump in without losing system depth</span>
                 </li>
               </ul>
             </div>
@@ -436,7 +434,7 @@ export default function GravityPage() {
             marginBottom: '1.5rem',
             textShadow: '0 4px 20px rgba(0,0,0,0.3)'
           }}>
-            A Board Game That Fits Real Life
+            A tactics game with real system pressure
           </h2>
           <p style={{
             fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -444,7 +442,7 @@ export default function GravityPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with the free core game, then unlock captains, crew packs, and ship designs when you want new playstyles.
+            Start with the free core rules engine, then unlock more captains, crews, upgrades, and ship builds when you want new tactical lines.
           </p>
           <Link href="/pricing" style={{
             background: 'white',

@@ -14,19 +14,19 @@ import { getRecentPosts } from '@/lib/blog';
 export default async function Home() {
   const apps = [
     {
-      name: 'VirtualCombatSimulator',
-      tagline: 'Your combat control room',
+      name: 'Virtual Combat Simulator',
+      tagline: 'Map-first combat control',
       description:
-        'Run D&D encounters with a responsive battle map, initiative tracking, and shared table state that keeps everyone on the same page.',
+        'Run D&D encounters with a map-first control room built around initiative, action economy, rules clarity, and shared table state.',
       href: '/apps/virtual-combat-simulator',
       color: 'from-red-500 to-orange-500',
       icon: '/icons/vcs.png',
     },
     {
       name: 'ContentCraft',
-      tagline: 'Build worlds with memory',
+      tagline: 'Canon-safe creative workspace',
       description:
-        'Write lore, shape campaigns, and work with AI that can stay grounded in your canon instead of forgetting what matters.',
+        'Build campaigns, novels, and settings with structured canon tracking and multi-stage AI workflows that stay grounded in your source of truth.',
       href: '/apps/contentcraft',
       color: 'from-purple-500 to-pink-500',
       icon: '/icons/contentcraft.png',
@@ -35,25 +35,25 @@ export default async function Home() {
       name: 'MasterTyping',
       tagline: 'Typing practice that plays like a game',
       description:
-        'Character-based typing lessons, challenge modes, and K-12 vocabulary that make practice feel like progress instead of homework.',
+        'Progressive lessons, six-step assessments, targeted exercises, and classroom-friendly tracking that make practice feel more like play than homework.',
       href: '/apps/mastertyping',
       color: 'from-green-500 to-emerald-500',
       icon: '/icons/mastertyping.png',
     },
     {
       name: 'Gravity',
-      tagline: 'Strategy without scheduling',
+      tagline: 'Simultaneous-turn sci-fi strategy',
       description:
-        'A deep, async sci-fi strategy game built around tough tradeoffs, clear rules, and turns you can take on your own schedule.',
+        'Plan orders in parallel, lock the turn, and watch the whole board resolve at once in a tactics game built around power routing, crew roles, and escape pressure.',
       href: '/apps/gravity',
       color: 'from-blue-500 to-cyan-500',
       icon: '/icons/gravity.png',
     },
     {
-      name: 'FourStarGeneral',
-      tagline: 'WWII strategy with weight',
+      name: 'Four Star General',
+      tagline: 'Deterministic WWII command',
       description:
-        'Command armies through layered WWII campaigns with meaningful logistics, tactical decisions, and room for long-term planning.',
+        'Command a WWII tactical battle prototype built around deterministic resolution, deployment choices, supply tempo, and scenario-driven pressure.',
       href: '/apps/fourstargeneral',
       color: 'from-amber-500 to-yellow-500',
       icon: '/icons/fourstargeneral.png',
@@ -144,7 +144,7 @@ export default async function Home() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              From GM prep to worldbuilding to async strategy, every title is built to make play smoother, richer, or more interesting.
+              From rules-faithful encounter control to canon-safe writing tools to simultaneous-turn strategy, every title is built to make play sharper, smoother, or deeper.
             </p>
           </div>
 
@@ -237,27 +237,27 @@ export default async function Home() {
               {
                 title: 'Run the Table',
                 desc: 'Keep combat moving, prep faster, and stay on top of maps, initiative, and lore without breaking the session rhythm.',
-                apps: ['VirtualCombatSimulator', 'ContentCraft'],
+                apps: ['Virtual Combat Simulator', 'ContentCraft'],
                 gradient: 'linear-gradient(135deg, #fef2f2, #fff7ed)',
                 accent: '#dc2626',
               },
               {
                 title: 'Build the World',
-                desc: 'Write with memory. Track canon, characters, factions, and locations so your setting grows without turning into a mess.',
+                desc: 'Write with a real source of truth. Track canon, relationships, timelines, and revisions so the project stays coherent as it grows.',
                 apps: ['ContentCraft'],
                 gradient: 'linear-gradient(135deg, #f5f3ff, #fdf2f8)',
                 accent: '#7c3aed',
               },
               {
                 title: 'Command the Board',
-                desc: 'Play strategy games built around tough calls, clear rules, and long-term planning instead of busywork.',
+                desc: 'Play strategy games built around deterministic outcomes, simultaneous planning, supply pressure, and hard tradeoffs instead of busywork.',
                 apps: ['Gravity', 'Four Star General'],
                 gradient: 'linear-gradient(135deg, #eff6ff, #ecfeff)',
                 accent: '#2563eb',
               },
               {
                 title: 'Learn Through Play',
-                desc: 'Give kids typing practice that feels like a real game, with characters, progression, and reasons to come back.',
+                desc: 'Give kids typing practice with game modes, six-step assessments, targeted exercises, and progress tracking that feels worth coming back to.',
                 apps: ['MasterTyping'],
                 gradient: 'linear-gradient(135deg, #ecfdf5, #f0fdf4)',
                 accent: '#059669',
@@ -312,7 +312,7 @@ export default async function Home() {
             {[
               { value: '5', label: 'Titles', sub: 'Covering GM tools, worldbuilding, strategy, and learning' },
               { value: '2', label: 'Ways to Start', sub: 'Subscribe for creator tools or jump into free core games' },
-              { value: '24/7', label: 'Access', sub: 'Prep, write, or take your turn whenever you have time' },
+              { value: '24/7', label: 'Access', sub: 'Prep, write, practice, or plan your next turn whenever you have time' },
               { value: '0', label: 'Lock-In', sub: 'Stay because the lineup earns it' },
             ].map((stat) => (
               <div key={stat.label}>
@@ -358,12 +358,12 @@ export default async function Home() {
               <span style={{ background: 'rgba(239,68,68,0.15)', color: '#fca5a5', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
                 D&D Combat
               </span>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>VirtualCombatSimulator</h3>
+              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>Virtual Combat Simulator</h3>
               <p style={{ color: '#a8a29e', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-                Drag-and-drop initiative. Real-time tabletop. Fog of war. Everything you need to run combat without the bookkeeping killing your momentum.
+                A map-first combat control room for D&D 5e play, with initiative, action economy, rules checks, and table sync that keep fights clean and readable.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
-                {['Real-time multiplayer battle rooms', 'Drag-and-drop initiative tracker', 'Character sheets & ruleset editor', 'Responsive virtual tabletop'].map(f => (
+                {['5e 2024 defaults and combat flow', 'Grid-aware map, tokens, and positioning', 'Audit-ready combat log and rules checks', 'Players join free with shared state'].map(f => (
                   <li key={f} style={{ color: '#d6d3d1', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <span style={{ color: '#f87171', fontSize: '0.75rem' }}>●</span> {f}
                   </li>
@@ -385,14 +385,14 @@ export default async function Home() {
                 <Image src="/icons/contentcraft.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
               </div>
               <span style={{ background: 'rgba(168,85,247,0.15)', color: '#c4b5fd', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
-                AI Worldbuilding
+                Canon-Safe Writing
               </span>
               <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>ContentCraft</h3>
               <p style={{ color: '#a5b4fc', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-                AI that remembers your world. Generate NPCs, locations, encounters, and lore that never contradict your established canon.
+                A connected creative workspace for campaigns, novels, and setting work, with canon-aware AI, approvals, and versioned project memory.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
-                {['Canon-aware AI generation', 'Lore & NPC consistency tracking', 'World maps & faction management', 'Export-ready for your campaign'].map(f => (
+                {['Projects and shared canon library', 'Stage-based AI generation workflows', 'Fact-checking, history, and diffs', 'Bring your own model keys or use credits'].map(f => (
                   <li key={f} style={{ color: '#c7d2fe', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <span style={{ color: '#a78bfa', fontSize: '0.75rem' }}>●</span> {f}
                   </li>
@@ -425,11 +425,11 @@ export default async function Home() {
                   <Image src="/icons/gravity.png" alt="Gravity" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Gravity</h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Async sci-fi strategy</p>
+                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Simultaneous-turn sci-fi strategy</p>
                 </div>
               </div>
               <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
-                Deep, tactical turn-based board game. Command fleets, manage resources, and outmaneuver opponents — all on your own schedule. No coordination required.
+                Route power, repair hulls, plan crew actions, and lock orders before the entire turn resolves at once. It is a tactics game with real system pressure.
               </p>
               <Link href="/apps/gravity" style={{ color: '#3b82f6', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
                 Learn more →
@@ -449,11 +449,11 @@ export default async function Home() {
                   <Image src="/icons/fourstargeneral.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Four Star General</h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>WWII war simulation</p>
+                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Deterministic WWII tactics</p>
                 </div>
               </div>
               <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
-                Strategic and tactical turn-based gameplay set in the WWII era. Plan operations, manage your general roster, and fight through campaigns that test every decision.
+                A WWII tactical battle prototype built around deterministic resolution, deployment choices, supply tempo, and authored scenarios like River Crossing Watch.
               </p>
               <Link href="/apps/fourstargeneral" style={{ color: '#d97706', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
                 Learn more →
@@ -477,7 +477,7 @@ export default async function Home() {
                 </div>
               </div>
               <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
-                10 unique characters with special abilities. K-12 vocabulary. Typing practice that kids actually ask to do again — because it feels like a real game.
+                Game mode, pro mode, a six-step assessment, targeted exercises, and core tracking in one free typing adventure, with deeper analytics available when players need sharper feedback.
               </p>
               <Link href="/apps/mastertyping" style={{ color: '#059669', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
                 Learn more →

@@ -8,22 +8,22 @@ import type { Metadata } from 'next';
  * Side effects: None.
  */
 export const metadata: Metadata = {
-  title: 'ContentCraft — AI Worldbuilding & Writing Studio | Sixsmith Games',
+  title: 'ContentCraft — Canon-Safe Creative Workspace | Sixsmith Games',
   description:
-    'ContentCraft is the AI-powered writing platform for novelists and game masters. Keep canon consistent, generate D&D content, and organize complex worlds.',
+    'ContentCraft keeps campaigns, novels, and connected settings coherent with structured canon tracking, staged AI workflows, and reviewable revisions.',
   keywords: [
     'ContentCraft',
     'AI writing platform',
     'worldbuilding software',
-    'D&D content generator',
+    'canon-safe writing tool',
     'canon tracking',
     'novel writing tool',
     'Sixsmith Games',
   ],
   openGraph: {
-    title: 'ContentCraft — AI Worldbuilding & Writing Studio | Sixsmith Games',
+    title: 'ContentCraft — Canon-Safe Creative Workspace | Sixsmith Games',
     description:
-      'AI-powered writing and worldbuilding studio with canon tracking, D&D stat blocks, and consistency checking for authors and game masters.',
+      'A connected creative workspace for writers, worldbuilders, and GMs with canon tracking, staged AI generation, and version history.',
     url: '/apps/contentcraft',
     type: 'website',
     siteName: 'Sixsmith Games',
@@ -38,8 +38,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'ContentCraft — AI Worldbuilding & Writing Studio | Sixsmith Games',
-    description: 'Write smarter and keep canon consistent with ContentCraft by Sixsmith Games.',
+    title: 'ContentCraft — Canon-Safe Creative Workspace | Sixsmith Games',
+    description: 'Build campaigns, novels, and setting work with canon tracking, staged AI workflows, and reviewable revisions.',
     images: ['/icons/contentcraft.png'],
   },
   alternates: {

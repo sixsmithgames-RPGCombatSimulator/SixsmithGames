@@ -11,21 +11,21 @@ import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function FourStarGeneralPage() {
   const features = [
-    { title: 'Strategic Campaign Management', description: 'Plan large-scale operations across multiple theaters of war' },
-    { title: 'Tactical Combat Resolution', description: 'Command units in detailed turn-based battles' },
-    { title: 'Historical WWII Setting', description: 'Authentic units, equipment, and historical scenarios' },
-    { title: 'Resource Management', description: 'Balance production, supply lines, and force deployment' },
-    { title: 'Command Structure', description: 'Organize your forces with realistic military hierarchies' },
-    { title: 'Multiple Victory Conditions', description: 'Achieve victory through conquest, economic dominance, or strategic objectives' },
+    { title: 'Deterministic Resolution', description: 'Clear rules and engine-driven outcomes put the emphasis on planning, deployment, and positioning.' },
+    { title: 'Deployment to Engine', description: 'The allocation UI feeds directly into the GameEngine with enforced base camps, reserves, and scenario normalization.' },
+    { title: 'Turn Flow with Supply', description: 'Battles advance through explicit turn transitions that surface supply tempo and pressure.' },
+    { title: 'Mission Profiles', description: 'Scenario profiles define objectives, defaults, and difficulty-scaled turn limits for each battle.' },
+    { title: 'Branch Composition', description: 'Coordinate land, air, naval, and support elements with distinct colleges and roles.' },
+    { title: 'Replayable Content', description: 'Battle packs, campaigns, factions, and colleges create room for more scenarios as the build expands.' },
   ];
 
   const unitTypes = [
-    'Infantry Divisions',
-    'Armored Units',
-    'Artillery Battalions',
-    'Air Forces',
-    'Naval Fleets',
-    'Special Operations',
+    'Land forces',
+    'Armored groups',
+    'Artillery support',
+    'Air assets',
+    'Naval elements',
+    'Reserve formations',
   ];
 
   return (
@@ -63,7 +63,7 @@ export default function FourStarGeneralPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                WWII STRATEGIC WAR GAME
+                DETERMINISTIC WWII TACTICAL COMMAND
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -73,7 +73,7 @@ export default function FourStarGeneralPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Command Your Forces in WWII
+                Hold the line. Spend the reserves. Make it count.
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -81,9 +81,7 @@ export default function FourStarGeneralPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                FourStarGeneral is a strategic and tactical turn-based war game set in the WWII era. Plan
-                complex operations, manage resources and supply lines, and outmaneuver your opponents in
-                historically authentic campaigns.
+                Four Star General is a turn-based WWII strategy game currently centered on a tactical battle prototype. Deploy forces, assign base camps, manage supply tempo, and fight through authored scenarios with deterministic resolution.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <LaunchAppButton
@@ -117,32 +115,32 @@ export default function FourStarGeneralPage() {
               border: '2px solid rgba(245, 158, 11, 0.2)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Lead Your Nation to Victory
+                The current front line
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Plan strategic operations across multiple fronts</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Deployment choices feed directly into the live battle engine</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Command diverse military units with authentic capabilities</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Reserve management and base camp rules shape every opening turn</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Manage supply lines, production, and logistics</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Supply tempo and turn pressure matter as much as raw positioning</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Engage in historically inspired scenarios and campaigns</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Author-driven scenarios like River Crossing Watch create distinct problems to solve</span>
                 </li>
               </ul>
             </div>
@@ -160,12 +158,10 @@ export default function FourStarGeneralPage() {
               color: '#1a202c',
               marginBottom: '1.5rem'
             }}>
-              Strategic Depth Meets Tactical Precision
+              The prototype already has real teeth
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              FourStarGeneral combines grand strategy with detailed tactical combat. Make high-level
-              decisions about resource allocation and theater management, then execute tactical battles
-              with precision and skill.
+              Four Star General is not just a concept page. The current build wires deployment into the deterministic engine, tracks turn flow and supply, and gives authored battles clear objectives and limits.
             </p>
           </div>
 
@@ -181,24 +177,24 @@ export default function FourStarGeneralPage() {
               border: '2px solid #fcd34d'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Strategic Layer
+                What is live now
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Plan multi-theater campaigns and operations</span>
+                  <span style={{color: '#4b5563'}}>Deployment templates map into engine-ready payloads</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Manage production, research, and economic development</span>
+                  <span style={{color: '#4b5563'}}>Scenario data is normalized for palette, objectives, and sides</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Establish and maintain critical supply lines</span>
+                  <span style={{color: '#4b5563'}}>Base camp assignment and reserve resets are enforced</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Deploy forces to achieve strategic objectives</span>
+                  <span style={{color: '#4b5563'}}>Serialization support is in place for future persistence</span>
                 </li>
               </ul>
             </div>
@@ -210,24 +206,24 @@ export default function FourStarGeneralPage() {
               border: '2px solid #fcd34d'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Tactical Layer
+                What it points toward
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Command units in turn-based tactical battles</span>
+                  <span style={{color: '#4b5563'}}>Single-player campaign arcs built on the same deterministic core</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Utilize terrain and weather for tactical advantage</span>
+                  <span style={{color: '#4b5563'}}>Simultaneous-planning multiplayer after both sides lock orders</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Coordinate combined arms operations</span>
+                  <span style={{color: '#4b5563'}}>More colleges, factions, branches, and battle packs</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Execute flanking maneuvers and defensive strategies</span>
+                  <span style={{color: '#4b5563'}}>More authored scenarios with distinct mission profiles and difficulty scaling</span>
                 </li>
               </ul>
             </div>
@@ -240,7 +236,7 @@ export default function FourStarGeneralPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Comprehensive War Game Features
+              Core tactical systems
             </h2>
           </div>
 
@@ -281,10 +277,10 @@ export default function FourStarGeneralPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Diverse Military Forces
+              Force types in the prototype
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              Command historically authentic units across all branches of military service
+              Branches, support elements, and reserves all matter once the scenario starts asking hard questions.
             </p>
           </div>
 
@@ -326,37 +322,35 @@ export default function FourStarGeneralPage() {
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
             <div>
               <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Rooted in History
+                Signature scenario: River Crossing Watch
               </h2>
               <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', marginBottom: '1.5rem'}}>
-                FourStarGeneral brings the complexity and challenge of WWII-era warfare to your screen
-                with historically researched units, authentic equipment capabilities, and inspired scenarios
-                from actual military operations.
+                Defend the river line while managing limited crossings, enemy probes, and a turn clock that tightens with difficulty. It is a clean showcase of how the prototype handles pressure, pacing, and scenario rules.
               </p>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Authentic WWII military units and equipment</span>
+                  <span style={{color: '#4b5563'}}>Difficulty-scaled turn limits: Easy 14, Normal 12, Hard 11</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Historically inspired campaign scenarios</span>
+                  <span style={{color: '#4b5563'}}>Probe phases that roll into sustained assaults</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Realistic supply and logistics systems</span>
+                  <span style={{color: '#4b5563'}}>Reserve pressure that escalates once crossings are held</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Accurate combat resolution based on historical performance</span>
+                  <span style={{color: '#4b5563'}}>Mission-profile defaults that shape deployment zones and rules</span>
                 </li>
               </ul>
             </div>
@@ -368,12 +362,10 @@ export default function FourStarGeneralPage() {
               border: '2px solid #fde68a'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                For Strategy Enthusiasts
+                For players who like deterministic war games
               </h3>
               <p style={{color: '#4b5563', marginBottom: '1.5rem'}}>
-                Whether you're a history buff, a strategy game veteran, or new to war gaming,
-                FourStarGeneral offers depth and challenge that rewards thoughtful planning and
-                tactical execution.
+                If you want clear rules, visible pressure, and tactical battles that reward deployment discipline, this is the lane Four Star General is carving out.
               </p>
               <div style={{
                 background: '#fef3c7',
@@ -381,12 +373,12 @@ export default function FourStarGeneralPage() {
                 padding: '1.5rem',
                 border: '2px solid #fcd34d'
               }}>
-                <p style={{fontWeight: '600', color: '#92400e', marginBottom: '0.75rem'}}>Perfect for players who enjoy:</p>
+                <p style={{fontWeight: '600', color: '#92400e', marginBottom: '0.75rem'}}>Built for players who enjoy:</p>
                 <ul style={{display: 'flex', flexDirection: 'column', gap: '0.5rem', color: '#4b5563', fontSize: '0.875rem'}}>
-                  <li>• Grand strategy and military history</li>
-                  <li>• Complex tactical decision-making</li>
-                  <li>• Resource and logistics management</li>
-                  <li>• Turn-based competitive gameplay</li>
+                  <li>• Deterministic tactical outcomes</li>
+                  <li>• Deployment and reserve management</li>
+                  <li>• Supply tempo and scenario pressure</li>
+                  <li>• WWII-flavored command problems</li>
                 </ul>
               </div>
             </div>
@@ -424,7 +416,7 @@ export default function FourStarGeneralPage() {
             marginBottom: '1.5rem',
             textShadow: '0 4px 20px rgba(0,0,0,0.3)'
           }}>
-            History Awaits Your Command
+            Start with the tactical prototype
           </h2>
           <p style={{
             fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -432,7 +424,7 @@ export default function FourStarGeneralPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with the free core game, then unlock colleges, factions, branch packs, and campaigns when you want more strategic breadth.
+            Start with the free tactical battle prototype, then unlock colleges, factions, branch packs, and campaigns as the war chest grows.
           </p>
           <Link href="/pricing" style={{
             background: 'white',

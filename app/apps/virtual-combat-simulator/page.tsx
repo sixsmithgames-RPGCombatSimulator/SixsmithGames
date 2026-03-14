@@ -13,39 +13,39 @@ import LaunchAppButton from '@/components/LaunchAppButton';
 export default function VirtualCombatSimulatorPage() {
   const features = [
     {
-      title: 'Virtual Tabletop & Map',
+      title: 'Map-First Encounter Control',
       items: [
-        'Interactive battle map with zoom and pan',
-        'Grid snapping for precise token placement',
-        'Tokens for characters, monsters, and objects',
-        'Support for custom map images',
+        'Upload maps, set square or hex grids, and scale the field cleanly',
+        'Drag, resize, and place tokens with layer-aware controls',
+        'Use grid-aware measurement, reach, and positioning checks',
+        'Keep players synced to the same shared battle state',
       ],
     },
     {
-      title: 'Combat Management',
+      title: 'Rules-Faithful Combat Flow',
       items: [
-        'Initiative tracker with automatic sorting',
-        'Turn-based combat flow with visual indicators',
-        'Action panel for attacks, spells, and movement',
-        'Token-linked HP tracking with multiple displays',
+        'Initiative, turn order, action, bonus action, and reaction tracking',
+        'Advantage, saves, criticals, resistances, and concentration support',
+        'Range, line, cover, movement, and opportunity checks before resolution',
+        'Token-linked HP, conditions, and combat state in one place',
       ],
     },
     {
-      title: 'Sheets & Stats',
+      title: 'Import-Ready Sheets & Data',
       items: [
-        'Character sheet viewer',
-        'Monster sheet viewer',
-        'Combat stats visible when needed',
-        'Notes and custom fields for context',
+        'SmartPaste and JSON imports into canonical character and monster schemas',
+        'Character and monster sheets with stats visible when needed',
+        'Support for SRD-friendly content and homebrew alike',
+        'Notes, equipment, spells, and features preserved in import flows',
       ],
     },
     {
-      title: 'Multiplayer & Persistence',
+      title: 'Sync, Audit, and Persistence',
       items: [
-        'WebSocket-based multiplayer support',
-        'Session persistence with save/load',
-        'Asset management for maps/tokens/characters',
-        'JWT-based authentication',
+        'Socket-enabled multiplayer so every player sees the same state',
+        'Combat log with roll math, results, and GM override markers',
+        'Save/load encounter presets and persist sessions with assets',
+        'House rules toggles and GM-side enforcement controls',
       ],
     },
   ];
@@ -85,7 +85,7 @@ export default function VirtualCombatSimulatorPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                D&D BATTLE MANAGEMENT
+                MAP-FIRST D&D COMBAT CONTROL
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -95,7 +95,7 @@ export default function VirtualCombatSimulatorPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Run D&D Combats at Full Speed
+                Run D&D combats with fewer stalls
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -103,8 +103,7 @@ export default function VirtualCombatSimulatorPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                A modern battle map and initiative tracker built for real play. VirtualCombatSimulator keeps
-                the table aligned with grid-snapped maps, token control, and turn tracking—online or in-person.
+                Virtual Combat Simulator is a map-first battle control room for D&D 5e play, with rules-faithful combat flow, import-ready data, and table sync that keeps everyone aligned.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <LaunchAppButton
@@ -145,25 +144,25 @@ export default function VirtualCombatSimulatorPage() {
                   <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Run combats faster with automatic initiative tracking</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Run combats faster with initiative, action economy, and condition tracking</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Make positioning obvious with grid-snapped maps</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Make positioning obvious with grid-aware maps, tokens, and reach checks</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Keep turns, HP, and stats in one place</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Keep turns, HP, stats, and logs in one place</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Play together in real-time with WebSocket multiplayer</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Let players join free and stay synced in real time</span>
                 </li>
               </ul>
             </div>
@@ -181,11 +180,10 @@ export default function VirtualCombatSimulatorPage() {
               color: '#1a202c',
               marginBottom: '1.5rem'
             }}>
-              Stop Asking "Whose Turn Is It?"
+              Stop asking what the board state actually is
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              Combat stalls when positioning and turns aren't crystal clear. VirtualCombatSimulator centralizes
-              the map, tokens, initiative, and sheets so the GM can keep pace and players stay engaged.
+              Combat stalls when turns, movement, cover, and results are split across too many tools. Virtual Combat Simulator centralizes the map, tokens, initiative, rules checks, and logs so the GM can keep pace and players can trust what they are seeing.
             </p>
           </div>
         </div>
@@ -196,7 +194,7 @@ export default function VirtualCombatSimulatorPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Everything You Need for Tactical Combat
+              Everything you need for tactical combat
             </h2>
           </div>
 
@@ -258,7 +256,7 @@ export default function VirtualCombatSimulatorPage() {
         <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{maxWidth: '800px', margin: '0 auto'}}>
             <h2 style={{fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '700', color: '#1a202c', marginBottom: '2rem', textAlign: 'center'}}>
-              Built with Modern Technology
+              Built for reliable table state
             </h2>
             <div style={{
               background: 'linear-gradient(135deg, #fef2f2 0%, #fff7ed 100%)',
@@ -272,7 +270,7 @@ export default function VirtualCombatSimulatorPage() {
                 gap: '1rem',
                 color: '#4b5563'
               }}>
-                {['React + TypeScript frontend', 'Express + TypeScript backend', 'MongoDB persistence', 'Socket.IO multiplayer', 'JWT authentication', 'Stripe integration'].map(item => (
+                {['Socket-enabled live updates', 'Persisted sessions and asset management', 'Canonical data schemas for characters and monsters', 'Audit-ready combat logs', 'SmartPaste and JSON imports', 'House rules toggles and GM overrides'].map(item => (
                   <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
                     <svg style={{ width: '16px', height: '16px', color: '#ef4444', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
                     {item}
@@ -314,7 +312,7 @@ export default function VirtualCombatSimulatorPage() {
             marginBottom: '1.5rem',
             textShadow: '0 4px 20px rgba(0,0,0,0.3)'
           }}>
-            Start Running Better Combats Today
+            Start running cleaner combats today
           </h2>
           <p style={{
             fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -322,7 +320,7 @@ export default function VirtualCombatSimulatorPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start free as a Player. Upgrade to Game Master when you need custom monsters, custom rulesets, and private campaign hosting.
+            Start free as a player. Upgrade to Game Master when you need encounter presets, asset uploads, custom monsters, rules toggles, and session exports.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <LaunchAppButton

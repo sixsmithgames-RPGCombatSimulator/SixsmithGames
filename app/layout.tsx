@@ -19,7 +19,7 @@ export const metadata: Metadata = {
     'Run tighter sessions, build better worlds, and dig into strategy games with Sixsmith Games titles including Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General.',
   keywords: [
     'Sixsmith Games',
-    'VirtualCombatSimulator',
+    'Virtual Combat Simulator',
     'ContentCraft',
     'MasterTyping',
     'Gravity board game',

@@ -8,20 +8,21 @@ import type { Metadata } from 'next';
  * Side effects: None.
  */
 export const metadata: Metadata = {
-  title: 'Four Star General — WWII Strategy Game | Sixsmith Games',
+  title: 'Four Star General — Deterministic WWII Tactical Command | Sixsmith Games',
   description:
-    'Command WWII forces in Four Star General. Plan operations, manage resources, and outmaneuver opponents in strategic turn-based gameplay.',
+    'Four Star General is a turn-based WWII strategy game currently centered on a tactical battle prototype with deterministic resolution, deployment choices, and supply tempo.',
   keywords: [
     'Four Star General',
     'WWII strategy game',
     'turn-based war game',
+    'deterministic tactics',
     'military strategy',
     'Sixsmith Games',
   ],
   openGraph: {
-    title: 'Four Star General — WWII Strategy Game | Sixsmith Games',
+    title: 'Four Star General — Deterministic WWII Tactical Command | Sixsmith Games',
     description:
-      'Strategic and tactical turn-based WWII gameplay. Command your forces, manage operations, and compete asynchronously.',
+      'Deploy forces, manage reserves, hold the line, and fight through authored WWII scenarios with deterministic engine-driven outcomes.',
     url: '/apps/fourstargeneral',
     type: 'website',
     siteName: 'Sixsmith Games',
@@ -36,8 +37,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Four Star General — WWII Strategy Game | Sixsmith Games',
-    description: 'Turn-based WWII strategy with asynchronous play and deep tactical decisions.',
+    title: 'Four Star General — Deterministic WWII Tactical Command | Sixsmith Games',
+    description: 'A WWII tactical battle prototype built around deterministic resolution, reserve pressure, and scenario-driven command problems.',
     images: ['/icons/fourstargeneral.png'],
   },
   alternates: {

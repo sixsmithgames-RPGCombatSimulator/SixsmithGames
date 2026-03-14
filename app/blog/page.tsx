@@ -8,7 +8,7 @@ import { getAllPosts, getFeaturedPosts } from '@/lib/blog';
 
 export const metadata = {
   title: 'Blog — Sixsmith Games',
-  description: 'Tips, guides, and insights for game masters, fantasy writers, strategy gamers, and educators.',
+  description: 'Playbooks, design notes, campaign fuel, and practical guides for game masters, writers, strategy players, and educators.',
 };
 
 export default async function BlogPage() {
@@ -36,10 +36,10 @@ export default async function BlogPage() {
           THE SIXSMITH GAMES BLOG
         </p>
         <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900', margin: '0 0 1rem', lineHeight: 1.2 }}>
-          Guides, Tips & Inspiration
+          Playbooks, design notes, and campaign fuel
         </h1>
         <p style={{ color: '#94a3b8', fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
-          For dungeon masters, fantasy writers, strategy gamers, and educators.
+          For game masters, writers, strategy players, and educators who like strong systems and usable ideas.
         </p>
       </section>
 

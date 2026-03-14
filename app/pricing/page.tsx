@@ -19,10 +19,10 @@ const creatorPlans = [
     yearlyPrice: 99,
     color: '#7c3aed',
     gradient: 'linear-gradient(135deg, #7c3aed, #ec4899)',
-    description: 'Keep your canon straight while you write lore, shape campaigns, track factions, and build with AI that remembers the setting.',
-    features: ['Unlimited projects', 'Lore and canon tracking', 'Character and faction relationship tracking', 'Adventure and worldbuilding templates'],
-    secondaryFeatures: ['Use your own AI keys', 'Export tools', '100 bonus AI credits each month', 'Bonus credits stay for 60 days'],
-    trial: ['1 project', 'Limited export', 'Limited lore tools', 'Sample AI credits'],
+    description: 'Build campaigns, novels, and setting work with structured canon tracking and multi-stage AI workflows that stay grounded in your source of truth.',
+    features: ['Unlimited projects and shared canon library', 'Relationships, timelines, and reference tracking', 'Version history, diffs, and reviewable revisions', 'Prep-friendly export tools'],
+    secondaryFeatures: ['Bring your own model keys', 'Bundled AI credits included monthly', 'Multi-provider workflow support', 'Workspace-ready setup for solo or team use'],
+    trial: ['1 project', 'Limited exports', 'Core canon tools', 'Sample AI credits'],
   },
   {
     slug: 'virtual-combat-simulator',
@@ -32,10 +32,10 @@ const creatorPlans = [
     yearlyPrice: 99,
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
-    description: 'Run encounters, upload maps, build monsters, and host private campaigns with a battle space that keeps everyone aligned.',
-    features: ['Unlimited active games', 'Custom monsters', 'House rules and custom systems', 'Campaign libraries'],
-    secondaryFeatures: ['Saved encounter setups', 'Live table sync', 'Import/export tools', 'Upload your own maps'],
-    freePlan: ['Join unlimited games', 'Create 1 room or run 1 active game', 'Up to 4 custom characters', 'Core rules content'],
+    description: 'Run D&D encounters with a map-first control room built around initiative, action economy, rules checks, and shared table state.',
+    features: ['Unlimited active games and encounter presets', 'Custom monsters, characters, and house rules', 'Asset uploads for maps and tokens', 'Session exports and combat logs'],
+    secondaryFeatures: ['5e 2024 combat flow support', 'Live multiplayer table sync', 'SmartPaste and JSON imports', 'GM overrides and rules toggles'],
+    freePlan: ['Join unlimited games', 'Create 1 room or run 1 active game', 'Shared map and token state', 'Core player access and combat flow'],
   },
 ];
 
@@ -46,9 +46,9 @@ const freeApps = [
     icon: '/icons/gravity.png',
     color: '#2563eb',
     gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
-    description: 'Play the full core game free, then unlock more captains, crews, upgrades, and ship designs for new tactics and fleet builds.',
-    freeCore: ['1 captain', '1 crew set', 'Core upgrade pool', '3 ship designs'],
-    monetization: ['Captains from $2.99', 'Crew packs from $1.99', 'Upgrade packs from $2.99', 'Founder Fleet $24.99'],
+    description: 'Start with the full core rules engine free, then unlock more captains, crews, upgrades, and ship builds for new tactical lines.',
+    freeCore: ['Starter captains and crews', 'Core upgrades and ships', 'Single-player and simultaneous-turn play', 'Shared web client and rules engine'],
+    monetization: ['Captains from $2.99', 'Crew packs from $1.99', 'Upgrade packs from $2.99', 'Founder Fleet bundle $24.99'],
   },
   {
     slug: 'fourstargeneral',
@@ -56,8 +56,8 @@ const freeApps = [
     icon: '/icons/fourstargeneral.png',
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f5c46d)',
-    description: 'Start with the core war game free, then unlock more colleges, factions, branches, campaigns, and battle packs when you want more strategic angles.',
-    freeCore: ['Tutorial campaign', '2 colleges', '2 factions', 'Core unit roster'],
+    description: 'Start with the tactical battle prototype free, then unlock more colleges, factions, branches, campaigns, and battle packs as the roster expands.',
+    freeCore: ['Tutorial campaign and starter scenario access', '2 colleges', '2 factions', 'Core roster and tactical prototype'],
     monetization: ['Colleges from $2.99', 'Factions from $2.99', 'Branch packs from $1.99', 'Complete War Chest $24.99'],
   },
   {
@@ -66,8 +66,8 @@ const freeApps = [
     icon: '/icons/mastertyping.png',
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #84cc16)',
-    description: 'A free typing adventure with kid-friendly lessons, challenge modes, and progress tracking that feels closer to a game than a worksheet.',
-    features: ['Game mode', 'Pro mode', 'Assessment mode', 'Progress tracking'],
+    description: 'A free typing adventure with game mode, pro mode, a six-step assessment, specialized exercises, and optional premium analytics that keep practice pointed at the right weak spots.',
+    features: ['Game mode', 'Pro mode', 'Six-step assessment mode', 'Exercise mode and core tracking'],
   },
 ];
 
@@ -122,7 +122,7 @@ export default function PricingPage() {
               Creator Pair
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.8)', fontSize: '1.0625rem', margin: '0 0 1.5rem', lineHeight: 1.6 }}>
-              Get ContentCraft Creator and Virtual Combat Simulator Game Master together. Save ${creatorBundleSavings.toFixed(2)}/month and keep your lore, prep, maps, and encounters in one lane.
+              Get ContentCraft Creator and Virtual Combat Simulator Game Master together. Save ${creatorBundleSavings.toFixed(2)}/month and keep your canon, prep, maps, and encounters in one lane.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
               {creatorPlans.map(p => (
@@ -160,7 +160,7 @@ export default function PricingPage() {
           For GMs and worldbuilders
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
-          The tools you keep open while prepping sessions, tracking lore, and running the table.
+          The tools you keep open while running combats, tracking canon, building content, and keeping a campaign coherent.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(340px, 1fr))', gap: '1.5rem' }}>
           {creatorPlans.map((plan) => (
@@ -244,7 +244,7 @@ export default function PricingPage() {
           Start free. Go deeper.
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
-          Jump into the free core games and starter experiences, then open up more factions, fleets, branches, ships, and other ways to play when you want more depth.
+          Jump into the free core games and starter experiences, then open up more fleets, rosters, factions, branches, and other ways to play when you want more depth.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(300px, 1fr))', gap: '1.5rem' }}>
           {freeApps.map((plan) => (
@@ -336,11 +336,11 @@ export default function PricingPage() {
           <div style={{ background: 'white', borderRadius: '20px', padding: '2rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
             <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Creator bundle</div>
             <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Creator Pair</h3>
-            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle for worldbuilding, session prep, and running the table without juggling separate subscriptions.</p>
+            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle for canon-safe writing, encounter prep, and running the table without juggling separate subscriptions.</p>
             <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$15.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}>/month</span></div>
             <div style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '1rem' }}>or ${creatorBundleYearlyPrice}/year</div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-              {['ContentCraft Creator', 'Virtual Combat Simulator Game Master', 'Best value every month', 'Best place to start for GMs and worldbuilders'].map((item) => (
+              {['ContentCraft Creator', 'Virtual Combat Simulator Game Master', 'Best value every month', 'Best place to start for GMs, writers, and worldbuilders'].map((item) => (
                 <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', color: '#374151' }}>
                   {check('#4c1d95')}
                   {item}
@@ -352,7 +352,7 @@ export default function PricingPage() {
           <div style={{ background: 'white', borderRadius: '20px', padding: '2rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
             <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Strategy bundle</div>
             <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Strategy Bundle</h3>
-            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One founder bundle that opens the full strategy lineup in Gravity and Four Star General.</p>
+            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One founder bundle that opens the full strategy lineup in Gravity and Four Star General as both rosters expand.</p>
             <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$29.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}> one-time</span></div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
               {['All Gravity unlocks', 'All Four Star General unlocks', 'Buy it once and open the founder content path', 'Best pick for strategy players'].map((item) => (
