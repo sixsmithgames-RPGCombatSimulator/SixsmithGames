@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Sixsmith Games',
     images: [
       {
-        url: '/icons/fourstargeneral.png',
+        url: '/icons/fourstargeneral-optimized.png',
         width: 512,
         height: 512,
         alt: 'Four Star General icon',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Four Star General — Deterministic WWII Tactical Command | Sixsmith Games',
     description: 'A WWII tactical battle prototype built around deterministic resolution, reserve pressure, and scenario-driven command problems.',
-    images: ['/icons/fourstargeneral.png'],
+    images: ['/icons/fourstargeneral-optimized.png'],
   },
   alternates: {
     canonical: '/apps/fourstargeneral',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/icons/fourstargeneral.png', apple: '/icons/fourstargeneral.png' },
+  icons: { icon: '/icons/fourstargeneral-optimized.png', apple: '/icons/fourstargeneral-optimized.png' },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

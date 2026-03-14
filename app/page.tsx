@@ -111,15 +111,10 @@ export default async function Home() {
             </div>
             <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'center'}}>
               <Image
-                src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto/sixsmith-games/sixsmith-games/logo/sixsmith-logo.png"
+                src="/icons/sixsmith-logo-optimized.png"
                 alt="Sixsmith Games"
                 width={200}
                 height={200}
-                style={{
-                  filter: 'drop-shadow(0 8px 32px rgba(0,0,0,0.3))',
-                  opacity: 1
-                }}
-                priority
               />
             </div>
           </div>
