@@ -56,7 +56,7 @@ export default async function Home() {
         'Command a WWII tactical battle prototype built around deterministic resolution, deployment choices, supply tempo, and scenario-driven pressure.',
       href: '/apps/fourstargeneral',
       color: 'from-amber-500 to-yellow-500',
-      icon: '/icons/fourstargeneral.png',
+      icon: '/icons/fourstargeneral-optimized.png',
     },
   ];
 
@@ -446,7 +446,7 @@ export default async function Home() {
                   background: 'linear-gradient(135deg, #f59e0b, #eab308)',
                   overflow: 'hidden',
                 }}>
-                  <Image src="/icons/fourstargeneral.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover', transform: 'scale(1.08)' }} /></div>
+                  <Image src="/icons/fourstargeneral-optimized.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Four Star General</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Deterministic WWII tactics</p>

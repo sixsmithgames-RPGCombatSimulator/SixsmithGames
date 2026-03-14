@@ -53,7 +53,7 @@ const freeApps = [
   {
     slug: 'fourstargeneral',
     name: 'Four Star General',
-    icon: '/icons/fourstargeneral.png',
+    icon: '/icons/fourstargeneral-optimized.png',
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f5c46d)',
     description: 'Start with the tactical battle prototype free, then unlock more colleges, factions, branches, campaigns, and battle packs as the roster expands.',
@@ -168,7 +168,7 @@ export default function PricingPage() {
               <div style={{ background: plan.gradient, padding: '1.75rem 1.75rem 1.5rem' }}>
                 <Link href={`/apps/${plan.slug}`} aria-label={plan.name} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
-                    <Image src={plan.icon} alt="" aria-hidden="true" width={56} height={56} style={{ objectFit: 'cover', transform: plan.slug === 'fourstargeneral' ? 'scale(1.12)' : 'none' }} />
+                    <Image src={plan.icon} alt="" aria-hidden="true" width={56} height={56} style={{ objectFit: 'cover' }} />
                   </div>
                   <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{plan.name}</h3>
                 </Link>
