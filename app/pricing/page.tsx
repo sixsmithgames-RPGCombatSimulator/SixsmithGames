@@ -14,7 +14,7 @@ const creatorPlans = [
   {
     slug: 'contentcraft',
     name: 'ContentCraft',
-    icon: '/icons/contentcraft.png',
+    icon: '/icons/ContentCraft%20icon.png',
     price: 9.99,
     yearlyPrice: 99,
     color: '#7c3aed',
@@ -27,7 +27,7 @@ const creatorPlans = [
   {
     slug: 'virtual-combat-simulator',
     name: 'Virtual Combat Simulator',
-    icon: '/icons/vcs.png',
+    icon: '/icons/VCS%20icon.png',
     price: 9.99,
     yearlyPrice: 99,
     color: '#ef4444',
@@ -43,7 +43,7 @@ const freeApps = [
   {
     slug: 'gravity',
     name: 'Gravity',
-    icon: '/icons/gravity.png',
+    icon: '/icons/Gravity%20icon.png',
     color: '#2563eb',
     gradient: 'linear-gradient(135deg, #2563eb, #06b6d4)',
     description: 'Start with the full core rules engine free, then unlock more captains, crews, upgrades, and ship builds for new tactical lines.',
@@ -53,7 +53,7 @@ const freeApps = [
   {
     slug: 'fourstargeneral',
     name: 'Four Star General',
-    icon: '/icons/fourstargeneral-optimized.png',
+    icon: '/icons/FourStarGeneral%20Icon.png',
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f5c46d)',
     description: 'Start with the tactical battle prototype free, then unlock more colleges, factions, branches, campaigns, and battle packs as the roster expands.',
@@ -63,7 +63,7 @@ const freeApps = [
   {
     slug: 'mastertyping',
     name: 'MasterTyping',
-    icon: '/icons/mastertyping.png',
+    icon: '/icons/MasterTyping%20icon.png',
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #84cc16)',
     description: 'A free typing adventure with game mode, pro mode, a six-step assessment, specialized exercises, and optional premium analytics that keep practice pointed at the right weak spots.',
