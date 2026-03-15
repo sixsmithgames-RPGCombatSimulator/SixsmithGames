@@ -336,7 +336,7 @@ export default function PricingPage() {
           <div style={{ background: 'white', borderRadius: '20px', padding: '2rem', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
             <div style={{ fontSize: '0.8rem', fontWeight: '800', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.08em', marginBottom: '0.75rem' }}>Creator bundle</div>
             <h3 style={{ fontSize: '1.5rem', fontWeight: '800', color: '#111827', margin: '0 0 0.5rem' }}>Creator Pair</h3>
-            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle for canon-safe writing, encounter prep, and running the table without juggling separate subscriptions.</p>
+            <p style={{ color: '#6b7280', margin: '0 0 1rem', lineHeight: 1.6 }}>One bundle for AI-assisted writing, encounter prep, and running the table without juggling separate subscriptions.</p>
             <div style={{ fontSize: '2rem', fontWeight: '900', color: '#111827', marginBottom: '0.75rem' }}>$15.99<span style={{ fontSize: '1rem', color: '#6b7280', fontWeight: 500 }}>/month</span></div>
             <div style={{ color: '#6b7280', fontSize: '0.95rem', marginBottom: '1rem' }}>or ${creatorBundleYearlyPrice}/year</div>
             <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>

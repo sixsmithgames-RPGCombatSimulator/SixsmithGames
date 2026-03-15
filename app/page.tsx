@@ -24,7 +24,7 @@ export default async function Home() {
     },
     {
       name: 'ContentCraft',
-      tagline: 'Canon-safe creative workspace',
+      tagline: 'AI-powered creative workspace',
       description:
         'Build campaigns, novels, and settings with structured canon tracking and multi-stage AI workflows that stay grounded in your source of truth.',
       href: '/apps/contentcraft',
@@ -139,7 +139,7 @@ export default async function Home() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              From rules-faithful encounter control to canon-safe writing tools to simultaneous-turn strategy, every title is built to make play sharper, smoother, or deeper.
+              From rules-faithful encounter control to AI-assisted writing tools to simultaneous-turn strategy, every title is built to make play sharper, smoother, or deeper.
             </p>
           </div>
 
@@ -380,7 +380,7 @@ export default async function Home() {
                 <Image src="/icons/contentcraft-optimized.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
               </div>
               <span style={{ background: 'rgba(168,85,247,0.15)', color: '#c4b5fd', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
-                Canon-Safe Writing
+                AI-assisted Writing
               </span>
               <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>ContentCraft</h3>
               <p style={{ color: '#a5b4fc', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>

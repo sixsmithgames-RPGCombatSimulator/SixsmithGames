@@ -27,7 +27,7 @@ ContentCraft keeps campaigns, novels, and connected settings consistent while yo
 - **Workspace-ready**: Designed for teams or solo creators who need predictable, repeatable pipelines.
 
 ## Audience Notes
-- GMs and writers who need a canon-safe assistant.
+- GMs and writers who want an AI assistant.
 - Table organizers who prep multiple campaigns.
 - Indie designers polishing settings and modules.
 - Authors and bloggers keeping continuity tight across outlines, chapters, and revisions.
