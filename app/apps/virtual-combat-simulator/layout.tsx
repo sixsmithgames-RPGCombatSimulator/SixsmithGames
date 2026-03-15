@@ -28,7 +28,7 @@ export const metadata: Metadata = {
     siteName: 'Sixsmith Games',
     images: [
       {
-        url: '/icons/VCS%20icon.png',
+        url: '/icons/vcs-optimized.png',
         width: 512,
         height: 512,
         alt: 'Virtual Combat Simulator icon',
@@ -39,7 +39,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Virtual Combat Simulator — D&D Combat Control Room | Sixsmith Games',
     description: 'Map-first D&D combat control with initiative, rules checks, imports, and live table sync.',
-    images: ['/icons/VCS%20icon.png'],
+    images: ['/icons/vcs-optimized.png'],
   },
   alternates: {
     canonical: '/apps/virtual-combat-simulator',
@@ -48,7 +48,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/icons/VCS%20icon.png', apple: '/icons/VCS%20icon.png' },
+  icons: { icon: '/icons/vcs-optimized.png', apple: '/icons/vcs-optimized.png' },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

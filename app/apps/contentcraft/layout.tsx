@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'Sixsmith Games',
     images: [
       {
-        url: '/icons/ContentCraft%20icon.png',
+        url: '/icons/contentcraft-optimized.png',
         width: 512,
         height: 512,
         alt: 'ContentCraft icon',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'ContentCraft — Canon-Safe Creative Workspace | Sixsmith Games',
     description: 'A connected creative workspace for campaigns, novels, and setting work, with canon-aware AI, approvals, and versioned project memory.',
-    images: ['/icons/ContentCraft icon.png'],
+    images: ['/icons/contentcraft-optimized.png'],
   },
   alternates: {
     canonical: '/apps/contentcraft',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/icons/ContentCraft%20icon.png', apple: '/icons/ContentCraft%20icon.png' },
+  icons: { icon: '/icons/contentcraft-optimized.png', apple: '/icons/contentcraft-optimized.png' },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

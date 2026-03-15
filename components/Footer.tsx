@@ -43,7 +43,7 @@ export default function Footer() {
           <div style={{ gridColumn: 'span 2', minWidth: '220px' }}>
             <div style={{ marginBottom: '1rem' }}>
               <Image
-                src="/icons/Sixsmith%20Games%20Logo.png"
+                src="/icons/sixsmith-logo.png"
                 alt="Sixsmith Games"
                 width={256}
                 height={256}

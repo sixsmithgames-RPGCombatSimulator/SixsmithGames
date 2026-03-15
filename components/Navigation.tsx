@@ -113,7 +113,7 @@ export default function Navigation() {
           {/* Logo */}
           <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
             <Image
-              src="/icons/Sixsmith%20Games%20Logo.png"
+              src="/icons/sixsmith-logo.png"
               alt="Sixsmith Games"
               width={40}
               height={40}

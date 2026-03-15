@@ -27,7 +27,7 @@ export const metadata: Metadata = {
     siteName: 'Sixsmith Games',
     images: [
       {
-        url: '/icons/Gravity%20icon.png',
+        url: '/icons/gravity-optimized.png',
         width: 512,
         height: 512,
         alt: 'Gravity icon',
@@ -38,7 +38,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Gravity — Simultaneous-Turn Sci-Fi Strategy | Sixsmith Games',
     description: 'Tactical sci-fi strategy built around locked simultaneous turns, power routing, and escape pressure.',
-    images: ['/icons/Gravity%20icon.png'],
+    images: ['/icons/gravity-optimized.png'],
   },
   alternates: {
     canonical: '/apps/gravity',
@@ -47,7 +47,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/icons/Gravity%20icon.png', apple: '/icons/Gravity%20icon.png' },
+  icons: { icon: '/icons/gravity-optimized.png', apple: '/icons/gravity-optimized.png' },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

@@ -29,7 +29,7 @@ export const metadata: Metadata = {
     siteName: 'Sixsmith Games',
     images: [
       {
-        url: '/icons/MasterTyping%20icon.png',
+        url: '/icons/mastertyping-optimized.png',
         width: 512,
         height: 512,
         alt: 'MasterTyping icon',
@@ -40,7 +40,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'MasterTyping — Game-Based Typing Lessons | Sixsmith Games',
     description: 'Game-based typing practice with lessons, a six-step assessment, exercises, and optional deeper analytics.',
-    images: ['/icons/MasterTyping%20icon.png'],
+    images: ['/icons/mastertyping-optimized.png'],
   },
   alternates: {
     canonical: '/apps/mastertyping',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     index: true,
     follow: true,
   },
-  icons: { icon: '/icons/MasterTyping%20icon.png', apple: '/icons/MasterTyping%20icon.png' },
+  icons: { icon: '/icons/mastertyping-optimized.png', apple: '/icons/mastertyping-optimized.png' },
 };
 
 export default function Layout({ children }: { children: React.ReactNode }) {

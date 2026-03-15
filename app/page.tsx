@@ -20,7 +20,7 @@ export default async function Home() {
         'Run D&D encounters with a map-first control room built around initiative, action economy, rules clarity, and shared table state.',
       href: '/apps/virtual-combat-simulator',
       color: 'from-red-500 to-orange-500',
-      icon: '/icons/VCS%20icon.png',
+      icon: '/icons/vcs-optimized.png',
     },
     {
       name: 'ContentCraft',
@@ -29,7 +29,7 @@ export default async function Home() {
         'Build campaigns, novels, and settings with structured canon tracking and multi-stage AI workflows that stay grounded in your source of truth.',
       href: '/apps/contentcraft',
       color: 'from-purple-500 to-pink-500',
-      icon: '/icons/ContentCraft%20icon.png',
+      icon: '/icons/contentcraft-optimized.png',
     },
     {
       name: 'MasterTyping',
@@ -38,7 +38,7 @@ export default async function Home() {
         'Progressive lessons, six-step assessments, targeted exercises, and classroom-friendly tracking that make practice feel more like play than homework.',
       href: '/apps/mastertyping',
       color: 'from-green-500 to-emerald-500',
-      icon: '/icons/MasterTyping%20icon.png',
+      icon: '/icons/mastertyping-optimized.png',
     },
     {
       name: 'Gravity',
@@ -47,7 +47,7 @@ export default async function Home() {
         'Plan orders in parallel, lock the turn, and watch the whole board resolve at once in a tactics game built around power routing, crew roles, and escape pressure.',
       href: '/apps/gravity',
       color: 'from-blue-500 to-cyan-500',
-      icon: '/icons/Gravity%20icon.png',
+      icon: '/icons/gravity-optimized.png',
     },
     {
       name: 'Four Star General',
@@ -56,7 +56,7 @@ export default async function Home() {
         'Command a WWII tactical battle prototype built around deterministic resolution, deployment choices, supply tempo, and scenario-driven pressure.',
       href: '/apps/fourstargeneral',
       color: 'from-amber-500 to-yellow-500',
-      icon: '/icons/FourStarGeneral%20Icon.png',
+      icon: '/icons/fourstargeneral-optimized.png',
     },
   ];
 
@@ -111,7 +111,7 @@ export default async function Home() {
             </div>
             <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'center'}}>
               <Image
-                src="/icons/Sixsmith%20Games%20Logo.png"
+                src="/icons/sixsmith-logo-optimized.png"
                 alt="Sixsmith Games"
                 width={200}
                 height={200}
@@ -348,7 +348,7 @@ export default async function Home() {
               padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
             }}>
               <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '160px', height: '160px', opacity: 0.07, overflow: 'hidden', borderRadius: '24px' }}>
-                <Image src="/icons/VCS%20icon.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
+                <Image src="/icons/vcs-optimized.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
               </div>
               <span style={{ background: 'rgba(239,68,68,0.15)', color: '#fca5a5', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
                 D&D Combat
@@ -377,7 +377,7 @@ export default async function Home() {
               padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
             }}>
               <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '160px', height: '160px', opacity: 0.07, overflow: 'hidden', borderRadius: '24px' }}>
-                <Image src="/icons/ContentCraft%20icon.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
+                <Image src="/icons/contentcraft-optimized.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
               </div>
               <span style={{ background: 'rgba(168,85,247,0.15)', color: '#c4b5fd', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
                 Canon-Safe Writing
@@ -417,7 +417,7 @@ export default async function Home() {
                   background: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
                   overflow: 'hidden',
                 }}>
-                  <Image src="/icons/Gravity%20icon.png" alt="Gravity" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
+                  <Image src="/icons/gravity-optimized.png" alt="Gravity" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Gravity</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Simultaneous-turn sci-fi strategy</p>
@@ -441,7 +441,7 @@ export default async function Home() {
                   background: 'linear-gradient(135deg, #f59e0b, #eab308)',
                   overflow: 'hidden',
                 }}>
-                  <Image src="/icons/FourStarGeneral%20Icon.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
+                  <Image src="/icons/fourstargeneral-optimized.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Four Star General</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Deterministic WWII tactics</p>
@@ -465,7 +465,7 @@ export default async function Home() {
                   background: 'linear-gradient(135deg, #22c55e, #10b981)',
                   overflow: 'hidden',
                 }}>
-                  <Image src="/icons/MasterTyping%20icon.png" alt="MasterTyping" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
+                  <Image src="/icons/mastertyping-optimized.png" alt="MasterTyping" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
                 <div>
                   <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>MasterTyping</h3>
                   <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Game-based typing</p>
