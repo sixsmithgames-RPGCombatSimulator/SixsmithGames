@@ -254,6 +254,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           ))}
         </div>
 
+        {/* Comments */}
+        <BlogComments postSlug={post.slug} />
+
         {/* Related */}
         {related.length > 0 && (
           <div style={{ marginTop: '4rem' }}>
@@ -280,9 +283,6 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             </div>
           </div>
         )}
-
-        {/* Comments */}
-        <BlogComments postSlug={post.slug} />
 
         {/* CTA */}
         <div style={{
