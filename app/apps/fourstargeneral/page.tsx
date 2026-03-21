@@ -103,7 +103,7 @@ export default function FourStarGeneralPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Launch App →
+                  Play free
                 </LaunchAppButton>
               </div>
             </div>
@@ -158,10 +158,10 @@ export default function FourStarGeneralPage() {
               color: '#1a202c',
               marginBottom: '1.5rem'
             }}>
-              The prototype already has real teeth
+              Clear rules. Real pressure. Meaningful decisions.
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              Four Star General is not just a concept page. The current build wires deployment into the deterministic engine, tracks turn flow and supply, and gives authored battles clear objectives and limits.
+              Four Star General is built around deterministic tactics, deployment discipline, reserves, supply pressure, and authored scenarios with clear objectives. The point is not noise. The point is readable battlefield decisions.
             </p>
           </div>
 
@@ -206,24 +206,24 @@ export default function FourStarGeneralPage() {
               border: '2px solid #fcd34d'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                What it points toward
+                Why deterministic tactics matter
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '0.75rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Single-player campaign arcs built on the same deterministic core</span>
+                  <span style={{color: '#4b5563'}}>You can plan around the rules instead of hoping randomness carries the turn</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>Simultaneous-planning multiplayer after both sides lock orders</span>
+                  <span style={{color: '#4b5563'}}>Deployment, reserves, and timing stay readable because outcomes follow clear logic</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>More colleges, factions, branches, and battle packs</span>
+                  <span style={{color: '#4b5563'}}>Losses and pressure feel earned, which makes scenario problem-solving more satisfying</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <span style={{color: '#f59e0b', marginRight: '0.5rem', fontWeight: '700', fontSize: '1.25rem'}}>→</span>
-                  <span style={{color: '#4b5563'}}>More authored scenarios with distinct mission profiles and difficulty scaling</span>
+                  <span style={{color: '#4b5563'}}>Paid content can expand the experience without materially changing the core balance of play</span>
                 </li>
               </ul>
             </div>
@@ -424,24 +424,44 @@ export default function FourStarGeneralPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with the free tactical battle prototype, then unlock colleges, factions, branch packs, and campaigns as the war chest grows.
+            Start with the free tactical core, then add more content when you want more scenarios, more factions, and more tactical variety. The paid path expands the experience without changing the core fairness of the game.
           </p>
-          <Link href="/pricing" style={{
-            background: 'white',
-            color: '#f59e0b',
-            padding: '1.25rem 3rem',
-            borderRadius: '50px',
-            fontSize: '1.25rem',
-            fontWeight: '700',
-            textDecoration: 'none',
-            display: 'inline-block',
-            boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-            transition: 'all 0.3s ease',
-            border: 'none',
-            cursor: 'pointer'
-          }}>
-            View Unlock Options
-          </Link>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <LaunchAppButton
+              appSlug="fourstargeneral"
+              style={{
+                background: 'rgba(255, 255, 255, 0.14)',
+                color: 'white',
+                padding: '1.1rem 2.4rem',
+                borderRadius: '50px',
+                fontSize: '1.05rem',
+                fontWeight: '700',
+                textDecoration: 'none',
+                display: 'inline-block',
+                boxShadow: '0 10px 30px rgba(0,0,0,0.2)',
+                border: '1px solid rgba(255, 255, 255, 0.25)',
+                cursor: 'pointer'
+              }}
+            >
+              Play free
+            </LaunchAppButton>
+            <Link href="/pricing" style={{
+              background: 'white',
+              color: '#f59e0b',
+              padding: '1.25rem 3rem',
+              borderRadius: '50px',
+              fontSize: '1.25rem',
+              fontWeight: '700',
+              textDecoration: 'none',
+              display: 'inline-block',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+              transition: 'all 0.3s ease',
+              border: 'none',
+              cursor: 'pointer'
+            }}>
+              See pricing
+            </Link>
+          </div>
         </div>
       </section>
     </div>

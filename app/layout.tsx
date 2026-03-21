@@ -14,25 +14,24 @@ import Footer from '@/components/Footer';
  */
 export const metadata: Metadata = {
   metadataBase: new URL('https://sixsmithgames.com'),
-  title: 'Sixsmith Games - Games and Tools for People Who Take Play Seriously',
+  title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
   description:
-    'Run tighter sessions, build better worlds, and dig into strategy games with Sixsmith Games titles including Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General.',
+    'Sixsmith Games builds thoughtful games and creative tools for GMs, worldbuilders, writers, strategy players, and people who spend real time at a keyboard.',
   keywords: [
     'Sixsmith Games',
     'Virtual Combat Simulator',
     'ContentCraft',
     'MasterTyping',
-    'Gravity board game',
     'Four Star General',
-    'tabletop tools',
-    'worldbuilding software',
-    'typing game',
-    'strategy game',
+    'tactical combat simulator',
+    'worldbuilding and writing tools',
+    'WWII tactical strategy game',
+    'typing training for creators and gamers',
   ],
   openGraph: {
-    title: 'Sixsmith Games - Games and Tools for People Who Take Play Seriously',
+    title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
     description:
-      'Tools for game masters, worldbuilders, strategy players, and educators: run the table, build your world, or jump into deeper play with the Sixsmith Games lineup.',
+      'Start free with Virtual Combat Simulator, Four Star General, and MasterTyping, or go deeper with ContentCraft, the premium creative platform.',
     url: '/',
     siteName: 'Sixsmith Games',
     locale: 'en_US',
@@ -48,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sixsmith Games - Games and Tools for People Who Take Play Seriously',
+    title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
     description:
-      'Run sessions, build worlds, and jump into strategy with the Sixsmith Games lineup.',
+      'Free-to-start tools and games for GMs, creators, strategy players, and keyboard-heavy hobbyists.',
     images: ['/apple-icon.png'],
   },
   alternates: {

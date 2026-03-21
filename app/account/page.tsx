@@ -72,6 +72,8 @@ export default function AccountPage() {
   const email = user?.primaryEmailAddress?.emailAddress;
   const sub = getSubscriptionInfo(user?.publicMetadata, email);
   const isActive = sub.accessibleApps.length > 0 || sub.isAdmin;
+  const freeAppSlugs = ['virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
+  const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.accessibleApps.includes('gravity' as never) || sub.isAdmin);
 
   const card: React.CSSProperties = {
     background: 'white', borderRadius: '16px', padding: '1.75rem 2rem',
@@ -151,7 +153,7 @@ export default function AccountPage() {
               ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                   <p style={{ color: '#6b7280', fontSize: '0.9375rem', margin: 0 }}>
-                    You don&apos;t have an active subscription. Subscribe to unlock all 5 apps.
+                    You don&apos;t have an active paid subscription. ContentCraft requires one, but the free-to-start apps are still available to signed-in users.
                   </p>
                   <a href="/pricing" style={{
                     display: 'inline-block', background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
@@ -159,7 +161,7 @@ export default function AccountPage() {
                     fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
                     boxShadow: '0 2px 8px rgba(124,58,237,0.35)', whiteSpace: 'nowrap',
                   }}>
-                    Subscribe Now →
+                    See Pricing →
                   </a>
                 </div>
               )}
@@ -184,15 +186,16 @@ export default function AccountPage() {
             }}>
               <span>🔒</span>
               <p style={{ color: '#92400e', fontSize: '0.9rem', margin: 0 }}>
-                Subscribe to unlock apps.{' '}
-                <a href="/pricing" style={{ color: '#b45309', fontWeight: '700' }}>View plans</a>
+                Free-to-start apps are available now. ContentCraft requires a paid plan.{' '}
+                <a href="/pricing" style={{ color: '#b45309', fontWeight: '700' }}>View pricing</a>
               </p>
             </div>
           )}
 
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
-            {appDetails.map((app) => {
-              const locked = !sub.accessibleApps.includes(app.slug as never) && !sub.isAdmin;
+            {visibleApps.map((app) => {
+              const hasFreeAccess = freeAppSlugs.includes(app.slug);
+              const locked = !hasFreeAccess && !sub.accessibleApps.includes(app.slug as never) && !sub.isAdmin;
               return (
                 <div key={app.slug} style={{
                   border: `1.5px solid ${locked ? '#e5e7eb' : app.color + '33'}`,
@@ -209,7 +212,7 @@ export default function AccountPage() {
                     </div>
                   </div>
                   {locked ? (
-                    <span style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: '600' }}>🔒 Locked — subscribe to access</span>
+                    <span style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: '600' }}>🔒 Locked — paid plan required</span>
                   ) : (
                     <a href={APP_URLS[app.slug]} target="_blank" rel="noopener noreferrer" style={{
                       display: 'inline-flex', alignItems: 'center', gap: '4px',
@@ -271,10 +274,10 @@ export default function AccountPage() {
           }}>
             <p style={{ fontSize: '1.75rem', margin: '0 0 0.5rem' }}>🎮</p>
             <h2 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>
-              Unlock All 5 Apps
+              Start with the free products or subscribe to ContentCraft
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', margin: '0 0 1.75rem', maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Get full access to Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General for one low monthly price.
+              Virtual Combat Simulator, Four Star General, and MasterTyping are free to start. ContentCraft is the premium subscription platform for bigger creative work.
             </p>
             <a href="/pricing" style={{
               display: 'inline-block', background: 'white', color: '#1e3a8a',

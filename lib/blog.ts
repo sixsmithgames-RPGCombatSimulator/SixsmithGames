@@ -162,11 +162,9 @@ Async only works if the game is designed for it. You need:
 - Push notifications (so you know it's your turn)
 - Games that actually finish (not 6-month slogs)
 
-## [Gravity](/apps/gravity): Strategy That Fits Your Life
+The more strategy games respect real schedules, the more likely people are to keep playing them.
 
-Gravity is a tactical sci-fi game built for async from day one. Command fleets, manage resources, outmaneuver opponents — all on your schedule.
-
-Each turn matters. Games resolve in weeks, not months. And you never have to coordinate a single calendar invite.
+That does not mean turning them into shallow click-ins. It means building clear game states, meaningful turns, and systems that survive the gaps between sessions.
 
 ## The Bottom Line
 
@@ -177,7 +175,7 @@ Async multiplayer makes deep strategy accessible to people with real lives. And 
     date: '2026-02-10',
     readTime: '5 min read',
     category: 'Gaming',
-    tags: ['board games', 'async', 'strategy', 'multiplayer', 'gravity'],
+    tags: ['board games', 'async', 'strategy', 'multiplayer'],
   },
   {
     slug: 'kids-actually-want-typing-practice',

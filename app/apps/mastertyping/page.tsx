@@ -75,7 +75,7 @@ export default function MasterTypingPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                GAME-BASED TYPING PRACTICE
+                TYPING TRAINING FOR REAL DIGITAL LIFE
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -85,7 +85,7 @@ export default function MasterTypingPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Typing practice that feels like a game
+                Typing training for creators, gamers, and digital hobbyists
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -93,7 +93,7 @@ export default function MasterTypingPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                MasterTyping turns typing practice into a light adventure, with game mode, pro mode, a six-step assessment, specialized exercises, and progress tracking for kids, families, and classrooms.
+                Improve speed, accuracy, and endurance with guided assessment, targeted drills, and a game mode that keeps practice interesting.
               </p>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <LaunchAppButton
@@ -115,7 +115,7 @@ export default function MasterTypingPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Launch App →
+                  Try free
                 </LaunchAppButton>
               </div>
             </div>
@@ -127,32 +127,32 @@ export default function MasterTypingPage() {
               border: '2px solid rgba(34, 197, 94, 0.2)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Why MasterTyping keeps players coming back
+                Why MasterTyping works
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#22c55e', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Practice feels like play instead of worksheet time</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Assessment and drills point you toward what actually needs work</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#22c55e', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Multiple modes let players practice, assess, or drill weak spots on purpose</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Multiple modes support focused training, not just repetition</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#22c55e', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Assessment mode shows where players struggle before practice turns into guesswork</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Game mode helps keep practice from feeling dead</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#22c55e', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Free core access gets families and classrooms in fast, with premium analytics there when deeper breakdowns matter</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Free to use, with recent typing history kept for a limited window</span>
                 </li>
               </ul>
             </div>
@@ -170,10 +170,10 @@ export default function MasterTypingPage() {
               color: '#1a202c',
               marginBottom: '1.5rem'
             }}>
-              Typing practice works better when it feels worth doing
+              Typing practice works better when it connects to daily digital life
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', marginBottom: '2rem'}}>
-              Traditional typing tools lose players because they feel repetitive and flat, and they rarely show exactly what needs work next. MasterTyping keeps practice moving with game framing, clearer feedback, and assessments that point players toward the right drills.
+              Writing, research, chat, campaign prep, streaming, modding, and general digital work all get easier when typing feels more comfortable. MasterTyping gives you a clearer way to improve without turning practice into a chore.
             </p>
             <div style={{
               background: 'linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%)',
@@ -182,10 +182,10 @@ export default function MasterTypingPage() {
               border: '2px solid #86efac'
             }}>
               <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#166534', marginBottom: '1rem'}}>
-                Practice gets easier to sustain when it feels like progress, not punishment.
+                Practice gets easier to sustain when it feels useful and you can see the point of it.
               </p>
               <p style={{color: '#4b5563'}}>
-                Players can jump into playful runs, tighten up in Pro mode, use the six-step assessment to spot weak keys and patterns, then move into targeted exercises while tracking real improvement in speed and accuracy.
+                Use assessment mode to spot weak keys and patterns, move into targeted exercises, tighten things up in Pro mode, and lean on game mode when you want practice to feel lighter.
               </p>
             </div>
           </div>
@@ -230,10 +230,10 @@ export default function MasterTypingPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Characters, themes, and reasons to come back
+              Game mode keeps practice interesting
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              A playful cast helps the app feel more like a game than a drill screen
+              The fun layer matters, but it supports the training instead of replacing it
             </p>
           </div>
 
@@ -275,7 +275,7 @@ export default function MasterTypingPage() {
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
             <div>
               <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Assessment feedback and tracking that actually help
+                Why it matters outside a typing test
               </h2>
               <div style={{display: 'flex', flexDirection: 'column', gap: '1.5rem'}}>
                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -283,8 +283,8 @@ export default function MasterTypingPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Progressive lessons</h3>
-                    <p style={{color: '#6b7280'}}>Difficulty ramps up gradually so players can build skill without hitting a wall</p>
+                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Writing and note-taking</h3>
+                    <p style={{color: '#6b7280'}}>When typing feels smoother, drafting, journaling, outlining, and note capture feel less tiring</p>
                   </div>
                 </div>
                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -292,8 +292,8 @@ export default function MasterTypingPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Challenge runs</h3>
-                    <p style={{color: '#6b7280'}}>Timed and streak-based pressure keeps repetition engaging instead of dull</p>
+                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Research and study</h3>
+                    <p style={{color: '#6b7280'}}>Faster, cleaner typing helps when you are taking notes, answering prompts, or moving through information quickly</p>
                   </div>
                 </div>
                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -301,8 +301,8 @@ export default function MasterTypingPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Assessment analytics</h3>
-                    <p style={{color: '#6b7280'}}>Six assessment steps surface weak zones, with optional deep analytics for detailed breakdowns and next-step recommendations</p>
+                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Chat, streaming, and community</h3>
+                    <p style={{color: '#6b7280'}}>If you spend time in games, Discord, streams, forums, or comments, better typing simply makes the experience easier</p>
                   </div>
                 </div>
                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -310,8 +310,8 @@ export default function MasterTypingPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Profiles and progress tracking</h3>
-                    <p style={{color: '#6b7280'}}>Per-mode stats, WPM charts, recent sessions, and persistent weakness tracking stay saved locally in the browser</p>
+                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Campaign prep and digital hobbies</h3>
+                    <p style={{color: '#6b7280'}}>Typing matters when you are writing session notes, modding, researching builds, or working through hobby projects online</p>
                   </div>
                 </div>
                 <div style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -319,8 +319,8 @@ export default function MasterTypingPage() {
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
                   <div>
-                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Classroom-friendly use</h3>
-                    <p style={{color: '#6b7280'}}>Run assessments, review results fast, and move students into the right drills without setup overhead</p>
+                    <h3 style={{fontWeight: '700', color: '#1a202c', marginBottom: '0.25rem'}}>Recent history stays visible</h3>
+                    <p style={{color: '#6b7280'}}>Keeps your recent typing history available so you can track improvement without managing a permanent archive</p>
                   </div>
                 </div>
               </div>
@@ -336,7 +336,7 @@ export default function MasterTypingPage() {
                 Great fit for:
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '0.75rem', color: '#4b5563'}}>
-                {['Kids and families who want practice that feels like a game', 'Teachers who need quick assessments and visible progress', 'Homeschool families', 'Students building speed and accuracy with feedback', 'Classrooms that need low-friction typing practice'].map(item => (
+                {['Creators who spend real time writing at a keyboard', 'Gamers who type constantly in chat, communities, and live play', 'Students who want faster, cleaner typing for everyday work', 'Hobbyists who like structured practice with useful feedback', 'Anyone trying to build comfort, speed, and endurance over time'].map(item => (
                   <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.5rem' }}>
                     <svg style={{ width: '18px', height: '18px', color: '#22c55e', flexShrink: 0, marginTop: '2px' }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
                     {item}
@@ -353,7 +353,7 @@ export default function MasterTypingPage() {
         <div style={{maxWidth: '900px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Core practice stays free
+              Free and useful right away
             </h2>
           </div>
           <div style={{
@@ -362,22 +362,20 @@ export default function MasterTypingPage() {
             padding: '3rem',
             border: '2px solid #86efac'
           }}>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '3rem', textAlign: 'center'}}>
+            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', textAlign: 'left'}}>
               <div>
-                <p style={{fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.5rem'}}>Typical Typing Apps</p>
-                <p style={{fontSize: '3rem', fontWeight: '900', color: '#dc2626', marginBottom: '0.5rem'}}>$10-30</p>
-                <p style={{fontSize: '0.875rem', color: '#6b7280'}}>per month, per user</p>
-                <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1a202c', marginTop: '1rem'}}>$100+/year</p>
+                <p style={{fontSize: '0.875rem', color: '#166534', marginBottom: '0.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em'}}>Free</p>
+                <p style={{fontSize: '2.25rem', fontWeight: '900', color: '#1a202c', marginBottom: '0.75rem'}}>Assessment, drills, Pro mode, and game mode</p>
+                <p style={{fontSize: '0.95rem', color: '#4b5563', lineHeight: 1.7}}>The core product is free to use for signed-in users. You can assess where you are, work on specific weaknesses, and practice in the mode that fits the day.</p>
               </div>
               <div>
-                <p style={{fontSize: '0.875rem', color: '#6b7280', marginBottom: '0.5rem'}}>MasterTyping</p>
-                <p style={{fontSize: '3rem', fontWeight: '900', color: '#22c55e', marginBottom: '0.5rem'}}>FREE</p>
-                <p style={{fontSize: '0.875rem', color: '#6b7280'}}>for any signed-in user</p>
-                <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1a202c', marginTop: '1rem'}}>Core lessons, challenges, assessments, exercises, and tracking</p>
+                <p style={{fontSize: '0.875rem', color: '#166534', marginBottom: '0.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em'}}>Recent history</p>
+                <p style={{fontSize: '2.25rem', fontWeight: '900', color: '#1a202c', marginBottom: '0.75rem'}}>A limited recent-history window</p>
+                <p style={{fontSize: '0.95rem', color: '#4b5563', lineHeight: 1.7}}>Recent typing history stays available so you can keep an eye on improvement without turning the product into a permanent archive of every session.</p>
               </div>
             </div>
             <p style={{marginTop: '2rem', textAlign: 'center', color: '#166534', fontSize: '1rem', lineHeight: 1.7}}>
-              Premium adds deeper assessment analytics, including per-exercise breakdowns, weakness detection, personalized recommendations, and character-level performance insights.
+              The point is straightforward: useful typing practice, clear feedback, and enough recent history to see progress without overcomplicating it.
             </p>
           </div>
         </div>
@@ -413,7 +411,7 @@ export default function MasterTypingPage() {
             marginBottom: '1.5rem',
             textShadow: '0 4px 20px rgba(0,0,0,0.3)'
           }}>
-            Start typing in a space that feels like play
+            Practice typing in a way that is actually useful
           </h2>
           <p style={{
             fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -421,7 +419,7 @@ export default function MasterTypingPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Game mode, pro mode, assessments, exercises, and core tracking are free to start. Premium unlocks deeper analytics when sharper feedback matters.
+            Guided assessment, targeted drills, Pro mode, and game mode are free. Recent history stays available for a limited window so you can keep track of improvement over time.
           </p>
           <SubscribeButton planId="mastertyping" signInLabel="Sign Up" style={{
             background: 'white',
@@ -437,7 +435,7 @@ export default function MasterTypingPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Sign up and start typing
+            Try free
           </SubscribeButton>
         </div>
       </section>

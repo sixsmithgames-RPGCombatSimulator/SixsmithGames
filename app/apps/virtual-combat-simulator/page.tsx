@@ -125,7 +125,7 @@ export default function VirtualCombatSimulatorPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Launch App →
+                  Start free
                 </LaunchAppButton>
               </div>
             </div>
@@ -340,7 +340,7 @@ export default function VirtualCombatSimulatorPage() {
                 cursor: 'pointer'
               }}
             >
-              Launch Free Player
+              Start free
             </LaunchAppButton>
             <SubscribeButton planId="virtual-combat-simulator" style={{
               background: 'white',

@@ -44,8 +44,8 @@ export const metadata: Metadata = {
     canonical: '/apps/gravity',
   },
   robots: {
-    index: true,
-    follow: true,
+    index: false,
+    follow: false,
   },
   icons: { icon: '/icons/gravity-optimized.png', apple: '/icons/gravity-optimized.png' },
 };

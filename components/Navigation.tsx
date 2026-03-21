@@ -18,9 +18,6 @@ export default function Navigation() {
   const apps = [
     { name: 'Virtual Combat Simulator', href: '/apps/virtual-combat-simulator' },
     { name: 'ContentCraft', href: '/apps/contentcraft' },
-    { name: 'MasterTyping', href: '/apps/mastertyping' },
-    { name: 'Gravity', href: '/apps/gravity' },
-    { name: 'Four Star General', href: '/apps/fourstargeneral' },
   ];
 
   const navStyle: React.CSSProperties = {
@@ -124,6 +121,13 @@ export default function Navigation() {
 
           {/* Desktop nav */}
           <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+            <Link href="/" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              Home
+            </Link>
+
             {/* Apps dropdown */}
             <div style={{ position: 'relative' }}>
               <button
@@ -139,7 +143,7 @@ export default function Navigation() {
                   gap: '4px',
                 }}
               >
-                Lineup
+                Tools
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M6 9l6 6 6-6" />
                 </svg>
@@ -170,6 +174,20 @@ export default function Navigation() {
                 </div>
               )}
             </div>
+
+            <Link href="/apps/fourstargeneral" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              Four Star General
+            </Link>
+
+            <Link href="/apps/mastertyping" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              MasterTyping
+            </Link>
 
             <Link href="/pricing" style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
@@ -229,7 +247,7 @@ export default function Navigation() {
               >
                 Sign In
               </Link>
-              <Link href="/sign-up" style={ctaStyle}
+              <Link href="/start-here" style={ctaStyle}
                 onMouseEnter={e => (e.currentTarget.style.boxShadow = '0 4px 16px rgba(124,58,237,0.5)')}
                 onMouseLeave={e => (e.currentTarget.style.boxShadow = '0 2px 8px rgba(124,58,237,0.35)')}
               >
@@ -273,8 +291,13 @@ export default function Navigation() {
           zIndex: 9998,
           padding: '1rem 2rem 1.5rem',
         }}>
+          <Link href="/" onClick={() => setMobileMenuOpen(false)}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            Home
+          </Link>
           <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            Lineup
+            Tools
           </div>
           {apps.map((app) => (
             <Link key={app.href} href={app.href}
@@ -284,6 +307,16 @@ export default function Navigation() {
               {app.name}
             </Link>
           ))}
+          <Link href="/apps/fourstargeneral" onClick={() => setMobileMenuOpen(false)}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            Four Star General
+          </Link>
+          <Link href="/apps/mastertyping" onClick={() => setMobileMenuOpen(false)}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            MasterTyping
+          </Link>
           <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
@@ -319,7 +352,7 @@ export default function Navigation() {
               >
                 Sign In
               </Link>
-              <Link href="/sign-up" onClick={() => setMobileMenuOpen(false)}
+              <Link href="/start-here" onClick={() => setMobileMenuOpen(false)}
                 style={{ display: 'block', textAlign: 'center', padding: '0.75rem', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '8px', color: '#ffffff', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}
               >
                 Start Here →

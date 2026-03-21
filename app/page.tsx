@@ -9,54 +9,35 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import ModernBackground from '@/components/ModernBackground';
-import { getRecentPosts } from '@/lib/blog';
 
-export default async function Home() {
-  const apps = [
+export default function Home() {
+  const freeProducts = [
     {
       name: 'Virtual Combat Simulator',
-      tagline: 'Map-first combat control',
-      description:
-        'Run D&D encounters with a map-first control room built around initiative, action economy, rules clarity, and shared table state.',
       href: '/apps/virtual-combat-simulator',
-      color: 'from-red-500 to-orange-500',
       icon: '/icons/vcs-optimized.png',
-    },
-    {
-      name: 'ContentCraft',
-      tagline: 'AI-powered creative workspace',
-      description:
-        'Build campaigns, novels, and settings with structured canon tracking and multi-stage AI workflows that stay grounded in your source of truth.',
-      href: '/apps/contentcraft',
-      color: 'from-purple-500 to-pink-500',
-      icon: '/icons/contentcraft-optimized.png',
-    },
-    {
-      name: 'MasterTyping',
-      tagline: 'Typing practice that plays like a game',
-      description:
-        'Progressive lessons, six-step assessments, targeted exercises, and classroom-friendly tracking that make practice feel more like play than homework.',
-      href: '/apps/mastertyping',
-      color: 'from-green-500 to-emerald-500',
-      icon: '/icons/mastertyping-optimized.png',
-    },
-    {
-      name: 'Gravity',
-      tagline: 'Simultaneous-turn sci-fi strategy',
-      description:
-        'Plan orders in parallel, lock the turn, and watch the whole board resolve at once in a tactics game built around power routing, crew roles, and escape pressure.',
-      href: '/apps/gravity',
-      color: 'from-blue-500 to-cyan-500',
-      icon: '/icons/gravity-optimized.png',
+      audience: 'For GMs and tactical players',
+      message: 'Start running encounters for free, then upgrade for more depth, more campaign support, and more storage when you need it.',
+      button: 'Start free',
+      accent: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
     },
     {
       name: 'Four Star General',
-      tagline: 'Deterministic WWII command',
-      description:
-        'Command a WWII tactical battle prototype built around deterministic resolution, deployment choices, supply tempo, and scenario-driven pressure.',
       href: '/apps/fourstargeneral',
-      color: 'from-amber-500 to-yellow-500',
       icon: '/icons/fourstargeneral-optimized.png',
+      audience: 'For strategy players',
+      message: 'Free-to-start deterministic tactical play, with optional content upgrades that add more to explore without changing core fairness.',
+      button: 'Play free',
+      accent: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
+    },
+    {
+      name: 'MasterTyping',
+      href: '/apps/mastertyping',
+      icon: '/icons/mastertyping-optimized.png',
+      audience: 'For creators, gamers, students, and hobbyists',
+      message: 'Free typing practice for real digital life, with guided training, useful assessment, and a game mode that keeps practice interesting.',
+      button: 'Try free',
+      accent: 'linear-gradient(135deg, #16a34a 0%, #10b981 100%)',
     },
   ];
 
@@ -90,7 +71,7 @@ export default async function Home() {
               textShadow: '0 4px 20px rgba(0,0,0,0.3)',
               lineHeight: '1.2'
             }}>
-              Games and tools for people who take play seriously
+              Games and tools for people who care about systems, craft, and play
             </h1>
             <p style={{
               fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -99,15 +80,15 @@ export default async function Home() {
               fontWeight: '500',
               textShadow: '0 2px 10px rgba(0,0,0,0.2)'
             }}>
-              Run tighter sessions, build better worlds, and sink your teeth into strategy games built around clear systems, strong flavor, and smart decisions.
+              Start free with Virtual Combat Simulator, Four Star General, and MasterTyping. Go deeper with ContentCraft if you want the premium platform for bigger creative work.
             </p>
             <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
-              <Link href="/pricing" className="hero-btn-primary">
-                See Pricing
+              <Link href="/start-here" className="hero-btn-primary">
+                Start free
               </Link>
-              <a href="#apps" className="hero-btn-secondary">
-                Explore the Lineup
-              </a>
+              <Link href="/apps/contentcraft" className="hero-btn-secondary">
+                Explore ContentCraft
+              </Link>
             </div>
             <div style={{marginTop: '2rem', display: 'flex', justifyContent: 'center'}}>
               <Image
@@ -121,7 +102,35 @@ export default async function Home() {
         </div>
       </section>
 
-      {/* Apps Showcase */}
+      {/* Product model strip */}
+      <section style={{ padding: '28px 0', background: 'white', borderBottom: '1px solid #e5e7eb' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
+            <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '18px', padding: '1.5rem' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#2563eb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                Free to start
+              </div>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
+                {['Virtual Combat Simulator', 'Four Star General', 'MasterTyping'].map((item) => (
+                  <span key={item} style={{ background: 'white', border: '1px solid #dbeafe', color: '#1d4ed8', borderRadius: '999px', padding: '0.35rem 0.8rem', fontSize: '0.875rem', fontWeight: 700 }}>
+                    {item}
+                  </span>
+                ))}
+              </div>
+            </div>
+            <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '18px', padding: '1.5rem', color: 'white' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#c4b5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
+                Premium subscription
+              </div>
+              <div style={{ display: 'inline-block', background: 'rgba(255,255,255,0.08)', borderRadius: '999px', padding: '0.35rem 0.8rem', fontSize: '0.875rem', fontWeight: 700 }}>
+                ContentCraft
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Choose your path */}
       <section id="apps" style={{padding: '80px 0', background: '#f8f9fa'}}>
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '4rem'}}>
@@ -131,7 +140,7 @@ export default async function Home() {
               color: '#1a202c',
               marginBottom: '1rem'
             }}>
-              Choose Your Arena
+              Choose your path
             </h2>
             <p style={{
               fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
@@ -139,7 +148,7 @@ export default async function Home() {
               maxWidth: '800px',
               margin: '0 auto'
             }}>
-              From rules-faithful encounter control to AI-assisted writing tools to simultaneous-turn strategy, every title is built to make play sharper, smoother, or deeper.
+              Start with the product that fits what you actually want to do. The free products get you in quickly. ContentCraft is the premium platform for larger creative work.
             </p>
           </div>
 
@@ -148,401 +157,173 @@ export default async function Home() {
             gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
             gap: '2rem'
           }}>
-            {apps.map((app) => {
-              const gradientMap: Record<string, string> = {
-                'from-red-500 to-orange-500': 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
-                'from-purple-500 to-pink-500': 'linear-gradient(135deg, #a855f7 0%, #ec4899 100%)',
-                'from-green-500 to-emerald-500': 'linear-gradient(135deg, #22c55e 0%, #10b981 100%)',
-                'from-blue-500 to-cyan-500': 'linear-gradient(135deg, #3b82f6 0%, #06b6d4 100%)',
-                'from-amber-500 to-yellow-500': 'linear-gradient(135deg, #f59e0b 0%, #eab308 100%)'
-              };
-              const gradient = gradientMap[app.color] || 'linear-gradient(135deg, #667eea 0%, #764ba2 100%)';
-
-              return (
-                <Link
-                  key={app.name}
-                  href={app.href}
-                  className="app-card"
-                >
-                  <div style={{
-                    width: '96px',
-                    height: '96px',
-                    borderRadius: '20px',
-                    marginBottom: '1.5rem',
-                    boxShadow: '0 10px 24px rgba(0,0,0,0.12)',
-                    overflow: 'hidden',
-                  }}>
-                    <Image src={app.icon} alt={app.name} width={96} height={96} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
+            {freeProducts.map((product) => (
+              <article key={product.name} style={{ background: 'white', borderRadius: '24px', border: '1px solid #e5e7eb', boxShadow: '0 10px 24px rgba(15,23,42,0.05)', overflow: 'hidden' }}>
+                <div style={{ background: product.accent, padding: '1.5rem 1.75rem', color: 'white' }}>
+                  <div style={{ width: '72px', height: '72px', borderRadius: '18px', marginBottom: '1rem', overflow: 'hidden', background: 'rgba(255,255,255,0.16)' }}>
+                    <Image src={product.icon} alt={product.name} width={72} height={72} style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
                   </div>
-                  <h3 style={{
-                    fontSize: '1.75rem',
-                    fontWeight: '700',
-                    color: '#1a202c',
-                    marginBottom: '0.75rem'
-                  }}>
-                    {app.name}
-                  </h3>
-                  <p style={{
-                    fontSize: '0.95rem',
-                    fontWeight: '600',
-                    color: '#6b7280',
-                    marginBottom: '1rem'
-                  }}>
-                    {app.tagline}
-                  </p>
-                  <p style={{
-                    fontSize: '1rem',
-                    color: '#4b5563',
-                    lineHeight: '1.7',
-                    marginBottom: '1.5rem'
-                  }}>
-                    {app.description}
-                  </p>
-                  <div style={{
-                    color: '#3b82f6',
-                    fontWeight: '600',
-                    fontSize: '1rem'
-                  }}>
-                    Learn more →
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        </div>
-      </section>
-
-      {/* Audience Personas */}
-      <section style={{ padding: '100px 0', background: 'white' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              WHO IT&apos;S FOR
-            </p>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', marginBottom: '1rem', lineHeight: 1.2 }}>
-              Pick Your Path
-            </h2>
-            <p style={{ fontSize: '1.125rem', color: '#6b7280', maxWidth: '650px', margin: '0 auto', lineHeight: 1.7 }}>
-              Whether you run the table, build the world, command the board, or teach through play, there is a strong starting point here.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1.5rem' }}>
-            {[
-              {
-                title: 'Run the Table',
-                desc: 'Keep combat moving, prep faster, and stay on top of maps, initiative, and lore without breaking the session rhythm.',
-                apps: ['Virtual Combat Simulator', 'ContentCraft'],
-                gradient: 'linear-gradient(135deg, #fef2f2, #fff7ed)',
-                accent: '#dc2626',
-              },
-              {
-                title: 'Build the World',
-                desc: 'Write with a real source of truth. Track canon, relationships, timelines, and revisions so the project stays coherent as it grows.',
-                apps: ['ContentCraft'],
-                gradient: 'linear-gradient(135deg, #f5f3ff, #fdf2f8)',
-                accent: '#7c3aed',
-              },
-              {
-                title: 'Command the Board',
-                desc: 'Play strategy games built around deterministic outcomes, simultaneous planning, supply pressure, and hard tradeoffs instead of busywork.',
-                apps: ['Gravity', 'Four Star General'],
-                gradient: 'linear-gradient(135deg, #eff6ff, #ecfeff)',
-                accent: '#2563eb',
-              },
-              {
-                title: 'Learn Through Play',
-                desc: 'Give kids typing practice with game modes, six-step assessments, targeted exercises, and progress tracking that feels worth coming back to.',
-                apps: ['MasterTyping'],
-                gradient: 'linear-gradient(135deg, #ecfdf5, #f0fdf4)',
-                accent: '#059669',
-              },
-            ].map((persona) => (
-              <div key={persona.title} style={{
-                background: persona.gradient,
-                borderRadius: '20px',
-                padding: '2.25rem',
-                border: '1px solid rgba(0,0,0,0.04)',
-                transition: 'transform 0.2s',
-              }}>
-                <h3 style={{ fontSize: '1.375rem', fontWeight: '800', color: '#111827', marginBottom: '0.75rem' }}>
-                  {persona.title}
-                </h3>
-                <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1.25rem' }}>
-                  {persona.desc}
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.375rem' }}>
-                  {persona.apps.map(app => (
-                    <span key={app} style={{
-                      background: 'rgba(255,255,255,0.8)',
-                      color: persona.accent,
-                      fontSize: '0.75rem',
-                      fontWeight: '700',
-                      padding: '0.25rem 0.625rem',
-                      borderRadius: '999px',
-                      border: `1px solid ${persona.accent}22`,
-                    }}>
-                      {app}
-                    </span>
-                  ))}
+                  <h3 style={{ fontSize: '1.55rem', fontWeight: '800', margin: '0 0 0.35rem' }}>{product.name}</h3>
+                  <p style={{ margin: 0, fontSize: '0.92rem', fontWeight: 700, color: 'rgba(255,255,255,0.88)' }}>{product.audience}</p>
                 </div>
-              </div>
+                <div style={{ padding: '1.75rem' }}>
+                  <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.8', margin: '0 0 1.25rem' }}>{product.message}</p>
+                  <Link href={product.href} style={{ display: 'inline-block', padding: '0.9rem 1.35rem', borderRadius: '999px', background: '#111827', color: 'white', textDecoration: 'none', fontWeight: 700 }}>
+                    {product.button}
+                  </Link>
+                </div>
+              </article>
             ))}
           </div>
-        </div>
-      </section>
 
-      {/* Social Proof Stats */}
-      <section style={{
-        padding: '60px 0',
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 100%)',
-      }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
-            gap: '2rem',
-            textAlign: 'center',
-          }}>
-            {[
-              { value: '5', label: 'Titles', sub: 'Covering GM tools, worldbuilding, strategy, and learning' },
-              { value: '2', label: 'Ways to Start', sub: 'Subscribe for creator tools or jump into free core games' },
-              { value: '24/7', label: 'Access', sub: 'Prep, write, practice, or plan your next turn whenever you have time' },
-              { value: '0', label: 'Lock-In', sub: 'Stay because the lineup earns it' },
-            ].map((stat) => (
-              <div key={stat.label}>
-                <div style={{ fontSize: '2.5rem', fontWeight: '900', color: '#818cf8', lineHeight: 1, marginBottom: '0.5rem' }}>
-                  {stat.value}
-                </div>
-                <div style={{ color: '#ffffff', fontWeight: '700', fontSize: '1rem', marginBottom: '0.25rem' }}>
-                  {stat.label}
-                </div>
-                <div style={{ color: '#64748b', fontSize: '0.8125rem', lineHeight: 1.5 }}>
-                  {stat.sub}
-                </div>
+          <div style={{ marginTop: '2rem', background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '28px', color: 'white', padding: '2.5rem', boxShadow: '0 20px 50px rgba(76,29,149,0.22)' }}>
+            <div style={{ maxWidth: '860px' }}>
+              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Premium creative platform
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* App Deep Dives */}
-      <section style={{ padding: '100px 0', background: '#fafafa' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ textAlign: 'center', marginBottom: '4rem' }}>
-            <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              WHERE TO START
-            </p>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', lineHeight: 1.2 }}>
-              The lineup at a glance
-            </h2>
-          </div>
-
-          {/* VCS + ContentCraft spotlight */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 480px), 1fr))',
-            gap: '2rem', marginBottom: '2rem',
-          }}>
-            <div style={{
-              background: 'linear-gradient(160deg, #1c1917, #292524)', borderRadius: '24px',
-              padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '160px', height: '160px', opacity: 0.07, overflow: 'hidden', borderRadius: '24px' }}>
-                <Image src="/icons/vcs-optimized.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
-              </div>
-              <span style={{ background: 'rgba(239,68,68,0.15)', color: '#fca5a5', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
-                D&D Combat
-              </span>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>Virtual Combat Simulator</h3>
-              <p style={{ color: '#a8a29e', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-                A map-first combat control room for D&D 5e play, with initiative, action economy, rules checks, and table sync that keep fights clean and readable.
+              <h3 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 900, margin: '0 0 0.9rem' }}>ContentCraft</h3>
+              <p style={{ fontSize: '1.08rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
+                For writers, worldbuilders, and campaign creators who need more than a blank document. ContentCraft is the premium subscription platform for bigger creative projects, includes AI usage, and supports additional credits when you need more capacity.
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
-                {['5e 2024 defaults and combat flow', 'Grid-aware map, tokens, and positioning', 'Audit-ready combat log and rules checks', 'Players join free with shared state'].map(f => (
-                  <li key={f} style={{ color: '#d6d3d1', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{ color: '#f87171', fontSize: '0.75rem' }}>●</span> {f}
+              <Link href="/apps/contentcraft" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
+                Explore ContentCraft
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Creator tools section */}
+      <section style={{ padding: '96px 0', background: 'white' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ maxWidth: '800px', marginBottom: '3rem' }}>
+            <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#4f46e5', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+              Creator tools
+            </div>
+            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
+              Virtual Combat Simulator and ContentCraft belong together, but they are not the same kind of product
+            </h2>
+            <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
+              Virtual Combat Simulator is the accessible, free-to-start utility. ContentCraft is the premium creative environment for larger projects. One gets you in quickly. The other gives you a deeper workspace when your writing, worldbuilding, or campaign creation needs more structure.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.75rem' }}>
+            <div style={{ background: 'linear-gradient(160deg, #1f2937, #111827)', borderRadius: '24px', padding: '2rem', color: 'white' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#fca5a5', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Free to start
+              </div>
+              <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>Virtual Combat Simulator</h3>
+              <p style={{ color: '#d1d5db', lineHeight: 1.8, margin: '0 0 1rem' }}>
+                Run encounters without wrestling with your notes. Start free, get useful combat tools immediately, and upgrade later if you want more features, more storage, and deeper campaign support.
+              </p>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
+                {['Useful right away for running encounters', 'Map, initiative, and table state in one place', 'Paid upgrades add capability, not access to the basic tool'].map((item) => (
+                  <li key={item} style={{ color: '#e5e7eb', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                    <span style={{ color: '#f87171' }}>●</span>{item}
                   </li>
                 ))}
               </ul>
-              <Link href="/apps/virtual-combat-simulator" style={{
-                display: 'inline-block', marginTop: '1.5rem', color: '#fca5a5',
-                fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
-              }}>
-                Learn more →
-              </Link>
+              <Link href="/apps/virtual-combat-simulator" style={{ color: '#fca5a5', fontWeight: 700, textDecoration: 'none' }}>Start free →</Link>
             </div>
 
-            <div style={{
-              background: 'linear-gradient(160deg, #1e1b4b, #312e81)', borderRadius: '24px',
-              padding: 'clamp(2rem, 4vw, 3rem)', color: 'white', position: 'relative', overflow: 'hidden',
-            }}>
-              <div style={{ position: 'absolute', top: '-20px', right: '-20px', width: '160px', height: '160px', opacity: 0.07, overflow: 'hidden', borderRadius: '24px' }}>
-                <Image src="/icons/contentcraft-optimized.png" alt="" width={160} height={160} style={{ objectFit: 'cover' }} />
+            <div style={{ background: 'linear-gradient(160deg, #312e81, #4c1d95)', borderRadius: '24px', padding: '2rem', color: 'white' }}>
+              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Premium subscription
               </div>
-              <span style={{ background: 'rgba(168,85,247,0.15)', color: '#c4b5fd', padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
-                AI-assisted Writing
-              </span>
-              <h3 style={{ fontSize: '1.75rem', fontWeight: '800', margin: '1rem 0 0.75rem' }}>ContentCraft</h3>
-              <p style={{ color: '#a5b4fc', fontSize: '1rem', lineHeight: 1.75, marginBottom: '1.5rem' }}>
-                A connected creative workspace for campaigns, novels, and setting work, with canon-aware AI, approvals, and versioned project memory.
+              <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>ContentCraft</h3>
+              <p style={{ color: '#ddd6fe', lineHeight: 1.8, margin: '0 0 1rem' }}>
+                A premium creative platform for writers, worldbuilders, and campaign creators who need a more connected place to work. It includes AI usage and supports additional credits when heavier use makes sense.
               </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.5rem' }}>
-                {['Projects and shared canon library', 'Stage-based AI generation workflows', 'Fact-checking, history, and diffs', 'Bring your own model keys or use credits'].map(f => (
-                  <li key={f} style={{ color: '#c7d2fe', fontSize: '0.875rem', display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <span style={{ color: '#a78bfa', fontSize: '0.75rem' }}>●</span> {f}
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
+                {['Subscription product for bigger creative work', 'Built for long-form projects, lore, and continuity', 'Additional credits available for heavier AI usage'].map((item) => (
+                  <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                    <span style={{ color: '#c4b5fd' }}>●</span>{item}
                   </li>
                 ))}
               </ul>
-              <Link href="/apps/contentcraft" style={{
-                display: 'inline-block', marginTop: '1.5rem', color: '#c4b5fd',
-                fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
-              }}>
-                Learn more →
-              </Link>
-            </div>
-          </div>
-
-          {/* Gravity + FSG + MasterTyping row */}
-          <div style={{
-            display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-            gap: '1.5rem',
-          }}>
-            <div style={{
-              background: 'white', borderRadius: '20px', padding: '2rem',
-              border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{
-                  width: '48px', height: '48px', borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #3b82f6, #06b6d4)',
-                  overflow: 'hidden',
-                }}>
-                  <Image src="/icons/gravity-optimized.png" alt="Gravity" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Gravity</h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Simultaneous-turn sci-fi strategy</p>
-                </div>
-              </div>
-              <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
-                Route power, repair hulls, plan crew actions, and lock orders before the entire turn resolves at once. It is a tactics game with real system pressure.
-              </p>
-              <Link href="/apps/gravity" style={{ color: '#3b82f6', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
-                Learn more →
-              </Link>
-            </div>
-
-            <div style={{
-              background: 'white', borderRadius: '20px', padding: '2rem',
-              border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{
-                  width: '48px', height: '48px', borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #f59e0b, #eab308)',
-                  overflow: 'hidden',
-                }}>
-                  <Image src="/icons/fourstargeneral-optimized.png" alt="Four Star General" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>Four Star General</h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Deterministic WWII tactics</p>
-                </div>
-              </div>
-              <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
-                A WWII tactical battle prototype built around deterministic resolution, deployment choices, supply tempo, and authored scenarios like River Crossing Watch.
-              </p>
-              <Link href="/apps/fourstargeneral" style={{ color: '#d97706', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
-                Learn more →
-              </Link>
-            </div>
-
-            <div style={{
-              background: 'white', borderRadius: '20px', padding: '2rem',
-              border: '1px solid #e5e7eb', boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1rem' }}>
-                <div style={{
-                  width: '48px', height: '48px', borderRadius: '12px',
-                  background: 'linear-gradient(135deg, #22c55e, #10b981)',
-                  overflow: 'hidden',
-                }}>
-                  <Image src="/icons/mastertyping-optimized.png" alt="MasterTyping" width={48} height={48} style={{ objectFit: 'cover' }} /></div>
-                <div>
-                  <h3 style={{ fontSize: '1.25rem', fontWeight: '800', color: '#111827', margin: 0 }}>MasterTyping</h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.8125rem', margin: 0 }}>Game-based typing</p>
-                </div>
-              </div>
-              <p style={{ color: '#4b5563', fontSize: '0.9375rem', lineHeight: 1.75, marginBottom: '1rem' }}>
-                Game mode, pro mode, a six-step assessment, targeted exercises, and core tracking in one free typing adventure, with deeper analytics available when players need sharper feedback.
-              </p>
-              <Link href="/apps/mastertyping" style={{ color: '#059669', fontWeight: '700', fontSize: '0.875rem', textDecoration: 'none' }}>
-                Learn more →
-              </Link>
+              <Link href="/apps/contentcraft" style={{ color: '#ddd6fe', fontWeight: 700, textDecoration: 'none' }}>Explore ContentCraft →</Link>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Blog Preview */}
-      <section style={{ padding: '100px 0', background: 'white' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
-          <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '3rem', flexWrap: 'wrap', gap: '1rem' }}>
+      {/* Four Star General feature section */}
+      <section style={{ padding: '96px 0', background: '#f8fafc' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div>
-              <p style={{ color: '#6366f1', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-                FROM THE BLOG
-              </p>
-              <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '900', color: '#111827', margin: 0, lineHeight: 1.2 }}>
-                Playbooks, design notes, and campaign fuel
+              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#b45309', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Strategy flagship
+              </div>
+              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
+                Four Star General is about deterministic tactics, not noise
               </h2>
+              <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
+                Deploy your forces, manage reserves, handle pressure, and solve scenario problems with clear rules and meaningful tradeoffs. The appeal is not spectacle. It is readable battlefield pressure and decisions that matter.
+              </p>
+              <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
+                Paid upgrades expand content and options, but the free-to-start core is designed to stay tactically honest. The goal is deeper variety, not pay-to-win advantages.
+              </p>
             </div>
-            <Link href="/blog" style={{
-              color: '#6366f1', fontWeight: '700', fontSize: '0.9375rem',
-              textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.375rem',
-            }}>
-              View all articles →
-            </Link>
-          </div>
 
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 320px), 1fr))',
-            gap: '1.5rem',
-          }}>
-            {(await getRecentPosts(3)).map(post => {
-              const catColors: Record<string, { bg: string; text: string }> = {
-                'D&D': { bg: '#fef2f2', text: '#dc2626' },
-                'Writing': { bg: '#f5f3ff', text: '#7c3aed' },
-                'Gaming': { bg: '#eff6ff', text: '#2563eb' },
-                'Education': { bg: '#ecfdf5', text: '#059669' },
-              };
-              const cat = catColors[post.category] || { bg: '#f3f4f6', text: '#374151' };
-              return (
-                <Link key={post.slug} href={`/blog/${post.slug}`} style={{
-                  background: '#fafafa', borderRadius: '16px', padding: '2rem',
-                  textDecoration: 'none', color: 'inherit',
-                  border: '1px solid #f0f0f0',
-                  display: 'flex', flexDirection: 'column', gap: '0.75rem',
-                  transition: 'transform 0.2s, box-shadow 0.2s',
-                }}>
-                  <div style={{ display: 'flex', alignItems: 'center', gap: '0.625rem' }}>
-                    <span style={{
-                      background: cat.bg, color: cat.text,
-                      padding: '0.2rem 0.625rem', borderRadius: '999px',
-                      fontSize: '0.6875rem', fontWeight: '700',
-                    }}>{post.category}</span>
-                    <span style={{ color: '#9ca3af', fontSize: '0.75rem' }}>{post.readTime}</span>
-                  </div>
-                  <h3 style={{ fontSize: '1.125rem', fontWeight: '800', color: '#111827', lineHeight: 1.35, margin: 0 }}>
-                    {post.title}
-                  </h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.875rem', lineHeight: 1.65, margin: 0, flex: 1 }}>
-                    {post.excerpt}
-                  </p>
-                  <span style={{ color: '#6366f1', fontWeight: '700', fontSize: '0.8125rem', marginTop: '0.25rem' }}>
-                    Read article →
-                  </span>
-                </Link>
-              );
-            })}
+            <div style={{ background: 'white', borderRadius: '24px', border: '1px solid #e5e7eb', padding: '2rem', boxShadow: '0 10px 24px rgba(15,23,42,0.05)' }}>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#111827', margin: '0 0 1rem' }}>What a battle asks from you</h3>
+              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.85rem' }}>
+                {[
+                  'Deploy cleanly and commit to a plan before pressure builds',
+                  'Use reserves at the right moment instead of spending them reflexively',
+                  'Protect supply and tempo while solving the scenario in front of you',
+                  'Work inside clear rules so decisions stay readable and fair',
+                ].map((item) => (
+                  <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#374151' }}>
+                    <span style={{ color: '#d97706' }}>●</span>
+                    <span>{item}</span>
+                  </li>
+                ))}
+              </ul>
+              <Link href="/apps/fourstargeneral" style={{ display: 'inline-block', marginTop: '1.4rem', color: '#b45309', fontWeight: 700, textDecoration: 'none' }}>
+                See Four Star General →
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* MasterTyping feature section */}
+      <section style={{ padding: '96px 0', background: 'white' }}>
+        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 2rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'start' }}>
+            <div>
+              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#059669', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Typing for real digital life
+              </div>
+              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
+                MasterTyping is for people who actually use keyboards a lot
+              </h2>
+              <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
+                Writing, note-taking, chat, research, campaign prep, streaming, modding, and general digital fluency all get easier when typing is more comfortable. MasterTyping is built around useful practice, not just novelty.
+              </p>
+              <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
+                The game mode is there to make practice less tedious. It is not the whole identity of the product.
+              </p>
+            </div>
+
+            <div style={{ display: 'grid', gap: '1rem' }}>
+              {[
+                'Assessment mode spots weak patterns before you guess at what to practice',
+                'Exercise mode gives you targeted drills for the exact things slowing you down',
+                'Pro mode supports stricter, more focused training',
+                'Game mode keeps repetition from feeling dead',
+              ].map((item) => (
+                <div key={item} style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '18px', padding: '1.2rem 1.25rem', color: '#166534' }}>
+                  {item}
+                </div>
+              ))}
+              <Link href="/apps/mastertyping" style={{ display: 'inline-block', marginTop: '0.4rem', color: '#059669', fontWeight: 700, textDecoration: 'none' }}>
+                Try MasterTyping →
+              </Link>
+            </div>
           </div>
         </div>
       </section>
@@ -563,26 +344,26 @@ export default async function Home() {
           textAlign: 'center', position: 'relative', zIndex: 1,
         }}>
           <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-            YOUR STARTING POINT
+            How it works
           </p>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900',
             color: 'white', marginBottom: '1.25rem', lineHeight: 1.2,
           }}>
-            Find your lane
+            Start free. Upgrade where it makes sense. Subscribe to ContentCraft if you want the deeper creative platform.
           </h2>
           <p style={{
             fontSize: '1.125rem', color: '#94a3b8',
             marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 2.5rem',
           }}>
-            Start with the tool or game that matches how you play: run sessions, build worlds, command the board, or learn through play.
+            That is the ecosystem. Useful free starts, honest upgrade paths, and one premium platform for bigger creative work.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
-            <Link href="/pricing" className="cta-primary">
-              See Pricing & Paths
+            <Link href="/start-here" className="cta-primary">
+              Start free
             </Link>
-            <Link href="/blog" className="cta-secondary">
-              Read the Blog
+            <Link href="/pricing" className="cta-secondary">
+              See pricing
             </Link>
           </div>
         </div>

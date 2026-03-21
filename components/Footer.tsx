@@ -51,7 +51,7 @@ export default function Footer() {
               />
             </div>
             <p style={{ color: '#6b7280', fontSize: '0.9375rem', lineHeight: '1.7', maxWidth: '320px', margin: '0 0 1.5rem' }}>
-              Games and tools for people who take play seriously, from worldbuilding and session prep to strategy and learning.
+              Thoughtful games and creative tools for people who care about systems, craft, and meaningful play.
             </p>
             <a
               href="mailto:info@sixsmithgames.com"
@@ -61,14 +61,18 @@ export default function Footer() {
             </a>
           </div>
 
-          {/* Apps */}
+          {/* Tools */}
           <div>
-            <p style={headingStyle}>Lineup</p>
+            <p style={headingStyle}>Tools</p>
             <Link href="/apps/virtual-combat-simulator" style={linkStyle}>Virtual Combat Simulator</Link>
             <Link href="/apps/contentcraft" style={linkStyle}>ContentCraft</Link>
-            <Link href="/apps/mastertyping" style={linkStyle}>MasterTyping</Link>
-            <Link href="/apps/gravity" style={linkStyle}>Gravity</Link>
+          </div>
+
+          {/* Games */}
+          <div>
+            <p style={headingStyle}>Games</p>
             <Link href="/apps/fourstargeneral" style={linkStyle}>Four Star General</Link>
+            <Link href="/apps/mastertyping" style={linkStyle}>MasterTyping</Link>
           </div>
 
           {/* Company */}
@@ -77,9 +81,6 @@ export default function Footer() {
             <Link href="/pricing" style={linkStyle}>Pricing</Link>
             <Link href="/about" style={linkStyle}>About</Link>
             <Link href="/blog" style={linkStyle}>Blog</Link>
-            <Link href="/account" style={linkStyle}>My Account</Link>
-            <Link href="/sign-in" style={linkStyle}>Sign In</Link>
-            <Link href="/sign-up" style={linkStyle}>Start Here</Link>
           </div>
 
         </div>
@@ -94,7 +95,7 @@ export default function Footer() {
               &copy; {currentYear} Sixsmith Games. All rights reserved.
             </p>
             <p style={{ color: '#374151', fontSize: '0.75rem', margin: 0, textAlign: 'right' }}>
-              Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General are trademarks of Sixsmith Games.
+              Virtual Combat Simulator, ContentCraft, MasterTyping, and Four Star General are trademarks of Sixsmith Games.
               Prices shown exclude applicable taxes.
             </p>
           </div>

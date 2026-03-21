@@ -8,7 +8,6 @@
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
-import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function ContentCraftPage() {
   const coreFeatures = [
@@ -109,11 +108,28 @@ export default function ContentCraftPage() {
                 ContentCraft keeps campaigns, novels, and connected settings coherent while you write, prep, and publish, with staged AI workflows that stay grounded in your canon.
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
-                <LaunchAppButton
-                  appSlug="contentcraft"
+                <Link href="/pricing" style={{
+                  background: 'rgba(255, 255, 255, 0.12)',
+                  color: 'white',
+                  padding: '1rem 2.5rem',
+                  borderRadius: '50px',
+                  fontSize: '1.125rem',
+                  fontWeight: '700',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  textAlign: 'center',
+                  border: '1px solid rgba(255, 255, 255, 0.3)',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.25)',
+                  transition: 'all 0.3s ease',
+                  cursor: 'pointer',
+                }}>
+                  See plans
+                </Link>
+                <SubscribeButton
+                  planId="contentcraft"
                   style={{
-                    background: 'rgba(255, 255, 255, 0.12)',
-                    color: 'white',
+                    background: 'white',
+                    color: '#a855f7',
                     padding: '1rem 2.5rem',
                     borderRadius: '50px',
                     fontSize: '1.125rem',
@@ -121,14 +137,14 @@ export default function ContentCraftPage() {
                     textDecoration: 'none',
                     display: 'inline-block',
                     textAlign: 'center',
-                    border: '1px solid rgba(255, 255, 255, 0.3)',
+                    border: 'none',
                     boxShadow: '0 10px 40px rgba(0,0,0,0.25)',
                     transition: 'all 0.3s ease',
                     cursor: 'pointer',
                   }}
                 >
-                  Launch App →
-                </LaunchAppButton>
+                  Subscribe
+                </SubscribeButton>
               </div>
             </div>
             <div style={{
@@ -528,9 +544,24 @@ export default function ContentCraftPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with a 14-day free trial, then upgrade to Creator when you want unlimited projects, the full canon library, and deeper staged AI workflows.
+            ContentCraft is the premium subscription platform for bigger creative work. It includes built-in AI usage, and additional credits are available when heavier use makes sense.
           </p>
-          <SubscribeButton planId="contentcraft" style={{
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+            <Link href="/pricing" style={{
+              background: 'rgba(255, 255, 255, 0.12)',
+              color: 'white',
+              padding: '1.1rem 2.4rem',
+              borderRadius: '50px',
+              fontSize: '1.05rem',
+              fontWeight: '700',
+              textDecoration: 'none',
+              display: 'inline-block',
+              boxShadow: '0 10px 40px rgba(0,0,0,0.2)',
+              border: '1px solid rgba(255, 255, 255, 0.25)'
+            }}>
+              See plans
+            </Link>
+            <SubscribeButton planId="contentcraft" style={{
             background: 'white',
             color: '#a855f7',
             padding: '1.25rem 3rem',
@@ -544,8 +575,9 @@ export default function ContentCraftPage() {
             border: 'none',
             cursor: 'pointer'
           }}>
-            Start Your Free Trial
+            Subscribe
           </SubscribeButton>
+          </div>
         </div>
       </section>
     </div>
