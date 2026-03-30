@@ -16,8 +16,8 @@ export default function Home() {
       name: 'Virtual Combat Simulator',
       href: '/apps/virtual-combat-simulator',
       icon: '/icons/vcs-optimized.png',
-      audience: 'For GMs and tactical players',
-      message: 'Run encounters right away, then add more depth, campaign support, and storage when you need it.',
+      audience: 'Battle maps, initiative, and encounter control',
+      message: 'Your D&D combat control room: grid-snapped maps, live initiative, tokens, and sheets in one place so the fight keeps moving.',
       button: 'Play Now',
       accent: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
     },
@@ -25,8 +25,8 @@ export default function Home() {
       name: 'Four Star General',
       href: '/apps/fourstargeneral',
       icon: '/icons/fourstargeneral-optimized.png',
-      audience: 'For strategy players',
-      message: 'Deterministic tactical play with extra content that adds more to explore without changing core fairness.',
+      audience: 'WWII-inspired tactics with authored scenarios',
+      message: 'Set your line, manage reserves, and fight through tense operational battles where clear rules make every decision hit harder.',
       button: 'Play Now',
       accent: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
     },
@@ -34,8 +34,8 @@ export default function Home() {
       name: 'MasterTyping',
       href: '/apps/mastertyping',
       icon: '/icons/mastertyping-optimized.png',
-      audience: 'For creators, gamers, students, and hobbyists',
-      message: 'Typing practice for real digital life, with guided training, useful assessment, and a game mode that keeps practice interesting.',
+      audience: 'Typing battles with characters, power-ups, and combos',
+      message: 'Pick a character, blast incoming words, unlock wild abilities, and turn typing practice into something you actually want to play.',
       button: 'Start Playing',
       accent: 'linear-gradient(135deg, #16a34a 0%, #10b981 100%)',
     },
@@ -81,7 +81,7 @@ export default function Home() {
               textShadow: '0 2px 10px rgba(0,0,0,0.2)',
               lineHeight: 1.5
             }}>
-              Tactical tools, strategy games, and creative gear for people who like systems that feel good to use.
+              Run cleaner D&D combats, command sharp battlefield tactics, build bigger worlds, and turn typing practice into an actual game.
             </p>
             <div style={{display: 'flex', flexDirection: 'row', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap', alignItems: 'center'}}>
               <Link href="/start-here" className="hero-btn-primary">
@@ -109,7 +109,7 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.25rem' }}>
             <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '18px', padding: '1.5rem' }}>
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#2563eb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                Play now
+                Jump into the action
               </div>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
                 {[
@@ -125,7 +125,7 @@ export default function Home() {
             </div>
             <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '18px', padding: '1.5rem', color: 'white' }}>
               <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#c4b5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                Build worlds
+                Build the world around the game
               </div>
               <Link href="/apps/contentcraft" style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(255,255,255,0.08)', borderRadius: '999px', padding: '0.35rem 0.8rem', fontSize: '0.875rem', fontWeight: 700, color: 'white', textDecoration: 'none' }}>
                 ContentCraft
@@ -153,7 +153,7 @@ export default function Home() {
               maxWidth: '680px',
               margin: '0 auto'
             }}>
-              Pick what looks fun and jump in.
+              Whether you want cleaner encounters, tense tactics, or word-blasting practice, start with the one that sounds like your kind of fun.
             </p>
           </div>
 
@@ -192,7 +192,7 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 900, margin: '0 0 0.9rem' }}>ContentCraft</h3>
               <p style={{ fontSize: '1.08rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
-                For writers, worldbuilders, and campaign creators who want more than a blank document. ContentCraft gives you a connected place to build bigger projects, with AI usage included and extra credits when you want more room to push.
+                Stop bouncing between chat windows, notes, and half-finished wiki pages. ContentCraft helps you build NPCs, locations, lore, and encounters that actually remember each other.
               </p>
               <Link href="/apps/contentcraft" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
                 See ContentCraft
@@ -210,10 +210,10 @@ export default function Home() {
               Creator tools
             </div>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-              Virtual Combat Simulator and ContentCraft belong together, but they are not the same kind of product
+              One tool runs the fight. The other builds the world around it.
             </h2>
             <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-              Virtual Combat Simulator gets you into the action fast. ContentCraft gives you a bigger workspace when your writing, worldbuilding, or campaign ideas need more structure.
+              Virtual Combat Simulator keeps the encounter clean when the minis hit the table. ContentCraft helps you spin up the NPCs, places, factions, and lore that make the whole campaign feel alive.
             </p>
           </div>
 
@@ -224,10 +224,10 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>Virtual Combat Simulator</h3>
               <p style={{ color: '#d1d5db', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Run encounters without wrestling with your notes. Get useful combat tools immediately, then add more features, storage, and campaign support when you want them.
+                Stop losing momentum to “whose turn is it?”, token chaos, and scattered notes. Put the map, initiative, stats, and multiplayer sync where you can actually use them.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
-                {['Useful right away for running encounters', 'Map, initiative, and table state in one place', 'Paid upgrades add capability, not access to the basic tool'].map((item) => (
+                {['Grid-snapped battle maps with zoom and token control', 'Initiative, turns, HP, and sheets together on one screen', 'Built for online or hybrid tables that want the fight to flow'].map((item) => (
                   <li key={item} style={{ color: '#e5e7eb', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                     <span style={{ color: '#f87171' }}>●</span>{item}
                   </li>
@@ -242,10 +242,10 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>ContentCraft</h3>
               <p style={{ color: '#ddd6fe', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                A creative workspace for writers, worldbuilders, and campaign creators who want a more connected place to work. It includes AI usage and supports extra credits when heavier use makes sense.
+                Think of it as a writer’s room for your campaign or setting. Generate D&D-ready content, keep your canon straight, and stop rebuilding the same world details from scratch.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
-                {['Subscription product for bigger creative work', 'Built for long-form projects, lore, and continuity', 'Additional credits available for heavier AI usage'].map((item) => (
+                {['Generate NPCs, locations, lore, and encounters that fit together', 'Canon management catches contradictions before your players do', 'Relationship mapping helps your world feel connected instead of random'].map((item) => (
                   <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                     <span style={{ color: '#c4b5fd' }}>●</span>{item}
                   </li>
@@ -269,10 +269,10 @@ export default function Home() {
                 Four Star General is about deterministic tactics, not noise
               </h2>
               <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Deploy your forces, manage reserves, handle pressure, and solve scenario problems with clear rules and meaningful tradeoffs. The appeal is not spectacle. It is readable battlefield pressure and decisions that matter.
+                This is for players who love the moment when a clean plan actually holds. You deploy, manage pressure, protect supply, and solve battlefield problems with rules you can read and trust.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                Paid upgrades expand content and options, but the core game is designed to stay tactically honest. The goal is deeper variety, not pay-to-win advantages.
+                River crossings, authored objectives, reserve timing, and branch coordination give each battle that satisfying “one more turn” feeling without hiding the outcome behind murky randomness.
               </p>
             </div>
 
@@ -311,26 +311,26 @@ export default function Home() {
                 MasterTyping is for people who actually use keyboards a lot
               </h2>
               <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Writing, note-taking, chat, research, campaign prep, streaming, modding, and general digital fluency all get easier when typing is more comfortable. MasterTyping is built around useful practice, not just novelty.
+                Most typing apps feel like homework in disguise. MasterTyping goes the other direction: characters, projectiles, powers, combo streaks, and a constant stream of words to blast before they hit you.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                The game mode is there to make practice less tedious. It is not the whole identity of the product.
+                Under the hood it is still useful practice, but on the surface it feels a lot more like an arcade challenge than a worksheet.
               </p>
             </div>
 
             <div style={{ display: 'grid', gap: '1rem' }}>
               {[
-                'Assessment mode spots weak patterns before you guess at what to practice',
-                'Exercise mode gives you targeted drills for the exact things slowing you down',
-                'Pro mode supports stricter, more focused training',
-                'Game mode keeps repetition from feeling dead',
+                'Ten characters with their own weird powers and play styles',
+                'Game mode lets you defeat words, collect coins, and unlock more toys',
+                'Assessment and practice modes help you sharpen speed and accuracy',
+                'Difficulty levels and vocabulary tiers give you room to keep climbing',
               ].map((item) => (
                 <div key={item} style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '18px', padding: '1.2rem 1.25rem', color: '#166534' }}>
                   {item}
                 </div>
               ))}
               <Link href="/apps/mastertyping" style={{ display: 'inline-block', marginTop: '0.4rem', color: '#059669', fontWeight: 700, textDecoration: 'none' }}>
-                Try MasterTyping →
+                Start Playing →
               </Link>
             </div>
           </div>
@@ -353,26 +353,26 @@ export default function Home() {
           textAlign: 'center', position: 'relative', zIndex: 1,
         }}>
           <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-            How it works
+            The lineup
           </p>
           <h2 style={{
             fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900',
             color: 'white', marginBottom: '1.25rem', lineHeight: 1.2,
           }}>
-            Jump in, keep playing, and go deeper when you want more.
+            Run the encounter. Win the battle. Build the world.
           </h2>
           <p style={{
             fontSize: '1.125rem', color: '#94a3b8',
             marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 2.5rem',
           }}>
-            Pick the game or tool that fits what you want to do and get moving.
+            If you like tactical play, cool tools, and systems with some bite to them, you are in the right place.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/start-here" className="cta-primary">
               Start Playing
             </Link>
-            <Link href="/pricing" className="cta-secondary">
-              See pricing
+            <Link href="/tools" className="cta-secondary">
+              Explore the lineup
             </Link>
           </div>
         </div>

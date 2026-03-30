@@ -80,7 +80,7 @@ export interface BillingRecord {
   description: string;
 }
 
-const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com'];
+const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com', 'quentind@gmail.com'];
 
 const DUMMY_BILLING_HISTORY: BillingRecord[] = [
   { id: 'inv_001', date: '2026-02-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
