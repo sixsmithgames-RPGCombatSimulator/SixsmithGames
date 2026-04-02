@@ -125,7 +125,7 @@ export default function VirtualCombatSimulatorPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Start free
+                  Play now
                 </LaunchAppButton>
               </div>
             </div>
@@ -320,7 +320,7 @@ export default function VirtualCombatSimulatorPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start free as a player. Upgrade to Game Master when you need encounter presets, asset uploads, custom monsters, rules toggles, and session exports.
+            Play now! Upgrade when you need more preset encounters, image uploads, custom monsters, custom rules, and saving your combat sessions.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <LaunchAppButton
@@ -340,7 +340,7 @@ export default function VirtualCombatSimulatorPage() {
                 cursor: 'pointer'
               }}
             >
-              Start free
+              Play now
             </LaunchAppButton>
             <SubscribeButton planId="virtual-combat-simulator" style={{
               background: 'white',

@@ -20,7 +20,7 @@ const freeToStartProducts = [
     description: 'Free to start. Upgrade for more features, more storage, and deeper campaign support.',
     freeIncludes: ['Useful encounter tools right away', 'Core map, token, and initiative flow', 'Player access and shared table state'],
     paidIncludes: ['More features for deeper campaign use', 'More storage for assets and sessions', 'Expanded GM capability'],
-    cta: 'Start free',
+    cta: 'Play now',
   },
   {
     slug: 'fourstargeneral',
@@ -31,7 +31,7 @@ const freeToStartProducts = [
     description: 'Free to start. Optional content upgrades enhance the experience without changing core fairness.',
     freeIncludes: ['Playable tactical core', 'Starter scenarios and base content', 'Deterministic competitive foundation'],
     paidIncludes: ['More content, scenarios, and options', 'Expanded variety and replay value', 'No material change to core gameplay fairness'],
-    cta: 'Play free',
+    cta: 'Play now',
   },
   {
     slug: 'mastertyping',
@@ -67,19 +67,19 @@ const premiumProduct = {
 const comparisonRows = [
   {
     product: 'Virtual Combat Simulator',
-    howYouEnter: 'Start free',
+    howYouEnter: 'Play now',
     freeIncludes: 'Core encounter control, shared play, and useful GM support right away',
     paidIncludes: 'More features, more storage, and deeper campaign support',
   },
   {
     product: 'Four Star General',
-    howYouEnter: 'Play free',
+    howYouEnter: 'Play now',
     freeIncludes: 'Playable tactical core with deterministic scenario-driven command',
     paidIncludes: 'Optional content upgrades that add variety without changing core fairness',
   },
   {
     product: 'MasterTyping',
-    howYouEnter: 'Try free',
+    howYouEnter: 'Play now',
     freeIncludes: 'Assessment, drills, focused practice, and game-supported repetition',
     paidIncludes: 'Free product with recent progress history retained for a limited window',
   },
@@ -114,10 +114,10 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Start free */}
+      {/* Play now */}
       <section style={{ padding: '60px 2rem 40px', maxWidth: '1200px', margin: '0 auto' }}>
         <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
-          Start free
+          Play now
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
           Start with the useful version first, then decide whether you want more depth.

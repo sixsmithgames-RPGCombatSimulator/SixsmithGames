@@ -21,7 +21,7 @@ const tools = [
       'Upgrade path adds more features, more storage, and deeper use',
     ],
     accent: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
-    button: 'Start free',
+    button: 'Play now',
   },
   {
     name: 'ContentCraft',

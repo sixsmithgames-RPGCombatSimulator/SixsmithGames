@@ -31,7 +31,7 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
     description:
-      'Start free with Virtual Combat Simulator, Four Star General, and MasterTyping, or go deeper with ContentCraft, the premium creative platform.',
+      'Start playing now with Virtual Combat Simulator, Four Star General, and MasterTyping. Check out ContentCraft for an awesome creative platform.',
     url: '/',
     siteName: 'Sixsmith Games',
     locale: 'en_US',

@@ -103,7 +103,7 @@ export default function FourStarGeneralPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Play free
+                  Play now
                 </LaunchAppButton>
               </div>
             </div>
@@ -443,7 +443,7 @@ export default function FourStarGeneralPage() {
                 cursor: 'pointer'
               }}
             >
-              Play free
+              Play now
             </LaunchAppButton>
             <Link href="/pricing" style={{
               background: 'white',
