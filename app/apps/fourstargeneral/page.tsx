@@ -424,7 +424,7 @@ export default function FourStarGeneralPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with the free tactical core, then add more content when you want more scenarios, more factions, and more tactical variety. The paid path expands the experience without changing the core fairness of the game.
+            Play with the tactical core of units. Add more units, weapons, and scenarios when you want more. Check out campaign mode where you can start from planning for D-day and play through victory over the Axis.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <LaunchAppButton

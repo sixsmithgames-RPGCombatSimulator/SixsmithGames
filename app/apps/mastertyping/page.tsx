@@ -115,7 +115,7 @@ export default function MasterTypingPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Try free
+                  Play now
                 </LaunchAppButton>
               </div>
             </div>

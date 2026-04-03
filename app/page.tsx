@@ -207,13 +207,13 @@ export default function Home() {
         <div style={{ maxWidth: '1180px', margin: '0 auto', padding: '0 2rem' }}>
           <div style={{ maxWidth: '800px', marginBottom: '3rem' }}>
             <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#4f46e5', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              Creator tools
+              Game Master Suite
             </div>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-              One tool runs the fight. The other builds the world around it.
+              Run the encounter with one app while using the other builds the world around it.
             </h2>
             <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-              Virtual Combat Simulator keeps the encounter clean when the minis hit the table. ContentCraft helps you spin up the NPCs, places, factions, and lore that make the whole campaign feel alive.
+              Virtual Combat Simulator keeps the encounter easy to manage when the tokens hit the table. ContentCraft helps you create the NPCs, places, factions, scenes, encounters, and lore that make the whole campaign feel alive.
             </p>
           </div>
 
@@ -224,7 +224,7 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>Virtual Combat Simulator</h3>
               <p style={{ color: '#d1d5db', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Stop losing momentum to “whose turn is it?”, token chaos, and scattered notes. Put the map, initiative, stats, and multiplayer sync where you can actually use them.
+                Stop losing momentum to “whose turn is it?”, combat chaos, and scattered notes. Put the map, initiative, stats, monsters and players where you can actually use them.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
                 {['Grid-snapped battle maps with zoom and token control', 'Initiative, turns, HP, and sheets together on one screen', 'Built for online or hybrid tables that want the fight to flow'].map((item) => (
@@ -242,7 +242,7 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>ContentCraft</h3>
               <p style={{ color: '#ddd6fe', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Think of it as a writer’s room for your campaign or setting. Generate D&D-ready content, keep your canon straight, and stop rebuilding the same world details from scratch.
+                Think of it as a writer’s room for your campaign or story setting. Generate content for your story or next D&D game or build an entire universe. Keep your canon organized, and stop rebuilding the same world details from scratch.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
                 {['Generate NPCs, locations, lore, and encounters that fit together', 'Canon management catches contradictions before your players do', 'Relationship mapping helps your world feel connected instead of random'].map((item) => (
@@ -263,27 +263,28 @@ export default function Home() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '2rem', alignItems: 'start' }}>
             <div>
               <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#b45309', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Strategy flagship
+                Strategy and Tactics | WWII
               </div>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-                Four Star General is about deterministic tactics, not noise
+                Four Star General is about planning and tactics in the WWII theatre
               </h2>
               <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                This is for players who love the moment when a clean plan actually holds. You deploy, manage pressure, protect supply, and solve battlefield problems with rules you can read and trust.
+                This is for players who love the moment when their tactical positioning pays off. You deploy, manage resources, protect supply lines, call in air support,and command your forces to win battles.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                River crossings, authored objectives, reserve timing, and branch coordination give each battle that satisfying “one more turn” feeling without hiding the outcome behind murky randomness.
+                Mission objectives, resource management, and tactical counters to enemy advancement is critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and branch coordination give each battle that satisfying “one more turn”.
               </p>
             </div>
 
             <div style={{ background: 'white', borderRadius: '24px', border: '1px solid #e5e7eb', padding: '2rem', boxShadow: '0 10px 24px rgba(15,23,42,0.05)' }}>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#111827', margin: '0 0 1rem' }}>What a battle asks from you</h3>
+              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#111827', margin: '0 0 1rem' }}>Game Play with Tactical Depth</h3>
               <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.85rem' }}>
                 {[
-                  'Deploy cleanly and commit to a plan before pressure builds',
-                  'Use reserves at the right moment instead of spending them reflexively',
-                  'Protect supply and tempo while solving the scenario in front of you',
-                  'Work inside clear rules so decisions stay readable and fair',
+                  'Choose your forces and supplies, then deploy them strategically',
+                  'Position your forces, command them to hold objectives or engage the enemy',
+                  'Manage resources smartly and protect supply lines',
+                  'Use reconnaissance to gather intelligence and use counter-intelligence to divert the enemy attention',
+                  'Use terrain and line of sight to your advantage to create tactical opportunities',
                 ].map((item) => (
                   <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#374151' }}>
                     <span style={{ color: '#d97706' }}>●</span>
@@ -320,10 +321,10 @@ export default function Home() {
 
             <div style={{ display: 'grid', gap: '1rem' }}>
               {[
-                'Ten characters with their own weird powers and play styles',
-                'Game mode lets you defeat words, collect coins, and unlock more toys',
                 'Assessment and practice modes help you sharpen speed and accuracy',
-                'Difficulty levels and vocabulary tiers give you room to keep climbing',
+                'Game mode lets you defeat words, collect coins, and unlock characters with their own powers and play styles',
+                'Helps you sharpen your skills, speed up, and improve accuracy',
+                'Difficulty levels and vocabulary tiers make this accessible to everyone while still challenging you to keep climbing',
               ].map((item) => (
                 <div key={item} style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '18px', padding: '1.2rem 1.25rem', color: '#166534' }}>
                   {item}
@@ -359,13 +360,13 @@ export default function Home() {
             fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900',
             color: 'white', marginBottom: '1.25rem', lineHeight: 1.2,
           }}>
-            Run the encounter. Win the battle. Build the world.
+            Build the world. Run the encounter. Win the battle.
           </h2>
           <p style={{
             fontSize: '1.125rem', color: '#94a3b8',
             marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 2.5rem',
           }}>
-            If you like tactical play, cool tools, and systems with some bite to them, you are in the right place.
+            If you like role playing games, tactical game play, and game systems that make sense, you are in the right place.
           </p>
           <div style={{ display: 'flex', gap: '1rem', justifyContent: 'center', flexWrap: 'wrap' }}>
             <Link href="/start-here" className="cta-primary">

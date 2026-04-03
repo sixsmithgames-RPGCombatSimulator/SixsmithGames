@@ -17,7 +17,7 @@ const freeToStartProducts = [
     icon: '/icons/vcs-optimized.png',
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
-    description: 'Free to start. Upgrade for more features, more storage, and deeper campaign support.',
+    description: 'Play now. Upgrade for more features, more storage, and deeper campaign support.',
     freeIncludes: ['Useful encounter tools right away', 'Core map, token, and initiative flow', 'Player access and shared table state'],
     paidIncludes: ['More features for deeper campaign use', 'More storage for assets and sessions', 'Expanded GM capability'],
     cta: 'Play now',
@@ -28,9 +28,9 @@ const freeToStartProducts = [
     icon: '/icons/fourstargeneral-optimized.png',
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f59e0b)',
-    description: 'Free to start. Optional content upgrades enhance the experience without changing core fairness.',
-    freeIncludes: ['Playable tactical core', 'Starter scenarios and base content', 'Deterministic competitive foundation'],
-    paidIncludes: ['More content, scenarios, and options', 'Expanded variety and replay value', 'No material change to core gameplay fairness'],
+    description: 'Play now. Optional content upgrades enhance your game without changing balance.',
+    freeIncludes: ['Tactical core of WWII units', 'Core scenarios and content', 'Balanced and accurate gameplay foundation'],
+    paidIncludes: ['More units, weapons, and scenarios', 'Expanded variety and replay value', 'Campaign mode'],
     cta: 'Play now',
   },
   {
@@ -39,10 +39,10 @@ const freeToStartProducts = [
     icon: '/icons/mastertyping-optimized.png',
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #10b981)',
-    description: 'Free. Recent progress history is retained for a limited window as the product evolves.',
+    description: 'Start now. Track progress, history is retained for 30 days.',
     freeIncludes: ['Assessment mode', 'Exercise mode', 'Pro mode and game mode'],
-    paidIncludes: ['No subscription required', 'Positioned as a free typing tool', 'Recent-history retention messaging ready'],
-    cta: 'Try free',
+    paidIncludes: ['Retain all history', 'Unlock advanced typing skill modes'],
+    cta: 'Start now',
   },
 ];
 
@@ -55,12 +55,13 @@ const premiumProduct = {
   monthlyPrice: 9.99,
   yearlyPrice: 99,
   description:
-    'Subscription-only creative platform for bigger writing, worldbuilding, and campaign-creation work. Includes built-in AI usage, with additional credits available when you need more.',
+    'Creative platform for writers, worldbuilders, and game masters. Track your story, characters, and locations. Build a library of canon to keep your content organized. Includes some built-in AI usage if you want to use that. For those that want to use more AI, bring your own or purchase credits.',
   includes: [
-    'Subscription product for bigger creative work',
-    'Includes built-in AI usage',
-    'Additional credits available for heavier use',
-    'Designed for lore, continuity, and structured project work',
+    'Great organizational app for your creative work',
+    'Craft characters and scenes',
+    'Build locations and items',
+    'Plan story arcs based on your canon',
+    'Designed for writers and game masters',
   ],
 };
 
@@ -68,26 +69,26 @@ const comparisonRows = [
   {
     product: 'Virtual Combat Simulator',
     howYouEnter: 'Play now',
-    freeIncludes: 'Core encounter control, shared play, and useful GM support right away',
-    paidIncludes: 'More features, more storage, and deeper campaign support',
+    freeIncludes: 'Core encounter control, shared play, and Game Master support',
+    paidIncludes: 'More features, more storage, and support',
   },
   {
     product: 'Four Star General',
     howYouEnter: 'Play now',
-    freeIncludes: 'Playable tactical core with deterministic scenario-driven command',
-    paidIncludes: 'Optional content upgrades that add variety without changing core fairness',
+    freeIncludes: 'Playable tactical WWII missions',
+    paidIncludes: 'Optional content that adds variety and expands the game',
   },
   {
     product: 'MasterTyping',
     howYouEnter: 'Play now',
     freeIncludes: 'Assessment, drills, focused practice, and game-supported repetition',
-    paidIncludes: 'Free product with recent progress history retained for a limited window',
+    paidIncludes: 'Free product with recent progress history',
   },
   {
     product: 'ContentCraft',
     howYouEnter: 'Subscribe',
     freeIncludes: 'No free tier',
-    paidIncludes: 'Premium subscription with AI usage included and extra credits available',
+    paidIncludes: 'Premium subscription with some AI usage included and extra credits available',
   },
 ];
 

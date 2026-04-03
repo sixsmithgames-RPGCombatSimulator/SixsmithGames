@@ -442,7 +442,7 @@ export default function GravityPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Start with the free core rules engine, then unlock more captains, crews, upgrades, and ship builds when you want new tactical lines.
+            Play with the core ship, captain and officers. Unlock more captains, crews, upgrades, and ship builds when you want to expand the game.
           </p>
           <Link href="/pricing" style={{
             background: 'white',
