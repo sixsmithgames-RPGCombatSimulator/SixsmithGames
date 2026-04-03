@@ -19,7 +19,7 @@ const freeToStartProducts = [
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
     description: 'Play now. Upgrade for more features, more storage, and deeper campaign support.',
     freeIncludes: ['Useful encounter tools right away', 'Core map, token, and initiative flow', 'Player access and shared table state'],
-    paidIncludes: ['More features for deeper campaign use', 'More storage for assets and sessions', 'Expanded GM capability'],
+    paidIncludes: ['More features for campaigns', 'More storage for assets and sessions', 'Expanded Game Master capability'],
     cta: 'Play now',
   },
   {
@@ -42,7 +42,7 @@ const freeToStartProducts = [
     description: 'Start now. Track progress, history is retained for 30 days.',
     freeIncludes: ['Assessment mode', 'Exercise mode', 'Pro mode and game mode'],
     paidIncludes: ['Retain all history', 'Unlock advanced typing skill modes'],
-    cta: 'Start now',
+    cta: 'Play now',
   },
 ];
 
@@ -147,6 +147,9 @@ export default function PricingPage() {
                     ))}
                   </ul>
                 </div>
+                <Link href={`/apps/${product.slug}`} style={{ background: product.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', textDecoration: 'none', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%', display: 'inline-block' }}>
+                  Play now
+                </Link>
                 <div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#111827', marginBottom: '0.625rem' }}>What paid adds</div>
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -158,15 +161,6 @@ export default function PricingPage() {
                     ))}
                   </ul>
                 </div>
-                {product.slug === 'mastertyping' ? (
-                  <SubscribeButton planId={product.slug} signInLabel="Sign Up" style={{ background: product.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', border: 'none', cursor: 'pointer', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%' }}>
-                    {product.cta}
-                  </SubscribeButton>
-                ) : (
-                  <Link href={`/apps/${product.slug}`} style={{ background: product.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', textDecoration: 'none', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%', display: 'inline-block' }}>
-                    {product.cta}
-                  </Link>
-                )}
               </div>
             </article>
           ))}
