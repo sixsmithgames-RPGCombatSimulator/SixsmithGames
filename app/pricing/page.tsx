@@ -107,10 +107,10 @@ export default function PricingPage() {
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.15)', zIndex: 1 }} />
         <div style={{ maxWidth: '900px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <h1 style={{ fontSize: 'clamp(2.5rem, 7vw, 4rem)', fontWeight: '900', color: 'white', marginBottom: '1rem', textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-            Clear ways to start. Clear ways to go deeper.
+            Games to play. Content to create.
           </h1>
           <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.375rem)', color: 'rgba(255,255,255,0.92)', margin: 0 }}>
-            Three products are free to start. ContentCraft is the premium subscription platform. The goal here is simple: make the product model easy to understand before you choose where to begin.
+            Games to play and tools to use. ContentCraft is the premium written content creator platform. The goal is simple: make the games fun and engaging, if you like them expand them.
           </p>
         </div>
       </section>
@@ -121,7 +121,7 @@ export default function PricingPage() {
           Play now
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
-          Start with the useful version first, then decide whether you want more depth.
+          Two games to play. Three if you count the typing practice you get in video game mode.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           {freeToStartProducts.map((product) => (
