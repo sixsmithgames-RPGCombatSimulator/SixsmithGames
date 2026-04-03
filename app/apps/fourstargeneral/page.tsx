@@ -11,21 +11,25 @@ import LaunchAppButton from '@/components/LaunchAppButton';
 
 export default function FourStarGeneralPage() {
   const features = [
-    { title: 'Realistic Resolution', description: 'Realistic challenges and engine-driven outcomes put the emphasis on planning, deployment, and positioning.' },
-    { title: 'Deployment to Engine', description: 'The allocation UI feeds directly into the GameEngine with enforced base camps, reserves, and scenario normalization.' },
-    { title: 'Turn Flow with Supply', description: 'Battles advance through explicit turn transitions that surface supply tempo and pressure.' },
-    { title: 'Mission Profiles', description: 'Scenario profiles define objectives, defaults, and difficulty-scaled turn limits for each battle.' },
-    { title: 'Branch Composition', description: 'Coordinate land, air, naval, and support elements with distinct colleges and roles.' },
-    { title: 'Replayable Content', description: 'Battle packs, campaigns, factions, and colleges create room for more scenarios as the build expands.' },
+    { title: 'Tactical command', description: 'Realistic challenges and outcomes require planning, resources, and positioning.' },
+    { title: 'Battlefield pressure', description: 'Every turn tightens the situation. Hold key positions or risk collapse across the front.' },
+    { title: 'Turn flow and supply', description: 'Every turn is a decision point. Supply runs thin, pressure builds, and timing determines whether you hold or break.' },
+    { title: 'Mission objectives', description: 'Objectives define every battle. Hold ground, control crossings, fortify positions.' },
+    { title: 'Unit composition', description: 'Decide what to deploy: Armor, infantry, artillery, air, and support all have roles.' },
+    { title: 'Replayable battles', description: 'Different forces, scenarios, and difficulty levels create new tactical problems every time you play.' },
   ];
 
   const unitTypes = [
-    'Land forces',
-    'Armored groups',
+    'Armored companies',
+    'Anti-air groups',
     'Artillery support',
-    'Air assets',
-    'Naval elements',
-    'Reserve formations',
+    'Mechanized infantry',
+    'Air support',
+    'Specialized infantry',
+    'Supply convoys',
+    'Reconnaissance units',
+    'Engineer teams',
+    'Ammo and Fuel trucks',
   ];
 
   return (
@@ -277,10 +281,10 @@ export default function FourStarGeneralPage() {
         <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
-              Force types in the prototype
+              Unit Types
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              Branches, support elements, and reserves all matter once the scenario starts asking hard questions.
+              You choose the units, support elements, and supplies needed to win the battle.
             </p>
           </div>
 
@@ -322,35 +326,35 @@ export default function FourStarGeneralPage() {
           <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
             <div>
               <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Signature scenario: River Crossing Watch
+                Mission scenarios such as River Crossing
               </h2>
               <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', marginBottom: '1.5rem'}}>
-                Defend the river line while managing limited crossings, enemy probes, and a turn clock that tightens with difficulty. It is a clean showcase of how the prototype handles pressure, pacing, and scenario rules.
+                Defend the river crossing with limited forces against enemy advancement until reinforcement arrive. Minimal artillery support is available and there might be just enough time to build some fortifications.
               </p>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Difficulty-scaled turn limits: Easy 14, Normal 12, Hard 11</span>
+                  <span style={{color: '#4b5563'}}>Difficulty is high, most generals will struggle to hold the river</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Probe phases that roll into sustained assaults</span>
+                  <span style={{color: '#4b5563'}}>Enemy forces may shift before rolling into sustained assaults</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Reserve pressure that escalates once crossings are held</span>
+                  <span style={{color: '#4b5563'}}> Pressure escalates once crossings are held to keep your forces supplied and alive</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '20px', height: '20px', color: '#f59e0b', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z" />
                   </svg>
-                  <span style={{color: '#4b5563'}}>Mission-profile defaults that shape deployment zones and rules</span>
+                  <span style={{color: '#4b5563'}}>Careful planning and execution are required to succeed</span>
                 </li>
               </ul>
             </div>
@@ -362,10 +366,10 @@ export default function FourStarGeneralPage() {
               border: '2px solid #fde68a'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                For players who like deterministic war games
+                For players who like realistic turn based war games
               </h3>
               <p style={{color: '#4b5563', marginBottom: '1.5rem'}}>
-                If you want clear rules, visible pressure, and tactical battles that reward deployment discipline, this is the lane Four Star General is carving out.
+                If you want realistic tactical engagements that reward planning and force composition discipline, play Four Star General.
               </p>
               <div style={{
                 background: '#fef3c7',
@@ -375,10 +379,11 @@ export default function FourStarGeneralPage() {
               }}>
                 <p style={{fontWeight: '600', color: '#92400e', marginBottom: '0.75rem'}}>Built for players who enjoy:</p>
                 <ul style={{display: 'flex', flexDirection: 'column', gap: '0.5rem', color: '#4b5563', fontSize: '0.875rem'}}>
-                  <li>• Deterministic tactical outcomes</li>
-                  <li>• Deployment and reserve management</li>
-                  <li>• Supply tempo and scenario pressure</li>
-                  <li>• WWII-flavored command problems</li>
+                  <li>Realistic tactical outcomes</li>
+                  <li>Logistics and supplies management</li>
+                  <li>Reconnaissance and intelligence gathering</li>
+                  <li>Strategic positioning and terrain awareness</li>
+                  <li>WWII units and support</li>
                 </ul>
               </div>
             </div>
@@ -416,7 +421,7 @@ export default function FourStarGeneralPage() {
             marginBottom: '1.5rem',
             textShadow: '0 4px 20px rgba(0,0,0,0.3)'
           }}>
-            Start with the tactical prototype
+            Start playing Four Star General
           </h2>
           <p style={{
             fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
@@ -424,7 +429,7 @@ export default function FourStarGeneralPage() {
             marginBottom: '2.5rem',
             textShadow: '0 2px 10px rgba(0,0,0,0.2)'
           }}>
-            Play with the tactical core of units. Add more units, weapons, and scenarios when you want more. Check out campaign mode where you can start from planning for D-day and play through victory over the Axis.
+            Play with the tactical core of units. Add units, weapons, and scenarios when you want more. Check out campaign mode where you can start from planning for D-day and play through victory over the Axis.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
             <LaunchAppButton

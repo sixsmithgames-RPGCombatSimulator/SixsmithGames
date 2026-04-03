@@ -33,7 +33,7 @@ Four Star General is a turn-based WWII strategy game where you plan operations, 
 - **Deterministic saves**: Engine supports serialize/rehydrate for future campaign persistence.
 - **Automated tests**: CI covers deployment-to-engine wiring, reserve resets, base camp enforcement, turn advancement, and serialization round-trips.
 
-## Signature Scenario: River Crossing Watch
+## Example Scenario: River Crossing Watch
 - **Objective**: Defend the river line while managing limited crossings and enemy probes.
 - **Difficulty-scaled turn limits**: Easy 14 turns, Normal 12, Hard 11 to extract.
 - **Phased pressure**: Probe phase into sustained assaults; reserve pressure triggers once crossings are held for consecutive turns on higher difficulties.
