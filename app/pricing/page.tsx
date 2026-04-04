@@ -121,7 +121,7 @@ export default function PricingPage() {
           Play now
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
-          Two games to play. Three if you count the typing practice you get in video game mode.
+          Looking for a Virtual Table Top to gather your friends around? Virtual Combat Simulator makes combat easy. Want to jump into a strategy game? Become a Four Star General and lead your forces to victory! Keyboards slowing you down?Give the video game mode in MasterTyping a try.
         </p>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
           {freeToStartProducts.map((product) => (
