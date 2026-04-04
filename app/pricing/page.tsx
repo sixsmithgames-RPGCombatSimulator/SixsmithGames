@@ -110,7 +110,7 @@ export default function PricingPage() {
             Games to play. Content to create.
           </h1>
           <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.375rem)', color: 'rgba(255,255,255,0.92)', margin: 0 }}>
-            Games to play and tools to use. ContentCraft is the premium written content creator platform. The goal is simple: make the games fun and engaging, if you like them expand them.
+            There are games to play and tools to use. The goal is simple: make your games easier to play and focus on the fun.
           </p>
         </div>
       </section>
