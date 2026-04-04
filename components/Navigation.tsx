@@ -18,6 +18,8 @@ export default function Navigation() {
   const apps = [
     { name: 'Virtual Combat Simulator', href: '/apps/virtual-combat-simulator' },
     { name: 'ContentCraft', href: '/apps/contentcraft' },
+    { name: 'Four Star General', href: '/apps/fourstargeneral' },
+    { name: 'MasterTyping', href: '/apps/mastertyping' },
   ];
 
   const navStyle: React.CSSProperties = {
@@ -143,7 +145,7 @@ export default function Navigation() {
                   gap: '4px',
                 }}
               >
-                Tools
+                Products
                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2.5">
                   <path d="M6 9l6 6 6-6" />
                 </svg>
@@ -174,20 +176,6 @@ export default function Navigation() {
                 </div>
               )}
             </div>
-
-            <Link href="/apps/fourstargeneral" style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
-            >
-              Four Star General
-            </Link>
-
-            <Link href="/apps/mastertyping" style={linkStyle}
-              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
-              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
-            >
-              MasterTyping
-            </Link>
 
             <Link href="/pricing" style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
@@ -297,7 +285,7 @@ export default function Navigation() {
             Home
           </Link>
           <div style={{ fontSize: '0.75rem', fontWeight: '700', color: '#9ca3af', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.5rem' }}>
-            Tools
+            Products
           </div>
           {apps.map((app) => (
             <Link key={app.href} href={app.href}
@@ -307,16 +295,6 @@ export default function Navigation() {
               {app.name}
             </Link>
           ))}
-          <Link href="/apps/fourstargeneral" onClick={() => setMobileMenuOpen(false)}
-            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
-          >
-            Four Star General
-          </Link>
-          <Link href="/apps/mastertyping" onClick={() => setMobileMenuOpen(false)}
-            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
-          >
-            MasterTyping
-          </Link>
           <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
