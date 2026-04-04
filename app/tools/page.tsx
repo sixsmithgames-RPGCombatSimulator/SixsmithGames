@@ -11,14 +11,14 @@ const products = [
   {
     name: 'Virtual Combat Simulator',
     href: '/apps/virtual-combat-simulator',
-    eyebrow: 'Play now',
+    eyebrow: 'Virtual Table Top Gaming',
     title: 'Keep the fight moving when the map hits the table',
     description:
       'Virtual Combat Simulator is your combat control room for D&D and other tactical encounters: maps, initiative, tokens, and the shared table all in one place so the battle stays exciting instead of getting bogged down.',
     bullets: [
-      'Grid-snapped maps, tokens, and initiative built for live encounters',
-      'Easy to jump into with your group when you want cleaner combat flow',
-      'Upgrade when you want more storage and bigger Game Master capability',
+      'Grid-snapped maps, tokens, and initiative tracking built for live encounters',
+      'Make a character and jump into combat with your group',
+      'Upgrade when you want more storage and more Game Master capability',
     ],
     accent: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
     button: 'Play now',
@@ -41,14 +41,14 @@ const products = [
   {
     name: 'Four Star General',
     href: '/apps/fourstargeneral',
-    eyebrow: 'Play now',
-    title: 'Fight sharp WWII battles where positioning matters',
+    eyebrow: 'Strategy Gaming',
+    title: 'Fight classic WWII battles where strategy matters',
     description:
-      'Four Star General is for players who love tense tactical decisions, tough missions, and the feeling that one smart move can turn the whole battle. Hold key ground, manage pressure, and outplay the enemy one decision at a time.',
+      'Four Star General is for players who love strategy games, challenging missions, and careful planning that can turn the whole battle. Hold key ground, manage resources, and out maneuver the enemy.',
     bullets: [
-      'Tactical WWII battles with authored scenarios and clear objectives',
-      'Terrain, positioning, and timing matter every turn',
-      'Optional content expands the battlefield without changing the heart of the game',
+      'Tactical WWII battles, command your forces, secure objectives',
+      'Terrain, positioning, and line of sight matter',
+      'Optional content expands the battlefield',
     ],
     accent: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
     button: 'Play now',
@@ -56,14 +56,14 @@ const products = [
   {
     name: 'MasterTyping',
     href: '/apps/mastertyping',
-    eyebrow: 'Play now',
+    eyebrow: 'Typing Made Fun',
     title: 'Turn typing practice into a game you actually want to play',
     description:
-      'MasterTyping takes the part that usually feels like homework and turns it into an arcade-style challenge with characters, powers, combos, and words flying at you fast enough to keep things fun.',
+      'MasterTyping has the usual practice modes, but takes that to a new level game mode with an arcade-style challenges. Use characters, powers, combos, and words flying at you fast enough to keep things fun.',
     bullets: [
-      'Practice speed and accuracy without the usual boring drill feeling',
+      'Practice speed and accuracy',
       'Game mode lets you blast words, collect rewards, and keep improving',
-      'Great for anyone who wants better typing and a more fun way to get there',
+      'Great for anyone who wants to get better at typing and a more fun way to get there',
     ],
     accent: 'linear-gradient(135deg, #16a34a 0%, #10b981 100%)',
     button: 'Start Playing',
