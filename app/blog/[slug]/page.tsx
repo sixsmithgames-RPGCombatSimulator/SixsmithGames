@@ -290,10 +290,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           borderRadius: '16px', padding: '2.5rem', textAlign: 'center',
         }}>
           <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>
-            Ready to try Sixsmith Games?
+            Ready to create something?
           </h3>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
-            Subscribe to individual apps or get the all-access bundle.
+            Subscribe to individual apps or get the Game Creator bundle.
           </p>
           <Link href="/pricing" style={{
             background: 'white', color: '#4c1d95',

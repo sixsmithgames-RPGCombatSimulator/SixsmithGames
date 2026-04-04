@@ -19,7 +19,7 @@ const freeToStartProducts = [
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
     description: 'Play now. Upgrade for more features, more storage, and deeper campaign support.',
     freeIncludes: ['Useful encounter tools right away', 'Core map, token, and initiative flow', 'Player access and shared table state'],
-    paidIncludes: ['More features for campaigns', 'More storage for assets and sessions', 'Expanded Game Master capability'],
+    paidIncludes: ['More storage for assets and sessions', 'Expanded Game Master capability'],
     cta: 'Play now',
   },
   {
@@ -30,7 +30,7 @@ const freeToStartProducts = [
     gradient: 'linear-gradient(135deg, #b45309, #f59e0b)',
     description: 'Play now. Optional content upgrades enhance your game without changing balance.',
     freeIncludes: ['Tactical core of WWII units', 'Core scenarios and content', 'Balanced and accurate gameplay foundation'],
-    paidIncludes: ['More units, weapons, and scenarios', 'Expanded variety and replay value', 'Campaign mode'],
+    paidIncludes: ['More units, weapons, and scenarios', 'Campaign mode'],
     cta: 'Play now',
   },
   {
@@ -40,8 +40,8 @@ const freeToStartProducts = [
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #10b981)',
     description: 'Start now. Track progress, history is retained for 30 days.',
-    freeIncludes: ['Assessment mode', 'Exercise mode', 'Pro mode and game mode'],
-    paidIncludes: ['Retain all history', 'Unlock advanced typing skill modes'],
+    freeIncludes: ['Assess your skills', 'Practice like a Pro', 'Have fun in Game mode'],
+    paidIncludes: ['Retain all history'],
     cta: 'Play now',
   },
 ];
@@ -202,8 +202,8 @@ export default function PricingPage() {
         </div>
       </section>
 
-      {/* Comparison table */}
-      <section style={{ padding: '20px 2rem 60px', maxWidth: '1200px', margin: '0 auto' }}>
+      {/* Comparison table - commented out for now */}
+      {/* <section style={{ padding: '20px 2rem 60px', maxWidth: '1200px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
           <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
             Comparison table
@@ -234,7 +234,7 @@ export default function PricingPage() {
             </tbody>
           </table>
         </div>
-      </section>
+      </section> */}
     </div>
   );
 }

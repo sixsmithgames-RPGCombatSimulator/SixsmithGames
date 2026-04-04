@@ -233,17 +233,14 @@ railway up
 
 ## Pricing Model
 
-**All-Access Subscription: $29.99/month**
+**Game Creator Subscription: $14.99/month**
 
 Includes:
 - VirtualCombatSimulator
 - ContentCraft
-- MasterTyping
-- Gravity
-- FourStarGeneral
 - Cloud storage
 - Regular updates
-- Priority support
+- Support
 - No per-app fees
 
 **Value Proposition:**

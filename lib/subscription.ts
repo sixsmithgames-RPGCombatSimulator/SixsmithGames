@@ -18,10 +18,10 @@ export interface PlanInfo {
 export const PLANS: Record<string, PlanInfo> = {
   bundle: {
     id: 'bundle',
-    name: 'All-Access Bundle',
-    price: 22.99,
-    apps: ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'],
-    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1T2dslGeOb0qevnhF2aQK5H3',
+    name: 'Game Creator Bundle',
+    price: 14.99,
+    apps: ['contentcraft', 'virtual-combat-simulator'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'prod_UGroftGaUS7177',
   },
   contentcraft: {
     id: 'contentcraft',
@@ -37,24 +37,24 @@ export const PLANS: Record<string, PlanInfo> = {
     apps: ['virtual-combat-simulator'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_VCS || 'price_1T2a0sGeOb0qevnht6dM5yOX',
   },
-  gravity: {
-    id: 'gravity',
-    name: 'Gravity',
-    price: 1.99,
-    apps: ['gravity'],
-    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_GRAVITY || 'price_1T2c55GeOb0qevnhW94VyGdo',
-  },
-  fourstargeneral: {
-    id: 'fourstargeneral',
-    name: 'Four Star General',
-    price: 1.99,
-    apps: ['fourstargeneral'],
-    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_FSG || 'price_1T2c3rGeOb0qevnhIqyhXYwL',
-  },
+  //gravity: {
+  //  id: 'gravity',
+  //  name: 'Gravity',
+  //  price: 1.99,
+  //  apps: ['gravity'],
+  //  stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_GRAVITY || 'price_1T2c55GeOb0qevnhW94VyGdo',
+  //},
+  //fourstargeneral: {
+  //  id: 'fourstargeneral',
+  //  name: 'Four Star General',
+  //  price: 1.99,
+  //  apps: ['fourstargeneral'],
+  //  stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_FSG || 'price_1T2c3rGeOb0qevnhIqyhXYwL',
+  //},
   mastertyping: {
     id: 'mastertyping',
     name: 'MasterTyping',
-    price: 4.99,
+    price: 0.99,
     apps: ['mastertyping'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_MASTERTYPING || 'price_1T2c3KGeOb0qevnh47ej77SI',
   },
@@ -83,12 +83,12 @@ export interface BillingRecord {
 const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com', 'quentind@gmail.com'];
 
 const DUMMY_BILLING_HISTORY: BillingRecord[] = [
-  { id: 'inv_001', date: '2026-02-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
-  { id: 'inv_002', date: '2026-01-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
-  { id: 'inv_003', date: '2025-12-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
-  { id: 'inv_004', date: '2025-11-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
-  { id: 'inv_005', date: '2025-10-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
-  { id: 'inv_006', date: '2025-09-01', amount: 19.99, status: 'paid', description: 'All-Access Bundle — Monthly' },
+  { id: 'inv_001', date: '2026-02-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
+  { id: 'inv_002', date: '2026-01-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
+  { id: 'inv_003', date: '2025-12-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
+  { id: 'inv_004', date: '2025-11-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
+  { id: 'inv_005', date: '2025-10-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
+  { id: 'inv_006', date: '2025-09-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
 ];
 
 // Admin emails that bypass the paywall

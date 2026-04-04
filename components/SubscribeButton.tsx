@@ -35,9 +35,9 @@ export default function SubscribeButton({ className, style, children, planId, si
     const appRoutes: Record<string, string> = {
       'contentcraft': '/apps/contentcraft',
       'virtual-combat-simulator': '/apps/virtual-combat-simulator',
-      'gravity': '/apps/gravity',
-      'fourstargeneral': '/apps/fourstargeneral',
-      'mastertyping': '/apps/mastertyping',
+      //'gravity': '/apps/gravity',
+      //'fourstargeneral': '/apps/fourstargeneral',
+      //'mastertyping': '/apps/mastertyping',
     };
     if (targetPlanId && appRoutes[targetPlanId]) {
       return appRoutes[targetPlanId];
@@ -100,9 +100,9 @@ export default function SubscribeButton({ className, style, children, planId, si
     const appRoutes: Record<string, string> = {
       'contentcraft': '/apps/contentcraft',
       'virtual-combat-simulator': '/apps/virtual-combat-simulator',
-      'gravity': '/apps/gravity',
-      'fourstargeneral': '/apps/fourstargeneral',
-      'mastertyping': '/apps/mastertyping',
+      //'gravity': '/apps/gravity',
+      //'fourstargeneral': '/apps/fourstargeneral',
+      //'mastertyping': '/apps/mastertyping',
     };
 
     const appUrl = planId && appRoutes[planId] ? appRoutes[planId] : '/account';
