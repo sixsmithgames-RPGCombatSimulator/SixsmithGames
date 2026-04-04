@@ -34,7 +34,7 @@ export default function Home() {
       name: 'MasterTyping',
       href: '/apps/mastertyping',
       icon: '/icons/mastertyping-optimized.png',
-      audience: 'Typing battles with characters, power-ups, and combos',
+      audience: 'Typing battles with characters and power-ups',
       message: 'Pick a character, blast incoming words, unlock wild abilities, and turn typing practice into something you actually want to play.',
       button: 'Start Playing',
       accent: 'linear-gradient(135deg, #16a34a 0%, #10b981 100%)',
@@ -210,7 +210,7 @@ export default function Home() {
               Game Master Suite
             </div>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-              Run the encounter with one app while using the other builds the world around it.
+              Run the encounter with one app while using the other to build the world around it.
             </h2>
             <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
               Virtual Combat Simulator keeps the encounter easy to manage when the tokens hit the table. ContentCraft helps you create the NPCs, places, factions, scenes, encounters, and lore that make the whole campaign feel alive.
@@ -242,7 +242,7 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>ContentCraft</h3>
               <p style={{ color: '#ddd6fe', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Think of it as a writer’s room for your campaign or story setting. Generate content for your story or next D&D game or build an entire universe. Keep your canon organized, and stop rebuilding the same world details from scratch.
+                Think of it as a writer’s room for your campaign or next novel. Generate content for the next chapter of your book or next D&D game session or build an entire universe. Keep your canon organized, and stop rebuilding the same world details from scratch.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
                 {['Generate NPCs, locations, lore, and encounters that fit together', 'Canon management catches contradictions before your players do', 'Relationship mapping helps your world feel connected instead of random'].map((item) => (
@@ -272,7 +272,7 @@ export default function Home() {
                 This is for players who love the moment when their tactical positioning pays off. You deploy, manage resources, protect supply lines, call in air support,and command your forces to win battles.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                Mission objectives, resource management, and tactical counters to enemy advancement is critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and branch coordination give each battle that satisfying “one more turn”.
+                Mission objectives, resource management, and tactical counters to enemy advancement are critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and branch coordination give each battle that satisfying “one more turn”.
               </p>
             </div>
 
