@@ -25,7 +25,7 @@ export default function Home() {
       name: 'Four Star General',
       href: '/apps/fourstargeneral',
       icon: '/icons/fourstargeneral-optimized.png',
-      audience: 'WWII-inspired tactics with authored scenarios',
+      audience: 'WWII battles with tactics with tense missions',
       message: 'Set your line, manage reserves, and fight through tense operational battles where clear rules make every decision hit harder.',
       button: 'Play Now',
       accent: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
@@ -210,10 +210,10 @@ export default function Home() {
               Game Master Suite
             </div>
             <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-              Run the encounter with one app while using the other to build the world around it.
+              Run an encounter with one app while using the other to build the world around it...
             </h2>
             <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-              Virtual Combat Simulator keeps the encounter easy to manage when the tokens hit the table. ContentCraft helps you create the NPCs, places, factions, scenes, encounters, and lore that make the whole campaign feel alive.
+              Virtual Combat Simulator keeps each encounter easy to manage when the tokens hit the table. ContentCraft helps you create the NPCs, places, factions, scenes, encounters, and lore that make the whole campaign feel alive.
             </p>
           </div>
 
@@ -227,7 +227,7 @@ export default function Home() {
                 Stop losing momentum to “whose turn is it?”, combat chaos, and scattered notes. Put the map, initiative, stats, monsters and players where you can actually use them.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
-                {['Grid-snapped battle maps with zoom and token control', 'Initiative, turns, HP, and sheets together on one screen', 'Built for online or hybrid tables that want the fight to flow'].map((item) => (
+                {['Grid-snapped battle maps with zoom and token control', 'Initiative, turns, HP, and characters together on one screen', 'Built for online or hybrid tables that want the fight to flow'].map((item) => (
                   <li key={item} style={{ color: '#e5e7eb', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                     <span style={{ color: '#f87171' }}>●</span>{item}
                   </li>
@@ -242,10 +242,10 @@ export default function Home() {
               </div>
               <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>ContentCraft</h3>
               <p style={{ color: '#ddd6fe', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Think of it as a writer’s room for your campaign or next novel. Generate content for the next chapter of your book or next D&D game session or build an entire universe. Keep your canon organized, and stop rebuilding the same world details from scratch.
+                Think of it as the writer’s room for your campaign or next novel. Generate content for the next chapter of your book or next D&D game session or build an entire universe. Keep your canon organized, and stop rebuilding the same world details from scratch.
               </p>
               <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
-                {['Generate NPCs, locations, lore, and encounters that fit together', 'Canon management catches contradictions before your players do', 'Relationship mapping helps your world feel connected instead of random'].map((item) => (
+                {['Generate NPCs, locations, lore, and encounters that fit together', 'Canon management catches contradictions before your readers or your players do', 'Relationship mapping helps your world feel connected instead of random'].map((item) => (
                   <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
                     <span style={{ color: '#c4b5fd' }}>●</span>{item}
                   </li>
@@ -272,7 +272,7 @@ export default function Home() {
                 This is for players who love the moment when their tactical positioning pays off. You deploy, manage resources, protect supply lines, call in air support,and command your forces to win battles.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                Mission objectives, resource management, and tactical counters to enemy advancement are critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and branch coordination give each battle that satisfying “one more turn”.
+                Mission objectives, resource management, and tactical counters to enemy advancement are critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and coordinting your forces gives each battle that satisfying “one more turn”.
               </p>
             </div>
 
