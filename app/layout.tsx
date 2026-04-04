@@ -16,7 +16,7 @@ export const metadata: Metadata = {
   metadataBase: new URL('https://sixsmithgames.com'),
   title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
   description:
-    'Sixsmith Games builds thoughtful games and creative tools for GMs, worldbuilders, writers, strategy players, and people who spend real time at a keyboard.',
+    'Sixsmith Games builds thoughtful games and creative tools for GMs, worldbuilders, writers, strategy players, and people who spend real time at a keyboard or just want to improve their typing.',
   keywords: [
     'Sixsmith Games',
     'Virtual Combat Simulator',
@@ -49,7 +49,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
     description:
-      'Free-to-start tools and games for GMs, creators, strategy players, and keyboard-heavy hobbyists.',
+      'Free-to-start tools and games for GMs, creators, strategy players, and anyone who wants to improve their typing.',
     images: ['/apple-icon.png'],
   },
   alternates: {

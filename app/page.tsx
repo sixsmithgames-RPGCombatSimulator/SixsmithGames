@@ -309,10 +309,10 @@ export default function Home() {
                 Typing for real digital life
               </div>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-                MasterTyping is for people who actually use keyboards a lot
+                MasterTyping is for anyone who wamt to improve their typing skills and have fun doing it
               </h2>
               <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Most typing apps feel like homework in disguise. MasterTyping goes the other direction: characters, projectiles, powers, combo streaks, and a constant stream of words to blast before they hit you.
+                Most typing apps get boring, fast. MasterTyping goes the other direction: characters, projectiles, powers, combo streaks, and a constant stream of words to blast before they hit you.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
                 Under the hood it is still useful practice, but on the surface it feels a lot more like an arcade challenge than a worksheet.
