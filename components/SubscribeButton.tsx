@@ -96,13 +96,13 @@ export default function SubscribeButton({ className, style, children, planId, si
   const canAccessThisApp = isMasterTyping || hasAccess;
 
   if (canAccessThisApp) {
-    // Map planId to app route
+    // Map planId to actual app URLs
     const appRoutes: Record<string, string> = {
-      'contentcraft': '/apps/contentcraft',
-      'virtual-combat-simulator': '/apps/virtual-combat-simulator',
-      //'gravity': '/apps/gravity',
-      //'fourstargeneral': '/apps/fourstargeneral',
-      //'mastertyping': '/apps/mastertyping',
+      'contentcraft': 'https://contentcraft.sixsmithgames.com',
+      'virtual-combat-simulator': 'https://virtualcombatsimulator.sixsmithgames.com',
+      //'gravity': 'https://gravity.sixsmithgames.com',
+      //'fourstargeneral': 'https://fourstargeneral.sixsmithgames.com',
+      //'mastertyping': 'https://mastertyping.sixsmithgames.com',
     };
 
     const appUrl = planId && appRoutes[planId] ? appRoutes[planId] : '/account';
@@ -110,6 +110,8 @@ export default function SubscribeButton({ className, style, children, planId, si
     return (
       <a
         href={appUrl}
+        target="_blank"
+        rel="noopener noreferrer"
         className={className}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
