@@ -47,9 +47,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
+    title: 'Sixsmith Games - Games and Tools for Game Masters, Creators, Writers, and Players',
     description:
-      'Free-to-start tools and games for GMs, creators, strategy players, and anyone who wants to improve their typing.',
+      'Fun games and easy tools for Game Masters, creators and writers, strategy game players, and anyone who wants to improve their typing.',
     images: ['/apple-icon.png'],
   },
   alternates: {

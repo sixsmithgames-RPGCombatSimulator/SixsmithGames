@@ -153,7 +153,7 @@ export default function AccountPage() {
               ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                   <p style={{ color: '#6b7280', fontSize: '0.9375rem', margin: 0 }}>
-                    You don&apos;t have an active paid subscription. ContentCraft requires one, but the free-to-start apps are still available to signed-in users.
+                    You don&apos;t have an active paid subscription. ContentCraft requires one, but the games are still available to signed-in users.
                   </p>
                   <a href="/pricing" style={{
                     display: 'inline-block', background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
@@ -186,7 +186,7 @@ export default function AccountPage() {
             }}>
               <span>🔒</span>
               <p style={{ color: '#92400e', fontSize: '0.9rem', margin: 0 }}>
-                Free-to-start apps are available now. ContentCraft requires a paid plan.{' '}
+                Play games available now. ContentCraft requires a paid subscription.{' '}
                 <a href="/pricing" style={{ color: '#b45309', fontWeight: '700' }}>View pricing</a>
               </p>
             </div>

@@ -11,7 +11,7 @@ const paths = [
   {
     title: 'I want to run encounters',
     href: '/apps/virtual-combat-simulator',
-    description: 'Use Virtual Combat Simulator for map-first encounter control and free-to-start GM support.',
+    description: 'Use Virtual Combat Simulator for encounter control and Game Master support.',
     button: 'Go to Virtual Combat Simulator',
     accent: '#ef4444',
   },
@@ -25,7 +25,7 @@ const paths = [
   {
     title: 'I want a strategy game',
     href: '/apps/fourstargeneral',
-    description: 'Use Four Star General for deterministic WWII tactical command and scenario-driven play.',
+    description: 'Use Four Star General for WWII tactical command and play.',
     button: 'Go to Four Star General',
     accent: '#d97706',
   },
