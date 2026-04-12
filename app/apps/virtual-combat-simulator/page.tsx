@@ -86,7 +86,7 @@ export default function VirtualCombatSimulatorPage() {
                 marginBottom: '1.5rem',
                 border: '1px solid rgba(255, 255, 255, 0.3)'
               }}>
-                MAP-FIRST D&D COMBAT CONTROL
+                D&D VIRTUAL TABLETOP
               </div>
               <h1 style={{
                 fontSize: 'clamp(2.5rem, 7vw, 4rem)',
@@ -96,7 +96,7 @@ export default function VirtualCombatSimulatorPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                Run D&D combats with fewer stalls
+                Your D&D battle map, tracker, and game table
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -104,7 +104,7 @@ export default function VirtualCombatSimulatorPage() {
                 marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                Virtual Combat Simulator is a map-first battle control room for D&D 5e play, with rules-faithful combat flow, import-ready data, and table sync that keeps everyone aligned.
+                Virtual Combat Simulator is a virtual tabletop for D&D 5e that keeps maps, tokens, initiative, hit points, and combat flow in one place.
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
@@ -159,7 +159,7 @@ export default function VirtualCombatSimulatorPage() {
               border: '2px solid rgba(37, 99, 235, 0.2)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
-                Your encounter control room
+                Built for combat night
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -172,19 +172,19 @@ export default function VirtualCombatSimulatorPage() {
                   <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Make positioning obvious with grid-aware maps, tokens, and reach checks</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Put the battle map, tokens, movement, and reach checks where everyone can follow the action</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Keep turns, HP, stats, and logs in one place</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Keep turns, HP, stats, and logs together instead of bouncing between tools</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
                   <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
-                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Let players join free and stay synced in real time</span>
+                  <span style={{color: '#4b5563', fontSize: '1rem'}}>Let players join free and stay synced in real time at the table or online</span>
                 </li>
               </ul>
             </div>
@@ -202,10 +202,10 @@ export default function VirtualCombatSimulatorPage() {
               color: '#1a202c',
               marginBottom: '1.5rem'
             }}>
-              Stop asking what the board state actually is
+              Keep the whole table on the same page
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280'}}>
-              Combat stalls when turns, movement, cover, and results are split across too many tools. Virtual Combat Simulator centralizes the map, tokens, initiative, rules checks, and logs so the GM can keep pace and players can trust what they are seeing.
+              Combat drags when the map, tokens, initiative, and results are split across too many places. Virtual Combat Simulator keeps the fight clear so the GM can keep things moving and players can stay locked in.
             </p>
           </div>
         </div>
