@@ -15,9 +15,17 @@ interface SubscribeButtonProps {
   children: React.ReactNode;
   planId?: string;
   signInLabel?: string;
+  allowAccessRedirect?: boolean;
 }
 
-export default function SubscribeButton({ className, style, children, planId, signInLabel }: SubscribeButtonProps) {
+export default function SubscribeButton({
+  className,
+  style,
+  children,
+  planId,
+  signInLabel,
+  allowAccessRedirect = true,
+}: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   useEffect(() => { setMounted(true); }, []);
@@ -102,7 +110,7 @@ export default function SubscribeButton({ className, style, children, planId, si
       ? canAccessApp(planId as AppSlug, user?.publicMetadata, email)
       : false;
 
-  if (canAccessThisApp) {
+  if (canAccessThisApp && allowAccessRedirect) {
     const appUrl = planId && planId in APP_URLS ? APP_URLS[planId] : '/account';
 
     return (

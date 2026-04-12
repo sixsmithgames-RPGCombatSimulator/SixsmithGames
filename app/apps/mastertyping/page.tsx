@@ -99,6 +99,7 @@ export default function MasterTypingPage() {
                 <SubscribeButton
                   planId="mastertyping"
                   signInLabel="Sign in to continue"
+                  allowAccessRedirect={false}
                   style={{
                     background: 'white',
                     color: '#22c55e',
@@ -422,7 +423,7 @@ export default function MasterTypingPage() {
               }}>
                 Guided assessment, targeted drills, Pro mode, and game mode are free. Recent history stays available for a limited window so you can keep track of improvement over time.
               </p>
-              <SubscribeButton planId="mastertyping" signInLabel="Sign in to continue" style={{
+              <SubscribeButton planId="mastertyping" signInLabel="Sign in to continue" allowAccessRedirect={false} style={{
                 background: 'white',
                 color: '#22c55e',
             padding: '1.25rem 3rem',
