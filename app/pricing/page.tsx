@@ -72,13 +72,13 @@ const bundleProduct = {
   gradient: 'linear-gradient(135deg, #0f172a 0%, #312e81 100%)',
   monthlyPrice: 14.99,
   description:
-    'Use ContentCraft to organize your campaign world, then run combats in Virtual Combat Simulator. It is a simple monthly bundle for people who want both the creative side and the table side together.',
+    'Use ContentCraft to organize your campaign world and create rich NPCs and deadly monsters. Then import those into Vitrual Combat Simulator and run the combats. It is a great option for game masters who want both the creative side and the table side together in one package.',
   includes: [
     'ContentCraft subscription included',
     'Virtual Combat Simulator Game Master plan included',
-    'Story, character, and location organization',
-    'Map-first battle control and saved sessions',
-    'A good fit for campaigns you build and run',
+    'Story, character, NPC, Monster, and location creation',
+    'Import your creations into the battle',
+    'Run your campaigns and encounters easily with the power of both tools',
   ],
 };
 
@@ -222,7 +222,7 @@ export default function PricingPage() {
           <div style={{ background: bundleProduct.gradient, borderRadius: '24px', padding: '2.75rem 2.25rem', color: 'white', boxShadow: '0 20px 60px rgba(15,23,42,0.2)' }}>
             <div style={{ maxWidth: '860px' }}>
               <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#c7d2fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Creative + table bundle
+                Creative + table top gaming bundle
               </div>
               <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', margin: '0 0 0.9rem' }}>{bundleProduct.name}</h2>
               <p style={{ fontSize: '1.06rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
