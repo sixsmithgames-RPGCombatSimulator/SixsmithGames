@@ -7,7 +7,6 @@
 
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
-import LaunchAppButton from '@/components/LaunchAppButton';
 import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 
 export default function MasterTypingPage() {
@@ -97,8 +96,9 @@ export default function MasterTypingPage() {
                 Improve speed, accuracy, and endurance with guided assessment, targeted drills, and a game mode that keeps practice interesting.
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
-                <LaunchAppButton
-                  appSlug="mastertyping"
+                <SubscribeButton
+                  planId="mastertyping"
+                  signInLabel="Sign in to continue"
                   style={{
                     background: 'white',
                     color: '#22c55e',
@@ -113,27 +113,6 @@ export default function MasterTypingPage() {
                     transition: 'all 0.3s ease',
                     maxWidth: '250px',
                     border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  Play now
-                </LaunchAppButton>
-                <SubscribeButton
-                  planId="mastertyping"
-                  signInLabel="Sign in to continue"
-                  style={{
-                    background: 'rgba(255, 255, 255, 0.14)',
-                    color: 'white',
-                    padding: '1rem 2.5rem',
-                    borderRadius: '50px',
-                    fontSize: '1.125rem',
-                    fontWeight: '700',
-                    textDecoration: 'none',
-                    display: 'inline-block',
-                    textAlign: 'center',
-                    boxShadow: '0 10px 40px rgba(0,0,0,0.22)',
-                    transition: 'all 0.3s ease',
-                    border: '1px solid rgba(255, 255, 255, 0.28)',
                     cursor: 'pointer',
                   }}
                 >
