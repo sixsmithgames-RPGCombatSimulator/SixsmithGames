@@ -84,13 +84,10 @@ export default function FourStarGeneralPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 Four Star General is a turn-based WWII strategy game centered on a tactical battlefield game. Requisition and deploy forces, call for air support, manage logistics, and fight through mission after mission with realistic resolution.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                Monthly plan: {formatMonthlyPrice(fourStarPlan.monthlyPrice)}
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
@@ -133,7 +130,7 @@ export default function FourStarGeneralPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  {`Pay ${formatMonthlyPrice(fourStarPlan.monthlyPrice)}`}
+                  {`Subscribe: $${fourStarPlan.monthlyPrice.toFixed(2)}`}
                 </SubscribeButton>
               </div>
             </div>
@@ -452,13 +449,10 @@ export default function FourStarGeneralPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2.5rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                Play the tactical core now. The monthly plan adds more units, more scenarios, and campaign content.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                Monthly plan: {formatMonthlyPrice(fourStarPlan.monthlyPrice)}
+                Play with the tactical core of units. Add units, weapons, and scenarios when you want more. Check out campaign mode where you can start from planning for D-day and play through victory over the Axis.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <LaunchAppButton
@@ -493,7 +487,7 @@ export default function FourStarGeneralPage() {
               border: 'none',
               cursor: 'pointer'
             }}>
-              {`Pay ${formatMonthlyPrice(fourStarPlan.monthlyPrice)}`}
+              {`Subscribe: $${fourStarPlan.monthlyPrice.toFixed(2)}`}
             </SubscribeButton>
           </div>
         </div>

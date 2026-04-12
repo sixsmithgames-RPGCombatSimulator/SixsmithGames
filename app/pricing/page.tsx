@@ -13,10 +13,12 @@ import ModernBackground from '@/components/ModernBackground';
 const freeToStartProducts = [
   {
     slug: 'virtual-combat-simulator',
+    planId: 'virtual-combat-simulator',
     name: 'Virtual Combat Simulator',
     icon: '/icons/vcs-optimized.png',
     color: '#2563eb',
     gradient: 'linear-gradient(135deg, #1d4ed8, #06b6d4)',
+    monthlyPrice: 9.99,
     description: 'Play now. Upgrade for more features, more storage, and deeper campaign support.',
     freeIncludes: ['Useful encounter tools right away', 'Core map, token, and initiative flow', 'Player access and shared table state'],
     paidIncludes: ['More storage for assets and sessions', 'Expanded Game Master capability'],
@@ -24,10 +26,12 @@ const freeToStartProducts = [
   },
   {
     slug: 'fourstargeneral',
+    planId: 'fourstargeneral',
     name: 'Four Star General',
     icon: '/icons/fourstargeneral-optimized.png',
     color: '#b45309',
     gradient: 'linear-gradient(135deg, #b45309, #f59e0b)',
+    monthlyPrice: 1.99,
     description: 'Play now. Optional content upgrades enhance your game without changing balance.',
     freeIncludes: ['Tactical core of WWII units', 'Core scenarios and content', 'Balanced and accurate gameplay foundation'],
     paidIncludes: ['More units, weapons, and scenarios', 'Campaign mode'],
@@ -35,10 +39,12 @@ const freeToStartProducts = [
   },
   {
     slug: 'mastertyping',
+    planId: 'mastertyping',
     name: 'MasterTyping',
     icon: '/icons/mastertyping-optimized.png',
     color: '#16a34a',
     gradient: 'linear-gradient(135deg, #16a34a, #10b981)',
+    monthlyPrice: 1.99,
     description: 'Start now. Track progress, history is retained for 30 days.',
     freeIncludes: ['Assess your skills', 'Practice like a Pro', 'Have fun in Game mode'],
     paidIncludes: ['Retain all history'],
@@ -178,6 +184,27 @@ export default function PricingPage() {
                     ))}
                   </ul>
                 </div>
+                <SubscribeButton
+                  planId={product.planId}
+                  signInLabel="Sign in to continue"
+                  style={{
+                    background: product.gradient,
+                    color: 'white',
+                    padding: '0.875rem 1.5rem',
+                    borderRadius: '12px',
+                    fontSize: '1rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    textAlign: 'center',
+                    boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
+                    width: '100%',
+                    display: 'inline-block',
+                    border: 'none',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {`Subscribe: $${product.monthlyPrice.toFixed(2)}`}
+                </SubscribeButton>
               </div>
             </article>
           ))}

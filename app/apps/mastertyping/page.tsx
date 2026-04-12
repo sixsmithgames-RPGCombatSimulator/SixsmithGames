@@ -91,13 +91,10 @@ export default function MasterTypingPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 Improve speed, accuracy, and endurance with guided assessment, targeted drills, and a game mode that keeps practice interesting.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                Full history plan: {formatMonthlyPrice(masterTypingPlan.monthlyPrice)}
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
@@ -140,7 +137,7 @@ export default function MasterTypingPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  {`Pay ${formatMonthlyPrice(masterTypingPlan.monthlyPrice)}`}
+                  {`Subscribe: $${masterTypingPlan.monthlyPrice.toFixed(2)}`}
                 </SubscribeButton>
               </div>
             </div>
@@ -441,13 +438,10 @@ export default function MasterTypingPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2.5rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                Guided assessment, targeted drills, Pro mode, and game mode are available right away. The monthly plan keeps your full history.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                Full history plan: {formatMonthlyPrice(masterTypingPlan.monthlyPrice)}
+                Guided assessment, targeted drills, Pro mode, and game mode are free. Recent history stays available for a limited window so you can keep track of improvement over time.
               </p>
               <SubscribeButton planId="mastertyping" signInLabel="Sign in to continue" style={{
                 background: 'white',
@@ -463,7 +457,7 @@ export default function MasterTypingPage() {
                 border: 'none',
                 cursor: 'pointer'
               }}>
-                {`Pay ${formatMonthlyPrice(masterTypingPlan.monthlyPrice)}`}
+                {`Subscribe: $${masterTypingPlan.monthlyPrice.toFixed(2)}`}
               </SubscribeButton>
         </div>
       </section>

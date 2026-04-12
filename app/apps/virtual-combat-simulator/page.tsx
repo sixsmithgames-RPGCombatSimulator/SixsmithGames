@@ -101,13 +101,10 @@ export default function VirtualCombatSimulatorPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 Virtual Combat Simulator is a map-first battle control room for D&D 5e play, with rules-faithful combat flow, import-ready data, and table sync that keeps everyone aligned.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                Game Master plan: {formatMonthlyPrice(vcsPlan.monthlyPrice)}
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
@@ -150,7 +147,7 @@ export default function VirtualCombatSimulatorPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  {`Pay ${formatMonthlyPrice(vcsPlan.monthlyPrice)}`}
+                  {`Subscribe: $${vcsPlan.monthlyPrice.toFixed(2)}`}
                 </SubscribeButton>
               </div>
             </div>
@@ -342,13 +339,10 @@ export default function VirtualCombatSimulatorPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2.5rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
-                Start with the core tools. The monthly plan adds more storage, more Game Master tools, and saved sessions.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                Game Master plan: {formatMonthlyPrice(vcsPlan.monthlyPrice)}
+                Play now! Upgrade when you need more preset encounters, image uploads, custom monsters, custom rules, and saving your combat sessions.
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <LaunchAppButton
@@ -384,7 +378,7 @@ export default function VirtualCombatSimulatorPage() {
                 border: 'none',
                 cursor: 'pointer'
               }}>
-                {`Pay ${formatMonthlyPrice(vcsPlan.monthlyPrice)}`}
+                {`Subscribe: $${vcsPlan.monthlyPrice.toFixed(2)}`}
               </SubscribeButton>
             </div>
         </div>

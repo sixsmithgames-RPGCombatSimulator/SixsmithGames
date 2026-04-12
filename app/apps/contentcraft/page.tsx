@@ -103,13 +103,10 @@ export default function ContentCraftPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 ContentCraft keeps campaigns, novels, and connected settings coherent while you write, prep, and publish, with staged AI workflows that stay grounded in your canon.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                {formatMonthlyPrice(contentCraftPlan.monthlyPrice)}
               </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <SubscribeButton
@@ -131,7 +128,7 @@ export default function ContentCraftPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  {`Pay ${formatMonthlyPrice(contentCraftPlan.monthlyPrice)}`}
+                  Subscribe
                 </SubscribeButton>
               </div>
             </div>
@@ -529,13 +526,10 @@ export default function ContentCraftPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '1rem',
+                marginBottom: '2.5rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 ContentCraft is the premium subscription platform for bigger creative work. It includes built-in AI usage, and additional credits are available when heavier use makes sense.
-              </p>
-              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
-                {formatMonthlyPrice(contentCraftPlan.monthlyPrice)}
               </p>
               <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
                 <SubscribeButton planId="contentcraft" style={{
@@ -552,7 +546,7 @@ export default function ContentCraftPage() {
                   border: 'none',
                   cursor: 'pointer'
                 }}>
-                  {`Pay ${formatMonthlyPrice(contentCraftPlan.monthlyPrice)}`}
+                  Subscribe
                 </SubscribeButton>
               </div>
         </div>
