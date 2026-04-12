@@ -55,7 +55,7 @@ export default function VirtualCombatSimulatorPage() {
     <div>
       {/* Hero Section */}
       <section style={{
-        background: 'linear-gradient(135deg, #ef4444 0%, #f97316 50%, #fbbf24 100%)',
+        background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%)',
         padding: '80px 0',
         position: 'relative',
         overflow: 'hidden'
@@ -114,7 +114,7 @@ export default function VirtualCombatSimulatorPage() {
                   appSlug="virtual-combat-simulator"
                   style={{
                     background: 'white',
-                    color: '#ef4444',
+                    color: '#2563eb',
                     padding: '1rem 2.5rem',
                     borderRadius: '50px',
                     fontSize: '1.125rem',
@@ -159,32 +159,32 @@ export default function VirtualCombatSimulatorPage() {
               borderRadius: '30px',
               padding: '2.5rem',
               boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
-              border: '2px solid rgba(239, 68, 68, 0.2)'
+              border: '2px solid rgba(37, 99, 235, 0.2)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
                 Your encounter control room
               </h3>
               <ul style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                   <span style={{color: '#4b5563', fontSize: '1rem'}}>Run combats faster with initiative, action economy, and condition tracking</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                   <span style={{color: '#4b5563', fontSize: '1rem'}}>Make positioning obvious with grid-aware maps, tokens, and reach checks</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                   <span style={{color: '#4b5563', fontSize: '1rem'}}>Keep turns, HP, stats, and logs in one place</span>
                 </li>
                 <li style={{display: 'flex', alignItems: 'flex-start'}}>
-                  <svg style={{width: '24px', height: '24px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <svg style={{width: '24px', height: '24px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}} fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
                   </svg>
                   <span style={{color: '#4b5563', fontSize: '1rem'}}>Let players join free and stay synced in real time</span>
@@ -240,7 +240,7 @@ export default function VirtualCombatSimulatorPage() {
               onMouseOver={(e) => {
                 e.currentTarget.style.transform = 'translateY(-8px)';
                 e.currentTarget.style.boxShadow = '0 20px 40px rgba(0,0,0,0.15)';
-                e.currentTarget.style.borderColor = '#ef4444';
+                e.currentTarget.style.borderColor = '#2563eb';
               }}
               onMouseOut={(e) => {
                 e.currentTarget.style.transform = 'translateY(0)';
@@ -254,7 +254,7 @@ export default function VirtualCombatSimulatorPage() {
                   {feature.items.map((item, i) => (
                     <li key={i} style={{display: 'flex', alignItems: 'flex-start'}}>
                       <svg
-                        style={{width: '20px', height: '20px', color: '#ef4444', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}}
+                        style={{width: '20px', height: '20px', color: '#2563eb', marginRight: '0.75rem', flexShrink: 0, marginTop: '2px'}}
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -297,7 +297,7 @@ export default function VirtualCombatSimulatorPage() {
               }}>
                 {['Socket-enabled live updates', 'Persisted sessions and asset management', 'Canonical data schemas for characters and monsters', 'Audit-ready combat logs', 'SmartPaste and JSON imports', 'House rules toggles and GM overrides'].map(item => (
                   <li key={item} style={{ display: 'flex', alignItems: 'center', gap: '0.5rem' }}>
-                    <svg style={{ width: '16px', height: '16px', color: '#ef4444', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
+                    <svg style={{ width: '16px', height: '16px', color: '#2563eb', flexShrink: 0 }} fill="none" stroke="currentColor" viewBox="0 0 24 24"><path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" /></svg>
                     {item}
                   </li>
                 ))}
@@ -310,7 +310,7 @@ export default function VirtualCombatSimulatorPage() {
       {/* CTA Section */}
       <section style={{
         padding: '100px 0',
-        background: 'linear-gradient(135deg, #ef4444 0%, #f97316 50%, #fbbf24 100%)',
+        background: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%)',
         position: 'relative',
         overflow: 'hidden'
       }}>
@@ -372,7 +372,7 @@ export default function VirtualCombatSimulatorPage() {
             </LaunchAppButton>
               <SubscribeButton planId="virtual-combat-simulator" style={{
                 background: 'white',
-                color: '#ef4444',
+                color: '#2563eb',
               padding: '1.25rem 3rem',
               borderRadius: '50px',
               fontSize: '1.25rem',

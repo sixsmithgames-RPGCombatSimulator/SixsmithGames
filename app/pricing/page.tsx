@@ -15,8 +15,8 @@ const freeToStartProducts = [
     slug: 'virtual-combat-simulator',
     name: 'Virtual Combat Simulator',
     icon: '/icons/vcs-optimized.png',
-    color: '#ef4444',
-    gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
+    color: '#2563eb',
+    gradient: 'linear-gradient(135deg, #1d4ed8, #06b6d4)',
     description: 'Play now. Upgrade for more features, more storage, and deeper campaign support.',
     freeIncludes: ['Useful encounter tools right away', 'Core map, token, and initiative flow', 'Player access and shared table state'],
     paidIncludes: ['More storage for assets and sessions', 'Expanded Game Master capability'],
@@ -62,6 +62,23 @@ const premiumProduct = {
     'Build locations and items',
     'Plan story arcs based on your canon',
     'Designed for writers and game masters',
+  ],
+};
+
+const bundleProduct = {
+  slug: 'bundle',
+  name: 'ContentCraft + VCS',
+  color: '#312e81',
+  gradient: 'linear-gradient(135deg, #0f172a 0%, #312e81 100%)',
+  monthlyPrice: 14.99,
+  description:
+    'Use ContentCraft to organize your campaign world, then run combats in Virtual Combat Simulator. It is a simple monthly bundle for people who want both the creative side and the table side together.',
+  includes: [
+    'ContentCraft subscription included',
+    'Virtual Combat Simulator Game Master plan included',
+    'Story, character, and location organization',
+    'Map-first battle control and saved sessions',
+    'A good fit for campaigns you build and run',
   ],
 };
 
@@ -169,34 +186,67 @@ export default function PricingPage() {
 
       {/* Premium creative platform */}
       <section style={{ padding: '20px 2rem 40px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '24px', padding: '2.75rem 2.25rem', color: 'white', boxShadow: '0 20px 60px rgba(76,29,149,0.22)' }}>
-          <div style={{ maxWidth: '860px' }}>
-            <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              Premium creative platform
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
+          <div style={{ background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '24px', padding: '2.75rem 2.25rem', color: 'white', boxShadow: '0 20px 60px rgba(76,29,149,0.22)' }}>
+            <div style={{ maxWidth: '860px' }}>
+              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Premium creative platform
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', margin: '0 0 0.9rem' }}>{premiumProduct.name}</h2>
+              <p style={{ fontSize: '1.06rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
+                {premiumProduct.description}
+              </p>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+                <span style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white' }}>${premiumProduct.monthlyPrice.toFixed(2)}</span>
+                <span style={{ color: '#ddd6fe', fontSize: '1rem' }}>/month</span>
+                <span style={{ color: '#ddd6fe', fontSize: '0.95rem' }}>or ${premiumProduct.yearlyPrice}/year</span>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'grid', gap: '0.55rem' }}>
+                {premiumProduct.includes.map((item) => (
+                  <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                    <span style={{ color: '#c4b5fd' }}>●</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <Link href="/apps/contentcraft" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
+                  Explore ContentCraft
+                </Link>
+                <SubscribeButton planId="contentcraft" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>
+                  Subscribe
+                </SubscribeButton>
+              </div>
             </div>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', margin: '0 0 0.9rem' }}>{premiumProduct.name}</h2>
-            <p style={{ fontSize: '1.06rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
-              {premiumProduct.description}
-            </p>
-            <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
-              <span style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white' }}>${premiumProduct.monthlyPrice.toFixed(2)}</span>
-              <span style={{ color: '#ddd6fe', fontSize: '1rem' }}>/month</span>
-              <span style={{ color: '#ddd6fe', fontSize: '0.95rem' }}>or ${premiumProduct.yearlyPrice}/year</span>
-            </div>
-            <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'grid', gap: '0.55rem' }}>
-              {premiumProduct.includes.map((item) => (
-                <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                  <span style={{ color: '#c4b5fd' }}>●</span>{item}
-                </li>
-              ))}
-            </ul>
-            <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-              <Link href="/apps/contentcraft" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
-                Explore ContentCraft
-              </Link>
-              <SubscribeButton planId="contentcraft" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>
-                Subscribe
-              </SubscribeButton>
+          </div>
+
+          <div style={{ background: bundleProduct.gradient, borderRadius: '24px', padding: '2.75rem 2.25rem', color: 'white', boxShadow: '0 20px 60px rgba(15,23,42,0.2)' }}>
+            <div style={{ maxWidth: '860px' }}>
+              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#c7d2fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
+                Creative + table bundle
+              </div>
+              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', margin: '0 0 0.9rem' }}>{bundleProduct.name}</h2>
+              <p style={{ fontSize: '1.06rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
+                {bundleProduct.description}
+              </p>
+              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
+                <span style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white' }}>${bundleProduct.monthlyPrice.toFixed(2)}</span>
+                <span style={{ color: '#c7d2fe', fontSize: '1rem' }}>/month</span>
+              </div>
+              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'grid', gap: '0.55rem' }}>
+                {bundleProduct.includes.map((item) => (
+                  <li key={item} style={{ color: '#eef2ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
+                    <span style={{ color: '#a5b4fc' }}>●</span>{item}
+                  </li>
+                ))}
+              </ul>
+              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
+                <Link href="/apps/virtual-combat-simulator" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#312e81', textDecoration: 'none', fontWeight: 800 }}>
+                  Explore Virtual Combat Simulator
+                </Link>
+                <SubscribeButton planId="bundle" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>
+                  Subscribe
+                </SubscribeButton>
+              </div>
             </div>
           </div>
         </div>
