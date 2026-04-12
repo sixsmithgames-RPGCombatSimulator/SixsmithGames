@@ -5,12 +5,13 @@
 
 'use client';
 
-import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
+import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 
 export default function VirtualCombatSimulatorPage() {
+  const vcsPlan = pricingCatalog['virtual-combat-simulator'];
   const features = [
     {
       title: 'Map-First Encounter Control',
@@ -100,12 +101,15 @@ export default function VirtualCombatSimulatorPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '2rem',
+                marginBottom: '1rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 Virtual Combat Simulator is a map-first battle control room for D&D 5e play, with rules-faithful combat flow, import-ready data, and table sync that keeps everyone aligned.
               </p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                Game Master plan: {formatMonthlyPrice(vcsPlan.monthlyPrice)}
+              </p>
+              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
                   appSlug="virtual-combat-simulator"
                   style={{
@@ -127,6 +131,27 @@ export default function VirtualCombatSimulatorPage() {
                 >
                   Play now
                 </LaunchAppButton>
+                <SubscribeButton
+                  planId="virtual-combat-simulator"
+                  signInLabel="Sign in to continue"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.14)',
+                    color: 'white',
+                    padding: '1rem 2.5rem',
+                    borderRadius: '50px',
+                    fontSize: '1.125rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.22)',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {`Pay ${formatMonthlyPrice(vcsPlan.monthlyPrice)}`}
+                </SubscribeButton>
               </div>
             </div>
             <div style={{
@@ -314,17 +339,20 @@ export default function VirtualCombatSimulatorPage() {
           }}>
             Start running cleaner combats today
           </h2>
-          <p style={{
-            fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
-            color: 'rgba(255, 255, 255, 0.95)',
-            marginBottom: '2.5rem',
-            textShadow: '0 2px 10px rgba(0,0,0,0.2)'
-          }}>
-            Play now! Upgrade when you need more preset encounters, image uploads, custom monsters, custom rules, and saving your combat sessions.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <LaunchAppButton
-              appSlug="virtual-combat-simulator"
+              <p style={{
+                fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
+                color: 'rgba(255, 255, 255, 0.95)',
+                marginBottom: '1rem',
+                textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              }}>
+                Start with the core tools. The monthly plan adds more storage, more Game Master tools, and saved sessions.
+              </p>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                Game Master plan: {formatMonthlyPrice(vcsPlan.monthlyPrice)}
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <LaunchAppButton
+                  appSlug="virtual-combat-simulator"
               style={{
                 background: 'rgba(255, 255, 255, 0.12)',
                 color: 'white',
@@ -342,9 +370,9 @@ export default function VirtualCombatSimulatorPage() {
             >
               Play now
             </LaunchAppButton>
-            <SubscribeButton planId="virtual-combat-simulator" style={{
-              background: 'white',
-              color: '#ef4444',
+              <SubscribeButton planId="virtual-combat-simulator" style={{
+                background: 'white',
+                color: '#ef4444',
               padding: '1.25rem 3rem',
               borderRadius: '50px',
               fontSize: '1.25rem',
@@ -353,12 +381,12 @@ export default function VirtualCombatSimulatorPage() {
               display: 'inline-block',
               boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
               transition: 'all 0.3s ease',
-              border: 'none',
-              cursor: 'pointer'
-            }}>
-              Upgrade to Game Master
-            </SubscribeButton>
-          </div>
+                border: 'none',
+                cursor: 'pointer'
+              }}>
+                {`Pay ${formatMonthlyPrice(vcsPlan.monthlyPrice)}`}
+              </SubscribeButton>
+            </div>
         </div>
       </section>
     </div>

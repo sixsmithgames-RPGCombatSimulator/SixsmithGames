@@ -5,11 +5,13 @@
 
 'use client';
 
-import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
+import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
+import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 
 export default function FourStarGeneralPage() {
+  const fourStarPlan = pricingCatalog.fourstargeneral;
   const features = [
     { title: 'Tactical command', description: 'Realistic challenges and outcomes require planning, resources, and positioning.' },
     { title: 'Battlefield pressure', description: 'Every turn tightens the situation. Hold key positions or risk collapse across the front.' },
@@ -82,12 +84,15 @@ export default function FourStarGeneralPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '2rem',
+                marginBottom: '1rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 Four Star General is a turn-based WWII strategy game centered on a tactical battlefield game. Requisition and deploy forces, call for air support, manage logistics, and fight through mission after mission with realistic resolution.
               </p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                Monthly plan: {formatMonthlyPrice(fourStarPlan.monthlyPrice)}
+              </p>
+              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
                   appSlug="fourstargeneral"
                   style={{
@@ -109,6 +114,27 @@ export default function FourStarGeneralPage() {
                 >
                   Play now
                 </LaunchAppButton>
+                <SubscribeButton
+                  planId="fourstargeneral"
+                  signInLabel="Sign in to continue"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.14)',
+                    color: 'white',
+                    padding: '1rem 2.5rem',
+                    borderRadius: '50px',
+                    fontSize: '1.125rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.22)',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {`Pay ${formatMonthlyPrice(fourStarPlan.monthlyPrice)}`}
+                </SubscribeButton>
               </div>
             </div>
             <div style={{
@@ -423,17 +449,20 @@ export default function FourStarGeneralPage() {
           }}>
             Start playing Four Star General
           </h2>
-          <p style={{
-            fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
-            color: 'rgba(255, 255, 255, 0.95)',
-            marginBottom: '2.5rem',
-            textShadow: '0 2px 10px rgba(0,0,0,0.2)'
-          }}>
-            Play with the tactical core of units. Add units, weapons, and scenarios when you want more. Check out campaign mode where you can start from planning for D-day and play through victory over the Axis.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <LaunchAppButton
-              appSlug="fourstargeneral"
+              <p style={{
+                fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
+                color: 'rgba(255, 255, 255, 0.95)',
+                marginBottom: '1rem',
+                textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              }}>
+                Play the tactical core now. The monthly plan adds more units, more scenarios, and campaign content.
+              </p>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                Monthly plan: {formatMonthlyPrice(fourStarPlan.monthlyPrice)}
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <LaunchAppButton
+                  appSlug="fourstargeneral"
               style={{
                 background: 'rgba(255, 255, 255, 0.14)',
                 color: 'white',
@@ -450,7 +479,7 @@ export default function FourStarGeneralPage() {
             >
               Play now
             </LaunchAppButton>
-            <Link href="/pricing" style={{
+            <SubscribeButton planId="fourstargeneral" signInLabel="Sign in to continue" style={{
               background: 'white',
               color: '#f59e0b',
               padding: '1.25rem 3rem',
@@ -464,8 +493,8 @@ export default function FourStarGeneralPage() {
               border: 'none',
               cursor: 'pointer'
             }}>
-              See pricing
-            </Link>
+              {`Pay ${formatMonthlyPrice(fourStarPlan.monthlyPrice)}`}
+            </SubscribeButton>
           </div>
         </div>
       </section>

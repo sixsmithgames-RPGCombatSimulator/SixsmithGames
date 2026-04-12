@@ -7,7 +7,7 @@
 
 import { useState, useEffect } from 'react';
 import { useUser, SignInButton } from '@clerk/nextjs';
-import { canAccessApps } from '@/lib/subscription';
+import { APP_URLS, canAccessApp, getActivePlans, type AppSlug } from '@/lib/subscription';
 
 interface SubscribeButtonProps {
   className?: string;
@@ -23,6 +23,14 @@ export default function SubscribeButton({ className, style, children, planId, si
   useEffect(() => { setMounted(true); }, []);
 
   const { isSignedIn, user, isLoaded } = useUser();
+  const email = user?.primaryEmailAddress?.emailAddress;
+
+  const appPlanIds = new Set<AppSlug>([
+    'contentcraft',
+    'virtual-combat-simulator',
+    'fourstargeneral',
+    'mastertyping',
+  ]);
 
   /**
    * Purpose: Provide a predictable, crawlable destination when auth state has not hydrated.
@@ -35,9 +43,8 @@ export default function SubscribeButton({ className, style, children, planId, si
     const appRoutes: Record<string, string> = {
       'contentcraft': '/apps/contentcraft',
       'virtual-combat-simulator': '/apps/virtual-combat-simulator',
-      //'gravity': '/apps/gravity',
-      //'fourstargeneral': '/apps/fourstargeneral',
-      //'mastertyping': '/apps/mastertyping',
+      'fourstargeneral': '/apps/fourstargeneral',
+      'mastertyping': '/apps/mastertyping',
     };
     if (targetPlanId && appRoutes[targetPlanId]) {
       return appRoutes[targetPlanId];
@@ -82,30 +89,21 @@ export default function SubscribeButton({ className, style, children, planId, si
     return (
       <SignInButton mode="modal">
         <button className={className} style={style}>
-          {signInLabel || 'Sign Up to Subscribe'}
+          {signInLabel || 'Sign in to pay'}
         </button>
       </SignInButton>
     );
   }
 
-  const email = user?.primaryEmailAddress?.emailAddress;
-  const hasAccess = canAccessApps(user?.publicMetadata, email);
-
-  // MasterTyping is free for all signed-in users
-  const isMasterTyping = planId === 'mastertyping';
-  const canAccessThisApp = isMasterTyping || hasAccess;
+  const activePlans = getActivePlans(user?.publicMetadata);
+  const canAccessThisApp = planId === 'bundle'
+    ? activePlans.includes('bundle')
+    : Boolean(planId) && appPlanIds.has(planId as AppSlug)
+      ? canAccessApp(planId as AppSlug, user?.publicMetadata, email)
+      : false;
 
   if (canAccessThisApp) {
-    // Map planId to actual app URLs
-    const appRoutes: Record<string, string> = {
-      'contentcraft': 'https://contentcraft.sixsmithgames.com',
-      'virtual-combat-simulator': 'https://virtualcombatsimulator.sixsmithgames.com',
-      //'gravity': 'https://gravity.sixsmithgames.com',
-      //'fourstargeneral': 'https://fourstargeneral.sixsmithgames.com',
-      //'mastertyping': 'https://mastertyping.sixsmithgames.com',
-    };
-
-    const appUrl = planId && appRoutes[planId] ? appRoutes[planId] : '/account';
+    const appUrl = planId && planId in APP_URLS ? APP_URLS[planId] : '/account';
 
     return (
       <a

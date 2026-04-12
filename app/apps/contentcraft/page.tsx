@@ -5,11 +5,12 @@
 
 'use client';
 
-import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
+import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 
 export default function ContentCraftPage() {
+  const contentCraftPlan = pricingCatalog.contentcraft;
   const coreFeatures = [
     {
       title: 'Stage-Based AI Workflows',
@@ -102,31 +103,18 @@ export default function ContentCraftPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '2rem',
+                marginBottom: '1rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 ContentCraft keeps campaigns, novels, and connected settings coherent while you write, prep, and publish, with staged AI workflows that stay grounded in your canon.
               </p>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                {formatMonthlyPrice(contentCraftPlan.monthlyPrice)}
+              </p>
               <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
-                <Link href="/pricing" style={{
-                  background: 'rgba(255, 255, 255, 0.12)',
-                  color: 'white',
-                  padding: '1rem 2.5rem',
-                  borderRadius: '50px',
-                  fontSize: '1.125rem',
-                  fontWeight: '700',
-                  textDecoration: 'none',
-                  display: 'inline-block',
-                  textAlign: 'center',
-                  border: '1px solid rgba(255, 255, 255, 0.3)',
-                  boxShadow: '0 10px 40px rgba(0,0,0,0.25)',
-                  transition: 'all 0.3s ease',
-                  cursor: 'pointer',
-                }}>
-                  See plans
-                </Link>
                 <SubscribeButton
                   planId="contentcraft"
+                  signInLabel="Sign in to continue"
                   style={{
                     background: 'white',
                     color: '#a855f7',
@@ -143,7 +131,7 @@ export default function ContentCraftPage() {
                     cursor: 'pointer',
                   }}
                 >
-                  Subscribe
+                  {`Pay ${formatMonthlyPrice(contentCraftPlan.monthlyPrice)}`}
                 </SubscribeButton>
               </div>
             </div>
@@ -538,46 +526,35 @@ export default function ContentCraftPage() {
           }}>
             Write with more control. Build with more depth.
           </h2>
-          <p style={{
-            fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
-            color: 'rgba(255, 255, 255, 0.95)',
-            marginBottom: '2.5rem',
-            textShadow: '0 2px 10px rgba(0,0,0,0.2)'
-          }}>
-            ContentCraft is the premium subscription platform for bigger creative work. It includes built-in AI usage, and additional credits are available when heavier use makes sense.
-          </p>
-          <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
-            <Link href="/pricing" style={{
-              background: 'rgba(255, 255, 255, 0.12)',
-              color: 'white',
-              padding: '1.1rem 2.4rem',
-              borderRadius: '50px',
-              fontSize: '1.05rem',
-              fontWeight: '700',
-              textDecoration: 'none',
-              display: 'inline-block',
-              boxShadow: '0 10px 40px rgba(0,0,0,0.2)',
-              border: '1px solid rgba(255, 255, 255, 0.25)'
-            }}>
-              See plans
-            </Link>
-            <SubscribeButton planId="contentcraft" style={{
-            background: 'white',
-            color: '#a855f7',
-            padding: '1.25rem 3rem',
-            borderRadius: '50px',
-            fontSize: '1.25rem',
-            fontWeight: '700',
-            textDecoration: 'none',
-            display: 'inline-block',
-            boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
-            transition: 'all 0.3s ease',
-            border: 'none',
-            cursor: 'pointer'
-          }}>
-            Subscribe
-          </SubscribeButton>
-          </div>
+              <p style={{
+                fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
+                color: 'rgba(255, 255, 255, 0.95)',
+                marginBottom: '1rem',
+                textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              }}>
+                ContentCraft is the premium subscription platform for bigger creative work. It includes built-in AI usage, and additional credits are available when heavier use makes sense.
+              </p>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                {formatMonthlyPrice(contentCraftPlan.monthlyPrice)}
+              </p>
+              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+                <SubscribeButton planId="contentcraft" style={{
+                  background: 'white',
+                  color: '#a855f7',
+                  padding: '1.25rem 3rem',
+                  borderRadius: '50px',
+                  fontSize: '1.25rem',
+                  fontWeight: '700',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
+                  transition: 'all 0.3s ease',
+                  border: 'none',
+                  cursor: 'pointer'
+                }}>
+                  {`Pay ${formatMonthlyPrice(contentCraftPlan.monthlyPrice)}`}
+                </SubscribeButton>
+              </div>
         </div>
       </section>
     </div>

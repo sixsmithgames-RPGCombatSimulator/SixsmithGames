@@ -5,12 +5,13 @@
 
 'use client';
 
-import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
+import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 
 export default function MasterTypingPage() {
+  const masterTypingPlan = pricingCatalog.mastertyping;
   const characters = [
     'Wizard — Magic projectiles',
     'Ape — Banana slicks',
@@ -90,12 +91,15 @@ export default function MasterTypingPage() {
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
                 color: 'rgba(255, 255, 255, 0.95)',
-                marginBottom: '2rem',
+                marginBottom: '1rem',
                 textShadow: '0 2px 10px rgba(0,0,0,0.2)'
               }}>
                 Improve speed, accuracy, and endurance with guided assessment, targeted drills, and a game mode that keeps practice interesting.
               </p>
-              <div style={{display: 'flex', flexDirection: 'column', gap: '1rem'}}>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                Full history plan: {formatMonthlyPrice(masterTypingPlan.monthlyPrice)}
+              </p>
+              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
                 <LaunchAppButton
                   appSlug="mastertyping"
                   style={{
@@ -117,6 +121,27 @@ export default function MasterTypingPage() {
                 >
                   Play now
                 </LaunchAppButton>
+                <SubscribeButton
+                  planId="mastertyping"
+                  signInLabel="Sign in to continue"
+                  style={{
+                    background: 'rgba(255, 255, 255, 0.14)',
+                    color: 'white',
+                    padding: '1rem 2.5rem',
+                    borderRadius: '50px',
+                    fontSize: '1.125rem',
+                    fontWeight: '700',
+                    textDecoration: 'none',
+                    display: 'inline-block',
+                    textAlign: 'center',
+                    boxShadow: '0 10px 40px rgba(0,0,0,0.22)',
+                    transition: 'all 0.3s ease',
+                    border: '1px solid rgba(255, 255, 255, 0.28)',
+                    cursor: 'pointer',
+                  }}
+                >
+                  {`Pay ${formatMonthlyPrice(masterTypingPlan.monthlyPrice)}`}
+                </SubscribeButton>
               </div>
             </div>
             <div style={{
@@ -413,17 +438,20 @@ export default function MasterTypingPage() {
           }}>
             Practice typing in a way that is actually useful
           </h2>
-          <p style={{
-            fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
-            color: 'rgba(255, 255, 255, 0.95)',
-            marginBottom: '2.5rem',
-            textShadow: '0 2px 10px rgba(0,0,0,0.2)'
-          }}>
-            Guided assessment, targeted drills, Pro mode, and game mode are free. Recent history stays available for a limited window so you can keep track of improvement over time.
-          </p>
-          <SubscribeButton planId="mastertyping" signInLabel="Sign Up" style={{
-            background: 'white',
-            color: '#22c55e',
+              <p style={{
+                fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
+                color: 'rgba(255, 255, 255, 0.95)',
+                marginBottom: '1rem',
+                textShadow: '0 2px 10px rgba(0,0,0,0.2)'
+              }}>
+                Guided assessment, targeted drills, Pro mode, and game mode are available right away. The monthly plan keeps your full history.
+              </p>
+              <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', fontSize: '1rem', fontWeight: 700 }}>
+                Full history plan: {formatMonthlyPrice(masterTypingPlan.monthlyPrice)}
+              </p>
+              <SubscribeButton planId="mastertyping" signInLabel="Sign in to continue" style={{
+                background: 'white',
+                color: '#22c55e',
             padding: '1.25rem 3rem',
             borderRadius: '50px',
             fontSize: '1.25rem',
@@ -432,11 +460,11 @@ export default function MasterTypingPage() {
             display: 'inline-block',
             boxShadow: '0 10px 40px rgba(0,0,0,0.3)',
             transition: 'all 0.3s ease',
-            border: 'none',
-            cursor: 'pointer'
-          }}>
-            Try free
-          </SubscribeButton>
+                border: 'none',
+                cursor: 'pointer'
+              }}>
+                {`Pay ${formatMonthlyPrice(masterTypingPlan.monthlyPrice)}`}
+              </SubscribeButton>
         </div>
       </section>
     </div>

@@ -3,6 +3,8 @@
  * Copyright (c) 2025 Sixsmith Games. All rights reserved.
  */
 
+import { pricingCatalog } from '@/lib/pricingCatalog';
+
 export type SubscriptionStatus = 'active' | 'inactive' | 'trialing' | 'past_due';
 
 export type AppSlug = 'contentcraft' | 'gravity' | 'virtual-combat-simulator' | 'fourstargeneral' | 'mastertyping';
@@ -18,22 +20,22 @@ export interface PlanInfo {
 export const PLANS: Record<string, PlanInfo> = {
   bundle: {
     id: 'bundle',
-    name: 'Game Creator Bundle',
-    price: 14.99,
+    name: 'ContentCraft + VCS Bundle',
+    price: pricingCatalog.bundle.monthlyPrice,
     apps: ['contentcraft', 'virtual-combat-simulator'],
-    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'prod_UGroftGaUS7177',
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1T2dslGeOb0qevnhF2aQK5H3',
   },
   contentcraft: {
     id: 'contentcraft',
     name: 'ContentCraft',
-    price: 9.99,
+    price: pricingCatalog.contentcraft.monthlyPrice,
     apps: ['contentcraft'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CONTENTCRAFT || 'price_1T2a1NGeOb0qevnhOaJNFSyf',
   },
   'virtual-combat-simulator': {
     id: 'virtual-combat-simulator',
     name: 'VirtualCombatSimulator',
-    price: 9.99,
+    price: pricingCatalog['virtual-combat-simulator'].monthlyPrice,
     apps: ['virtual-combat-simulator'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_VCS || 'price_1T2a0sGeOb0qevnht6dM5yOX',
   },
@@ -44,17 +46,17 @@ export const PLANS: Record<string, PlanInfo> = {
   //  apps: ['gravity'],
   //  stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_GRAVITY || 'price_1T2c55GeOb0qevnhW94VyGdo',
   //},
-  //fourstargeneral: {
-  //  id: 'fourstargeneral',
-  //  name: 'Four Star General',
-  //  price: 1.99,
-  //  apps: ['fourstargeneral'],
-  //  stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_FSG || 'price_1T2c3rGeOb0qevnhIqyhXYwL',
-  //},
+  fourstargeneral: {
+    id: 'fourstargeneral',
+    name: 'Four Star General',
+    price: pricingCatalog.fourstargeneral.monthlyPrice,
+    apps: ['fourstargeneral'],
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_FSG || 'price_1T2c3rGeOb0qevnhIqyhXYwL',
+  },
   mastertyping: {
     id: 'mastertyping',
     name: 'MasterTyping',
-    price: 0.99,
+    price: pricingCatalog.mastertyping.monthlyPrice,
     apps: ['mastertyping'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_MASTERTYPING || 'price_1T2c3KGeOb0qevnh47ej77SI',
   },
