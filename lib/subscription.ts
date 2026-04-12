@@ -23,7 +23,7 @@ export const PLANS: Record<string, PlanInfo> = {
     name: 'ContentCraft + VCS Bundle',
     price: pricingCatalog.bundle.monthlyPrice,
     apps: ['contentcraft', 'virtual-combat-simulator'],
-    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1T2dslGeOb0qevnhF2aQK5H3',
+    stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1TIK5IGeOb0qevnhqqzkBPtv',
   },
   contentcraft: {
     id: 'contentcraft',
