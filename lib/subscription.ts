@@ -82,34 +82,10 @@ export interface BillingRecord {
   description: string;
 }
 
-const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com', 'quentind@gmail.com'];
-
-const DUMMY_BILLING_HISTORY: BillingRecord[] = [
-  { id: 'inv_001', date: '2026-02-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
-  { id: 'inv_002', date: '2026-01-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
-  { id: 'inv_003', date: '2025-12-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
-  { id: 'inv_004', date: '2025-11-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
-  { id: 'inv_005', date: '2025-10-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
-  { id: 'inv_006', date: '2025-09-01', amount: 14.99, status: 'paid', description: 'Game Creator Bundle — Monthly' },
-];
-
-// Admin emails that bypass the paywall
-const ADMIN_EMAILS = (process.env.NEXT_PUBLIC_ADMIN_EMAILS || '').split(',').map(e => e.trim().toLowerCase()).filter(Boolean);
-
-export function isAdminEmail(email: string | undefined | null): boolean {
-  if (!email) return false;
-  return ADMIN_EMAILS.includes(email.toLowerCase());
-}
-
 export function hasActiveSubscription(publicMetadata: Record<string, unknown> | undefined | null): boolean {
   if (!publicMetadata) return false;
   const status = publicMetadata.subscriptionStatus as string | undefined;
   return status === 'active' || status === 'trialing';
-}
-
-export function isDummySubscriber(email: string | undefined | null): boolean {
-  if (!email) return false;
-  return DUMMY_BILLING_EMAILS.includes(email.toLowerCase());
 }
 
 export function getActivePlans(
@@ -125,11 +101,8 @@ export function getActivePlans(
 
 export function getAccessibleApps(
   publicMetadata: Record<string, unknown> | undefined | null,
-  email: string | undefined | null
+  _email?: string | undefined | null
 ): AppSlug[] {
-  if (isAdminEmail(email) || isDummySubscriber(email)) {
-    return ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
-  }
   if (!hasActiveSubscription(publicMetadata)) return [];
   const plans = getActivePlans(publicMetadata);
   const apps = new Set<AppSlug>();
@@ -143,35 +116,17 @@ export function getAccessibleApps(
 export function canAccessApp(
   appSlug: AppSlug,
   publicMetadata: Record<string, unknown> | undefined | null,
-  email: string | undefined | null
+  email?: string | undefined | null
 ): boolean {
   return getAccessibleApps(publicMetadata, email).includes(appSlug);
 }
 
 export function getSubscriptionInfo(
   publicMetadata: Record<string, unknown> | undefined | null,
-  email: string | undefined | null
+  _email?: string | undefined | null
 ): SubscriptionInfo {
-  const admin = isAdminEmail(email);
-  const dummy = isDummySubscriber(email);
-  const allApps: AppSlug[] = ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
-
-  if (dummy) {
-    return {
-      status: 'active',
-      plan: 'bundle',
-      plans: ['bundle'],
-      expiresAt: '2026-03-01',
-      isAdmin: admin,
-      nextBillingDate: '2026-03-01',
-      billingHistory: DUMMY_BILLING_HISTORY,
-      memberSince: '2025-09-01',
-      accessibleApps: allApps,
-    };
-  }
-
   if (!publicMetadata) {
-    return { status: 'inactive', plan: null, plans: [], expiresAt: null, isAdmin: admin, nextBillingDate: null, billingHistory: [], memberSince: null, accessibleApps: [] };
+    return { status: 'inactive', plan: null, plans: [], expiresAt: null, isAdmin: false, nextBillingDate: null, billingHistory: [], memberSince: null, accessibleApps: [] };
   }
 
   const plans = getActivePlans(publicMetadata);
@@ -180,11 +135,11 @@ export function getSubscriptionInfo(
     plan: plans[0] || null,
     plans,
     expiresAt: (publicMetadata.subscriptionExpiresAt as string) || null,
-    isAdmin: admin,
+    isAdmin: false,
     nextBillingDate: (publicMetadata.subscriptionExpiresAt as string) || null,
     billingHistory: [],
     memberSince: (publicMetadata.memberSince as string) || null,
-    accessibleApps: getAccessibleApps(publicMetadata, email),
+    accessibleApps: getAccessibleApps(publicMetadata),
   };
 }
 

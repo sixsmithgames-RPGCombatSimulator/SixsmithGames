@@ -8,6 +8,7 @@
 import { useState, useEffect } from 'react';
 import { useUser, SignInButton } from '@clerk/nextjs';
 import { APP_URLS, canAccessApp, getActivePlans, type AppSlug } from '@/lib/subscription';
+import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 
 interface SubscribeButtonProps {
   className?: string;
@@ -31,7 +32,7 @@ export default function SubscribeButton({
   useEffect(() => { setMounted(true); }, []);
 
   const { isSignedIn, user, isLoaded } = useUser();
-  const email = user?.primaryEmailAddress?.emailAddress;
+  const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
   const appPlanIds = new Set<AppSlug>([
     'contentcraft',
@@ -104,11 +105,29 @@ export default function SubscribeButton({
   }
 
   const activePlans = getActivePlans(user?.publicMetadata);
-  const canAccessThisApp = planId === 'bundle'
+  const metadataCanAccessThisApp = planId === 'bundle'
     ? activePlans.includes('bundle')
     : Boolean(planId) && appPlanIds.has(planId as AppSlug)
-      ? canAccessApp(planId as AppSlug, user?.publicMetadata, email)
+      ? canAccessApp(planId as AppSlug, user?.publicMetadata)
       : false;
+  const serverCanAccessThisApp = planId === 'bundle'
+    ? Boolean(accessInfo?.plans.includes('bundle') || accessInfo?.isAdmin)
+    : Boolean(planId) && appPlanIds.has(planId as AppSlug)
+      ? Boolean(accessInfo?.accessibleApps.includes(planId as AppSlug))
+      : false;
+  const canAccessThisApp = metadataCanAccessThisApp || serverCanAccessThisApp;
+
+  if (!metadataCanAccessThisApp && accessLoading) {
+    return (
+      <button
+        className={className}
+        style={{ ...style, opacity: 0.7, cursor: 'wait' }}
+        disabled
+      >
+        Loading...
+      </button>
+    );
+  }
 
   if (canAccessThisApp && allowAccessRedirect) {
     const appUrl = planId && planId in APP_URLS ? APP_URLS[planId] : '/account';

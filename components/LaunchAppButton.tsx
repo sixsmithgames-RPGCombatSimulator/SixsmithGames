@@ -7,7 +7,8 @@
 
 import { useEffect } from 'react';
 import { useUser, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
-import { canAccessApps, APP_URLS } from '@/lib/subscription';
+import { APP_URLS } from '@/lib/subscription';
+import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 
 interface LaunchAppButtonProps {
   appSlug: string;
@@ -17,13 +18,13 @@ interface LaunchAppButtonProps {
 }
 
 function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppButtonProps) {
-  const { user, isLoaded } = useUser();
+  const { isLoaded, isSignedIn } = useUser();
+  const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
-  const email = user?.primaryEmailAddress?.emailAddress;
-  const hasPaidAccess = isLoaded ? canAccessApps(user?.publicMetadata, email) : false;
   // Free-core titles: always launchable for signed-in users without paid plans
   const freeAppSlugs = ['mastertyping', 'gravity', 'fourstargeneral', 'virtual-combat-simulator'];
   const isFreeApp = freeAppSlugs.includes(appSlug);
+  const hasPaidAccess = Boolean(accessInfo?.accessibleApps.length);
   const hasAccess = isFreeApp || hasPaidAccess;
   const appUrl = APP_URLS[appSlug];
 
@@ -33,7 +34,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
     }
   }, [autoLaunch, isLoaded, hasAccess, appUrl]);
 
-  if (!isLoaded) {
+  if (!isLoaded || (!isFreeApp && accessLoading && !accessInfo)) {
     return (
       <button style={{ ...style, opacity: 0.6, cursor: 'not-allowed' }} disabled>
         Loading...

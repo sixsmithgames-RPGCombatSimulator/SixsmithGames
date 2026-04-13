@@ -6,7 +6,8 @@
 'use client';
 
 import { useUser, SignInButton } from '@clerk/nextjs';
-import { getSubscriptionInfo, APP_URLS, PLANS } from '@/lib/subscription';
+import { APP_URLS, PLANS, type SubscriptionInfo } from '@/lib/subscription';
+import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 
 const appDetails = [
   { slug: 'virtual-combat-simulator', name: 'Virtual Combat Simulator', desc: 'Tactical military combat', icon: '⚔️', color: '#ef4444', bg: '#fef2f2' },
@@ -15,6 +16,18 @@ const appDetails = [
   { slug: 'gravity', name: 'Gravity', desc: 'Space fleet commander', icon: '🚀', color: '#3b82f6', bg: '#eff6ff' },
   { slug: 'fourstargeneral', name: 'Four Star General', desc: 'Strategic war simulation', icon: '🎖️', color: '#f59e0b', bg: '#fffbeb' },
 ];
+
+const EMPTY_SUBSCRIPTION_INFO: SubscriptionInfo = {
+  status: 'inactive',
+  plan: null,
+  plans: [],
+  expiresAt: null,
+  isAdmin: false,
+  nextBillingDate: null,
+  billingHistory: [],
+  memberSince: null,
+  accessibleApps: [],
+};
 
 function fmt(dateStr: string) {
   return new Date(dateStr).toLocaleDateString('en-US', { year: 'numeric', month: 'long', day: 'numeric' });
@@ -36,6 +49,7 @@ function StatusBadge({ active, label }: { active: boolean; label: string }) {
 
 export default function AccountPage() {
   const { isSignedIn, user, isLoaded } = useUser();
+  const { accessInfo, loading: accessLoading, error: accessError } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
   if (!isLoaded) {
     return (
@@ -69,8 +83,20 @@ export default function AccountPage() {
     );
   }
 
+  if (accessLoading && !accessInfo) {
+    return (
+      <div style={{ minHeight: '60vh', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+        <div style={{ textAlign: 'center' }}>
+          <div style={{ width: '40px', height: '40px', border: '3px solid #e5e7eb', borderTopColor: '#2563eb', borderRadius: '50%', animation: 'spin 0.8s linear infinite', margin: '0 auto 1rem' }} />
+          <p style={{ color: '#6b7280', fontSize: '1rem' }}>Loading your account...</p>
+        </div>
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
+      </div>
+    );
+  }
+
   const email = user?.primaryEmailAddress?.emailAddress;
-  const sub = getSubscriptionInfo(user?.publicMetadata, email);
+  const sub = accessInfo || EMPTY_SUBSCRIPTION_INFO;
   const isActive = sub.accessibleApps.length > 0 || sub.isAdmin;
   const freeAppSlugs = ['virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
   const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.accessibleApps.includes('gravity' as never) || sub.isAdmin);
@@ -108,6 +134,18 @@ export default function AccountPage() {
       </div>
 
       <div style={{ maxWidth: '960px', margin: '-3rem auto 0', padding: '0 2rem 4rem' }}>
+        {accessError && (
+          <div style={{
+            background: '#fef2f2',
+            border: '1px solid #fecaca',
+            borderRadius: '12px',
+            padding: '0.875rem 1rem',
+            color: '#b91c1c',
+            marginBottom: '1.5rem',
+          }}>
+            We could not verify your access right now. Please refresh and try again.
+          </div>
+        )}
 
         {/* ── Subscription card ── */}
         <div style={{ ...card, marginBottom: '1.5rem' }}>
