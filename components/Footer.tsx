@@ -24,6 +24,14 @@ const headingStyle: React.CSSProperties = {
   marginBottom: '1.25rem',
 };
 
+const legalLinkStyle: React.CSSProperties = {
+  color: '#6b7280',
+  textDecoration: 'none',
+  fontSize: '0.75rem',
+  fontWeight: '600',
+  transition: 'color 0.15s',
+};
+
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
@@ -94,9 +102,13 @@ export default function Footer() {
             <p style={{ color: '#4b5563', fontSize: '0.8125rem', margin: 0 }}>
               &copy; {currentYear} Sixsmith Games. All rights reserved.
             </p>
+            <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexWrap: 'wrap' }}>
+              <Link href="/terms" style={legalLinkStyle}>Terms of Service</Link>
+              <span style={{ color: '#374151', fontSize: '0.75rem' }}>•</span>
+              <Link href="/privacy" style={legalLinkStyle}>Privacy Policy</Link>
+            </div>
             <p style={{ color: '#374151', fontSize: '0.75rem', margin: 0, textAlign: 'right' }}>
-              Virtual Combat Simulator, ContentCraft, MasterTyping, and Four Star General are trademarks of Sixsmith Games.
-              Prices shown exclude applicable taxes.
+              Use of this software constitues acceptance of terms. Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General are trademarks of Sixsmith Games. Prices shown exclude applicable taxes.
             </p>
           </div>
         </div>

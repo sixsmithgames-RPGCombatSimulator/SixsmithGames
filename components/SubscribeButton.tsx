@@ -24,7 +24,6 @@ export default function SubscribeButton({
   style,
   children,
   planId,
-  signInLabel,
   allowAccessRedirect = true,
 }: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
@@ -40,6 +39,7 @@ export default function SubscribeButton({
     'fourstargeneral',
     'mastertyping',
   ]);
+  const checkoutUrl = `/checkout?planId=${encodeURIComponent(planId || 'bundle')}`;
 
   /**
    * Purpose: Provide a predictable, crawlable destination when auth state has not hydrated.
@@ -49,37 +49,15 @@ export default function SubscribeButton({
    * Side effects: None.
    */
   const resolveInitialHref = (targetPlanId?: string) => {
-    const appRoutes: Record<string, string> = {
-      'contentcraft': '/apps/contentcraft',
-      'virtual-combat-simulator': '/apps/virtual-combat-simulator',
-      'fourstargeneral': '/apps/fourstargeneral',
-      'mastertyping': '/apps/mastertyping',
-    };
-    if (targetPlanId && appRoutes[targetPlanId]) {
-      return appRoutes[targetPlanId];
+    if (targetPlanId) {
+      return `/checkout?planId=${encodeURIComponent(targetPlanId)}`;
     }
     return '/pricing';
   };
 
-  const handleClick = async () => {
+  const handleClick = () => {
     setLoading(true);
-    try {
-      const res = await fetch('/api/checkout', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ planId: planId || 'bundle' }),
-      });
-      const data = await res.json();
-      if (data.url) {
-        window.location.href = data.url;
-      } else {
-        alert('Could not start checkout. Please try again.');
-      }
-    } catch {
-      alert('Could not start checkout. Please try again.');
-    } finally {
-      setLoading(false);
-    }
+    window.location.href = checkoutUrl;
   };
 
   if (!mounted || !isLoaded) {
@@ -96,9 +74,15 @@ export default function SubscribeButton({
 
   if (!isSignedIn) {
     return (
-      <SignInButton mode="modal">
+      <SignInButton
+        mode="modal"
+        forceRedirectUrl={checkoutUrl}
+        fallbackRedirectUrl={checkoutUrl}
+        signUpForceRedirectUrl={checkoutUrl}
+        signUpFallbackRedirectUrl={checkoutUrl}
+      >
         <button className={className} style={style}>
-          {signInLabel || 'Sign in to pay'}
+          {children}
         </button>
       </SignInButton>
     );
