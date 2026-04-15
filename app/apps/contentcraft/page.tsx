@@ -22,7 +22,7 @@ export default function ContentCraftPage() {
     },
     {
       title: 'Projects & Shared Library',
-      description: 'Keep campaigns, articles, supplements, chapters, and setting material connected to one shared source of truth.',
+      description: 'Keep campaigns, articles, supplements, chapters, and setting material connected in one shared library.',
     },
     {
       title: 'Fact-Check & Review',
@@ -98,7 +98,7 @@ export default function ContentCraftPage() {
                 textShadow: '0 4px 20px rgba(0,0,0,0.3)',
                 lineHeight: '1.1'
               }}>
-                A source of truth for growing worlds
+                Write bigger worlds without losing continuity
               </h1>
               <p style={{
                 fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)',
@@ -183,7 +183,7 @@ export default function ContentCraftPage() {
               color: '#1a202c',
               marginBottom: '1rem'
             }}>
-              Built for work that needs memory, structure, and a real source of truth
+              Built for work that needs memory, structure, and continuity
             </h2>
             <p style={{fontSize: 'clamp(1.125rem, 2.5vw, 1.5rem)', color: '#6b7280', maxWidth: '900px', margin: '0 auto'}}>
               Most writing tools keep files organized but know nothing about the world behind the work. Most AI tools generate fast but forget the details that matter. ContentCraft connects structure, canon, and staged generation so the project stays coherent as it grows.
