@@ -122,7 +122,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop nav */}
-          <div style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
             <Link href="/" style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
               onMouseLeave={e => (e.currentTarget.style.color = '#374151')}

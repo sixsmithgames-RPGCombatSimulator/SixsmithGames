@@ -1,6 +1,8 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
 import { NextResponse } from 'next/server';
 
+import { SITE_HOSTNAME } from '@/lib/site';
+
 // Define which routes require authentication
 // Currently all routes are public - add protected routes here as needed
 const isPublicRoute = createRouteMatcher([
@@ -17,9 +19,20 @@ const isPublicRoute = createRouteMatcher([
   '/api(.*)',
   '/privacy(.*)',
   '/terms(.*)',
+  '/robots.txt',
+  '/sitemap.xml',
 ]);
 
 export default clerkMiddleware(async (auth, request) => {
+  const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
+
+  if (process.env.NODE_ENV === 'production' && host === `www.${SITE_HOSTNAME}`) {
+    const url = request.nextUrl.clone();
+    url.host = SITE_HOSTNAME;
+    url.protocol = 'https';
+    return NextResponse.redirect(url, 308);
+  }
+
   // In dev, rewrite origin to match x-forwarded-host so Next.js 16's
   // Server Actions CSRF check doesn't reject proxied preview requests.
   if (process.env.NODE_ENV === 'development') {

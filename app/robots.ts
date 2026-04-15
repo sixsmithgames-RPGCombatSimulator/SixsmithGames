@@ -1,4 +1,5 @@
 import type { MetadataRoute } from 'next';
+import { SITE_URL } from '@/lib/site';
 
 /**
  * Purpose: Define robots.txt rules and sitemap location for search engines.
@@ -12,9 +13,9 @@ export default function robots(): MetadataRoute.Robots {
     rules: {
       userAgent: '*',
       allow: '/',
-      disallow: ['/account', '/api'],
+      disallow: ['/account', '/api', '/checkout', '/sign-in', '/sign-up'],
     },
-    sitemap: 'https://www.sixsmithgames.com/sitemap.xml',
-    host: 'https://www.sixsmithgames.com',
+    sitemap: `${SITE_URL}/sitemap.xml`,
+    host: SITE_URL,
   };
 }

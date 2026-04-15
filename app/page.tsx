@@ -269,10 +269,10 @@ export default function Home() {
                 Four Star General is about planning and tactics in the WWII theatre
               </h2>
               <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                This is for players who love the moment when their tactical positioning pays off. You deploy, manage resources, protect supply lines, call in air support,and command your forces to win battles.
+                This is for players who love the moment when their tactical positioning pays off. You deploy, manage resources, protect supply lines, call in air support, and command your forces to win battles.
               </p>
               <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                Mission objectives, resource management, and tactical counters to enemy advancement are critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and coordinting your forces gives each battle that satisfying “one more turn”.
+                Mission objectives, resource management, and tactical counters to enemy advancement are critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and coordinating your forces gives each battle that satisfying “one more turn”.
               </p>
             </div>
 
@@ -309,7 +309,7 @@ export default function Home() {
                 Typing for real digital life
               </div>
               <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-                MasterTyping is for anyone who wamt to improve their typing skills and have fun doing it
+                MasterTyping is for anyone who wants to improve their typing skills and have fun doing it
               </h2>
               <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
                 Most typing apps get boring, fast. MasterTyping goes the other direction: characters, projectiles, powers, combo streaks, and a constant stream of words to blast before they hit you.

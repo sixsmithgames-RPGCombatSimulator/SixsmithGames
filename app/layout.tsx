@@ -4,6 +4,7 @@ import Script from 'next/script';
 import './globals.css';
 import Navigation from '@/components/Navigation';
 import Footer from '@/components/Footer';
+import { DEFAULT_OG_IMAGE, SITE_DESCRIPTION, SITE_NAME, SITE_URL } from '@/lib/site';
 
 /**
  * Purpose: Define sitewide SEO metadata to strengthen search visibility and social previews.
@@ -13,10 +14,9 @@ import Footer from '@/components/Footer';
  * Side effects: None.
  */
 export const metadata: Metadata = {
-  metadataBase: new URL('https://sixsmithgames.com'),
+  metadataBase: new URL(SITE_URL),
   title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
-  description:
-    'Sixsmith Games builds thoughtful games and creative tools for GMs, worldbuilders, writers, strategy players, and people who spend real time at a keyboard or just want to improve their typing.',
+  description: SITE_DESCRIPTION,
   keywords: [
     'Sixsmith Games',
     'Virtual Combat Simulator',
@@ -33,17 +33,10 @@ export const metadata: Metadata = {
     description:
       'Start playing now with Virtual Combat Simulator, Four Star General, and MasterTyping. Check out ContentCraft for an awesome creative platform.',
     url: '/',
-    siteName: 'Sixsmith Games',
+    siteName: SITE_NAME,
     locale: 'en_US',
     type: 'website',
-    images: [
-      {
-        url: '/apple-icon.png',
-        width: 512,
-        height: 512,
-        alt: 'Sixsmith Games logo',
-      },
-    ],
+    images: [DEFAULT_OG_IMAGE],
   },
   twitter: {
     card: 'summary_large_image',
@@ -74,11 +67,11 @@ export default function RootLayout({
             {JSON.stringify({
               '@context': 'https://schema.org',
               '@type': 'Organization',
-              name: 'Sixsmith Games',
-              url: 'https://www.sixsmithgames.com',
-              logo: 'https://www.sixsmithgames.com/apple-icon.png',
+              name: SITE_NAME,
+              url: SITE_URL,
+              logo: `${SITE_URL}/apple-icon.png`,
               sameAs: [
-                'https://www.sixsmithgames.com',
+                SITE_URL,
               ],
             })}
           </Script>

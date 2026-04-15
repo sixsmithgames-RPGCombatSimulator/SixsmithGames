@@ -78,7 +78,7 @@ const bundleProduct = {
   gradient: 'linear-gradient(135deg, #0f172a 0%, #312e81 100%)',
   monthlyPrice: 14.99,
   description:
-    'Use ContentCraft to organize your campaign world and create rich NPCs and deadly monsters. Then import those into Vitrual Combat Simulator and run the combats. It is a great option for game masters who want both the creative side and the table side together in one package.',
+    'Use ContentCraft to organize your campaign world and create rich NPCs and deadly monsters. Then import those into Virtual Combat Simulator and run the combats. It is a great option for game masters who want both the creative side and the table side together in one package.',
   includes: [
     'ContentCraft subscription included',
     'Virtual Combat Simulator Game Master plan included',
