@@ -122,6 +122,7 @@ export default function MasterTypingPage() {
                   planId="mastertyping"
                   signInLabel="Sign in to continue"
                   allowAccessRedirect={false}
+                  hideForAnonymous
                   style={{
                     background: 'rgba(255, 255, 255, 0.14)',
                     color: 'white',

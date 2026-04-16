@@ -17,6 +17,12 @@ interface SubscribeButtonProps {
   planId?: string;
   signInLabel?: string;
   allowAccessRedirect?: boolean;
+  /**
+   * When true, hide the button entirely for anonymous users.
+   * Useful for free-to-start products where subscription should only
+   * be offered to signed-in users.
+   */
+  hideForAnonymous?: boolean;
 }
 
 export default function SubscribeButton({
@@ -25,12 +31,18 @@ export default function SubscribeButton({
   children,
   planId,
   allowAccessRedirect = true,
+  hideForAnonymous = false,
 }: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
   const [loading, setLoading] = useState(false);
   useEffect(() => { setMounted(true); }, []);
 
   const { isSignedIn, user, isLoaded } = useUser();
+
+  // Hide button entirely for anonymous users when hideForAnonymous is true
+  if (hideForAnonymous && isLoaded && !isSignedIn) {
+    return null;
+  }
   const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
   const appPlanIds = new Set<AppSlug>([

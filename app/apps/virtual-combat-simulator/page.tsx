@@ -131,6 +131,7 @@ export default function VirtualCombatSimulatorPage() {
                 <SubscribeButton
                   planId="virtual-combat-simulator"
                   signInLabel="Sign in to continue"
+                  hideForAnonymous
                   style={{
                     background: 'rgba(255, 255, 255, 0.14)',
                     color: 'white',

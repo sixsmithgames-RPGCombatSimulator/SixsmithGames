@@ -114,6 +114,7 @@ export default function FourStarGeneralPage() {
                 <SubscribeButton
                   planId="fourstargeneral"
                   signInLabel="Sign in to continue"
+                  hideForAnonymous
                   style={{
                     background: 'rgba(255, 255, 255, 0.14)',
                     color: 'white',

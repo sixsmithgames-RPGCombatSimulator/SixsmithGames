@@ -187,6 +187,7 @@ export default function PricingPage() {
                 <SubscribeButton
                   planId={product.planId}
                   signInLabel="Sign in to continue"
+                  hideForAnonymous
                   style={{
                     background: product.gradient,
                     color: 'white',
