@@ -76,11 +76,7 @@ ${comment.content}
 Approve or moderate at: https://www.sixsmithgames.com/blog/${comment.postSlug}
   `.trim();
 
-  // Using a simple fetch to a notification service or email API
-  // For now, we'll log it (you can integrate Resend, SendGrid, etc.)
-  console.log('Email notification:', emailBody);
-  
-  // TODO: Integrate with email service
+  // TODO: Integrate with email service (Resend, SendGrid, etc.)
   // Example with Resend:
   await fetch('https://api.resend.com/emails', {
   method: 'POST',

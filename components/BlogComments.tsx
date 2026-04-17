@@ -34,8 +34,8 @@ export default function BlogComments({ postSlug }: { postSlug: string }) {
         const data = await res.json();
         setComments(data);
       }
-    } catch (err) {
-      console.error('Failed to load comments:', err);
+    } catch {
+      // Silently fail - comments not critical
     }
   }
 
