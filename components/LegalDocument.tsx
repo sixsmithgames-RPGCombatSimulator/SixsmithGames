@@ -1,3 +1,5 @@
+import { cardPadding, pageGutter } from '@/lib/responsive';
+
 type LegalSection = {
   title: string;
   paragraphs: string[];
@@ -21,13 +23,13 @@ const pageStyle: React.CSSProperties = {
 const heroStyle: React.CSSProperties = {
   background: 'linear-gradient(135deg, #0f172a 0%, #1d4ed8 52%, #0ea5e9 100%)',
   color: '#ffffff',
-  padding: '5.5rem 2rem 4rem',
+  padding: `5.5rem ${pageGutter} 4rem`,
 };
 
 const contentWrapStyle: React.CSSProperties = {
   maxWidth: '980px',
   margin: '0 auto',
-  padding: '0 2rem 4rem',
+  padding: `0 ${pageGutter} 4rem`,
 };
 
 const cardStyle: React.CSSProperties = {
@@ -40,7 +42,7 @@ const cardStyle: React.CSSProperties = {
 };
 
 const sectionStyle: React.CSSProperties = {
-  padding: '1.75rem 2rem',
+  padding: `1.75rem ${cardPadding}`,
   borderTop: '1px solid #e5e7eb',
 };
 
@@ -89,7 +91,7 @@ export default function LegalDocument({
 
       <div style={contentWrapStyle}>
         <div style={cardStyle}>
-          <div style={{ padding: '2rem', background: '#f8fafc' }}>
+          <div style={{ padding: cardPadding, background: '#f8fafc' }}>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', alignItems: 'center' }}>
               <span style={{
                 display: 'inline-flex',

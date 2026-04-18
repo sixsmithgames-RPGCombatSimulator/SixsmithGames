@@ -13,39 +13,42 @@ export default function ModernBackground() {
         position: 'absolute',
         top: '10%',
         left: '10%',
-        width: '500px',
-        height: '500px',
+        width: 'clamp(220px, 48vw, 500px)',
+        height: 'clamp(220px, 48vw, 500px)',
         background: 'radial-gradient(circle, rgba(102, 126, 234, 0.4) 0%, rgba(102, 126, 234, 0) 70%)',
         borderRadius: '50%',
         filter: 'blur(60px)',
         animation: 'float 20s ease-in-out infinite',
-        zIndex: 0
+        zIndex: 0,
+        pointerEvents: 'none'
       }} />
 
       <div style={{
         position: 'absolute',
         top: '30%',
         right: '15%',
-        width: '400px',
-        height: '400px',
+        width: 'clamp(200px, 40vw, 400px)',
+        height: 'clamp(200px, 40vw, 400px)',
         background: 'radial-gradient(circle, rgba(236, 72, 153, 0.3) 0%, rgba(236, 72, 153, 0) 70%)',
         borderRadius: '50%',
         filter: 'blur(60px)',
         animation: 'float 25s ease-in-out infinite reverse',
-        zIndex: 0
+        zIndex: 0,
+        pointerEvents: 'none'
       }} />
 
       <div style={{
         position: 'absolute',
         bottom: '15%',
         left: '20%',
-        width: '450px',
-        height: '450px',
+        width: 'clamp(220px, 44vw, 450px)',
+        height: 'clamp(220px, 44vw, 450px)',
         background: 'radial-gradient(circle, rgba(139, 92, 246, 0.35) 0%, rgba(139, 92, 246, 0) 70%)',
         borderRadius: '50%',
         filter: 'blur(70px)',
         animation: 'float 30s ease-in-out infinite',
-        zIndex: 0
+        zIndex: 0,
+        pointerEvents: 'none'
       }} />
 
       {/* Grid pattern overlay */}

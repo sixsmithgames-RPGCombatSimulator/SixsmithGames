@@ -8,6 +8,7 @@
 import Link from 'next/link';
 import ModernBackground from '@/components/ModernBackground';
 import LaunchAppButton from '@/components/LaunchAppButton';
+import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 export default function GravityPage() {
   const features = [
@@ -66,8 +67,8 @@ export default function GravityPage() {
           backdropFilter: 'blur(100px)',
           zIndex: 2
         }} />
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 3}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 3}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <div style={{
                 display: 'inline-block',
@@ -129,7 +130,7 @@ export default function GravityPage() {
               background: 'rgba(255, 255, 255, 0.15)',
               backdropFilter: 'blur(20px)',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.3)',
               border: '2px solid rgba(255, 255, 255, 0.2)'
             }}>
@@ -169,7 +170,7 @@ export default function GravityPage() {
 
       {/* Problem/Solution Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{maxWidth: '900px', margin: '0 auto', textAlign: 'center'}}>
             <h2 style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -186,7 +187,7 @@ export default function GravityPage() {
               <div style={{
                 background: 'linear-gradient(135deg, #eff6ff 0%, #e0f2fe 100%)',
                 borderRadius: '20px',
-                padding: '2.5rem',
+                padding: cardPadding,
                 border: '2px solid #93c5fd'
               }}>
                 <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#1e40af', marginBottom: '1rem'}}>
@@ -203,7 +204,7 @@ export default function GravityPage() {
 
       {/* Features Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               What makes Gravity bite
@@ -212,14 +213,14 @@ export default function GravityPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: fluidGrid('300px'),
             gap: '2rem'
           }}>
             {features.map((feature, index) => (
               <div key={index} style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2.5rem',
+                padding: cardPadding,
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 border: '2px solid #bfdbfe'
               }}>
@@ -235,7 +236,7 @@ export default function GravityPage() {
 
       {/* Gameplay Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               High-Stakes Decision Loops
@@ -247,7 +248,7 @@ export default function GravityPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: fluidGrid('280px'),
             gap: '1.5rem',
             marginBottom: '3rem'
           }}>
@@ -282,14 +283,14 @@ export default function GravityPage() {
             background: 'linear-gradient(135deg, #1e3a8a 0%, #1e40af 100%)',
             color: 'white',
             borderRadius: '20px',
-            padding: '3rem'
+            padding: cardPadding
           }}>
             <h3 style={{fontSize: '1.75rem', fontWeight: '800', marginBottom: '1.5rem', textAlign: 'center'}}>
               Every Turn Matters
             </h3>
             <ul style={{
               display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
+              gridTemplateColumns: fluidGrid('250px'),
               gap: '1.5rem'
             }}>
               <li style={{display: 'flex', alignItems: 'flex-start'}}>
@@ -315,7 +316,7 @@ export default function GravityPage() {
 
       {/* Who It's For Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Built for players who like visible systems
@@ -324,13 +325,13 @@ export default function GravityPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: fluidGrid('300px'),
             gap: '2rem'
           }}>
             <div style={{
               background: 'white',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
@@ -367,7 +368,7 @@ export default function GravityPage() {
             <div style={{
               background: 'white',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
@@ -422,7 +423,7 @@ export default function GravityPage() {
         <div style={{
           maxWidth: '900px',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: `0 ${pageGutter}`,
           textAlign: 'center',
           position: 'relative',
           zIndex: 1
@@ -444,7 +445,7 @@ export default function GravityPage() {
           }}>
             Play with the core ship, captain and officers. Unlock more captains, crews, upgrades, and ship builds when you want to expand the game.
           </p>
-          <Link href="/pricing" style={{
+          <Link href="/pricing" className={touchTargetClassName} style={{
             background: 'white',
             color: '#3b82f6',
             padding: '1.25rem 3rem',

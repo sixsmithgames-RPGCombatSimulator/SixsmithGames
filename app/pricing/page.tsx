@@ -9,6 +9,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import SubscribeButton from '@/components/SubscribeButton';
 import ModernBackground from '@/components/ModernBackground';
+import { actionRowClassName, cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 const freeToStartProducts = [
   {
@@ -128,7 +129,7 @@ export default function PricingPage() {
       <section style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
         <ModernBackground />
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.15)', zIndex: 1 }} />
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 2, textAlign: 'center' }}>
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2, textAlign: 'center' }}>
           <h1 style={{ fontSize: 'clamp(2.5rem, 7vw, 4rem)', fontWeight: '900', color: 'white', marginBottom: '1rem', textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
             Games to play. Content to create.
           </h1>
@@ -139,26 +140,26 @@ export default function PricingPage() {
       </section>
 
       {/* Play now */}
-      <section style={{ padding: '60px 2rem 40px', maxWidth: '1200px', margin: '0 auto' }}>
+      <section style={{ padding: `60px ${pageGutter} 40px`, maxWidth: '1200px', margin: '0 auto' }}>
         <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
           Play now
         </h2>
         <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
           Looking for a Virtual Table Top to gather your friends around? Virtual Combat Simulator makes combat easy. Want to jump into a strategy game? Become a Four Star General and lead your forces to victory! Keyboards slowing you down? Give the video game mode in MasterTyping a try.
         </p>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '1.5rem' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '1.5rem' }}>
           {freeToStartProducts.map((product) => (
             <article key={product.slug} style={{ background: 'white', borderRadius: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid #f3f4f6' }}>
-              <div style={{ background: product.gradient, padding: '1.75rem 1.75rem 1.5rem' }}>
+              <div style={{ background: product.gradient, padding: cardPadding }}>
                 <Link href={`/apps/${product.slug}`} aria-label={product.name} style={{ textDecoration: 'none', color: 'inherit' }}>
                   <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
-                    <Image src={product.icon} alt="" aria-hidden="true" width={56} height={56} style={{ objectFit: 'cover' }} />
+                    <Image src={product.icon} alt="" aria-hidden="true" width={56} height={56} sizes="56px" style={{ objectFit: 'cover' }} />
                   </div>
                   <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{product.name}</h3>
                 </Link>
                 <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{product.description}</p>
               </div>
-              <div style={{ padding: '1.5rem 1.75rem', display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
+              <div style={{ padding: cardPadding, display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
                 <div>
                   <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#111827', marginBottom: '0.625rem' }}>What free includes</div>
                   <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
@@ -170,7 +171,7 @@ export default function PricingPage() {
                     ))}
                   </ul>
                 </div>
-                <Link href={`/apps/${product.slug}`} style={{ background: product.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', textDecoration: 'none', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%', display: 'inline-block' }}>
+                <Link href={`/apps/${product.slug}`} className={touchTargetClassName} style={{ background: product.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', textDecoration: 'none', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%' }}>
                   Play now
                 </Link>
                 <div>
@@ -213,9 +214,9 @@ export default function PricingPage() {
       </section>
 
       {/* Premium creative platform */}
-      <section style={{ padding: '20px 2rem 40px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '1.5rem' }}>
-          <div style={{ background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '24px', padding: '2.75rem 2.25rem', color: 'white', boxShadow: '0 20px 60px rgba(76,29,149,0.22)' }}>
+      <section style={{ padding: `20px ${pageGutter} 40px`, maxWidth: '1200px', margin: '0 auto' }}>
+        <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '1.5rem' }}>
+          <div style={{ background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '24px', padding: cardPadding, color: 'white', boxShadow: '0 20px 60px rgba(76,29,149,0.22)' }}>
             <div style={{ maxWidth: '860px' }}>
               <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
                 Premium creative platform
@@ -236,8 +237,8 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link href="/apps/contentcraft" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
+              <div className={actionRowClassName}>
+                <Link href="/apps/contentcraft" className={touchTargetClassName} style={{ padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
                   Explore ContentCraft
                 </Link>
                 <SubscribeButton planId="contentcraft" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>
@@ -247,7 +248,7 @@ export default function PricingPage() {
             </div>
           </div>
 
-          <div style={{ background: bundleProduct.gradient, borderRadius: '24px', padding: '2.75rem 2.25rem', color: 'white', boxShadow: '0 20px 60px rgba(15,23,42,0.2)' }}>
+          <div style={{ background: bundleProduct.gradient, borderRadius: '24px', padding: cardPadding, color: 'white', boxShadow: '0 20px 60px rgba(15,23,42,0.2)' }}>
             <div style={{ maxWidth: '860px' }}>
               <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#c7d2fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
                 Creative + table top gaming bundle
@@ -267,8 +268,8 @@ export default function PricingPage() {
                   </li>
                 ))}
               </ul>
-              <div style={{ display: 'flex', gap: '1rem', flexWrap: 'wrap' }}>
-                <Link href="/apps/virtual-combat-simulator" style={{ display: 'inline-block', padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#312e81', textDecoration: 'none', fontWeight: 800 }}>
+              <div className={actionRowClassName}>
+                <Link href="/apps/virtual-combat-simulator" className={touchTargetClassName} style={{ padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#312e81', textDecoration: 'none', fontWeight: 800 }}>
                   Explore Virtual Combat Simulator
                 </Link>
                 <SubscribeButton planId="bundle" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>

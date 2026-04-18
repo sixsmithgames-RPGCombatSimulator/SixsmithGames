@@ -6,6 +6,7 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAllTags, getPostsByTag } from '@/lib/blog';
+import { pageGutter } from '@/lib/responsive';
 
 /**
  * Purpose: Statically generate all tag paths for tag landing pages.
@@ -55,7 +56,7 @@ export default async function BlogTagPage({ params }: { params: Promise<{ tag: s
     <div style={{ background: '#fafafa', minHeight: '100vh' }}>
       <section style={{
         background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        padding: '80px 2rem 50px',
+        padding: `80px ${pageGutter} 50px`,
         textAlign: 'center',
       }}>
         <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 1rem' }}>
@@ -69,7 +70,7 @@ export default async function BlogTagPage({ params }: { params: Promise<{ tag: s
         </p>
       </section>
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem 4rem' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `3rem ${pageGutter} 4rem` }}>
         <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
           {posts.map(post => (
             <Link
@@ -78,7 +79,7 @@ export default async function BlogTagPage({ params }: { params: Promise<{ tag: s
               style={{
                 background: 'white',
                 borderRadius: '12px',
-                padding: '1.5rem 2rem',
+                padding: `1.5rem ${pageGutter}`,
                 textDecoration: 'none',
                 color: 'inherit',
                 boxShadow: '0 1px 2px rgba(0,0,0,0.04)',

@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { cardPadding, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 export const metadata: Metadata = {
   title: 'Products | Sixsmith Games',
@@ -80,7 +81,7 @@ export default function ToolsPage() {
           color: 'white',
         }}
       >
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
           <div style={{ maxWidth: '760px' }}>
             <div
               style={{
@@ -109,7 +110,7 @@ export default function ToolsPage() {
       </section>
 
       <section style={{ padding: '72px 0' }}>
-        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
           <div style={{ display: 'grid', gap: '2rem' }}>
             {products.map((product) => (
               <article
@@ -128,7 +129,7 @@ export default function ToolsPage() {
                   </div>
                   <h2 style={{ fontSize: '1.85rem', lineHeight: 1.2, fontWeight: 800, margin: '0.6rem 0 0' }}>{product.name}</h2>
                 </div>
-                <div style={{ padding: '2rem' }}>
+                <div style={{ padding: cardPadding }}>
                   <h3 style={{ fontSize: '1.4rem', fontWeight: 800, color: '#111827', margin: '0 0 0.9rem' }}>{product.title}</h3>
                   <p style={{ fontSize: '1rem', lineHeight: 1.8, color: '#4b5563', margin: '0 0 1.5rem' }}>{product.description}</p>
                   <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.75rem', display: 'grid', gap: '0.75rem' }}>
@@ -143,6 +144,7 @@ export default function ToolsPage() {
                   </ul>
                   <Link
                     href={product.href}
+                    className={touchTargetClassName}
                     style={{
                       display: 'inline-block',
                       padding: '0.95rem 1.5rem',

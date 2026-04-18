@@ -9,6 +9,7 @@ import ModernBackground from '@/components/ModernBackground';
 import LaunchAppButton from '@/components/LaunchAppButton';
 import SubscribeButton from '@/components/SubscribeButton';
 import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
+import { actionRowClassName, cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 
 export default function MasterTypingPage() {
   const masterTypingPlan = pricingCatalog.mastertyping;
@@ -61,8 +62,8 @@ export default function MasterTypingPage() {
           backdropFilter: 'blur(100px)',
           zIndex: 2
         }} />
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 3}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 3}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <div style={{
                 display: 'inline-block',
@@ -96,7 +97,7 @@ export default function MasterTypingPage() {
               }}>
                 Improve speed, accuracy, and endurance with guided assessment, targeted drills, and a game mode that keeps practice interesting.
               </p>
-              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+              <div className={actionRowClassName}>
                 <LaunchAppButton
                   appSlug="mastertyping"
                   style={{
@@ -147,7 +148,7 @@ export default function MasterTypingPage() {
             <div style={{
               background: 'white',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
               border: '2px solid rgba(34, 197, 94, 0.2)'
             }}>
@@ -187,7 +188,7 @@ export default function MasterTypingPage() {
 
       {/* Pain Point Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{maxWidth: '900px', margin: '0 auto', textAlign: 'center'}}>
             <h2 style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -203,7 +204,7 @@ export default function MasterTypingPage() {
             <div style={{
               background: 'linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%)',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               border: '2px solid #86efac'
             }}>
               <p style={{fontSize: '1.5rem', fontWeight: '700', color: '#166534', marginBottom: '1rem'}}>
@@ -219,7 +220,7 @@ export default function MasterTypingPage() {
 
       {/* Game Modes Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Multiple modes for different kinds of practice
@@ -228,14 +229,14 @@ export default function MasterTypingPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: fluidGrid('280px'),
             gap: '2rem'
           }}>
             {gameModes.map((mode, index) => (
               <div key={index} style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2.5rem',
+                padding: cardPadding,
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 border: '2px solid #d1fae5'
               }}>
@@ -252,7 +253,7 @@ export default function MasterTypingPage() {
 
       {/* Characters Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Game mode keeps practice interesting
@@ -264,7 +265,7 @@ export default function MasterTypingPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))',
+            gridTemplateColumns: fluidGrid('150px'),
             gap: '1rem'
           }}>
             {characters.map((character, index) => (
@@ -296,8 +297,8 @@ export default function MasterTypingPage() {
 
       {/* Educational Features Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
                 Why it matters outside a typing test
@@ -353,7 +354,7 @@ export default function MasterTypingPage() {
             <div style={{
               background: 'white',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
               border: '2px solid #d1fae5'
             }}>
@@ -375,7 +376,7 @@ export default function MasterTypingPage() {
 
       {/* Pricing Comparison */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '900px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '900px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Free and useful right away
@@ -384,10 +385,10 @@ export default function MasterTypingPage() {
           <div style={{
             background: 'linear-gradient(135deg, #f0fdf4 0%, #d1fae5 100%)',
             borderRadius: '20px',
-            padding: '3rem',
+            padding: cardPadding,
             border: '2px solid #86efac'
           }}>
-            <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(240px, 1fr))', gap: '2rem', textAlign: 'left'}}>
+            <div style={{display: 'grid', gridTemplateColumns: fluidGrid('240px'), gap: '2rem', textAlign: 'left'}}>
               <div>
                 <p style={{fontSize: '0.875rem', color: '#166534', marginBottom: '0.5rem', fontWeight: '800', textTransform: 'uppercase', letterSpacing: '0.08em'}}>Free</p>
                 <p style={{fontSize: '2.25rem', fontWeight: '900', color: '#1a202c', marginBottom: '0.75rem'}}>Assessment, drills, Pro mode, and game mode</p>
@@ -424,7 +425,7 @@ export default function MasterTypingPage() {
         <div style={{
           maxWidth: '900px',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: `0 ${pageGutter}`,
           textAlign: 'center',
           position: 'relative',
           zIndex: 1

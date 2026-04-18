@@ -7,6 +7,7 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts, getRecentPosts } from '@/lib/blog';
 import BlogComments from '@/components/BlogComments';
+import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -200,7 +201,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
       {/* Header */}
       <section style={{
         background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        padding: '80px 2rem 50px',
+        padding: `80px ${pageGutter} 50px`,
       }}>
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
           <Link href="/blog" style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '600', textDecoration: 'none', display: 'inline-flex', alignItems: 'center', gap: '0.375rem', marginBottom: '1.5rem' }}>
@@ -223,10 +224,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       {/* Article */}
       <article style={{
-        maxWidth: '760px', margin: '0 auto', padding: '3rem 2rem 4rem',
+        maxWidth: '760px', margin: '0 auto', padding: `3rem ${pageGutter} 4rem`,
       }}>
         <div style={{
-          background: 'white', borderRadius: '16px', padding: 'clamp(1.5rem, 4vw, 3rem)',
+          background: 'white', borderRadius: '16px', padding: cardPadding,
           boxShadow: '0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.03)',
           border: '1px solid #f0f0f0',
         }}>
@@ -263,10 +264,10 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             <h3 style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.25rem' }}>
               More from the Blog
             </h3>
-            <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))', gap: '1rem' }}>
+            <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('250px'), gap: '1rem' }}>
               {related.map(r => (
                 <Link key={r.slug} href={`/blog/${r.slug}`} style={{
-                  background: 'white', borderRadius: '12px', padding: '1.5rem',
+                  background: 'white', borderRadius: '12px', padding: cardPadding,
                   textDecoration: 'none', color: 'inherit',
                   boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
                   border: '1px solid #f0f0f0',
@@ -287,7 +288,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         {/* CTA */}
         <div style={{
           marginTop: '4rem', background: 'linear-gradient(135deg, #667eea, #764ba2)',
-          borderRadius: '16px', padding: '2.5rem', textAlign: 'center',
+          borderRadius: '16px', padding: cardPadding, textAlign: 'center',
         }}>
           <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>
             Ready to create something?
@@ -295,7 +296,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
             Subscribe to individual apps or get the Game Creator bundle.
           </p>
-          <Link href="/pricing" style={{
+          <Link href="/pricing" className={touchTargetClassName} style={{
             background: 'white', color: '#4c1d95',
             padding: '0.875rem 2.5rem', borderRadius: '50px',
             fontSize: '1rem', fontWeight: '800', textDecoration: 'none',

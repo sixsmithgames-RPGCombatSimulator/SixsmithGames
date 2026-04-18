@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import { cardPadding, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 export const metadata: Metadata = {
   title: 'Start Here | Sixsmith Games',
@@ -42,7 +43,7 @@ export default function StartHerePage() {
   return (
     <div style={{ background: '#f8fafc', minHeight: '100vh' }}>
       <section style={{ padding: '84px 0 28px', background: 'white' }}>
-        <div style={{ maxWidth: '980px', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ maxWidth: '980px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
           <div
             style={{
               display: 'inline-block',
@@ -69,7 +70,7 @@ export default function StartHerePage() {
       </section>
 
       <section style={{ padding: '36px 0 72px' }}>
-        <div style={{ maxWidth: '980px', margin: '0 auto', padding: '0 2rem' }}>
+        <div style={{ maxWidth: '980px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
           <div style={{ display: 'grid', gap: '1.25rem' }}>
             {paths.map((path) => (
               <article
@@ -78,7 +79,7 @@ export default function StartHerePage() {
                   background: 'white',
                   border: '1px solid #e5e7eb',
                   borderRadius: '22px',
-                  padding: '1.75rem',
+                  padding: cardPadding,
                   boxShadow: '0 10px 24px rgba(15,23,42,0.04)',
                 }}
               >
@@ -87,6 +88,7 @@ export default function StartHerePage() {
                 <p style={{ fontSize: '1rem', lineHeight: 1.75, color: '#4b5563', margin: '0 0 1.2rem' }}>{path.description}</p>
                 <Link
                   href={path.href}
+                  className={touchTargetClassName}
                   style={{
                     display: 'inline-block',
                     padding: '0.9rem 1.35rem',

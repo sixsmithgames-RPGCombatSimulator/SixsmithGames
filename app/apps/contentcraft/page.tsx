@@ -8,6 +8,7 @@
 import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
 import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
+import { actionRowClassName, cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 
 export default function ContentCraftPage() {
   const contentCraftPlan = pricingCatalog.contentcraft;
@@ -73,8 +74,8 @@ export default function ContentCraftPage() {
           backdropFilter: 'blur(100px)',
           zIndex: 2
         }} />
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 3}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 3}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <div style={{
                 display: 'inline-block',
@@ -108,7 +109,7 @@ export default function ContentCraftPage() {
               }}>
                 ContentCraft keeps campaigns, novels, and connected settings coherent while you write, prep, and publish, with staged AI workflows that stay grounded in your canon.
               </p>
-              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+              <div className={actionRowClassName}>
                 <SubscribeButton
                   planId="contentcraft"
                   signInLabel="Sign in to continue"
@@ -135,7 +136,7 @@ export default function ContentCraftPage() {
             <div style={{
               background: 'white',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
               border: '2px solid rgba(168, 85, 247, 0.2)'
             }}>
@@ -175,7 +176,7 @@ export default function ContentCraftPage() {
 
       {/* Problem/Solution Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -193,7 +194,7 @@ export default function ContentCraftPage() {
           <div style={{
             background: 'linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%)',
             borderRadius: '24px',
-            padding: '3rem',
+            padding: cardPadding,
             border: '2px solid #e9d5ff',
             maxWidth: '980px',
             margin: '0 auto'
@@ -201,7 +202,7 @@ export default function ContentCraftPage() {
             <h3 style={{fontSize: '1.5rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem', textAlign: 'center'}}>
               Why ContentCraft holds together under pressure
             </h3>
-            <ul style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(260px, 1fr))', gap: '1rem', listStyle: 'none', padding: 0, margin: 0}}>
+            <ul style={{display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem', listStyle: 'none', padding: 0, margin: 0}}>
               {[
                 'Projects, library, and canon live in one place',
                 'AI generation happens in stages you can review',
@@ -222,7 +223,7 @@ export default function ContentCraftPage() {
 
       {/* Core Features Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Creative features for work with real continuity
@@ -234,14 +235,14 @@ export default function ContentCraftPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: fluidGrid('300px'),
             gap: '2rem'
           }}>
             {coreFeatures.map((feature, index) => (
               <div key={index} style={{
                 background: 'white',
                 borderRadius: '15px',
-                padding: '2rem',
+                padding: cardPadding,
                 border: '2px solid #e9d5ff',
                 transition: 'all 0.3s ease'
               }}
@@ -265,10 +266,10 @@ export default function ContentCraftPage() {
 
       {/* D&D Special Features Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+            gridTemplateColumns: fluidGrid('320px'),
             gap: '2rem',
             marginBottom: '4rem',
             alignItems: 'start'
@@ -276,7 +277,7 @@ export default function ContentCraftPage() {
             <div style={{
               background: 'white',
               borderRadius: '24px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
               border: '1px solid #f3e8ff'
             }}>
@@ -317,7 +318,7 @@ export default function ContentCraftPage() {
             <div style={{
               background: 'white',
               borderRadius: '24px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 10px 30px rgba(0,0,0,0.06)',
               border: '1px solid #f3e8ff'
             }}>
@@ -376,7 +377,7 @@ export default function ContentCraftPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: fluidGrid('280px'),
             gap: '2rem',
             marginBottom: '3rem'
           }}>
@@ -384,7 +385,7 @@ export default function ContentCraftPage() {
               <div key={index} style={{
                 background: 'linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%)',
                 borderRadius: '20px',
-                padding: '2.5rem',
+                padding: cardPadding,
                 border: '2px solid #e9d5ff',
                 textAlign: 'center'
               }}>
@@ -400,7 +401,7 @@ export default function ContentCraftPage() {
           <div style={{
             background: 'linear-gradient(135deg, #faf5ff 0%, #fce7f3 100%)',
             borderRadius: '20px',
-            padding: '3rem',
+            padding: cardPadding,
             border: '2px solid #e9d5ff'
           }}>
             <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem', textAlign: 'center'}}>
@@ -419,7 +420,7 @@ export default function ContentCraftPage() {
 
       {/* Who It's For Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Why creators stick with ContentCraft
@@ -428,13 +429,13 @@ export default function ContentCraftPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: fluidGrid('300px'),
             gap: '2rem'
           }}>
             <div style={{
               background: 'white',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
@@ -477,7 +478,7 @@ export default function ContentCraftPage() {
             <div style={{
               background: 'white',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 10px 30px rgba(0,0,0,0.08)'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
@@ -509,7 +510,7 @@ export default function ContentCraftPage() {
         <div style={{
           maxWidth: '900px',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: `0 ${pageGutter}`,
           textAlign: 'center',
           position: 'relative',
           zIndex: 1
@@ -531,7 +532,7 @@ export default function ContentCraftPage() {
               }}>
                 ContentCraft is the premium subscription platform for bigger creative work. It includes built-in AI usage, and additional credits are available when heavier use makes sense.
               </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className={actionRowClassName} style={{ justifyContent: 'center' }}>
                 <SubscribeButton planId="contentcraft" style={{
                   background: 'white',
                   color: '#a855f7',

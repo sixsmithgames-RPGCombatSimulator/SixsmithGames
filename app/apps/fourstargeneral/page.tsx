@@ -9,6 +9,7 @@ import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
 import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
+import { actionRowClassName, cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 
 export default function FourStarGeneralPage() {
   const fourStarPlan = pricingCatalog.fourstargeneral;
@@ -54,8 +55,8 @@ export default function FourStarGeneralPage() {
           backdropFilter: 'blur(100px)',
           zIndex: 2
         }} />
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 3}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 3}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <div style={{
                 display: 'inline-block',
@@ -89,7 +90,7 @@ export default function FourStarGeneralPage() {
               }}>
                 Four Star General is a turn-based WWII strategy game centered on a tactical battlefield game. Requisition and deploy forces, call for air support, manage logistics, and fight through mission after mission with realistic resolution.
               </p>
-              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+              <div className={actionRowClassName}>
                 <LaunchAppButton
                   appSlug="fourstargeneral"
                   style={{
@@ -138,7 +139,7 @@ export default function FourStarGeneralPage() {
             <div style={{
               background: 'white',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
               border: '2px solid rgba(245, 158, 11, 0.2)'
             }}>
@@ -178,7 +179,7 @@ export default function FourStarGeneralPage() {
 
       {/* Strategic Depth Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{maxWidth: '900px', margin: '0 auto', textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -195,13 +196,13 @@ export default function FourStarGeneralPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: fluidGrid('300px'),
             gap: '2rem'
           }}>
             <div style={{
               background: 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               border: '2px solid #fcd34d'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
@@ -230,7 +231,7 @@ export default function FourStarGeneralPage() {
             <div style={{
               background: 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               border: '2px solid #fcd34d'
             }}>
               <h3 style={{fontSize: '1.75rem', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
@@ -261,7 +262,7 @@ export default function FourStarGeneralPage() {
 
       {/* Features Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Core tactical systems
@@ -270,14 +271,14 @@ export default function FourStarGeneralPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))',
+            gridTemplateColumns: fluidGrid('280px'),
             gap: '2rem'
           }}>
             {features.map((feature, index) => (
               <div key={index} style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2.5rem',
+                padding: cardPadding,
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 border: '2px solid #fde68a',
                 transition: 'all 0.3s ease'
@@ -302,7 +303,7 @@ export default function FourStarGeneralPage() {
 
       {/* Unit Types Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Unit Types
@@ -314,7 +315,7 @@ export default function FourStarGeneralPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+            gridTemplateColumns: fluidGrid('200px'),
             gap: '1.5rem'
           }}>
             {unitTypes.map((unit, index) => (
@@ -323,7 +324,7 @@ export default function FourStarGeneralPage() {
                 style={{
                   background: 'linear-gradient(135deg, #fef3c7 0%, #fed7aa 100%)',
                   borderRadius: '15px',
-                  padding: '2rem',
+                  padding: cardPadding,
                   textAlign: 'center',
                   border: '2px solid #fcd34d',
                   transition: 'all 0.3s ease'
@@ -346,8 +347,8 @@ export default function FourStarGeneralPage() {
 
       {/* Historical Authenticity Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1.5rem'}}>
                 Mission scenarios such as River Crossing
@@ -385,7 +386,7 @@ export default function FourStarGeneralPage() {
             <div style={{
               background: 'white',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.08)',
               border: '2px solid #fde68a'
             }}>
@@ -398,7 +399,7 @@ export default function FourStarGeneralPage() {
               <div style={{
                 background: '#fef3c7',
                 borderRadius: '15px',
-                padding: '1.5rem',
+                  padding: `1.5rem ${pageGutter}`,
                 border: '2px solid #fcd34d'
               }}>
                 <p style={{fontWeight: '600', color: '#92400e', marginBottom: '0.75rem'}}>Built for players who enjoy:</p>
@@ -433,7 +434,7 @@ export default function FourStarGeneralPage() {
         <div style={{
           maxWidth: '900px',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: `0 ${pageGutter}`,
           textAlign: 'center',
           position: 'relative',
           zIndex: 1
@@ -455,7 +456,7 @@ export default function FourStarGeneralPage() {
               }}>
                 Play with the tactical core of units. Add units, weapons, and scenarios when you want more. Check out campaign mode where you can start from planning for D-day and play through victory over the Axis.
               </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className={actionRowClassName} style={{ justifyContent: 'center' }}>
                 <LaunchAppButton
                   appSlug="fourstargeneral"
               style={{

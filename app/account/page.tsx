@@ -6,10 +6,11 @@
 'use client';
 
 import { useUser, SignInButton } from '@clerk/nextjs';
-import { APP_URLS, PLANS, type SubscriptionInfo } from '@/lib/subscription';
+import { APP_URLS, PLANS, type AppSlug, type SubscriptionInfo } from '@/lib/subscription';
 import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
+import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
-const appDetails = [
+const appDetails: Array<{ slug: AppSlug; name: string; desc: string; icon: string; color: string; bg: string }> = [
   { slug: 'virtual-combat-simulator', name: 'Virtual Combat Simulator', desc: 'Tactical military combat', icon: '⚔️', color: '#ef4444', bg: '#fef2f2' },
   { slug: 'contentcraft', name: 'ContentCraft', desc: 'AI-powered content creation', icon: '✨', color: '#a855f7', bg: '#faf5ff' },
   { slug: 'mastertyping', name: 'MasterTyping', desc: 'Speed & accuracy training', icon: '⌨️', color: '#22c55e', bg: '#f0fdf4' },
@@ -65,7 +66,7 @@ export default function AccountPage() {
 
   if (!isSignedIn) {
     return (
-      <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', padding: '2rem' }}>
+      <div style={{ minHeight: '60vh', display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', gap: '1.5rem', padding: pageGutter }}>
         <div style={{ fontSize: '3rem' }}>🔐</div>
         <h1 style={{ fontSize: '1.75rem', fontWeight: '800', color: '#111827', margin: 0 }}>Sign in to view your account</h1>
         <p style={{ color: '#6b7280', fontSize: '1rem', margin: 0 }}>Access your subscription, billing, and apps.</p>
@@ -98,20 +99,23 @@ export default function AccountPage() {
   const email = user?.primaryEmailAddress?.emailAddress;
   const sub = accessInfo || EMPTY_SUBSCRIPTION_INFO;
   const isActive = sub.accessibleApps.length > 0 || sub.isAdmin;
-  const freeAppSlugs = ['virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
-  const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.accessibleApps.includes('gravity' as never) || sub.isAdmin);
+  const freeAppSlugs: AppSlug[] = ['virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
+  const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.accessibleApps.includes('gravity') || sub.isAdmin);
 
   const card: React.CSSProperties = {
-    background: 'white', borderRadius: '16px', padding: '1.75rem 2rem',
+    background: 'white',
+    borderRadius: '16px',
+    padding: cardPadding,
     boxShadow: '0 1px 4px rgba(0,0,0,0.06), 0 4px 16px rgba(0,0,0,0.06)',
-    border: '1px solid #f3f4f6', marginBottom: '1.5rem',
+    border: '1px solid #f3f4f6',
+    marginBottom: '1.5rem',
   };
 
   return (
     <div style={{ background: '#f9fafb', minHeight: '100vh' }}>
       {/* Hero header */}
-      <div style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%)', padding: '3rem 2rem 5rem' }}>
-        <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
+      <div style={{ background: 'linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%)', padding: `3rem ${pageGutter} 5rem` }}>
+        <div style={{ maxWidth: '960px', margin: '0 auto', display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
           {user?.imageUrl ? (
             <img src={user.imageUrl} alt="Avatar" style={{ width: '72px', height: '72px', borderRadius: '50%', border: '3px solid rgba(255,255,255,0.4)', flexShrink: 0 }} />
           ) : (
@@ -133,7 +137,7 @@ export default function AccountPage() {
         </div>
       </div>
 
-      <div style={{ maxWidth: '960px', margin: '-3rem auto 0', padding: '0 2rem 4rem' }}>
+      <div style={{ maxWidth: '960px', margin: '-3rem auto 0', padding: `0 ${pageGutter} 4rem` }}>
         {accessError && (
           <div style={{
             background: '#fef2f2',
@@ -157,7 +161,7 @@ export default function AccountPage() {
               </div>
 
               {isActive ? (
-                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(180px, 1fr))', gap: '1.25rem' }}>
+                <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('180px'), gap: '1.25rem' }}>
                   {sub.plans.length > 0 && (
                     <div>
                       <p style={{ fontSize: '0.75rem', fontWeight: '600', color: '#9ca3af', textTransform: 'uppercase', letterSpacing: '0.06em', margin: '0 0 0.25rem' }}>
@@ -193,7 +197,7 @@ export default function AccountPage() {
                   <p style={{ color: '#6b7280', fontSize: '0.9375rem', margin: 0 }}>
                     You don&apos;t have an active paid subscription. ContentCraft requires one, but the games are still available to signed-in users.
                   </p>
-                  <a href="/pricing" style={{
+                  <a href="/pricing" className={touchTargetClassName} style={{
                     display: 'inline-block', background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
                     color: 'white', padding: '0.625rem 1.5rem', borderRadius: '8px',
                     fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
@@ -230,10 +234,10 @@ export default function AccountPage() {
             </div>
           )}
 
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '1rem' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
             {visibleApps.map((app) => {
               const hasFreeAccess = freeAppSlugs.includes(app.slug);
-              const locked = !hasFreeAccess && !sub.accessibleApps.includes(app.slug as never) && !sub.isAdmin;
+              const locked = !hasFreeAccess && !sub.accessibleApps.includes(app.slug) && !sub.isAdmin;
               return (
                 <div key={app.slug} style={{
                   border: `1.5px solid ${locked ? '#e5e7eb' : app.color + '33'}`,
@@ -252,7 +256,7 @@ export default function AccountPage() {
                   {locked ? (
                     <span style={{ fontSize: '0.8rem', color: '#9ca3af', fontWeight: '600' }}>🔒 Locked — paid plan required</span>
                   ) : (
-                    <a href={APP_URLS[app.slug]} target="_blank" rel="noopener noreferrer" style={{
+                    <a href={APP_URLS[app.slug]} target="_blank" rel="noopener noreferrer" className={touchTargetClassName} style={{
                       display: 'inline-flex', alignItems: 'center', gap: '4px',
                       fontSize: '0.875rem', fontWeight: '700', color: app.color,
                       textDecoration: 'none', marginTop: '0.25rem',
@@ -308,7 +312,7 @@ export default function AccountPage() {
           <div style={{
             ...card,
             background: 'linear-gradient(135deg, #1e3a8a 0%, #4c1d95 100%)',
-            border: 'none', textAlign: 'center', padding: '3rem 2rem',
+            border: 'none', textAlign: 'center', padding: cardPadding,
           }}>
             <p style={{ fontSize: '1.75rem', margin: '0 0 0.5rem' }}>🎮</p>
             <h2 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>
@@ -317,7 +321,7 @@ export default function AccountPage() {
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', margin: '0 0 1.75rem', maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
               Virtual Combat Simulator, Four Star General, and MasterTyping are free to start. ContentCraft is the premium subscription platform for bigger creative work.
             </p>
-            <a href="/pricing" style={{
+            <a href="/pricing" className={touchTargetClassName} style={{
               display: 'inline-block', background: 'white', color: '#1e3a8a',
               padding: '0.875rem 2.5rem', borderRadius: '10px', fontWeight: '800',
               fontSize: '1.0625rem', textDecoration: 'none',

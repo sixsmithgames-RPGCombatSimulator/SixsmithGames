@@ -5,6 +5,7 @@
 
 import Link from 'next/link';
 import { getAllPosts, getFeaturedPosts } from '@/lib/blog';
+import { cardPadding, pageGutter } from '@/lib/responsive';
 
 export const metadata = {
   title: 'Blog — Sixsmith Games',
@@ -29,7 +30,7 @@ export default async function BlogPage() {
       {/* Header */}
       <section style={{
         background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        padding: '80px 2rem 60px',
+        padding: `80px ${pageGutter} 60px`,
         textAlign: 'center',
       }}>
         <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 1rem' }}>
@@ -43,7 +44,7 @@ export default async function BlogPage() {
         </p>
       </section>
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: '3rem 2rem 5rem' }}>
+      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
 
         {/* Featured posts */}
         {featured.length > 0 && (
@@ -66,7 +67,7 @@ export default async function BlogPage() {
                     style={{
                       background: 'white',
                       borderRadius: '16px',
-                      padding: '2.25rem',
+                      padding: cardPadding,
                       textDecoration: 'none',
                       color: 'inherit',
                       boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
@@ -118,7 +119,7 @@ export default async function BlogPage() {
                 style={{
                   background: 'white',
                   borderRadius: '12px',
-                  padding: '1.5rem 2rem',
+                  padding: `1.5rem ${pageGutter}`,
                   textDecoration: 'none',
                   color: 'inherit',
                   boxShadow: '0 1px 2px rgba(0,0,0,0.04)',

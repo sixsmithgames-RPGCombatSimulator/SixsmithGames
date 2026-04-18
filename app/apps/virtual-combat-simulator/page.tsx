@@ -9,6 +9,7 @@ import ModernBackground from '@/components/ModernBackground';
 import SubscribeButton from '@/components/SubscribeButton';
 import LaunchAppButton from '@/components/LaunchAppButton';
 import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
+import { actionRowClassName, cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 
 export default function VirtualCombatSimulatorPage() {
   const vcsPlan = pricingCatalog['virtual-combat-simulator'];
@@ -71,8 +72,8 @@ export default function VirtualCombatSimulatorPage() {
           backdropFilter: 'blur(100px)',
           zIndex: 2
         }} />
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem', position: 'relative', zIndex: 3}}>
-          <div style={{display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '3rem', alignItems: 'center'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 3}}>
+          <div style={{display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '3rem', alignItems: 'center'}}>
             <div>
               <div style={{
                 display: 'inline-block',
@@ -106,7 +107,7 @@ export default function VirtualCombatSimulatorPage() {
               }}>
                 Virtual Combat Simulator is a virtual tabletop for D&D 5e that keeps maps, tokens, initiative, hit points, and combat flow in one place.
               </p>
-              <div style={{display: 'flex', flexWrap: 'wrap', gap: '1rem'}}>
+              <div className={actionRowClassName}>
                 <LaunchAppButton
                   appSlug="virtual-combat-simulator"
                   style={{
@@ -155,7 +156,7 @@ export default function VirtualCombatSimulatorPage() {
             <div style={{
               background: 'white',
               borderRadius: '30px',
-              padding: '2.5rem',
+              padding: cardPadding,
               boxShadow: '0 20px 60px rgba(0,0,0,0.2)',
               border: '2px solid rgba(37, 99, 235, 0.2)'
             }}>
@@ -195,7 +196,7 @@ export default function VirtualCombatSimulatorPage() {
 
       {/* Problem/Solution Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{maxWidth: '800px', margin: '0 auto', textAlign: 'center'}}>
             <h2 style={{
               fontSize: 'clamp(2rem, 5vw, 3rem)',
@@ -214,7 +215,7 @@ export default function VirtualCombatSimulatorPage() {
 
       {/* Features Section */}
       <section style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{textAlign: 'center', marginBottom: '3rem'}}>
             <h2 style={{fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '800', color: '#1a202c', marginBottom: '1rem'}}>
               Everything you need for tactical combat
@@ -223,14 +224,14 @@ export default function VirtualCombatSimulatorPage() {
 
           <div style={{
             display: 'grid',
-            gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
+            gridTemplateColumns: fluidGrid('300px'),
             gap: '2rem'
           }}>
             {features.map((feature, index) => (
               <div key={index} style={{
                 background: 'white',
                 borderRadius: '20px',
-                padding: '2.5rem',
+                padding: cardPadding,
                 boxShadow: '0 10px 30px rgba(0,0,0,0.08)',
                 border: '2px solid #e5e7eb',
                 transition: 'all 0.3s ease'
@@ -276,7 +277,7 @@ export default function VirtualCombatSimulatorPage() {
 
       {/* Tech Stack Section */}
       <section style={{padding: '80px 0', background: 'white'}}>
-        <div style={{maxWidth: '1100px', margin: '0 auto', padding: '0 2rem'}}>
+        <div style={{maxWidth: '1100px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
           <div style={{maxWidth: '800px', margin: '0 auto'}}>
             <h2 style={{fontSize: 'clamp(1.75rem, 4vw, 2.5rem)', fontWeight: '700', color: '#1a202c', marginBottom: '2rem', textAlign: 'center'}}>
               Built for reliable table state
@@ -284,12 +285,12 @@ export default function VirtualCombatSimulatorPage() {
             <div style={{
               background: 'linear-gradient(135deg, #fef2f2 0%, #fff7ed 100%)',
               borderRadius: '20px',
-              padding: '2.5rem',
+              padding: cardPadding,
               border: '2px solid #fed7aa'
             }}>
               <ul style={{
                 display: 'grid',
-                gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))',
+                gridTemplateColumns: fluidGrid('200px'),
                 gap: '1rem',
                 color: '#4b5563'
               }}>
@@ -323,7 +324,7 @@ export default function VirtualCombatSimulatorPage() {
         <div style={{
           maxWidth: '900px',
           margin: '0 auto',
-          padding: '0 2rem',
+          padding: `0 ${pageGutter}`,
           textAlign: 'center',
           position: 'relative',
           zIndex: 1
@@ -345,7 +346,7 @@ export default function VirtualCombatSimulatorPage() {
               }}>
                 Play now! Upgrade when you need more preset encounters, image uploads, custom monsters, custom rules, and saving your combat sessions.
               </p>
-              <div style={{ display: 'flex', justifyContent: 'center', gap: '1rem', flexWrap: 'wrap' }}>
+              <div className={actionRowClassName} style={{ justifyContent: 'center' }}>
                 <LaunchAppButton
                   appSlug="virtual-combat-simulator"
               style={{

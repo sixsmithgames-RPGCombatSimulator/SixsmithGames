@@ -9,6 +9,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
 import { SignedIn, SignedOut, UserButton, useUser } from '@clerk/nextjs';
+import { pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 export default function Navigation() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
@@ -40,11 +41,12 @@ export default function Navigation() {
   const innerStyle: React.CSSProperties = {
     maxWidth: '1280px',
     margin: '0 auto',
-    padding: '0 2rem',
+    padding: `0 ${pageGutter}`,
     width: '100%',
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
+    gap: '1rem',
   };
 
   const logoStyle: React.CSSProperties = {
@@ -56,6 +58,7 @@ export default function Navigation() {
     backgroundClip: 'text',
     textDecoration: 'none',
     letterSpacing: '-0.02em',
+    whiteSpace: 'nowrap',
   };
 
   const linkStyle: React.CSSProperties = {
@@ -65,6 +68,9 @@ export default function Navigation() {
     fontSize: '0.9375rem',
     padding: '0.25rem 0',
     transition: 'color 0.15s',
+    minHeight: '44px',
+    display: 'inline-flex',
+    alignItems: 'center',
   };
 
   const signInStyle: React.CSSProperties = {
@@ -77,6 +83,10 @@ export default function Navigation() {
     border: '1.5px solid #d1d5db',
     transition: 'all 0.15s',
     backgroundColor: 'transparent',
+    minHeight: '44px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
   const ctaStyle: React.CSSProperties = {
@@ -90,6 +100,10 @@ export default function Navigation() {
     boxShadow: '0 2px 8px rgba(124,58,237,0.35)',
     transition: 'all 0.15s',
     whiteSpace: 'nowrap',
+    minHeight: '44px',
+    display: 'inline-flex',
+    alignItems: 'center',
+    justifyContent: 'center',
   };
 
   const dropdownStyle: React.CSSProperties = {
@@ -110,15 +124,16 @@ export default function Navigation() {
       <nav style={navStyle}>
         <div style={innerStyle}>
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none' }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', minWidth: 0 }}>
             <Image
               src="/icons/sixsmith-logo.png"
               alt="Sixsmith Games"
               width={40}
               height={40}
-              style={{ display: 'block' }}
+              sizes="40px"
+              style={{ display: 'block', width: '40px', height: 'auto' }}
             />
-            <span style={logoStyle}>Sixsmith Games</span>
+            <span style={logoStyle} className="nav-brand-text">Sixsmith Games</span>
           </Link>
 
           {/* Desktop nav */}
@@ -135,6 +150,8 @@ export default function Navigation() {
               <button
                 onClick={() => setAppsDropdownOpen(!appsDropdownOpen)}
                 onBlur={() => setTimeout(() => setAppsDropdownOpen(false), 150)}
+                aria-expanded={appsDropdownOpen}
+                aria-haspopup="menu"
                 style={{
                   ...linkStyle,
                   background: 'none',
@@ -157,6 +174,7 @@ export default function Navigation() {
                       key={app.href}
                       href={app.href}
                       onClick={() => setAppsDropdownOpen(false)}
+                      className={touchTargetClassName}
                       style={{
                         display: 'block',
                         padding: '0.75rem 1.25rem',
@@ -206,9 +224,10 @@ export default function Navigation() {
                   textDecoration: 'none',
                   fontWeight: '500',
                   fontSize: '0.9375rem',
-                  display: 'flex',
+                  display: 'inline-flex',
                   alignItems: 'center',
                   gap: '0.375rem',
+                  minHeight: '44px',
                 }}
                   onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
                   onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
@@ -247,12 +266,18 @@ export default function Navigation() {
           {/* Mobile hamburger */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-expanded={mobileMenuOpen}
+            aria-label={mobileMenuOpen ? 'Close navigation menu' : 'Open navigation menu'}
             style={{
               display: 'none',
               background: 'none',
               border: 'none',
               cursor: 'pointer',
               padding: '0.5rem',
+              minWidth: '44px',
+              minHeight: '44px',
+              alignItems: 'center',
+              justifyContent: 'center',
             }}
             className="mobile-menu-btn"
           >
@@ -277,9 +302,10 @@ export default function Navigation() {
           borderBottom: '1px solid #e5e7eb',
           boxShadow: '0 8px 24px rgba(0,0,0,0.1)',
           zIndex: 9998,
-          padding: '1rem 2rem 1.5rem',
+          padding: `1rem ${pageGutter} 1.5rem`,
         }}>
           <Link href="/" onClick={() => setMobileMenuOpen(false)}
+            className={touchTargetClassName}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             Home
@@ -290,22 +316,26 @@ export default function Navigation() {
           {apps.map((app) => (
             <Link key={app.href} href={app.href}
               onClick={() => setMobileMenuOpen(false)}
+              className={touchTargetClassName}
               style={{ display: 'block', padding: '0.625rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
             >
               {app.name}
             </Link>
           ))}
           <Link href="/pricing" onClick={() => setMobileMenuOpen(false)}
+            className={touchTargetClassName}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             Pricing
           </Link>
           <Link href="/about" onClick={() => setMobileMenuOpen(false)}
+            className={touchTargetClassName}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             About
           </Link>
           <Link href="/blog" onClick={() => setMobileMenuOpen(false)}
+            className={touchTargetClassName}
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             Blog
@@ -326,11 +356,13 @@ export default function Navigation() {
             </SignedIn>
             <SignedOut>
               <Link href="/sign-in" onClick={() => setMobileMenuOpen(false)}
+                className={touchTargetClassName}
                 style={{ display: 'block', textAlign: 'center', padding: '0.75rem', border: '1.5px solid #d1d5db', borderRadius: '8px', color: '#374151', textDecoration: 'none', fontWeight: '600', fontSize: '1rem' }}
               >
                 Sign In
               </Link>
               <Link href="/start-here" onClick={() => setMobileMenuOpen(false)}
+                className={touchTargetClassName}
                 style={{ display: 'block', textAlign: 'center', padding: '0.75rem', background: 'linear-gradient(135deg, #2563eb, #7c3aed)', borderRadius: '8px', color: '#ffffff', textDecoration: 'none', fontWeight: '700', fontSize: '1rem' }}
               >
                 Start Here →
@@ -344,6 +376,11 @@ export default function Navigation() {
         @media (max-width: 768px) {
           .mobile-menu-btn { display: block !important; }
           .desktop-nav { display: none !important; }
+          .nav-brand-text { font-size: 1.1rem !important; }
+        }
+
+        @media (max-width: 480px) {
+          .nav-brand-text { display: none !important; }
         }
       `}</style>
     </>

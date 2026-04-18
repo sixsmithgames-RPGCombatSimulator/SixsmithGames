@@ -1,4 +1,5 @@
 import React from 'react';
+import { cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 
 export const metadata = {
   title: 'About Sixsmith Games',
@@ -16,7 +17,7 @@ export default function AboutPage() {
           overflow: 'hidden',
         }}
       >
-        <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '0 1.5rem' }}>
+        <div style={{ maxWidth: '1080px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
           <div style={{ display: 'inline-block', padding: '0.4rem 1rem', borderRadius: '999px', background: 'rgba(255,255,255,0.08)', border: '1px solid rgba(255,255,255,0.08)', fontSize: '0.9rem', letterSpacing: '0.08em', textTransform: 'uppercase', color: '#c084fc', marginBottom: '1.5rem' }}>
             About Sixsmith Games
           </div>
@@ -30,8 +31,8 @@ export default function AboutPage() {
       </section>
 
       <section style={{ padding: '64px 0' }}>
-        <div style={{ maxWidth: '1080px', margin: '0 auto', padding: '0 1.5rem' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '1.5rem', marginBottom: '2rem' }}>
+        <div style={{ maxWidth: '1080px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
+          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('280px'), gap: '1.5rem', marginBottom: '2rem' }}>
             <div style={{ padding: '1.25rem 1.5rem', background: 'rgba(255,255,255,0.03)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '18px' }}>
               <div style={{ fontSize: '0.95rem', letterSpacing: '0.04em', color: '#c084fc', marginBottom: '0.35rem', fontWeight: 700 }}>Focus</div>
               <div style={{ color: '#e5e7eb', fontWeight: 700, fontSize: '1.05rem' }}>Useful software, clear systems, and replayable design</div>
@@ -46,7 +47,7 @@ export default function AboutPage() {
             </div>
           </div>
 
-          <article style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '22px', padding: '2.25rem', boxShadow: '0 24px 60px rgba(0,0,0,0.35)' }}>
+          <article style={{ background: 'rgba(255,255,255,0.02)', border: '1px solid rgba(255,255,255,0.06)', borderRadius: '22px', padding: cardPadding, boxShadow: '0 24px 60px rgba(0,0,0,0.35)' }}>
             <div style={{ display: 'flex', flexDirection: 'column', gap: '1.5rem', fontSize: '1.05rem', lineHeight: 1.8, color: 'rgba(229,231,235,0.9)' }}>
               <p>
                 Sixsmith Games sits at the intersection of game design, software design, and creative tooling. The products are varied, but the standard is the same across all of them: they should solve a real problem, make sense when you use them, and hold up under repeated use instead of falling apart once the novelty wears off.

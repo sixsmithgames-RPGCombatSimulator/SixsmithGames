@@ -7,7 +7,7 @@
 
 import { useState, useEffect } from 'react';
 import { useUser, SignInButton } from '@clerk/nextjs';
-import { APP_URLS, canAccessApp, getActivePlans, type AppSlug } from '@/lib/subscription';
+import { APP_URLS, canAccessApp, getActivePlans, isAppSlug, type AppSlug } from '@/lib/subscription';
 import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 
 interface SubscribeButtonProps {
@@ -51,6 +51,7 @@ export default function SubscribeButton({
     'fourstargeneral',
     'mastertyping',
   ]);
+  const isAppPlanId = Boolean(planId) && isAppSlug(planId) && appPlanIds.has(planId);
   const checkoutUrl = `/checkout?planId=${encodeURIComponent(planId || 'bundle')}`;
 
   /**
@@ -103,13 +104,13 @@ export default function SubscribeButton({
   const activePlans = getActivePlans(user?.publicMetadata);
   const metadataCanAccessThisApp = planId === 'bundle'
     ? activePlans.includes('bundle')
-    : Boolean(planId) && appPlanIds.has(planId as AppSlug)
-      ? canAccessApp(planId as AppSlug, user?.publicMetadata)
+    : isAppPlanId
+      ? canAccessApp(planId, user?.publicMetadata)
       : false;
   const serverCanAccessThisApp = planId === 'bundle'
     ? Boolean(accessInfo?.plans.includes('bundle') || accessInfo?.isAdmin)
-    : Boolean(planId) && appPlanIds.has(planId as AppSlug)
-      ? Boolean(accessInfo?.accessibleApps.includes(planId as AppSlug))
+    : isAppPlanId
+      ? Boolean(accessInfo?.accessibleApps.includes(planId))
       : false;
   const canAccessThisApp = metadataCanAccessThisApp || serverCanAccessThisApp;
 
@@ -126,7 +127,7 @@ export default function SubscribeButton({
   }
 
   if (canAccessThisApp && allowAccessRedirect) {
-    const appUrl = planId && planId in APP_URLS ? APP_URLS[planId] : '/account';
+    const appUrl = planId && isAppSlug(planId) ? APP_URLS[planId] : '/account';
 
     return (
       <a

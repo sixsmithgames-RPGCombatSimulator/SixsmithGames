@@ -7,7 +7,19 @@ import { pricingCatalog } from '@/lib/pricingCatalog';
 
 export type SubscriptionStatus = 'active' | 'inactive' | 'trialing' | 'past_due';
 
-export type AppSlug = 'contentcraft' | 'gravity' | 'virtual-combat-simulator' | 'fourstargeneral' | 'mastertyping';
+export const APP_SLUGS = [
+  'contentcraft',
+  'gravity',
+  'virtual-combat-simulator',
+  'fourstargeneral',
+  'mastertyping',
+] as const;
+
+export type AppSlug = (typeof APP_SLUGS)[number];
+
+export function isAppSlug(value: string): value is AppSlug {
+  return APP_SLUGS.some((slug) => slug === value);
+}
 
 export interface PlanInfo {
   id: string;
@@ -135,7 +147,7 @@ export function getSubscriptionInfo(
     plan: plans[0] || null,
     plans,
     expiresAt: (publicMetadata.subscriptionExpiresAt as string) || null,
-    isAdmin: false,
+    isAdmin: (publicMetadata.isAdmin as boolean) || false,
     nextBillingDate: (publicMetadata.subscriptionExpiresAt as string) || null,
     billingHistory: [],
     memberSince: (publicMetadata.memberSince as string) || null,
@@ -151,7 +163,7 @@ export function canAccessApps(
 }
 
 // App subdomain map
-export const APP_URLS: Record<string, string> = {
+export const APP_URLS: Record<AppSlug, string> = {
   'virtual-combat-simulator': 'https://vcs.sixsmithgames.com',
   'contentcraft': 'https://contentcraft.sixsmithgames.com',
   'mastertyping': 'https://mastertyping.sixsmithgames.com',

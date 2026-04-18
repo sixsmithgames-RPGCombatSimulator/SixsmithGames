@@ -3,6 +3,7 @@
 import { SignIn, useUser } from '@clerk/nextjs';
 import Link from 'next/link';
 import { useEffect, useRef, useState } from 'react';
+import { pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 interface CheckoutClientProps {
   planId: string;
@@ -52,7 +53,7 @@ export default function CheckoutClient({ planId }: CheckoutClientProps) {
 
   if (!isLoaded) {
     return (
-      <main style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', padding: '2rem' }}>
+      <main style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', padding: pageGutter }}>
         <p style={{ fontSize: '1.125rem', color: '#334155' }}>Preparing checkout...</p>
       </main>
     );
@@ -60,7 +61,7 @@ export default function CheckoutClient({ planId }: CheckoutClientProps) {
 
   if (!isSignedIn) {
     return (
-      <main style={{ minHeight: '80vh', display: 'grid', placeItems: 'center', padding: '2rem' }}>
+      <main style={{ minHeight: '80vh', display: 'grid', placeItems: 'center', padding: pageGutter }}>
         <SignIn
           forceRedirectUrl={checkoutPath}
           fallbackRedirectUrl={checkoutPath}
@@ -73,13 +74,13 @@ export default function CheckoutClient({ planId }: CheckoutClientProps) {
 
   if (error) {
     return (
-      <main style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', padding: '2rem' }}>
+      <main style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', padding: pageGutter }}>
         <div style={{ textAlign: 'center', maxWidth: '32rem' }}>
           <h1 style={{ fontSize: '1.75rem', fontWeight: 800, color: '#0f172a', marginBottom: '1rem' }}>
             Checkout could not start
           </h1>
           <p style={{ fontSize: '1rem', color: '#475569', marginBottom: '1.5rem' }}>{error}</p>
-          <Link href="/pricing" style={{ color: '#2563eb', fontWeight: 600, textDecoration: 'none' }}>
+          <Link href="/pricing" className={touchTargetClassName} style={{ color: '#2563eb', fontWeight: 600, textDecoration: 'none' }}>
             Return to pricing
           </Link>
         </div>
@@ -88,7 +89,7 @@ export default function CheckoutClient({ planId }: CheckoutClientProps) {
   }
 
   return (
-    <main style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', padding: '2rem' }}>
+    <main style={{ minHeight: '70vh', display: 'grid', placeItems: 'center', padding: pageGutter }}>
       <p style={{ fontSize: '1.125rem', color: '#334155' }}>Redirecting to secure checkout...</p>
     </main>
   );
