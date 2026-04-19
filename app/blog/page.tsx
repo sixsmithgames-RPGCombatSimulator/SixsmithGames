@@ -68,19 +68,13 @@ export default async function BlogPage() {
         ) : null}
 
         <section style={{ marginBottom: '2.5rem' }}>
-          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>About this blog</h2>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.1rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>Blog posts, not evergreen guides</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                If a post is mostly static and meant to stay useful over time, it belongs in{' '}
-                <Link href="/articles" style={{ color: '#1d4ed8', fontWeight: 700 }}>
-                  Articles
-                </Link>
-                . The blog is the studio update feed.
-              </p>
-            </div>
-          </div>
+          <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+            Release notes, product updates, and studio announcements. For product guides and evergreen explainers, visit the{' '}
+            <Link href="/articles" style={{ color: '#1d4ed8', fontWeight: 700 }}>
+              Articles page
+            </Link>
+            .
+          </p>
         </section>
 
         <section>
