@@ -88,7 +88,7 @@ export default function PricingPage() {
               Pricing and access for every Sixsmith Games product.
             </h1>
             <p style={{ fontSize: '1.12rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              This page answers the practical questions fast: which products are free to start, which ones have optional paid layers, which one is subscription-first, and where to go if you already know what you want to do.
+              This page covers which products are free to start, which ones have optional paid layers, which one requires a subscription, and where to go once you know what you want.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
               Virtual Combat Simulator is a D&amp;D combat simulator. ContentCraft is a premium writing and worldbuilding workspace. Four Star General is a serious WWII tactical strategy game. MasterTyping is a typing practice game with a practical improvement loop. Gravity is a simultaneous-turn strategy game currently in early beta, so it does not list a separate paid tier yet.

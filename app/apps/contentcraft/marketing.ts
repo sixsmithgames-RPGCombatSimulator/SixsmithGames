@@ -13,7 +13,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   heroValue:
     'Build connected stories, campaigns, and settings in one place without losing track of canon, continuity, or what your project already established.',
   heroSummary:
-    'ContentCraft is a browser-based writing tool and worldbuilding workspace for projects that need structured lore, continuity, and staged AI-assisted workflows.',
+    'ContentCraft is a browser-based writing tool and worldbuilding workspace for projects that need lore organization, continuity, and a structured way to move from notes to drafts.',
   oneSentence:
     'ContentCraft helps writers and game masters organize lore, continuity, and project content in one place.',
   category: 'Worldbuilding and writing tool with canon continuity support',
@@ -55,7 +55,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   },
   whatItIs: [
     'ContentCraft is a structured writing tool and worldbuilding workspace for projects that grow beyond loose notes, disconnected documents, or one-off AI chats. ContentCraft is designed for story-rich work where characters, factions, timelines, locations, and canon details need to stay aligned as the project expands.',
-    'ContentCraft blends project organization with canon continuity and staged AI-assisted workflows. The point is not generic productivity. The point is helping writers and game masters move from idea to draft to revision without losing the world rules, lore details, or narrative links that make the work feel coherent.',
+    'ContentCraft combines project organization, canon tracking, and AI-assisted drafting in one workspace. The goal is helping writers and game masters move from ideas and notes into working material without losing the world rules, lore details, or narrative links that make the work feel coherent.',
     'ContentCraft is especially well matched to campaign prep, long-form fiction, setting development, and any creative project where relationships between people, places, items, arcs, and timelines matter as much as the text itself.',
   ],
   whoItIsFor: [
@@ -65,12 +65,12 @@ export const contentCraftProductDefinition: ProductDefinition = {
   ],
   problemItSolves: [
     'Long-form creative work drifts when the canon is stored across folders, notebooks, wikis, chats, and half-finished drafts. Writers and game masters end up re-checking old material, duplicating work, or accidentally contradicting details they already established.',
-    "Generic AI tools make that problem worse because they generate quickly but do not reliably track the project's source of truth. ContentCraft is meant to solve the continuity problem and the workflow problem at the same time by keeping the canon, the project structure, and the generation process connected.",
+    "Generic AI tools make that problem worse because they generate quickly but do not reliably track what the project has already established. ContentCraft is meant to address both problems at once by keeping the canon, the project structure, and the generation process in the same place.",
   ],
   howItWorks: [
     'Create or organize a project around campaigns, settings, articles, chapters, supplements, or other connected creative work.',
     'Store canon in a structured library for characters, factions, locations, items, encounters, arcs, and other world details the project needs to remember.',
-    'Use staged workflows to move from outline to draft to review so every major output can be checked against the project instead of accepted blindly.',
+    'Move from outline to draft to review in deliberate steps so each output can be checked against what the project already has instead of accepted blindly.',
     'Review, revise, and export from the same workspace so the project stays coherent even as the scope expands.',
   ],
   keyFeatures: [
@@ -85,7 +85,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
         'Track characters, locations, items, factions, arcs, timelines, and references so story details stay consistent over time.',
     },
     {
-      title: 'Stage-based AI workflows',
+      title: 'Structured drafting steps',
       description:
         'Move from outline to draft to review in deliberate steps instead of turning the whole project over to one blind prompt.',
     },
@@ -106,14 +106,14 @@ export const contentCraftProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'ContentCraft is the premium creative platform in the Sixsmith Games lineup. ContentCraft is $9.99 per month or $99 per year, built around structured organization, canon management, and AI-assisted creative workflows.',
+    'ContentCraft is the premium creative workspace in the Sixsmith Games lineup. ContentCraft is $9.99 per month or $99 per year, built around lore organization, canon management, and AI-assisted drafting.',
     'ContentCraft includes built-in AI usage for writers who want it, but the value is bigger than AI. The product is grounded in writing and worldbuilding: the AI helps when you want it, and the canon and organization layer is there whether you use it or not.',
   ],
   faq: [
     {
       question: 'What is ContentCraft?',
       answer:
-        'ContentCraft is a writing tool and worldbuilding workspace for projects that need canon continuity. ContentCraft helps writers and game masters keep characters, locations, factions, lore, timelines, and staged workflow outputs organized in one place.',
+        'ContentCraft is a writing tool and worldbuilding workspace for projects that need canon continuity. ContentCraft helps writers and game masters keep characters, locations, factions, lore, and timelines organized in one place.',
     },
     {
       question: 'Who is ContentCraft for?',
@@ -128,12 +128,12 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       question: 'How does ContentCraft help with canon continuity?',
       answer:
-        'ContentCraft keeps core world details in a shared library and ties new work back to that source of truth. That structure makes it easier to keep names, places, relationships, and established rules consistent as the project grows.',
+        'ContentCraft keeps core world details in a shared library and ties new work back to what the project has already established. That makes it easier to keep names, places, relationships, and rules consistent as the project grows.',
     },
     {
       question: 'Is AI required to use ContentCraft?',
       answer:
-        'No. ContentCraft includes AI-assisted workflow options, but the value proposition is broader than AI generation. The product is also about organization, canon continuity, review flow, and keeping creative work coherent.',
+        'No. ContentCraft includes AI-assisted drafting, but the value goes beyond AI. The product is also about organization, canon continuity, review flow, and keeping creative work coherent.',
     },
     {
       question: 'How does pricing work for ContentCraft?',
@@ -144,7 +144,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   gettingStarted: [
     'Start by defining the project you are actually building, such as a campaign, a setting, a novel, or a series of connected articles.',
     'Add the core canon assets first: important characters, locations, factions, timelines, items, and rules the project must respect.',
-    'Use staged workflows to expand the material in reviewable steps instead of asking for one giant generation pass.',
+    'Expand the project in reviewable steps instead of asking for one giant generation pass.',
     'Check pricing when you are ready to subscribe and move into the full workspace.',
   ],
   commonUseCases: [

@@ -158,12 +158,12 @@ For more detail on features and scope, see the [Virtual Combat Simulator help pa
     slug: 'what-is-contentcraft',
     title: 'What Is ContentCraft?',
     excerpt:
-      'ContentCraft is a writing tool and worldbuilding workspace for projects that need lore organization, canon continuity, and staged creative workflow.',
+      'ContentCraft is a writing tool and worldbuilding workspace for projects that need lore organization, canon continuity, and a structured way to develop material over time.',
     content: `ContentCraft is a writing tool and worldbuilding workspace for projects that need canon continuity. ContentCraft helps writers and game masters organize lore, characters, factions, locations, timelines, and other project content in one place.
 
 ## What ContentCraft actually does
 
-ContentCraft is designed for projects that outgrow disconnected notes and generic AI chats. The product combines structured project organization, canon tracking, and staged workflow so the project can grow without turning into continuity drift.
+ContentCraft is designed for projects that outgrow disconnected notes and generic AI chats. The product combines structured project organization, canon tracking, and reviewable drafting steps so the project can grow without turning into continuity drift.
 
 ## Who ContentCraft is for
 
@@ -171,7 +171,7 @@ ContentCraft is for writers, novelists, worldbuilders, and game masters. That au
 
 ## Why someone would use it
 
-Use [ContentCraft](/apps/contentcraft) when you need a stable source of truth for the project. If the work depends on remembering how characters, places, factions, items, timelines, and scenes connect, ContentCraft is the right kind of tool to evaluate.
+Use [ContentCraft](/apps/contentcraft) when the project depends on remembering how characters, places, factions, items, timelines, and scenes connect. If that is the kind of work you are doing, ContentCraft is the right kind of tool to evaluate.
 
 For subscription details, see the official [pricing page](/pricing#contentcraft). For feature and scope notes, see the official [ContentCraft help pages](/help/contentcraft).`,
     author: 'Sixsmith Games',
@@ -186,12 +186,12 @@ For subscription details, see the official [pricing page](/pricing#contentcraft)
     slug: 'how-to-keep-lore-consistent',
     title: 'How to Keep Lore Consistent in a Long Campaign or Novel',
     excerpt:
-      'Lore stays consistent when characters, factions, locations, and timelines live in one source of truth instead of scattered notes.',
+      'Lore stays consistent when characters, factions, locations, and timelines live in one organized place instead of scattered notes.',
     content: `The easiest way to lose continuity in a long campaign or novel is to spread the lore across too many disconnected places. A notebook has one answer. A chat has another. An older draft has a third. By the time you need the detail again, you are choosing between memory and archaeology.
 
 ## What consistent lore requires
 
-Consistent lore requires a source of truth for:
+Consistent lore requires one organized place to track:
 
 - Characters and relationships
 - Factions and motivations
@@ -205,7 +205,7 @@ If those details are not connected, contradictions become normal.
 
 Readers notice continuity drift. Players notice continuity drift. More importantly, the creator notices it too, because every new scene turns into a research job.
 
-[ContentCraft](/apps/contentcraft) is built for exactly this kind of project. The product ties world details back to structured canon and staged workflow so new work can be checked against what already exists instead of being generated in isolation.
+[ContentCraft](/apps/contentcraft) is built for exactly this kind of project. The product ties world details back to structured canon so new work can be checked against what already exists instead of being generated in isolation.
 
 If the problem you are trying to solve is lore organization rather than generic note-taking, start with the [ContentCraft product page](/apps/contentcraft).`,
     author: 'Sixsmith Games',
@@ -219,7 +219,7 @@ If the problem you are trying to solve is lore organization rather than generic 
     slug: 'worldbuilding-workflow-for-writers-and-game-masters',
     title: 'Worldbuilding Workflow for Writers and Game Masters',
     excerpt:
-      'A strong worldbuilding workflow starts with the canon assets the project must remember, then expands through staged creative work.',
+      'A strong worldbuilding workflow starts with the canon assets the project must remember, then expands through reviewable steps.',
     content: `A practical worldbuilding workflow starts small and structured. Define the core canon assets the project must remember, then expand the setting through reviewable steps.
 
 ## A simple worldbuilding sequence
@@ -229,13 +229,13 @@ If the problem you are trying to solve is lore organization rather than generic 
 3. Expand scenes, arcs, or campaign content from that base.
 4. Review new material against the canon before treating it as settled.
 
-That workflow works for writers and for game masters because both groups need the same thing: connected source material they can trust.
+That approach works for writers and game masters because both groups need the same thing: connected material they can trust and build from.
 
-## Why staged workflow matters
+## Why working in steps matters
 
-Worldbuilding breaks down when everything becomes one giant generation pass or one massive unstructured note pile. Staged workflow creates checkpoints. That means new content can stay aligned with the world instead of drifting away from it.
+Worldbuilding breaks down when everything becomes one giant generation pass or one massive unstructured note pile. Working in reviewable steps creates checkpoints. New content can stay aligned with the world instead of quietly drifting away from it.
 
-[ContentCraft](/apps/contentcraft) is designed around that exact combination of project structure, canon continuity, and staged creative workflow. If your project needs a worldbuilding app for writers and game masters rather than generic productivity software, that is the page to start with.`,
+[ContentCraft](/apps/contentcraft) is designed around that combination of project structure, canon continuity, and step-by-step drafting. If your project needs a worldbuilding app for writers and game masters rather than generic productivity software, that is the page to start with.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '4 min read',
@@ -287,10 +287,10 @@ Continuity drift is more than a cosmetic issue. It creates friction every time t
 
 ## How to prevent it
 
-The practical answer is a stable canon workspace and a staged workflow:
+The practical answer is a dedicated canon workspace and a consistent review habit:
 
 - Keep core facts in one place.
-- Expand from that source instead of bypassing it.
+- Expand from that foundation instead of bypassing it.
 - Review new material before treating it as official project canon.
 
 [ContentCraft](/apps/contentcraft) is built around that exact workflow because writers and game masters both run into this problem once a project gets large enough. If the issue is continuity drift instead of raw generation speed, a canon-focused tool is the better fit.`,

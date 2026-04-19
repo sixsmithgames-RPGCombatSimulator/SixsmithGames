@@ -27,7 +27,7 @@ export default async function ArticlesPage() {
               Product guides and evergreen articles
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Articles are the stable reference for Sixsmith Games products. Product explainers, workflow guides, and common questions. Time-sensitive updates stay on the{' '}
+              Articles are the evergreen reading for Sixsmith Games products. Product explainers, guides, and common questions that stay useful over time. For releases and announcements, check the{' '}
               <Link href="/blog" style={{ color: '#bfdbfe', fontWeight: 800 }}>
                 Blog
               </Link>

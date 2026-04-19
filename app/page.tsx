@@ -60,7 +60,7 @@ export default function HomePage() {
               Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn tactics and ship-systems tradeoffs.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              The goal is not generic “gaming.” The goal is a set of browser-based products with clear audiences, clear use cases, and enough context that anyone can tell what each one is, who it is for, and where to go next without guessing.
+              Each product in the lineup has a specific job. If you know what kind of game or tool you are looking for, you should be able to find the right page without guessing.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
               <Link
@@ -167,7 +167,7 @@ export default function HomePage() {
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose ContentCraft if you need worldbuilding, lore organization, and canon continuity.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                ContentCraft is for writers, novelists, worldbuilders, and game masters who need a writing tool with structure. If your project needs lore organization, story organization, staged workflow, and a stable source of truth, start with{' '}
+                ContentCraft is for writers, novelists, worldbuilders, and game masters who need more than a notes folder. If your project has growing lore, recurring characters, or a canon that keeps drifting, start with{' '}
                 <Link href="/apps/contentcraft" style={{ color: '#7c3aed', fontWeight: 700, textDecoration: 'underline' }}>
                   the worldbuilding app for writers and game masters
                 </Link>
@@ -208,12 +208,9 @@ export default function HomePage() {
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Clear answers on every page</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Where to go next</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Every product page is built to answer the questions you are most likely to ask. What is the product? Who is it for? What problem does it solve? How does it work? What does pricing look like? Where do I go for help or support? Those answers live right on the page, not hidden behind extra clicks.
-          </p>
-          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            That is why the site links directly to the product pages, pricing, articles, blog, help, support, and the product facts. The goal is clarity. Each product page is written to explain what the product actually does and who it actually serves.
+            Every product page covers what the product is, who it is for, how it works, and what it costs. Pricing, help, articles, and the facts page are all linked directly from here so you do not have to hunt for them.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>

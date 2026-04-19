@@ -31,7 +31,7 @@ export default function HelpIndexPage() {
               Help pages for every major product
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Each product has a help landing page plus topic pages for getting started, core features, common use cases, current scope, and pricing or account basics. Clear answers, easy to read, easy to skim.
+              Each product has a help landing page with topic pages covering getting started, core features, common use cases, current scope, and pricing basics. Pick the product you need and go from there.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>

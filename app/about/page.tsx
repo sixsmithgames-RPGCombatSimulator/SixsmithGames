@@ -44,9 +44,9 @@ export default function AboutPage() {
 
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `2.5rem ${pageGutter} 4rem` }}>
         <section style={{ marginBottom: '2.5rem' }}>
-          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>What the studio is trying to do</h2>
+          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>What Sixsmith Games is</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Sixsmith Games is not trying to be a vague lifestyle brand for “all gaming.” Each product serves a specific, practical audience, and the site is built to make that easy to see so you can find the right product fast without having to translate marketing slogans into real use cases.
+            Sixsmith Games is not trying to be a vague lifestyle brand for "all gaming." Each product in the lineup does something specific, and it is built to serve a specific kind of player, creator, or learner. You should be able to read a product page and know immediately whether it fits you or not.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
             The shared thread across the lineup is respect for systems, craft, and usable workflows. Some products help a game master run encounters. Some help a writer or worldbuilder keep a project coherent. Some are strategy games. One is a typing practice game. Thoughtful browser-based games and tools, not a generic platform.
