@@ -1,13 +1,12 @@
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
-import LastUpdated from '@/components/LastUpdated';
 import LaunchAppButton from '@/components/LaunchAppButton';
 import ModernBackground from '@/components/ModernBackground';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { getArticleBySlug } from '@/lib/blog';
-import { MARKETING_LAST_UPDATED, type ProductDefinition } from '@/lib/productContent';
+import { type ProductDefinition } from '@/lib/productContent';
 import { cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 import {
   createBreadcrumbSchema,
@@ -194,7 +193,6 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
                 {renderButton(product, 'primary')}
                 {renderButton(product, 'secondary')}
               </div>
-              <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
             </div>
 
             <aside

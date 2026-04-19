@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
-import LastUpdated from '@/components/LastUpdated';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import { buildPageMetadata } from '@/lib/metadata';
-import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
 import { SITE_NAME } from '@/lib/site';
@@ -39,7 +38,6 @@ export default function FactsPage() {
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
               Official names, URLs, platforms, pricing status, and one-line descriptions for every Sixsmith Games product. Use this page or the individual product pages for accurate reference.
             </p>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>

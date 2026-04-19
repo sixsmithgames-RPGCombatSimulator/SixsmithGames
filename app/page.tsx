@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import LastUpdated from '@/components/LastUpdated';
 import ModernBackground from '@/components/ModernBackground';
 import { buildPageMetadata } from '@/lib/metadata';
-import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { fluidGrid, pageGutter } from '@/lib/responsive';
 
 export const dynamic = 'force-static';
@@ -95,7 +94,6 @@ export default function HomePage() {
                 Read the Sixsmith Games facts
               </Link>
             </div>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>
