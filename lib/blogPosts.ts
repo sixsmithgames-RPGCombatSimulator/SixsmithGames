@@ -155,6 +155,142 @@ For more detail on features and scope, see the [Virtual Combat Simulator help pa
     relatedProducts: ['virtual-combat-simulator'],
   },
   {
+    slug: 'how-to-prep-a-combat-encounter-quickly',
+    title: 'How to Prep a Combat Encounter Quickly as a Game Master',
+    excerpt:
+      'Fast encounter prep comes from knowing what information you actually need at the table before combat starts.',
+    content: `Fast encounter prep does not mean lazy encounter prep. It means knowing which pieces of information are load-bearing during a fight and preparing exactly those things before the session starts.
+
+## What you actually need before combat begins
+
+Most game masters over-prepare some things and under-prepare others. The things that matter during combat:
+
+- Token placement and starting positions
+- Initiative order or how you will establish it
+- Hit points for every creature in the fight
+- Conditions or abilities that affect the first turn
+- Terrain features that will change positioning
+
+Everything else can be improvised at the table without slowing the encounter down.
+
+## The fastest path from nothing to ready
+
+Start with the map. Even a rough sketch or a gridded area is enough to establish positioning and make token placement meaningful. A blank grid is better than no map at all.
+
+Then set up your creatures. Know the HP and any notable abilities upfront. You do not need the full stat block memorized — you need the number that matters when the fighter swings and the one ability that will surprise the players.
+
+## How a combat tool shortens prep time
+
+[Virtual Combat Simulator](/apps/virtual-combat-simulator) reduces prep time by keeping token placement, initiative, and combat state in one place. Instead of building the encounter across a map tool, an initiative spreadsheet, and a scratch pad, you set up once and the tool handles tracking during the fight.
+
+For a game master running sessions regularly, that consistency pays off quickly. Less setup per session, less mid-combat context-switching, more time focused on running the story.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Tabletop RPG',
+    tags: ['encounter prep', 'game master', 'dnd combat', 'virtual combat simulator'],
+    relatedProducts: ['virtual-combat-simulator'],
+  },
+  {
+    slug: 'common-combat-tracking-mistakes',
+    title: 'Common Combat Tracking Mistakes and How to Avoid Them',
+    excerpt:
+      'Most combat tracking mistakes come from splitting state across too many places — initiative in one spot, HP in another, conditions somewhere else.',
+    content: `Combat slows down when tracking breaks down. Most of the tracking mistakes that slow D&D combat down share the same root cause: information is split across too many places.
+
+## The most common mistakes
+
+**Separate tools for each piece of state.** Initiative in a spreadsheet, HP on note cards, conditions in a chat window, and the map in a different tab. Every update requires touching multiple places, and the table waits while the GM switches contexts.
+
+**Tracking conditions verbally.** "The goblin is poisoned" is easy to forget three turns later when the goblin gets healed and the condition should drop off. Conditions need a visible record, not a verbal one.
+
+**Re-explaining the board state.** When players do not have a clear view of token positions and the current battlefield, they have to ask. Every question interrupts the narrative momentum.
+
+**Updating HP after the fact.** Damage gets called out, everyone nods, and then two turns later the GM realizes the orc should have gone down two rounds ago. HP updates need to happen as soon as damage lands.
+
+## The fix for all of them
+
+Keep combat state in one encounter view. Token positions, initiative order, HP, and conditions together — not distributed across four tools and a notepad.
+
+[Virtual Combat Simulator](/apps/virtual-combat-simulator) is built around that single-view model. The encounter control room keeps the battlefield, turn order, and creature state in the same place so the GM can update once and the table stays synced.
+
+For more on how to use the tool, see the [Virtual Combat Simulator help pages](/help/virtual-combat-simulator).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Tabletop RPG',
+    tags: ['combat tracking', 'game master', 'initiative', 'dnd combat'],
+    relatedProducts: ['virtual-combat-simulator'],
+  },
+  {
+    slug: 'what-information-gms-need-on-screen-during-combat',
+    title: 'What Information Game Masters Need On-Screen During Combat',
+    excerpt:
+      'The game master needs five things visible during combat: initiative order, token positions, hit points, active conditions, and whose turn it is.',
+    content: `Running D&D combat well is partly an information management problem. A game master who has to hunt for information during combat is a game master who is creating pauses.
+
+## The five things that need to be visible
+
+**1. Initiative order.** Not in memory — somewhere visible. Who acts next should never require mental reconstruction mid-fight.
+
+**2. Token positions.** Where every creature is on the map right now. Not where they were, and not where the GM thinks they are. Current position.
+
+**3. Hit points.** Current HP for every creature in the encounter. Not approximate, not "about half." The actual number.
+
+**4. Active conditions.** Frightened, poisoned, concentrating, restrained — anything that changes how a turn plays out. These expire, stack, and interact. They need to be visible, not remembered.
+
+**5. Whose turn it is.** This sounds trivial. It is not. A fast, clear answer to "who acts next?" keeps momentum alive.
+
+## What happens when these things are in different places
+
+Every time one of these five things lives in a different tool, window, or document, the GM has to context-switch to find it. Each switch is a small delay. In a six-round fight with six players and eight creatures, those delays compound into minutes.
+
+## The single-view answer
+
+[Virtual Combat Simulator](/apps/virtual-combat-simulator) is designed to keep all five visible in one encounter view. Initiative, tokens, HP, conditions, and turn order in the same combat control room — updated as the fight moves, visible to the whole table.
+
+For setup and feature detail, see the [VCS help pages](/help/virtual-combat-simulator).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Tabletop RPG',
+    tags: ['game master', 'combat tracking', 'initiative tracker', 'dnd encounter'],
+    relatedProducts: ['virtual-combat-simulator'],
+  },
+  {
+    slug: 'when-to-use-vcs-instead-of-paper-or-a-full-vtt',
+    title: 'When to Use VCS Instead of Paper, Spreadsheets, or a Full VTT',
+    excerpt:
+      'Virtual Combat Simulator fits best when combat tracking is the bottleneck and you do not need a full campaign-management platform.',
+    content: `There is no single right tool for every game master. The right answer depends on what the real problem is.
+
+## When paper and improvisation work fine
+
+If your game is theater-of-the-mind, your encounters are simple, and your group is small and in the same room, you probably do not have a tracking problem. Paper initiative and a whiteboard may be all you need.
+
+## When spreadsheets become friction
+
+Spreadsheets work as combat trackers until they do not. They break down when the encounter has enough creatures, conditions, and state changes that you are constantly switching cells, scrolling, and re-explaining positions to players who cannot see your screen.
+
+## When a full VTT is more than you need
+
+A full virtual tabletop is the right answer when you want campaign journals, character creation, handout management, world notes, and combat all in one place. That scope is legitimate. But if the real pain point is just combat — not session management, not campaign lore — a full VTT means adopting a lot of surface area to solve one specific problem.
+
+## When VCS is the right fit
+
+[Virtual Combat Simulator](/apps/virtual-combat-simulator) is built for the case where combat tracking is the bottleneck and you do not want to bring in a full platform. It handles maps, tokens, initiative, HP, and conditions in one focused encounter tool.
+
+That focus is the point. If the fight is where your session loses momentum, start with a tool built specifically around the fight.
+
+See the [VCS help pages](/help/virtual-combat-simulator) for scope and getting started details.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Tabletop RPG',
+    tags: ['virtual combat simulator', 'vtt', 'combat tracker', 'game master tools'],
+    relatedProducts: ['virtual-combat-simulator'],
+  },
+  {
     slug: 'what-is-contentcraft',
     title: 'What Is ContentCraft?',
     excerpt:
@@ -302,6 +438,142 @@ The practical answer is a dedicated canon workspace and a consistent review habi
     relatedProducts: ['contentcraft'],
   },
   {
+    slug: 'how-to-build-a-campaign-bible-that-stays-usable',
+    title: 'How to Build a Campaign Bible That Stays Usable',
+    excerpt:
+      'A campaign bible stays usable when it is built around the information you actually reach for during prep and play, not around completeness for its own sake.',
+    content: `A campaign bible is only useful if you actually open it during session prep. Most campaign bibles fail not because they lack content, but because they become too large and unstructured to navigate quickly when you need a specific detail.
+
+## What a usable campaign bible needs
+
+A usable campaign bible is organized around the questions you actually ask during prep:
+
+- Who is in this scene and what do they want?
+- What places are involved and what makes them distinct?
+- What factions have a stake in this situation?
+- What has already happened that the players know about?
+- What rules does this world follow that differ from the default?
+
+Those are the reference points you will reach for. The bible should make them fast to find.
+
+## Start with what the project must remember, not what it could remember
+
+The most common mistake is trying to capture everything. A campaign bible that covers every minor NPC, every settlement, every rumor, and every historical event is not more useful — it is harder to use. Start with the people, places, factions, and rules that come up repeatedly in play.
+
+Add depth where the campaign actually goes, not where it might theoretically go. A location that appears in three sessions deserves a real entry. A location that appeared in one throwaway reference can stay as a one-liner.
+
+## Keeping it current
+
+A campaign bible that does not get updated after major sessions stops being trustworthy. Set up a practice of adding key outcomes, changed relationships, and new canon after each session. Even three to five bullet points per session adds up to a highly accurate reference over time.
+
+[ContentCraft](/apps/contentcraft) is built for this kind of ongoing canon organization — characters, factions, locations, and timeline entries in one workspace that can be reviewed and updated as the campaign grows. The [ContentCraft help pages](/help/contentcraft) cover how to set up the workspace for campaign work specifically.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'Writing & Worldbuilding',
+    tags: ['campaign bible', 'game master', 'worldbuilding', 'contentcraft'],
+    relatedProducts: ['contentcraft'],
+  },
+  {
+    slug: 'keeping-recurring-story-elements-consistent',
+    title: 'Keeping Recurring Story Elements Consistent Across Drafts',
+    excerpt:
+      'Recurring characters, locations, and plot threads stay consistent when they are tracked in one place that new drafts are checked against.',
+    content: `Recurring story elements are where long-form fiction breaks down. A character's motivation shifts between chapters. A location's layout changes slightly in each scene. A factions' internal politics contradicts something established two arcs ago. None of these are catastrophic in isolation, but together they erode the reader's trust in the world.
+
+## Why recurring elements drift
+
+Recurring elements drift because writers rely on memory across long projects. Memory compresses, simplifies, and fills gaps with plausible substitutes. By chapter twelve, the version of a character that lives in the writer's head has quietly diverged from the version established in chapter two.
+
+The fix is not better memory. The fix is an external record that new drafts can be checked against.
+
+## What to track
+
+For each recurring element, capture the things most likely to cause contradictions later:
+
+- **Characters:** core motivation, key relationships, known information, physical description, speech patterns if distinctive
+- **Locations:** layout, atmosphere, who controls it, what makes it memorable
+- **Factions:** goals, internal conflicts, relationships to other factions, current state in the story
+- **Plot threads:** what is established, what is unresolved, what the characters believe vs. what is true
+
+You do not need exhaustive entries. You need the details you would otherwise have to go back and re-read three chapters to verify.
+
+## Making the check habitual
+
+Before drafting a new scene that involves an established element, open the record and re-read the relevant entry. It takes thirty seconds and catches half the contradictions before they happen.
+
+[ContentCraft](/apps/contentcraft) is built for this kind of canon tracking across a long project. The workspace keeps recurring elements organized and linked so you can check the established version before writing the next scene. See the [ContentCraft help pages](/help/contentcraft) for how to structure entries for fiction projects.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'Writing & Worldbuilding',
+    tags: ['story consistency', 'long-form fiction', 'canon continuity', 'contentcraft'],
+    relatedProducts: ['contentcraft'],
+  },
+  {
+    slug: 'how-gms-can-move-from-notes-to-session-content',
+    title: 'How Game Masters Can Move From Notes to Usable Session Content',
+    excerpt:
+      'Moving from raw notes to session-ready content gets easier when the canon is organized and new material is drafted against it rather than from scratch.',
+    content: `Most game masters have too many notes and not enough session-ready content. The notes exist — characters, locations, factions, plot threads, world details — but translating them into something usable for the next session requires a kind of synthesis that is easy to avoid and easy to put off.
+
+## Why notes stall as notes
+
+Notes accumulate in the format they were captured: fragments, bullet points, one-line ideas, copied references, and half-finished thoughts. They are not organized around what a session actually needs. A session needs encounters, scenes, NPC motivations, locations with distinct atmosphere, and a sense of what the players will face and why it matters.
+
+Getting from a pile of notes to that kind of structure requires a review pass, a synthesis step, and some drafting. Most GMs short-circuit that process by improvising at the table instead, which works until it does not.
+
+## A practical path through the notes
+
+1. **Identify the thread.** What is the next session actually about? One main thing, not everything at once.
+2. **Pull the relevant canon.** Which NPCs, locations, and factions are involved? What do they want and what has already happened?
+3. **Draft the key beats.** Not a script — an outline of the moments that need to happen for the session to feel complete.
+4. **Anticipate the branch points.** Where will the players make a choice that changes which scene comes next?
+
+That is the whole synthesis. It does not require hours. It requires a clear view of the existing canon and a way to draft from it.
+
+## Where ContentCraft fits
+
+[ContentCraft](/apps/contentcraft) is built for GMs who need their campaign canon organized and accessible enough to actually use during prep. The workspace keeps NPCs, locations, factions, and plot threads in one place and lets you draft session content from the same base. See the [ContentCraft help pages](/help/contentcraft) for how to set up a campaign project.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'Writing & Worldbuilding',
+    tags: ['game master prep', 'session prep', 'notes to content', 'contentcraft'],
+    relatedProducts: ['contentcraft'],
+  },
+  {
+    slug: 'organizing-project-memory-without-drowning-in-documents',
+    title: 'Organizing Project Memory Without Drowning in Documents',
+    excerpt:
+      'Project memory becomes unmanageable when it is spread across too many documents with no shared structure. One organized workspace is faster than a well-labeled folder.',
+    content: `Every long creative project eventually has a documents problem. The world-building lives in one folder. The character notes live in another. The timeline is in a spreadsheet. The session logs are in a separate app. And the canon — the actual source of truth for what is established — is distributed across all of them with no clear hierarchy.
+
+## Why distributed documents fail over time
+
+When project memory is spread across many documents, each document becomes slightly less trustworthy than the last. You update one and forget to update another. A detail that was settled in month one contradicts something added in month four. You stop trusting the records and start re-reading everything from scratch to verify a single detail.
+
+That verification tax compounds as the project grows. A project with six months of scattered documents might require twenty minutes of archaeology to confirm one character's established motivation.
+
+## What a single organized workspace changes
+
+One workspace with a coherent structure does not eliminate complexity. It makes complexity navigable. When characters, locations, factions, and timeline entries live in the same place and can reference each other, a single search surfaces the relevant context instead of requiring a tour through four folders.
+
+The key is that the workspace is organized around the questions the project will ask later — not around how the information arrived.
+
+## Building the habit
+
+Start by migrating the canon that matters most, not all of it. The details you re-check most often are the ones worth capturing first. Add new canon as the project generates it, and review before drafting new material that builds on what already exists.
+
+[ContentCraft](/apps/contentcraft) is designed to be that single organized workspace for writers, worldbuilders, and game masters. The [ContentCraft help pages](/help/contentcraft) cover how to set up a project and structure the canon library.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'Writing & Worldbuilding',
+    tags: ['project organization', 'worldbuilding', 'creative workflow', 'contentcraft'],
+    relatedProducts: ['contentcraft'],
+  },
+  {
     slug: 'what-is-four-star-general',
     title: 'What Is Four Star General?',
     excerpt:
@@ -397,6 +669,142 @@ That is why [Four Star General](/apps/fourstargeneral) talks so directly about m
     relatedProducts: ['fourstargeneral'],
   },
   {
+    slug: 'why-deterministic-tactics-changes-player-responsibility',
+    title: 'Why Deterministic Tactics Changes Player Responsibility',
+    excerpt:
+      'When outcomes follow from visible rules instead of hidden randomness, the player owns the result — and that changes how the game feels to play.',
+    content: `Most strategy games hedge accountability with randomness. A dice roll, a probability distribution, a hidden stat modifier. These systems soften outcomes by giving players a mechanism to blame when things go wrong.
+
+Deterministic tactics remove that hedge. When outcomes follow directly from visible rules and command decisions, there is no randomness to point at. The player owns the result.
+
+## What changes when players own the result
+
+The relationship between decision and consequence becomes legible. If a unit was destroyed, there is a reason. If the line held, there is a reason. The player can trace the outcome back through the chain of choices and find the specific moment where the battle was won or lost.
+
+That is a fundamentally different experience from playing a game where outcomes feel partially arbitrary. Accountability without explanation is frustrating. Accountability with a clear chain of cause and effect is instructive.
+
+## How replay works under deterministic rules
+
+In a deterministic system, replaying a scenario is a meaningful choice. You can ask "what if I had held the reserves for one more turn?" and actually find out — not through luck, but through the same rules operating on different inputs.
+
+That makes each scenario a practice problem with a traceable solution space. Better players find better deployments. That is the loop deterministic tactics creates.
+
+## What this means for Four Star General
+
+[Four Star General](/apps/fourstargeneral) is built around this principle. Battlefield outcomes follow from deployment, supply, reserve timing, and mission objectives — not from dice or hidden variance. If your position collapsed, the game can tell you why, and so can you.
+
+For players who want to actually improve at a WWII strategy game rather than fight the randomness, that is what makes Four Star General worth evaluating. Start with the [Four Star General product page](/apps/fourstargeneral) or the [help pages](/help/fourstargeneral).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'WWII Strategy',
+    tags: ['deterministic tactics', 'player responsibility', 'wwii strategy', 'four star general'],
+    relatedProducts: ['fourstargeneral'],
+  },
+  {
+    slug: 'how-reserves-change-tactical-planning',
+    title: 'How Reserves Change Tactical Planning in a Strategy Game',
+    excerpt:
+      'Reserves force commitment questions that simple unit-trading games never create. When to hold, when to commit, and what to hold back changes the entire arc of a battle.',
+    content: `In most strategy games, every unit goes to the front as soon as it is available. The entire army is always engaged. The game becomes a matter of trading units until one side runs out.
+
+Reserve management breaks that pattern. When you have forces you can commit but have not, every turn creates a new decision: is this the moment?
+
+## The commitment problem
+
+Reserves only matter if committing them too early has real consequences. In Four Star General, holding reserves back means you have an answer when the line bends unexpectedly. Committing them too early means you have nothing in hand when the situation changes.
+
+That tradeoff — flexibility now vs. strength at the moment of crisis — is what reserve management actually tests. It is not a side mechanic. It is one of the core decisions that separates better tactical play from worse.
+
+## Timing is the skill
+
+Reserves are not useful at full strength forever. As a battle progresses, the value of committing them peaks at specific moments — when the enemy overextends, when an objective becomes reachable, when a defensive line starts to break. Committing before that peak wastes the advantage. Committing after means the moment has passed.
+
+Reading those timing windows correctly is the skill reserve management develops. It is not visible in the first play of a scenario. It becomes visible on replay.
+
+## How this works in Four Star General
+
+[Four Star General](/apps/fourstargeneral) makes reserve timing a real decision by building it into the mission structure. Scenarios are designed to create moments where the reserve question becomes hard — where holding longer feels risky and committing early feels tempting.
+
+That tension is deliberate. See the [Four Star General help pages](/help/fourstargeneral) for more on how the command model works across supply, reserves, and mission objectives.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'WWII Strategy',
+    tags: ['reserves', 'tactical planning', 'wwii strategy', 'four star general'],
+    relatedProducts: ['fourstargeneral'],
+  },
+  {
+    slug: 'how-scenario-design-creates-replayable-tension',
+    title: 'How Scenario Design Creates Replayable Tension in a WWII Strategy Game',
+    excerpt:
+      'Replayable scenarios are built around decisions with meaningful alternatives, not around a single optimal solution.',
+    content: `A scenario is replayable when the second playthrough feels different from the first — not because the randomness lands differently, but because the player made different choices and the situation unfolded accordingly.
+
+That kind of replayability comes from scenario design, not from procedural generation or dice rolls.
+
+## What makes a scenario decision-rich
+
+A decision-rich scenario creates a situation where multiple approaches are defensible but not equally optimal given the specific objectives, terrain, and timing. The player can choose to hold a flank aggressively or pull back and invite the opponent to overextend. Both choices can work. Each one creates a different problem to solve later.
+
+When every scenario has one dominant approach — one optimal deployment, one clearly correct reserve timing — replay only reveals the solution. There is no reason to go back once you have found it.
+
+## How mission profiles add tension
+
+Mission profiles shape replayability by establishing stakes that are not just about surviving. A scenario that requires holding a specific crossing by turn six creates a very different set of decisions than one that requires simply destroying the opposing force.
+
+Time-limited objectives force players to balance risk and pace instead of playing conservatively until the enemy weakens. That tension is where the interesting decisions live.
+
+## How Four Star General builds this
+
+[Four Star General](/apps/fourstargeneral) uses authored scenarios with specific mission profiles, terrain, and timing to create the kind of decision-richness that makes replaying worthwhile. The deterministic resolution means you can study a previous run and adjust your approach — and the scenario gives you enough variables to make the adjustment meaningful.
+
+For a full explanation of the mission structure and how to get started, see the [Four Star General help pages](/help/fourstargeneral).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'WWII Strategy',
+    tags: ['scenario design', 'replayability', 'wwii strategy', 'four star general'],
+    relatedProducts: ['fourstargeneral'],
+  },
+  {
+    slug: 'what-serious-wwii-strategy-players-want-from-a-browser-game',
+    title: 'What Serious WWII Strategy Players Actually Want From a Browser Game',
+    excerpt:
+      'Serious WWII strategy players want a rules model they can study, command decisions that matter, and outcomes that follow from their choices — not spectacle.',
+    content: `Most browser-based strategy games sell on accessibility and visual appeal. They are easy to start, fast to play, and rarely demand more than reactive decision-making.
+
+Serious WWII strategy players are looking for something different.
+
+## What serious players actually want
+
+**A rules model they can read.** Not hidden stats and probabilistic black boxes. Visible mechanics where supply, terrain, unit strengths, and positioning have documented effects that can be studied and applied.
+
+**Command decisions that have consequences.** Deployment matters. Reserve timing matters. Choosing which objective to prioritize matters. If every decision is equally valid and outcomes feel interchangeable, the game has not created a real command problem.
+
+**Outcomes they can trace.** If the line broke, there should be a clear explanation traceable through their decisions. If the attack succeeded, the same. Outcomes that cannot be analyzed cannot be improved from.
+
+**Authored scenarios with real structure.** Not a sandbox of equal armies fighting to elimination. A scenario with specific objectives, timing pressures, and terrain constraints that force harder choices than simple unit trading.
+
+## What the browser format adds and what it limits
+
+Browser games have real advantages: immediate access, no installation, the ability to play in short sessions. For serious strategy players, those advantages are welcome. The concern is whether the browser format forces a shallower design.
+
+It does not have to. The mechanics can be as deep in a browser as in any downloadable title. The question is whether the designer chose depth or chose accessibility at the cost of depth.
+
+## Where Four Star General sits
+
+[Four Star General](/apps/fourstargeneral) is built for serious WWII strategy players specifically. Deterministic resolution, supply and reserve management, mission profiles, and authored scenarios are all present because those are the systems serious players evaluate. The browser format is a delivery choice, not a depth compromise.
+
+Read the [Four Star General product page](/apps/fourstargeneral) or see the [help pages](/help/fourstargeneral) for the full feature and scope breakdown.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'WWII Strategy',
+    tags: ['wwii strategy', 'serious strategy players', 'browser wargame', 'four star general'],
+    relatedProducts: ['fourstargeneral'],
+  },
+  {
     slug: 'what-is-mastertyping',
     title: 'What Is MasterTyping?',
     excerpt:
@@ -483,6 +891,144 @@ Challenge matters because improvement stalls when the task never changes. A good
     readTime: '3 min read',
     category: 'Typing Practice',
     tags: ['typing retention', 'progression', 'challenge', 'mastertyping'],
+    relatedProducts: ['mastertyping'],
+  },
+  {
+    slug: 'how-to-build-a-consistent-typing-habit',
+    title: 'How to Build a Consistent Typing Practice Habit',
+    excerpt:
+      'Consistent typing improvement comes from short, regular sessions with a clear target — not from occasional long practice runs.',
+    content: `Typing improvement follows the same pattern as most motor skills: it requires repetition distributed over time, not compressed into occasional marathon sessions.
+
+The biggest obstacle for most people is not motivation in the abstract. It is that the practice loop does not give them a clear reason to come back tomorrow.
+
+## What makes daily practice stick
+
+Short sessions work better than long ones for habit formation. A ten-minute focused practice session every day outperforms a ninety-minute session once a week — not because more total time passes, but because the skill is being reinforced consistently.
+
+The session needs a defined entry point. Sitting down with "I should practice typing" as the only plan leads to unfocused repetition that does not reinforce the right patterns. Starting with the assessment result and a specific exercise to work on is different. You know what you are doing and why.
+
+## What breaks the habit
+
+**Stagnation.** If the same drills produce no visible change in performance, practice starts to feel pointless. Rotating modes — from exercises to Pro mode to game mode — prevents the loop from going stale.
+
+**No visible progress.** Typing improvement happens slowly enough that individual sessions feel indistinguishable. Progress tracking over days and weeks makes the improvement visible, which makes the habit worth maintaining.
+
+**The app feeling like homework.** Game mode exists to address this directly. It is not a distraction from skill building — it is the mechanism that makes daily return easier to sustain.
+
+## How MasterTyping supports the habit
+
+[MasterTyping](/apps/mastertyping) is built around the daily practice loop specifically. Assessments give the session a clear purpose. Exercise and Pro modes provide the targeted work. Game mode makes returning the next day feel less like a discipline task.
+
+For how to get started and what to practice first, see the [MasterTyping help pages](/help/mastertyping).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Typing Practice',
+    tags: ['typing habit', 'typing improvement', 'practice consistency', 'mastertyping'],
+    relatedProducts: ['mastertyping'],
+  },
+  {
+    slug: 'measuring-typing-progress-without-obsessing-over-single-tests',
+    title: 'How to Measure Typing Progress Without Obsessing Over Single Tests',
+    excerpt:
+      'Single typing speed tests are too noisy to track progress accurately. Trend lines over many sessions tell a more useful story.',
+    content: `Typing speed varies day to day based on factors that have nothing to do with your skill level — how tired you are, what you just ate, whether the text happens to use your weak keys heavily. A single test on any given day tells you about that moment, not about your actual improvement.
+
+Most people make the mistake of treating each individual test result as significant. A bad session feels like regression. A good session feels like a breakthrough. Neither is true.
+
+## What to track instead
+
+**Trend lines.** Look at performance averages over a week or two, not individual sessions. Is the floor of your range rising? Is the ceiling rising? Is your worst day getting better?
+
+**Mode-specific progress.** Your Pro mode numbers and your game mode numbers will diverge. That is normal. Track each context separately.
+
+**Accuracy at speed.** Raw WPM without accuracy context is incomplete. A 90 WPM performance at 98% accuracy is different from 90 WPM at 88% accuracy. Tracking both tells a clearer story.
+
+**Specific weak patterns.** If the assessment identified a cluster of keys as the bottleneck, track those specifically. Targeted improvement in a weak area shows faster progress than generic all-keys practice.
+
+## What progress actually looks like
+
+Real typing improvement is slow and lumpy. There are plateau periods where the numbers barely change, followed by sessions where everything clicks and the score jumps. The plateau is not stagnation — it is consolidation before the next step.
+
+Keeping a weekly review habit rather than a session-by-session review keeps that pattern readable.
+
+[MasterTyping](/apps/mastertyping) tracks progress and mode history so you can review trends rather than reacting to individual sessions. For how assessment results connect to targeted practice, see the [MasterTyping help pages](/help/mastertyping).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Typing Practice',
+    tags: ['typing progress', 'typing improvement', 'progress tracking', 'mastertyping'],
+    relatedProducts: ['mastertyping'],
+  },
+  {
+    slug: 'why-practice-variety-improves-typing-retention',
+    title: 'Why Practice Variety Improves Typing Retention',
+    excerpt:
+      'Switching between focused drills, Pro mode, and game mode prevents the skill from becoming context-locked and makes improvement transfer to real typing situations.',
+    content: `Typing is a motor skill, and motor skills are vulnerable to a problem called context-locking: you get good at the specific practice format but the improvement does not fully transfer to real-world use.
+
+A typist who only practices on long passages of formal prose may find that their measured WPM does not reflect their actual speed in everyday chat, email, or code. The contexts are different enough that the skill stays partially siloed.
+
+## Why variety helps
+
+Practicing across different modes and prompt types forces the skill to generalize. When you move from structured exercises to game mode prompts to Pro mode challenges, you are applying the same foundational skill in different contexts. That variety is what causes the improvement to transfer.
+
+This is also why game mode is not just a motivational tool — it puts typing into a different attentional context than a focused drill session, and that context difference is part of what makes the practice more durable.
+
+## How to rotate productively
+
+Not all variety is equally useful. Random switching between modes with no clear purpose can be as unfocused as staying locked in one mode forever.
+
+A productive rotation:
+1. **Assessment** — identify the current bottleneck
+2. **Exercise or Pro mode** — targeted work on that bottleneck
+3. **Game mode** — apply the skill in a different context and maintain the habit
+4. **Assessment** — verify whether the bottleneck has shifted
+
+That cycle ensures variety is serving improvement, not replacing it.
+
+[MasterTyping](/apps/mastertyping) is built around exactly this kind of multi-mode practice loop. Assessments, exercises, Pro mode, and game mode each play a different role, and the progress tracking helps you see when the rotation is working. See the [MasterTyping help pages](/help/mastertyping) for how to get the most from each mode.`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '4 min read',
+    category: 'Typing Practice',
+    tags: ['practice variety', 'typing retention', 'skill building', 'mastertyping'],
+    relatedProducts: ['mastertyping'],
+  },
+  {
+    slug: 'practical-typing-improvement-for-adults',
+    title: 'Practical Typing Improvement for Adults',
+    excerpt:
+      'Adult typing improvement is most effective when it is grounded in real weak spots, practiced consistently, and not buried under a childish presentation.',
+    content: `Adults who want to type faster and more accurately are not looking for a childhood typing game. They want a product that takes the skill seriously, identifies where they are actually weak, and gives them a practice loop that fits into a real day.
+
+## What adult learners actually need
+
+**An honest assessment of where they stand.** Not a generic speed test, but a diagnostic that identifies specific weak fingers, key combinations, or accuracy patterns that are holding back overall speed.
+
+**Targeted practice, not random repetition.** Random drills reinforce the keys you are already fast on just as much as the keys you are slow on. Targeted practice focuses time where the actual improvement is available.
+
+**A loop that is sustainable.** Adults have limited practice time. A ten-minute focused session is realistic. An hour of worksheet-style drilling is not. The practice format needs to work with a real schedule, not against it.
+
+**Visible progress.** Adults abandon practice when they cannot see improvement. Progress tracking that shows trend lines rather than single-session snapshots makes improvement visible over the right time horizon.
+
+## What does not work for adults
+
+Childish presentation turns adults off immediately. The typing practice toy designed for a classroom is a different product from a skill-building trainer that respects the user's time and intelligence.
+
+Flat repetition with no assessment or targeting is also a dead end. It builds false confidence in areas of strength and does nothing for areas of weakness.
+
+## Where MasterTyping fits
+
+[MasterTyping](/apps/mastertyping) is built for adults who want practical typing improvement. Assessment, targeted exercises, Pro mode, game mode, and progress tracking are all part of the loop — and the presentation is designed for adult users who want the skill without the toy.
+
+For how to start, what to do first, and how the modes work together, see the [MasterTyping help pages](/help/mastertyping).`,
+    author: 'Sixsmith Games',
+    date: '2026-04-19',
+    readTime: '5 min read',
+    category: 'Typing Practice',
+    tags: ['typing practice for adults', 'typing improvement', 'skill building', 'mastertyping'],
     relatedProducts: ['mastertyping'],
   },
 ];
