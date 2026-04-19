@@ -2,9 +2,8 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
-import LastUpdated from '@/components/LastUpdated';
 import { buildPageMetadata } from '@/lib/metadata';
-import { HELP_TOPIC_ORDER, HELP_TOPIC_TITLES, MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { HELP_TOPIC_ORDER, HELP_TOPIC_TITLES, PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { fluidGrid, pageGutter } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -33,7 +32,6 @@ export default function HelpIndexPage() {
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
               Find the product you are using, then choose the topic. Getting started, features, common questions, scope, and pricing are all covered.
             </p>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>

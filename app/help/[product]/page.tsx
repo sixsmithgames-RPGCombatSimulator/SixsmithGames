@@ -3,13 +3,11 @@ import Link from 'next/link';
 import { notFound } from 'next/navigation';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
-import LastUpdated from '@/components/LastUpdated';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import { buildPageMetadata } from '@/lib/metadata';
 import {
   HELP_TOPIC_ORDER,
   HELP_TOPIC_TITLES,
-  MARKETING_LAST_UPDATED,
   PRODUCT_DEFINITIONS,
   PRODUCT_DEFINITIONS_BY_SLUG,
 } from '@/lib/productContent';
@@ -80,7 +78,6 @@ export default async function ProductHelpIndexPage({
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
               {definition.oneSentence} This help landing page points to the core reference pages for getting started, features, common use cases, current scope, and pricing or account basics.
             </p>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>

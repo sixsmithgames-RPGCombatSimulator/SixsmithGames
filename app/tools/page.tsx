@@ -1,9 +1,8 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import LastUpdated from '@/components/LastUpdated';
 import { buildPageMetadata } from '@/lib/metadata';
-import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { fluidGrid, pageGutter } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -25,7 +24,6 @@ export default function ToolsPage() {
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
               Every Sixsmith Games product in one place. Each card links to the full product page with features, FAQs, pricing, and official links.
             </p>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>

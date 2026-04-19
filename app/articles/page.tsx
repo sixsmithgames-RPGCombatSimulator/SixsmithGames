@@ -1,10 +1,9 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
-import LastUpdated from '@/components/LastUpdated';
 import { getAllArticles, getFeaturedArticles } from '@/lib/blog';
 import { buildPageMetadata } from '@/lib/metadata';
-import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { pageGutter } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -33,7 +32,6 @@ export default async function ArticlesPage() {
               </Link>
               .
             </p>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>

@@ -2,10 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
-import LastUpdated from '@/components/LastUpdated';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import { buildPageMetadata } from '@/lib/metadata';
-import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { fluidGrid, pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
 
@@ -37,7 +36,6 @@ export default function AboutPage() {
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
               The lineup is a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game. Each one is built for a specific audience, not a broad catch-all platform.
             </p>
-            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>

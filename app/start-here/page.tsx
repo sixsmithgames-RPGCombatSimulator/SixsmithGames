@@ -1,8 +1,6 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
-import LastUpdated from '@/components/LastUpdated';
 import { buildPageMetadata } from '@/lib/metadata';
-import { MARKETING_LAST_UPDATED } from '@/lib/productContent';
 import { cardPadding, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -77,9 +75,6 @@ export default function StartHerePage() {
           <p style={{ fontSize: '1.08rem', lineHeight: 1.8, color: '#4b5563', maxWidth: '760px', margin: 0 }}>
             Sixsmith Games makes tools and games for people who run campaigns, build creative projects, care about strategy, or want to type faster. Find the one that fits.
           </p>
-          <div style={{ marginTop: '1rem' }}>
-            <LastUpdated date={MARKETING_LAST_UPDATED} />
-          </div>
         </div>
       </section>
 
