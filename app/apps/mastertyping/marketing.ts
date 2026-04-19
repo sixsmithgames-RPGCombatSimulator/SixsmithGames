@@ -36,11 +36,11 @@ export const masterTypingProductDefinition: ProductDefinition = {
     'typing-practice-for-adults-does-not-feel-childish',
   ],
   theme: {
-    gradient: 'linear-gradient(135deg, #16a34a 0%, #10b981 55%, #14b8a6 100%)',
-    accent: '#22c55e',
-    tint: '#f0fdf4',
-    dark: '#064e3b',
-    lightBorder: '#86efac',
+    gradient: 'linear-gradient(135deg, #5b3a00 0%, #a16207 50%, #f59e0b 100%)',
+    accent: '#d97706',
+    tint: '#fffbeb',
+    dark: '#78350f',
+    lightBorder: '#fcd34d',
   },
   primaryCta: {
     kind: 'launch',

@@ -36,11 +36,11 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     'why-supply-and-reserves-matter-in-tactical-war-games',
   ],
   theme: {
-    gradient: 'linear-gradient(135deg, #b45309 0%, #f59e0b 55%, #fb923c 100%)',
-    accent: '#d97706',
-    tint: '#fff7ed',
-    dark: '#451a03',
-    lightBorder: '#fdba74',
+    gradient: 'linear-gradient(135deg, #1f2a1b 0%, #3f5f2d 52%, #6b8f3d 100%)',
+    accent: '#4d7c0f',
+    tint: '#f7fee7',
+    dark: '#1a2e05',
+    lightBorder: '#bef264',
   },
   primaryCta: {
     kind: 'launch',

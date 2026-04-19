@@ -36,11 +36,11 @@ export const contentCraftProductDefinition: ProductDefinition = {
     'worldbuilding-workflow-for-writers-and-game-masters',
   ],
   theme: {
-    gradient: 'linear-gradient(135deg, #7c3aed 0%, #a855f7 50%, #ec4899 100%)',
-    accent: '#a855f7',
-    tint: '#faf5ff',
-    dark: '#1f1147',
-    lightBorder: '#e9d5ff',
+    gradient: 'linear-gradient(135deg, #3f0d12 0%, #7f1d1d 46%, #dc2626 100%)',
+    accent: '#b91c1c',
+    tint: '#fef2f2',
+    dark: '#450a0a',
+    lightBorder: '#fca5a5',
   },
   primaryCta: {
     kind: 'subscribe',
