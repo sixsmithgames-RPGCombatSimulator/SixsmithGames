@@ -91,7 +91,7 @@ export const masterTypingProductDefinition: ProductDefinition = {
     {
       title: 'Game mode',
       description:
-        'Use characters, themed prompts, light progression, and game-like pressure to make repeated practice easier to sustain.',
+        'Use characters, themed prompts, light progression, and game-like rewards to make repeated practice easier to sustain.',
     },
     {
       title: 'Progress tracking',

@@ -167,7 +167,7 @@ ContentCraft is designed for projects that outgrow disconnected notes and generi
 
 ## Who ContentCraft is for
 
-ContentCraft is for writers, novelists, worldbuilders, and game masters. That audience focus matters because the product should not be described as generic productivity software. The fit is strongest when a creative project has real lore, relationship, or continuity pressure.
+ContentCraft is for writers, novelists, worldbuilders, and game masters. That audience focus matters because the product should not be described as generic productivity software. The fit is strongest when a creative project has real lore, relationship, or continuity challenges.
 
 ## Why someone would use it
 
@@ -205,7 +205,7 @@ If those details are not connected, contradictions become normal.
 
 Readers notice continuity drift. Players notice continuity drift. More importantly, the creator notices it too, because every new scene turns into a research job.
 
-[ContentCraft](/apps/contentcraft) is built for exactly this kind of project pressure. The product ties world details back to structured canon and staged workflow so new work can be checked against what already exists instead of being generated in isolation.
+[ContentCraft](/apps/contentcraft) is built for exactly this kind of project. The product ties world details back to structured canon and staged workflow so new work can be checked against what already exists instead of being generated in isolation.
 
 If the problem you are trying to solve is lore organization rather than generic note-taking, start with the [ContentCraft product page](/apps/contentcraft).`,
     author: 'Sixsmith Games',
@@ -305,8 +305,8 @@ The practical answer is a stable canon workspace and a staged workflow:
     slug: 'what-is-four-star-general',
     title: 'What Is Four Star General?',
     excerpt:
-      'Four Star General is a browser-based WWII tactical strategy game built around deterministic tactics, mission pressure, supply, and reserves.',
-    content: `Four Star General is a browser-based WWII tactical strategy game. Four Star General is designed for players who want battlefield pressure, mission profiles, deterministic tactics, supply, and reserve management to matter.
+      'Four Star General is a browser-based WWII tactical strategy game built around deterministic tactics, mission objectives, supply, and reserves.',
+    content: `Four Star General is a browser-based WWII tactical strategy game. Four Star General is designed for players who want hard command decisions, mission profiles, deterministic tactics, supply, and reserve management to matter.
 
 ## What kind of strategy game it is
 
@@ -314,9 +314,9 @@ Four Star General is not an arcade action title. The game is about command decis
 
 ## Why that matters
 
-Serious strategy players do not just ask whether a game is set in WWII. They ask whether the command model is meaningful. Does deployment matter? Do reserves matter? Does supply matter? Does the scenario create pressure beyond simple unit trading?
+Serious strategy players do not just ask whether a game is set in WWII. They ask whether the command model is meaningful. Does deployment matter? Do reserves matter? Does supply matter? Does the scenario force harder decisions than simple unit trading?
 
-For [Four Star General](/apps/fourstargeneral) the answer is yes. That is why the product page emphasizes deterministic tactics and battlefield pressure instead of broad hype language.
+For [Four Star General](/apps/fourstargeneral) the answer is yes. That is why the product page emphasizes deterministic tactics and hard command decisions instead of broad hype language.
 
 For scope, pricing, and help, see the official [Four Star General product page](/apps/fourstargeneral), [pricing page](/pricing#fourstargeneral), and [help pages](/help/fourstargeneral).`,
     author: 'Sixsmith Games',
@@ -342,7 +342,7 @@ A serious tactical strategy game should reward planning, not mystify it. If depl
 
 Deterministic tactics changes the question from “what random thing happened?” to “what command choice created this outcome?” That is a much better loop for players who want to improve over repeated scenarios.
 
-[Four Star General](/apps/fourstargeneral) uses deterministic tactics as a core part of its identity. That is why the page stays focused on battlefield pressure, mission profiles, and command decisions instead of selling the game as generic WWII action.`,
+[Four Star General](/apps/fourstargeneral) uses deterministic tactics as a core part of its identity. That is why the page stays focused on battlefield tension, mission profiles, and command decisions instead of selling the game as generic WWII action.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -354,8 +354,8 @@ Deterministic tactics changes the question from “what random thing happened?�
     slug: 'why-supply-and-reserves-matter-in-tactical-war-games',
     title: 'Why Supply and Reserves Matter in Tactical War Games',
     excerpt:
-      'Supply and reserves matter because they create battlefield pressure and force the player to make commitment decisions.',
-    content: `Supply and reserves matter in tactical war games because they control how much pressure the player can absorb and when the player can meaningfully respond.
+      'Supply and reserves matter because they force commitment decisions and shape every turn of the battle.',
+    content: `Supply and reserves matter in tactical war games because they control how long a player can hold a position and when the player can meaningfully respond.
 
 ## Supply is not decorative
 
@@ -365,7 +365,7 @@ If supply is just flavor, it does not shape the battle. In a serious tactical st
 
 Reserves matter because they force commitment questions. Do you hold a force back for the moment the line bends, or do you commit early and risk having no answer later?
 
-That is part of why [Four Star General](/apps/fourstargeneral) emphasizes supply and reserves. Those systems tell you the game is interested in command pressure, not just unit movement.`,
+That is part of why [Four Star General](/apps/fourstargeneral) emphasizes supply and reserves. Those systems tell you the game is interested in command decisions, not just unit movement.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -374,26 +374,26 @@ That is part of why [Four Star General](/apps/fourstargeneral) emphasizes supply
     relatedProducts: ['fourstargeneral'],
   },
   {
-    slug: 'how-mission-pressure-changes-battlefield-decisions',
-    title: 'How Mission Pressure Changes Battlefield Decisions',
+    slug: 'how-mission-objectives-change-battlefield-decisions',
+    title: 'How Mission Objectives Change Battlefield Decisions',
     excerpt:
-      'Mission pressure makes tactical decisions sharper because the player is fighting the clock, the board, and the objective at the same time.',
-    content: `Mission pressure changes battlefield decisions because it gives the player a reason to care about time, space, and risk all at once.
+      'Mission objectives make tactical decisions sharper because the player is fighting the clock, the board, and the goal at the same time.',
+    content: `Mission objectives change battlefield decisions because they give the player a reason to care about time, space, and risk all at once.
 
-## What happens without mission pressure
+## What happens without mission objectives
 
-Without mission pressure, a battle can collapse into simple exchange logic. The player trades units until one side runs out of strength.
+Without clear mission objectives, a battle can collapse into simple exchange logic. The player trades units until one side runs out of strength.
 
 ## What happens when mission profiles matter
 
 Once the scenario adds timing, objectives, crossings, holds, or other specific tasks, every deployment and reserve choice becomes sharper. The player is no longer just asking “can I win this fight?” The player is asking “can I win this fight in the way this mission requires?”
 
-That is why [Four Star General](/apps/fourstargeneral) talks so directly about mission profiles and objective pressure. Those are not side details. They are the structure that makes battlefield decisions matter.`,
+That is why [Four Star General](/apps/fourstargeneral) talks so directly about mission profiles and timed objectives. Those are not side details. They are the structure that makes battlefield decisions matter.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
     category: 'WWII Strategy',
-    tags: ['mission pressure', 'battlefield decisions', 'wwii strategy', 'four star general'],
+    tags: ['mission objectives', 'battlefield decisions', 'wwii strategy', 'four star general'],
     relatedProducts: ['fourstargeneral'],
   },
   {

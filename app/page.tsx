@@ -57,7 +57,7 @@ export default function HomePage() {
               Browser-based games and tools for people who care how systems work.
             </h1>
             <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn pressure and ship-systems tradeoffs.
+              Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn tactics and ship-systems tradeoffs.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
               The goal is not generic “gaming.” The goal is a set of browser-based products with clear audiences, clear use cases, and enough context that anyone can tell what each one is, who it is for, and where to go next without guessing.
@@ -177,7 +177,7 @@ export default function HomePage() {
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Four Star General if you want serious WWII tactical strategy.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Four Star General is for players who want deterministic tactics, battlefield pressure, supply, reserves, and mission profiles. If you care more about command decisions than spectacle, go to{' '}
+                Four Star General is for players who want deterministic tactics, hard command decisions, supply, reserves, and mission profiles. If you care more about those choices than spectacle, go to{' '}
                 <Link href="/apps/fourstargeneral" style={{ color: '#b45309', fontWeight: 700, textDecoration: 'underline' }}>
                   the WWII tactical strategy game page
                 </Link>
@@ -195,9 +195,9 @@ export default function HomePage() {
               </p>
             </div>
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Gravity if you want simultaneous-turn tactical pressure.</h3>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Gravity if you want simultaneous-turn tactical challenge.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Gravity is for strategy and board-game players who want a simultaneous-turn strategy game with ship systems management, locked orders, and clear resolution. If that sounds like your kind of rules pressure, start with{' '}
+                Gravity is for strategy and board-game players who want a simultaneous-turn strategy game with ship systems management, locked orders, and clear resolution. If that sounds like your kind of game, start with{' '}
                 <Link href="/apps/gravity" style={{ color: '#0ea5e9', fontWeight: 700, textDecoration: 'underline' }}>
                   the Gravity product page
                 </Link>

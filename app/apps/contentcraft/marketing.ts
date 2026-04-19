@@ -155,7 +155,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   ],
   scopeNotes: [
     'ContentCraft is a writing tool and worldbuilding workspace, not generic office productivity software.',
-    'ContentCraft is strongest when the project has real continuity pressure: repeated references, expanding lore, shared canon, or linked creative assets.',
+    'ContentCraft is strongest when the project has real continuity demands: repeated references, expanding lore, shared canon, or linked creative assets.',
     'ContentCraft is AI-assisted, but the canon, review, and project-organization layers stand on their own whether or not you use the AI features.',
   ],
 };

@@ -44,7 +44,7 @@ const paths = [
   {
     title: 'I want simultaneous-turn strategy',
     href: '/apps/gravity',
-    description: 'Use Gravity for ship-systems strategy, locked orders, and simultaneous-turn tactical pressure.',
+    description: 'Use Gravity for ship-systems strategy, locked orders, and simultaneous-turn tactical decisions.',
     button: 'Go to Gravity',
     accent: '#0ea5e9',
   },

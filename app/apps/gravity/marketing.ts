@@ -4,7 +4,7 @@ import { APP_URLS } from '@/lib/subscription';
 export const gravityProductDefinition: ProductDefinition = {
   slug: 'gravity',
   name: 'Gravity',
-  descriptor: 'Early beta simultaneous-turn strategy game with ship systems pressure',
+  descriptor: 'Early beta simultaneous-turn strategy game with ship systems command',
   h1: 'Gravity early beta for simultaneous-turn strategy and ship systems command',
   title: 'Gravity | Early Beta Simultaneous-Turn Strategy Game with Ship Systems Command',
   metaDescription:
@@ -17,7 +17,7 @@ export const gravityProductDefinition: ProductDefinition = {
   oneSentence:
     'Gravity is an early beta browser-based simultaneous-turn strategy game built around ship systems management and locked tactical orders.',
   category: 'Simultaneous-turn strategy game with ship systems management',
-  primaryAudience: 'Strategy and board-game players who like deterministic system pressure',
+  primaryAudience: 'Strategy and board-game players who like deterministic system management',
   platform: 'Browser-based web game',
   pricingModel: 'Early beta, no open signup or paid plan yet',
   availability: 'Early beta. Most visitors see the product page only; the browser build is currently limited to the studio team and testers',
@@ -49,29 +49,29 @@ export const gravityProductDefinition: ProductDefinition = {
   },
   whatItIs: [
     'Gravity is an early beta simultaneous-turn strategy game where captains commit orders in parallel and the turn resolves once those orders are locked. Gravity is built for players who like tactical systems that can be read, planned, and argued about clearly rather than for players who want twitch action or vague spectacle.',
-    'The central idea is ship systems pressure. Power routing, damage control, crew roles, repairs, maneuvering, attacks, environmental hazards, and escape timing all compete inside the same decision window. That makes Gravity feel closer to a strategy or board-game rules engine than to a cinematic action game.',
+    'The central idea is ship systems management. Power routing, damage control, crew roles, repairs, maneuvering, attacks, environmental hazards, and escape timing all compete inside the same decision window. That makes Gravity feel closer to a strategy or board-game rules engine than to a cinematic action game.',
     'Gravity also stands out because the digital client mirrors the tabletop rules. System clarity, turn structure, and ship-level tradeoffs are the point. Because Gravity is still early beta, set expectations accordingly: read this page now, but do not expect broad access yet.',
   ],
   whoItIsFor: [
     'Gravity is for strategy and board-game players who enjoy simultaneous planning, shared resolution, and visible tactical tradeoffs.',
-    'Gravity is for players who like managing systems pressure across a ship or tactical board state instead of relying on reflexes.',
+    'Gravity is for players who like managing competing systems across a ship or tactical board state instead of relying on reflexes.',
     'Gravity is for solo and multiplayer players who want a rules-forward strategy experience with clear order locking and resolution timing.',
   ],
   problemItSolves: [
-    'Sequential-turn strategy can flatten tension because each player reacts to a fully resolved board. Gravity solves that by making captains commit in parallel. The pressure comes from planning against uncertainty and then watching the turn answer back once everyone locks orders.',
+    'Sequential-turn strategy can flatten tension because each player reacts to a fully resolved board. Gravity solves that by making captains commit in parallel. The tension comes from planning against uncertainty and then watching the turn answer back once everyone locks orders.',
     'The game also solves the "strategy without systems" problem. Gravity gives the player concrete ship-level decisions about power, crew, repairs, maneuver, attacks, hazards, and escape timing so each turn has a meaningful resource tradeoff.',
   ],
   howItWorks: [
     'Plan actions for your captain, crew, and ship systems while thinking about the same locked resolution window as every other player.',
     'Route power, repair damage, maneuver, scan, acquire, attack, launch, retaliate, and handle other actions before the turn resolves.',
     'Resolve the turn simultaneously so the consequences of every order appear together under the same transparent rules.',
-    'Adapt to hazards, object movement, and escape pressure as the tactical state changes from one locked turn to the next.',
+    'Adapt to hazards, object movement, and shifting escape windows as the tactical state changes from one locked turn to the next.',
   ],
   keyFeatures: [
     {
       title: 'Simultaneous-turn resolution',
       description:
-        'Gravity resolves tactical turns after orders lock, so the game pressure comes from commitment and timing instead of initiative drift.',
+        'Gravity resolves tactical turns after orders lock, so the tension comes from commitment and timing instead of initiative drift.',
     },
     {
       title: 'Ship systems management',
@@ -89,7 +89,7 @@ export const gravityProductDefinition: ProductDefinition = {
         'The digital client mirrors the tabletop rules so outcomes stay clear, consistent, and explainable.',
     },
     {
-      title: 'Environmental and orbital pressure',
+      title: 'Environmental and orbital hazards',
       description:
         'Hazards, object movement, and escape timing keep the board from becoming a passive stand-and-trade exercise.',
     },
@@ -112,7 +112,7 @@ export const gravityProductDefinition: ProductDefinition = {
     {
       question: 'Who is Gravity for?',
       answer:
-        'Gravity is for strategy and board-game players who enjoy simultaneous planning, ship systems management, and rules-forward tactical pressure. Not a generic action game, and not for players who want vague spectacle.',
+        'Gravity is for strategy and board-game players who enjoy simultaneous planning, ship systems management, and a rules-forward tactical challenge. Not a generic action game, and not for players who want vague spectacle.',
     },
     {
       question: 'How do simultaneous turns work in Gravity?',
@@ -138,14 +138,14 @@ export const gravityProductDefinition: ProductDefinition = {
   gettingStarted: [
     'Start from the product page so the simultaneous-turn model, ship systems focus, and early beta status are clear before expecting access.',
     'Use this page to understand how orders are planned, locked, and resolved in a shared turn window.',
-    'Pay attention to power routing, repairs, maneuvering, crew roles, and hazards because those systems create the real tactical pressure.',
+    'Pay attention to power routing, repairs, maneuvering, crew roles, and hazards because those systems drive the real tactical decisions.',
     'Check the pricing page for the current access note, since Gravity is not broadly open yet.',
   ],
   commonUseCases: [
     'Playing a rules-forward strategy game where simultaneous planning is the core source of tension.',
     'Testing solo tactical loops quickly because single-player turns resolve immediately.',
     'Using a browser-based strategy game that feels closer to a board-game rules engine than to a reflex game.',
-    'Exploring ship systems management, power routing, and environmental pressure inside a shared tactical turn.',
+    'Exploring ship systems management, power routing, and environmental hazards inside a shared tactical turn.',
   ],
   scopeNotes: [
     'Gravity is an early beta simultaneous-turn strategy game with ship systems management. Concrete systems, not abstract brand language.',
