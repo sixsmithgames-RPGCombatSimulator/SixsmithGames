@@ -80,6 +80,7 @@ export interface SubscriptionInfo {
   plans: string[];
   expiresAt: string | null;
   isAdmin: boolean;
+  isDummySubscriber: boolean;
   nextBillingDate: string | null;
   billingHistory: BillingRecord[];
   memberSince: string | null;
@@ -138,7 +139,7 @@ export function getSubscriptionInfo(
   _email?: string | undefined | null
 ): SubscriptionInfo {
   if (!publicMetadata) {
-    return { status: 'inactive', plan: null, plans: [], expiresAt: null, isAdmin: false, nextBillingDate: null, billingHistory: [], memberSince: null, accessibleApps: [] };
+    return { status: 'inactive', plan: null, plans: [], expiresAt: null, isAdmin: false, isDummySubscriber: false, nextBillingDate: null, billingHistory: [], memberSince: null, accessibleApps: [] };
   }
 
   const plans = getActivePlans(publicMetadata);
@@ -148,6 +149,7 @@ export function getSubscriptionInfo(
     plans,
     expiresAt: (publicMetadata.subscriptionExpiresAt as string) || null,
     isAdmin: (publicMetadata.isAdmin as boolean) || false,
+    isDummySubscriber: false,
     nextBillingDate: (publicMetadata.subscriptionExpiresAt as string) || null,
     billingHistory: [],
     memberSince: (publicMetadata.memberSince as string) || null,

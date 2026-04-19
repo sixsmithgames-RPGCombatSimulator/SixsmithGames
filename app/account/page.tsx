@@ -24,6 +24,7 @@ const EMPTY_SUBSCRIPTION_INFO: SubscriptionInfo = {
   plans: [],
   expiresAt: null,
   isAdmin: false,
+  isDummySubscriber: false,
   nextBillingDate: null,
   billingHistory: [],
   memberSince: null,
@@ -100,7 +101,7 @@ export default function AccountPage() {
   const sub = accessInfo || EMPTY_SUBSCRIPTION_INFO;
   const isActive = sub.accessibleApps.length > 0 || sub.isAdmin;
   const freeAppSlugs: AppSlug[] = ['virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
-  const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.accessibleApps.includes('gravity') || sub.isAdmin);
+  const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.isDummySubscriber);
 
   const card: React.CSSProperties = {
     background: 'white',

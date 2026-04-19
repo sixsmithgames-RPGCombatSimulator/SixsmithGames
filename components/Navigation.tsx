@@ -217,6 +217,13 @@ export default function Navigation() {
               Blog
             </Link>
 
+            <Link href="/articles" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              Articles
+            </Link>
+
             <Link href="/help" style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
               onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
@@ -347,6 +354,12 @@ export default function Navigation() {
             style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
           >
             Blog
+          </Link>
+          <Link href="/articles" onClick={() => setMobileMenuOpen(false)}
+            className={touchTargetClassName}
+            style={{ display: 'block', padding: '0.75rem 0', color: '#374151', textDecoration: 'none', fontWeight: '500', fontSize: '1rem', borderBottom: '1px solid #f3f4f6' }}
+          >
+            Articles
           </Link>
           <div style={{ display: 'flex', flexDirection: 'column', gap: '0.75rem', marginTop: '1.25rem' }}>
             <SignedIn>

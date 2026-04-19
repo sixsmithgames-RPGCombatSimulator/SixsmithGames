@@ -12,6 +12,14 @@ export function findTagBySlug(tagOrSlug: string, tags: string[]): string | undef
   return tags.find((tag) => tag === tagOrSlug || slugifyTag(tag) === tagOrSlug);
 }
 
-export function toTagRoute(tag: string): string {
+export function toBlogTagRoute(tag: string): string {
   return `/blog/tag/${slugifyTag(tag)}`;
+}
+
+export function toArticlesTagRoute(tag: string): string {
+  return `/articles/tag/${slugifyTag(tag)}`;
+}
+
+export function toTagRoute(tag: string): string {
+  return toBlogTagRoute(tag);
 }

@@ -74,7 +74,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   ],
   keyFeatures: [
     {
-      title: 'Map-first encounter control',
+      title: 'Battle map encounter control',
       description:
         'Upload or prepare the battle map, place tokens, and keep the physical or virtual battlefield readable at a glance.',
     },

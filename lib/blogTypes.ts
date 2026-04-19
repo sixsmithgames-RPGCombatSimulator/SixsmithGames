@@ -1,5 +1,7 @@
 import type { AppSlug } from '@/lib/subscription';
 
+export type PostContentType = 'article' | 'news';
+
 export interface BlogPost {
   slug: string;
   title: string;
@@ -11,5 +13,6 @@ export interface BlogPost {
   category: string;
   tags: string[];
   featured?: boolean;
+  contentType?: PostContentType;
   relatedProducts: AppSlug[];
 }

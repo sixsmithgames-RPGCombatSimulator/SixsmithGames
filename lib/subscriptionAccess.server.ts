@@ -11,6 +11,7 @@ type EmailAddressLike = {
 } | null | undefined;
 
 const ALL_APPS: AppSlug[] = ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
+const ALL_NON_GRAVITY_APPS: AppSlug[] = ['contentcraft', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
 
 const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com', 'quentind@gmail.com', 'djmerdur@gmail.com'];
 
@@ -49,8 +50,12 @@ export function getResolvedAccessibleApps(
   publicMetadata: Record<string, unknown> | undefined | null,
   primaryEmail: EmailAddressLike
 ): AppSlug[] {
-  if (isAdminEmail(primaryEmail) || isDummySubscriber(primaryEmail)) {
+  if (isDummySubscriber(primaryEmail)) {
     return ALL_APPS;
+  }
+
+  if (isAdminEmail(primaryEmail)) {
+    return ALL_NON_GRAVITY_APPS;
   }
 
   if (!hasActiveSubscription(publicMetadata)) return [];
@@ -79,6 +84,7 @@ export function getResolvedSubscriptionInfo(
       plans: ['bundle'],
       expiresAt: '2026-03-01',
       isAdmin: admin,
+      isDummySubscriber: true,
       nextBillingDate: '2026-03-01',
       billingHistory: DUMMY_BILLING_HISTORY,
       memberSince: '2025-09-01',
@@ -93,10 +99,11 @@ export function getResolvedSubscriptionInfo(
       plans: [],
       expiresAt: null,
       isAdmin: admin,
+      isDummySubscriber: false,
       nextBillingDate: null,
       billingHistory: [],
       memberSince: null,
-      accessibleApps: admin ? ALL_APPS : [],
+      accessibleApps: admin ? ALL_NON_GRAVITY_APPS : [],
     };
   }
 
@@ -107,6 +114,7 @@ export function getResolvedSubscriptionInfo(
     plans,
     expiresAt: (publicMetadata.subscriptionExpiresAt as string) || null,
     isAdmin: admin,
+    isDummySubscriber: false,
     nextBillingDate: (publicMetadata.subscriptionExpiresAt as string) || null,
     billingHistory: [],
     memberSince: (publicMetadata.memberSince as string) || null,

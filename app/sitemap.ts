@@ -1,5 +1,10 @@
 import type { MetadataRoute } from 'next';
-import { getAllPosts, getAllTags } from '@/lib/blog';
+import {
+  getAllArticles,
+  getAllArticleTags,
+  getAllNewsPosts,
+  getAllNewsTags,
+} from '@/lib/blog';
 import { slugifyTag } from '@/lib/blogTags';
 import { HELP_TOPIC_ORDER, PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { SITE_URL } from '@/lib/site';
@@ -22,6 +27,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/tools',
     '/start-here',
     '/blog',
+    '/articles',
     '/privacy',
     '/terms',
     '/apps/contentcraft',
@@ -48,20 +54,35 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     })),
   ]);
 
-  const posts = await getAllPosts();
-  const postEntries: MetadataRoute.Sitemap = posts.map((post) => ({
+  const articlePosts = await getAllArticles();
+  const articleEntries: MetadataRoute.Sitemap = articlePosts.map((post) => ({
+    url: `${SITE_URL}/articles/${post.slug}`,
+    lastmod: post.date,
+    changefreq: 'weekly',
+    priority: 0.7,
+  }));
+
+  const newsPosts = await getAllNewsPosts();
+  const newsEntries: MetadataRoute.Sitemap = newsPosts.map((post) => ({
     url: `${SITE_URL}/blog/${post.slug}`,
     lastmod: post.date,
     changefreq: 'weekly',
     priority: 0.7,
   }));
 
-  const tags = await getAllTags();
-  const tagEntries: MetadataRoute.Sitemap = tags.map((tag) => ({
+  const articleTags = await getAllArticleTags();
+  const articleTagEntries: MetadataRoute.Sitemap = articleTags.map((tag) => ({
+    url: `${SITE_URL}/articles/tag/${slugifyTag(tag)}`,
+    changefreq: 'weekly',
+    priority: 0.5,
+  }));
+
+  const newsTags = await getAllNewsTags();
+  const newsTagEntries: MetadataRoute.Sitemap = newsTags.map((tag) => ({
     url: `${SITE_URL}/blog/tag/${slugifyTag(tag)}`,
     changefreq: 'weekly',
     priority: 0.5,
   }));
 
-  return [...staticPages, ...helpPages, ...postEntries, ...tagEntries];
+  return [...staticPages, ...helpPages, ...articleEntries, ...newsEntries, ...articleTagEntries, ...newsTagEntries];
 }

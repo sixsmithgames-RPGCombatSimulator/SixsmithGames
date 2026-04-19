@@ -1,16 +1,15 @@
 import Link from 'next/link';
 import { notFound, redirect } from 'next/navigation';
 
-import BlogComments from '@/components/BlogComments';
 import PostBody from '@/components/PostBody';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import {
-  getAllNewsPosts,
+  getAllArticles,
   getArticleBySlug,
   getNewsPostBySlug,
-  getRecentNewsPosts,
+  getRecentArticles,
 } from '@/lib/blog';
-import { toBlogTagRoute } from '@/lib/blogTags';
+import { toArticlesTagRoute } from '@/lib/blogTags';
 import { buildPageMetadata } from '@/lib/metadata';
 import { PRODUCT_DEFINITIONS_BY_SLUG } from '@/lib/productContent';
 import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
@@ -18,20 +17,20 @@ import { createArticleSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
-  const posts = await getAllNewsPosts();
+  const posts = await getAllArticles();
   return posts.map((post) => ({ slug: post.slug }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await getNewsPostBySlug(slug);
+  const post = await getArticleBySlug(slug);
   if (!post) {
-    const article = await getArticleBySlug(slug);
-    if (article) {
+    const newsPost = await getNewsPostBySlug(slug);
+    if (newsPost) {
       return buildPageMetadata({
-        title: `${article.title} | Sixsmith Games Articles`,
-        description: article.excerpt,
-        path: `/articles/${article.slug}`,
+        title: `${newsPost.title} | Sixsmith Games Blog`,
+        description: newsPost.excerpt,
+        path: `/blog/${newsPost.slug}`,
         type: 'article',
       });
     }
@@ -40,21 +39,21 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   }
 
   return buildPageMetadata({
-    title: `${post.title} | Sixsmith Games Blog`,
+    title: `${post.title} | Sixsmith Games Articles`,
     description: post.excerpt,
-    path: `/blog/${post.slug}`,
+    path: `/articles/${post.slug}`,
     type: 'article',
   });
 }
 
-export default async function BlogPostPage({ params }: { params: Promise<{ slug: string }> }) {
+export default async function ArticlePage({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
-  const post = await getNewsPostBySlug(slug);
+  const post = await getArticleBySlug(slug);
 
   if (!post) {
-    const article = await getArticleBySlug(slug);
-    if (article) {
-      redirect(`/articles/${article.slug}`);
+    const newsPost = await getNewsPostBySlug(slug);
+    if (newsPost) {
+      redirect(`/blog/${newsPost.slug}`);
     }
 
     notFound();
@@ -65,7 +64,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const primaryRelatedProduct = primaryRelatedProductSlug
     ? PRODUCT_DEFINITIONS_BY_SLUG[primaryRelatedProductSlug]
     : null;
-  const related = (await getRecentNewsPosts(3)).filter((candidate) => candidate.slug !== post.slug).slice(0, 2);
+  const related = (await getRecentArticles(3)).filter((candidate) => candidate.slug !== post.slug).slice(0, 2);
 
   const categoryColors: Record<string, { bg: string; text: string }> = {
     'Tabletop RPG': { bg: '#fef2f2', text: '#dc2626' },
@@ -82,7 +81,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         data={createArticleSchema({
           title: post.title,
           description: post.excerpt,
-          url: `${SITE_URL}/blog/${post.slug}`,
+          url: `${SITE_URL}/articles/${post.slug}`,
           datePublished: post.date,
           authorName: post.author,
         })}
@@ -90,15 +89,15 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
       <section
         style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+          background: 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #334155 100%)',
           padding: `80px ${pageGutter} 50px`,
         }}
       >
         <div style={{ maxWidth: '760px', margin: '0 auto' }}>
           <Link
-            href="/blog"
+            href="/articles"
             style={{
-              color: '#818cf8',
+              color: '#c4b5fd',
               fontSize: '0.875rem',
               fontWeight: '600',
               textDecoration: 'none',
@@ -108,17 +107,20 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
               marginBottom: '1.5rem',
             }}
           >
-            ← Back to Blog
+            ← Back to Articles
           </Link>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', marginBottom: '1.25rem', flexWrap: 'wrap' }}>
             <span style={{ background: cat.bg, color: cat.text, padding: '0.25rem 0.75rem', borderRadius: '999px', fontSize: '0.75rem', fontWeight: '700' }}>
               {post.category}
             </span>
-            <span style={{ color: '#64748b', fontSize: '0.8125rem' }}>{post.readTime}</span>
+            <span style={{ color: '#94a3b8', fontSize: '0.8125rem' }}>{post.readTime}</span>
           </div>
           <h1 style={{ color: 'white', fontSize: 'clamp(1.75rem, 4vw, 2.75rem)', fontWeight: '900', lineHeight: 1.2, margin: '0 0 1rem' }}>
             {post.title}
           </h1>
+          <p style={{ color: '#cbd5e1', fontSize: '1.02rem', lineHeight: 1.8, margin: '0 0 1rem' }}>
+            Evergreen reference content for Sixsmith Games products and audiences.
+          </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontSize: '0.875rem' }}>
             <span>{post.author}</span>
             <span style={{ opacity: 0.4 }}>·</span>
@@ -145,7 +147,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {tags.map((tag) => (
             <Link
               key={tag}
-              href={toBlogTagRoute(tag)}
+              href={toArticlesTagRoute(tag)}
               style={{
                 background: '#f3f4f6',
                 color: '#6b7280',
@@ -162,18 +164,16 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           ))}
         </div>
 
-        <BlogComments postSlug={post.slug} />
-
         {related.length > 0 ? (
           <div style={{ marginTop: '4rem' }}>
             <h3 style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.25rem' }}>
-              More from the Blog
+              More Articles
             </h3>
             <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('250px'), gap: '1rem' }}>
               {related.map((candidate) => (
                 <Link
                   key={candidate.slug}
-                  href={`/blog/${candidate.slug}`}
+                  href={`/articles/${candidate.slug}`}
                   style={{
                     background: 'white',
                     borderRadius: '12px',
@@ -198,53 +198,55 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         <div
           style={{
             marginTop: '4rem',
-            background: 'linear-gradient(135deg, #667eea, #764ba2)',
+            background: 'linear-gradient(135deg, #312e81, #4c1d95)',
             borderRadius: '16px',
             padding: cardPadding,
             textAlign: 'center',
           }}
         >
-          <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>Ready to create something?</h3>
+          <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>
+            Keep going with the official product pages
+          </h3>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
-            Subscribe to individual apps or get the Game Creator bundle.
+            Use the product page, help pages, and pricing page for the current official state.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
-            <Link
-              href="/pricing"
-              className={touchTargetClassName}
-              style={{
-                background: 'white',
-                color: '#4c1d95',
-                padding: '0.875rem 2.5rem',
-                borderRadius: '50px',
-                fontSize: '1rem',
-                fontWeight: '800',
-                textDecoration: 'none',
-                display: 'inline-block',
-                boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
-              }}
-            >
-              View Pricing
-            </Link>
             {primaryRelatedProduct ? (
               <Link
                 href={primaryRelatedProduct.officialPath}
                 className={touchTargetClassName}
                 style={{
-                  background: 'rgba(255,255,255,0.14)',
-                  color: 'white',
+                  background: 'white',
+                  color: '#4c1d95',
                   padding: '0.875rem 2rem',
                   borderRadius: '50px',
                   fontSize: '1rem',
                   fontWeight: '800',
                   textDecoration: 'none',
                   display: 'inline-block',
-                  border: '1px solid rgba(255,255,255,0.24)',
+                  boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
                 }}
               >
                 Visit {primaryRelatedProduct.name}
               </Link>
             ) : null}
+            <Link
+              href="/pricing"
+              className={touchTargetClassName}
+              style={{
+                background: 'rgba(255,255,255,0.14)',
+                color: 'white',
+                padding: '0.875rem 2rem',
+                borderRadius: '50px',
+                fontSize: '1rem',
+                fontWeight: '800',
+                textDecoration: 'none',
+                display: 'inline-block',
+                border: '1px solid rgba(255,255,255,0.24)',
+              }}
+            >
+              View Pricing
+            </Link>
           </div>
         </div>
       </article>

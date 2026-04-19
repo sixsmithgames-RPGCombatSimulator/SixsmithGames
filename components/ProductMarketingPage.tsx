@@ -6,7 +6,7 @@ import LaunchAppButton from '@/components/LaunchAppButton';
 import ModernBackground from '@/components/ModernBackground';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
-import { getPostBySlug } from '@/lib/blog';
+import { getArticleBySlug } from '@/lib/blog';
 import { MARKETING_LAST_UPDATED, type ProductDefinition } from '@/lib/productContent';
 import { cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
 import {
@@ -124,7 +124,7 @@ function renderOfficialLink(href: string, label: string, description: string) {
 
 export default async function ProductMarketingPage({ product }: ProductMarketingPageProps) {
   const supportingArticles = (
-    await Promise.all(product.supportingArticleSlugs.map((slug) => getPostBySlug(slug)))
+    await Promise.all(product.supportingArticleSlugs.map((slug) => getArticleBySlug(slug)))
   ).filter(Boolean);
 
   const breadcrumbItems = [
@@ -397,7 +397,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
                 {supportingArticles.map((article) => (
                   <Link
                     key={article!.slug}
-                    href={`/blog/${article!.slug}`}
+                    href={`/articles/${article!.slug}`}
                     style={{
                       display: 'block',
                       background: '#fff',

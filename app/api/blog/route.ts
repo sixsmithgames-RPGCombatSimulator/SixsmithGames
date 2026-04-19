@@ -126,6 +126,7 @@ export async function POST(req: NextRequest) {
     title: title as string,
     excerpt: (excerpt as string) || (content as string).split('\n').find(l => l.trim() && !l.startsWith('#')) || '',
     content: content as string,
+    contentType: body.contentType === 'article' ? 'article' : 'news',
     author: (author as string) || 'Sixsmith Games',
     date: (date as string) || new Date().toISOString().split('T')[0],
     readTime: estimateReadTime(content as string),

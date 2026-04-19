@@ -35,9 +35,10 @@ export default clerkMiddleware(async (auth, request) => {
     return NextResponse.redirect(url, 301);
   }
 
-  if (request.nextUrl.pathname.startsWith('/blog/tag/')) {
-    const rawTag = decodeURIComponent(request.nextUrl.pathname.replace('/blog/tag/', ''));
-    const canonicalTagPath = `/blog/tag/${slugifyTag(rawTag)}`;
+  if (request.nextUrl.pathname.startsWith('/blog/tag/') || request.nextUrl.pathname.startsWith('/articles/tag/')) {
+    const prefix = request.nextUrl.pathname.startsWith('/blog/tag/') ? '/blog/tag/' : '/articles/tag/';
+    const rawTag = decodeURIComponent(request.nextUrl.pathname.replace(prefix, ''));
+    const canonicalTagPath = `${prefix}${slugifyTag(rawTag)}`;
     if (rawTag && canonicalTagPath !== request.nextUrl.pathname) {
       const url = request.nextUrl.clone();
       url.pathname = canonicalTagPath;

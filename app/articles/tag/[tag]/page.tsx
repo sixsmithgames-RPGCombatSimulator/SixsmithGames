@@ -12,50 +12,50 @@ import { buildPageMetadata } from '@/lib/metadata';
 import { pageGutter } from '@/lib/responsive';
 
 export async function generateStaticParams() {
-  const tags = await getAllNewsTags();
+  const tags = await getAllArticleTags();
   return tags.map((tag) => ({ tag: slugifyTag(tag) }));
 }
 
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
   const { tag } = await params;
-  const tags = await getAllNewsTags();
+  const tags = await getAllArticleTags();
   const prettyTag = findTagBySlug(tag, tags);
 
   if (!prettyTag) {
     return buildPageMetadata({
-      title: 'Blog Tags | Sixsmith Games',
-      description: 'Browse Sixsmith Games blog news tags.',
-      path: '/blog',
+      title: 'Articles Tags | Sixsmith Games',
+      description: 'Browse Sixsmith Games article tags.',
+      path: '/articles',
     });
   }
 
   return buildPageMetadata({
-    title: `${prettyTag} News | Sixsmith Games Blog`,
-    description: `Read Sixsmith Games news posts tagged with ${prettyTag}.`,
-    path: `/blog/tag/${slugifyTag(prettyTag)}`,
+    title: `${prettyTag} Articles | Sixsmith Games`,
+    description: `Read Sixsmith Games articles tagged with ${prettyTag}.`,
+    path: `/articles/tag/${slugifyTag(prettyTag)}`,
   });
 }
 
-export default async function BlogTagPage({ params }: { params: Promise<{ tag: string }> }) {
+export default async function ArticleTagPage({ params }: { params: Promise<{ tag: string }> }) {
   const { tag } = await params;
-  const newsTags = await getAllNewsTags();
   const articleTags = await getAllArticleTags();
-  const resolvedNewsTag = findTagBySlug(tag, newsTags);
+  const newsTags = await getAllNewsTags();
   const resolvedArticleTag = findTagBySlug(tag, articleTags);
+  const resolvedNewsTag = findTagBySlug(tag, newsTags);
 
-  if (!resolvedNewsTag) {
-    if (resolvedArticleTag) {
-      redirect(`/articles/tag/${slugifyTag(resolvedArticleTag)}`);
+  if (!resolvedArticleTag) {
+    if (resolvedNewsTag) {
+      redirect(`/blog/tag/${slugifyTag(resolvedNewsTag)}`);
     }
 
     notFound();
   }
 
-  const posts = await getNewsPostsByTag(resolvedNewsTag);
+  const posts = await getArticlesByTag(resolvedArticleTag);
   if (posts.length === 0) {
-    const articlePosts = resolvedArticleTag ? await getArticlesByTag(resolvedArticleTag) : [];
-    if (articlePosts.length > 0 && resolvedArticleTag) {
-      redirect(`/articles/tag/${slugifyTag(resolvedArticleTag)}`);
+    const newsPosts = resolvedNewsTag ? await getNewsPostsByTag(resolvedNewsTag) : [];
+    if (newsPosts.length > 0 && resolvedNewsTag) {
+      redirect(`/blog/tag/${slugifyTag(resolvedNewsTag)}`);
     }
 
     notFound();
@@ -65,18 +65,18 @@ export default async function BlogTagPage({ params }: { params: Promise<{ tag: s
     <div style={{ background: '#fafafa', minHeight: '100vh' }}>
       <section
         style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
+          background: 'linear-gradient(135deg, #111827 0%, #1f2937 50%, #334155 100%)',
           padding: `80px ${pageGutter} 50px`,
           textAlign: 'center',
         }}
       >
-        <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 1rem' }}>
-          Blog Tag
+        <p style={{ color: '#c4b5fd', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 1rem' }}>
+          Article Tag
         </p>
         <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', margin: '0 0 0.75rem', lineHeight: 1.2 }}>
-          #{resolvedNewsTag}
+          #{resolvedArticleTag}
         </h1>
-        <p style={{ color: '#94a3b8', fontSize: '1.0625rem', margin: 0 }}>News posts related to {resolvedNewsTag}</p>
+        <p style={{ color: '#cbd5e1', fontSize: '1.0625rem', margin: 0 }}>Evergreen articles related to {resolvedArticleTag}</p>
       </section>
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `3rem ${pageGutter} 4rem` }}>
@@ -84,7 +84,7 @@ export default async function BlogTagPage({ params }: { params: Promise<{ tag: s
           {posts.map((post) => (
             <Link
               key={post.slug}
-              href={`/blog/${post.slug}`}
+              href={`/articles/${post.slug}`}
               style={{
                 background: 'white',
                 borderRadius: '12px',

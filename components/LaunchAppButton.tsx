@@ -18,23 +18,64 @@ interface LaunchAppButtonProps {
   autoLaunch?: boolean;
 }
 
+function renderStaticButton(label: string, style?: React.CSSProperties) {
+  return (
+    <button style={{ ...style, opacity: 0.82, cursor: 'default' }} disabled>
+      {label}
+    </button>
+  );
+}
+
 function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppButtonProps) {
   const { isLoaded, isSignedIn } = useUser();
   const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
   // Free-core titles: always launchable for signed-in users without paid plans
-  const freeAppSlugs = ['mastertyping', 'gravity', 'fourstargeneral', 'virtual-combat-simulator'];
+  const freeAppSlugs = ['mastertyping', 'fourstargeneral', 'virtual-combat-simulator'];
   const isFreeApp = freeAppSlugs.includes(appSlug);
+  const isGravity = appSlug === 'gravity';
   const hasPaidAccess = Boolean(accessInfo?.accessibleApps.length);
   const hasAccess = isFreeApp || hasPaidAccess;
   const appUrl = APP_URLS[appSlug];
   const label = hasPaidAccess ? 'Open App' : children;
+  const gravityCanLaunch = isGravity && accessInfo?.isDummySubscriber === true;
 
   useEffect(() => {
-    if (autoLaunch && isLoaded && hasAccess && appUrl) {
+    if (autoLaunch && isLoaded && ((isGravity && gravityCanLaunch) || (!isGravity && hasAccess)) && appUrl) {
       window.location.href = appUrl;
     }
-  }, [autoLaunch, isLoaded, hasAccess, appUrl]);
+  }, [autoLaunch, appUrl, gravityCanLaunch, hasAccess, isGravity, isLoaded]);
+
+  if (isGravity) {
+    if (!isLoaded || (isSignedIn && accessLoading && !accessInfo)) {
+      return (
+        <button style={{ ...style, opacity: 0.6, cursor: 'not-allowed' }} disabled>
+          Loading...
+        </button>
+      );
+    }
+
+    if (gravityCanLaunch && appUrl) {
+      return (
+        <a
+          href={appUrl}
+          target="_blank"
+          rel="noopener noreferrer"
+          onClick={() => {
+            trackMarketingEvent('product_launch_click', {
+              product_slug: appSlug,
+              destination_type: 'app',
+            });
+          }}
+          style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
+        >
+          Open App
+        </a>
+      );
+    }
+
+    return renderStaticButton('Coming Soon', style);
+  }
 
   if (!isLoaded || (!isFreeApp && accessLoading && !accessInfo)) {
     return (
@@ -80,6 +121,17 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
 }
 
 export default function LaunchAppButton(props: LaunchAppButtonProps) {
+  if (props.appSlug === 'gravity') {
+    return (
+      <>
+        <SignedIn>
+          <LaunchButtonInner {...props} />
+        </SignedIn>
+        <SignedOut>{renderStaticButton('Coming Soon', props.style)}</SignedOut>
+      </>
+    );
+  }
+
   return (
     <>
       <SignedIn>

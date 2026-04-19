@@ -1,10 +1,14 @@
 import { BLOG_POSTS } from '@/lib/blogPosts';
-import type { BlogPost } from '@/lib/blogTypes';
+import type { BlogPost, PostContentType } from '@/lib/blogTypes';
 import { isAppSlug } from '@/lib/subscription';
 
 export type { BlogPost } from '@/lib/blogTypes';
 
-function normalizeBlogPost(rawPost: unknown): BlogPost | null {
+function isContentType(value: unknown): value is PostContentType {
+  return value === 'article' || value === 'news';
+}
+
+function normalizeBlogPost(rawPost: unknown, fallbackContentType: PostContentType): BlogPost | null {
   if (!rawPost || typeof rawPost !== 'object') return null;
 
   const post = rawPost as Record<string, unknown>;
@@ -43,6 +47,7 @@ function normalizeBlogPost(rawPost: unknown): BlogPost | null {
     tags,
     relatedProducts,
     featured: post.featured === true,
+    contentType: isContentType(post.contentType) ? post.contentType : fallbackContentType,
   };
 }
 
@@ -69,7 +74,7 @@ async function loadDynamicPosts(): Promise<BlogPost[]> {
     const parsed = JSON.parse(raw) as unknown;
     if (!Array.isArray(parsed)) return [];
     return parsed
-      .map((post) => normalizeBlogPost(post))
+      .map((post) => normalizeBlogPost(post, 'news'))
       .filter((post): post is BlogPost => post !== null);
   } catch {
     return [];
@@ -79,11 +84,42 @@ async function loadDynamicPosts(): Promise<BlogPost[]> {
 async function allPosts(): Promise<BlogPost[]> {
   const dynamicPosts = await loadDynamicPosts();
   const dynamicSlugs = new Set(dynamicPosts.map((post) => post.slug));
-  const seededPosts = BLOG_POSTS.filter((post) => !dynamicSlugs.has(post.slug));
+  const seededPosts = BLOG_POSTS
+    .filter((post) => !dynamicSlugs.has(post.slug))
+    .map((post) => ({
+      ...post,
+      contentType: post.contentType ?? 'article',
+    }));
 
   return [...dynamicPosts, ...seededPosts].sort(
     (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime(),
   );
+}
+
+async function postsByType(contentType: PostContentType): Promise<BlogPost[]> {
+  return (await allPosts()).filter((post) => (post.contentType ?? 'article') === contentType);
+}
+
+async function featuredPostsByType(contentType: PostContentType): Promise<BlogPost[]> {
+  return (await postsByType(contentType)).filter((post) => post.featured);
+}
+
+async function getPostBySlugAndType(slug: string, contentType: PostContentType): Promise<BlogPost | undefined> {
+  return (await postsByType(contentType)).find((post) => post.slug === slug);
+}
+
+async function getRecentPostsByType(contentType: PostContentType, count: number): Promise<BlogPost[]> {
+  return (await postsByType(contentType)).slice(0, count);
+}
+
+async function getTagsByType(contentType: PostContentType): Promise<string[]> {
+  const tags = new Set<string>();
+  (await postsByType(contentType)).forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
+  return Array.from(tags).sort((a, b) => a.localeCompare(b));
+}
+
+async function getPostsByTagAndType(tag: string, contentType: PostContentType): Promise<BlogPost[]> {
+  return (await postsByType(contentType)).filter((post) => post.tags.includes(tag));
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
@@ -110,4 +146,52 @@ export async function getAllTags(): Promise<string[]> {
 
 export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
   return (await allPosts()).filter((post) => post.tags.includes(tag));
+}
+
+export async function getAllArticles(): Promise<BlogPost[]> {
+  return postsByType('article');
+}
+
+export async function getFeaturedArticles(): Promise<BlogPost[]> {
+  return featuredPostsByType('article');
+}
+
+export async function getArticleBySlug(slug: string): Promise<BlogPost | undefined> {
+  return getPostBySlugAndType(slug, 'article');
+}
+
+export async function getRecentArticles(count: number): Promise<BlogPost[]> {
+  return getRecentPostsByType('article', count);
+}
+
+export async function getAllArticleTags(): Promise<string[]> {
+  return getTagsByType('article');
+}
+
+export async function getArticlesByTag(tag: string): Promise<BlogPost[]> {
+  return getPostsByTagAndType(tag, 'article');
+}
+
+export async function getAllNewsPosts(): Promise<BlogPost[]> {
+  return postsByType('news');
+}
+
+export async function getFeaturedNewsPosts(): Promise<BlogPost[]> {
+  return featuredPostsByType('news');
+}
+
+export async function getNewsPostBySlug(slug: string): Promise<BlogPost | undefined> {
+  return getPostBySlugAndType(slug, 'news');
+}
+
+export async function getRecentNewsPosts(count: number): Promise<BlogPost[]> {
+  return getRecentPostsByType('news', count);
+}
+
+export async function getAllNewsTags(): Promise<string[]> {
+  return getTagsByType('news');
+}
+
+export async function getNewsPostsByTag(tag: string): Promise<BlogPost[]> {
+  return getPostsByTagAndType(tag, 'news');
 }

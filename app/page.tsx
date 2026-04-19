@@ -213,7 +213,7 @@ export default function HomePage() {
             The public pages on sixsmithgames.com are meant to answer the questions a human visitor, a search engine, or an AI assistant is most likely to ask. What is the product? Who is the product for? What problem does the product solve? How does the product work? What does pricing look like? Where is the official help or support path? Those answers should be visible in crawlable HTML on the product pages themselves, not hidden behind JavaScript-only tabs or locked in a downloadable file.
           </p>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            That is why the site now links directly to the product pages, the pricing page, the blog, the help pages, the support page, and the canonical facts page. The goal is clarity, not keyword stuffing. The site should attract the right users by being direct about what each product actually does and who each product actually serves.
+            That is why the site now links directly to the product pages, the pricing page, the articles archive, the blog, the help pages, the support page, and the canonical facts page. The goal is clarity, not keyword stuffing. The site should attract the right users by being direct about what each product actually does and who each product actually serves.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
@@ -222,8 +222,11 @@ export default function HomePage() {
             <Link href="/help" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
               Browse product help
             </Link>
+            <Link href="/articles" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
+              Read the articles
+            </Link>
             <Link href="/blog" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Read the blog
+              Read the news blog
             </Link>
             <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
               Visit support

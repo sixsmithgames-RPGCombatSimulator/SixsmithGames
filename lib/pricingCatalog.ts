@@ -48,7 +48,7 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
     icon: '/icons/vcs-optimized.png',
     color: '#ef4444',
     gradient: 'linear-gradient(135deg, #ef4444, #f97316)',
-    summary: 'Map-first D&D combat control with room to grow into paid Game Master tools.',
+    summary: 'Battle map D&D combat control with room to grow into paid Game Master tools.',
     highlights: [
       'Map, token, and initiative tools',
       'Paid upgrade for storage and GM tools',

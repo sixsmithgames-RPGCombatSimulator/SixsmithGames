@@ -2,15 +2,15 @@
 app: Virtual Combat Simulator
 title: Virtual Combat Simulator Feature Brief
 audience: game masters, tabletop groups, encounter designers
-summary: Battle management and map-first encounter control room for tabletop groups.
+summary: Battle management and battle map encounter control room for tabletop groups.
 ---
 
 ## Overview
-Virtual Combat Simulator is a map-first battle control room for tabletop GMs. It combines a modern virtual tabletop with strict D&D 5e (2024 default) combat flow, import-ready canonical data, and multiplayer sync so groups can run encounters with confidence and speed.
+Virtual Combat Simulator is a battle map battle control room for tabletop GMs. It combines a modern virtual tabletop with strict D&D 5e (2024 default) combat flow, import-ready canonical data, and multiplayer sync so groups can run encounters with confidence and speed.
 
 ## Core Modes
 - **Encounter control**: Initiative, turn order, action economy (action/bonus/reaction), conditions, and HP tracking with full audit logs.
-- **Map-first sessions**: Upload your own maps, configure grid type (square/hex) and scale, and place tokens with layer controls (Map / Token / GM). Share live to players for positioning and fog-free clarity.
+- **Battle map sessions**: Upload your own maps, configure grid type (square/hex) and scale, and place tokens with layer controls (Map / Token / GM). Share live to players for positioning and fog-free clarity.
 - **Prep library**: Save encounters, NPCs/monsters, characters, and house rules for reuse; load a full layout in one click.
 
 ## Key Capabilities (feature parity with current app)

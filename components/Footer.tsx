@@ -98,6 +98,7 @@ export default function Footer() {
             <Link href="/about" style={linkStyle} className={touchTargetClassName}>About</Link>
             <Link href="/about/facts" style={linkStyle} className={touchTargetClassName}>Facts</Link>
             <Link href="/blog" style={linkStyle} className={touchTargetClassName}>Blog</Link>
+            <Link href="/articles" style={linkStyle} className={touchTargetClassName}>Articles</Link>
             <Link href="/help" style={linkStyle} className={touchTargetClassName}>Help</Link>
             <Link href="/support" style={linkStyle} className={touchTargetClassName}>Support</Link>
           </div>
