@@ -46,10 +46,10 @@ export default function AboutPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>What Sixsmith Games is</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Sixsmith Games is not trying to be a vague lifestyle brand for "all gaming." Each product in the lineup does something specific, and it is built to serve a specific kind of player, creator, or learner. You should be able to read a product page and know immediately whether it fits you or not.
+            Each product in the lineup does something specific and is built for a specific kind of player, creator, or learner. Read a product page and you should know within a minute whether it is for you.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            Some products help a game master run encounters. Some help a writer or worldbuilder keep a project coherent. Some are strategy games. One is a typing practice game. Different audiences, but every product is built to do something specific well, not to cover every possible use case.
+            Some products help a game master run encounters. Some help a writer or worldbuilder keep a project coherent. Some are strategy games. One is a typing practice game. Different audiences, but every product has a clear job.
           </p>
         </section>
 
@@ -65,7 +65,7 @@ export default function AboutPage() {
                 </h3>
                 <p style={{ margin: '0 0 0.45rem', color: '#475569', lineHeight: 1.8 }}>{product.oneSentence}</p>
                 <p style={{ margin: 0, color: '#334155', lineHeight: 1.8 }}>
-                  <strong>Audience:</strong> {product.primaryAudience}.
+                  {product.primaryAudience}.
                 </p>
               </article>
             ))}

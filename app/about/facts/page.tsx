@@ -37,7 +37,7 @@ export default function FactsPage() {
               The facts about {SITE_NAME}
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              This is the official summary of Sixsmith Games. It lists the brand spelling, product names, one-line descriptions, platforms, pricing status, official URLs, and how to get support. This page and the linked product pages are the most up-to-date reference.
+              Official names, URLs, platforms, pricing status, and one-line descriptions for every Sixsmith Games product. Use this page or the individual product pages for accurate reference.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -111,7 +111,7 @@ export default function FactsPage() {
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is ContentCraft?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                ContentCraft is a writing tool and worldbuilding workspace for projects that need canon continuity, lore organization, and a structured way to develop material over time.
+                ContentCraft is a writing tool and worldbuilding workspace for projects that need canon continuity, lore organization, and a way to keep story details connected as the work grows.
               </p>
             </div>
           </div>

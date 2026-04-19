@@ -21,9 +21,9 @@ const paths = [
     accent: '#ef4444',
   },
   {
-    title: 'I want a premium creative platform',
+    title: 'I want to organize my lore and worldbuilding',
     href: '/apps/contentcraft',
-    description: 'Use ContentCraft for bigger writing, worldbuilding, and campaign-creation work.',
+    description: 'Use ContentCraft for writing, worldbuilding, and campaign work where lore, canon, and continuity need to stay connected.',
     button: 'Go to ContentCraft',
     accent: '#7c3aed',
   },

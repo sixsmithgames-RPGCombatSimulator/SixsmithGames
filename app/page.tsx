@@ -139,7 +139,7 @@ export default function HomePage() {
                 </h3>
                 <p style={{ margin: '0 0 0.7rem', color: '#334155', lineHeight: 1.8 }}>{product.oneSentence}</p>
                 <p style={{ margin: '0 0 0.9rem', color: '#475569', lineHeight: 1.75 }}>
-                  <strong>Audience:</strong> {product.primaryAudience}.
+                  {product.primaryAudience}.
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
                   <Link href={product.officialPath} style={{ color: product.theme.accent, fontWeight: 800, textDecoration: 'none' }}>
@@ -157,7 +157,7 @@ export default function HomePage() {
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Virtual Combat Simulator if you want faster tabletop RPG encounters.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Virtual Combat Simulator is the right fit when the real problem is battle-map clarity, initiative handling, tokens, hit points, and encounter flow. If you are a game master asking for a D&amp;D combat simulator rather than a giant catch-all platform, start with{' '}
+                Virtual Combat Simulator is the right fit when the real problem is battle-map clarity, initiative handling, tokens, hit points, and encounter flow. If you are a game master who wants a focused D&amp;D combat simulator, start with{' '}
                 <Link href="/apps/virtual-combat-simulator" style={{ color: '#1d4ed8', fontWeight: 700, textDecoration: 'underline' }}>
                   the D&amp;D combat simulator product page
                 </Link>
@@ -210,7 +210,7 @@ export default function HomePage() {
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Where to go next</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Every product page covers what the product is, who it is for, how it works, and what it costs. Pricing, help, articles, and the facts page are all linked directly from here so you do not have to hunt for them.
+            Every product page covers what the product is, who it is for, how it works, and what it costs. Pricing, help, articles, and the facts page are all linked directly from here.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
