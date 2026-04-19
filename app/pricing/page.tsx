@@ -105,7 +105,7 @@ export default function PricingPage() {
             Sixsmith Games does not use one pricing model for everything. ContentCraft is a premium subscription because it is the creative workspace built around the subscription. Virtual Combat Simulator, Four Star General, and MasterTyping are intentionally easier to start so you can try the workflow first and then decide whether the paid layer is worth it for how often you use it. Gravity is in early beta and does not have a standalone paid plan yet.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            The right first click is usually the product page itself. This page compares the plans side by side so you can pick the one that fits.
+            Each product page also covers pricing in full. This page puts all the plans side by side so you can compare before clicking through.
           </p>
         </section>
 
