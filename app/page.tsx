@@ -1,385 +1,236 @@
-/**
- * Sixsmith Games - Home Page
- * Copyright (c) 2025 Sixsmith Games. All rights reserved.
- *
- * This source code is licensed under the terms found in the
- * LICENSE file in the root directory of this source tree.
- */
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import Image from 'next/image';
+
+import LastUpdated from '@/components/LastUpdated';
 import ModernBackground from '@/components/ModernBackground';
-import { actionRowClassName, cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
+import { buildPageMetadata } from '@/lib/metadata';
+import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { fluidGrid, pageGutter } from '@/lib/responsive';
 
-export default function Home() {
-  const freeProducts = [
-    {
-      name: 'Virtual Combat Simulator',
-      href: '/apps/virtual-combat-simulator',
-      icon: '/icons/vcs-optimized.png',
-      audience: 'Battle maps, initiative, and encounter control',
-      message: 'Your D&D combat control room: grid-snapped maps, live initiative, tokens, and sheets in one place so the fight keeps moving.',
-      button: 'Play Now',
-      accent: 'linear-gradient(135deg, #ef4444 0%, #f97316 100%)',
-    },
-    {
-      name: 'Four Star General',
-      href: '/apps/fourstargeneral',
-      icon: '/icons/fourstargeneral-optimized.png',
-      audience: 'WWII battles with tactics with tense missions',
-      message: 'Set your line, manage reserves, and fight through tense operational battles where clear rules make every decision hit harder.',
-      button: 'Play Now',
-      accent: 'linear-gradient(135deg, #d97706 0%, #f59e0b 100%)',
-    },
-    {
-      name: 'MasterTyping',
-      href: '/apps/mastertyping',
-      icon: '/icons/mastertyping-optimized.png',
-      audience: 'Typing battles with characters and power-ups',
-      message: 'Pick a character, blast incoming words, unlock wild abilities, and turn typing practice into something you actually want to play.',
-      button: 'Start Playing',
-      accent: 'linear-gradient(135deg, #16a34a 0%, #10b981 100%)',
-    },
-  ];
+export const dynamic = 'force-static';
 
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Sixsmith Games | Browser-Based Games and Tools for GMs, Writers, Strategy Players, and Typists',
+  description:
+    'Sixsmith Games makes browser-based tools and games for D&D combat management, worldbuilding, WWII tactical strategy, typing practice, and simultaneous-turn strategy.',
+  path: '/',
+});
+
+const featuredProducts = [
+  ...PRODUCT_DEFINITIONS.filter((product) => product.slug !== 'gravity'),
+  PRODUCT_DEFINITIONS.find((product) => product.slug === 'gravity')!,
+];
+
+export default function HomePage() {
   return (
-    <div>
-      {/* Hero Section */}
-      <section style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 35%, #312e81 70%, #7c2d12 100%)',
-        padding: '40px 0 48px',
-        position: 'relative',
-        overflow: 'hidden'
-      }}>
+    <div style={{ background: '#f8fafc' }}>
+      <section
+        style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 45%, #312e81 72%, #7c2d12 100%)',
+          color: 'white',
+          padding: '78px 0 72px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
         <ModernBackground />
-        <div style={{
-          position: 'absolute',
-          top: 0,
-          left: 0,
-          right: 0,
-          bottom: 0,
-          background: 'rgba(255, 255, 255, 0.05)',
-          backdropFilter: 'blur(100px)',
-          zIndex: 2
-        }} />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8" style={{position: 'relative', zIndex: 3}}>
-          <div className="text-center max-w-3xl mx-auto">
-            <h1 style={{
-              fontSize: 'clamp(2rem, 6vw, 3.8rem)',
-              fontWeight: '900',
-              marginBottom: '1rem',
-              color: 'white',
-              textShadow: '0 4px 20px rgba(0,0,0,0.3)',
-              lineHeight: '1.1'
-            }}>
-              Games and tools built for play
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.18)', zIndex: 1 }} />
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2 }}>
+          <div style={{ maxWidth: '820px' }}>
+            <div
+              style={{
+                display: 'inline-block',
+                marginBottom: '1rem',
+                padding: '0.45rem 0.95rem',
+                borderRadius: '999px',
+                background: 'rgba(255,255,255,0.12)',
+                border: '1px solid rgba(255,255,255,0.16)',
+                fontSize: '0.82rem',
+                fontWeight: 800,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Sixsmith Games
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4.2rem)', lineHeight: 1.05, fontWeight: 900, margin: '0 0 1rem' }}>
+              Browser-based games and tools for people who care how systems work.
             </h1>
-            <p style={{
-              fontSize: 'clamp(1rem, 2.2vw, 1.2rem)',
-              color: 'rgba(255, 255, 255, 0.95)',
-              marginBottom: '1.5rem',
-              fontWeight: '500',
-              textShadow: '0 2px 10px rgba(0,0,0,0.2)',
-              lineHeight: 1.5
-            }}>
-              Run cleaner D&D combats, command sharp battlefield tactics, build bigger worlds, and turn typing practice into an actual game.
+            <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
+              Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. The public site exists to make that lineup easy to understand for humans, search engines, and AI systems without flattening the audience for each product. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn pressure and ship-systems tradeoffs.
             </p>
-            <div className={actionRowClassName} style={{ justifyContent: 'center' }}>
-              <Link href="/start-here" className="hero-btn-primary">
-                Start Playing
+            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
+              The goal is not generic “gaming.” The goal is a set of browser-based products with clear audiences, clear use cases, and enough public context that someone can tell what each one is, who it is for, and where to go next without guessing.
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
+              <Link
+                href="/tools"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.95rem 1.45rem',
+                  borderRadius: '999px',
+                  background: 'white',
+                  color: '#1d4ed8',
+                  fontWeight: 800,
+                  textDecoration: 'none',
+                }}
+              >
+                Explore the full product lineup
               </Link>
-              <Link href="/apps/contentcraft" className="hero-btn-secondary">
-                See ContentCraft
+              <Link
+                href="/about/facts"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  padding: '0.95rem 1.45rem',
+                  borderRadius: '999px',
+                  background: 'rgba(255,255,255,0.12)',
+                  border: '1px solid rgba(255,255,255,0.18)',
+                  color: 'white',
+                  fontWeight: 800,
+                  textDecoration: 'none',
+                }}
+              >
+                Read the canonical facts page
               </Link>
             </div>
-            <div style={{marginTop: '1.5rem', display: 'flex', justifyContent: 'center'}}>
-              <Image
-                src="/icons/sixsmith-logo-optimized.png"
-                alt="Sixsmith Games"
-                width={160}
-                height={160}
-                sizes="(max-width: 640px) 128px, 160px"
-              />
-            </div>
+            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
         </div>
       </section>
 
-      {/* Product model strip */}
-      <section style={{ padding: '28px 0', background: 'white', borderBottom: '1px solid #e5e7eb' }}>
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('280px'), gap: '1.25rem' }}>
-            <div style={{ background: '#f8fafc', border: '1px solid #e5e7eb', borderRadius: '18px', padding: '1.5rem' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#2563eb', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                Jump into the action
-              </div>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem' }}>
-                {[
-                  { label: 'Virtual Combat Simulator', href: '/apps/virtual-combat-simulator' },
-                  { label: 'Four Star General', href: '/apps/fourstargeneral' },
-                  { label: 'MasterTyping', href: '/apps/mastertyping' },
-                ].map((item) => (
-                  <Link key={item.label} href={item.href} className={touchTargetClassName} style={{ background: 'white', border: '1px solid #dbeafe', color: '#1d4ed8', borderRadius: '999px', padding: '0.5rem 0.9rem', fontSize: '0.875rem', fontWeight: 700, textDecoration: 'none', display: 'inline-flex', alignItems: 'center' }}>
-                    {item.label}
-                  </Link>
-                ))}
-              </div>
-            </div>
-            <div style={{ background: '#111827', border: '1px solid #1f2937', borderRadius: '18px', padding: '1.5rem', color: 'white' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#c4b5fd', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.6rem' }}>
-                Build the world around the game
-              </div>
-              <Link href="/apps/contentcraft" className={touchTargetClassName} style={{ display: 'inline-flex', alignItems: 'center', background: 'rgba(255,255,255,0.08)', borderRadius: '999px', padding: '0.5rem 0.9rem', fontSize: '0.875rem', fontWeight: 700, color: 'white', textDecoration: 'none' }}>
-                ContentCraft
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Choose your path */}
-      <section id="apps" style={{padding: '80px 0', background: '#f8f9fa'}}>
-        <div style={{maxWidth: '1280px', margin: '0 auto', padding: `0 ${pageGutter}`}}>
-          <div style={{textAlign: 'center', marginBottom: '3rem'}}>
-            <h2 style={{
-              fontSize: 'clamp(1.8rem, 4vw, 2.6rem)',
-              fontWeight: '800',
-              color: '#1a202c',
-              marginBottom: '0.75rem'
-            }}>
-              Choose your path
-            </h2>
-            <p style={{
-              fontSize: 'clamp(0.98rem, 2vw, 1.1rem)',
-              color: '#4a5568',
-              maxWidth: '680px',
-              margin: '0 auto'
-            }}>
-              Whether you want cleaner encounters, tense tactics, or word-blasting practice, start with the one that sounds like your kind of fun.
-            </p>
-          </div>
-
-          <div style={{
-            display: 'grid',
-            gridTemplateColumns: fluidGrid('320px'),
-            gap: '2rem'
-          }}>
-            {freeProducts.map((product) => (
-              <article key={product.name} style={{ background: 'white', borderRadius: '24px', border: '1px solid #e5e7eb', boxShadow: '0 10px 24px rgba(15,23,42,0.05)', overflow: 'hidden' }}>
-                <div style={{ background: product.accent, padding: 'var(--card-padding)', color: 'white' }}>
-                  <div style={{ width: '72px', height: '72px', borderRadius: '18px', marginBottom: '1rem', overflow: 'hidden', background: 'rgba(255,255,255,0.16)' }}>
-                    <Image src={product.icon} alt={product.name} width={72} height={72} sizes="72px" style={{ objectFit: 'cover', width: '100%', height: '100%' }} />
-                  </div>
-                  <h3 style={{ fontSize: '1.55rem', fontWeight: '800', margin: '0 0 0.35rem' }}>
-                    <Link href={product.href} style={{ color: 'white', textDecoration: 'none' }}>
-                      {product.name}
-                    </Link>
-                  </h3>
-                  <p style={{ margin: 0, fontSize: '0.92rem', fontWeight: 700, color: 'rgba(255,255,255,0.88)' }}>{product.audience}</p>
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
+        <section style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>What Sixsmith Games builds</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('240px'), gap: '1rem' }}>
+            {featuredProducts.map((product) => (
+              <article
+                key={product.slug}
+                style={{
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '22px',
+                  padding: '1.15rem 1.2rem',
+                  boxShadow: '0 10px 28px rgba(15,23,42,0.05)',
+                }}
+              >
+                <div
+                  style={{
+                    display: 'inline-block',
+                    marginBottom: '0.7rem',
+                    padding: '0.3rem 0.7rem',
+                    borderRadius: '999px',
+                    background: product.theme.tint,
+                    border: `1px solid ${product.theme.lightBorder}`,
+                    color: product.theme.dark,
+                    fontSize: '0.78rem',
+                    fontWeight: 800,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {product.category}
                 </div>
-                <div style={{ padding: cardPadding }}>
-                  <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: '1.8', margin: '0 0 1.25rem' }}>{product.message}</p>
-                  <Link href={product.href} className={touchTargetClassName} style={{ padding: '0.9rem 1.35rem', borderRadius: '999px', background: '#111827', color: 'white', textDecoration: 'none', fontWeight: 700 }}>
-                    {product.button}
+                <h3 style={{ margin: '0 0 0.55rem', fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>
+                  <Link href={product.officialPath} style={{ color: '#0f172a', textDecoration: 'none' }}>
+                    {product.name}
+                  </Link>
+                </h3>
+                <p style={{ margin: '0 0 0.7rem', color: '#334155', lineHeight: 1.8 }}>{product.oneSentence}</p>
+                <p style={{ margin: '0 0 0.9rem', color: '#475569', lineHeight: 1.75 }}>
+                  <strong>Audience:</strong> {product.primaryAudience}.
+                </p>
+                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
+                  <Link href={product.officialPath} style={{ color: product.theme.accent, fontWeight: 800, textDecoration: 'none' }}>
+                    Visit the {product.name} product page
                   </Link>
                 </div>
               </article>
             ))}
           </div>
+        </section>
 
-          <div style={{ marginTop: '2rem', background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '28px', color: 'white', padding: cardPadding, boxShadow: '0 20px 50px rgba(76,29,149,0.22)' }}>
-            <div style={{ maxWidth: '860px' }}>
-              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Make something cool
-              </div>
-              <h3 style={{ fontSize: 'clamp(1.9rem, 4vw, 2.8rem)', fontWeight: 900, margin: '0 0 0.9rem' }}>ContentCraft</h3>
-              <p style={{ fontSize: '1.08rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
-                Stop bouncing between chat windows, notes, and half-finished wiki pages. ContentCraft helps you build NPCs, locations, lore, and encounters that actually remember each other.
+        <section style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How to choose the right product</h2>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Virtual Combat Simulator if you want faster tabletop RPG encounters.</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                Virtual Combat Simulator is the right fit when the real problem is battle-map clarity, initiative handling, tokens, hit points, and encounter flow. If you are a game master asking for a D&amp;D combat simulator rather than a giant catch-all platform, start with{' '}
+                <Link href="/apps/virtual-combat-simulator" style={{ color: '#1d4ed8', fontWeight: 700, textDecoration: 'underline' }}>
+                  the D&amp;D combat simulator product page
+                </Link>
+                .
               </p>
-              <Link href="/apps/contentcraft" className={touchTargetClassName} style={{ padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
-                See ContentCraft
-              </Link>
+            </div>
+            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose ContentCraft if you need worldbuilding, lore organization, and canon continuity.</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                ContentCraft is for writers, novelists, worldbuilders, and game masters who need a writing tool with structure. If your project needs lore organization, story organization, staged workflow, and a stable source of truth, start with{' '}
+                <Link href="/apps/contentcraft" style={{ color: '#7c3aed', fontWeight: 700, textDecoration: 'underline' }}>
+                  the worldbuilding app for writers and game masters
+                </Link>
+                .
+              </p>
+            </div>
+            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Four Star General if you want serious WWII tactical strategy.</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                Four Star General is for players who want deterministic tactics, battlefield pressure, supply, reserves, and mission profiles. If you care more about command decisions than spectacle, go to{' '}
+                <Link href="/apps/fourstargeneral" style={{ color: '#b45309', fontWeight: 700, textDecoration: 'underline' }}>
+                  the WWII tactical strategy game page
+                </Link>
+                .
+              </p>
+            </div>
+            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose MasterTyping if you want typing practice that still feels like a game.</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                MasterTyping is for people who want typing improvement, skill building, and practice consistency without a dead training loop. If you want a typing practice game with assessment, drills, progression, and better habit-building, use{' '}
+                <Link href="/apps/mastertyping" style={{ color: '#16a34a', fontWeight: 700, textDecoration: 'underline' }}>
+                  the typing practice game page
+                </Link>
+                .
+              </p>
+            </div>
+            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Gravity if you want simultaneous-turn tactical pressure.</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                Gravity is for strategy and board-game players who want a simultaneous-turn strategy game with ship systems management, locked orders, and clear resolution. If that sounds like your kind of rules pressure, start with{' '}
+                <Link href="/apps/gravity" style={{ color: '#0ea5e9', fontWeight: 700, textDecoration: 'underline' }}>
+                  the Gravity product page
+                </Link>
+                .
+              </p>
             </div>
           </div>
-        </div>
-      </section>
+        </section>
 
-      {/* Creator tools section */}
-      <section style={{ padding: '96px 0', background: 'white' }}>
-        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
-          <div style={{ maxWidth: '800px', marginBottom: '3rem' }}>
-            <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#4f46e5', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-              Game Master Suite
-            </div>
-            <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-              Run an encounter with one app while using the other to build the world around it...
-            </h2>
-            <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-              Virtual Combat Simulator keeps each encounter easy to manage when the tokens hit the table. ContentCraft helps you create the NPCs, places, factions, scenes, encounters, and lore that make the whole campaign feel alive.
-            </p>
-          </div>
-
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '1.75rem' }}>
-            <div style={{ background: 'linear-gradient(160deg, #1f2937, #111827)', borderRadius: '24px', padding: cardPadding, color: 'white' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#fca5a5', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Jump in fast
-              </div>
-              <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>Virtual Combat Simulator</h3>
-              <p style={{ color: '#d1d5db', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Stop losing momentum to “whose turn is it?”, combat chaos, and scattered notes. Put the map, initiative, stats, monsters and players where you can actually use them.
-              </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
-                {['Grid-snapped battle maps with zoom and token control', 'Initiative, turns, HP, and characters together on one screen', 'Built for online or hybrid tables that want the fight to flow'].map((item) => (
-                  <li key={item} style={{ color: '#e5e7eb', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                    <span style={{ color: '#f87171' }}>●</span>{item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/apps/virtual-combat-simulator" className={touchTargetClassName} style={{ color: '#fca5a5', fontWeight: 700, textDecoration: 'none' }}>Start Playing →</Link>
-            </div>
-
-            <div style={{ background: 'linear-gradient(160deg, #312e81, #4c1d95)', borderRadius: '24px', padding: cardPadding, color: 'white' }}>
-              <div style={{ fontSize: '0.8rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Build bigger worlds
-              </div>
-              <h3 style={{ fontSize: '1.7rem', fontWeight: '800', margin: '0 0 0.9rem' }}>ContentCraft</h3>
-              <p style={{ color: '#ddd6fe', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Think of it as the writer’s room for your campaign or next novel. Generate content for the next chapter of your book or next D&D game session or build an entire universe. Keep your canon organized, and stop rebuilding the same world details from scratch.
-              </p>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.25rem', display: 'grid', gap: '0.55rem' }}>
-                {['Generate NPCs, locations, lore, and encounters that fit together', 'Canon management catches contradictions before your readers or your players do', 'Relationship mapping helps your world feel connected instead of random'].map((item) => (
-                  <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                    <span style={{ color: '#c4b5fd' }}>●</span>{item}
-                  </li>
-                ))}
-              </ul>
-              <Link href="/apps/contentcraft" className={touchTargetClassName} style={{ color: '#ddd6fe', fontWeight: 700, textDecoration: 'none' }}>See ContentCraft →</Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Four Star General feature section */}
-      <section style={{ padding: '96px 0', background: '#f8fafc' }}>
-        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '2rem', alignItems: 'start' }}>
-            <div>
-              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#b45309', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Strategy and Tactics | WWII
-              </div>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-                Four Star General is about planning and tactics in the WWII theatre
-              </h2>
-              <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                This is for players who love the moment when their tactical positioning pays off. You deploy, manage resources, protect supply lines, call in air support, and command your forces to win battles.
-              </p>
-              <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                Mission objectives, resource management, and tactical counters to enemy advancement are critical. Hold river crossings, defend towns, take key positions, remove enemy strongholds, use terrain to your advantage, and coordinating your forces gives each battle that satisfying “one more turn”.
-              </p>
-            </div>
-
-            <div style={{ background: 'white', borderRadius: '24px', border: '1px solid #e5e7eb', padding: cardPadding, boxShadow: '0 10px 24px rgba(15,23,42,0.05)' }}>
-              <h3 style={{ fontSize: '1.4rem', fontWeight: '800', color: '#111827', margin: '0 0 1rem' }}>Game Play with Tactical Depth</h3>
-              <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'grid', gap: '0.85rem' }}>
-                {[
-                  'Choose your forces and supplies, then deploy them strategically',
-                  'Position your forces, command them to hold objectives or engage the enemy',
-                  'Manage resources smartly and protect supply lines',
-                  'Use reconnaissance to gather intelligence and use counter-intelligence to divert the enemy attention',
-                  'Use terrain and line of sight to your advantage to create tactical opportunities',
-                ].map((item) => (
-                  <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.75rem', color: '#374151' }}>
-                    <span style={{ color: '#d97706' }}>●</span>
-                    <span>{item}</span>
-                  </li>
-                ))}
-              </ul>
-              <Link href="/apps/fourstargeneral" className={touchTargetClassName} style={{ marginTop: '1.4rem', color: '#b45309', fontWeight: 700, textDecoration: 'none' }}>
-                See Four Star General →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* MasterTyping feature section */}
-      <section style={{ padding: '96px 0', background: 'white' }}>
-        <div style={{ maxWidth: '1180px', margin: '0 auto', padding: `0 ${pageGutter}` }}>
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '2rem', alignItems: 'start' }}>
-            <div>
-              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#059669', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Typing for real digital life
-              </div>
-              <h2 style={{ fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', color: '#111827', margin: '0 0 1rem', lineHeight: 1.15 }}>
-                MasterTyping is for anyone who wants to improve their typing skills and have fun doing it
-              </h2>
-              <p style={{ fontSize: '1.06rem', color: '#4b5563', lineHeight: 1.8, margin: '0 0 1rem' }}>
-                Most typing apps get boring, fast. MasterTyping goes the other direction: characters, projectiles, powers, combo streaks, and a constant stream of words to blast before they hit you.
-              </p>
-              <p style={{ fontSize: '1rem', color: '#4b5563', lineHeight: 1.8, margin: 0 }}>
-                Under the hood it is still useful practice, but on the surface it feels a lot more like an arcade challenge than a worksheet.
-              </p>
-            </div>
-
-            <div style={{ display: 'grid', gap: '1rem' }}>
-              {[
-                'Assessment and practice modes help you sharpen speed and accuracy',
-                'Game mode lets you defeat words, collect coins, and unlock characters with their own powers and play styles',
-                'Helps you sharpen your skills, speed up, and improve accuracy',
-                'Difficulty levels and vocabulary tiers make this accessible to everyone while still challenging you to keep climbing',
-              ].map((item) => (
-                <div key={item} style={{ background: '#f0fdf4', border: '1px solid #bbf7d0', borderRadius: '18px', padding: '1.2rem 1.25rem', color: '#166534' }}>
-                  {item}
-                </div>
-              ))}
-              <Link href="/apps/mastertyping" className={touchTargetClassName} style={{ marginTop: '0.4rem', color: '#059669', fontWeight: 700, textDecoration: 'none' }}>
-                Start Playing →
-              </Link>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Final CTA */}
-      <section style={{
-        padding: '120px 0',
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e1b4b 50%, #312e81 100%)',
-        position: 'relative',
-        overflow: 'hidden',
-      }}>
-        <div style={{
-          position: 'absolute', inset: 0,
-          background: 'radial-gradient(ellipse at 30% 50%, rgba(99,102,241,0.15), transparent 60%), radial-gradient(ellipse at 70% 50%, rgba(168,85,247,0.1), transparent 60%)',
-        }} />
-        <div style={{
-          maxWidth: '800px', margin: '0 auto', padding: `0 ${pageGutter}`,
-          textAlign: 'center', position: 'relative', zIndex: 1,
-        }}>
-          <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '1rem' }}>
-            The lineup
+        <section style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Public information that stays explicit</h2>
+          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
+            The public pages on sixsmithgames.com are meant to answer the questions a human visitor, a search engine, or an AI assistant is most likely to ask. What is the product? Who is the product for? What problem does the product solve? How does the product work? What does pricing look like? Where is the official help or support path? Those answers should be visible in crawlable HTML on the product pages themselves, not hidden behind JavaScript-only tabs or locked in a downloadable file.
           </p>
-          <h2 style={{
-            fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900',
-            color: 'white', marginBottom: '1.25rem', lineHeight: 1.2,
-          }}>
-            Build the world. Run the encounter. Win the battle.
-          </h2>
-          <p style={{
-            fontSize: '1.125rem', color: '#94a3b8',
-            marginBottom: '2.5rem', lineHeight: 1.7, maxWidth: '580px', margin: '0 auto 2.5rem',
-          }}>
-            If you like role playing games, tactical game play, and game systems that make sense, you are in the right place.
+          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
+            That is why the site now links directly to the product pages, the pricing page, the blog, the help pages, the support page, and the canonical facts page. The goal is clarity, not keyword stuffing. The site should attract the right users by being direct about what each product actually does and who each product actually serves.
           </p>
-          <div className={actionRowClassName} style={{ justifyContent: 'center' }}>
-            <Link href="/start-here" className="cta-primary">
-              Start Playing
+          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
+            <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
+              View the pricing page
             </Link>
-            <Link href="/tools" className="cta-secondary">
-              Explore the lineup
+            <Link href="/help" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
+              Browse product help
+            </Link>
+            <Link href="/blog" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
+              Read the blog
+            </Link>
+            <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
+              Visit support
             </Link>
           </div>
-        </div>
-      </section>
+        </section>
+      </main>
     </div>
   );
 }

@@ -3,34 +3,53 @@ import { NextResponse } from 'next/server';
 
 import { SITE_HOSTNAME } from '@/lib/site';
 
-// Define which routes require authentication
-// Currently all routes are public - add protected routes here as needed
-const isPublicRoute = createRouteMatcher([
-  '/',
-  '/pricing(.*)',
-  '/tools(.*)',
-  '/start-here(.*)',
-  '/about(.*)',
-  '/apps(.*)',
-  '/blog(.*)',
-  '/checkout(.*)',
-  '/sign-in(.*)',
-  '/sign-up(.*)',
-  '/api(.*)',
-  '/privacy(.*)',
-  '/terms(.*)',
-  '/robots.txt',
-  '/sitemap.xml',
-]);
+const LEGACY_REDIRECTS: Record<string, string> = {
+  '/facts': '/about/facts',
+  '/contact': '/support',
+  '/apps/vcs': '/apps/virtual-combat-simulator',
+  '/apps/virtualcombatsimulator': '/apps/virtual-combat-simulator',
+  '/apps/fsg': '/apps/fourstargeneral',
+  '/apps/four-star-general': '/apps/fourstargeneral',
+};
+
+const isProtectedRoute = createRouteMatcher(['/account(.*)']);
+
+function slugifyTag(tag: string) {
+  return tag
+    .normalize('NFKD')
+    .replace(/[^\p{L}\p{N}\s-]/gu, '')
+    .trim()
+    .toLowerCase()
+    .replace(/[\s_-]+/g, '-')
+    .replace(/-+/g, '-');
+}
 
 export default clerkMiddleware(async (auth, request) => {
   const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
+  const legacyDestination = LEGACY_REDIRECTS[request.nextUrl.pathname];
+
+  if (legacyDestination) {
+    const url = request.nextUrl.clone();
+    url.pathname = legacyDestination;
+    url.search = request.nextUrl.search;
+    return NextResponse.redirect(url, 301);
+  }
+
+  if (request.nextUrl.pathname.startsWith('/blog/tag/')) {
+    const rawTag = decodeURIComponent(request.nextUrl.pathname.replace('/blog/tag/', ''));
+    const canonicalTagPath = `/blog/tag/${slugifyTag(rawTag)}`;
+    if (rawTag && canonicalTagPath !== request.nextUrl.pathname) {
+      const url = request.nextUrl.clone();
+      url.pathname = canonicalTagPath;
+      return NextResponse.redirect(url, 301);
+    }
+  }
 
   if (process.env.NODE_ENV === 'production' && host === `www.${SITE_HOSTNAME}`) {
     const url = request.nextUrl.clone();
     url.host = SITE_HOSTNAME;
     url.protocol = 'https';
-    return NextResponse.redirect(url, 308);
+    return NextResponse.redirect(url, 301);
   }
 
   // In dev, rewrite origin to match x-forwarded-host so Next.js 16's
@@ -43,14 +62,14 @@ export default clerkMiddleware(async (auth, request) => {
       const headers = new Headers(request.headers);
       headers.set('origin', `${proto}://${forwardedHost}`);
       const rewritten = NextResponse.next({ request: { headers } });
-      if (!isPublicRoute(request)) {
+      if (isProtectedRoute(request)) {
         await auth.protect();
       }
       return rewritten;
     }
   }
 
-  if (!isPublicRoute(request)) {
+  if (isProtectedRoute(request)) {
     await auth.protect();
   }
 });

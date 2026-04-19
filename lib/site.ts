@@ -2,7 +2,7 @@ export const SITE_NAME = 'Sixsmith Games';
 export const SITE_URL = 'https://sixsmithgames.com';
 export const SITE_HOSTNAME = 'sixsmithgames.com';
 export const SITE_DESCRIPTION =
-  'Sixsmith Games builds thoughtful games and creative tools for GMs, worldbuilders, writers, strategy players, and people who spend real time at a keyboard or just want to improve their typing.';
+  'Sixsmith Games builds browser-based games and creative tools for game masters, worldbuilders, writers, strategy players, and people who want practical typing improvement.';
 
 export const DEFAULT_OG_IMAGE = {
   url: '/apple-icon.png',

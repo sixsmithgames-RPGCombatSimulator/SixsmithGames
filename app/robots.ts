@@ -10,11 +10,18 @@ import { SITE_URL } from '@/lib/site';
  */
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: {
-      userAgent: '*',
-      allow: '/',
-      disallow: ['/account', '/api', '/checkout', '/sign-in', '/sign-up'],
-    },
+    rules: [
+      {
+        userAgent: '*',
+        allow: '/',
+        disallow: ['/account', '/api', '/checkout', '/sign-in', '/sign-up'],
+      },
+      {
+        userAgent: ['OAI-SearchBot', 'GPTBot', 'ClaudeBot', 'Claude-User'],
+        allow: ['/', '/blog', '/help', '/about', '/support', '/apps', '/pricing', '/privacy', '/terms'],
+        disallow: ['/account', '/api', '/checkout', '/sign-in', '/sign-up'],
+      },
+    ],
     sitemap: `${SITE_URL}/sitemap.xml`,
     host: SITE_URL,
   };

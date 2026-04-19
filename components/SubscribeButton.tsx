@@ -7,6 +7,7 @@
 
 import { useState, useEffect } from 'react';
 import { useUser, SignInButton } from '@clerk/nextjs';
+import { trackMarketingEvent } from '@/lib/analytics';
 import { APP_URLS, canAccessApp, getActivePlans, isAppSlug, type AppSlug } from '@/lib/subscription';
 import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 
@@ -16,6 +17,10 @@ interface SubscribeButtonProps {
   children: React.ReactNode;
   planId?: string;
   signInLabel?: string;
+  /**
+   * When true, keep the button visible for users who already have access and
+   * turn it into an "Open App" link. Otherwise hide it once access exists.
+   */
   allowAccessRedirect?: boolean;
   /**
    * When true, hide the button entirely for anonymous users.
@@ -30,7 +35,7 @@ export default function SubscribeButton({
   style,
   children,
   planId,
-  allowAccessRedirect = true,
+  allowAccessRedirect = false,
   hideForAnonymous = false,
 }: SubscribeButtonProps) {
   const [mounted, setMounted] = useState(false);
@@ -49,9 +54,11 @@ export default function SubscribeButton({
     'contentcraft',
     'virtual-combat-simulator',
     'fourstargeneral',
+    'gravity',
     'mastertyping',
   ]);
-  const isAppPlanId = Boolean(planId) && isAppSlug(planId) && appPlanIds.has(planId);
+  const appPlanId = planId && isAppSlug(planId) ? planId : null;
+  const isAppPlanId = appPlanId !== null && appPlanIds.has(appPlanId);
   const checkoutUrl = `/checkout?planId=${encodeURIComponent(planId || 'bundle')}`;
 
   /**
@@ -70,6 +77,10 @@ export default function SubscribeButton({
 
   const handleClick = () => {
     setLoading(true);
+    trackMarketingEvent('product_subscribe_click', {
+      product_slug: planId || 'bundle',
+      destination_type: 'checkout',
+    });
     window.location.href = checkoutUrl;
   };
 
@@ -78,6 +89,12 @@ export default function SubscribeButton({
       <a
         href={resolveInitialHref(planId)}
         className={className}
+        onClick={() => {
+          trackMarketingEvent('product_pricing_click', {
+            product_slug: planId || 'bundle',
+            destination_type: planId ? 'checkout' : 'pricing',
+          });
+        }}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
         {children || 'View pricing'}
@@ -94,7 +111,16 @@ export default function SubscribeButton({
         signUpForceRedirectUrl={checkoutUrl}
         signUpFallbackRedirectUrl={checkoutUrl}
       >
-        <button className={className} style={style}>
+        <button
+          className={className}
+          style={style}
+          onClick={() => {
+            trackMarketingEvent('product_sign_in_prompt_click', {
+              product_slug: planId || 'bundle',
+              destination_type: 'sign_in',
+            });
+          }}
+        >
           {children}
         </button>
       </SignInButton>
@@ -104,13 +130,13 @@ export default function SubscribeButton({
   const activePlans = getActivePlans(user?.publicMetadata);
   const metadataCanAccessThisApp = planId === 'bundle'
     ? activePlans.includes('bundle')
-    : isAppPlanId
-      ? canAccessApp(planId, user?.publicMetadata)
+    : appPlanId && isAppPlanId
+      ? canAccessApp(appPlanId, user?.publicMetadata)
       : false;
   const serverCanAccessThisApp = planId === 'bundle'
     ? Boolean(accessInfo?.plans.includes('bundle') || accessInfo?.isAdmin)
-    : isAppPlanId
-      ? Boolean(accessInfo?.accessibleApps.includes(planId))
+    : appPlanId && isAppPlanId
+      ? Boolean(accessInfo?.accessibleApps.includes(appPlanId))
       : false;
   const canAccessThisApp = metadataCanAccessThisApp || serverCanAccessThisApp;
 
@@ -134,12 +160,22 @@ export default function SubscribeButton({
         href={appUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          trackMarketingEvent('product_launch_click', {
+            product_slug: planId || 'bundle',
+            destination_type: 'app',
+          });
+        }}
         className={className}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
         Open App
       </a>
     );
+  }
+
+  if (canAccessThisApp) {
+    return null;
   }
 
   return (

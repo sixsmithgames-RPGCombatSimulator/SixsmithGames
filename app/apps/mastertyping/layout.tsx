@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react';
 
 import { buildPageMetadata } from '@/lib/metadata';
+import { masterTypingProductDefinition } from './marketing';
+
+const product = masterTypingProductDefinition;
 
 export const metadata = buildPageMetadata({
-  title: 'MasterTyping — Typing Training That Feels Like a Game | Sixsmith Games',
-  description:
-    'MasterTyping combines assessments, drills, and arcade-style game play to help you build typing speed and accuracy.',
-  path: '/apps/mastertyping',
+  title: product.title,
+  description: product.metaDescription,
+  path: product.officialPath,
 });
 
 export default function MasterTypingLayout({ children }: { children: ReactNode }) {

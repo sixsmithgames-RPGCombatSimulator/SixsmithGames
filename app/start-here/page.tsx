@@ -1,12 +1,16 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
+import LastUpdated from '@/components/LastUpdated';
+import { buildPageMetadata } from '@/lib/metadata';
+import { MARKETING_LAST_UPDATED } from '@/lib/productContent';
 import { cardPadding, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
-export const metadata: Metadata = {
-  title: 'Start Here | Sixsmith Games',
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Start Here | Choose the Right Sixsmith Games Product',
   description:
-    'Choose the Sixsmith Games starting point that fits what you want to do: run encounters, build creative projects, play a strategy game, or type faster and better.',
-};
+    'Choose the Sixsmith Games product that fits your goal: D&D combat management, worldbuilding, WWII strategy, typing practice, or simultaneous-turn tactics.',
+  path: '/start-here',
+});
 
 const paths = [
   {
@@ -37,6 +41,13 @@ const paths = [
     button: 'Go to MasterTyping',
     accent: '#16a34a',
   },
+  {
+    title: 'I want simultaneous-turn strategy',
+    href: '/apps/gravity',
+    description: 'Use Gravity for ship-systems strategy, locked orders, and simultaneous-turn tactical pressure.',
+    button: 'Go to Gravity',
+    accent: '#0ea5e9',
+  },
 ];
 
 export default function StartHerePage() {
@@ -66,6 +77,9 @@ export default function StartHerePage() {
           <p style={{ fontSize: '1.08rem', lineHeight: 1.8, color: '#4b5563', maxWidth: '760px', margin: 0 }}>
             Sixsmith Games makes tools and games for people who run campaigns, build creative projects, care about strategy, or spend real time at a keyboard. Start with the practical path that matches your use case.
           </p>
+          <div style={{ marginTop: '1rem' }}>
+            <LastUpdated date={MARKETING_LAST_UPDATED} />
+          </div>
         </div>
       </section>
 

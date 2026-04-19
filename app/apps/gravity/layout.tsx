@@ -1,12 +1,14 @@
 import type { ReactNode } from 'react';
 
 import { buildPageMetadata } from '@/lib/metadata';
+import { gravityProductDefinition } from './marketing';
+
+const product = gravityProductDefinition;
 
 export const metadata = buildPageMetadata({
-  title: 'Gravity — Fleet Tactics and Ship Systems Command | Sixsmith Games',
-  description:
-    'Gravity is a tactical space command game focused on simultaneous turns, ship systems management, and high-pressure battlefield decisions.',
-  path: '/apps/gravity',
+  title: product.title,
+  description: product.metaDescription,
+  path: product.officialPath,
 });
 
 export default function GravityLayout({ children }: { children: ReactNode }) {

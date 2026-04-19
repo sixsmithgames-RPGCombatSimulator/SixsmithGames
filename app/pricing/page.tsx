@@ -1,319 +1,240 @@
-/**
- * Sixsmith Games - Pricing Page
- * Copyright (c) 2025 Sixsmith Games. All rights reserved.
- */
-
-'use client';
-
-import Image from 'next/image';
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import SubscribeButton from '@/components/SubscribeButton';
+
+import LastUpdated from '@/components/LastUpdated';
+import LaunchAppButton from '@/components/LaunchAppButton';
 import ModernBackground from '@/components/ModernBackground';
-import { actionRowClassName, cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
+import StructuredDataScript from '@/components/StructuredDataScript';
+import SubscribeButton from '@/components/SubscribeButton';
+import { buildPageMetadata } from '@/lib/metadata';
+import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { fluidGrid, pageGutter } from '@/lib/responsive';
+import { createFaqSchema } from '@/lib/schema';
 
-const freeToStartProducts = [
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Pricing | Sixsmith Games Products, Access Models, and Plans',
+  description:
+    'Compare pricing and access across Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
+  path: '/pricing',
+});
+
+const pricingFaq = [
   {
-    slug: 'virtual-combat-simulator',
-    planId: 'virtual-combat-simulator',
-    name: 'Virtual Combat Simulator',
-    icon: '/icons/vcs-optimized.png',
-    color: '#2563eb',
-    gradient: 'linear-gradient(135deg, #1d4ed8, #06b6d4)',
-    monthlyPrice: 9.99,
-    description: 'A D&D virtual tabletop for maps, tokens, initiative, and encounter play.',
-    freeIncludes: ['Useful encounter tools right away', 'Battle maps, tokens, and initiative tracking', 'Player access and shared table state'],
-    paidIncludes: ['More storage for assets and sessions', 'Expanded Game Master capability'],
-    cta: 'Play now',
+    question: 'Which Sixsmith Games product requires a subscription from the start?',
+    answer:
+      'ContentCraft is the product positioned as a subscription-first creative workspace. The public pricing page lists ContentCraft at $9.99 per month or $99 per year.',
   },
   {
-    slug: 'fourstargeneral',
-    planId: 'fourstargeneral',
-    name: 'Four Star General',
-    icon: '/icons/fourstargeneral-optimized.png',
-    color: '#b45309',
-    gradient: 'linear-gradient(135deg, #b45309, #f59e0b)',
-    monthlyPrice: 1.99,
-    description: 'Play now. Optional content upgrades enhance your game without changing balance.',
-    freeIncludes: ['Tactical core of WWII units', 'Core scenarios and content', 'Balanced and accurate gameplay foundation'],
-    paidIncludes: ['More units, weapons, and scenarios', 'Campaign mode'],
-    cta: 'Play now',
+    question: 'Which Sixsmith Games products are free to start?',
+    answer:
+      'Virtual Combat Simulator, Four Star General, and MasterTyping are all described as free to start, with optional paid layers or unlocks for people who want more capability, more content, or more retained history.',
   },
   {
-    slug: 'mastertyping',
-    planId: 'mastertyping',
-    name: 'MasterTyping',
-    icon: '/icons/mastertyping-optimized.png',
-    color: '#16a34a',
-    gradient: 'linear-gradient(135deg, #16a34a, #10b981)',
-    monthlyPrice: 1.99,
-    description: 'Start now. Track progress, history is retained for 30 days.',
-    freeIncludes: ['Assess your skills', 'Practice like a Pro', 'Have fun in Game mode'],
-    paidIncludes: ['Retain all history'],
-    cta: 'Play now',
+    question: 'Does Gravity have a public price listed right now?',
+    answer:
+      'No. Gravity has a public marketing page and an official app link, but the pricing page does not currently list a separate paid plan for Gravity.',
+  },
+  {
+    question: 'Is there a bundle for Game Masters who want both writing and encounter tools?',
+    answer:
+      'Yes. The pricing model includes a bundle that combines ContentCraft and Virtual Combat Simulator for Game Masters who want both campaign-building and encounter-running tools.',
+  },
+  {
+    question: 'How should I choose the right Sixsmith Games product?',
+    answer:
+      'Choose the product by the problem you need solved. Use Virtual Combat Simulator for D&D combat management, ContentCraft for canon continuity and worldbuilding, Four Star General for WWII tactical strategy, MasterTyping for typing improvement, and Gravity for simultaneous-turn strategy.',
   },
 ];
 
-const premiumProduct = {
-  slug: 'contentcraft',
-  name: 'ContentCraft',
-  icon: '/icons/contentcraft-optimized.png',
-  color: '#7c3aed',
-  gradient: 'linear-gradient(135deg, #7c3aed, #ec4899)',
-  monthlyPrice: 9.99,
-  yearlyPrice: 99,
-  description:
-    'Creative platform for writers, worldbuilders, and game masters. Track your story, characters, and locations. Build a library of canon to keep your content organized. Includes some built-in AI usage if you want to use that. For those that want to use more AI, bring your own or purchase credits.',
-  includes: [
-    'Great organizational app for your creative work',
-    'Craft characters and scenes',
-    'Build locations and items',
-    'Plan story arcs based on your canon',
-    'Designed for writers and game masters',
-  ],
-};
-
-const bundleProduct = {
-  slug: 'bundle',
-  name: 'ContentCraft + VCS',
-  color: '#312e81',
-  gradient: 'linear-gradient(135deg, #0f172a 0%, #312e81 100%)',
-  monthlyPrice: 14.99,
-  description:
-    'Use ContentCraft to organize your campaign world and create rich NPCs and deadly monsters. Then import those into Virtual Combat Simulator and run the combats. It is a great option for game masters who want both the creative side and the table side together in one package.',
-  includes: [
-    'ContentCraft subscription included',
-    'Virtual Combat Simulator Game Master plan included',
-    'Story, character, NPC, Monster, and location creation',
-    'Import your creations into the battle',
-    'Run your campaigns and encounters easily with the power of both tools',
-  ],
-};
-
-const comparisonRows = [
-  {
-    product: 'Virtual Combat Simulator',
-    howYouEnter: 'Play now',
-    freeIncludes: 'Core encounter control, shared play, and Game Master support',
-    paidIncludes: 'More features, more storage, and support',
-  },
-  {
-    product: 'Four Star General',
-    howYouEnter: 'Play now',
-    freeIncludes: 'Playable tactical WWII missions',
-    paidIncludes: 'Optional content that adds variety and expands the game',
-  },
-  {
-    product: 'MasterTyping',
-    howYouEnter: 'Play now',
-    freeIncludes: 'Assessment, drills, focused practice, and game-supported repetition',
-    paidIncludes: 'Free product with recent progress history',
-  },
-  {
-    product: 'ContentCraft',
-    howYouEnter: 'Subscribe',
-    freeIncludes: 'No free tier',
-    paidIncludes: 'Premium subscription with some AI usage included and extra credits available',
-  },
-];
+function formatPrice(value?: number) {
+  return typeof value === 'number' ? `$${value.toFixed(2)}/month` : 'See page for details';
+}
 
 export default function PricingPage() {
-  const check = (color: string) => (
-    <svg style={{ width: '18px', height: '18px', flexShrink: 0, marginTop: '2px' }} fill="none" stroke={color} viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M5 13l4 4L19 7" />
-    </svg>
-  );
-
   return (
-    <div style={{ background: '#f8f9fa' }}>
-      {/* Hero */}
-      <section style={{ background: 'linear-gradient(135deg, #667eea 0%, #764ba2 50%, #f093fb 100%)', padding: '80px 0', position: 'relative', overflow: 'hidden' }}>
+    <div style={{ background: '#f8fafc' }}>
+      <StructuredDataScript data={createFaqSchema(pricingFaq)} />
+
+      <section
+        style={{
+          background: 'linear-gradient(135deg, #0f172a 0%, #1d4ed8 45%, #7c3aed 100%)',
+          color: 'white',
+          padding: '78px 0 72px',
+          position: 'relative',
+          overflow: 'hidden',
+        }}
+      >
         <ModernBackground />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(0,0,0,0.15)', zIndex: 1 }} />
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2, textAlign: 'center' }}>
-          <h1 style={{ fontSize: 'clamp(2.5rem, 7vw, 4rem)', fontWeight: '900', color: 'white', marginBottom: '1rem', textShadow: '0 4px 20px rgba(0,0,0,0.3)' }}>
-            Games to play. Content to create.
-          </h1>
-          <p style={{ fontSize: 'clamp(1.1rem, 2.5vw, 1.375rem)', color: 'rgba(255,255,255,0.92)', margin: 0 }}>
-            There are games to play and tools to use. The goal is simple: make your games easier to play and focus on the fun.
-          </p>
+        <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.14)', zIndex: 1 }} />
+        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2 }}>
+          <div style={{ maxWidth: '860px' }}>
+            <div
+              style={{
+                display: 'inline-block',
+                marginBottom: '1rem',
+                padding: '0.45rem 0.95rem',
+                borderRadius: '999px',
+                background: 'rgba(255,255,255,0.12)',
+                border: '1px solid rgba(255,255,255,0.16)',
+                fontSize: '0.82rem',
+                fontWeight: 800,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Pricing and access
+            </div>
+            <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4rem)', lineHeight: 1.06, fontWeight: 900, margin: '0 0 1rem' }}>
+              Clear access models for each Sixsmith Games product.
+            </h1>
+            <p style={{ fontSize: '1.12rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
+              The pricing page is here to answer the practical questions quickly: which products are free to start, which products have optional paid layers, which product is subscription-first, and what path makes sense for a user who already knows what kind of work or play they want to do.
+            </p>
+            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
+              Pricing should reinforce audience fit rather than blur it. Virtual Combat Simulator is a D&amp;D combat simulator. ContentCraft is a premium writing and worldbuilding workspace. Four Star General is a serious WWII tactical strategy game. MasterTyping is a typing practice game with a practical improvement loop. Gravity is a simultaneous-turn strategy game whose public access note is visible even though it does not currently list a separate paid tier.
+            </p>
+            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
+          </div>
         </div>
       </section>
 
-      {/* Play now */}
-      <section style={{ padding: `60px ${pageGutter} 40px`, maxWidth: '1200px', margin: '0 auto' }}>
-        <h2 style={{ textAlign: 'center', fontSize: 'clamp(1.6rem, 3vw, 2.2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
-          Play now
-        </h2>
-        <p style={{ textAlign: 'center', color: '#6b7280', fontSize: '1.0625rem', marginBottom: '2.5rem' }}>
-          Looking for a Virtual Table Top to gather your friends around? Virtual Combat Simulator makes combat easy. Want to jump into a strategy game? Become a Four Star General and lead your forces to victory! Keyboards slowing you down? Give the video game mode in MasterTyping a try.
-        </p>
-        <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('300px'), gap: '1.5rem' }}>
-          {freeToStartProducts.map((product) => (
-            <article key={product.slug} style={{ background: 'white', borderRadius: '20px', boxShadow: '0 4px 20px rgba(0,0,0,0.08)', overflow: 'hidden', display: 'flex', flexDirection: 'column', border: '1px solid #f3f4f6' }}>
-              <div style={{ background: product.gradient, padding: cardPadding }}>
-                <Link href={`/apps/${product.slug}`} aria-label={product.name} style={{ textDecoration: 'none', color: 'inherit' }}>
-                  <div style={{ width: '56px', height: '56px', borderRadius: '12px', overflow: 'hidden', marginBottom: '0.75rem', background: 'rgba(255,255,255,0.15)' }}>
-                    <Image src={product.icon} alt="" aria-hidden="true" width={56} height={56} sizes="56px" style={{ objectFit: 'cover' }} />
+      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How the lineup is priced</h2>
+          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
+            Sixsmith Games does not use one access model for everything. ContentCraft is premium because it is the subscription-first creative workspace. Virtual Combat Simulator, Four Star General, and MasterTyping are intentionally easier to start because the public pitch is “learn the workflow first, then decide whether the paid layer matters for how often you use it.” Gravity is currently an access-note case rather than a listed standalone plan.
+          </p>
+          <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
+            That means the right first click is usually the product page. The pricing page is here to compare those models cleanly, not to replace the audience-focused explanation on the product pages themselves.
+          </p>
+        </section>
+
+        <section style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Plans and access by product</h2>
+          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
+            {PRODUCT_DEFINITIONS.map((product) => (
+              <article
+                key={product.slug}
+                id={product.slug}
+                style={{
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '22px',
+                  overflow: 'hidden',
+                  boxShadow: '0 12px 30px rgba(15,23,42,0.05)',
+                }}
+              >
+                <div style={{ background: product.theme.gradient, color: 'white', padding: '1rem 1.1rem' }}>
+                  <div style={{ fontSize: '0.8rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.9 }}>
+                    {product.category}
                   </div>
-                  <h3 style={{ color: 'white', fontSize: '1.25rem', fontWeight: '800', margin: '0 0 0.375rem' }}>{product.name}</h3>
-                </Link>
-                <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '0.9rem', margin: 0, lineHeight: 1.5 }}>{product.description}</p>
-              </div>
-              <div style={{ padding: cardPadding, display: 'flex', flexDirection: 'column', gap: '1rem', flex: 1 }}>
-                <div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#111827', marginBottom: '0.625rem' }}>What free includes</div>
-                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    {product.freeIncludes.map((item) => (
-                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9rem', color: '#374151' }}>
-                        {check(product.color)}
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  <h3 style={{ margin: '0.45rem 0 0.3rem', fontSize: '1.3rem', fontWeight: 800 }}>{product.name}</h3>
+                  <p style={{ margin: 0, lineHeight: 1.7, color: 'rgba(255,255,255,0.88)' }}>{product.primaryAudience}</p>
                 </div>
-                <Link href={`/apps/${product.slug}`} className={touchTargetClassName} style={{ background: product.gradient, color: 'white', padding: '0.875rem 1.5rem', borderRadius: '12px', fontSize: '1rem', fontWeight: '700', textDecoration: 'none', textAlign: 'center', boxShadow: '0 4px 14px rgba(0,0,0,0.18)', width: '100%' }}>
-                  Play now
-                </Link>
-                <div>
-                  <div style={{ fontSize: '0.95rem', fontWeight: 900, color: '#111827', marginBottom: '0.625rem' }}>What paid adds</div>
-                  <ul style={{ listStyle: 'none', margin: 0, padding: 0, display: 'flex', flexDirection: 'column', gap: '0.5rem' }}>
-                    {product.paidIncludes.map((item) => (
-                      <li key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: '0.625rem', fontSize: '0.9rem', color: '#374151' }}>
-                        {check(product.color)}
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                <div style={{ padding: '1.1rem 1.15rem' }}>
+                  <p style={{ margin: '0 0 0.7rem', color: '#0f172a', fontSize: '1.2rem', fontWeight: 900 }}>
+                    {product.offerPrice ? formatPrice(product.offerPrice) : 'Public price not listed'}
+                  </p>
+                  <p style={{ margin: '0 0 0.8rem', color: '#334155', lineHeight: 1.8 }}>
+                    <strong>Pricing model:</strong> {product.pricingModel}.
+                  </p>
+                  <p style={{ margin: '0 0 1rem', color: '#475569', lineHeight: 1.8 }}>
+                    <strong>Availability:</strong> {product.availability}.
+                  </p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
+                    <Link
+                      href={product.officialPath}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.82rem 1.1rem',
+                        borderRadius: '999px',
+                        background: '#0f172a',
+                        color: 'white',
+                        textDecoration: 'none',
+                        fontWeight: 800,
+                      }}
+                    >
+                      Visit {product.name}
+                    </Link>
+                    <Link
+                      href={product.helpPath}
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        padding: '0.82rem 1.1rem',
+                        borderRadius: '999px',
+                        background: product.theme.tint,
+                        border: `1px solid ${product.theme.lightBorder}`,
+                        color: product.theme.dark,
+                        textDecoration: 'none',
+                        fontWeight: 800,
+                      }}
+                    >
+                      Read help
+                    </Link>
+                  </div>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
+                    {product.slug === 'contentcraft' ? (
+                      <SubscribeButton
+                        planId="contentcraft"
+                        allowAccessRedirect
+                        style={{
+                          background: product.theme.dark,
+                          color: 'white',
+                          padding: '0.82rem 1.1rem',
+                          borderRadius: '999px',
+                          fontWeight: 800,
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        Subscribe to ContentCraft
+                      </SubscribeButton>
+                    ) : (
+                      <LaunchAppButton
+                        appSlug={product.slug}
+                        style={{
+                          background: product.theme.dark,
+                          color: 'white',
+                          padding: '0.82rem 1.1rem',
+                          borderRadius: '999px',
+                          fontWeight: 800,
+                          border: 'none',
+                          cursor: 'pointer',
+                        }}
+                      >
+                        {product.slug === 'gravity' ? 'Open Gravity' : `Try ${product.name}`}
+                      </LaunchAppButton>
+                    )}
+                  </div>
                 </div>
-                <SubscribeButton
-                  planId={product.planId}
-                  signInLabel="Sign in to continue"
-                  hideForAnonymous
-                  style={{
-                    background: product.gradient,
-                    color: 'white',
-                    padding: '0.875rem 1.5rem',
-                    borderRadius: '12px',
-                    fontSize: '1rem',
-                    fontWeight: '700',
-                    textDecoration: 'none',
-                    textAlign: 'center',
-                    boxShadow: '0 4px 14px rgba(0,0,0,0.18)',
-                    width: '100%',
-                    display: 'inline-block',
-                    border: 'none',
-                    cursor: 'pointer',
-                  }}
-                >
-                  {`Subscribe: $${product.monthlyPrice.toFixed(2)}`}
-                </SubscribeButton>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      {/* Premium creative platform */}
-      <section style={{ padding: `20px ${pageGutter} 40px`, maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '1.5rem' }}>
-          <div style={{ background: 'linear-gradient(135deg, #1f1147 0%, #4c1d95 100%)', borderRadius: '24px', padding: cardPadding, color: 'white', boxShadow: '0 20px 60px rgba(76,29,149,0.22)' }}>
-            <div style={{ maxWidth: '860px' }}>
-              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#ddd6fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Premium creative platform
-              </div>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', margin: '0 0 0.9rem' }}>{premiumProduct.name}</h2>
-              <p style={{ fontSize: '1.06rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
-                {premiumProduct.description}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
-                <span style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white' }}>${premiumProduct.monthlyPrice.toFixed(2)}</span>
-                <span style={{ color: '#ddd6fe', fontSize: '1rem' }}>/month</span>
-                <span style={{ color: '#ddd6fe', fontSize: '0.95rem' }}>or ${premiumProduct.yearlyPrice}/year</span>
-              </div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'grid', gap: '0.55rem' }}>
-                {premiumProduct.includes.map((item) => (
-                  <li key={item} style={{ color: '#f5f3ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                    <span style={{ color: '#c4b5fd' }}>●</span>{item}
-                  </li>
-                ))}
-              </ul>
-              <div className={actionRowClassName}>
-                <Link href="/apps/contentcraft" className={touchTargetClassName} style={{ padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#4c1d95', textDecoration: 'none', fontWeight: 800 }}>
-                  Explore ContentCraft
-                </Link>
-                <SubscribeButton planId="contentcraft" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>
-                  Subscribe
-                </SubscribeButton>
-              </div>
-            </div>
+              </article>
+            ))}
           </div>
+        </section>
 
-          <div style={{ background: bundleProduct.gradient, borderRadius: '24px', padding: cardPadding, color: 'white', boxShadow: '0 20px 60px rgba(15,23,42,0.2)' }}>
-            <div style={{ maxWidth: '860px' }}>
-              <div style={{ fontSize: '0.82rem', fontWeight: 800, color: '#c7d2fe', letterSpacing: '0.08em', textTransform: 'uppercase', marginBottom: '0.75rem' }}>
-                Creative + table top gaming bundle
-              </div>
-              <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.8rem)', fontWeight: '900', margin: '0 0 0.9rem' }}>{bundleProduct.name}</h2>
-              <p style={{ fontSize: '1.06rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.88)', margin: '0 0 1.25rem' }}>
-                {bundleProduct.description}
-              </p>
-              <div style={{ display: 'flex', alignItems: 'baseline', gap: '0.6rem', flexWrap: 'wrap', marginBottom: '1.25rem' }}>
-                <span style={{ fontSize: '2.2rem', fontWeight: '900', color: 'white' }}>${bundleProduct.monthlyPrice.toFixed(2)}</span>
-                <span style={{ color: '#c7d2fe', fontSize: '1rem' }}>/month</span>
-              </div>
-              <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 1.5rem', display: 'grid', gap: '0.55rem' }}>
-                {bundleProduct.includes.map((item) => (
-                  <li key={item} style={{ color: '#eef2ff', display: 'flex', alignItems: 'flex-start', gap: '0.6rem' }}>
-                    <span style={{ color: '#a5b4fc' }}>●</span>{item}
-                  </li>
-                ))}
-              </ul>
-              <div className={actionRowClassName}>
-                <Link href="/apps/virtual-combat-simulator" className={touchTargetClassName} style={{ padding: '0.95rem 1.5rem', borderRadius: '999px', background: 'white', color: '#312e81', textDecoration: 'none', fontWeight: 800 }}>
-                  Explore Virtual Combat Simulator
-                </Link>
-                <SubscribeButton planId="bundle" style={{ background: 'rgba(255,255,255,0.12)', color: 'white', padding: '0.95rem 1.5rem', borderRadius: '999px', fontSize: '1rem', fontWeight: '800', border: '1px solid rgba(255,255,255,0.25)', cursor: 'pointer' }}>
-                  Subscribe
-                </SubscribeButton>
-              </div>
-            </div>
+        <section style={{ marginBottom: '3rem' }}>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Frequently asked questions</h2>
+          <div style={{ display: 'grid', gap: '0.8rem' }}>
+            {pricingFaq.map((entry) => (
+              <details
+                key={entry.question}
+                style={{
+                  background: 'white',
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '18px',
+                  padding: '0.95rem 1rem',
+                  boxShadow: '0 8px 24px rgba(15,23,42,0.04)',
+                }}
+              >
+                <summary style={{ cursor: 'pointer', fontWeight: 800, color: '#0f172a' }}>{entry.question}</summary>
+                <p style={{ margin: '0.9rem 0 0', color: '#475569', lineHeight: 1.8 }}>{entry.answer}</p>
+              </details>
+            ))}
           </div>
-        </div>
-      </section>
-
-      {/* Comparison table - commented out for now */}
-      {/* <section style={{ padding: '20px 2rem 60px', maxWidth: '1200px', margin: '0 auto' }}>
-        <div style={{ textAlign: 'center', marginBottom: '2rem' }}>
-          <h2 style={{ fontSize: 'clamp(1.5rem, 3vw, 2rem)', fontWeight: '800', color: '#111827', marginBottom: '0.5rem' }}>
-            Comparison table
-          </h2>
-          <p style={{ color: '#6b7280', fontSize: '1.0625rem', margin: 0 }}>
-            The entry point, free offering, and paid offering for each product at a glance.
-          </p>
-        </div>
-        <div style={{ overflowX: 'auto', background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', boxShadow: '0 4px 20px rgba(0,0,0,0.05)' }}>
-          <table style={{ width: '100%', borderCollapse: 'collapse', minWidth: '860px' }}>
-            <thead>
-              <tr style={{ background: '#f8fafc', textAlign: 'left' }}>
-                <th style={{ padding: '1rem 1.25rem', fontSize: '0.85rem', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>Product</th>
-                <th style={{ padding: '1rem 1.25rem', fontSize: '0.85rem', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>How you enter</th>
-                <th style={{ padding: '1rem 1.25rem', fontSize: '0.85rem', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>What free includes</th>
-                <th style={{ padding: '1rem 1.25rem', fontSize: '0.85rem', color: '#475569', textTransform: 'uppercase', letterSpacing: '0.08em' }}>What paid includes</th>
-              </tr>
-            </thead>
-            <tbody>
-              {comparisonRows.map((row) => (
-                <tr key={row.product} style={{ borderTop: '1px solid #e5e7eb' }}>
-                  <td style={{ padding: '1rem 1.25rem', fontWeight: 800, color: '#111827', verticalAlign: 'top' }}>{row.product}</td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#374151', verticalAlign: 'top' }}>{row.howYouEnter}</td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#4b5563', lineHeight: 1.7, verticalAlign: 'top' }}>{row.freeIncludes}</td>
-                  <td style={{ padding: '1rem 1.25rem', color: '#4b5563', lineHeight: 1.7, verticalAlign: 'top' }}>{row.paidIncludes}</td>
-                </tr>
-              ))}
-            </tbody>
-          </table>
-        </div>
-      </section> */}
+        </section>
+      </main>
     </div>
   );
 }

@@ -1,159 +1,129 @@
-/**
- * Blog Index Page
- * Copyright (c) 2025 Sixsmith Games. All rights reserved.
- */
-
+import type { Metadata } from 'next';
 import Link from 'next/link';
-import { getAllPosts, getFeaturedPosts } from '@/lib/blog';
-import { cardPadding, pageGutter } from '@/lib/responsive';
 
-export const metadata = {
-  title: 'Blog — Sixsmith Games',
-  description: 'Playbooks, design notes, campaign fuel, and practical guides for game masters, writers, strategy players, and educators.',
-};
+import LastUpdated from '@/components/LastUpdated';
+import { getAllPosts, getFeaturedPosts } from '@/lib/blog';
+import { buildPageMetadata } from '@/lib/metadata';
+import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { pageGutter } from '@/lib/responsive';
+
+export const metadata: Metadata = buildPageMetadata({
+  title: 'Blog | Sixsmith Games Guides, Product Questions, and Intent-Matched Articles',
+  description:
+    'Read Sixsmith Games articles about D&D combat management, worldbuilding workflow, WWII tactical strategy, and typing practice.',
+  path: '/blog',
+});
 
 export default async function BlogPage() {
   const allPosts = await getAllPosts();
   const featured = await getFeaturedPosts();
-  const rest = allPosts.filter(p => !p.featured);
-
-  const categoryColors: Record<string, { bg: string; text: string }> = {
-    'D&D': { bg: '#fef2f2', text: '#dc2626' },
-    'Writing': { bg: '#f5f3ff', text: '#7c3aed' },
-    'Gaming': { bg: '#eff6ff', text: '#2563eb' },
-    'Education': { bg: '#ecfdf5', text: '#059669' },
-  };
 
   return (
-    <div style={{ background: '#fafafa', minHeight: '100vh' }}>
-
-      {/* Header */}
-      <section style={{
-        background: 'linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%)',
-        padding: `80px ${pageGutter} 60px`,
-        textAlign: 'center',
-      }}>
-        <p style={{ color: '#818cf8', fontSize: '0.875rem', fontWeight: '700', letterSpacing: '0.1em', textTransform: 'uppercase', margin: '0 0 1rem' }}>
-          THE SIXSMITH GAMES BLOG
-        </p>
-        <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3.25rem)', fontWeight: '900', margin: '0 0 1rem', lineHeight: 1.2 }}>
-          Playbooks, design notes, and campaign fuel
-        </h1>
-        <p style={{ color: '#94a3b8', fontSize: '1.125rem', maxWidth: '600px', margin: '0 auto', lineHeight: 1.7 }}>
-          For game masters, writers, strategy players, and educators who like strong systems and usable ideas.
-        </p>
+    <div style={{ background: '#f8fafc', minHeight: '100vh' }}>
+      <section style={{ background: '#0f172a', color: 'white', padding: `78px ${pageGutter} 56px` }}>
+        <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
+          <div style={{ maxWidth: '820px' }}>
+            <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
+              Product guides and practical articles
+            </h1>
+            <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
+              The Sixsmith Games blog exists to answer real product and audience questions directly. The best posts do not chase generic traffic. They explain what the product is, who the product is for, how the workflow works, and when the product is the right fit.
+            </p>
+            <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
+          </div>
+        </div>
       </section>
 
-      <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
-
-        {/* Featured posts */}
-        {featured.length > 0 && (
-          <>
-            <h2 style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.5rem' }}>
-              Featured Articles
-            </h2>
-            <div style={{
-              display: 'grid',
-              gridTemplateColumns: 'repeat(auto-fit, minmax(min(100%, 460px), 1fr))',
-              gap: '1.5rem',
-              marginBottom: '3.5rem',
-            }}>
-              {featured.map(post => {
-                const cat = categoryColors[post.category] || { bg: '#f3f4f6', text: '#374151' };
-                return (
-                  <Link
-                    key={post.slug}
-                    href={`/blog/${post.slug}`}
-                    style={{
-                      background: 'white',
-                      borderRadius: '16px',
-                      padding: cardPadding,
-                      textDecoration: 'none',
-                      color: 'inherit',
-                      boxShadow: '0 1px 3px rgba(0,0,0,0.06), 0 8px 24px rgba(0,0,0,0.04)',
-                      border: '1px solid #f0f0f0',
-                      display: 'flex',
-                      flexDirection: 'column',
-                      gap: '0.75rem',
-                      transition: 'transform 0.2s, box-shadow 0.2s',
-                    }}
-                  >
-                    <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem' }}>
-                      <span style={{
-                        background: cat.bg, color: cat.text,
-                        padding: '0.25rem 0.75rem', borderRadius: '999px',
-                        fontSize: '0.75rem', fontWeight: '700',
-                      }}>{post.category}</span>
-                      <span style={{ color: '#9ca3af', fontSize: '0.8125rem' }}>{post.readTime}</span>
-                    </div>
-                    <h3 style={{ fontSize: '1.375rem', fontWeight: '800', color: '#111827', lineHeight: 1.3, margin: 0 }}>
-                      {post.title}
-                    </h3>
-                    <p style={{ color: '#6b7280', fontSize: '0.9375rem', lineHeight: 1.7, margin: 0, flex: 1 }}>
-                      {post.excerpt}
-                    </p>
-                    <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginTop: '0.5rem' }}>
-                      <span style={{ color: '#9ca3af', fontSize: '0.8125rem' }}>
-                        {new Date(post.date).toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' })}
-                      </span>
-                      <span style={{ color: '#6366f1', fontWeight: '700', fontSize: '0.875rem' }}>Read article →</span>
-                    </div>
-                  </Link>
-                );
-              })}
+      <main style={{ maxWidth: '1100px', margin: '0 auto', padding: `2.5rem ${pageGutter} 4rem` }}>
+        {featured.length > 0 ? (
+          <section style={{ marginBottom: '2.5rem' }}>
+            <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Featured articles</h2>
+            <div style={{ display: 'grid', gap: '1rem' }}>
+              {featured.map((post) => (
+                <Link
+                  key={post.slug}
+                  href={`/blog/${post.slug}`}
+                  style={{
+                    display: 'block',
+                    background: 'white',
+                    border: '1px solid #e5e7eb',
+                    borderRadius: '22px',
+                    padding: '1.2rem 1.25rem',
+                    textDecoration: 'none',
+                    boxShadow: '0 10px 28px rgba(15,23,42,0.05)',
+                  }}
+                >
+                  <p style={{ margin: '0 0 0.4rem', color: '#475569', fontSize: '0.88rem', fontWeight: 700 }}>{post.category}</p>
+                  <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>{post.title}</h3>
+                  <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>{post.excerpt}</p>
+                </Link>
+              ))}
             </div>
-          </>
-        )}
+          </section>
+        ) : null}
 
-        {/* All posts */}
-        <h2 style={{ fontSize: '0.8125rem', fontWeight: '700', color: '#6b7280', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '1.5rem' }}>
-          All Articles
-        </h2>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: '1rem' }}>
-          {rest.map(post => {
-            const cat = categoryColors[post.category] || { bg: '#f3f4f6', text: '#374151' };
-            return (
+        <section style={{ marginBottom: '2.5rem' }}>
+          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Browse by product</h2>
+          <div style={{ display: 'grid', gap: '1rem' }}>
+            {PRODUCT_DEFINITIONS.filter((product) =>
+              allPosts.some((post) => post.relatedProducts.includes(product.slug)),
+            ).map((product) => {
+              const productPosts = allPosts.filter((post) => post.relatedProducts.includes(product.slug));
+              return (
+                <section key={product.slug} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.1rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+                  <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>
+                    <Link href={product.officialPath} style={{ color: '#0f172a', textDecoration: 'none' }}>
+                      {product.name}
+                    </Link>
+                  </h3>
+                  <p style={{ margin: '0 0 0.75rem', color: '#475569', lineHeight: 1.8 }}>
+                    {product.oneSentence} Start with the official{' '}
+                    <Link href={product.officialPath} style={{ color: '#1d4ed8', fontWeight: 700 }}>
+                      {product.name} product page
+                    </Link>{' '}
+                    or the public{' '}
+                    <Link href={product.helpPath} style={{ color: '#1d4ed8', fontWeight: 700 }}>
+                      {product.name} help pages
+                    </Link>
+                    .
+                  </p>
+                  <div style={{ display: 'grid', gap: '0.7rem' }}>
+                    {productPosts.map((post) => (
+                      <Link key={post.slug} href={`/blog/${post.slug}`} style={{ color: '#1d4ed8', fontWeight: 700, textDecoration: 'none' }}>
+                        {post.title}
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              );
+            })}
+          </div>
+        </section>
+
+        <section>
+          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>All articles</h2>
+          <div style={{ display: 'grid', gap: '0.8rem' }}>
+            {allPosts.map((post) => (
               <Link
                 key={post.slug}
                 href={`/blog/${post.slug}`}
                 style={{
+                  display: 'block',
                   background: 'white',
-                  borderRadius: '12px',
-                  padding: `1.5rem ${pageGutter}`,
+                  border: '1px solid #e5e7eb',
+                  borderRadius: '18px',
+                  padding: '1rem 1.1rem',
                   textDecoration: 'none',
-                  color: 'inherit',
-                  boxShadow: '0 1px 2px rgba(0,0,0,0.04)',
-                  border: '1px solid #f0f0f0',
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '1.5rem',
-                  transition: 'transform 0.15s, box-shadow 0.15s',
-                  flexWrap: 'wrap',
+                  boxShadow: '0 8px 24px rgba(15,23,42,0.04)',
                 }}
               >
-                <div style={{ width: '4px', alignSelf: 'stretch', borderRadius: '4px', background: cat.text, flex: '0 0 4px' }} />
-                <div style={{ flex: 1, minWidth: '200px' }}>
-                  <h3 style={{ fontSize: '1.125rem', fontWeight: '700', color: '#111827', margin: '0 0 0.25rem', lineHeight: 1.3 }}>
-                    {post.title}
-                  </h3>
-                  <p style={{ color: '#6b7280', fontSize: '0.875rem', lineHeight: 1.6, margin: 0 }}>
-                    {post.excerpt}
-                  </p>
-                </div>
-                <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flex: '0 0 auto' }}>
-                  <span style={{
-                    background: cat.bg, color: cat.text,
-                    padding: '0.2rem 0.625rem', borderRadius: '999px',
-                    fontSize: '0.6875rem', fontWeight: '700',
-                  }}>{post.category}</span>
-                  <span style={{ color: '#9ca3af', fontSize: '0.75rem', whiteSpace: 'nowrap' }}>{post.readTime}</span>
-                </div>
+                <h3 style={{ margin: '0 0 0.35rem', fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>{post.title}</h3>
+                <p style={{ margin: 0, color: '#475569', lineHeight: 1.75 }}>{post.excerpt}</p>
               </Link>
-            );
-          })}
-        </div>
-
-      </div>
+            ))}
+          </div>
+        </section>
+      </main>
     </div>
   );
 }

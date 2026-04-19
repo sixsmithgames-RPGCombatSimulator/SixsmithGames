@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 
 import LegalDocument from '@/components/LegalDocument';
+import { buildPageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Terms of Service | Sixsmith Games',
   description: 'Terms for using Sixsmith Games websites, apps, subscriptions, and related services.',
-  alternates: {
-    canonical: '/terms',
-  },
-};
+  path: '/terms',
+});
 
 const sections = [
   {

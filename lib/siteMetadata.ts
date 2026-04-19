@@ -9,7 +9,7 @@ export const rootViewport: Viewport = {
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
+  title: 'Sixsmith Games - Browser-Based Games and Tools',
   description: SITE_DESCRIPTION,
   keywords: [
     'Sixsmith Games',
@@ -23,9 +23,9 @@ export const rootMetadata: Metadata = {
     'typing training for creators and gamers',
   ],
   openGraph: {
-    title: 'Sixsmith Games - Games and Tools for GMs, Creators, and Players',
+    title: 'Sixsmith Games - Browser-Based Games and Tools',
     description:
-      'Start playing now with Virtual Combat Simulator, Four Star General, and MasterTyping. Check out ContentCraft for an awesome creative platform.',
+      'Explore Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity on the official Sixsmith Games site.',
     url: '/',
     siteName: SITE_NAME,
     locale: 'en_US',
@@ -34,9 +34,9 @@ export const rootMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sixsmith Games - Games and Tools for Game Masters, Creators, Writers, and Players',
+    title: 'Sixsmith Games - Browser-Based Games and Tools',
     description:
-      'Fun games and easy tools for Game Masters, creators and writers, strategy game players, and anyone who wants to improve their typing.',
+      'Official product pages, pricing, help, and blog content for the Sixsmith Games lineup.',
     images: ['/apple-icon.png'],
   },
   alternates: {

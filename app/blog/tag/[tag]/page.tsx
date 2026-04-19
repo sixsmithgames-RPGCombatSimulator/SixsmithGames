@@ -6,6 +6,8 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getAllTags, getPostsByTag } from '@/lib/blog';
+import { findTagBySlug, slugifyTag } from '@/lib/blogTags';
+import { buildPageMetadata } from '@/lib/metadata';
 import { pageGutter } from '@/lib/responsive';
 
 /**
@@ -17,7 +19,7 @@ import { pageGutter } from '@/lib/responsive';
  */
 export async function generateStaticParams() {
   const tags = await getAllTags();
-  return tags.map(tag => ({ tag }));
+  return tags.map((tag) => ({ tag: slugifyTag(tag) }));
 }
 
 /**
@@ -29,11 +31,22 @@ export async function generateStaticParams() {
  */
 export async function generateMetadata({ params }: { params: Promise<{ tag: string }> }) {
   const { tag } = await params;
-  const prettyTag = tag.replace(/-/g, ' ');
-  return {
-    title: `${prettyTag} Articles — Sixsmith Games Blog`,
-    description: `Articles tagged with ${prettyTag} on the Sixsmith Games blog.`,
-  };
+  const tags = await getAllTags();
+  const prettyTag = findTagBySlug(tag, tags);
+
+  if (!prettyTag) {
+    return buildPageMetadata({
+      title: 'Blog Tags | Sixsmith Games',
+      description: 'Browse Sixsmith Games blog tag archives.',
+      path: '/blog',
+    });
+  }
+
+  return buildPageMetadata({
+    title: `${prettyTag} Articles | Sixsmith Games Blog`,
+    description: `Read Sixsmith Games blog articles tagged with ${prettyTag}.`,
+    path: `/blog/tag/${slugifyTag(prettyTag)}`,
+  });
 }
 
 /**
@@ -45,12 +58,19 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
  */
 export default async function BlogTagPage({ params }: { params: Promise<{ tag: string }> }) {
   const { tag } = await params;
-  const posts = await getPostsByTag(tag);
+  const tags = await getAllTags();
+  const resolvedTag = findTagBySlug(tag, tags);
+
+  if (!resolvedTag) {
+    notFound();
+  }
+
+  const posts = await getPostsByTag(resolvedTag);
   if (posts.length === 0) {
     notFound();
   }
 
-  const formattedTag = tag.replace(/-/g, ' ');
+  const formattedTag = resolvedTag;
 
   return (
     <div style={{ background: '#fafafa', minHeight: '100vh' }}>

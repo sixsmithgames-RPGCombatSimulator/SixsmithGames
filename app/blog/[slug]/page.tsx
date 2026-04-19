@@ -6,8 +6,14 @@
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { getPostBySlug, getAllPosts, getRecentPosts } from '@/lib/blog';
+import { toTagRoute } from '@/lib/blogTags';
+import StructuredDataScript from '@/components/StructuredDataScript';
 import BlogComments from '@/components/BlogComments';
+import { buildPageMetadata } from '@/lib/metadata';
+import { PRODUCT_DEFINITIONS_BY_SLUG } from '@/lib/productContent';
 import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
+import { createArticleSchema } from '@/lib/schema';
+import { SITE_URL } from '@/lib/site';
 
 export async function generateStaticParams() {
   const posts = await getAllPosts();
@@ -18,10 +24,12 @@ export async function generateMetadata({ params }: { params: Promise<{ slug: str
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) return { title: 'Not Found' };
-  return {
-    title: `${post.title} — Sixsmith Games`,
+  return buildPageMetadata({
+    title: `${post.title} | Sixsmith Games`,
     description: post.excerpt,
-  };
+    path: `/blog/${post.slug}`,
+    type: 'article',
+  });
 }
 
 function renderMarkdown(content: string) {
@@ -187,16 +195,25 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const related = (await getRecentPosts(3)).filter(p => p.slug !== post!.slug).slice(0, 2);
 
   const categoryColors: Record<string, { bg: string; text: string }> = {
-    'D&D': { bg: '#fef2f2', text: '#dc2626' },
-    'Writing': { bg: '#f5f3ff', text: '#7c3aed' },
-    'Gaming': { bg: '#eff6ff', text: '#2563eb' },
-    'Education': { bg: '#ecfdf5', text: '#059669' },
+    'Tabletop RPG': { bg: '#fef2f2', text: '#dc2626' },
+    'Writing & Worldbuilding': { bg: '#f5f3ff', text: '#7c3aed' },
+    'WWII Strategy': { bg: '#fff7ed', text: '#b45309' },
+    'Typing Practice': { bg: '#ecfdf5', text: '#059669' },
   };
 
   const cat = categoryColors[post.category] || { bg: '#f3f4f6', text: '#374151' };
 
   return (
     <div style={{ background: '#fafafa', minHeight: '100vh' }}>
+      <StructuredDataScript
+        data={createArticleSchema({
+          title: post.title,
+          description: post.excerpt,
+          url: `${SITE_URL}/blog/${post.slug}`,
+          datePublished: post.date,
+          authorName: post.author,
+        })}
+      />
 
       {/* Header */}
       <section style={{
@@ -242,7 +259,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           {post.tags.map(tag => (
             <Link
               key={tag}
-              href={`/blog/tag/${encodeURIComponent(tag)}`}
+              href={toTagRoute(tag)}
               style={{
                 background: '#f3f4f6', color: '#6b7280',
                 padding: '0.3rem 0.75rem', borderRadius: '999px',
@@ -296,14 +313,35 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
             Subscribe to individual apps or get the Game Creator bundle.
           </p>
-          <Link href="/pricing" className={touchTargetClassName} style={{
-            background: 'white', color: '#4c1d95',
-            padding: '0.875rem 2.5rem', borderRadius: '50px',
-            fontSize: '1rem', fontWeight: '800', textDecoration: 'none',
-            display: 'inline-block', boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
-          }}>
-            View Pricing
-          </Link>
+          <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
+            <Link href="/pricing" className={touchTargetClassName} style={{
+              background: 'white', color: '#4c1d95',
+              padding: '0.875rem 2.5rem', borderRadius: '50px',
+              fontSize: '1rem', fontWeight: '800', textDecoration: 'none',
+              display: 'inline-block', boxShadow: '0 4px 14px rgba(0,0,0,0.2)',
+            }}>
+              View Pricing
+            </Link>
+            {post.relatedProducts[0] ? (
+              <Link
+                href={PRODUCT_DEFINITIONS_BY_SLUG[post.relatedProducts[0]].officialPath}
+                className={touchTargetClassName}
+                style={{
+                  background: 'rgba(255,255,255,0.14)',
+                  color: 'white',
+                  padding: '0.875rem 2rem',
+                  borderRadius: '50px',
+                  fontSize: '1rem',
+                  fontWeight: '800',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                  border: '1px solid rgba(255,255,255,0.24)',
+                }}
+              >
+                Visit {PRODUCT_DEFINITIONS_BY_SLUG[post.relatedProducts[0]].name}
+              </Link>
+            ) : null}
+          </div>
         </div>
       </article>
     </div>

@@ -1,7 +1,8 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { BLOG_POSTS } from '../../lib/blog';
+import { BLOG_POSTS } from '../../lib/blogPosts';
+import { toTagRoute } from '../../lib/blogTags';
 import { fluidGrid } from '../../lib/responsive';
 import { rootMetadata, rootViewport } from '../../lib/siteMetadata';
 import { publicRoutes } from '../site-routes';
@@ -93,7 +94,7 @@ describe('route coverage', () => {
     for (const post of BLOG_POSTS) {
       expect(publicRoutes).toContain(`/blog/${post.slug}`);
       for (const tag of post.tags) {
-        expect(publicRoutes).toContain(`/blog/tag/${encodeURIComponent(tag)}`);
+        expect(publicRoutes).toContain(toTagRoute(tag));
       }
     }
   });

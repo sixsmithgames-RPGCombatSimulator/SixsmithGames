@@ -1,14 +1,13 @@
 import type { Metadata } from 'next';
 
 import LegalDocument from '@/components/LegalDocument';
+import { buildPageMetadata } from '@/lib/metadata';
 
-export const metadata: Metadata = {
+export const metadata: Metadata = buildPageMetadata({
   title: 'Privacy Policy | Sixsmith Games',
   description: 'Information about what Sixsmith Games collects, how it is used, and when it is shared.',
-  alternates: {
-    canonical: '/privacy',
-  },
-};
+  path: '/privacy',
+});
 
 const sections = [
   {

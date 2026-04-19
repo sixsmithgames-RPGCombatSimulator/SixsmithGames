@@ -21,6 +21,7 @@ export default function Navigation() {
     { name: 'ContentCraft', href: '/apps/contentcraft' },
     { name: 'Four Star General', href: '/apps/fourstargeneral' },
     { name: 'MasterTyping', href: '/apps/mastertyping' },
+    { name: 'Gravity', href: '/apps/gravity' },
   ];
 
   const navStyle: React.CSSProperties = {
@@ -214,6 +215,13 @@ export default function Navigation() {
               onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
             >
               Blog
+            </Link>
+
+            <Link href="/help" style={linkStyle}
+              onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
+              onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
+            >
+              Help
             </Link>
 
             {/* Auth section */}

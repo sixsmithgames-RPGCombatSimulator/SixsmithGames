@@ -108,7 +108,7 @@ export async function POST(req: NextRequest) {
     return NextResponse.json({ error: 'Invalid JSON body' }, { status: 400 });
   }
 
-  const { title, content, excerpt, author, category, tags, featured, date } = body;
+  const { title, content, excerpt, author, category, tags, featured, date, relatedProducts } = body;
 
   if (!title || !content) {
     return NextResponse.json({ error: 'title and content are required' }, { status: 400 });
@@ -129,9 +129,10 @@ export async function POST(req: NextRequest) {
     author: (author as string) || 'Sixsmith Games',
     date: (date as string) || new Date().toISOString().split('T')[0],
     readTime: estimateReadTime(content as string),
-    category: (category as string) || 'Gaming',
+    category: (category as string) || 'Writing & Worldbuilding',
     tags: (tags as string[]) || [],
     featured: (featured as boolean) || false,
+    relatedProducts: (relatedProducts as BlogPost['relatedProducts']) || [],
   };
 
   await writeDynamicPosts([post, ...existing]);

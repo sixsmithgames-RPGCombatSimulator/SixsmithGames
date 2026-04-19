@@ -7,11 +7,12 @@
 
 import { useEffect } from 'react';
 import { useUser, SignedIn, SignedOut, SignInButton } from '@clerk/nextjs';
-import { APP_URLS } from '@/lib/subscription';
+import { trackMarketingEvent } from '@/lib/analytics';
+import { APP_URLS, type AppSlug } from '@/lib/subscription';
 import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 
 interface LaunchAppButtonProps {
-  appSlug: string;
+  appSlug: AppSlug;
   style?: React.CSSProperties;
   children: React.ReactNode;
   autoLaunch?: boolean;
@@ -48,6 +49,12 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
         href={appUrl}
         target="_blank"
         rel="noopener noreferrer"
+        onClick={() => {
+          trackMarketingEvent('product_launch_click', {
+            product_slug: appSlug,
+            destination_type: 'app',
+          });
+        }}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
         {children}
@@ -58,6 +65,12 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
   return (
     <a
       href="/pricing"
+      onClick={() => {
+        trackMarketingEvent('product_pricing_click', {
+          product_slug: appSlug,
+          destination_type: 'pricing',
+        });
+      }}
       style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
     >
       Subscribe to Launch
@@ -73,7 +86,15 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
       </SignedIn>
       <SignedOut>
         <SignInButton mode="modal">
-          <button style={props.style}>
+          <button
+            style={props.style}
+            onClick={() => {
+              trackMarketingEvent('product_sign_in_prompt_click', {
+                product_slug: props.appSlug,
+                destination_type: 'sign_in',
+              });
+            }}
+          >
             Sign In to Launch
           </button>
         </SignInButton>

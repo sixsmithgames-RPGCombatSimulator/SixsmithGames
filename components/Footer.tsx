@@ -66,7 +66,7 @@ export default function Footer() {
               />
             </div>
             <p style={{ color: '#6b7280', fontSize: '0.9375rem', lineHeight: '1.7', maxWidth: '320px', margin: '0 0 1.5rem' }}>
-              Thoughtful games and creative tools for people who care about systems, craft, and meaningful play.
+              Browser-based games and creative tools for game masters, writers, worldbuilders, strategy players, and people who want practical typing improvement.
             </p>
             <a
               href="mailto:info@sixsmithgames.com"
@@ -81,6 +81,7 @@ export default function Footer() {
             <p style={headingStyle}>Tools</p>
             <Link href="/apps/virtual-combat-simulator" style={linkStyle} className={touchTargetClassName}>Virtual Combat Simulator</Link>
             <Link href="/apps/contentcraft" style={linkStyle} className={touchTargetClassName}>ContentCraft</Link>
+            <Link href="/apps/gravity" style={linkStyle} className={touchTargetClassName}>Gravity</Link>
           </div>
 
           {/* Games */}
@@ -95,7 +96,10 @@ export default function Footer() {
             <p style={headingStyle}>Company</p>
             <Link href="/pricing" style={linkStyle} className={touchTargetClassName}>Pricing</Link>
             <Link href="/about" style={linkStyle} className={touchTargetClassName}>About</Link>
+            <Link href="/about/facts" style={linkStyle} className={touchTargetClassName}>Facts</Link>
             <Link href="/blog" style={linkStyle} className={touchTargetClassName}>Blog</Link>
+            <Link href="/help" style={linkStyle} className={touchTargetClassName}>Help</Link>
+            <Link href="/support" style={linkStyle} className={touchTargetClassName}>Support</Link>
           </div>
 
         </div>
