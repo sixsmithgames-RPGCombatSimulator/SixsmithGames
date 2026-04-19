@@ -91,7 +91,7 @@ export default function PricingPage() {
               Virtual Combat Simulator, Four Star General, and MasterTyping are free to open and play. ContentCraft is a subscription workspace at $9.99 per month. Gravity is in early beta with no paid plan listed yet.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              Paid upgrades exist where they add something real: more storage, more scenarios, expanded history, or the full creative workspace. Nothing is locked behind a paywall just to get started.
+              For the games and tools, paid upgrades add something specific — more storage, more scenarios, expanded history — but you can start without paying. ContentCraft is the exception: it is a subscription workspace with no free tier.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
