@@ -44,7 +44,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   },
   primaryCta: {
     kind: 'subscribe',
-    label: 'Subscribe',
+    label: 'Start your subscription',
     planId: 'contentcraft',
     allowAccessRedirect: true,
   },

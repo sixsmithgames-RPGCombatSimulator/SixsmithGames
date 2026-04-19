@@ -171,7 +171,7 @@ export default function PricingPage() {
                         fontWeight: 800,
                       }}
                     >
-                      Read help
+                      Help and docs
                     </Link>
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>

@@ -143,7 +143,7 @@ export default function HomePage() {
                 </p>
                 <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
                   <Link href={product.officialPath} style={{ color: product.theme.accent, fontWeight: 800, textDecoration: 'none' }}>
-                    Visit the {product.name} product page
+                    See {product.name}
                   </Link>
                 </div>
               </article>

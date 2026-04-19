@@ -44,7 +44,7 @@ export const masterTypingProductDefinition: ProductDefinition = {
   },
   primaryCta: {
     kind: 'launch',
-    label: 'Open app',
+    label: 'Start practicing',
     appSlug: 'mastertyping',
   },
   secondaryCta: {

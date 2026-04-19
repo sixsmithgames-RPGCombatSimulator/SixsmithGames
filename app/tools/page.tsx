@@ -43,10 +43,10 @@ export default function ToolsPage() {
               <div style={{ padding: '1.1rem 1.2rem' }}>
                 <p style={{ margin: '0 0 0.75rem', color: '#475569', lineHeight: 1.8 }}>{product.oneSentence}</p>
                 <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.8 }}>
-                  <strong>Audience:</strong> {product.primaryAudience}.
+                  {product.primaryAudience}.
                 </p>
                 <Link href={product.officialPath} style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-                  Visit the {product.name} page
+                  See {product.name}
                 </Link>
               </div>
             </article>
