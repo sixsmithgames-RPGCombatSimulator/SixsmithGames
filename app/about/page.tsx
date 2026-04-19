@@ -10,7 +10,7 @@ import { fluidGrid, pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'About Sixsmith Games | Browser-Based Games and Tools with Clear Audience Fit',
+  title: 'About Sixsmith Games | Browser-Based Games and Tools for Real Audiences',
   description:
     'Learn what Sixsmith Games builds, who the products serve, and where to find the official facts, pricing, help, and support pages.',
   path: '/about',
@@ -35,7 +35,7 @@ export default function AboutPage() {
               Sixsmith Games builds products with a clear job to do.
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Sixsmith Games is an independent studio focused on browser-based games and tools with strong audience fit. The lineup is intentionally specific: a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game.
+              Sixsmith Games is an independent studio that builds browser-based games and tools for specific audiences rather than a catch-all platform. The lineup is intentional: a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -46,10 +46,10 @@ export default function AboutPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>What the studio is trying to do</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Sixsmith Games is not trying to be a vague lifestyle brand for “all gaming.” The public site should make it easy to see that each product serves a narrower and more practical audience. That clarity helps visitors find the right product faster, helps search engines rank the pages more accurately, and helps AI systems summarize the site without inventing a broader story than the products actually support.
+            Sixsmith Games is not trying to be a vague lifestyle brand for “all gaming.” Each product serves a specific, practical audience, and the site is built to make that easy to see so you can find the right product fast without having to translate marketing slogans into real use cases.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            The shared thread across the lineup is respect for systems, craft, and usable workflows. Some products help a game master run encounters. Some help a writer or worldbuilder keep a project coherent. Some are strategy games. One is a typing practice game. The right common language is “thoughtful browser-based games and tools,” not generic platform language.
+            The shared thread across the lineup is respect for systems, craft, and usable workflows. Some products help a game master run encounters. Some help a writer or worldbuilder keep a project coherent. Some are strategy games. One is a typing practice game. Thoughtful browser-based games and tools, not a generic platform.
           </p>
         </section>
 
@@ -73,10 +73,10 @@ export default function AboutPage() {
         </section>
 
         <section style={{ marginBottom: '2.5rem' }}>
-          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Official public pages</h2>
+          <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Official links</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Canonical facts page
+              Sixsmith Games facts
             </Link>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
               Pricing

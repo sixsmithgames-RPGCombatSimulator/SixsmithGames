@@ -11,9 +11,9 @@ import { createOrganizationSchema } from '@/lib/schema';
 import { SITE_NAME } from '@/lib/site';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Sixsmith Games Facts | Canonical Product Names, URLs, Platforms, and Access',
+  title: 'Sixsmith Games Facts | Official Product Names, URLs, Platforms, and Access',
   description:
-    'Read the canonical facts page for Sixsmith Games, including official product names, URLs, audiences, platforms, and pricing status.',
+    'Read the Sixsmith Games facts page, including official product names, URLs, audiences, platforms, and pricing status.',
   path: '/about/facts',
 });
 
@@ -34,10 +34,10 @@ export default function FactsPage() {
           />
           <div style={{ maxWidth: '860px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Canonical facts for {SITE_NAME}
+              The facts about {SITE_NAME}
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              This page is the stable public summary for Sixsmith Games. It lists the canonical brand spelling, official product names, one-line descriptions, platforms, pricing status, official URLs, and public support path. Humans, partners, search systems, and AI systems should treat this page and the linked product pages as the current public source of truth.
+              This is the short, stable summary of Sixsmith Games. It lists the official brand spelling, product names, one-line descriptions, platforms, pricing status, official URLs, and how to get support. Treat this page and the linked product pages as the most current source of truth.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -55,10 +55,10 @@ export default function FactsPage() {
               <strong>Studio summary:</strong> Sixsmith Games builds browser-based games and creative tools for game masters, writers, worldbuilders, strategy players, and people who want practical typing improvement.
             </p>
             <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
-              <strong>Support path:</strong> <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/support</Link>
+              <strong>Support:</strong> <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/support</Link>
             </p>
             <p style={{ margin: 0, color: '#334155', lineHeight: 1.8 }}>
-              <strong>Canonical facts page:</strong> <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/about/facts</Link>
+              <strong>Facts page:</strong> <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/about/facts</Link>
             </p>
           </div>
         </section>

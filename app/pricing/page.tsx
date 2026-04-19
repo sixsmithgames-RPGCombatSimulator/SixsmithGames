@@ -12,7 +12,7 @@ import { fluidGrid, pageGutter } from '@/lib/responsive';
 import { createFaqSchema } from '@/lib/schema';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Pricing | Sixsmith Games Products, Access Models, and Plans',
+  title: 'Pricing | Sixsmith Games Products, Plans, and Access',
   description:
     'Compare pricing and access across Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
   path: '/pricing',
@@ -22,7 +22,7 @@ const pricingFaq = [
   {
     question: 'Which Sixsmith Games product requires a subscription from the start?',
     answer:
-      'ContentCraft is the product positioned as a subscription-first creative workspace. The public pricing page lists ContentCraft at $9.99 per month or $99 per year.',
+      'ContentCraft is the subscription-first creative workspace in the lineup. ContentCraft is $9.99 per month or $99 per year.',
   },
   {
     question: 'Which Sixsmith Games products are free to start?',
@@ -30,9 +30,9 @@ const pricingFaq = [
       'Virtual Combat Simulator, Four Star General, and MasterTyping are all described as free to start, with optional paid layers or unlocks for people who want more capability, more content, or more retained history.',
   },
   {
-    question: 'Does Gravity have a public price listed right now?',
+    question: 'Does Gravity have a price listed right now?',
     answer:
-      'No. Gravity has a public marketing page and an official app link, but the pricing page does not currently list a separate paid plan for Gravity.',
+      'No. Gravity has a product page and an official app link, but the pricing page does not currently list a separate paid plan for Gravity.',
   },
   {
     question: 'Is there a bundle for Game Masters who want both writing and encounter tools?',
@@ -85,13 +85,13 @@ export default function PricingPage() {
               Pricing and access
             </div>
             <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4rem)', lineHeight: 1.06, fontWeight: 900, margin: '0 0 1rem' }}>
-              Clear access models for each Sixsmith Games product.
+              Pricing and access for every Sixsmith Games product.
             </h1>
             <p style={{ fontSize: '1.12rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              The pricing page is here to answer the practical questions quickly: which products are free to start, which products have optional paid layers, which product is subscription-first, and what path makes sense for a user who already knows what kind of work or play they want to do.
+              This page answers the practical questions fast: which products are free to start, which ones have optional paid layers, which one is subscription-first, and where to go if you already know what you want to do.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              Pricing should reinforce audience fit rather than blur it. Virtual Combat Simulator is a D&amp;D combat simulator. ContentCraft is a premium writing and worldbuilding workspace. Four Star General is a serious WWII tactical strategy game. MasterTyping is a typing practice game with a practical improvement loop. Gravity is a simultaneous-turn strategy game whose public access note is visible even though it does not currently list a separate paid tier.
+              Virtual Combat Simulator is a D&amp;D combat simulator. ContentCraft is a premium writing and worldbuilding workspace. Four Star General is a serious WWII tactical strategy game. MasterTyping is a typing practice game with a practical improvement loop. Gravity is a simultaneous-turn strategy game currently in early beta, so it does not list a separate paid tier yet.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -102,10 +102,10 @@ export default function PricingPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How the lineup is priced</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Sixsmith Games does not use one access model for everything. ContentCraft is premium because it is the subscription-first creative workspace. Virtual Combat Simulator, Four Star General, and MasterTyping are intentionally easier to start because the public pitch is “learn the workflow first, then decide whether the paid layer matters for how often you use it.” Gravity is currently an access-note case rather than a listed standalone plan.
+            Sixsmith Games does not use one pricing model for everything. ContentCraft is a premium subscription because it is the creative workspace built around the subscription. Virtual Combat Simulator, Four Star General, and MasterTyping are intentionally easier to start so you can try the workflow first and then decide whether the paid layer is worth it for how often you use it. Gravity is in early beta and does not have a standalone paid plan yet.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            That means the right first click is usually the product page. The pricing page is here to compare those models cleanly, not to replace the audience-focused explanation on the product pages themselves.
+            The right first click is usually the product page itself. This page compares the plans side by side so you can pick the one that fits.
           </p>
         </section>
 
@@ -133,7 +133,7 @@ export default function PricingPage() {
                 </div>
                 <div style={{ padding: '1.1rem 1.15rem' }}>
                   <p style={{ margin: '0 0 0.7rem', color: '#0f172a', fontSize: '1.2rem', fontWeight: 900 }}>
-                    {product.offerPrice ? formatPrice(product.offerPrice) : 'Public price not listed'}
+                    {product.offerPrice ? formatPrice(product.offerPrice) : 'Price not listed yet'}
                   </p>
                   <p style={{ margin: '0 0 0.8rem', color: '#334155', lineHeight: 1.8 }}>
                     <strong>Pricing model:</strong> {product.pricingModel}.

@@ -231,7 +231,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
                   <strong>Official URL:</strong> {SITE_URL + product.officialPath}.
                 </p>
                 <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Support path:</strong> {SITE_URL + product.supportPath}.
+                  <strong>Support:</strong> {SITE_URL + product.supportPath}.
                 </p>
               </div>
             </aside>
@@ -384,10 +384,10 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Official links</h2>
           <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('240px'), gap: '1rem', marginBottom: '1.5rem' }}>
-            {renderOfficialLink(product.pricingPath, `${product.name} pricing`, `See the current access model and pricing details for ${product.name}.`)}
+            {renderOfficialLink(product.pricingPath, `${product.name} pricing`, `See current pricing and how to get started with ${product.name}.`)}
             {renderOfficialLink(product.appUrl, `Try ${product.name}`, `Open the official ${product.name} app or play experience.`)}
             {renderOfficialLink(product.helpPath, `${product.name} help`, `Read getting-started notes, core features, common use cases, and current scope for ${product.name}.`)}
-            {renderOfficialLink(product.supportPath, 'Support and contact', 'Use the official Sixsmith Games support path for help, product questions, and contact details.')}
+            {renderOfficialLink(product.supportPath, 'Support and contact', 'Reach the Sixsmith Games support team for help, product questions, and contact details.')}
           </div>
 
           {supportingArticles.length > 0 ? (

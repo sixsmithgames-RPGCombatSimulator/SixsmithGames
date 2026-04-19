@@ -23,7 +23,7 @@ export default function ToolsPage() {
               The full Sixsmith Games product lineup
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              This page exists to show the full public lineup in one place without flattening the products into generic copy. Each card below links to an indexable, audience-focused landing page with product facts, FAQs, pricing notes, and official links.
+              The full lineup in one place, without flattening the products into generic copy. Each card links to the product page with features, FAQs, pricing notes, and official links.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>

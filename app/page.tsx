@@ -57,10 +57,10 @@ export default function HomePage() {
               Browser-based games and tools for people who care how systems work.
             </h1>
             <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. The public site exists to make that lineup easy to understand for humans, search engines, and AI systems without flattening the audience for each product. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn pressure and ship-systems tradeoffs.
+              Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn pressure and ship-systems tradeoffs.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              The goal is not generic “gaming.” The goal is a set of browser-based products with clear audiences, clear use cases, and enough public context that someone can tell what each one is, who it is for, and where to go next without guessing.
+              The goal is not generic “gaming.” The goal is a set of browser-based products with clear audiences, clear use cases, and enough context that anyone can tell what each one is, who it is for, and where to go next without guessing.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
               <Link
@@ -92,7 +92,7 @@ export default function HomePage() {
                   textDecoration: 'none',
                 }}
               >
-                Read the canonical facts page
+                Read the Sixsmith Games facts
               </Link>
             </div>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
@@ -208,28 +208,28 @@ export default function HomePage() {
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Public information that stays explicit</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Clear answers on every page</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            The public pages on sixsmithgames.com are meant to answer the questions a human visitor, a search engine, or an AI assistant is most likely to ask. What is the product? Who is the product for? What problem does the product solve? How does the product work? What does pricing look like? Where is the official help or support path? Those answers should be visible in crawlable HTML on the product pages themselves, not hidden behind JavaScript-only tabs or locked in a downloadable file.
+            Every product page is built to answer the questions you are most likely to ask. What is the product? Who is it for? What problem does it solve? How does it work? What does pricing look like? Where do I go for help or support? Those answers live right on the page, not hidden behind extra clicks.
           </p>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            That is why the site now links directly to the product pages, the pricing page, the articles archive, the blog, the help pages, the support page, and the canonical facts page. The goal is clarity, not keyword stuffing. The site should attract the right users by being direct about what each product actually does and who each product actually serves.
+            That is why the site links directly to the product pages, pricing, articles, blog, help, support, and the product facts. The goal is clarity. Each product page is written to explain what the product actually does and who it actually serves.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              View the pricing page
+              Pricing and access
             </Link>
             <Link href="/help" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Browse product help
+              Help and support
             </Link>
             <Link href="/articles" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
               Read the articles
             </Link>
             <Link href="/blog" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Read the news blog
+              Blog
             </Link>
             <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Visit support
+              Contact support
             </Link>
           </div>
         </section>

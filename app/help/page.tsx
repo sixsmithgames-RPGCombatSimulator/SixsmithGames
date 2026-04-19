@@ -10,7 +10,7 @@ import { fluidGrid, pageGutter } from '@/lib/responsive';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Help | Sixsmith Games Product Help and Getting Started Pages',
   description:
-    'Browse public help pages for Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
+    'Browse help pages for Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
   path: '/help',
 });
 
@@ -28,10 +28,10 @@ export default function HelpIndexPage() {
           />
           <div style={{ maxWidth: '820px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Public help pages for every major product
+              Help pages for every major product
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Each product has a public help landing page plus topic pages for getting started, core features, common use cases, current scope, and pricing or account basics. The goal is to keep the pages human-readable and crawler-readable at the same time.
+              Each product has a help landing page plus topic pages for getting started, core features, common use cases, current scope, and pricing or account basics. Clear answers, easy to read, easy to skim.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>

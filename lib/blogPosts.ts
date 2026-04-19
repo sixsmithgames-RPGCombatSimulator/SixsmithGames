@@ -16,7 +16,7 @@ That focus matters. A lot of game masters do not need a full campaign-management
 
 ## Who Virtual Combat Simulator is for
 
-Virtual Combat Simulator is for game masters, encounter-heavy campaigns, and online or hybrid tabletop RPG groups. The best-fit audience is D&D-adjacent because the public messaging, feature set, and terminology all center on encounter flow, initiative, tokens, and battle-map control.
+Virtual Combat Simulator is for game masters, encounter-heavy campaigns, and online or hybrid tabletop RPG groups. The best-fit audience is D&D-adjacent because the product, feature set, and terminology all center on encounter flow, initiative, tokens, and battle-map control.
 
 ## Why someone would choose it
 
@@ -92,7 +92,7 @@ That makes simple questions much faster to answer:
 
 [Virtual Combat Simulator](/apps/virtual-combat-simulator) is designed around exactly that “one place” workflow. If your main goal is D&D combat management rather than broad campaign tooling, a focused combat simulator is often the cleaner answer.
 
-Use the official [Virtual Combat Simulator product page](/apps/virtual-combat-simulator) for the core explanation, and use the [help pages](/help/virtual-combat-simulator) if you want the public feature and scope reference.`,
+Use the official [Virtual Combat Simulator product page](/apps/virtual-combat-simulator) for the core explanation, and use the [help pages](/help/virtual-combat-simulator) if you want a feature and scope reference.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '4 min read',
@@ -121,7 +121,7 @@ That broader scope can be useful, but it is not always the right fit. If the rea
 
 Search language often blurs these products together. A game master might search for a VTT when what they really want is a better way to run combat. That is exactly why [Virtual Combat Simulator](/apps/virtual-combat-simulator) is described so explicitly as a combat simulator and encounter control room.
 
-If you want a focused D&D combat management workflow, start with the product page for [Virtual Combat Simulator](/apps/virtual-combat-simulator). If you want its public access model, use the [pricing page](/pricing#virtual-combat-simulator).`,
+If you want a focused D&D combat management workflow, start with the product page for [Virtual Combat Simulator](/apps/virtual-combat-simulator). For pricing and how to get started, see the [pricing page](/pricing#virtual-combat-simulator).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -146,7 +146,7 @@ The practical answer is a shared encounter view that keeps token positions, turn
 
 [Virtual Combat Simulator](/apps/virtual-combat-simulator) fits this case because it keeps the battle map, tokens, and initiative in one browser-based combat workflow. The product is not trying to solve every part of tabletop play. It is trying to keep the encounter readable, which is exactly the issue hybrid groups usually struggle with.
 
-For more detail on public features and scope, use the [Virtual Combat Simulator help pages](/help/virtual-combat-simulator).`,
+For more detail on features and scope, see the [Virtual Combat Simulator help pages](/help/virtual-combat-simulator).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -173,7 +173,7 @@ ContentCraft is for writers, novelists, worldbuilders, and game masters. That au
 
 Use [ContentCraft](/apps/contentcraft) when you need a stable source of truth for the project. If the work depends on remembering how characters, places, factions, items, timelines, and scenes connect, ContentCraft is the right kind of tool to evaluate.
 
-For public subscription details, use the official [pricing page](/pricing#contentcraft). For public feature and scope notes, use the official [ContentCraft help pages](/help/contentcraft).`,
+For subscription details, see the official [pricing page](/pricing#contentcraft). For feature and scope notes, see the official [ContentCraft help pages](/help/contentcraft).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '4 min read',
@@ -235,7 +235,7 @@ That workflow works for writers and for game masters because both groups need th
 
 Worldbuilding breaks down when everything becomes one giant generation pass or one massive unstructured note pile. Staged workflow creates checkpoints. That means new content can stay aligned with the world instead of drifting away from it.
 
-[ContentCraft](/apps/contentcraft) is designed around that exact combination of project structure, canon continuity, and staged creative workflow. If your project needs a worldbuilding app for writers and game masters rather than generic productivity software, that is the public page to start with.`,
+[ContentCraft](/apps/contentcraft) is designed around that exact combination of project structure, canon continuity, and staged creative workflow. If your project needs a worldbuilding app for writers and game masters rather than generic productivity software, that is the page to start with.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '4 min read',
@@ -266,7 +266,7 @@ That relationship layer is what turns notes into usable story infrastructure.
 
 Most tools let you store entries, but not all tools are built around relationship-heavy creative work. That is why so many projects end up with folders full of lore that technically exists but is hard to use during writing or prep.
 
-[ContentCraft](/apps/contentcraft) is built to keep those relationships visible inside a shared canon workspace. For public product scope and workflow details, use the official [ContentCraft help pages](/help/contentcraft).`,
+[ContentCraft](/apps/contentcraft) is built to keep those relationships visible inside a shared canon workspace. For product scope and workflow details, see the official [ContentCraft help pages](/help/contentcraft).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -310,15 +310,15 @@ The practical answer is a stable canon workspace and a staged workflow:
 
 ## What kind of strategy game it is
 
-Four Star General is not marketed like an arcade action title. The public description is much more specific: the game is about command decisions, tactical positioning, mission objectives, and a rules model the player can actually study.
+Four Star General is not an arcade action title. The game is about command decisions, tactical positioning, mission objectives, and a rules model you can actually study.
 
 ## Why that matters
 
 Serious strategy players do not just ask whether a game is set in WWII. They ask whether the command model is meaningful. Does deployment matter? Do reserves matter? Does supply matter? Does the scenario create pressure beyond simple unit trading?
 
-The public answer for [Four Star General](/apps/fourstargeneral) is yes. That is why the official product page emphasizes deterministic tactics and battlefield pressure instead of broad hype language.
+For [Four Star General](/apps/fourstargeneral) the answer is yes. That is why the product page emphasizes deterministic tactics and battlefield pressure instead of broad hype language.
 
-For public scope, pricing, and help content, use the official [Four Star General product page](/apps/fourstargeneral), [pricing page](/pricing#fourstargeneral), and [help pages](/help/fourstargeneral).`,
+For scope, pricing, and help, see the official [Four Star General product page](/apps/fourstargeneral), [pricing page](/pricing#fourstargeneral), and [help pages](/help/fourstargeneral).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '4 min read',
@@ -342,7 +342,7 @@ A serious tactical strategy game should reward planning, not mystify it. If depl
 
 Deterministic tactics changes the question from “what random thing happened?” to “what command choice created this outcome?” That is a much better loop for players who want to improve over repeated scenarios.
 
-[Four Star General](/apps/fourstargeneral) uses deterministic tactics as part of its public product identity. That is why the page language stays focused on battlefield pressure, mission profiles, and command decisions instead of selling the game as generic WWII action.`,
+[Four Star General](/apps/fourstargeneral) uses deterministic tactics as a core part of its identity. That is why the page stays focused on battlefield pressure, mission profiles, and command decisions instead of selling the game as generic WWII action.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -365,7 +365,7 @@ If supply is just flavor, it does not shape the battle. In a serious tactical st
 
 Reserves matter because they force commitment questions. Do you hold a force back for the moment the line bends, or do you commit early and risk having no answer later?
 
-That is part of why [Four Star General](/apps/fourstargeneral) emphasizes supply and reserves in its public explanation. Those systems tell the audience the game is interested in command pressure, not just in unit movement.`,
+That is part of why [Four Star General](/apps/fourstargeneral) emphasizes supply and reserves. Those systems tell you the game is interested in command pressure, not just unit movement.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
@@ -405,13 +405,13 @@ That is why [Four Star General](/apps/fourstargeneral) talks so directly about m
 
 ## What MasterTyping is not
 
-MasterTyping is not positioned as a childish typing toy, and it is not positioned as a dry worksheet app. The public positioning is more useful than that: MasterTyping is a typing practice game and skill-building trainer for people who want to improve and keep practicing.
+MasterTyping is not a childish typing toy, and it is not a dry worksheet app. It is a typing practice game and skill-building trainer for people who want to improve and keep practicing.
 
 ## Who it is for
 
 MasterTyping is for adults, students, writers, developers, gamers, and other keyboard-heavy users who want a practical improvement loop with better staying power.
 
-If you want the official public explanation, start with the [MasterTyping product page](/apps/mastertyping). For access notes and pricing, use the [pricing page](/pricing#mastertyping).`,
+For the full explanation, start with the [MasterTyping product page](/apps/mastertyping). For access and pricing, see the [pricing page](/pricing#mastertyping).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',

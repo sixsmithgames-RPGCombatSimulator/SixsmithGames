@@ -24,14 +24,14 @@ export async function generateMetadata({ params }: { params: Promise<{ tag: stri
   if (!prettyTag) {
     return buildPageMetadata({
       title: 'Blog Tags | Sixsmith Games',
-      description: 'Browse Sixsmith Games blog news tags.',
+      description: 'Browse Sixsmith Games blog tags.',
       path: '/blog',
     });
   }
 
   return buildPageMetadata({
-    title: `${prettyTag} News | Sixsmith Games Blog`,
-    description: `Read Sixsmith Games news posts tagged with ${prettyTag}.`,
+    title: `${prettyTag} | Sixsmith Games Blog`,
+    description: `Read Sixsmith Games blog posts tagged with ${prettyTag}.`,
     path: `/blog/tag/${slugifyTag(prettyTag)}`,
   });
 }
@@ -76,7 +76,7 @@ export default async function BlogTagPage({ params }: { params: Promise<{ tag: s
         <h1 style={{ color: 'white', fontSize: 'clamp(2rem, 5vw, 3rem)', fontWeight: '900', margin: '0 0 0.75rem', lineHeight: 1.2 }}>
           #{resolvedNewsTag}
         </h1>
-        <p style={{ color: '#94a3b8', fontSize: '1.0625rem', margin: 0 }}>News posts related to {resolvedNewsTag}</p>
+        <p style={{ color: '#94a3b8', fontSize: '1.0625rem', margin: 0 }}>Blog posts tagged with {resolvedNewsTag}</p>
       </section>
 
       <div style={{ maxWidth: '1100px', margin: '0 auto', padding: `3rem ${pageGutter} 4rem` }}>

@@ -8,9 +8,9 @@ import { MARKETING_LAST_UPDATED, PRODUCT_DEFINITIONS } from '@/lib/productConten
 import { pageGutter } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Support | Sixsmith Games Contact, Help, and Official Paths',
+  title: 'Support | Sixsmith Games Contact, Help, and Official Links',
   description:
-    'Use the official Sixsmith Games support page for contact details, product help links, policies, and public support paths.',
+    'Use the Sixsmith Games support page for contact details, product help links, and policies.',
   path: '/support',
 });
 
@@ -28,10 +28,10 @@ export default function SupportPage() {
           />
           <div style={{ maxWidth: '760px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.6rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Official support and contact paths
+              Help and support
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Use this page when you need the official path for support, public help content, pricing, policies, or product pages. The goal of the support page is clarity: one public place for the studio contact route and the public product help links.
+              Use this page to reach the studio, find product help, review pricing, check policies, or jump to any product page. One clear place for contact details and official product help links.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -46,7 +46,7 @@ export default function SupportPage() {
               Email support and general contact requests to <a href="mailto:info@sixsmithgames.com" style={{ color: '#1d4ed8', fontWeight: 700 }}>info@sixsmithgames.com</a>.
             </p>
             <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-              For privacy and policy questions, use the public legal pages: <Link href="/privacy" style={{ color: '#1d4ed8', fontWeight: 700 }}>Privacy Policy</Link> and <Link href="/terms" style={{ color: '#1d4ed8', fontWeight: 700 }}>Terms of Service</Link>.
+              For privacy and policy questions, see the <Link href="/privacy" style={{ color: '#1d4ed8', fontWeight: 700 }}>Privacy Policy</Link> and <Link href="/terms" style={{ color: '#1d4ed8', fontWeight: 700 }}>Terms of Service</Link>.
             </p>
           </div>
         </section>
@@ -78,7 +78,7 @@ export default function SupportPage() {
               About Sixsmith Games
             </Link>
             <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Canonical facts page
+              Sixsmith Games facts
             </Link>
             <Link href="/blog" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
               Blog

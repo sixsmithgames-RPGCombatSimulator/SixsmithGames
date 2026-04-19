@@ -27,8 +27,7 @@ export default async function ArticlesPage() {
               Product guides and evergreen articles
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Articles are the stable reference layer for Sixsmith Games products. This is where product explainers, workflow guides, and
-              intent-matched audience questions live. Time-sensitive updates stay on the{' '}
+              Articles are the stable reference for Sixsmith Games products. Product explainers, workflow guides, and common questions. Time-sensitive updates stay on the{' '}
               <Link href="/blog" style={{ color: '#bfdbfe', fontWeight: 800 }}>
                 Blog
               </Link>
@@ -89,11 +88,11 @@ export default async function ArticlesPage() {
                     </Link>
                   </h3>
                   <p style={{ margin: '0 0 0.75rem', color: '#475569', lineHeight: 1.8 }}>
-                    {product.oneSentence} Start with the official{' '}
+                    {product.oneSentence} Start with the{' '}
                     <Link href={product.officialPath} style={{ color: '#1d4ed8', fontWeight: 700 }}>
                       {product.name} product page
                     </Link>{' '}
-                    or the public{' '}
+                    or the{' '}
                     <Link href={product.helpPath} style={{ color: '#1d4ed8', fontWeight: 700 }}>
                       {product.name} help pages
                     </Link>

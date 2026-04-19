@@ -19,8 +19,8 @@ export const gravityProductDefinition: ProductDefinition = {
   category: 'Simultaneous-turn strategy game with ship systems management',
   primaryAudience: 'Strategy and board-game players who like deterministic system pressure',
   platform: 'Browser-based web game',
-  pricingModel: 'Early beta with no public signup or public paid plan yet',
-  availability: 'Public marketing page only for most visitors; browser access is currently limited to hardwired dummy paid test accounts',
+  pricingModel: 'Early beta, no open signup or paid plan yet',
+  availability: 'Early beta. Most visitors see the product page only; the browser build is currently limited to the studio team and testers',
   applicationCategory: 'GameApplication',
   operatingSystem: 'Web browser',
   officialPath: '/apps/gravity',
@@ -44,13 +44,13 @@ export const gravityProductDefinition: ProductDefinition = {
   },
   secondaryCta: {
     kind: 'link',
-    label: 'See product access notes',
+    label: 'See access notes',
     href: '/pricing#gravity',
   },
   whatItIs: [
     'Gravity is an early beta simultaneous-turn strategy game where captains commit orders in parallel and the turn resolves once those orders are locked. Gravity is built for players who like tactical systems that can be read, planned, and argued about clearly rather than for players who want twitch action or vague spectacle.',
     'The central idea is ship systems pressure. Power routing, damage control, crew roles, repairs, maneuvering, attacks, environmental hazards, and escape timing all compete inside the same decision window. That makes Gravity feel closer to a strategy or board-game rules engine than to a cinematic action game.',
-    'Gravity also stands out because the digital client is described as mirroring the tabletop rules. That means the visible marketing language should emphasize system clarity, turn structure, and ship-level tradeoffs instead of abstract brand language. Because Gravity is still early beta, the public site should set expectations clearly: read the marketing page now, but do not expect broad public access yet.',
+    'Gravity also stands out because the digital client mirrors the tabletop rules. System clarity, turn structure, and ship-level tradeoffs are the point. Because Gravity is still early beta, set expectations accordingly: read this page now, but do not expect broad access yet.',
   ],
   whoItIsFor: [
     'Gravity is for strategy and board-game players who enjoy simultaneous planning, shared resolution, and visible tactical tradeoffs.',
@@ -100,8 +100,8 @@ export const gravityProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'Gravity does not currently have a public paid tier listed on the pricing page. Gravity should be described honestly as an early beta product with public marketing pages but without general public access.',
-    'For now, the browser build is limited to the hardwired dummy paid test accounts used for internal validation. Real paid accounts and other visitors should get the marketing page and a clear coming-soon state instead of a live launch path.',
+    'Gravity does not currently have a paid tier listed on the pricing page. Gravity is an early beta product with a product page but without general access.',
+    'For now, the browser build is limited to the studio team and testers. Everyone else sees the product page and a clear coming-soon state.',
   ],
   faq: [
     {
@@ -112,7 +112,7 @@ export const gravityProductDefinition: ProductDefinition = {
     {
       question: 'Who is Gravity for?',
       answer:
-        'Gravity is for strategy and board-game players who enjoy simultaneous planning, ship systems management, and rules-forward tactical pressure. Gravity should not be described with vague generic gaming language because the actual audience is more specific than that.',
+        'Gravity is for strategy and board-game players who enjoy simultaneous planning, ship systems management, and rules-forward tactical pressure. Not a generic action game, and not for players who want vague spectacle.',
     },
     {
       question: 'How do simultaneous turns work in Gravity?',
@@ -122,24 +122,24 @@ export const gravityProductDefinition: ProductDefinition = {
     {
       question: 'Is Gravity single-player or multiplayer?',
       answer:
-        'Gravity supports both. The product docs describe instant solo resolution for fast iteration and multiplayer resolution once all captains lock their orders.',
+        'Gravity supports both. Solo play resolves instantly so you can iterate fast, while multiplayer resolves once all captains lock their orders.',
     },
     {
       question: 'Is Gravity based on tabletop rules?',
       answer:
-        'Yes. The public Gravity docs describe the digital client as mirroring the current tabletop rules. That parity is part of the product identity because it tells players the digital rules engine is meant to stay transparent and consistent.',
+        'Yes. The digital client mirrors the current tabletop rules. That parity is part of the product identity because it means the digital rules engine stays transparent and consistent.',
     },
     {
       question: 'How does pricing work for Gravity?',
       answer:
-        'The current public pricing page does not list a separate paid plan for Gravity. The safest public statement is that Gravity is in early beta, has a public marketing page, and is not yet open broadly beyond the hardwired dummy paid test accounts.',
+        'The pricing page does not list a separate paid plan for Gravity yet. Gravity is in early beta with a product page, and the browser build is still limited to the studio team and testers.',
     },
   ],
   gettingStarted: [
     'Start from the product page so the simultaneous-turn model, ship systems focus, and early beta status are clear before expecting access.',
-    'Use the public page to understand how orders are planned, locked, and resolved in a shared turn window.',
+    'Use this page to understand how orders are planned, locked, and resolved in a shared turn window.',
     'Pay attention to power routing, repairs, maneuvering, crew roles, and hazards because those systems create the real tactical pressure.',
-    'Review the pricing page for the current access note, since Gravity is not broadly open yet.',
+    'Check the pricing page for the current access note, since Gravity is not broadly open yet.',
   ],
   commonUseCases: [
     'Playing a rules-forward strategy game where simultaneous planning is the core source of tension.',
@@ -148,8 +148,8 @@ export const gravityProductDefinition: ProductDefinition = {
     'Exploring ship systems management, power routing, and environmental pressure inside a shared tactical turn.',
   ],
   scopeNotes: [
-    'Gravity should be described concretely as an early beta simultaneous-turn strategy game with ship systems management, not as abstract brand language.',
-    'The public product framing depends on rules clarity, tabletop parity, and tactical tradeoffs, so those points should stay visible.',
-    'The public access model for Gravity is currently limited to an early beta note rather than a public signup or standalone listed paid plan, and the page should say that plainly.',
+    'Gravity is an early beta simultaneous-turn strategy game with ship systems management. Concrete systems, not abstract brand language.',
+    'Rules clarity, tabletop parity, and tactical tradeoffs are the core of what Gravity is.',
+    'Access is currently limited to an early beta state. There is no open signup or standalone listed paid plan yet, and the page says that plainly.',
   ],
 };

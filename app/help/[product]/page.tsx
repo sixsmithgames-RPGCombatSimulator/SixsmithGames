@@ -32,14 +32,14 @@ export async function generateMetadata({
   if (!definition) {
     return buildPageMetadata({
       title: 'Help | Sixsmith Games',
-      description: 'Public help pages for Sixsmith Games products.',
+      description: 'Help pages for Sixsmith Games products.',
       path: '/help',
     });
   }
 
   return buildPageMetadata({
     title: `${definition.name} Help | Getting Started, Core Features, and Product Scope`,
-    description: `Read public help for ${definition.name}, including getting started, core features, common use cases, current scope, and pricing basics.`,
+    description: `Read help for ${definition.name}, including getting started, core features, common use cases, current scope, and pricing basics.`,
     path: definition.helpPath,
   });
 }
@@ -78,7 +78,7 @@ export default async function ProductHelpIndexPage({
               {definition.name} help
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              {definition.oneSentence} This public help landing page points to the core reference pages for getting started, features, common use cases, current scope, and pricing or account basics.
+              {definition.oneSentence} This help landing page points to the core reference pages for getting started, features, common use cases, current scope, and pricing or account basics.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -109,14 +109,14 @@ export default async function ProductHelpIndexPage({
                 </h3>
                 <p style={{ margin: '0 0 0.75rem', color: '#475569', lineHeight: 1.8 }}>
                   {topic === 'getting-started'
-                    ? `Start using ${definition.name} with the public onboarding summary and first-step guidance.`
+                    ? `Start using ${definition.name} with a simple onboarding summary and first-step guidance.`
                     : topic === 'core-features'
-                      ? `Review the feature set that defines the current public positioning of ${definition.name}.`
+                      ? `Review the feature set that defines what ${definition.name} is today.`
                       : topic === 'common-use-cases'
                         ? `See the real situations where ${definition.name} fits best.`
                         : topic === 'current-scope'
-                          ? `Understand the current public boundaries and current build framing for ${definition.name}.`
-                          : `Review pricing, access, account basics, and official support paths for ${definition.name}.`}
+                          ? `Understand what ${definition.name} covers right now and what is still to come.`
+                          : `Review pricing, access, account basics, and where to go for support with ${definition.name}.`}
                 </p>
                 <Link href={`/help/${definition.slug}/${topic}`} style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
                   Open {HELP_TOPIC_TITLES[topic].toLowerCase()}

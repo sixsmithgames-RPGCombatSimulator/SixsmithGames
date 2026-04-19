@@ -36,7 +36,7 @@ export async function generateMetadata({
   if (!definition || !isValidTopic) {
     return buildPageMetadata({
       title: 'Help | Sixsmith Games',
-      description: 'Public help pages for Sixsmith Games products.',
+      description: 'Help pages for Sixsmith Games products.',
       path: '/help',
     });
   }
@@ -113,7 +113,7 @@ export default async function HelpTopicPage({
         </section>
 
         <section>
-          <h2 style={{ margin: '0 0 1rem', fontSize: '1.7rem', fontWeight: 900, color: '#0f172a' }}>Next official pages</h2>
+          <h2 style={{ margin: '0 0 1rem', fontSize: '1.7rem', fontWeight: 900, color: '#0f172a' }}>More official links</h2>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href={definition.officialPath} style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
               {definition.name} product page

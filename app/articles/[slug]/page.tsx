@@ -119,7 +119,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             {post.title}
           </h1>
           <p style={{ color: '#cbd5e1', fontSize: '1.02rem', lineHeight: 1.8, margin: '0 0 1rem' }}>
-            Evergreen reference content for Sixsmith Games products and audiences.
+            Evergreen guide for Sixsmith Games products and the people who use them.
           </p>
           <div style={{ display: 'flex', alignItems: 'center', gap: '0.5rem', color: '#94a3b8', fontSize: '0.875rem' }}>
             <span>{post.author}</span>
@@ -208,7 +208,7 @@ export default async function ArticlePage({ params }: { params: Promise<{ slug: 
             Keep going with the official product pages
           </h3>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
-            Use the product page, help pages, and pricing page for the current official state.
+            Visit the product page, help pages, and pricing page for the most current details.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
             {primaryRelatedProduct ? (

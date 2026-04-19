@@ -14,7 +14,7 @@ export default function NotFoundPage() {
             The page you asked for is not here.
           </h1>
           <p style={{ margin: '0 0 1.25rem', color: '#475569', lineHeight: 1.85 }}>
-            Try the homepage, the product lineup, the pricing page, or the canonical facts page if you are looking for current public information about Sixsmith Games.
+            Try the homepage, the product lineup, the pricing page, or the Sixsmith Games facts page for the most current details.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>Home</Link>

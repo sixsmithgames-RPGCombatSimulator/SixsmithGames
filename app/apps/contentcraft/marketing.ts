@@ -20,7 +20,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   primaryAudience: 'Writers, novelists, worldbuilders, and game masters',
   platform: 'Browser-based web app',
   pricingModel: '$9.99/month or $99/year subscription',
-  availability: 'Public marketing page plus subscription access to the app',
+  availability: 'Subscription-based access to the app',
   applicationCategory: 'WritingApplication',
   operatingSystem: 'Web browser',
   offerPrice: 9.99,
@@ -106,8 +106,8 @@ export const contentCraftProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'ContentCraft is the premium creative platform in the Sixsmith Games lineup. The public pricing page lists ContentCraft at $9.99 per month or $99 per year, with messaging centered on structured organization, canon management, and AI-assisted creative workflows.',
-    'The pricing copy also notes that ContentCraft includes built-in AI usage for people who want it, while keeping the overall positioning grounded in writing and worldbuilding rather than in vague automation language. The site should keep that creative-work audience focus intact.',
+    'ContentCraft is the premium creative platform in the Sixsmith Games lineup. ContentCraft is $9.99 per month or $99 per year, built around structured organization, canon management, and AI-assisted creative workflows.',
+    'ContentCraft includes built-in AI usage for writers who want it, but the value is bigger than AI. The product is grounded in writing and worldbuilding: the AI helps when you want it, and the canon and organization layer is there whether you use it or not.',
   ],
   faq: [
     {
@@ -118,7 +118,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       question: 'Who is ContentCraft for?',
       answer:
-        'ContentCraft is for writers, novelists, worldbuilders, and game masters. ContentCraft is not positioned as generic productivity software. The product is meant for projects where connected lore, story organization, and continuity matter.',
+        'ContentCraft is for writers, novelists, worldbuilders, and game masters. ContentCraft is not generic productivity software. It is built for projects where connected lore, story organization, and continuity matter.',
     },
     {
       question: 'Does ContentCraft replace my normal writing workflow?',
@@ -138,14 +138,14 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       question: 'How does pricing work for ContentCraft?',
       answer:
-        'The public pricing page lists ContentCraft at $9.99 per month or $99 per year. The marketing copy describes some built-in AI usage, with additional AI usage handled through bring-your-own or purchased credits when needed.',
+        'ContentCraft is $9.99 per month or $99 per year. The subscription includes some built-in AI usage, with additional AI usage handled through bring-your-own or purchased credits when needed.',
     },
   ],
   gettingStarted: [
     'Start by defining the project you are actually building, such as a campaign, a setting, a novel, or a series of connected articles.',
     'Add the core canon assets first: important characters, locations, factions, timelines, items, and rules the project must respect.',
     'Use staged workflows to expand the material in reviewable steps instead of asking for one giant generation pass.',
-    'Check pricing when you are ready to move from the public overview into active subscription access.',
+    'Check pricing when you are ready to subscribe and move into the full workspace.',
   ],
   commonUseCases: [
     'Keeping lore consistent across a long campaign, novel, or multi-part story project.',
@@ -154,8 +154,8 @@ export const contentCraftProductDefinition: ProductDefinition = {
     'Building a reusable world library that can support future chapters, sessions, supplements, or spin-off material.',
   ],
   scopeNotes: [
-    'ContentCraft is marketed as a writing tool and worldbuilding workspace, not as generic office productivity software.',
+    'ContentCraft is a writing tool and worldbuilding workspace, not generic office productivity software.',
     'ContentCraft is strongest when the project has real continuity pressure: repeated references, expanding lore, shared canon, or linked creative assets.',
-    'ContentCraft should be described as AI-assisted only when the surrounding explanation also makes the canon, review, and project-organization layers explicit.',
+    'ContentCraft is AI-assisted, but the canon, review, and project-organization layers stand on their own whether or not you use the AI features.',
   ],
 };

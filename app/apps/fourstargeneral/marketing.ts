@@ -20,7 +20,7 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   primaryAudience: 'Players of serious WWII tactical strategy and digital wargames',
   platform: 'Browser-based web game',
   pricingModel: 'Free core play with optional $1.99/month content unlocks',
-  availability: 'Public marketing page plus a playable browser build with optional paid expansion content',
+  availability: 'Playable browser build with optional paid expansion content',
   applicationCategory: 'GameApplication',
   operatingSystem: 'Web browser',
   offerPrice: 1.99,
@@ -54,8 +54,8 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   },
   whatItIs: [
     'Four Star General is a WWII tactical strategy game for players who want battlefield decisions to be clear, consequential, and grounded in visible systems. Four Star General emphasizes command decisions, positioning, mission profiles, supply, and reserves instead of arcade-style spectacle.',
-    'The current product messaging describes a deterministic tactical battle experience where the player plans operations, coordinates units, and works through authored scenarios with real battlefield pressure. That deterministic framing matters because it tells the audience what kind of strategy game this is and what kind of strategy game it is not.',
-    'Four Star General is best described as a browser-based tactical wargame for players who like serious WWII strategy, authored scenarios, and a rules model where outcomes follow from deployment, resource pressure, and command choices.',
+    'Four Star General is a deterministic tactical battle experience where you plan operations, coordinate units, and work through authored scenarios with real battlefield pressure. Deterministic means the rules are visible and the outcome follows from your decisions, not hidden randomness.',
+    'Four Star General is a browser-based tactical wargame for players who like serious WWII strategy, authored scenarios, and a rules model where outcomes follow from deployment, resource pressure, and command choices.',
   ],
   whoItIsFor: [
     'Four Star General is for players who enjoy serious WWII tactical strategy and digital wargames more than fast arcade action.',
@@ -63,8 +63,8 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     'Four Star General is for people who like authored scenarios, deterministic tactics, and command decisions that can be studied, tested, and improved over repeat play.',
   ],
   problemItSolves: [
-    'A lot of strategy-game marketing talks about "epic warfare" without telling the player how the game actually creates tension. Four Star General solves that clarity problem by centering the public explanation on deterministic tactics, battlefield pressure, supply, reserves, and mission profiles.',
-    'For players who care about serious tactical play, the important question is not whether a game looks war-like. The important question is whether command decisions matter. Four Star General answers that with systems the audience already recognizes: deployment, logistics, reserve management, and objective pressure.',
+    'A lot of strategy-game marketing talks about "epic warfare" without telling the player how the game actually creates tension. Four Star General is the opposite: deterministic tactics, battlefield pressure, supply, reserves, and mission profiles do the work.',
+    'For serious tactical play, the important question is not whether a game looks war-like. The important question is whether command decisions matter. Four Star General answers that with systems you already recognize: deployment, logistics, reserve management, and objective pressure.',
   ],
   howItWorks: [
     'Choose and deploy forces for the scenario while considering terrain, objectives, reserve posture, and how pressure will build over the battle.',
@@ -105,8 +105,8 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'Four Star General is described on the public pricing page as playable now with optional paid content unlocks at $1.99 per month. The core message is not "pay to start." The core message is "start with the tactical core, then expand content if the game fits you."',
-    'That model matches the audience. Serious strategy players want to understand the systems first. Optional paid content works when the base tactical experience is already clear and the added value is more units, more scenarios, and broader campaign-style content.',
+    'Four Star General is playable now, with optional paid content unlocks at $1.99 per month. This is not "pay to start." Start with the tactical core, then expand content if the game fits you.',
+    'Serious strategy players want to understand the systems first. Optional paid content works when the base tactical experience is already clear, and the added value is more units, more scenarios, and broader campaign-style content.',
   ],
   faq: [
     {
@@ -122,29 +122,29 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     {
       question: 'Who is Four Star General for?',
       answer:
-        'Four Star General is for players of serious WWII tactical strategy and digital wargames. The public copy should stay aligned with that audience instead of marketing the game like a broad arcade shooter or generic action title.',
+        'Four Star General is for players of serious WWII tactical strategy and digital wargames. It is not a broad arcade shooter or a generic action title.',
     },
     {
       question: 'Does Four Star General use supply and reserves as real systems?',
       answer:
-        'Yes. Supply and reserves are part of the public product framing because they are central to how battlefield pressure is created. The game is meant to reward players who think about logistics, tempo, and commitment windows, not just attack values.',
+        'Yes. Supply and reserves are core to how battlefield pressure is created. The game rewards players who think about logistics, tempo, and commitment windows, not just attack values.',
     },
     {
       question: 'What is the current scope of Four Star General?',
       answer:
-        'The current docs describe Four Star General as a tactical battle prototype with authored scenarios, deployment flow, reserve management, and deterministic resolution. That is the clearest public statement of current scope and should stay visible on the marketing page.',
+        'Four Star General is a tactical battle prototype with authored scenarios, deployment flow, reserve management, and deterministic resolution. That is what you can play today.',
     },
     {
       question: 'How does pricing work for Four Star General?',
       answer:
-        'The public pricing page presents Four Star General as playable now with optional $1.99 per month unlocks for more units, scenarios, and expanded content. The base idea is free core play with optional expansion content rather than a hard paywall.',
+        'Four Star General is playable now with optional $1.99 per month unlocks for more units, scenarios, and expanded content. Free core play with optional expansion content, not a hard paywall.',
     },
   ],
   gettingStarted: [
-    'Read the public overview with the expectation that Four Star General is a serious WWII tactical strategy game, not an arcade action title.',
+    'Start with the expectation that Four Star General is a serious WWII tactical strategy game, not an arcade action title.',
     'Launch the browser build and start with the tactical battle layer so you can learn how deployment, objectives, and deterministic resolution fit together.',
     "Pay attention to mission pressure, reserve timing, supply posture, and terrain because those systems are the heart of the game's command model.",
-    'If the tactical core fits you, review the pricing page for optional content expansion.',
+    'If the tactical core fits you, check the pricing page for optional content expansion.',
   ],
   commonUseCases: [
     'Playing authored WWII tactical scenarios that reward planning more than reflexes.',
@@ -153,8 +153,8 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     'Using a browser-based strategy game when you want wargame-style pressure without physical setup time.',
   ],
   scopeNotes: [
-    'Four Star General should be described as a serious WWII tactical strategy game, not as generic "gaming" entertainment.',
-    'The current public scope is tactical battle play with authored scenarios, deployment, reserve management, and deterministic resolution.',
-    'The product messaging should keep command decisions, mission profiles, supply, and battlefield pressure visible because those are the signals the audience actually cares about.',
+    'Four Star General is a serious WWII tactical strategy game, not generic "gaming" entertainment.',
+    'Current scope is tactical battle play with authored scenarios, deployment, reserve management, and deterministic resolution.',
+    'Command decisions, mission profiles, supply, and battlefield pressure are what make this a real tactical wargame instead of surface-level war flavor.',
   ],
 };
