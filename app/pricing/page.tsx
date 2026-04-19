@@ -20,29 +20,29 @@ export const metadata: Metadata = buildPageMetadata({
 
 const pricingFaq = [
   {
-    question: 'Which Sixsmith Games product requires a subscription from the start?',
+    question: 'Can I try the products before paying?',
     answer:
-      'ContentCraft is the subscription-first creative workspace in the lineup. ContentCraft is $9.99 per month or $99 per year.',
+      'Virtual Combat Simulator, Four Star General, and MasterTyping are all free to start. You can open them in your browser and use the core features without a subscription. Paid upgrades add more storage, more content, or expanded tracking when you decide you want them.',
   },
   {
-    question: 'Which Sixsmith Games products are free to start?',
+    question: 'Which product requires a subscription up front?',
     answer:
-      'Virtual Combat Simulator, Four Star General, and MasterTyping are all described as free to start, with optional paid layers or unlocks for people who want more capability, more content, or more retained history.',
+      'ContentCraft is the one product that requires a subscription to access. It is $9.99 per month or $99 per year. The subscription covers the full workspace, built-in AI usage, and the canon and organization tools.',
   },
   {
-    question: 'Does Gravity have a price listed right now?',
+    question: 'Is there a deal for Game Masters who want both ContentCraft and Virtual Combat Simulator?',
     answer:
-      'No. Gravity has a product page and an official app link, but the pricing page does not currently list a separate paid plan for Gravity.',
+      'Yes. There is a bundle that combines ContentCraft and Virtual Combat Simulator for Game Masters who want the campaign-building workspace and the encounter management tool together.',
   },
   {
-    question: 'Is there a bundle for Game Masters who want both writing and encounter tools?',
+    question: 'What is Gravity and why does it not have a price yet?',
     answer:
-      'Yes. The pricing model includes a bundle that combines ContentCraft and Virtual Combat Simulator for Game Masters who want both campaign-building and encounter-running tools.',
+      'Gravity is a simultaneous-turn strategy game currently in early beta. The browser build is still limited to the studio team and testers, so there is no open signup or paid plan listed yet. The product page has the details.',
   },
   {
-    question: 'How should I choose the right Sixsmith Games product?',
+    question: 'Which product is right for me?',
     answer:
-      'Choose the product by the problem you need solved. Use Virtual Combat Simulator for D&D combat management, ContentCraft for canon continuity and worldbuilding, Four Star General for WWII tactical strategy, MasterTyping for typing improvement, and Gravity for simultaneous-turn strategy.',
+      'Use Virtual Combat Simulator if you run tabletop RPG encounters and want faster, cleaner combat management. Use ContentCraft if you build stories, campaigns, or settings and need lore organization and canon continuity. Use Four Star General if you want serious WWII tactical strategy. Use MasterTyping if you want to improve your typing speed and accuracy. Use Gravity if simultaneous-turn strategy with ship systems sounds like your game.',
   },
 ];
 
@@ -85,13 +85,13 @@ export default function PricingPage() {
               Pricing and access
             </div>
             <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4rem)', lineHeight: 1.06, fontWeight: 900, margin: '0 0 1rem' }}>
-              Pricing and access for every Sixsmith Games product.
+              Most products are free to start. One requires a subscription. Here is what you get either way.
             </h1>
             <p style={{ fontSize: '1.12rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              This page covers which products are free to start, which ones have optional paid layers, which one requires a subscription, and where to go once you know what you want.
+              Virtual Combat Simulator, Four Star General, and MasterTyping are free to open and play. ContentCraft is a subscription workspace at $9.99 per month. Gravity is in early beta with no paid plan listed yet.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              Virtual Combat Simulator is a D&amp;D combat simulator. ContentCraft is a premium writing and worldbuilding workspace. Four Star General is a serious WWII tactical strategy game. MasterTyping is a typing practice game with a practical improvement loop. Gravity is a simultaneous-turn strategy game currently in early beta, so it does not list a separate paid tier yet.
+              Paid upgrades exist where they add something real: more storage, more scenarios, expanded history, or the full creative workspace. Nothing is locked behind a paywall just to get started.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
@@ -100,17 +100,17 @@ export default function PricingPage() {
 
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
         <section style={{ marginBottom: '2.5rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How the lineup is priced</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Free to start or subscription — here is the difference</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Sixsmith Games does not use one pricing model for everything. ContentCraft is a premium subscription because it is the creative workspace built around the subscription. Virtual Combat Simulator, Four Star General, and MasterTyping are intentionally easier to start so you can try the workflow first and then decide whether the paid layer is worth it for how often you use it. Gravity is in early beta and does not have a standalone paid plan yet.
+            Three products — Virtual Combat Simulator, Four Star General, and MasterTyping — let you open the browser app and use the core features without paying. The paid upgrade for each one adds something specific: more storage and GM features for VCS, more scenarios and units for Four Star General, deeper tracking for MasterTyping. Try it first, upgrade if it fits.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            Each product page also covers pricing in full. This page puts all the plans side by side so you can compare before clicking through.
+            ContentCraft is different. It is a full subscription workspace because the value is in the whole tool — lore organization, canon tracking, AI-assisted drafting, review workflow — not just one feature. $9.99 a month or $99 a year.
           </p>
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Plans and access by product</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>What each product costs</h2>
           <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
             {PRODUCT_DEFINITIONS.map((product) => (
               <article
@@ -136,10 +136,10 @@ export default function PricingPage() {
                     {product.offerPrice ? formatPrice(product.offerPrice) : 'Price not listed yet'}
                   </p>
                   <p style={{ margin: '0 0 0.8rem', color: '#334155', lineHeight: 1.8 }}>
-                    <strong>Pricing model:</strong> {product.pricingModel}.
+                    {product.pricingModel}.
                   </p>
                   <p style={{ margin: '0 0 1rem', color: '#475569', lineHeight: 1.8 }}>
-                    <strong>Availability:</strong> {product.availability}.
+                    {product.availability}.
                   </p>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
                     <Link
