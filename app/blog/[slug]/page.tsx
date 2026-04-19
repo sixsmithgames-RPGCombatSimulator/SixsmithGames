@@ -191,6 +191,11 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
   const { slug } = await params;
   const post = await getPostBySlug(slug);
   if (!post) notFound();
+  const tags = post.tags ?? [];
+  const primaryRelatedProductSlug = post.relatedProducts?.[0];
+  const primaryRelatedProduct = primaryRelatedProductSlug
+    ? PRODUCT_DEFINITIONS_BY_SLUG[primaryRelatedProductSlug]
+    : null;
 
   const related = (await getRecentPosts(3)).filter(p => p.slug !== post!.slug).slice(0, 2);
 
@@ -256,7 +261,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
 
         {/* Tags */}
         <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.5rem', marginTop: '2rem' }}>
-          {post.tags.map(tag => (
+          {tags.map(tag => (
             <Link
               key={tag}
               href={toTagRoute(tag)}
@@ -322,9 +327,9 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
             }}>
               View Pricing
             </Link>
-            {post.relatedProducts[0] ? (
+            {primaryRelatedProduct ? (
               <Link
-                href={PRODUCT_DEFINITIONS_BY_SLUG[post.relatedProducts[0]].officialPath}
+                href={primaryRelatedProduct.officialPath}
                 className={touchTargetClassName}
                 style={{
                   background: 'rgba(255,255,255,0.14)',
@@ -338,7 +343,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
                   border: '1px solid rgba(255,255,255,0.24)',
                 }}
               >
-                Visit {PRODUCT_DEFINITIONS_BY_SLUG[post.relatedProducts[0]].name}
+                Visit {primaryRelatedProduct.name}
               </Link>
             ) : null}
           </div>

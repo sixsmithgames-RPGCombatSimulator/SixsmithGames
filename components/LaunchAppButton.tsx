@@ -28,6 +28,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
   const hasPaidAccess = Boolean(accessInfo?.accessibleApps.length);
   const hasAccess = isFreeApp || hasPaidAccess;
   const appUrl = APP_URLS[appSlug];
+  const label = hasPaidAccess ? 'Open App' : children;
 
   useEffect(() => {
     if (autoLaunch && isLoaded && hasAccess && appUrl) {
@@ -57,7 +58,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
         }}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
       >
-        {children}
+        {label}
       </a>
     );
   }

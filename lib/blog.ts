@@ -1,7 +1,50 @@
 import { BLOG_POSTS } from '@/lib/blogPosts';
 import type { BlogPost } from '@/lib/blogTypes';
+import { isAppSlug } from '@/lib/subscription';
 
 export type { BlogPost } from '@/lib/blogTypes';
+
+function normalizeBlogPost(rawPost: unknown): BlogPost | null {
+  if (!rawPost || typeof rawPost !== 'object') return null;
+
+  const post = rawPost as Record<string, unknown>;
+  const slug = typeof post.slug === 'string' ? post.slug : null;
+  const title = typeof post.title === 'string' ? post.title : null;
+  const excerpt = typeof post.excerpt === 'string' ? post.excerpt : null;
+  const content = typeof post.content === 'string' ? post.content : null;
+  const author = typeof post.author === 'string' ? post.author : 'Sixsmith Games';
+  const date = typeof post.date === 'string' ? post.date : null;
+  const readTime = typeof post.readTime === 'string' ? post.readTime : '3 min read';
+  const category = typeof post.category === 'string' ? post.category : 'General';
+
+  if (!slug || !title || !excerpt || !content || !date) {
+    return null;
+  }
+
+  const tags = Array.isArray(post.tags)
+    ? post.tags.filter((tag): tag is string => typeof tag === 'string')
+    : [];
+
+  const relatedProducts = Array.isArray(post.relatedProducts)
+    ? post.relatedProducts.filter((value): value is BlogPost['relatedProducts'][number] =>
+        typeof value === 'string' && isAppSlug(value),
+      )
+    : [];
+
+  return {
+    slug,
+    title,
+    excerpt,
+    content,
+    author,
+    date,
+    readTime,
+    category,
+    tags,
+    relatedProducts,
+    featured: post.featured === true,
+  };
+}
 
 async function loadDynamicPosts(): Promise<BlogPost[]> {
   const gistId = process.env.BLOG_GIST_ID;
@@ -23,7 +66,11 @@ async function loadDynamicPosts(): Promise<BlogPost[]> {
 
     const data = await res.json();
     const raw = data.files?.['posts.json']?.content ?? '[]';
-    return JSON.parse(raw) as BlogPost[];
+    const parsed = JSON.parse(raw) as unknown;
+    if (!Array.isArray(parsed)) return [];
+    return parsed
+      .map((post) => normalizeBlogPost(post))
+      .filter((post): post is BlogPost => post !== null);
   } catch {
     return [];
   }
