@@ -106,7 +106,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   ],
   pricingAndAccess: [
     'Virtual Combat Simulator is free to start. Signed-in users get the core combat management tool, and a paid Game Master plan at $9.99 per month adds more storage and additional GM-oriented capability for groups that run encounters often.',
-    'The idea is simple: try the combat workflow first, then decide whether the paid layer matches how often you run encounters.',
+    'Try the core tool first, then decide whether the paid layer matches how often you run encounters.',
   ],
   faq: [
     {

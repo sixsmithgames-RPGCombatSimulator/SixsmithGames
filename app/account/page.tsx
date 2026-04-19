@@ -320,7 +320,7 @@ export default function AccountPage() {
               Start with the free products or subscribe to ContentCraft
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', margin: '0 0 1.75rem', maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Virtual Combat Simulator, Four Star General, and MasterTyping are free to start. ContentCraft is the premium subscription platform for bigger creative work.
+              Virtual Combat Simulator, Four Star General, and MasterTyping are free to start. ContentCraft is a subscription workspace for writers, worldbuilders, and game masters who need lore organization and canon continuity.
             </p>
             <a href="/pricing" className={touchTargetClassName} style={{
               display: 'inline-block', background: 'white', color: '#1e3a8a',
