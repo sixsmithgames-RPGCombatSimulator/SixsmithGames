@@ -75,7 +75,7 @@ export default function StartHerePage() {
             Pick the product that fits what you actually want to do.
           </h1>
           <p style={{ fontSize: '1.08rem', lineHeight: 1.8, color: '#4b5563', maxWidth: '760px', margin: 0 }}>
-            Sixsmith Games makes tools and games for people who run campaigns, build creative projects, care about strategy, or spend real time at a keyboard. Start with the practical path that matches your use case.
+            Sixsmith Games makes tools and games for people who run campaigns, build creative projects, care about strategy, or want to type faster. Find the one that fits.
           </p>
           <div style={{ marginTop: '1rem' }}>
             <LastUpdated date={MARKETING_LAST_UPDATED} />

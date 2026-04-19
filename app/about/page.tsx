@@ -32,10 +32,10 @@ export default function AboutPage() {
           />
           <div style={{ maxWidth: '860px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Sixsmith Games builds products with a clear job to do.
+              Sixsmith Games is an independent studio building browser-based games and tools for specific audiences.
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Sixsmith Games is an independent studio that builds browser-based games and tools for specific audiences rather than a catch-all platform. The lineup is intentional: a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game.
+              The lineup is a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game. Each one is built for a specific audience, not a broad catch-all platform.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>

@@ -31,7 +31,7 @@ export default function SupportPage() {
               Help and support
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Use this page to reach the studio, find product help, review pricing, check policies, or jump to any product page. One clear place for contact details and official product help links.
+              Use this page to reach the studio, find product help, review pricing, check policies, or get to any product page directly.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
