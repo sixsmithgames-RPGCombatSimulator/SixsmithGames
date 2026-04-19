@@ -24,10 +24,10 @@ export default async function ArticlesPage() {
         <div style={{ maxWidth: '1100px', margin: '0 auto' }}>
           <div style={{ maxWidth: '820px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Product guides and evergreen articles
+              Guides and explainers for every Sixsmith Games product
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Articles are the evergreen reading for Sixsmith Games products. Product explainers, guides, and common questions that stay useful over time. For releases and announcements, check the{' '}
+              Product explainers, how-to guides, and answers to common questions — written to stay useful over time. For releases and studio updates, check the{' '}
               <Link href="/blog" style={{ color: '#bfdbfe', fontWeight: 800 }}>
                 Blog
               </Link>

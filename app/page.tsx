@@ -57,10 +57,10 @@ export default function HomePage() {
               Browser-based games and tools for people who care how systems work.
             </h1>
             <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Sixsmith Games builds a focused product lineup instead of a catch-all entertainment brand. Virtual Combat Simulator is for game masters and tabletop RPG groups. ContentCraft is for writers, worldbuilders, and game masters. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want typing practice through game-like progression. Gravity is for strategy and board-game players who want simultaneous-turn tactics and ship-systems tradeoffs.
+              Five products. Each one built for a specific audience. Virtual Combat Simulator is for game masters running tabletop RPG encounters. ContentCraft is for writers, worldbuilders, and game masters who need their lore to stay coherent. Four Star General is for serious WWII tactical strategy players. MasterTyping is for people who want real typing improvement with game-like progression. Gravity is for strategy players who want simultaneous-turn tactics and ship-systems tradeoffs.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              Each product in the lineup has a specific job. If you know what kind of game or tool you are looking for, you should be able to find the right page without guessing.
+              If you know what you are looking for, the right page is one click away. If not, the Start Here guide will get you there.
             </p>
             <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
               <Link

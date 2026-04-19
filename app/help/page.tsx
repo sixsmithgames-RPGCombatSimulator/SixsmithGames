@@ -28,10 +28,10 @@ export default function HelpIndexPage() {
           />
           <div style={{ maxWidth: '820px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Help pages for every major product
+              Help for every Sixsmith Games product
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Each product has a help landing page with topic pages covering getting started, core features, common use cases, current scope, and pricing basics. Pick the product you need and go from there.
+              Find the product you are using, then choose the topic. Getting started, features, common questions, scope, and pricing are all covered.
             </p>
             <LastUpdated date={MARKETING_LAST_UPDATED} tone="dark" />
           </div>
