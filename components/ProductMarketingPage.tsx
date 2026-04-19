@@ -1,6 +1,7 @@
 import Link from 'next/link';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
+import FacebookViewContent from '@/components/FacebookViewContent';
 import LaunchAppButton from '@/components/LaunchAppButton';
 import ModernBackground from '@/components/ModernBackground';
 import StructuredDataScript from '@/components/StructuredDataScript';
@@ -134,6 +135,13 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
 
   return (
     <div style={{ background: '#f8fafc' }}>
+      <FacebookViewContent
+        contentId={product.slug}
+        contentName={product.name}
+        contentType="product"
+        currency={product.offerPrice ? 'USD' : undefined}
+        value={product.offerPrice}
+      />
       <StructuredDataScript data={createSoftwareApplicationSchema(product)} />
       <StructuredDataScript data={createFaqSchema(product.faq)} />
       <StructuredDataScript

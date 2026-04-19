@@ -7,12 +7,16 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
 import { clerkClient } from '@clerk/nextjs/server';
+import { sendFacebookEvents, buildUserData, generateEventId } from '@/lib/facebookConversions';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2026-01-28.clover',
 });
 
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET!;
+const FACEBOOK_PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
+const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_ACCESS_TOKEN;
+const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://sixsmithgames.com';
 
 export async function POST(req: NextRequest) {
   const body = await req.text();
@@ -98,6 +102,72 @@ async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
   });
 
   console.log(`Activated plan "${planId}" for user ${clerkUserId}`);
+
+  // Send Facebook Purchase and Subscribe events
+  if (FACEBOOK_PIXEL_ID && FACEBOOK_ACCESS_TOKEN) {
+    try {
+      const email = user.primaryEmailAddress?.emailAddress;
+      const amountTotal = session.amount_total ? session.amount_total / 100 : 0;
+      const currency = session.currency?.toUpperCase() || 'USD';
+      
+      // Build minimal user data from available info
+      const userData: { em?: string[]; country?: string[] } = {};
+      if (email) {
+        const encoder = new TextEncoder();
+        const data = encoder.encode(email.toLowerCase().trim());
+        const hashBuffer = await crypto.subtle.digest('SHA-256', data);
+        const hashArray = Array.from(new Uint8Array(hashBuffer));
+        userData.em = [hashArray.map(b => b.toString(16).padStart(2, '0')).join('')];
+      }
+      if (session.customer_details?.address?.country) {
+        userData.country = [session.customer_details.address.country];
+      }
+
+      const eventId = generateEventId('Purchase', session.id);
+      const eventTime = Math.floor(Date.now() / 1000);
+
+      await sendFacebookEvents(
+        FACEBOOK_PIXEL_ID,
+        FACEBOOK_ACCESS_TOKEN,
+        [
+          {
+            event_name: 'Purchase',
+            event_time: eventTime,
+            event_source_url: `${BASE_URL}/account?checkout=success`,
+            action_source: 'website',
+            event_id: `${eventId}_purchase`,
+            user_data: userData,
+            custom_data: {
+              content_ids: [planId],
+              content_type: 'product',
+              currency: currency,
+              value: amountTotal,
+              order_id: session.id,
+              status: 'completed',
+            },
+          },
+          {
+            event_name: 'Subscribe',
+            event_time: eventTime,
+            event_source_url: `${BASE_URL}/account?checkout=success`,
+            action_source: 'website',
+            event_id: `${eventId}_subscribe`,
+            user_data: userData,
+            custom_data: {
+              content_ids: [planId],
+              content_type: 'product',
+              currency: currency,
+              value: amountTotal,
+              subscription_id: subscriptionId,
+            },
+          },
+        ]
+      );
+    } catch (fbError) {
+      // Log but don't fail the webhook if Facebook tracking fails
+      console.error('Facebook CAPI Purchase/Subscribe error:', fbError);
+    }
+  }
 }
 
 async function handleSubscriptionUpdated(sub: Stripe.Subscription) {

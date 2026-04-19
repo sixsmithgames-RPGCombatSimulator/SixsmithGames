@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 import Link from 'next/link';
 
+import FacebookViewContent from '@/components/FacebookViewContent';
 import LaunchAppButton from '@/components/LaunchAppButton';
 import ModernBackground from '@/components/ModernBackground';
 import StructuredDataScript from '@/components/StructuredDataScript';
@@ -52,6 +53,11 @@ function formatPrice(value?: number) {
 export default function PricingPage() {
   return (
     <div style={{ background: '#f8fafc' }}>
+      <FacebookViewContent
+        contentId="pricing_page"
+        contentName="Pricing Page"
+        contentType="page"
+      />
       <StructuredDataScript data={createFaqSchema(pricingFaq)} />
 
       <section
