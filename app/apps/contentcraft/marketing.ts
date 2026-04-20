@@ -11,9 +11,9 @@ export const contentCraftProductDefinition: ProductDefinition = {
     'ContentCraft helps writers and game masters organize lore, canon continuity, characters, factions, and story workflow in one workspace.',
   heroEyebrow: 'Writing Tool and Worldbuilding Workspace',
   heroValue:
-    'Build connected stories, campaigns, and settings in one place without losing track of canon, continuity, or what your project already established.',
+    'Your world should get richer the longer you work on it — not harder to keep straight.',
   heroSummary:
-    'ContentCraft is a browser-based writing tool and worldbuilding workspace for projects where lore, characters, factions, and canon details keep growing and need to stay connected.',
+    'ContentCraft is for writers, worldbuilders, and game masters whose projects outgrew memory and outgrew folders. The world lives in one place, and the next chapter builds on everything you have already established.',
   oneSentence:
     'ContentCraft helps writers and game masters organize lore, continuity, and project content in one place.',
   category: 'Worldbuilding and writing tool with canon continuity support',
@@ -54,24 +54,24 @@ export const contentCraftProductDefinition: ProductDefinition = {
     href: '/pricing#contentcraft',
   },
   whatItIs: [
-    'ContentCraft is a writing tool and worldbuilding workspace for projects that outgrow loose notes, disconnected documents, and one-off AI chats. It is built for story-rich work where characters, factions, timelines, locations, and canon details need to stay aligned as the project expands.',
-    'ContentCraft keeps project organization, canon tracking, and AI-assisted drafting in one place so writers and game masters can move from ideas and notes into working material without losing the world rules, lore details, or narrative links that make the work feel coherent.',
-    'ContentCraft is especially well matched to campaign prep, long-form fiction, setting development, and any creative project where relationships between people, places, items, arcs, and timelines matter as much as the text itself.',
+    'Every writer or game master with a project worth finishing runs into the same wall. The story gets bigger than memory can hold, and the world starts to drift. A faction\'s motives shift between chapters. A character says the wrong name. The bustling port town on page forty is a sleepy village by page two hundred. ContentCraft is built for that moment — when you want the project to keep growing without the continuity giving out.',
+    'This is not a folder system with an AI bolted on. It is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write against your canon, not against your memory.',
+    'The writers and game masters who fit best here are the ones building something they want to return to: a novel that needs a second book, a campaign that runs for a year, a setting that outlives the first thing you wrote for it.',
   ],
   whoItIsFor: [
-    'ContentCraft is for writers and novelists who need story organization, lore organization, and canon continuity across chapters, series, or large narrative projects.',
-    'ContentCraft is for worldbuilders who want a workspace that treats factions, locations, items, character relationships, and timelines as connected project assets instead of scattered notes.',
-    'ContentCraft is for game masters who build campaign content, recurring NPCs, locations, and factions and want a tool that remembers those connections as the campaign grows.',
+    'Writers and novelists working on projects that span multiple chapters, books, or years — where readers will notice if the villain\'s backstory quietly shifts between volumes.',
+    'Worldbuilders whose settings have become the point of the project. Factions, geography, history, culture, technology. The kind of world a reader or player wants to step back into because it actually holds together.',
+    'Game masters running long campaigns with recurring NPCs, growing factions, and places the party keeps coming back to. Prep for session twelve should be easier than prep for session two, not harder.',
   ],
   problemItSolves: [
-    'Long-form creative work drifts when the canon is stored across folders, notebooks, wikis, chats, and half-finished drafts. Writers and game masters end up re-checking old material, duplicating work, or accidentally contradicting details they already established.',
-    "Generic AI tools make that problem worse because they generate quickly but do not reliably track what the project has already established. ContentCraft is meant to address both problems at once by keeping the canon, the project structure, and the generation process in the same place.",
+    'Creative projects rarely fail in one dramatic moment. They fail in the slow drift of names, motivations, timelines, and rules that were supposed to stay fixed. By the time you catch the contradictions, untangling them costs more than writing the next chapter.',
+    'Generic AI tools make this worse, not better. They generate fast and forget everything. What a serious project needs is a workspace that remembers your world — so new material builds on what already exists instead of quietly overwriting it.',
   ],
   howItWorks: [
-    'Create or organize a project around campaigns, settings, articles, chapters, supplements, or other connected creative work.',
-    'Build a canon library for characters, factions, locations, items, encounters, arcs, and the other world details the project needs to remember.',
-    'Move from outline to draft to review in deliberate steps so each output can be checked against what the project already has instead of accepted blindly.',
-    'Review, revise, and export from the same workspace so the project stays coherent even as the scope expands.',
+    'Bring in the project you are already working on. The characters that matter, the places the story keeps returning to, the factions whose choices drive the plot, the rules the world is supposed to follow.',
+    'Write against that canon. Draft, review, and revise in the same workspace where your world already lives, with AI assistance available when you want it and invisible when you don\'t.',
+    'Add new canon as the project grows. The world gets richer over time instead of harder to navigate, and the next chapter inherits everything the last one established.',
+    'For setup steps, project templates, and detailed workflows, see the help pages and the articles on building a campaign bible, keeping recurring elements consistent, and moving from notes to usable session content.',
   ],
   keyFeatures: [
     {
@@ -106,8 +106,8 @@ export const contentCraftProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'ContentCraft is $9.99 per month or $99 per year. It is the one product in the lineup that requires a subscription from the start, because the whole value is in the workspace — lore organization, canon management, and AI-assisted drafting working together.',
-    'ContentCraft includes built-in AI usage for writers who want it, but the value is bigger than AI. The product is grounded in writing and worldbuilding: the AI helps when you want it, and the canon and organization layer is there whether you use it or not.',
+    'ContentCraft is $9.99 per month or $99 per year. It is the one product in the Sixsmith Games lineup that requires a subscription from the start — the whole workspace comes together only when the canon, the project structure, and the drafting tools are in the same place.',
+    'AI assistance is included, but the real value is the world you build inside the workspace. The AI helps when you want it. The canon, the connections, and the project memory are yours whether you use the AI features or not.',
   ],
   faq: [
     {
@@ -148,10 +148,10 @@ export const contentCraftProductDefinition: ProductDefinition = {
     'When you are ready, subscribe to unlock the full workspace. The pricing page covers what is included.',
   ],
   commonUseCases: [
-    'Keeping lore consistent across a long campaign, novel, or multi-part story project.',
-    'Organizing NPCs, factions, locations, and campaign content for game master prep.',
-    'Managing story organization for a long-form writing project with repeated references and interlocking canon.',
-    'Building a reusable world library that can support future chapters, sessions, supplements, or spin-off material.',
+    'Writing a novel series where readers will remember what the villain said three books ago.',
+    'Running a year-long campaign where the party has every NPC promise and every faction grudge on file.',
+    'Developing a setting that holds together across chapters, supplements, short stories, and the next project you haven\'t started yet.',
+    'Building a world rich enough that returning to it feels like coming home — not like reconstructing a crime scene.',
   ],
   scopeNotes: [
     'ContentCraft is a writing tool and worldbuilding workspace, not generic office productivity software.',

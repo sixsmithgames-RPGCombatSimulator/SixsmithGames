@@ -31,10 +31,10 @@ export default function AboutPage() {
           />
           <div style={{ maxWidth: '860px' }}>
             <h1 style={{ margin: '0 0 1rem', fontSize: 'clamp(2.2rem, 5vw, 3.8rem)', fontWeight: 900, lineHeight: 1.08 }}>
-              Sixsmith Games is an independent studio building browser-based games and tools for specific audiences.
+              Sixsmith Games is a small independent studio making browser-based games and tools for game masters, writers, strategy players, and typists.
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              The lineup is a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game. Each one is built for a specific audience, not a broad catch-all platform.
+              The lineup is a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game. Five products, each one made for people who want it to actually work.
             </p>
           </div>
         </div>
@@ -44,10 +44,10 @@ export default function AboutPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>What Sixsmith Games is</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Each product in the lineup does something specific and is built for a specific kind of player, creator, or learner. Read a product page and you should know within a minute whether it is for you.
+            Sixsmith Games builds for readers, players, and creators who want the thing they picked up to be worth their time. Read any product page and you should know within a minute whether it is for you.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            Some products help a game master run encounters. Some help a writer or worldbuilder keep a project coherent. Some are strategy games. One is a typing practice game. Different audiences, but every product has a clear job.
+            Some of these help a game master run encounters. One holds a worldbuilder&apos;s whole project together. Two are strategy games for players who want the rules to earn their decisions. One is for adults who want to actually type faster. The audiences differ; the standard does not.
           </p>
         </section>
 
