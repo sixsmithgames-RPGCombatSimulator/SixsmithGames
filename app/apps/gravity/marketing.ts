@@ -13,7 +13,7 @@ export const gravityProductDefinition: ProductDefinition = {
   heroValue:
     'Plan orders in parallel, route power across a damaged ship, and survive a turn where every captain commits before the board resolves.',
   heroSummary:
-    'Gravity is an early beta browser-based simultaneous-turn strategy game for players who want clear systems, locked orders, and ship-level tactical tradeoffs.',
+    'Gravity is for strategy players who want the moment both captains commit — and the turn after, when every locked order resolves at once and the system you built decides whether the ship holds together.',
   oneSentence:
     'Gravity is an early beta browser-based simultaneous-turn strategy game built around ship systems management and locked tactical orders.',
   category: 'Simultaneous-turn strategy game with ship systems management',

@@ -11,9 +11,9 @@ export const masterTypingProductDefinition: ProductDefinition = {
     'MasterTyping combines typing practice, assessments, drills, and game-like progression to help adults and students improve speed and accuracy.',
   heroEyebrow: 'Typing Practice and Skill Building',
   heroValue:
-    'Improve typing speed, accuracy, and consistency with a tool that combines assessment, drills, and game mode instead of relying on dead repetition.',
+    'Type faster and make fewer mistakes — without slogging through another worksheet or pretending a childish classroom toy is going to move the needle.',
   heroSummary:
-    'MasterTyping is a browser-based typing practice app that uses assessment, targeted exercises, and game-like progression to keep training useful and repeatable.',
+    'MasterTyping is for adults who actually want to improve. The app tells you where you are slow, gives you the right practice, and makes coming back tomorrow feel like progress instead of homework.',
   oneSentence:
     'MasterTyping is a browser-based typing practice app that combines skill building with game-like progression.',
   category: 'Typing practice game and skill-building trainer',

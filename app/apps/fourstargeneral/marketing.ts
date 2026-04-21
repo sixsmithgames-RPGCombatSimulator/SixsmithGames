@@ -11,9 +11,9 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     'Four Star General is a WWII tactical strategy game focused on supply, reserves, urgent command decisions, and deterministic tactical resolution.',
   heroEyebrow: 'WWII Tactical Strategy',
   heroValue:
-    'Make deliberate command decisions about deployment, reserves, supply, and mission objectives in a browser-based WWII tactical strategy game.',
+    'Win or lose, you will know exactly why. Every battle comes down to your deployment, your reserves, and your read of the mission — not a dice roll that hid the answer.',
   heroSummary:
-    'Four Star General is a browser-based WWII tactical strategy game built around deterministic resolution, battlefield tension, and mission-driven command decisions.',
+    'Four Star General is for players who like WWII strategy and are tired of games where the rules turn out to be smoke. Here, supply matters, reserves matter, terrain matters, and the next run is yours to improve.',
   oneSentence:
     'Four Star General is a browser-based WWII tactical strategy game with deterministic battlefield resolution.',
   category: 'WWII tactical strategy game',

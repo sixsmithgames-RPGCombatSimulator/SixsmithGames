@@ -11,9 +11,9 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator keeps battle maps, tokens, initiative, and encounter flow together for game masters and tabletop RPG groups.',
   heroEyebrow: 'Tabletop RPG Combat Management',
   heroValue:
-    'Run faster encounters with one browser-based space for battle maps, tokens, initiative, hit points, and encounter flow.',
+    'Run the fight in one tab — maps, tokens, initiative, HP, and conditions, where you actually need them.',
   heroSummary:
-    'Virtual Combat Simulator is a browser-based combat management tool for tabletop roleplaying games, with a strong focus on D&D-adjacent encounter play.',
+    'Virtual Combat Simulator is for game masters who want combat to run cleanly — without flipping between a map app, a dice app, and a scratch-paper initiative tracker in the middle of a fight.',
   oneSentence:
     'Virtual Combat Simulator is a browser-based combat management tool for tabletop roleplaying games.',
   category: 'D&D combat simulator and battle map tool',
