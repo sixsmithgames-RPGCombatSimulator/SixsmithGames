@@ -34,7 +34,7 @@ export default function AboutPage() {
               Sixsmith Games is a small independent studio making browser-based games and tools for game masters, writers, strategy players, and typists.
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              The lineup is a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game. Five products, each one made for people who want it to actually work.
+              The lineup includes a D&amp;D combat simulator, a worldbuilding and writing workspace, a WWII tactical strategy game, a typing practice game, and a simultaneous-turn strategy game. Each one is built for people who want a clear tool or game that does its job well.
             </p>
           </div>
         </div>
@@ -44,10 +44,10 @@ export default function AboutPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>What Sixsmith Games is</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Sixsmith Games builds for readers, players, and creators who want the thing they picked up to be worth their time. Read any product page and you should know within a minute whether it is for you.
+            Sixsmith Games builds for players, writers, game masters, and learners who want tools and games that are easy to understand and worth sticking with. Each product page is written to help you tell quickly whether it fits what you need.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            Some of these help a game master run encounters. One holds a worldbuilder&apos;s whole project together. Two are strategy games for players who want the rules to earn their decisions. One is for adults who want to actually type faster. The audiences differ; the standard does not.
+            Some of these help game masters run encounters. One helps worldbuilders and writers keep a growing project straight. Two are strategy games built around meaningful decisions and clear rules. One is for adults who want practical typing improvement. Different audiences, same standard: clear design and useful results.
           </p>
         </section>
 

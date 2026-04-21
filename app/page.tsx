@@ -53,10 +53,10 @@ export default function HomePage() {
               Sixsmith Games
             </div>
             <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4.2rem)', lineHeight: 1.05, fontWeight: 900, margin: '0 0 1rem' }}>
-              Browser-based games and tools for game masters, writers, strategy players, and typists.
+              Browser-based tools and games for game masters, writers, strategy players, and typists.
             </h1>
             <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Virtual Combat Simulator runs tabletop combat without the paper chase. ContentCraft holds the canon of long creative projects together. Four Star General is serious WWII tactics with no hidden dice. MasterTyping is typing practice for adults who want real improvement. Gravity is simultaneous-turn strategy where ship-systems tradeoffs actually bite.
+              Virtual Combat Simulator helps game masters run tabletop combat without the paper chase. ContentCraft helps writers and game masters keep long creative projects consistent as they grow. Four Star General is serious WWII tactics with no hidden dice. MasterTyping is typing practice for adults who want real improvement. Gravity is simultaneous-turn strategy built around locked orders, ship systems, and hard tactical tradeoffs.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
               Pick the one you came here for. If you are not sure yet, the Start Here guide walks you to the right page in a minute.
@@ -75,7 +75,7 @@ export default function HomePage() {
                   textDecoration: 'none',
                 }}
               >
-                Explore the full product lineup
+                See all five products
               </Link>
               <Link
                 href="/about/facts"
@@ -150,7 +150,7 @@ export default function HomePage() {
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How to choose the right product</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Start with the product that fits what you do</h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Virtual Combat Simulator if you want faster tabletop RPG encounters.</h3>
@@ -195,7 +195,7 @@ export default function HomePage() {
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Gravity if you want simultaneous-turn tactical challenge.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Gravity is for strategy and board-game players who want a simultaneous-turn strategy game with ship systems management, locked orders, and clear resolution. If that sounds like your kind of game, start with{' '}
+                Gravity is for strategy and board-game players who want locked orders, ship systems management, and simultaneous turns that reward planning. If that sounds like your kind of game, start with{' '}
                 <Link href="/apps/gravity" style={{ color: '#0ea5e9', fontWeight: 700, textDecoration: 'underline' }}>
                   the Gravity product page
                 </Link>
@@ -208,7 +208,10 @@ export default function HomePage() {
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Where to go next</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Every product page covers what the product is, who it is for, how it works, and what it costs. Pricing, help, articles, and the facts page are all linked directly from here.
+            Every product page shows what the product does, who it is for, how it works, and what it costs.
+          </p>
+          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
+            Articles, and the facts page are all linked directly from here.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>

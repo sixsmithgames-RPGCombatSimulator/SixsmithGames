@@ -13,7 +13,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   heroValue:
     'Your world should get richer the longer you work on it — not harder to keep straight.',
   heroSummary:
-    'ContentCraft is for writers, worldbuilders, and game masters whose projects outgrew memory and outgrew folders. The world lives in one place, and the next chapter builds on everything you have already established.',
+    'ContentCraft is for writers, worldbuilders, and game masters whose projects outgrew memory and outgrew folders. Your world lives in one place, so the next chapter can build on what you have already established.',
   oneSentence:
     'ContentCraft helps writers and game masters organize lore, continuity, and project content in one place.',
   category: 'Worldbuilding and writing tool with canon continuity support',
@@ -55,7 +55,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   },
   whatItIs: [
     'Every writer or game master with a project worth finishing runs into the same wall. The story gets bigger than memory can hold, and the world starts to drift. A faction\'s motives shift between chapters. A character says the wrong name. The bustling port town on page forty is a sleepy village by page two hundred. ContentCraft is built for that moment — when you want the project to keep growing without the continuity giving out.',
-    'This is not a folder system with an AI bolted on. It is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write against your canon, not against your memory.',
+    'This is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write with your canon in reach instead of trying to hold the whole project in memory.',
     'The writers and game masters who fit best here are the ones building something they want to return to: a novel that needs a second book, a campaign that runs for a year, a setting that outlives the first thing you wrote for it.',
   ],
   whoItIsFor: [
@@ -65,11 +65,11 @@ export const contentCraftProductDefinition: ProductDefinition = {
   ],
   problemItSolves: [
     'Creative projects rarely fail in one dramatic moment. They fail in the slow drift of names, motivations, timelines, and rules that were supposed to stay fixed. By the time you catch the contradictions, untangling them costs more than writing the next chapter.',
-    'Generic AI tools make this worse, not better. They generate fast and forget everything. What a serious project needs is a workspace that remembers your world — so new material builds on what already exists instead of quietly overwriting it.',
+    'Generic AI tools make this worse, not better. They generate fast and forget everything. What a serious project needs is a workspace that keeps your world close at hand, so new material builds on what already exists instead of drifting away from it.',
   ],
   howItWorks: [
     'Bring in the project you are already working on. The characters that matter, the places the story keeps returning to, the factions whose choices drive the plot, the rules the world is supposed to follow.',
-    'Write against that canon. Draft, review, and revise in the same workspace where your world already lives, with AI assistance available when you want it and invisible when you don\'t.',
+    'Write using that canon. Draft, review, and revise in the same workspace where your world already lives, with AI help available when you want it and out of the way when you do not.',
     'Add new canon as the project grows. The world gets richer over time instead of harder to navigate, and the next chapter inherits everything the last one established.',
     'For setup steps, project templates, and detailed workflows, see the help pages and the articles on building a campaign bible, keeping recurring elements consistent, and moving from notes to usable session content.',
   ],
@@ -87,12 +87,12 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       title: 'Draft in deliberate steps',
       description:
-        'Move from outline to draft to review at your own pace instead of turning the whole project over to one blind prompt.',
+        'Move from outline to draft to review at your own pace instead of handing the whole project to a single prompt.',
     },
     {
       title: 'Relationship mapping',
       description:
-        'Keep people, places, groups, and plot threads connected so the world reads like a system instead of a pile of notes.',
+        'Keep people, places, groups, and plot threads connected so the world feels coherent instead of scattered across disconnected notes.',
     },
     {
       title: 'Catch contradictions early',
@@ -102,7 +102,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       title: 'Export without losing history',
       description:
-        'Preserve history and diffs alongside export-ready outputs so context does not disappear every time material leaves the workspace.',
+        'Preserve revision history alongside export-ready outputs so you do not lose track of how the project changed over time.',
     },
   ],
   pricingAndAccess: [
