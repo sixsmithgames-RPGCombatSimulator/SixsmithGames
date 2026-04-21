@@ -204,7 +204,7 @@ export default function AccountPage() {
                     fontWeight: '700', fontSize: '0.9375rem', textDecoration: 'none',
                     boxShadow: '0 2px 8px rgba(124,58,237,0.35)', whiteSpace: 'nowrap',
                   }}>
-                    See Pricing →
+                    See Upgrades →
                   </a>
                 </div>
               )}

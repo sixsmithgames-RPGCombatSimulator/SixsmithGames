@@ -49,7 +49,7 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   },
   secondaryCta: {
     kind: 'link',
-    label: 'See pricing',
+    label: 'See upgrades',
     href: '/pricing#fourstargeneral',
   },
   whatItIs: [

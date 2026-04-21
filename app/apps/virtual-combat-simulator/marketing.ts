@@ -49,7 +49,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   },
   secondaryCta: {
     kind: 'link',
-    label: 'See pricing',
+    label: 'See upgrades',
     href: '/pricing#virtual-combat-simulator',
   },
   whatItIs: [
