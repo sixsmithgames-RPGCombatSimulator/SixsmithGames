@@ -148,7 +148,7 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
               });
             }}
           >
-            Sign In to Launch
+            Play now — it's free
           </button>
         </SignInButton>
       </SignedOut>
