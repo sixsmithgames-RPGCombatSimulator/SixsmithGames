@@ -8,7 +8,7 @@ import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { getArticleBySlug } from '@/lib/blog';
 import { type ProductDefinition } from '@/lib/productContent';
-import { cardPadding, fluidGrid, pageGutter } from '@/lib/responsive';
+import { fluidGrid, pageGutter } from '@/lib/responsive';
 import {
   createBreadcrumbSchema,
   createFaqSchema,
@@ -163,84 +163,43 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.14)', zIndex: 1 }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2 }}>
           <Breadcrumbs items={breadcrumbItems} tone="dark" />
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '2rem', alignItems: 'start' }}>
-            <div>
-              <div
-                style={{
-                  display: 'inline-block',
-                  marginBottom: '1rem',
-                  padding: '0.45rem 0.95rem',
-                  borderRadius: '999px',
-                  background: 'rgba(255,255,255,0.12)',
-                  border: '1px solid rgba(255,255,255,0.16)',
-                  fontSize: '0.82rem',
-                  fontWeight: 800,
-                  letterSpacing: '0.08em',
-                  textTransform: 'uppercase',
-                }}
-              >
-                {product.heroEyebrow}
-              </div>
-              <h1
-                style={{
-                  fontSize: 'clamp(2.2rem, 6vw, 4rem)',
-                  lineHeight: 1.08,
-                  fontWeight: 900,
-                  margin: '0 0 1rem',
-                }}
-              >
-                {product.h1}
-              </h1>
-              <p style={{ fontSize: '1.14rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.92)', margin: '0 0 1rem' }}>
-                {product.heroValue}
-              </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
-                {product.heroSummary}
-              </p>
-              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
-                {renderButton(product, 'primary')}
-                {renderButton(product, 'secondary')}
-              </div>
-            </div>
-
-            <aside
+          <div style={{ maxWidth: '860px' }}>
+            <div
               style={{
-                background: 'rgba(255,255,255,0.14)',
-                backdropFilter: 'blur(20px)',
-                borderRadius: '26px',
-                padding: cardPadding,
-                border: '1px solid rgba(255,255,255,0.18)',
-                boxShadow: '0 20px 60px rgba(15,23,42,0.22)',
+                display: 'inline-block',
+                marginBottom: '1rem',
+                padding: '0.45rem 0.95rem',
+                borderRadius: '999px',
+                background: 'rgba(255,255,255,0.12)',
+                border: '1px solid rgba(255,255,255,0.16)',
+                fontSize: '0.82rem',
+                fontWeight: 800,
+                letterSpacing: '0.08em',
+                textTransform: 'uppercase',
               }}
             >
-              <h2 style={{ margin: '0 0 1rem', fontSize: '1.3rem', fontWeight: 800 }}>About this product</h2>
-              <div style={{ display: 'grid', gap: '0.7rem' }}>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  {product.oneSentence}
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Category:</strong> {product.category}.
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Primary audience:</strong> {product.primaryAudience}.
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Platform:</strong> {product.platform}.
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Pricing model:</strong> {product.pricingModel}.
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Current availability:</strong> {product.availability}.
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Official URL:</strong> {SITE_URL + product.officialPath}.
-                </p>
-                <p style={{ margin: 0, lineHeight: 1.7 }}>
-                  <strong>Support:</strong> {SITE_URL + product.supportPath}.
-                </p>
-              </div>
-            </aside>
+              {product.heroEyebrow}
+            </div>
+            <h1
+              style={{
+                fontSize: 'clamp(2.2rem, 6vw, 4rem)',
+                lineHeight: 1.08,
+                fontWeight: 900,
+                margin: '0 0 1rem',
+              }}
+            >
+              {product.h1}
+            </h1>
+            <p style={{ fontSize: '1.14rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.92)', margin: '0 0 1rem' }}>
+              {product.heroValue}
+            </p>
+            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
+              {product.heroSummary}
+            </p>
+            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
+              {renderButton(product, 'primary')}
+              {renderButton(product, 'secondary')}
+            </div>
           </div>
         </div>
       </section>
