@@ -30,6 +30,13 @@ export interface ProductFaq {
   answer: string;
 }
 
+export interface ProductDeepDive {
+  title: string;
+  description: string;
+  href: string;
+  linkLabel?: string;
+}
+
 export interface ProductCta {
   kind: 'launch' | 'subscribe' | 'link';
   label: string;
@@ -85,6 +92,7 @@ export interface ProductDefinition {
   gettingStarted: string[];
   commonUseCases: string[];
   scopeNotes: string[];
+  featureDeepDives?: ProductDeepDive[];
 }
 
 export const HELP_TOPIC_TITLES: Record<HelpTopicSlug, string> = {

@@ -157,4 +157,13 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator focuses on battle maps, tokens, initiative, encounter flow, and related combat state. It is not meant to replace every tabletop tool a group might use.',
     'Virtual Combat Simulator is intentionally D&D-adjacent and tabletop RPG-specific because that is who the product is built for.',
   ],
+  featureDeepDives: [
+    {
+      title: 'Character sheet',
+      description:
+        'A full tour of the Virtual Combat Simulator character sheet — ability scores, combat stats, spells, actions, features, equipment, biography, SmartPaste import, and the link to tokens in the battle room.',
+      href: '/apps/virtual-combat-simulator/character-sheet',
+      linkLabel: 'Tour the character sheet',
+    },
+  ],
 };

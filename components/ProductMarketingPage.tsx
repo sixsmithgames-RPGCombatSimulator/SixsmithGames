@@ -281,6 +281,43 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
           </div>
         </section>
 
+        {product.featureDeepDives && product.featureDeepDives.length > 0 ? (
+          <section style={{ marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Feature deep dives</h2>
+            <p style={{ margin: '0 0 1.25rem', color: '#475569', lineHeight: 1.8 }}>
+              Go deeper on specific parts of {product.name}.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
+              {product.featureDeepDives.map((deepDive) => (
+                <Link
+                  key={deepDive.href}
+                  href={deepDive.href}
+                  style={{
+                    display: 'block',
+                    background: 'white',
+                    border: `1px solid ${product.theme.lightBorder}`,
+                    borderRadius: '18px',
+                    padding: '1.1rem 1.2rem',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    boxShadow: '0 8px 24px rgba(15,23,42,0.04)',
+                  }}
+                >
+                  <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>
+                    {deepDive.title}
+                  </h3>
+                  <p style={{ margin: '0 0 0.6rem', color: '#475569', lineHeight: 1.75 }}>
+                    {deepDive.description}
+                  </p>
+                  <span style={{ color: product.theme.accent, fontWeight: 800, fontSize: '0.95rem' }}>
+                    {deepDive.linkLabel ?? 'Read the deep dive'} →
+                  </span>
+                </Link>
+              ))}
+            </div>
+          </section>
+        ) : null}
+
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Pricing and access</h2>
           <div style={{ display: 'grid', gap: '0.95rem' }}>
