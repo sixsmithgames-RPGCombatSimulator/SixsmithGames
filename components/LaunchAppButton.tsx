@@ -22,6 +22,12 @@ interface LaunchAppButtonProps {
    * Clerk's post-sign-in redirect so they arrive at the intended destination after signing in.
    */
   deepLinkPath?: string;
+  /**
+   * If true, signed-out users also go directly to the target URL in a new tab — no Clerk modal is
+   * triggered. Use this only when the destination is a public route that does not require auth
+   * (e.g. the anonymous character sheet editor at `/character/edit/new`).
+   */
+  openPublic?: boolean;
 }
 
 function renderStaticButton(label: string, style?: React.CSSProperties) {
@@ -145,31 +151,49 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
         <LaunchButtonInner {...props} />
       </SignedIn>
       <SignedOut>
-        <SignInButton
-          mode="modal"
-          forceRedirectUrl={
-            props.deepLinkPath && APP_URLS[props.appSlug]
-              ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
-              : undefined
-          }
-          signUpForceRedirectUrl={
-            props.deepLinkPath && APP_URLS[props.appSlug]
-              ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
-              : undefined
-          }
-        >
-          <button
-            style={props.style}
+        {props.openPublic && props.deepLinkPath && APP_URLS[props.appSlug] ? (
+          <a
+            href={`${APP_URLS[props.appSlug]}${props.deepLinkPath}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ ...props.style, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
             onClick={() => {
-              trackMarketingEvent('product_sign_in_prompt_click', {
+              trackMarketingEvent('product_launch_click', {
                 product_slug: props.appSlug,
-                destination_type: 'sign_in',
+                destination_type: 'app',
+                surface: 'public_deep_link',
               });
             }}
           >
-            {props.deepLinkPath ? props.children : "Play now — it's free"}
-          </button>
-        </SignInButton>
+            {props.children}
+          </a>
+        ) : (
+          <SignInButton
+            mode="modal"
+            forceRedirectUrl={
+              props.deepLinkPath && APP_URLS[props.appSlug]
+                ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
+                : undefined
+            }
+            signUpForceRedirectUrl={
+              props.deepLinkPath && APP_URLS[props.appSlug]
+                ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
+                : undefined
+            }
+          >
+            <button
+              style={props.style}
+              onClick={() => {
+                trackMarketingEvent('product_sign_in_prompt_click', {
+                  product_slug: props.appSlug,
+                  destination_type: 'sign_in',
+                });
+              }}
+            >
+              {props.deepLinkPath ? props.children : "Play now — it's free"}
+            </button>
+          </SignInButton>
+        )}
       </SignedOut>
     </>
   );

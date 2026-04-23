@@ -53,13 +53,15 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     href: '/apps/virtual-combat-simulator/character-sheet',
   },
   primaryDeepLinkPath: '/character/edit/new',
+  primaryOpenPublic: true,
   heroMedia: {
-    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1600/sixsmith-games/vcs/character-sheet-overview.png',
+    src: '/images/vcs/character-sheet-overview.png',
     alt: 'Virtual Combat Simulator D&D character sheet editor with identity, combat stats, and weapons table',
     overlayLabel: 'Open the character sheet editor',
     deepLinkPath: '/character/edit/new',
+    openPublic: true,
     caption:
-      'The D&D Character Sheet Editor — click anywhere on the sheet to start building your adventurer. Not signed in yet? You will get a quick sign-in, then land right back on a blank character sheet.',
+      'The D&D Character Sheet Editor — click anywhere on the sheet to open it. No sign-in required to start building your adventurer; sign in later to save, upload a portrait, or hand them to a token on the battle map.',
   },
   whatItIs: [
     'Virtual Combat Simulator is a focused combat simulator for tabletop RPG encounters. It is built around the part of play that often slows a session down: battle maps, tokens, initiative, hit points, conditions, and the moment-to-moment flow of combat.',

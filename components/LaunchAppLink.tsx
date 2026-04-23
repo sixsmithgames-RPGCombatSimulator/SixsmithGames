@@ -26,6 +26,12 @@ interface LaunchAppLinkProps {
   className?: string;
   style?: CSSProperties;
   children: ReactNode;
+  /**
+   * If true, signed-out visitors also go directly to the target URL — no Clerk modal fires.
+   * Use this only when the destination is a public route (e.g. the anonymous character sheet
+   * editor at `/character/edit/new`).
+   */
+  openPublic?: boolean;
 }
 
 function buildTargetUrl(appSlug: AppSlug, deepLinkPath?: string) {
@@ -43,36 +49,43 @@ export default function LaunchAppLink({
   className,
   style,
   children,
+  openPublic,
 }: LaunchAppLinkProps) {
   const targetUrl = buildTargetUrl(appSlug, deepLinkPath);
 
+  const plainAnchor = targetUrl ? (
+    <a
+      href={targetUrl}
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label={ariaLabel}
+      className={className}
+      style={style}
+      onClick={() => {
+        trackMarketingEvent('product_launch_click', {
+          product_slug: appSlug,
+          destination_type: 'app',
+          surface: trackingSurface ?? 'media_link',
+        });
+      }}
+    >
+      {children}
+    </a>
+  ) : (
+    <span className={className} style={style} aria-label={ariaLabel}>
+      {children}
+    </span>
+  );
+
+  // For public destinations, render the same anchor for signed-in and signed-out visitors —
+  // no Clerk modal is ever triggered.
+  if (openPublic) {
+    return plainAnchor;
+  }
+
   return (
     <>
-      <SignedIn>
-        {targetUrl ? (
-          <a
-            href={targetUrl}
-            target="_blank"
-            rel="noopener noreferrer"
-            aria-label={ariaLabel}
-            className={className}
-            style={style}
-            onClick={() => {
-              trackMarketingEvent('product_launch_click', {
-                product_slug: appSlug,
-                destination_type: 'app',
-                surface: trackingSurface ?? 'media_link',
-              });
-            }}
-          >
-            {children}
-          </a>
-        ) : (
-          <span className={className} style={style} aria-label={ariaLabel}>
-            {children}
-          </span>
-        )}
-      </SignedIn>
+      <SignedIn>{plainAnchor}</SignedIn>
       <SignedOut>
         <SignInButton
           mode="modal"

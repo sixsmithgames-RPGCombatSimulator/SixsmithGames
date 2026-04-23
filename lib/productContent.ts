@@ -47,9 +47,14 @@ export interface ProductHeroMedia {
   /**
    * Optional deep link path appended to the app URL when the visitor clicks the hero image.
    * Signed-in users land on the deep link; signed-out users get Clerk's sign-in modal and are
-   * force-redirected to the same deep link after sign-in.
+   * force-redirected to the same deep link after sign-in — unless `openPublic` is true.
    */
   deepLinkPath?: string;
+  /**
+   * If true, signed-out users also bypass the Clerk modal and open the deep link directly.
+   * Only set this when the destination is a public route that does not require auth.
+   */
+  openPublic?: boolean;
   /** Optional caption rendered below the hero image. */
   caption?: string;
 }
@@ -113,6 +118,12 @@ export interface ProductDefinition {
   heroMedia?: ProductHeroMedia;
   /** Optional deep link appended to primary CTA(s) so they open a specific in-app surface. */
   primaryDeepLinkPath?: string;
+  /**
+   * If true, the primary CTA is treated as opening a public route — signed-out users go directly
+   * to it instead of through Clerk's sign-in modal. Only set this when `primaryDeepLinkPath`
+   * points to a route that allows anonymous access.
+   */
+  primaryOpenPublic?: boolean;
 }
 
 export const HELP_TOPIC_TITLES: Record<HelpTopicSlug, string> = {

@@ -62,6 +62,7 @@ function renderButton(product: ProductDefinition, tone: 'primary' | 'secondary')
         appSlug={cta.appSlug}
         style={commonStyle}
         deepLinkPath={tone === 'primary' ? product.primaryDeepLinkPath : undefined}
+        openPublic={tone === 'primary' ? product.primaryOpenPublic : undefined}
       >
         {cta.label}
       </LaunchAppButton>
@@ -219,6 +220,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
                 <LaunchAppLink
                   appSlug={product.slug}
                   deepLinkPath={product.heroMedia.deepLinkPath}
+                  openPublic={product.heroMedia.openPublic}
                   trackingSurface="product_hero_media"
                   ariaLabel={product.heroMedia.overlayLabel ?? product.heroMedia.alt}
                   style={{

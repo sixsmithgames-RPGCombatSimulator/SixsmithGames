@@ -17,11 +17,8 @@ export const dynamic = 'force-static';
 const product = virtualCombatSimulatorProductDefinition;
 const CHARACTER_SHEET_DEEP_LINK = '/character/edit/new';
 
-const CLOUDINARY_BASE =
-  'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1600/sixsmith-games/vcs';
-
 function shotUrl(filename: string) {
-  return `${CLOUDINARY_BASE}/${filename}`;
+  return `/images/vcs/${filename}`;
 }
 
 interface SheetZone {
@@ -282,6 +279,7 @@ function Figure({
     <LaunchAppLink
       appSlug={product.slug}
       deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+      openPublic
       trackingSurface="character_sheet_figure"
       ariaLabel={`Open the character sheet editor — ${alt}`}
       style={{ display: 'block', textDecoration: 'none', color: 'inherit', width: '100%' }}
@@ -409,12 +407,13 @@ export default function VcsCharacterSheetPage() {
                 Build your adventurer in one place — identity, combat stats, weapons, ability scores, skills, spells, equipment, wealth, features, and long-form character details — then hand them to a token on the battle map.
               </p>
               <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
-                Click the sheet to open the editor. Signed in? You land on a blank character sheet. Not signed in? A quick sign-in modal pops up, and we send you right back to that blank sheet the moment you finish.
+                Click the sheet to open the editor — no sign-in required. Play with ability scores, weapons, spells, and equipment right in your browser. Sign in only when you want to save your character, upload a portrait, or drop them onto a battle map.
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
                 <LaunchAppButton
                   appSlug={product.slug}
                   deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+                  openPublic
                   style={heroLaunchButtonStyle()}
                 >
                   Open the character sheet editor
@@ -443,6 +442,7 @@ export default function VcsCharacterSheetPage() {
               <LaunchAppLink
                 appSlug={product.slug}
                 deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+                openPublic
                 trackingSurface="character_sheet_hero_media"
                 ariaLabel="Open the Virtual Combat Simulator character sheet editor"
                 style={{ display: 'block', textDecoration: 'none', color: 'inherit', width: '100%' }}
@@ -569,6 +569,7 @@ export default function VcsCharacterSheetPage() {
                   <LaunchAppButton
                     appSlug={product.slug}
                     deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+                    openPublic
                     style={inlineLaunchButtonStyle()}
                   >
                     {zone.inlineCtaLabel}
@@ -642,6 +643,7 @@ export default function VcsCharacterSheetPage() {
             <LaunchAppButton
               appSlug={product.slug}
               deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+              openPublic
               style={{
                 background: 'white',
                 color: product.theme.accent,
@@ -726,6 +728,7 @@ export default function VcsCharacterSheetPage() {
             <LaunchAppButton
               appSlug={product.slug}
               deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+              openPublic
               style={{
                 background: product.theme.accent,
                 color: 'white',
