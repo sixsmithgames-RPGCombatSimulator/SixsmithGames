@@ -11,9 +11,9 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator keeps battle maps, tokens, initiative, and encounter flow together for game masters and tabletop RPG groups.',
   heroEyebrow: 'Tabletop RPG Combat Management',
   heroValue:
-    'Run the fight in one tab — maps, tokens, initiative, HP, and conditions, where you actually need them.',
+    'Build your D&D character, then run the fight in one tab — a full character sheet editor, battle maps, tokens, initiative, HP, and conditions where you actually need them.',
   heroSummary:
-    'Virtual Combat Simulator is for game masters who want combat to run cleanly — without flipping between a map app, a dice app, and a scratch-paper initiative tracker in the middle of a fight.',
+    'Virtual Combat Simulator is for game masters and players who want combat to run cleanly. Build your character with the editor pictured here, hand them to a token on the battle map, and keep the whole group synchronized without flipping between a character builder, a map app, a dice app, and a scratch-paper initiative tracker.',
   oneSentence:
     'Virtual Combat Simulator is a browser-based combat management tool for tabletop roleplaying games.',
   category: 'D&D combat simulator and battle map tool',
@@ -44,13 +44,22 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   },
   primaryCta: {
     kind: 'launch',
-    label: 'Play now',
+    label: 'Build your character — it’s free',
     appSlug: 'virtual-combat-simulator',
   },
   secondaryCta: {
     kind: 'link',
-    label: 'See upgrades',
-    href: '/pricing#virtual-combat-simulator',
+    label: 'Tour the character sheet',
+    href: '/apps/virtual-combat-simulator/character-sheet',
+  },
+  primaryDeepLinkPath: '/character/edit/new',
+  heroMedia: {
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1600/sixsmith-games/vcs/character-sheet-overview.png',
+    alt: 'Virtual Combat Simulator D&D character sheet editor with identity, combat stats, and weapons table',
+    overlayLabel: 'Open the character sheet editor',
+    deepLinkPath: '/character/edit/new',
+    caption:
+      'The D&D Character Sheet Editor — click anywhere on the sheet to start building your adventurer. Not signed in yet? You will get a quick sign-in, then land right back on a blank character sheet.',
   },
   whatItIs: [
     'Virtual Combat Simulator is a focused combat simulator for tabletop RPG encounters. It is built around the part of play that often slows a session down: battle maps, tokens, initiative, hit points, conditions, and the moment-to-moment flow of combat.',

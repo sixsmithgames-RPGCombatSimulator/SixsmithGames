@@ -37,6 +37,23 @@ export interface ProductDeepDive {
   linkLabel?: string;
 }
 
+export interface ProductHeroMedia {
+  /** Absolute or CDN image URL of the hero visual. */
+  src: string;
+  /** Accessible alt text describing what the image shows. */
+  alt: string;
+  /** Short on-image caption / overlay label (e.g. "Click to open the character sheet editor"). */
+  overlayLabel?: string;
+  /**
+   * Optional deep link path appended to the app URL when the visitor clicks the hero image.
+   * Signed-in users land on the deep link; signed-out users get Clerk's sign-in modal and are
+   * force-redirected to the same deep link after sign-in.
+   */
+  deepLinkPath?: string;
+  /** Optional caption rendered below the hero image. */
+  caption?: string;
+}
+
 export interface ProductCta {
   kind: 'launch' | 'subscribe' | 'link';
   label: string;
@@ -93,6 +110,9 @@ export interface ProductDefinition {
   commonUseCases: string[];
   scopeNotes: string[];
   featureDeepDives?: ProductDeepDive[];
+  heroMedia?: ProductHeroMedia;
+  /** Optional deep link appended to primary CTA(s) so they open a specific in-app surface. */
+  primaryDeepLinkPath?: string;
 }
 
 export const HELP_TOPIC_TITLES: Record<HelpTopicSlug, string> = {

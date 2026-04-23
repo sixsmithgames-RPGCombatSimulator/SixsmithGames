@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FacebookViewContent from '@/components/FacebookViewContent';
 import LaunchAppButton from '@/components/LaunchAppButton';
+import LaunchAppLink from '@/components/LaunchAppLink';
 import ModernBackground from '@/components/ModernBackground';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
@@ -57,7 +58,11 @@ function renderButton(product: ProductDefinition, tone: 'primary' | 'secondary')
 
   if (cta.kind === 'launch' && cta.appSlug) {
     return (
-      <LaunchAppButton appSlug={cta.appSlug} style={commonStyle}>
+      <LaunchAppButton
+        appSlug={cta.appSlug}
+        style={commonStyle}
+        deepLinkPath={tone === 'primary' ? product.primaryDeepLinkPath : undefined}
+      >
         {cta.label}
       </LaunchAppButton>
     );
@@ -163,43 +168,129 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
         <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.14)', zIndex: 1 }} />
         <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2 }}>
           <Breadcrumbs items={breadcrumbItems} tone="dark" />
-          <div style={{ maxWidth: '860px' }}>
-            <div
-              style={{
-                display: 'inline-block',
-                marginBottom: '1rem',
-                padding: '0.45rem 0.95rem',
-                borderRadius: '999px',
-                background: 'rgba(255,255,255,0.12)',
-                border: '1px solid rgba(255,255,255,0.16)',
-                fontSize: '0.82rem',
-                fontWeight: 800,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-              }}
-            >
-              {product.heroEyebrow}
+          <div
+            style={{
+              display: 'grid',
+              gridTemplateColumns: product.heroMedia ? fluidGrid('320px') : '1fr',
+              gap: '2.25rem',
+              alignItems: 'center',
+            }}
+          >
+            <div style={{ maxWidth: '860px' }}>
+              <div
+                style={{
+                  display: 'inline-block',
+                  marginBottom: '1rem',
+                  padding: '0.45rem 0.95rem',
+                  borderRadius: '999px',
+                  background: 'rgba(255,255,255,0.12)',
+                  border: '1px solid rgba(255,255,255,0.16)',
+                  fontSize: '0.82rem',
+                  fontWeight: 800,
+                  letterSpacing: '0.08em',
+                  textTransform: 'uppercase',
+                }}
+              >
+                {product.heroEyebrow}
+              </div>
+              <h1
+                style={{
+                  fontSize: 'clamp(2.2rem, 6vw, 4rem)',
+                  lineHeight: 1.08,
+                  fontWeight: 900,
+                  margin: '0 0 1rem',
+                }}
+              >
+                {product.h1}
+              </h1>
+              <p style={{ fontSize: '1.14rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.92)', margin: '0 0 1rem' }}>
+                {product.heroValue}
+              </p>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
+                {product.heroSummary}
+              </p>
+              <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
+                {renderButton(product, 'primary')}
+                {renderButton(product, 'secondary')}
+              </div>
             </div>
-            <h1
-              style={{
-                fontSize: 'clamp(2.2rem, 6vw, 4rem)',
-                lineHeight: 1.08,
-                fontWeight: 900,
-                margin: '0 0 1rem',
-              }}
-            >
-              {product.h1}
-            </h1>
-            <p style={{ fontSize: '1.14rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.92)', margin: '0 0 1rem' }}>
-              {product.heroValue}
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
-              {product.heroSummary}
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
-              {renderButton(product, 'primary')}
-              {renderButton(product, 'secondary')}
-            </div>
+            {product.heroMedia ? (
+              <div>
+                <LaunchAppLink
+                  appSlug={product.slug}
+                  deepLinkPath={product.heroMedia.deepLinkPath}
+                  trackingSurface="product_hero_media"
+                  ariaLabel={product.heroMedia.overlayLabel ?? product.heroMedia.alt}
+                  style={{
+                    display: 'block',
+                    textDecoration: 'none',
+                    color: 'inherit',
+                    width: '100%',
+                  }}
+                >
+                  <figure
+                    style={{
+                      margin: 0,
+                      borderRadius: '20px',
+                      overflow: 'hidden',
+                      background: '#0f172a',
+                      border: '1px solid rgba(255,255,255,0.22)',
+                      boxShadow: '0 24px 64px rgba(0,0,0,0.35)',
+                      position: 'relative',
+                    }}
+                  >
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={product.heroMedia.src}
+                      alt={product.heroMedia.alt}
+                      loading="eager"
+                      decoding="async"
+                      style={{
+                        display: 'block',
+                        width: '100%',
+                        height: 'auto',
+                        background: '#0f172a',
+                      }}
+                    />
+                    {product.heroMedia.overlayLabel ? (
+                      <figcaption
+                        style={{
+                          position: 'absolute',
+                          left: '0.9rem',
+                          bottom: '0.9rem',
+                          padding: '0.5rem 0.85rem',
+                          borderRadius: '999px',
+                          background: 'rgba(15,23,42,0.78)',
+                          color: 'white',
+                          fontSize: '0.82rem',
+                          fontWeight: 800,
+                          letterSpacing: '0.04em',
+                          boxShadow: '0 10px 24px rgba(0,0,0,0.35)',
+                          display: 'inline-flex',
+                          alignItems: 'center',
+                          gap: '0.4rem',
+                        }}
+                      >
+                        {product.heroMedia.overlayLabel}
+                        <span aria-hidden="true">→</span>
+                      </figcaption>
+                    ) : null}
+                  </figure>
+                </LaunchAppLink>
+                {product.heroMedia.caption ? (
+                  <p
+                    style={{
+                      margin: '0.6rem 0 0',
+                      color: 'rgba(255,255,255,0.82)',
+                      fontSize: '0.9rem',
+                      lineHeight: 1.6,
+                    }}
+                  >
+                    {product.heroMedia.caption}
+                  </p>
+                ) : null}
+              </div>
+            ) : null}
           </div>
         </div>
       </section>

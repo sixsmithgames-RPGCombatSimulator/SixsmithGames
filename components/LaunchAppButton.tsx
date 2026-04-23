@@ -16,6 +16,12 @@ interface LaunchAppButtonProps {
   style?: React.CSSProperties;
   children: React.ReactNode;
   autoLaunch?: boolean;
+  /**
+   * Optional path appended to the app URL so signed-in users land directly on a specific in-app
+   * surface (e.g. `/character/edit/new`). For signed-out users, the same path is threaded through
+   * Clerk's post-sign-in redirect so they arrive at the intended destination after signing in.
+   */
+  deepLinkPath?: string;
 }
 
 function renderStaticButton(label: string, style?: React.CSSProperties) {
@@ -26,7 +32,7 @@ function renderStaticButton(label: string, style?: React.CSSProperties) {
   );
 }
 
-function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppButtonProps) {
+function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath }: LaunchAppButtonProps) {
   const { isLoaded, isSignedIn } = useUser();
   const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
@@ -36,7 +42,8 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch }: LaunchAppBu
   const isGravity = appSlug === 'gravity';
   const hasPaidAccess = Boolean(accessInfo?.accessibleApps.length);
   const hasAccess = isFreeApp || hasPaidAccess;
-  const appUrl = APP_URLS[appSlug];
+  const baseAppUrl = APP_URLS[appSlug];
+  const appUrl = deepLinkPath && baseAppUrl ? `${baseAppUrl}${deepLinkPath}` : baseAppUrl;
   const label = hasPaidAccess ? 'Open App' : children;
   const gravityCanLaunch = isGravity && accessInfo?.isDummySubscriber === true;
 
@@ -138,7 +145,19 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
         <LaunchButtonInner {...props} />
       </SignedIn>
       <SignedOut>
-        <SignInButton mode="modal">
+        <SignInButton
+          mode="modal"
+          forceRedirectUrl={
+            props.deepLinkPath && APP_URLS[props.appSlug]
+              ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
+              : undefined
+          }
+          signUpForceRedirectUrl={
+            props.deepLinkPath && APP_URLS[props.appSlug]
+              ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
+              : undefined
+          }
+        >
           <button
             style={props.style}
             onClick={() => {
@@ -148,7 +167,7 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
               });
             }}
           >
-            Play now — it's free
+            {props.deepLinkPath ? props.children : "Play now — it's free"}
           </button>
         </SignInButton>
       </SignedOut>
