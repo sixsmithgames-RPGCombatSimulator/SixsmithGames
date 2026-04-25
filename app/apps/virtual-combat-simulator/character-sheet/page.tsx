@@ -319,7 +319,7 @@ function inlineLaunchButtonStyle(): React.CSSProperties {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
-    boxShadow: '0 8px 24px rgba(37,99,235,0.25)',
+    boxShadow: '0 8px 24px rgba(111,75,42,0.28)',
     border: 'none',
     cursor: 'pointer',
   };

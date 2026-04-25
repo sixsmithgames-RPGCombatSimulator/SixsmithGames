@@ -36,11 +36,11 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'combat-simulator-vs-full-vtt',
   ],
   theme: {
-    gradient: 'linear-gradient(135deg, #1d4ed8 0%, #2563eb 50%, #06b6d4 100%)',
-    accent: '#2563eb',
-    tint: '#eff6ff',
-    dark: '#0f172a',
-    lightBorder: '#bfdbfe',
+    gradient: 'linear-gradient(135deg, #2a1c14 0%, #4a2e1f 55%, #6f4b2a 100%)',
+    accent: '#8f6a3a',
+    tint: '#f4ead8',
+    dark: '#241811',
+    lightBorder: '#d3b27a',
   },
   primaryCta: {
     kind: 'launch',
