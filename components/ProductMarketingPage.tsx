@@ -533,11 +533,15 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
                   >
                     {slug === 'contentcraft'
                       ? 'Worldbuilding app for writers and game masters'
-                      : slug === 'fourstargeneral'
-                        ? 'WWII tactical strategy game'
-                        : slug === 'gravity'
-                          ? 'Simultaneous-turn strategy game'
-                          : 'Related product'}
+                      : slug === 'gamemastercraft'
+                        ? 'Campaign planning and worldbuilding for game masters'
+                        : slug === 'sagacraft'
+                          ? 'Novel writing and story continuity for fiction writers'
+                          : slug === 'fourstargeneral'
+                            ? 'WWII tactical strategy game'
+                            : slug === 'gravity'
+                              ? 'Simultaneous-turn strategy game'
+                              : 'Related product'}
                   </Link>
                 ))}
               </div>

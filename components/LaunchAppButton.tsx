@@ -43,7 +43,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath 
   const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
   // Free-core titles: always launchable for signed-in users without paid plans
-  const freeAppSlugs = ['mastertyping', 'fourstargeneral', 'virtual-combat-simulator'];
+  const freeAppSlugs = ['mastertyping', 'fourstargeneral', 'virtual-combat-simulator', 'gamemastercraft', 'sagacraft'];
   const isFreeApp = freeAppSlugs.includes(appSlug);
   const isGravity = appSlug === 'gravity';
   const hasPaidAccess = Boolean(accessInfo?.accessibleApps.length);

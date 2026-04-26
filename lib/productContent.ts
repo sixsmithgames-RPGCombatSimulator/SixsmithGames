@@ -1,6 +1,8 @@
 import { contentCraftProductDefinition } from '@/app/apps/contentcraft/marketing';
 import { fourStarGeneralProductDefinition } from '@/app/apps/fourstargeneral/marketing';
+import { gameMasterCraftProductDefinition } from '@/app/apps/gamemastercraft/marketing';
 import { gravityProductDefinition } from '@/app/apps/gravity/marketing';
+import { sagaCraftProductDefinition } from '@/app/apps/sagacraft/marketing';
 import { masterTypingProductDefinition } from '@/app/apps/mastertyping/marketing';
 import { virtualCombatSimulatorProductDefinition } from '@/app/apps/virtual-combat-simulator/marketing';
 import type { PricingPlanId } from '@/lib/pricingCatalog';
@@ -138,6 +140,8 @@ export const HELP_TOPIC_TITLES: Record<HelpTopicSlug, string> = {
 export const PRODUCT_DEFINITIONS: ProductDefinition[] = [
   virtualCombatSimulatorProductDefinition,
   contentCraftProductDefinition,
+  gameMasterCraftProductDefinition,
+  sagaCraftProductDefinition,
   masterTypingProductDefinition,
   gravityProductDefinition,
   fourStarGeneralProductDefinition,

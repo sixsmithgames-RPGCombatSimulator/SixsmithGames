@@ -9,6 +9,8 @@ export type SubscriptionStatus = 'active' | 'inactive' | 'trialing' | 'past_due'
 
 export const APP_SLUGS = [
   'contentcraft',
+  'gamemastercraft',
+  'sagacraft',
   'gravity',
   'virtual-combat-simulator',
   'fourstargeneral',
@@ -168,6 +170,8 @@ export function canAccessApps(
 export const APP_URLS: Record<AppSlug, string> = {
   'virtual-combat-simulator': 'https://vcs.sixsmithgames.com',
   'contentcraft': 'https://contentcraft.sixsmithgames.com',
+  'gamemastercraft': 'https://gmcraft.sixsmithgames.com',
+  'sagacraft': 'https://sagacraft.sixsmithgames.com',
   'mastertyping': 'https://mastertyping.sixsmithgames.com',
   'gravity': 'https://gravity.sixsmithgames.com',
   'fourstargeneral': 'https://fsg.sixsmithgames.com',

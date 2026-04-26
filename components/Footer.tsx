@@ -81,6 +81,8 @@ export default function Footer() {
             <p style={headingStyle}>Tools</p>
             <Link href="/apps/virtual-combat-simulator" style={linkStyle} className={touchTargetClassName}>Virtual Combat Simulator</Link>
             <Link href="/apps/contentcraft" style={linkStyle} className={touchTargetClassName}>ContentCraft</Link>
+            <Link href="/apps/gamemastercraft" style={linkStyle} className={touchTargetClassName}>GameMasterCraft</Link>
+            <Link href="/apps/sagacraft" style={linkStyle} className={touchTargetClassName}>SagaCraft</Link>
             <Link href="/apps/gravity" style={linkStyle} className={touchTargetClassName}>Gravity</Link>
           </div>
 
