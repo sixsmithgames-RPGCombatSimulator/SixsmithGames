@@ -330,7 +330,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>What problem it solves</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>{product.problemItSolvesHeading}</h2>
           <div style={{ display: 'grid', gap: '0.95rem' }}>
             {product.problemItSolves.map((paragraph) => (
               <p key={paragraph} style={{ margin: 0, color: '#334155', lineHeight: 1.85, fontSize: '1rem' }}>

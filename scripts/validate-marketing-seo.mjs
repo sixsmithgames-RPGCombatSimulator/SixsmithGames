@@ -8,7 +8,6 @@ const REQUIRED_PRODUCT_H2S = [
   'About this product',
   'What it is',
   'Who it is for',
-  'What problem it solves',
   'How it works',
   'Key features',
   'Pricing and access',

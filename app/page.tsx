@@ -75,7 +75,7 @@ export default function HomePage() {
                   textDecoration: 'none',
                 }}
               >
-                See all five products
+                Find the right product
               </Link>
               <Link
                 href="/about/facts"
@@ -150,7 +150,7 @@ export default function HomePage() {
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Start with the product that fits what you do</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Start with the product that fits how you play, write, or practice</h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Virtual Combat Simulator if you want faster tabletop RPG encounters.</h3>
@@ -195,7 +195,7 @@ export default function HomePage() {
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Gravity if you want simultaneous-turn tactical challenge.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Gravity is for strategy and board-game players who want locked orders, ship systems management, and simultaneous turns that reward planning. If that sounds like your kind of game, start with{' '}
+                Gravity is for strategy and board-game players who want locked orders, ship systems management, and simultaneous turns where planning actually matters. If that sounds like your kind of game, start with{' '}
                 <Link href="/apps/gravity" style={{ color: '#0ea5e9', fontWeight: 700, textDecoration: 'underline' }}>
                   the Gravity product page
                 </Link>
@@ -208,10 +208,10 @@ export default function HomePage() {
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Where to go next</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Every product page shows what the product does, who it is for, how it works, and what it costs.
+            Each product page shows what the product does, who it is for, and how to get started.
           </p>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Articles, and the facts page are all linked directly from here.
+            Pricing, help, articles, and official product details are all one click away.
           </p>
           <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
             <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>

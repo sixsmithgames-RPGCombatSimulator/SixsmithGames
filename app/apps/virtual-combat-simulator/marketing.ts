@@ -66,20 +66,21 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   whatItIs: [
     'Virtual Combat Simulator is a focused combat simulator for tabletop RPG encounters. It is built around the part of play that often slows a session down: battle maps, tokens, initiative, hit points, conditions, and the moment-to-moment flow of combat.',
     'Virtual Combat Simulator is not an all-purpose campaign manager or a giant everything-in-one virtual tabletop. It is built to keep combat clear, synchronized, and easy to run for a game master who wants tactical clarity without burying the table under extra interface weight.',
-    'Virtual Combat Simulator is built around D&D-style encounter management. That is the tabletop RPG audience it speaks to, and that is what the rest of this page focuses on.',
+    'Virtual Combat Simulator is built around D&D-style encounter management.',
   ],
   whoItIsFor: [
     'Virtual Combat Simulator is for game masters who want a cleaner way to run tactical combats without bouncing between battle maps, initiative trackers, notes, and character references.',
     'Virtual Combat Simulator is for tabletop RPG groups that play online or in hybrid setups and need shared positioning, clear turn order, token control, and combat state in one place.',
     'Virtual Combat Simulator is for encounter-heavy campaigns where D&D combat management, battle-map visibility, and fast initiative handling matter more than sprawling world or campaign administration.',
   ],
+  problemItSolvesHeading: 'Why combat slows down',
   problemItSolves: [
-    'Combat loses energy when the game master has to juggle too many disconnected tools. Players wait while someone checks initiative, finds the right token, updates hit points, or explains who can act next. That friction is exactly the problem Virtual Combat Simulator is meant to reduce.',
-    'Virtual Combat Simulator also solves the visibility problem that shows up in hybrid or online play. When the battle map, tokens, and combat state live in different places, players stop reading the situation clearly. A single encounter view keeps the fight readable and helps the group stay engaged.',
+    'Combat loses energy when the game master has to juggle too many disconnected tools. Players wait while someone checks initiative, finds the right token, updates hit points, or explains who can act next. That friction is exactly what Virtual Combat Simulator is built to reduce.',
+    'Virtual Combat Simulator also solves the visibility problem that shows up in hybrid or online play. When the battle map, tokens, and combat state live in different places, players stop reading the situation clearly. A single encounter view keeps the fight readable and helps everyone stay engaged.',
   ],
   howItWorks: [
     'Set up or load the encounter map, place tokens, and establish the battle space the table will use.',
-    'Track initiative, turn order, action flow, hit points, conditions, and other combat state from the same encounter control room.',
+    'Track initiative, turn order, action flow, hit points, conditions, and other combat state from the same encounter view.',
     'Keep players synced to the same battle state so everyone can follow movement, token positions, and the current turn without extra bookkeeping.',
     'Use the product as the combat layer of the session while the game master keeps the narrative, rulings, and pacing in motion.',
   ],
@@ -128,7 +129,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     {
       question: 'Is Virtual Combat Simulator a VTT?',
       answer:
-        'Virtual Combat Simulator overlaps with part of the VTT space, but the focus is narrower. Virtual Combat Simulator is best understood as a combat simulator and encounter control room, not as a full campaign-management VTT that tries to cover every part of tabletop play.',
+        'Virtual Combat Simulator overlaps with part of the VTT space, but the focus is narrower. Virtual Combat Simulator is best understood as a combat simulator and encounter view, not as a full campaign-management VTT that tries to cover every part of tabletop play.',
     },
     {
       question: 'Who is Virtual Combat Simulator for?',

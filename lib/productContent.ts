@@ -106,6 +106,7 @@ export interface ProductDefinition {
   secondaryCta?: ProductCta;
   whatItIs: string[];
   whoItIsFor: string[];
+  problemItSolvesHeading: string;
   problemItSolves: string[];
   howItWorks: string[];
   keyFeatures: ProductFeature[];

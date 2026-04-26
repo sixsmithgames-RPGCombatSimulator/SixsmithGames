@@ -59,15 +59,16 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   ],
   whoItIsFor: [
     'Four Star General is for players who enjoy serious WWII tactical strategy and digital wargames more than fast arcade action.',
-    'Four Star General is for players who want battlefield tension to come from supply, reserves, positioning, and mission objectives instead of hidden randomness or spectacle-first pacing.',
+    'Four Star General is for players who want the strain of battle to come from supply, reserves, positioning, and mission objectives instead of hidden randomness or spectacle-first pacing.',
     'Four Star General is for people who like authored scenarios, deterministic tactics, and command decisions that can be studied, tested, and improved over repeat play.',
   ],
+  problemItSolvesHeading: 'Why most tactics games feel vague',
   problemItSolves: [
-    'A lot of strategy-game marketing talks about "epic warfare" without telling the player how the game actually creates tension. Four Star General is the opposite: deterministic tactics, hard command decisions, supply, reserves, and mission profiles do the work.',
+    'A lot of strategy games talk about "epic warfare" without showing the player why decisions actually matter. Four Star General is the opposite: deterministic tactics, hard command decisions, supply, reserves, and mission profiles do the work.',
     'For serious tactical play, the important question is not whether a game looks war-like. The important question is whether command decisions matter. Four Star General answers that with systems you already recognize: deployment, logistics, reserve management, and timed objectives.',
   ],
   howItWorks: [
-    'Choose and deploy forces for the scenario while considering terrain, objectives, reserve posture, and how the situation will tighten over the battle.',
+    'Choose and deploy forces for the scenario while considering terrain, objectives, reserve posture, and how the battle is likely to unfold.',
     'Work through authored mission profiles where battlefield tempo, supply, and available responses shape what you can do next.',
     'Resolve tactical outcomes through a deterministic rules model so the battle reflects the command decisions that led into it.',
     'Review the scenario, refine deployment and timing, and return with better tactical answers instead of relying on vague randomness.',
@@ -79,7 +80,7 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
         'Outcomes are meant to follow from visible rules and command decisions, which gives the player a tactical model they can actually learn.',
     },
     {
-      title: 'Battlefield tension',
+      title: 'Battlefield momentum',
       description:
         'Each turn tightens the situation so positioning, tempo, and reserve discipline matter instead of feeling optional.',
     },

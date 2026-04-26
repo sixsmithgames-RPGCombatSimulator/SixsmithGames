@@ -62,9 +62,10 @@ export const masterTypingProductDefinition: ProductDefinition = {
     'MasterTyping is for people who benefit from a clear improvement loop: assess the weak spots, practice the right drills, and return to a game mode or challenge mode that keeps repetition from going stale.',
     'MasterTyping is for anyone who wants a typing practice game that still takes skill building seriously.',
   ],
+  problemItSolvesHeading: 'Why typing practice stalls',
   problemItSolves: [
-    'Many typing tools fail in one of two ways: they are so dry that people stop practicing, or they are so novelty-driven that the actual skill-building loop gets buried. MasterTyping aims at the middle ground where the practice is real and the experience still feels motivating.',
-    'Typing improvement also stalls when you do not know what to fix. MasterTyping solves that by pairing assessments and targeted exercises with multiple modes, so you have a clearer path from weak spot to better habit.',
+    'Many typing tools fail in one of two ways: they are so dry that people stop practicing, or they are so novelty-driven that the actual skill-building loop gets buried. MasterTyping aims for the middle ground where the practice is real and the experience still feels motivating enough to keep going.',
+    'Typing improvement also stalls when you do not know what to fix. MasterTyping addresses that by pairing assessments and targeted exercises with multiple modes, so you have a clearer path from a weak spot to a better habit.',
   ],
   howItWorks: [
     'Start with an assessment or jump into a mode that matches how directly you want to train.',
@@ -99,9 +100,9 @@ export const masterTypingProductDefinition: ProductDefinition = {
         'Review recent performance and mode-level progress so typing practice feels cumulative instead of disposable.',
     },
     {
-      title: 'Low-friction premium layer',
+      title: 'Additional tracking and history',
       description:
-        'Keep the core practice loop accessible while reserving the premium layer for deeper tracking and extended history.',
+        'Keep the core practicing accessible, but premium is available for deeper tracking and extended history.',
     },
   ],
   pricingAndAccess: [

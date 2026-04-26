@@ -13,7 +13,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   heroValue:
     'Your world should get richer the longer you work on it — not harder to keep straight.',
   heroSummary:
-    'ContentCraft is for writers, worldbuilders, and game masters whose projects outgrew memory and outgrew folders. Your world lives in one place, so the next chapter can build on what you have already established.',
+    'ContentCraft is for writers, worldbuilders, and game masters whose projects outgrew memory and outgrew folders. Your project lives in one place, so the next chapter can build on what you have already established.',
   oneSentence:
     'ContentCraft helps writers and game masters organize lore, continuity, and project content in one place.',
   category: 'Worldbuilding and writing tool with canon continuity support',
@@ -55,7 +55,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   },
   whatItIs: [
     'Every writer or game master with a project worth finishing runs into the same wall. The story gets bigger than memory can hold, and the world starts to drift. A faction\'s motives shift between chapters. A character says the wrong name. The bustling port town on page forty is a sleepy village by page two hundred. ContentCraft is built for that moment — when you want the project to keep growing without the continuity giving out.',
-    'This is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write with your canon in reach instead of trying to hold the whole project in your head.',
+    'This is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write with your canon in reach instead of trying to keep the whole project in your head.',
     'The writers and game masters who fit best here are the ones building something they want to return to: a novel that needs a second book, a campaign that runs for a year, a setting that outlives the first thing you wrote for it.',
   ],
   whoItIsFor: [
@@ -63,14 +63,15 @@ export const contentCraftProductDefinition: ProductDefinition = {
     'Worldbuilders whose settings have become the point of the project. Factions, geography, history, culture, technology. The kind of world a reader or player wants to step back into because it actually holds together.',
     'Game masters running long campaigns with recurring NPCs, growing factions, and places the party keeps coming back to. Prep for session twelve should be easier than prep for session two, not harder.',
   ],
+  problemItSolvesHeading: 'Why long projects drift',
   problemItSolves: [
     'Creative projects rarely fail in one dramatic moment. They fail in the slow drift of names, motivations, timelines, and rules that were supposed to stay fixed. By the time you catch the contradictions, untangling them costs more than writing the next chapter.',
-    'Generic AI tools make this worse, not better. They generate fast and forget everything. What a serious project needs is a workspace that keeps your world close at hand, so new material builds on what already exists instead of drifting away from it.',
+    'Generic AI tools make this worse, not better. They generate fast and forget everything. What a serious project needs is a workspace that keeps the project close at hand, so new material builds on what already exists instead of drifting away from it.',
   ],
   howItWorks: [
     'Bring in the project you are already working on. The characters that matter, the places the story keeps returning to, the factions whose choices drive the plot, the rules the world is supposed to follow.',
-    'Write using that canon. Draft, review, and revise in the same workspace where your world already lives, with AI help available when you want it and out of the way when you do not.',
-    'Add new canon as the project grows. The world gets richer over time instead of harder to navigate, and the next chapter inherits everything the last one established.',
+    'Write using that canon. Draft, review, and revise in the same workspace where your project already lives, with AI help available when you want it and out of the way when you do not.',
+    'Add new canon as the project grows. The project gets richer over time instead of harder to manage, and the next chapter inherits everything the last one established.',
     'For setup steps, project templates, and detailed workflows, see the help pages and the articles on building a campaign bible, keeping recurring elements consistent, and moving from notes to usable session content.',
   ],
   keyFeatures: [
