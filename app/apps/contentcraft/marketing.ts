@@ -55,7 +55,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
   },
   whatItIs: [
     'Every writer or game master with a project worth finishing runs into the same wall. The story gets bigger than memory can hold, and the world starts to drift. A faction\'s motives shift between chapters. A character says the wrong name. The bustling port town on page forty is a sleepy village by page two hundred. ContentCraft is built for that moment — when you want the project to keep growing without the continuity giving out.',
-    'This is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write with your canon in reach instead of trying to hold the whole project in memory.',
+    'This is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write with your canon in reach instead of trying to hold the whole project in your head.',
     'The writers and game masters who fit best here are the ones building something they want to return to: a novel that needs a second book, a campaign that runs for a year, a setting that outlives the first thing you wrote for it.',
   ],
   whoItIsFor: [
@@ -102,7 +102,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       title: 'Export without losing history',
       description:
-        'Preserve revision history alongside export-ready outputs so you do not lose track of how the project changed over time.',
+        'Keep track of what changed without losing earlier draft decisions.',
     },
   ],
   pricingAndAccess: [
