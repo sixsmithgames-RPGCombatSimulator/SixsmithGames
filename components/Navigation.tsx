@@ -49,7 +49,8 @@ export default function Navigation() {
     display: 'flex',
     alignItems: 'center',
     justifyContent: 'space-between',
-    gap: '1rem',
+    gap: '0.5rem',
+    minWidth: 0,
   };
 
   const logoStyle: React.CSSProperties = {
@@ -74,6 +75,8 @@ export default function Navigation() {
     minHeight: '44px',
     display: 'inline-flex',
     alignItems: 'center',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
   };
 
   const signInStyle: React.CSSProperties = {
@@ -90,6 +93,8 @@ export default function Navigation() {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
+    whiteSpace: 'nowrap',
+    flexShrink: 0,
   };
 
   const ctaStyle: React.CSSProperties = {
@@ -107,6 +112,7 @@ export default function Navigation() {
     display: 'inline-flex',
     alignItems: 'center',
     justifyContent: 'center',
+    flexShrink: 0,
   };
 
   const dropdownStyle: React.CSSProperties = {
@@ -127,7 +133,7 @@ export default function Navigation() {
       <nav style={navStyle}>
         <div style={innerStyle}>
           {/* Logo */}
-          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', minWidth: 0 }}>
+          <Link href="/" style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', textDecoration: 'none', flexShrink: 0 }}>
             <Image
               src="/icons/sixsmith-logo.png"
               alt="Sixsmith Games"
@@ -140,7 +146,7 @@ export default function Navigation() {
           </Link>
 
           {/* Desktop nav */}
-          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '2rem' }}>
+          <div className="desktop-nav" style={{ display: 'flex', alignItems: 'center', gap: '1.5rem' }}>
             <Link href="/" style={linkStyle}
               onMouseEnter={e => (e.currentTarget.style.color = '#2563eb')}
               onMouseLeave={e => (e.currentTarget.style.color = '#374151')}
@@ -265,6 +271,7 @@ export default function Navigation() {
               </div>
             </SignedIn>
             <SignedOut>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '0.75rem', flexShrink: 0 }}>
               <Link href="/sign-in" style={signInStyle}
                 onMouseEnter={e => { e.currentTarget.style.borderColor = '#2563eb'; e.currentTarget.style.color = '#2563eb'; }}
                 onMouseLeave={e => { e.currentTarget.style.borderColor = '#d1d5db'; e.currentTarget.style.color = '#374151'; }}
@@ -277,6 +284,7 @@ export default function Navigation() {
               >
                 Start Here →
               </Link>
+              </div>
             </SignedOut>
           </div>
 
@@ -396,8 +404,8 @@ export default function Navigation() {
       )}
 
       <style>{`
-        @media (max-width: 768px) {
-          .mobile-menu-btn { display: block !important; }
+        @media (max-width: 900px) {
+          .mobile-menu-btn { display: flex !important; }
           .desktop-nav { display: none !important; }
           .nav-brand-text { font-size: 1.1rem !important; }
         }

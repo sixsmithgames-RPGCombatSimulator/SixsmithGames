@@ -151,9 +151,9 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
         <LaunchButtonInner {...props} />
       </SignedIn>
       <SignedOut>
-        {props.openPublic && props.deepLinkPath && APP_URLS[props.appSlug] ? (
+        {props.openPublic && APP_URLS[props.appSlug] ? (
           <a
-            href={`${APP_URLS[props.appSlug]}${props.deepLinkPath}`}
+            href={props.deepLinkPath ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}` : APP_URLS[props.appSlug]}
             target="_blank"
             rel="noopener noreferrer"
             style={{ ...props.style, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
@@ -161,7 +161,7 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
               trackMarketingEvent('product_launch_click', {
                 product_slug: props.appSlug,
                 destination_type: 'app',
-                surface: 'public_deep_link',
+                surface: 'public_direct',
               });
             }}
           >
