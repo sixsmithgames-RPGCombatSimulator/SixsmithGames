@@ -39,9 +39,10 @@ export const sagaCraftProductDefinition: ProductDefinition = {
   },
   primaryCta: {
     kind: 'launch',
-    label: 'Create Your Writing Workspace',
+    label: 'Start Writing Your Story',
     appSlug: 'sagacraft',
   },
+  primaryOpenPublic: true,
   secondaryCta: {
     kind: 'link',
     label: 'Explore Features',

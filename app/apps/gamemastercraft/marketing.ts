@@ -39,9 +39,10 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
   },
   primaryCta: {
     kind: 'launch',
-    label: 'Create Your Campaign Workspace',
+    label: 'Start Planning Your Campaign',
     appSlug: 'gamemastercraft',
   },
+  primaryOpenPublic: true,
   secondaryCta: {
     kind: 'link',
     label: 'Explore Features',
