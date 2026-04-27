@@ -9,7 +9,7 @@ import { fluidGrid, pageGutter } from '@/lib/responsive';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Help | Sixsmith Games Product Help and Getting Started Pages',
   description:
-    'Browse help pages for Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
+    'Browse help pages for Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity.',
   path: '/help',
 });
 

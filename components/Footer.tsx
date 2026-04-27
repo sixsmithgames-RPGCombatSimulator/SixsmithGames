@@ -80,7 +80,6 @@ export default function Footer() {
           <div>
             <p style={headingStyle}>Tools</p>
             <Link href="/apps/virtual-combat-simulator" style={linkStyle} className={touchTargetClassName}>Virtual Combat Simulator</Link>
-            <Link href="/apps/contentcraft" style={linkStyle} className={touchTargetClassName}>ContentCraft</Link>
             <Link href="/apps/gamemastercraft" style={linkStyle} className={touchTargetClassName}>GameMasterCraft</Link>
             <Link href="/apps/sagacraft" style={linkStyle} className={touchTargetClassName}>SagaCraft</Link>
             <Link href="/apps/gravity" style={linkStyle} className={touchTargetClassName}>Gravity</Link>
@@ -122,7 +121,7 @@ export default function Footer() {
               <Link href="/privacy" style={legalLinkStyle} className={touchTargetClassName}>Privacy Policy</Link>
             </div>
             <p style={{ color: '#374151', fontSize: '0.75rem', margin: 0, textAlign: 'right' }}>
-              Use of this software constitutes acceptance of terms. Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General are trademarks of Sixsmith Games. Prices shown exclude applicable taxes.
+              Use of this software constitutes acceptance of terms. Virtual Combat Simulator, GameMasterCraft, SagaCraft, MasterTyping, Gravity, and Four Star General are trademarks of Sixsmith Games. Prices shown exclude applicable taxes.
             </p>
           </div>
         </div>

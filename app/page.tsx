@@ -56,7 +56,7 @@ export default function HomePage() {
               Browser-based tools and games for game masters, writers, strategy players, and typists.
             </h1>
             <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Virtual Combat Simulator helps game masters run tabletop combat without the paper chase. ContentCraft helps writers and game masters keep long creative projects consistent as they grow. Four Star General is serious WWII tactics with no hidden dice. MasterTyping is typing practice for adults who want real improvement. Gravity is simultaneous-turn strategy built around locked orders, ship systems, and hard tactical tradeoffs.
+              Virtual Combat Simulator helps game masters run tabletop combat without the paper chase. GameMasterCraft is your campaign workspace for NPCs, factions, locations, and session continuity. SagaCraft keeps your novel organized — characters, plots, timelines, and story canon that actually holds together. Four Star General is serious WWII tactics with no hidden dice. MasterTyping is typing practice for adults who want real improvement. Gravity is simultaneous-turn strategy built around locked orders, ship systems, and hard tactical tradeoffs.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
               Pick the one you came here for. If you are not sure yet, the Start Here guide walks you to the right page in a minute.
@@ -163,11 +163,21 @@ export default function HomePage() {
               </p>
             </div>
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose ContentCraft if you need worldbuilding, lore organization, and canon continuity.</h3>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose GameMasterCraft if you run tabletop RPGs and need your campaign organized.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                ContentCraft is for writers, novelists, worldbuilders, and game masters who need more than a notes folder. If your project has growing lore, recurring characters, or a canon that keeps drifting, start with{' '}
-                <Link href="/apps/contentcraft" style={{ color: '#7c3aed', fontWeight: 700, textDecoration: 'underline' }}>
-                  the worldbuilding app for writers and game masters
+                GameMasterCraft is for game masters running campaigns that outgrow notebook scribbles. NPCs, factions, locations, session notes, and lore that stays consistent across sessions. Start with{' '}
+                <Link href="/apps/gamemastercraft" style={{ color: '#7c3aed', fontWeight: 700, textDecoration: 'underline' }}>
+                  the campaign planning tool for game masters
+                </Link>
+                .
+              </p>
+            </div>
+            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose SagaCraft if you are writing fiction and your story is getting complicated.</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                SagaCraft is for novelists and fiction writers organizing characters, plots, chapters, and continuity. When your story bible is scattered across twenty files, start with{' '}
+                <Link href="/apps/sagacraft" style={{ color: '#2563eb', fontWeight: 700, textDecoration: 'underline' }}>
+                  the story continuity workspace for writers
                 </Link>
                 .
               </p>

@@ -18,7 +18,6 @@ export default function Navigation() {
 
   const apps = [
     { name: 'Virtual Combat Simulator', href: '/apps/virtual-combat-simulator' },
-    { name: 'ContentCraft', href: '/apps/contentcraft' },
     { name: 'GameMasterCraft', href: '/apps/gamemastercraft' },
     { name: 'SagaCraft', href: '/apps/sagacraft' },
     { name: 'Four Star General', href: '/apps/fourstargeneral' },

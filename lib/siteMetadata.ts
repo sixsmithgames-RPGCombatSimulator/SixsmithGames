@@ -14,18 +14,20 @@ export const rootMetadata: Metadata = {
   keywords: [
     'Sixsmith Games',
     'Virtual Combat Simulator',
-    'ContentCraft',
+    'GameMasterCraft',
+    'SagaCraft',
     'MasterTyping',
     'Four Star General',
     'tactical combat simulator',
-    'worldbuilding and writing tools',
+    'campaign planning for game masters',
+    'novel writing tools',
     'WWII tactical strategy game',
     'typing training for creators and gamers',
   ],
   openGraph: {
     title: 'Sixsmith Games - Browser-Based Games and Tools',
     description:
-      'Explore Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity on the official Sixsmith Games site.',
+      'Explore Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity on the official Sixsmith Games site.',
     url: '/',
     siteName: SITE_NAME,
     locale: 'en_US',

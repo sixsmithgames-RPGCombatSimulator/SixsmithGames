@@ -5,7 +5,7 @@
 
 export type PricingPlanId =
   | 'bundle'
-  | 'contentcraft'
+  | 'ai-features'
   | 'virtual-combat-simulator'
   | 'fourstargeneral'
   | 'mastertyping';
@@ -24,19 +24,19 @@ export interface PricingCatalogEntry {
 }
 
 export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
-  contentcraft: {
-    planId: 'contentcraft',
-    name: 'ContentCraft',
-    slug: 'contentcraft',
+  'ai-features': {
+    planId: 'ai-features',
+    name: 'AI Features',
+    slug: 'ai-features',
     monthlyPrice: 9.99,
     icon: '/icons/contentcraft-optimized.png',
     color: '#a855f7',
-    gradient: 'linear-gradient(135deg, #7c3aed, #ec4899)',
-    summary: 'Structured creative workspace for canon, characters, scenes, and projects.',
+    gradient: 'linear-gradient(135deg, #7c3aed, #2563eb)',
+    summary: 'AI assistance for GameMasterCraft and SagaCraft — brainstorming, drafting, outlining, and revision help.',
     highlights: [
-      'Canon and project organization',
-      'AI-assisted workflows',
-      'Built for writers and game masters',
+      'AI brainstorming and drafting in GameMasterCraft',
+      'AI writing assistance in SagaCraft',
+      'Works across both creative tools',
     ],
   },
   'virtual-combat-simulator': {
@@ -89,22 +89,22 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
   },
   bundle: {
     planId: 'bundle',
-    name: 'ContentCraft + VCS Bundle',
+    name: 'AI Features + VCS Bundle',
     monthlyPrice: 14.99,
     productId: 'prod_UGroftGaUS7177',
     color: '#4c1d95',
     gradient: 'linear-gradient(135deg, #312e81, #7c3aed)',
-    summary: 'One monthly plan for ContentCraft and Virtual Combat Simulator together.',
+    summary: 'One monthly plan for AI features in GameMasterCraft/SagaCraft plus Virtual Combat Simulator upgrades.',
     highlights: [
-      'Includes ContentCraft',
-      'Includes Virtual Combat Simulator',
+      'AI features for GameMasterCraft and SagaCraft',
+      'Virtual Combat Simulator paid features',
       'Monthly bundle price: $14.99',
     ],
   },
 };
 
 export const pricingCatalogList: PricingCatalogEntry[] = [
-  pricingCatalog.contentcraft,
+  pricingCatalog['ai-features'],
   pricingCatalog['virtual-combat-simulator'],
   pricingCatalog.fourstargeneral,
   pricingCatalog.mastertyping,

@@ -1,4 +1,3 @@
-import { contentCraftProductDefinition } from '@/app/apps/contentcraft/marketing';
 import { fourStarGeneralProductDefinition } from '@/app/apps/fourstargeneral/marketing';
 import { gameMasterCraftProductDefinition } from '@/app/apps/gamemastercraft/marketing';
 import { gravityProductDefinition } from '@/app/apps/gravity/marketing';
@@ -139,7 +138,6 @@ export const HELP_TOPIC_TITLES: Record<HelpTopicSlug, string> = {
 
 export const PRODUCT_DEFINITIONS: ProductDefinition[] = [
   virtualCombatSimulatorProductDefinition,
-  contentCraftProductDefinition,
   gameMasterCraftProductDefinition,
   sagaCraftProductDefinition,
   masterTypingProductDefinition,

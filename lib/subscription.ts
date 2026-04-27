@@ -34,21 +34,21 @@ export interface PlanInfo {
 export const PLANS: Record<string, PlanInfo> = {
   bundle: {
     id: 'bundle',
-    name: 'ContentCraft + VCS Bundle',
+    name: 'AI Features + VCS Bundle',
     price: pricingCatalog.bundle.monthlyPrice,
-    apps: ['contentcraft', 'virtual-combat-simulator'],
+    apps: ['gamemastercraft', 'sagacraft', 'virtual-combat-simulator'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1TIK5IGeOb0qevnhqqzkBPtv',
   },
-  contentcraft: {
-    id: 'contentcraft',
-    name: 'ContentCraft',
-    price: pricingCatalog.contentcraft.monthlyPrice,
-    apps: ['contentcraft'],
+  'ai-features': {
+    id: 'ai-features',
+    name: 'AI Features',
+    price: pricingCatalog['ai-features'].monthlyPrice,
+    apps: ['gamemastercraft', 'sagacraft'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CONTENTCRAFT || 'price_1T2a1NGeOb0qevnhOaJNFSyf',
   },
   'virtual-combat-simulator': {
     id: 'virtual-combat-simulator',
-    name: 'VirtualCombatSimulator',
+    name: 'Virtual Combat Simulator',
     price: pricingCatalog['virtual-combat-simulator'].monthlyPrice,
     apps: ['virtual-combat-simulator'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_VCS || 'price_1T2a0sGeOb0qevnht6dM5yOX',

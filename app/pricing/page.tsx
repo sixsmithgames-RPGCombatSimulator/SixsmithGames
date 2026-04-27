@@ -14,7 +14,7 @@ import { createFaqSchema } from '@/lib/schema';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Pricing | Sixsmith Games Products, Plans, and Access',
   description:
-    'Compare pricing and access across Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
+    'Compare pricing and access across Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity.',
   path: '/pricing',
 });
 
@@ -22,17 +22,17 @@ const pricingFaq = [
   {
     question: 'Can I try the products before paying?',
     answer:
-      'Virtual Combat Simulator, Four Star General, and MasterTyping are all free to start. You can open them in your browser and use the core features without a subscription. Paid upgrades add more storage, more content, or expanded tracking when you decide you want them.',
+      'All our products are free to start. Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, and MasterTyping are all free to open and use. You only need a subscription when you want AI-assisted features — the core tools work without paying.',
   },
   {
-    question: 'Which product requires a subscription up front?',
+    question: 'When do I need a subscription?',
     answer:
-      'ContentCraft is the one product that requires a subscription to access. It is $9.99 per month or $99 per year. The subscription covers the full workspace, built-in AI usage, and the canon and organization tools.',
+      'The $9.99/month subscription unlocks AI assistance across GameMasterCraft and SagaCraft. This includes AI brainstorming, drafting help, outlining support, and revision suggestions. The core organizational features — character tracking, plot management, timelines, lore — are free.',
   },
   {
-    question: 'Is there a deal for Game Masters who want both ContentCraft and Virtual Combat Simulator?',
+    question: 'Is there a deal for Game Masters who want AI in both tools?',
     answer:
-      'Yes. There is a bundle that combines ContentCraft and Virtual Combat Simulator for Game Masters who want the campaign-building workspace and the encounter management tool together.',
+      'Yes. There is a bundle that combines AI access for GameMasterCraft and Virtual Combat Simulator for Game Masters who want the campaign workspace and the combat tool together with full AI features.',
   },
   {
     question: 'What is Gravity and why does it not have a price yet?',
@@ -42,7 +42,7 @@ const pricingFaq = [
   {
     question: 'Which product is right for me?',
     answer:
-      'Use Virtual Combat Simulator if you run tabletop RPG encounters and want faster, cleaner combat management. Use ContentCraft if you build stories, campaigns, or settings and need lore organization and canon continuity. Use Four Star General if you want serious WWII tactical strategy. Use MasterTyping if you want to improve your typing speed and accuracy. Use Gravity if simultaneous-turn strategy with ship systems sounds like your game.',
+      'Use Virtual Combat Simulator if you run tabletop RPG encounters and want faster, cleaner combat management. Use GameMasterCraft if you are a game master who needs to organize campaigns, NPCs, factions, and session continuity. Use SagaCraft if you are writing fiction and need to track characters, plots, chapters, and story canon. Use Four Star General if you want serious WWII tactical strategy. Use MasterTyping if you want to improve your typing speed and accuracy. Use Gravity if simultaneous-turn strategy with ship systems sounds like your game.',
   },
 ];
 
@@ -93,10 +93,10 @@ export default function PricingPage() {
               Most products are free to start. One requires a subscription. Here is what you get either way.
             </h1>
             <p style={{ fontSize: '1.12rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Virtual Combat Simulator, Four Star General, and MasterTyping are free to open and play. ContentCraft is a subscription workspace at $9.99 per month. Gravity is in early beta with no paid plan listed yet.
+              All products are free to open and use. Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, and MasterTyping are free to start. The $9.99/month subscription unlocks AI features across GameMasterCraft and SagaCraft. Gravity is in early beta with no paid plan listed yet.
             </p>
             <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              For the games and tools, paid upgrades add something specific — more storage, more scenarios, expanded history — but you can start without paying. ContentCraft is the exception: it is a subscription workspace with no free tier.
+              For the games and tools, paid upgrades add something specific — more storage, more scenarios, expanded history — but you can start without paying. For GameMasterCraft and SagaCraft, the core workspace is free. AI assistance requires a subscription, handled inside the apps.
             </p>
           </div>
         </div>
@@ -104,19 +104,19 @@ export default function PricingPage() {
 
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
         <section style={{ marginBottom: '2.5rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Free to start or subscription — here is the difference</h2>
+          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Free to start — AI features are the upgrade</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Three products — Virtual Combat Simulator, Four Star General, and MasterTyping — let you open the browser app and use the core features without paying. The paid upgrade for each one adds something specific: more storage and GM features for VCS, more scenarios and units for Four Star General, deeper tracking for MasterTyping. Try it first, upgrade if it fits.
+            All products are free to open and use. Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, and MasterTyping all let you start without paying. The paid upgrades add specific features: more storage and GM tools for VCS, more scenarios for Four Star General, deeper history for MasterTyping, and AI assistance for GameMasterCraft and SagaCraft.
           </p>
           <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            ContentCraft is different. It is a full subscription workspace because the value is in the whole tool — lore organization, canon tracking, AI-assisted drafting, review workflow — not just one feature. $9.99 a month or $99 a year.
+            GameMasterCraft and SagaCraft give you the full organizational workspace for free — NPCs, factions, characters, plots, timelines, lore. When you want AI brainstorming, drafting help, or revision suggestions, the app will prompt you to subscribe. $9.99 a month or $99 a year.
           </p>
         </section>
 
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>What each product costs</h2>
           <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
-            {PRODUCT_DEFINITIONS.map((product) => (
+            {PRODUCT_DEFINITIONS.filter(p => p.slug !== 'contentcraft').map((product) => (
               <article
                 key={product.slug}
                 id={product.slug}
@@ -137,7 +137,7 @@ export default function PricingPage() {
                 </div>
                 <div style={{ padding: '1.1rem 1.15rem' }}>
                   <p style={{ margin: '0 0 0.7rem', color: '#0f172a', fontSize: '1.2rem', fontWeight: 900 }}>
-                    {product.offerPrice ? formatPrice(product.offerPrice) : 'Price not listed yet'}
+                    {product.offerPrice ? formatPrice(product.offerPrice) : (product.slug === 'gamemastercraft' || product.slug === 'sagacraft') ? 'Free (AI features $9.99/mo)' : 'Free to start'}
                   </p>
                   <p style={{ margin: '0 0 0.8rem', color: '#334155', lineHeight: 1.8 }}>
                     {product.pricingModel}.
@@ -179,38 +179,20 @@ export default function PricingPage() {
                     </Link>
                   </div>
                   <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                    {product.slug === 'contentcraft' ? (
-                      <SubscribeButton
-                        planId="contentcraft"
-                        allowAccessRedirect
-                        style={{
-                          background: product.theme.dark,
-                          color: 'white',
-                          padding: '0.82rem 1.1rem',
-                          borderRadius: '999px',
-                          fontWeight: 800,
-                          border: 'none',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        Subscribe to ContentCraft
-                      </SubscribeButton>
-                    ) : (
-                      <LaunchAppButton
-                        appSlug={product.slug}
-                        style={{
-                          background: product.theme.dark,
-                          color: 'white',
-                          padding: '0.82rem 1.1rem',
-                          borderRadius: '999px',
-                          fontWeight: 800,
-                          border: 'none',
-                          cursor: 'pointer',
-                        }}
-                      >
-                        {product.slug === 'gravity' ? 'Open Gravity' : `Try ${product.name}`}
-                      </LaunchAppButton>
-                    )}
+                    <LaunchAppButton
+                      appSlug={product.slug}
+                      style={{
+                        background: product.theme.dark,
+                        color: 'white',
+                        padding: '0.82rem 1.1rem',
+                        borderRadius: '999px',
+                        fontWeight: 800,
+                        border: 'none',
+                        cursor: 'pointer',
+                      }}
+                    >
+                      {product.slug === 'gravity' ? 'Open Gravity' : `Try ${product.name}`}
+                    </LaunchAppButton>
                   </div>
                 </div>
               </article>

@@ -8,7 +8,7 @@ import { fluidGrid, pageGutter } from '@/lib/responsive';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Products | Sixsmith Games Product Lineup',
   description:
-    'Explore the full Sixsmith Games lineup: Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity.',
+    'Explore the full Sixsmith Games lineup: Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity.',
   path: '/tools',
 });
 

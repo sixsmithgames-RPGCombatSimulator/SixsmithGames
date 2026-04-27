@@ -11,8 +11,9 @@ import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 const appDetails: Array<{ slug: AppSlug; name: string; desc: string; icon: string; color: string; bg: string }> = [
-  { slug: 'virtual-combat-simulator', name: 'Virtual Combat Simulator', desc: 'Tactical military combat', icon: '⚔️', color: '#ef4444', bg: '#fef2f2' },
-  { slug: 'contentcraft', name: 'ContentCraft', desc: 'AI-powered content creation', icon: '✨', color: '#a855f7', bg: '#faf5ff' },
+  { slug: 'virtual-combat-simulator', name: 'Virtual Combat Simulator', desc: 'Tactical combat management', icon: '⚔️', color: '#ef4444', bg: '#fef2f2' },
+  { slug: 'gamemastercraft', name: 'GameMasterCraft', desc: 'Campaign planning for game masters', icon: '🎲', color: '#7c3aed', bg: '#f5f3ff' },
+  { slug: 'sagacraft', name: 'SagaCraft', desc: 'Story continuity for writers', icon: '✍️', color: '#2563eb', bg: '#eff6ff' },
   { slug: 'mastertyping', name: 'MasterTyping', desc: 'Speed & accuracy training', icon: '⌨️', color: '#22c55e', bg: '#f0fdf4' },
   { slug: 'gravity', name: 'Gravity', desc: 'Space fleet commander', icon: '🚀', color: '#3b82f6', bg: '#eff6ff' },
   { slug: 'fourstargeneral', name: 'Four Star General', desc: 'Strategic war simulation', icon: '🎖️', color: '#f59e0b', bg: '#fffbeb' },
@@ -196,7 +197,7 @@ export default function AccountPage() {
               ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                   <p style={{ color: '#6b7280', fontSize: '0.9375rem', margin: 0 }}>
-                    You don&apos;t have an active paid subscription. ContentCraft requires one, but the games are still available to signed-in users.
+                    You don&apos;t have an active AI subscription. All products are free to use — AI features in GameMasterCraft and SagaCraft require a paid plan.
                   </p>
                   <a href="/pricing" className={touchTargetClassName} style={{
                     display: 'inline-block', background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
@@ -227,9 +228,9 @@ export default function AccountPage() {
               padding: '0.875rem 1.25rem', marginBottom: '1.25rem',
               display: 'flex', alignItems: 'center', gap: '0.75rem',
             }}>
-              <span>🔒</span>
+              <span>🎮</span>
               <p style={{ color: '#92400e', fontSize: '0.9rem', margin: 0 }}>
-                Play games available now. ContentCraft requires a paid subscription.{' '}
+                All products are free to use. AI features require a subscription.{' '}
                 <a href="/pricing" style={{ color: '#b45309', fontWeight: '700' }}>View pricing</a>
               </p>
             </div>
@@ -317,10 +318,10 @@ export default function AccountPage() {
           }}>
             <p style={{ fontSize: '1.75rem', margin: '0 0 0.5rem' }}>🎮</p>
             <h2 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>
-              Start with the free products or subscribe to ContentCraft
+              Start with any product — upgrade for AI features
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', margin: '0 0 1.75rem', maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
-              Virtual Combat Simulator, Four Star General, and MasterTyping are free to start. ContentCraft is a subscription workspace for writers, worldbuilders, and game masters who need lore organization and canon continuity.
+              All products are free to start. GameMasterCraft and SagaCraft include AI assistance with a subscription — brainstorming, drafting help, and revision support.
             </p>
             <a href="/pricing" className={touchTargetClassName} style={{
               display: 'inline-block', background: 'white', color: '#1e3a8a',

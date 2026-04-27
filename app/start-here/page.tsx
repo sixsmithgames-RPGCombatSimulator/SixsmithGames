@@ -19,11 +19,18 @@ const paths = [
     accent: '#ef4444',
   },
   {
-    title: 'I want to organize my lore and worldbuilding',
-    href: '/apps/contentcraft',
-    description: 'Use ContentCraft for writing, worldbuilding, and campaign work where lore, canon, and continuity need to stay connected.',
-    button: 'Go to ContentCraft',
+    title: 'I want to organize my campaign',
+    href: '/apps/gamemastercraft',
+    description: 'Use GameMasterCraft for campaign planning, NPCs, factions, locations, and session continuity.',
+    button: 'Go to GameMasterCraft',
     accent: '#7c3aed',
+  },
+  {
+    title: 'I want to write my novel',
+    href: '/apps/sagacraft',
+    description: 'Use SagaCraft for fiction writing, character tracking, plots, chapters, and story continuity.',
+    button: 'Go to SagaCraft',
+    accent: '#2563eb',
   },
   {
     title: 'I want a strategy game',

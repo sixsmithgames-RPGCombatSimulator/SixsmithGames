@@ -49,7 +49,7 @@ const sections = [
     title: '6. Ownership, copyright, and trademarks',
     paragraphs: [
       'The services, software, design, text, graphics, audio, logos, source code, and other content provided by Sixsmith Games are owned by Sixsmith Games or its licensors and are protected by copyright, trademark, and other applicable laws.',
-      'Sixsmith Games, Virtual Combat Simulator, ContentCraft, MasterTyping, Gravity, and Four Star General, along with related logos, names, and branding, are reserved names and marks of Sixsmith Games. These terms do not give you any ownership rights or permission to use those names or marks except for ordinary referential use that the law allows.',
+      'Sixsmith Games, Virtual Combat Simulator, GameMasterCraft, SagaCraft, MasterTyping, Gravity, and Four Star General, along with related logos, names, and branding, are reserved names and marks of Sixsmith Games. These terms do not give you any ownership rights or permission to use those names or marks except for ordinary referential use that the law allows.',
     ],
   },
   {

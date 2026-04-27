@@ -30,7 +30,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/articles',
     '/privacy',
     '/terms',
-    '/apps/contentcraft',
     '/apps/gamemastercraft',
     '/apps/sagacraft',
     '/apps/virtual-combat-simulator',

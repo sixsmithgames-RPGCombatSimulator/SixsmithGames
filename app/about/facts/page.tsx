@@ -95,9 +95,9 @@ export default function FactsPage() {
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Direct answers to common questions</h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What games does Sixsmith Games make?</h3>
+              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What games and tools does Sixsmith Games make?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Sixsmith Games makes Virtual Combat Simulator, ContentCraft, Four Star General, MasterTyping, and Gravity. The official product pages linked above describe the audience and current scope for each one.
+                Sixsmith Games makes Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity. The official product pages linked above describe the audience and current scope for each one.
               </p>
             </div>
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
@@ -107,9 +107,15 @@ export default function FactsPage() {
               </p>
             </div>
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is ContentCraft?</h3>
+              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is GameMasterCraft?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                ContentCraft is a writing tool and worldbuilding workspace for projects that need canon continuity, lore organization, and a way to keep story details connected as the work grows.
+                GameMasterCraft is a campaign planning workspace for tabletop RPG game masters. It helps organize NPCs, factions, locations, session notes, and campaign continuity. The core workspace is free — AI features require a subscription.
+              </p>
+            </div>
+            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is SagaCraft?</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                SagaCraft is a story continuity workspace for fiction writers. It helps organize characters, plots, chapters, settings, timelines, and lore. The core workspace is free — AI writing assistance requires a subscription.
               </p>
             </div>
           </div>
