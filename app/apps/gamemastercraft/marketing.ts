@@ -19,7 +19,7 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
   category: 'Campaign planning and worldbuilding workspace',
   primaryAudience: 'Tabletop RPG game masters running long campaigns and homebrew worlds',
   platform: 'Browser-based web app',
-  pricingModel: 'Core campaign tools free forever. AI assistance $9.99/month when you want it',
+  pricingModel: 'Core campaign tools free. AI assistance $9.99/month when you want it',
   availability: 'Start your campaign now — NPCs, factions, locations, and session notes are free. Add AI help for brainstorming and prep whenever you are ready.',
   applicationCategory: 'WritingApplication',
   operatingSystem: 'Web browser',
