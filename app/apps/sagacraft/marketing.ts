@@ -6,9 +6,9 @@ export const sagaCraftProductDefinition: ProductDefinition = {
   name: 'SagaCraft',
   descriptor: 'Novel writing and story continuity tool for fiction writers',
   h1: 'SagaCraft for stories that keep getting bigger',
-  title: 'SagaCraft | Novel Writing and Story Continuity Tool for Fiction Writers',
+  title: 'SagaCraft | Story Bible Software for Writers and Novel Continuity Tool',
   metaDescription:
-    'SagaCraft helps novelists and fiction writers organize characters, plots, chapters, settings, timelines, lore, and story continuity in one focused writing workspace.',
+    'Story bible software for tracking characters, plots, and timelines in your novel. Worldbuilding tool for fiction writers who need novel continuity management and character tracking across chapters.',
   heroEyebrow: 'Novel Writing and Story Continuity Tool',
   heroValue:
     'Your story should get clearer as it grows, not harder to manage.',
@@ -16,7 +16,7 @@ export const sagaCraftProductDefinition: ProductDefinition = {
     'SagaCraft helps fiction writers organize characters, plots, chapters, settings, timelines, lore, and continuity in one focused writing workspace.',
   oneSentence:
     'SagaCraft helps novelists and fiction writers organize characters, plots, chapters, settings, timelines, lore, and story continuity in one connected workspace.',
-  category: 'Novel writing and story continuity workspace',
+  category: 'Story bible software and novel continuity tool for writers',
   primaryAudience: 'Novelists, amateur writers, serial fiction authors, and worldbuilders',
   platform: 'Browser-based web app',
   pricingModel: 'Core writing workspace free. AI drafting help $9.99/month when you want it',

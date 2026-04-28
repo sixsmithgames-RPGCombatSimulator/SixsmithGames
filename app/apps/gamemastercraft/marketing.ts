@@ -6,9 +6,9 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
   name: 'GameMasterCraft',
   descriptor: 'Campaign planning and worldbuilding tool for game masters',
   h1: 'GameMasterCraft for campaigns that keep growing',
-  title: 'GameMasterCraft | Campaign Planning and Worldbuilding Tool for Game Masters',
+  title: 'GameMasterCraft | D&D Campaign Planning Tool and Campaign Bible',
   metaDescription:
-    'GameMasterCraft helps tabletop RPG game masters organize NPCs, factions, locations, lore, session notes, timelines, and campaign continuity in one connected workspace.',
+    'D&D campaign planning tool for organizing NPCs, factions, locations, and session notes. Build your campaign bible and maintain session-to-session continuity with this RPG worldbuilding tool for game masters.',
   heroEyebrow: 'Campaign Planning and Worldbuilding Tool for Game Masters',
   heroValue:
     'Your campaign should get easier to run as the world gets richer.',
@@ -16,7 +16,7 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
     'GameMasterCraft helps you organize NPCs, factions, locations, lore, session notes, timelines, and campaign continuity in one connected tabletop RPG workspace.',
   oneSentence:
     'GameMasterCraft helps tabletop RPG game masters organize campaigns, NPCs, factions, locations, lore, and session continuity in one connected workspace.',
-  category: 'Campaign planning and worldbuilding workspace',
+  category: 'D&D campaign planning tool and campaign bible workspace',
   primaryAudience: 'Tabletop RPG game masters running long campaigns and homebrew worlds',
   platform: 'Browser-based web app',
   pricingModel: 'Core campaign tools free. AI assistance $9.99/month when you want it',

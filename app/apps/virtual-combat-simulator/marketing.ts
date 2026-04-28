@@ -6,9 +6,9 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   name: 'Virtual Combat Simulator',
   descriptor: 'D&D combat simulator and battle map control room',
   h1: 'Virtual Combat Simulator for D&D combat management',
-  title: 'Virtual Combat Simulator | D&D Combat Simulator and Battle Map Tool',
+  title: 'Virtual Combat Simulator | D&D Combat Tracker with Battle Map and Initiative',
   metaDescription:
-    'Virtual Combat Simulator keeps battle maps, tokens, initiative, and encounter flow together for game masters and tabletop RPG groups.',
+    'D&D combat tracker with battle map, tokens, and initiative management. Run faster D&D combat online with this combat management tool for game masters — a focused alternative to complex VTTs.',
   heroEyebrow: 'Tabletop RPG Combat Management',
   heroValue:
     'Build your D&D character, then run the fight in one tab — a full character sheet editor, battle maps, tokens, initiative, HP, and conditions where you actually need them.',
@@ -16,7 +16,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator is for game masters and players who want combat to run cleanly. Build your character with the editor pictured here, hand them to a token on the battle map, and keep the whole group synchronized without flipping between a character builder, a map app, a dice app, and a scratch-paper initiative tracker.',
   oneSentence:
     'Virtual Combat Simulator is a browser-based combat management tool for tabletop roleplaying games.',
-  category: 'D&D combat simulator and battle map tool',
+  category: 'D&D combat tracker with battle map and initiative management',
   primaryAudience: 'Game masters and tabletop RPG players, especially D&D-adjacent groups',
   platform: 'Browser-based web app',
   pricingModel: 'Free to start. Upgrade to the Game Master plan at $9.99/month for more storage and expanded GM features',
