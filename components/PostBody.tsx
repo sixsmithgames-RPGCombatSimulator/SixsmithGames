@@ -137,6 +137,27 @@ export default function PostBody({ content }: { content: string }) {
           {renderInline(line.slice(2))}
         </li>,
       );
+    } else if (line.match(/^\*\s+\*\*/)) {
+      const match = line.match(/^\*\s+\*\*(.+?)\*\*\s*(.*)$/);
+      if (match) {
+        elements.push(
+          <li key={key++} style={{ marginBottom: '0.5rem', color: '#374151', lineHeight: 1.7, fontSize: '1.0625rem' }}>
+            <strong style={{ color: '#111827' }}>{match[1]}</strong>{match[2] ? ` ${match[2]}` : ''}
+          </li>,
+        );
+      } else {
+        elements.push(
+          <li key={key++} style={{ marginBottom: '0.5rem', color: '#374151', lineHeight: 1.7, fontSize: '1.0625rem' }}>
+            {renderInline(line.replace(/^\*\s+/, ''))}
+          </li>,
+        );
+      }
+    } else if (line.match(/^\*\s+/)) {
+      elements.push(
+        <li key={key++} style={{ marginBottom: '0.5rem', color: '#374151', lineHeight: 1.7, fontSize: '1.0625rem' }}>
+          {renderInline(line.replace(/^\*\s+/, ''))}
+        </li>,
+      );
     } else if (line.match(/^\d+\.\s+\*\*/)) {
       const match = line.match(/^\d+\.\s+\*\*(.+?)\*\*\s*(.*)$/);
       if (match) {
