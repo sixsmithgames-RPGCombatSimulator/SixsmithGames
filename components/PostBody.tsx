@@ -1,6 +1,6 @@
 import Link from 'next/link';
 
-function renderInline(text: string): React.ReactNode {
+export function renderInline(text: string): React.ReactNode {
   const parts: React.ReactNode[] = [];
   let remaining = text;
   let key = 0;

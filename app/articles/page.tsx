@@ -3,6 +3,7 @@ import Link from 'next/link';
 
 import { getAllArticles, getFeaturedArticles } from '@/lib/blog';
 import { buildPageMetadata } from '@/lib/metadata';
+import { renderInline } from '@/components/PostBody';
 import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { pageGutter } from '@/lib/responsive';
 
@@ -57,7 +58,7 @@ export default async function ArticlesPage() {
                 >
                   <p style={{ margin: '0 0 0.4rem', color: '#475569', fontSize: '0.88rem', fontWeight: 700 }}>{post.category}</p>
                   <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.25rem', fontWeight: 800, color: '#0f172a' }}>{post.title}</h3>
-                  <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>{post.excerpt}</p>
+                  <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>{renderInline(post.excerpt)}</p>
                 </Link>
               ))}
             </div>
@@ -127,7 +128,7 @@ export default async function ArticlesPage() {
                 }}
               >
                 <h3 style={{ margin: '0 0 0.35rem', fontSize: '1.05rem', fontWeight: 800, color: '#0f172a' }}>{post.title}</h3>
-                <p style={{ margin: 0, color: '#475569', lineHeight: 1.75 }}>{post.excerpt}</p>
+                <p style={{ margin: 0, color: '#475569', lineHeight: 1.75 }}>{renderInline(post.excerpt)}</p>
               </Link>
             ))}
           </div>
