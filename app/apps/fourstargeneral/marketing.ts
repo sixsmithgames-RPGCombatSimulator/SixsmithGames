@@ -47,6 +47,7 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     label: 'Play now',
     appSlug: 'fourstargeneral',
   },
+  primaryOpenPublic: true,
   secondaryCta: {
     kind: 'link',
     label: 'See upgrades',
