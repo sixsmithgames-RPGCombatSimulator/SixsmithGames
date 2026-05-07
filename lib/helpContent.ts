@@ -168,9 +168,9 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
 
   'fourstargeneral': {
     'getting-started': {
-      summary: 'Start Four Star General by launching the tactical core and playing through a scenario — the rules model becomes clear through play, not reading.',
+      summary: 'Start Four Star General by launching the tactical core and playing through a scenario — the rules become clear through play, not reading.',
       paragraphs: [
-        'Four Star General is a deterministic tactical strategy game. The mechanics are meant to be legible, so the best way to understand them is to play a scenario and watch how deployment, reserves, supply, and objectives interact. Start with the tactical battle layer before diving into any supplemental content.',
+        'Four Star General is a skill-based tactical strategy game. The mechanics are meant to be clear, so the best way to understand them is to play a scenario and watch how deployment, reserves, supply, and objectives interact. Start with the tactical battle layer before diving into any supplemental content.',
         'Set the expectation before your first session: this is a serious WWII strategy game, not an arcade action title. Battlefield outcomes follow from command decisions, not randomness. If a position collapses, there is a reason traceable back to your choices.',
         'Mission profiles are the structure that makes decisions matter. Each scenario gives you objectives, timing, and terrain that force harder choices than simple unit trading. Read the mission profile before committing your deployment — that context shapes everything.',
       ],
@@ -183,17 +183,17 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       ],
     },
     'core-features': {
-      summary: 'Four Star General is built around deterministic tactics, mission profiles, supply, reserves, and command decisions that have traceable consequences.',
+      summary: 'Four Star General is built around skill-based tactics, mission profiles, supply, reserves, and command decisions that have traceable consequences.',
       paragraphs: [
-        'Deterministic resolution is the defining feature. When the battle resolves, the outcome follows from the rules model and your choices — not hidden randomness. That makes Four Star General a game you can study, improve at, and replay with different approaches.',
+        'Visible tactical resolution is the defining feature. When the battle resolves, the outcome follows from the rules and your choices — not hidden randomness. That makes Four Star General a game you can study, improve at, and replay with different approaches.',
         'Supply and reserves are not cosmetic. Supply affects how long a position can hold and when a player can press or must pull back. Reserves force commitment questions: do you hold a force back for when the line bends, or commit early and risk having no answer later?',
-        'Mission profiles add the time and objective pressure that makes those supply and reserve decisions hard. A scenario is not just "defeat the enemy." It is "hold this crossing until turn eight" or "break the line before reinforcements arrive." That structure is what creates replayable tactical tension.',
+        'Mission profiles add time limits and specific objectives that force hard supply and reserve decisions. A scenario is not just "defeat the enemy." It is "hold this crossing until turn eight" or "break the line before reinforcements arrive." That structure is what creates replayable tactical tension.',
       ],
       bullets: [
-        'Deterministic tactical resolution: Battlefield outcomes follow visible rules and command decisions instead of hidden randomness.',
+        'Visible tactical resolution: Battlefield outcomes follow visible rules and command decisions instead of hidden randomness.',
         'Mission profiles and scenario structure: Authored scenarios with specific objectives, timing, and terrain that force harder decisions than simple unit trading.',
         'Supply and logistics: Track supply posture so that holding, pressing, or withdrawing has real costs over time.',
-        'Reserve management: Decide when to commit reserves and when to hold them — timing those decisions is a core part of the command model.',
+        'Reserve management: Decide when to commit reserves and when to hold them — timing those decisions is a core part of the command system.',
         'Unit deployment and positioning: Deployment choices before the battle starts shape the entire engagement.',
         'Expandable content: The free tactical core includes the base scenarios; the paid content tier adds more scenarios, units, and authored campaign content.',
       ],
@@ -201,13 +201,13 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
     'common-use-cases': {
       summary: 'Four Star General fits players who want command decisions that matter, not spectacle — and who want outcomes they can learn from.',
       paragraphs: [
-        'The clearest fit is players who already care about serious WWII tactical strategy and want a browser-based implementation that respects the genre. If you have played wargames and found most browser options too shallow, Four Star General is designed specifically to address that gap.',
-        'Replay value is a strong fit. Because resolution is deterministic and scenarios are authored, you can replay the same scenario with different deployment and reserve choices and trace how the outcome changes. That makes each scenario a practice problem, not just a one-time experience.',
-        'The free tactical core is a good fit for players who want to evaluate whether the command model works for them before committing to paid content. Try the base scenarios and see whether the resolution system and mission structure feel right.',
+        'The clearest fit is players who already care about serious WWII tactical strategy and want a browser game that respects the genre. If you have played wargames and found most browser options too shallow, Four Star General is designed specifically to address that gap.',
+        'Replay value is a strong fit. Because resolution follows visible rules and scenarios are authored, you can replay the same scenario with different deployment and reserve choices and trace how the outcome changes. That makes each scenario a puzzle you can solve better next time, not just a one-time experience.',
+        'The free tactical core is a good fit for players who want to evaluate whether the command system works for them before committing to paid content. Try the base scenarios and see whether the combat system and mission structure feel right.',
       ],
       bullets: [
-        'Playing through authored WWII tactical scenarios with a serious command model.',
-        'Studying deterministic battlefield outcomes to improve reserve timing, deployment, and supply management.',
+        'Playing through authored WWII tactical scenarios with a serious command system.',
+        'Studying visible battlefield outcomes to improve reserve timing, deployment, and supply management.',
         'Replaying scenarios with different approaches to see how command decisions change outcomes.',
         'Evaluating the tactical core before deciding whether paid scenario and content expansions are worth it.',
       ],
@@ -215,13 +215,13 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
     'current-scope': {
       summary: 'Four Star General is a serious WWII tactical strategy game, not an arcade action title. The free tier includes the tactical core; paid content adds more scenarios.',
       paragraphs: [
-        'Four Star General is built for players who want deterministic tactics, meaningful command decisions, and authored scenarios. It is not built for players who want fast action, cinematic spectacle, or a general-purpose strategy sandbox.',
-        'The free tactical core gives access to the base scenarios, the resolution system, and the full command model. Paid content unlocks additional scenarios, units, and authored campaign content — it expands what is playable, not what the base game does.',
-        'Four Star General is browser-based and designed around WWII-era tactical scenarios. It is not a real-time strategy game and not trying to compete with large-budget wargame titles on graphical or audiovisual terms. The value is in the command model and scenario depth.',
+        'Four Star General is built for players who want skill-based tactics, meaningful command decisions, and authored scenarios. It is not built for players who want fast action, cinematic spectacle, or a general-purpose strategy sandbox.',
+        'The free tactical core gives access to the base scenarios, the combat system, and the full command system. Paid content unlocks additional scenarios, units, and authored campaign content — it expands what is playable, not what the base game does.',
+        'Four Star General is browser-based and designed around WWII-era tactical scenarios. It is not a real-time strategy game and not trying to compete with large-budget wargame titles on graphical or audiovisual terms. The value is in the command system and scenario depth.',
       ],
       bullets: [
-        'Four Star General is a serious deterministic WWII tactical strategy game, not an arcade title.',
-        'The free tier includes the tactical core — base scenarios, resolution system, and command model.',
+        'Four Star General is a serious skill-based WWII tactical strategy game, not an arcade title.',
+        'The free tier includes the tactical core — base scenarios, combat system, and command system.',
         'Paid content adds more scenarios, units, and authored campaign material.',
         'The game is browser-based and does not require a download or installation.',
         'The product is built for WWII tactical strategy players specifically, not for general strategy gaming audiences.',
@@ -230,7 +230,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
     'pricing-and-accounts': {
       summary: 'Four Star General is free to play the tactical core. The paid tier at $1.99 per month unlocks more scenarios and content.',
       paragraphs: [
-        'The base tactical core is free to access. You can play scenarios, learn the command model, and experience deterministic resolution without paying anything. The paid content tier at $1.99 per month unlocks additional scenarios, units, and authored campaign content.',
+        'The base tactical core is free to access. You can play scenarios, learn how the game works, and see how battles resolve from your choices without paying anything. The paid content tier at $1.99 per month unlocks additional scenarios, units, and authored campaign content.',
         'The paid layer adds more to play, not access to start. The free core is not a trial with paywalled mechanics — it is a complete tactical experience. The paid tier expands the library of content you can play through.',
         'For account or billing questions, use the support page. The pricing page has the current breakdown of what each tier includes.',
       ],

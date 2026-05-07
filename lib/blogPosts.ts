@@ -577,8 +577,8 @@ Start by migrating the canon that matters most, not all of it. The details you r
     slug: 'what-is-four-star-general',
     title: 'What Is Four Star General?',
     excerpt:
-      'Four Star General is a browser-based WWII tactical strategy game built around deterministic tactics, mission objectives, supply, and reserves.',
-    content: `Four Star General is a browser-based WWII tactical strategy game. Four Star General is designed for players who want hard command decisions, mission profiles, deterministic tactics, supply, and reserve management to matter.
+      'Four Star General is a browser-based WWII tactical strategy game built around skill-based tactics, mission objectives, supply, and reserves.',
+    content: `Four Star General is a browser-based WWII tactical strategy game. Four Star General is designed for players who want hard command decisions, mission profiles, skill-based tactics, supply, and reserve management to matter.
 
 ## What kind of strategy game it is
 
@@ -588,38 +588,38 @@ Four Star General is not an arcade action title. The game is about command decis
 
 Serious strategy players do not just ask whether a game is set in WWII. They ask whether the command model is meaningful. Does deployment matter? Do reserves matter? Does supply matter? Does the scenario force harder decisions than simple unit trading?
 
-For [Four Star General](/apps/fourstargeneral) the answer is yes. That is why the product page emphasizes deterministic tactics and hard command decisions instead of broad hype language.
+For [Four Star General](/apps/fourstargeneral) the answer is yes. That is why the product page emphasizes skill-based tactics and hard command decisions instead of broad hype language.
 
 For scope, pricing, and help, see the official [Four Star General product page](/apps/fourstargeneral), [pricing page](/pricing#fourstargeneral), and [help pages](/help/fourstargeneral).`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '4 min read',
     category: 'WWII Strategy',
-    tags: ['four star general', 'wwii tactical strategy', 'deterministic tactics', 'wargame'],
+    tags: ['four star general', 'wwii tactical strategy', 'skill-based tactics', 'wargame'],
     featured: true,
     relatedProducts: ['fourstargeneral'],
   },
   {
-    slug: 'deterministic-tactics-in-a-wwii-strategy-game',
-    title: 'What Deterministic Tactics Means in a WWII Strategy Game',
+    slug: 'skill-based-tactics-in-a-wwii-strategy-game',
+    title: 'What Skill-Based Tactics Means in a WWII Strategy Game',
     excerpt:
-      'Deterministic tactics means battlefield outcomes follow visible rules and command decisions instead of vague randomness.',
-    content: `Deterministic tactics means the player can read the system, make a decision, and understand why the battle turned out the way it did.
+      'Skill-based tactics means battlefield outcomes follow visible rules and command decisions instead of vague randomness.',
+    content: `Skill-based tactics means the player can read the battlefield, make a plan, and understand why the battle turned out the way it did.
 
 ## Why that matters in a WWII strategy game
 
-A serious tactical strategy game should reward planning, not mystify it. If deployment, reserves, supply, and objective timing are supposed to matter, the player needs a model that makes those choices legible.
+A serious tactical strategy game should reward planning, not mystify it. If deployment, reserves, supply, and objective timing are supposed to matter, the player needs rules clear enough to show why those choices mattered.
 
 ## What it changes for the player
 
-Deterministic tactics changes the question from “what random thing happened?” to “what command choice created this outcome?” That is a much better loop for players who want to improve over repeated scenarios.
+Skill-based tactics changes the question from “what random thing happened?” to “what command choice created this outcome?” That is a much better cycle for players who want to improve over repeated scenarios.
 
-[Four Star General](/apps/fourstargeneral) uses deterministic tactics as a core part of its identity. That is why the page stays focused on battlefield tension, mission profiles, and command decisions instead of selling the game as generic WWII action.`,
+[Four Star General](/apps/fourstargeneral) uses visible, skill-based tactics as a core part of its identity. That is why the page stays focused on battlefield tension, mission profiles, and command decisions instead of selling the game as generic WWII action.`,
     author: 'Sixsmith Games',
     date: '2026-04-18',
     readTime: '3 min read',
     category: 'WWII Strategy',
-    tags: ['deterministic tactics', 'wwii strategy game', 'command decisions', 'four star general'],
+    tags: ['skill-based tactics', 'wwii strategy game', 'command decisions', 'four star general'],
     relatedProducts: ['fourstargeneral'],
   },
   {
@@ -669,25 +669,25 @@ That is why [Four Star General](/apps/fourstargeneral) talks so directly about m
     relatedProducts: ['fourstargeneral'],
   },
   {
-    slug: 'why-deterministic-tactics-changes-player-responsibility',
-    title: 'Why Deterministic Tactics Changes Player Responsibility',
+    slug: 'why-skill-based-tactics-changes-player-responsibility',
+    title: 'Why Skill-Based Tactics Changes Player Responsibility',
     excerpt:
       'When outcomes follow from visible rules instead of hidden randomness, the player owns the result — and that changes how the game feels to play.',
     content: `Most strategy games hedge accountability with randomness. A dice roll, a probability distribution, a hidden stat modifier. These systems soften outcomes by giving players a mechanism to blame when things go wrong.
 
-Deterministic tactics remove that hedge. When outcomes follow directly from visible rules and command decisions, there is no randomness to point at. The player owns the result.
+Skill-based tactics remove that hedge. When outcomes follow directly from visible rules and command decisions, there is no randomness to point at. The player owns the result.
 
 ## What changes when players own the result
 
-The relationship between decision and consequence becomes legible. If a unit was destroyed, there is a reason. If the line held, there is a reason. The player can trace the outcome back through the chain of choices and find the specific moment where the battle was won or lost.
+The relationship between decision and consequence becomes clear. If a unit was destroyed, there is a reason. If the line held, there is a reason. The player can trace the outcome back through the chain of choices and find the specific moment where the battle was won or lost.
 
 That is a fundamentally different experience from playing a game where outcomes feel partially arbitrary. Accountability without explanation is frustrating. Accountability with a clear chain of cause and effect is instructive.
 
-## How replay works under deterministic rules
+## How replay works under visible rules
 
-In a deterministic system, replaying a scenario is a meaningful choice. You can ask "what if I had held the reserves for one more turn?" and actually find out — not through luck, but through the same rules operating on different inputs.
+When the rules are visible and consistent, replaying a scenario is a meaningful choice. You can ask "what if I had held the reserves for one more turn?" and actually find out — not through luck, but through the same rules operating on different inputs.
 
-That makes each scenario a practice problem with a traceable solution space. Better players find better deployments. That is the loop deterministic tactics creates.
+That makes each scenario a tactical puzzle with clear cause and effect. Better players find better deployments. That is what visible, skill-based tactics give the player.
 
 ## What this means for Four Star General
 
@@ -698,7 +698,7 @@ For players who want to actually improve at a WWII strategy game rather than fig
     date: '2026-04-19',
     readTime: '5 min read',
     category: 'WWII Strategy',
-    tags: ['deterministic tactics', 'player responsibility', 'wwii strategy', 'four star general'],
+    tags: ['skill-based tactics', 'player responsibility', 'wwii strategy', 'four star general'],
     relatedProducts: ['fourstargeneral'],
   },
   {
@@ -757,7 +757,7 @@ Time-limited objectives force players to balance risk and pace instead of playin
 
 ## How Four Star General builds this
 
-[Four Star General](/apps/fourstargeneral) uses authored scenarios with specific mission profiles, terrain, and timing to create the kind of decision-richness that makes replaying worthwhile. The deterministic resolution means you can study a previous run and adjust your approach — and the scenario gives you enough variables to make the adjustment meaningful.
+[Four Star General](/apps/fourstargeneral) uses authored scenarios with specific mission profiles, terrain, and timing to create the kind of decision-richness that makes replaying worthwhile. The visible tactical resolution means you can study a previous run and adjust your approach — and the scenario gives you enough variables to make the adjustment meaningful.
 
 For a full explanation of the mission structure and how to get started, see the [Four Star General help pages](/help/fourstargeneral).`,
     author: 'Sixsmith Games',
@@ -784,7 +784,7 @@ Serious WWII strategy players are looking for something different.
 
 **Outcomes they can trace.** If the line broke, there should be a clear explanation traceable through their decisions. If the attack succeeded, the same. Outcomes that cannot be analyzed cannot be improved from.
 
-**Authored scenarios with real structure.** Not a sandbox of equal armies fighting to elimination. A scenario with specific objectives, timing pressures, and terrain constraints that force harder choices than simple unit trading.
+**Authored scenarios with real structure.** Not a sandbox of equal armies fighting to elimination. A scenario with specific objectives, time limits, and terrain constraints that force harder choices than simple unit trading.
 
 ## What the browser format adds and what it limits
 
@@ -794,7 +794,7 @@ It does not have to. The mechanics can be as deep in a browser as in any downloa
 
 ## Where Four Star General sits
 
-[Four Star General](/apps/fourstargeneral) is built for serious WWII strategy players specifically. Deterministic resolution, supply and reserve management, mission profiles, and authored scenarios are all present because those are the systems serious players evaluate. The browser format is a delivery choice, not a depth compromise.
+[Four Star General](/apps/fourstargeneral) is built for serious WWII strategy players specifically. Visible tactical resolution, supply and reserve management, mission profiles, and authored scenarios are all present because those are the systems serious players evaluate. The browser format is a delivery choice, not a depth compromise.
 
 Read the [Four Star General product page](/apps/fourstargeneral) or see the [help pages](/help/fourstargeneral) for the full feature and scope breakdown.`,
     author: 'Sixsmith Games',

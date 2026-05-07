@@ -185,7 +185,7 @@ export default function HomePage() {
             <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Four Star General if you want serious WWII tactical strategy.</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Four Star General is for players who want deterministic tactics, hard command decisions, supply, reserves, and mission profiles. If you care more about those choices than spectacle, go to{' '}
+                Four Star General is for players who want skill-based tactics, hard command decisions, supply, reserves, and mission profiles. If you care more about those choices than spectacle, go to{' '}
                 <Link href="/apps/fourstargeneral" style={{ color: '#b45309', fontWeight: 700, textDecoration: 'underline' }}>
                   the WWII tactical strategy game page
                 </Link>
