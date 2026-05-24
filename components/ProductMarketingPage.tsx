@@ -4,7 +4,6 @@ import Image from 'next/image';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FacebookViewContent from '@/components/FacebookViewContent';
 import LaunchAppButton from '@/components/LaunchAppButton';
-import LaunchAppLink from '@/components/LaunchAppLink';
 import ModernBackground from '@/components/ModernBackground';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
@@ -16,7 +15,7 @@ import {
   createFaqSchema,
   createSoftwareApplicationSchema,
 } from '@/lib/schema';
-import { getProductScreenshots } from '@/lib/screenshots';
+import { getProductScreenshots, type Screenshot } from '@/lib/screenshots';
 import { SITE_URL } from '@/lib/site';
 
 interface ProductMarketingPageProps {
@@ -130,6 +129,229 @@ function renderOfficialLink(href: string, label: string, description: string) {
   );
 }
 
+function renderScreenshotShowcase(product: ProductDefinition, screenshots: Screenshot[]) {
+  if (screenshots.length === 0) return null;
+
+  if (product.slug === 'virtual-combat-simulator') {
+    return renderVirtualCombatSimulatorShowcase(product, screenshots);
+  }
+
+  return (
+    <section style={{ marginBottom: '3rem' }}>
+      <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>
+        See {product.name} in action
+      </h2>
+      <p style={{ margin: '0 0 1.25rem', color: '#475569', lineHeight: 1.8 }}>
+        These product screenshots show the actual {product.name} interface near the features and workflows they support.
+      </p>
+      <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '1.25rem' }}>
+        {screenshots.map((shot) => (
+          <figure
+            key={shot.src}
+            style={{
+              margin: 0,
+              background: 'white',
+              border: `1px solid ${product.theme.lightBorder}`,
+              borderRadius: '8px',
+              overflow: 'hidden',
+              boxShadow: '0 14px 36px rgba(15,23,42,0.08)',
+            }}
+          >
+            <Image
+              src={shot.src}
+              alt={shot.alt}
+              width={shot.width}
+              height={shot.height}
+              sizes="(min-width: 1024px) 560px, 100vw"
+              style={{
+                display: 'block',
+                width: '100%',
+                height: 'auto',
+              }}
+            />
+            <figcaption
+              style={{
+                padding: '0.85rem 1rem',
+                color: '#334155',
+                lineHeight: 1.65,
+                fontSize: '0.95rem',
+                borderTop: '1px solid #e5e7eb',
+              }}
+            >
+              {shot.caption}
+            </figcaption>
+          </figure>
+        ))}
+      </div>
+    </section>
+  );
+}
+
+function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screenshots: Screenshot[]) {
+  const heroShot = screenshots[0];
+  const snippets = [
+    {
+      title: 'Initiative beside the battlefield',
+      copy:
+        'Turn order, active combatant, movement, actions, and combat state stay next to the battle map so the GM is not managing the encounter from a separate spreadsheet.',
+      shot: screenshots[2] ?? heroShot,
+      objectPosition: 'left center',
+    },
+    {
+      title: 'Fog, grid, and layer tools in reach',
+      copy:
+        'Reveal space, measure movement, snap tokens, and adjust map layers without breaking the flow of D&D combat.',
+      shot: screenshots[1] ?? heroShot,
+      objectPosition: 'center 32%',
+    },
+    {
+      title: 'Token-linked character context',
+      copy:
+        'Click a token and the relevant sheet context appears where the ruling happens: AC, hit points, ability scores, conditions, and actions.',
+      shot: screenshots[3] ?? heroShot,
+      objectPosition: 'right center',
+    },
+    {
+      title: 'Player-safe shared view',
+      copy:
+        'Remote players can follow the same tactical situation while GM-only controls and hidden information stay out of their way.',
+      shot: screenshots[4] ?? heroShot,
+      objectPosition: 'center center',
+    },
+  ];
+
+  return (
+    <section
+      style={{
+        margin: '0 calc(50% - 50vw) 3.5rem',
+        background: '#080b12',
+        color: 'white',
+        overflow: 'hidden',
+        borderTop: '1px solid rgba(148,163,184,0.22)',
+        borderBottom: '1px solid rgba(148,163,184,0.22)',
+      }}
+    >
+      <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `4rem ${pageGutter}` }}>
+        <div style={{ maxWidth: '760px', marginBottom: '1.75rem' }}>
+          <p
+            style={{
+              margin: '0 0 0.75rem',
+              color: '#d6b574',
+              fontSize: '0.82rem',
+              fontWeight: 900,
+              letterSpacing: '0.08em',
+              textTransform: 'uppercase',
+            }}
+          >
+            D&D combat tracker with battle map
+          </p>
+          <h2 style={{ margin: '0 0 0.9rem', fontSize: '2.35rem', lineHeight: 1.12, fontWeight: 900 }}>
+            Run the fight from one readable combat room.
+          </h2>
+          <p style={{ margin: 0, color: 'rgba(226,232,240,0.88)', fontSize: '1rem', lineHeight: 1.85 }}>
+            Virtual Combat Simulator is built for game masters who need the tactical layer of a VTT without the sprawl:
+            battle map, tokens, initiative, HP, conditions, fog, measurements, and player visibility in the same browser-based encounter view.
+          </p>
+        </div>
+
+        <figure
+          style={{
+            margin: 0,
+            position: 'relative',
+            minHeight: '620px',
+            borderRadius: '8px',
+            overflow: 'hidden',
+            background: '#0f172a',
+            border: '1px solid rgba(214,181,116,0.42)',
+            boxShadow: '0 28px 80px rgba(0,0,0,0.45)',
+          }}
+        >
+          <Image
+            src={heroShot.src}
+            alt={heroShot.alt}
+            fill
+            priority
+            sizes="100vw"
+            style={{ objectFit: 'cover', objectPosition: 'center center' }}
+          />
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              inset: 0,
+              background:
+                'linear-gradient(90deg, rgba(8,11,18,0.9) 0%, rgba(8,11,18,0.62) 32%, rgba(8,11,18,0.16) 68%, rgba(8,11,18,0.58) 100%)',
+            }}
+          />
+          <figcaption
+            style={{
+              position: 'relative',
+              zIndex: 1,
+              minHeight: '620px',
+              display: 'flex',
+              alignItems: 'flex-end',
+              padding: '2rem',
+            }}
+          >
+            <div style={{ maxWidth: '520px' }}>
+              <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.55rem', lineHeight: 1.18, fontWeight: 900 }}>
+                The encounter view is the product.
+              </h3>
+              <p style={{ margin: 0, color: 'rgba(241,245,249,0.9)', lineHeight: 1.75 }}>
+                This is where VCS earns its keep: the GM can read the battlefield, advance turns, check token-linked stats,
+                and keep online or hybrid players oriented without sending map screenshots around.
+              </p>
+            </div>
+          </figcaption>
+        </figure>
+
+        <div
+          style={{
+            display: 'grid',
+            gridTemplateColumns: fluidGrid('250px'),
+            gap: '1rem',
+            marginTop: '1.25rem',
+          }}
+        >
+          {snippets.map((snippet) => (
+            <article
+              key={snippet.title}
+              style={{
+                background: 'rgba(15,23,42,0.88)',
+                border: '1px solid rgba(214,181,116,0.32)',
+                borderRadius: '8px',
+                overflow: 'hidden',
+                boxShadow: '0 18px 44px rgba(0,0,0,0.2)',
+              }}
+            >
+              <div style={{ position: 'relative', minHeight: '160px', overflow: 'hidden', background: '#0f172a' }}>
+                <Image
+                  src={snippet.shot.src}
+                  alt={snippet.shot.alt}
+                  fill
+                  sizes="(min-width: 1024px) 280px, 100vw"
+                  style={{
+                    objectFit: 'cover',
+                    objectPosition: snippet.objectPosition,
+                  }}
+                />
+              </div>
+              <div style={{ padding: '1rem' }}>
+                <h3 style={{ margin: '0 0 0.45rem', color: '#f8fafc', fontSize: '1rem', fontWeight: 900 }}>
+                  {snippet.title}
+                </h3>
+                <p style={{ margin: 0, color: 'rgba(226,232,240,0.82)', lineHeight: 1.65, fontSize: '0.94rem' }}>
+                  {snippet.copy}
+                </p>
+              </div>
+            </article>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+}
+
 export default async function ProductMarketingPage({ product }: ProductMarketingPageProps) {
   const supportingArticles = (
     await Promise.all(product.supportingArticleSlugs.map((slug) => getArticleBySlug(slug)))
@@ -220,68 +442,53 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
             </div>
             {product.heroMedia ? (
               <div>
-                <LaunchAppLink
-                  appSlug={product.slug}
-                  deepLinkPath={product.heroMedia.deepLinkPath}
-                  openPublic={product.heroMedia.openPublic}
-                  trackingSurface="product_hero_media"
-                  ariaLabel={product.heroMedia.overlayLabel ?? product.heroMedia.alt}
+                <figure
                   style={{
-                    display: 'block',
-                    textDecoration: 'none',
-                    color: 'inherit',
-                    width: '100%',
+                    margin: 0,
+                    borderRadius: '20px',
+                    overflow: 'hidden',
+                    background: '#0f172a',
+                    border: '1px solid rgba(255,255,255,0.22)',
+                    boxShadow: '0 24px 64px rgba(0,0,0,0.35)',
+                    position: 'relative',
                   }}
                 >
-                  <figure
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={product.heroMedia.src}
+                    alt={product.heroMedia.alt}
+                    loading="eager"
+                    decoding="async"
                     style={{
-                      margin: 0,
-                      borderRadius: '20px',
-                      overflow: 'hidden',
+                      display: 'block',
+                      width: '100%',
+                      height: 'auto',
                       background: '#0f172a',
-                      border: '1px solid rgba(255,255,255,0.22)',
-                      boxShadow: '0 24px 64px rgba(0,0,0,0.35)',
-                      position: 'relative',
                     }}
-                  >
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={product.heroMedia.src}
-                      alt={product.heroMedia.alt}
-                      loading="eager"
-                      decoding="async"
+                  />
+                  {product.heroMedia.overlayLabel ? (
+                    <figcaption
                       style={{
-                        display: 'block',
-                        width: '100%',
-                        height: 'auto',
-                        background: '#0f172a',
+                        position: 'absolute',
+                        left: '0.9rem',
+                        bottom: '0.9rem',
+                        padding: '0.5rem 0.85rem',
+                        borderRadius: '999px',
+                        background: 'rgba(15,23,42,0.78)',
+                        color: 'white',
+                        fontSize: '0.82rem',
+                        fontWeight: 800,
+                        letterSpacing: '0.04em',
+                        boxShadow: '0 10px 24px rgba(0,0,0,0.35)',
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: '0.4rem',
                       }}
-                    />
-                    {product.heroMedia.overlayLabel ? (
-                      <figcaption
-                        style={{
-                          position: 'absolute',
-                          left: '0.9rem',
-                          bottom: '0.9rem',
-                          padding: '0.5rem 0.85rem',
-                          borderRadius: '999px',
-                          background: 'rgba(15,23,42,0.78)',
-                          color: 'white',
-                          fontSize: '0.82rem',
-                          fontWeight: 800,
-                          letterSpacing: '0.04em',
-                          boxShadow: '0 10px 24px rgba(0,0,0,0.35)',
-                          display: 'inline-flex',
-                          alignItems: 'center',
-                          gap: '0.4rem',
-                        }}
-                      >
-                        {product.heroMedia.overlayLabel}
-                        <span aria-hidden="true">→</span>
-                      </figcaption>
-                    ) : null}
-                  </figure>
-                </LaunchAppLink>
+                    >
+                      {product.heroMedia.overlayLabel}
+                    </figcaption>
+                  ) : null}
+                </figure>
                 {product.heroMedia.caption ? (
                   <p
                     style={{
@@ -343,55 +550,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
           </div>
         </section>
 
-        {screenshots.length > 0 ? (
-          <section style={{ marginBottom: '3rem' }}>
-            <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>
-              See {product.name} in action
-            </h2>
-            <p style={{ margin: '0 0 1.25rem', color: '#475569', lineHeight: 1.8 }}>
-              These product screenshots show the actual {product.name} interface near the features and workflows they support.
-            </p>
-            <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '1.25rem' }}>
-              {screenshots.map((shot) => (
-                <figure
-                  key={shot.src}
-                  style={{
-                    margin: 0,
-                    background: 'white',
-                    border: `1px solid ${product.theme.lightBorder}`,
-                    borderRadius: '8px',
-                    overflow: 'hidden',
-                    boxShadow: '0 14px 36px rgba(15,23,42,0.08)',
-                  }}
-                >
-                  <Image
-                    src={shot.src}
-                    alt={shot.alt}
-                    width={shot.width}
-                    height={shot.height}
-                    sizes="(min-width: 1024px) 560px, 100vw"
-                    style={{
-                      display: 'block',
-                      width: '100%',
-                      height: 'auto',
-                    }}
-                  />
-                  <figcaption
-                    style={{
-                      padding: '0.85rem 1rem',
-                      color: '#334155',
-                      lineHeight: 1.65,
-                      fontSize: '0.95rem',
-                      borderTop: '1px solid #e5e7eb',
-                    }}
-                  >
-                    {shot.caption}
-                  </figcaption>
-                </figure>
-              ))}
-            </div>
-          </section>
-        ) : null}
+        {renderScreenshotShowcase(product, screenshots)}
 
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How it works</h2>

@@ -39,6 +39,7 @@ async function uploadImage(filePath, appName) {
       public_id: publicId,
       resource_type: 'image',
       overwrite: true,
+      invalidate: true,
       // Automatically optimize the image
       transformation: [
         { quality: 'auto', fetch_format: 'auto' }

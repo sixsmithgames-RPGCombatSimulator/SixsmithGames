@@ -119,14 +119,17 @@ async function main() {
     fs.mkdirSync(path.join(OUTPUT_ROOT, folder), { recursive: true });
   }
 
+  const targets = new Set(process.argv.slice(2).map((target) => target.toLowerCase()));
+  const shouldCapture = (target) => targets.size === 0 || targets.has(target);
+
   const browser = await chromium.launch({ headless: true });
   try {
-    await captureFourStarGeneral(browser);
-    await captureVirtualCombatSimulator(browser);
-    await captureMasterTyping(browser);
-    await captureCraftProduct(browser, 'contentcraft');
-    await captureCraftProduct(browser, 'gamemastercraft');
-    await captureCraftProduct(browser, 'sagacraft');
+    if (shouldCapture('fourstargeneral') || shouldCapture('fsg')) await captureFourStarGeneral(browser);
+    if (shouldCapture('vcs') || shouldCapture('virtual-combat-simulator')) await captureVirtualCombatSimulator(browser);
+    if (shouldCapture('mastertyping')) await captureMasterTyping(browser);
+    if (shouldCapture('contentcraft')) await captureCraftProduct(browser, 'contentcraft');
+    if (shouldCapture('gamemastercraft')) await captureCraftProduct(browser, 'gamemastercraft');
+    if (shouldCapture('sagacraft')) await captureCraftProduct(browser, 'sagacraft');
   } finally {
     await browser.close();
   }
