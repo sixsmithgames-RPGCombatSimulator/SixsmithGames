@@ -98,39 +98,11 @@ export const productScreenshots = {
 
   virtualCombatSimulator: [
     {
-      src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-battle-room-map-tokens-initiative-dnd-combat-tracker.jpg'),
-      alt: 'Virtual Combat Simulator battle room showing D&D combat map, tokens, initiative tracker, action panel, and shared encounter controls',
-      caption: 'Run the whole fight from one battle room: map, tokens, initiative, HP, conditions, and turn flow.',
-      width: 1904,
-      height: 900,
-    },
-    {
-      src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-gm-battle-map-layers-fog-grid-tools.jpg'),
-      alt: 'Virtual Combat Simulator game master battle map with layer controls, fog tool, measurement tool, grid controls, and token toolbar',
-      caption: 'Prep and run the battlefield with map layers, fog, measurement, grid snapping, and token tools in reach.',
-      width: 1904,
-      height: 900,
-    },
-    {
-      src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-initiative-turn-tracker-hp-conditions.jpg'),
-      alt: 'Virtual Combat Simulator initiative tracker showing active combatants, hit points, conditions, turn order, and combat log panel',
-      caption: 'Keep initiative, hit points, conditions, and combat updates tied to the same encounter view.',
-      width: 1904,
-      height: 900,
-    },
-    {
-      src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-token-character-sheet-actions-spells.jpg'),
-      alt: 'Virtual Combat Simulator token character sheet panel showing ability scores, armor class, hit points, speed, and action controls',
-      caption: 'Open token-linked character details when stats, actions, and survivability matter right now.',
-      width: 1904,
-      height: 900,
-    },
-    {
-      src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-player-shared-combat-view-online-rpg.jpg'),
-      alt: 'Virtual Combat Simulator player view showing shared online RPG combat map with visible player token and restricted game master controls',
-      caption: 'Give remote players a synchronized combat view without sending map screenshots around.',
-      width: 1904,
-      height: 900,
+      src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-dnd-battle-room-map-tokens-initiative-character-sheet.jpg'),
+      alt: 'Virtual Combat Simulator D&D battle room showing a tactical battle map with grid and tokens, initiative tracker, action panel, fog controls, and a token-linked character sheet',
+      caption: 'Run D&D combat from one battle room with the battlefield, turn order, token actions, hit points, conditions, and character context visible together.',
+      width: 1905,
+      height: 907,
     },
   ] as Screenshot[],
 

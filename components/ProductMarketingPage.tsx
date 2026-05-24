@@ -191,32 +191,40 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
   const heroShot = screenshots[0];
   const snippets = [
     {
-      title: 'Initiative beside the battlefield',
+      title: 'Turn order beside the battlefield',
       copy:
-        'Turn order, active combatant, movement, actions, and combat state stay next to the battle map so the GM is not managing the encounter from a separate spreadsheet.',
-      shot: screenshots[2] ?? heroShot,
+        'Initiative, the active combatant, and the action panel sit beside the map so the GM is not running combat from a separate tracker.',
+      shot: heroShot,
       objectPosition: 'left center',
+      transformOrigin: 'left center',
+      zoom: 1.9,
     },
     {
-      title: 'Fog, grid, and layer tools in reach',
+      title: 'Map tools stay in reach',
       copy:
-        'Reveal space, measure movement, snap tokens, and adjust map layers without breaking the flow of D&D combat.',
-      shot: screenshots[1] ?? heroShot,
-      objectPosition: 'center 32%',
+        'Fog, measuring, grid, snap, layers, token roster, and map uploads stay close to the battlefield instead of hiding behind another screen.',
+      shot: heroShot,
+      objectPosition: 'center top',
+      transformOrigin: 'center top',
+      zoom: 2.2,
     },
     {
       title: 'Token-linked character context',
       copy:
-        'Click a token and the relevant sheet context appears where the ruling happens: AC, hit points, ability scores, conditions, and actions.',
-      shot: screenshots[3] ?? heroShot,
+        'Click a token and the relevant sheet context is already in the combat room: stats, AC, hit points, speed, and survivability.',
+      shot: heroShot,
       objectPosition: 'right center',
+      transformOrigin: 'right center',
+      zoom: 1.85,
     },
     {
-      title: 'Player-safe shared view',
+      title: 'A battle map players can read',
       copy:
-        'Remote players can follow the same tactical situation while GM-only controls and hidden information stay out of their way.',
-      shot: screenshots[4] ?? heroShot,
+        'The grid, tokens, fog, and visible map state make online and hybrid D&D combat easier to follow without passing screenshots around.',
+      shot: heroShot,
       objectPosition: 'center center',
+      transformOrigin: 'center center',
+      zoom: 1.55,
     },
   ];
 
@@ -333,6 +341,8 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
                   style={{
                     objectFit: 'cover',
                     objectPosition: snippet.objectPosition,
+                    transform: `scale(${snippet.zoom})`,
+                    transformOrigin: snippet.transformOrigin,
                   }}
                 />
               </div>

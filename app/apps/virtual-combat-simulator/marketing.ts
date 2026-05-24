@@ -54,12 +54,12 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   },
   primaryDeepLinkPath: '/battleroom',
   heroMedia: {
-    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/vcs/virtual-combat-simulator-battle-room-map-tokens-initiative-dnd-combat-tracker.jpg',
-    alt: 'Virtual Combat Simulator battle room showing a D&D battle map, tokens, initiative tracker, action panel, and character sheet context',
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/vcs/virtual-combat-simulator-dnd-battle-room-map-tokens-initiative-character-sheet.jpg',
+    alt: 'Virtual Combat Simulator D&D battle room showing a tactical battle map with grid and tokens, initiative tracker, action panel, fog controls, and character sheet context',
     overlayLabel: 'Open the battle room',
     deepLinkPath: '/battleroom',
     caption:
-      'The battle room brings the tactical parts of D&D combat into one view: map, tokens, initiative, actions, hit points, and player-safe visibility.',
+      'The battle room brings the tactical parts of D&D combat into one view: map, tokens, initiative, actions, hit points, character context, fog, and player-safe visibility.',
   },
   whatItIs: [
     'Virtual Combat Simulator is a focused combat simulator for tabletop RPG encounters. It is built around the part of play that often slows a session down: battle maps, tokens, initiative, hit points, conditions, and the moment-to-moment flow of combat.',
