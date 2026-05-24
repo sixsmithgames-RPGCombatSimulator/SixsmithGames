@@ -37,7 +37,6 @@ async function uploadImage(filePath, appName) {
 
     const result = await cloudinary.uploader.upload(filePath, {
       public_id: publicId,
-      folder: 'sixsmith-games',
       resource_type: 'image',
       overwrite: true,
       // Automatically optimize the image
@@ -186,6 +185,21 @@ async function main() {
     results.forEach(r => {
       console.log(`// ${r.fileName} (${r.appName})`);
       console.log(`"${r.url}"`);
+      console.log(`"https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto,w_1400/${r.publicId}.jpg"`);
+      console.log('');
+    });
+
+    console.log('Registry starters:');
+    console.log('');
+    results.forEach(r => {
+      console.log(`// ${r.fileName} (${r.appName})`);
+      console.log('{');
+      console.log(`  src: 'https://res.cloudinary.com/${process.env.NEXT_PUBLIC_CLOUDINARY_CLOUD_NAME}/image/upload/f_auto,q_auto,w_1400/${r.publicId}.jpg',`);
+      console.log(`  alt: 'TODO: describe the real interface and audience-relevant feature shown',`);
+      console.log(`  caption: 'TODO: explain why this screen matters to ${r.appName} users.',`);
+      console.log('  width: 1400,');
+      console.log('  height: 900,');
+      console.log('},');
       console.log('');
     });
 

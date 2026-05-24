@@ -53,6 +53,13 @@ export const contentCraftProductDefinition: ProductDefinition = {
     label: 'See pricing',
     href: '/pricing#contentcraft',
   },
+  heroMedia: {
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/contentcraft/contentcraft-project-dashboard-worldbuilding-writing-workspace.jpg',
+    alt: 'ContentCraft project dashboard showing a worldbuilding and writing workspace for characters, lore, notes, and continuity planning',
+    overlayLabel: 'See the workspace',
+    caption:
+      'A real ContentCraft project dashboard, with lore, notes, timeline, and canon surfaces organized for long-form creative work.',
+  },
   whatItIs: [
     'Every writer or game master with a project worth finishing runs into the same wall. The story gets bigger than memory can hold, and the world starts to drift. A faction\'s motives shift between chapters. A character says the wrong name. The bustling port town on page forty is a sleepy village by page two hundred. ContentCraft is built for that moment — when you want the project to keep growing without the continuity giving out.',
     'This is a workspace where the people, places, factions, timelines, and rules of your world live together and stay connected. You write with your canon in reach instead of trying to keep the whole project in your head.',

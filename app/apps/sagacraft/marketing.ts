@@ -48,6 +48,13 @@ export const sagaCraftProductDefinition: ProductDefinition = {
     label: 'Explore Features',
     href: '#features',
   },
+  heroMedia: {
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/sagacraft/sagacraft-story-dashboard-characters-chapters-plots-timeline.jpg',
+    alt: 'SagaCraft story dashboard showing a novel writing workspace for characters, chapters, plot threads, and timeline planning',
+    overlayLabel: 'See the story workspace',
+    caption:
+      'A story dashboard for fiction writers who need characters, chapters, plot threads, and continuity in one place.',
+  },
   whatItIs: [
     'Every serious story eventually becomes bigger than the first idea. A side character becomes important. A place mentioned once turns into a major setting. A secret introduced early needs to pay off later. A rule of the world, once established, has to remain true unless the story deliberately breaks it.',
     'SagaCraft is built for that moment. It gives fiction writers one place to organize the characters, locations, plot threads, timelines, lore, chapter notes, and unresolved promises that make a story feel whole. Instead of relying on scattered documents, old notes, and memory, you can build from the story\'s existing canon.',

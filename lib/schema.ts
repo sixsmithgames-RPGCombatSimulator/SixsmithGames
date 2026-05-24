@@ -1,5 +1,6 @@
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 import type { ProductDefinition, ProductFaq } from '@/lib/productContent';
+import { getProductScreenshots } from '@/lib/screenshots';
 
 export interface BreadcrumbItem {
   name: string;
@@ -25,6 +26,7 @@ export function createOrganizationSchema() {
 }
 
 export function createSoftwareApplicationSchema(product: ProductDefinition) {
+  const screenshots = getProductScreenshots(product.slug);
   const schema: Record<string, unknown> = {
     '@context': 'https://schema.org',
     '@type': 'SoftwareApplication',
@@ -42,6 +44,10 @@ export function createSoftwareApplicationSchema(product: ProductDefinition) {
       name: SITE_NAME,
     },
   };
+
+  if (screenshots.length > 0) {
+    schema.image = screenshots.map((shot) => shot.src);
+  }
 
   if (typeof product.offerPrice === 'number') {
     schema.offers = {

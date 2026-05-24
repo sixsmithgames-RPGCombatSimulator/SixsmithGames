@@ -52,6 +52,13 @@ export const masterTypingProductDefinition: ProductDefinition = {
     label: 'See upgrades',
     href: '/pricing#mastertyping',
   },
+  heroMedia: {
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/mastertyping/mastertyping-dashboard-assessment-practice-game-modes.jpg',
+    alt: 'MasterTyping dashboard showing quick baseline, game mode, and typing practice goals for speed, accuracy, and consistency',
+    overlayLabel: 'Start typing practice',
+    caption:
+      'The MasterTyping dashboard starts with a goal, then points learners toward assessment, focused practice, or game mode.',
+  },
   whatItIs: [
     'MasterTyping is a typing practice app built for people who want real typing improvement but do not want practice to feel lifeless. MasterTyping combines assessments, drills, focused exercises, and a game mode so you can build skill through repetition without turning the experience into a worksheet.',
     'MasterTyping is not a novelty typing toy, and it is not a generic educational suite. MasterTyping is a skill-building typing trainer that uses game-like progression, characters, and modes to make practice more sustainable.',

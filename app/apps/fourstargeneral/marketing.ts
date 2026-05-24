@@ -53,6 +53,14 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     label: 'See upgrades',
     href: '/pricing#fourstargeneral',
   },
+  heroMedia: {
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/fourstargeneral/four-star-general-tactical-combat-wwii-hex-strategy-map.jpg',
+    alt: 'Four Star General tactical combat screen showing deployed WWII units on a town defense hex battlefield with terrain and activity log',
+    overlayLabel: 'Open the tactical battle',
+    openPublic: true,
+    caption:
+      'The tactical battle view shows the readable hex map, deployed forces, terrain, and command context that drive each scenario.',
+  },
   whatItIs: [
     'Four Star General is a WWII tactical strategy game for players who want battlefield decisions to be clear, consequential, and grounded in visible systems. Four Star General emphasizes command decisions, positioning, mission profiles, supply, and reserves instead of arcade-style spectacle.',
     'Four Star General is a skill-based tactical battle experience where you plan operations, coordinate units, and work through authored scenarios where every command decision has real consequences. The rules are visible, so outcomes follow from deployment, timing, supply, and command choices instead of hidden randomness.',

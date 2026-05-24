@@ -1,4 +1,5 @@
 import Link from 'next/link';
+import Image from 'next/image';
 
 import Breadcrumbs from '@/components/Breadcrumbs';
 import FacebookViewContent from '@/components/FacebookViewContent';
@@ -15,6 +16,7 @@ import {
   createFaqSchema,
   createSoftwareApplicationSchema,
 } from '@/lib/schema';
+import { getProductScreenshots } from '@/lib/screenshots';
 import { SITE_URL } from '@/lib/site';
 
 interface ProductMarketingPageProps {
@@ -132,6 +134,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
   const supportingArticles = (
     await Promise.all(product.supportingArticleSlugs.map((slug) => getArticleBySlug(slug)))
   ).filter(Boolean);
+  const screenshots = getProductScreenshots(product.slug);
 
   const breadcrumbItems = [
     { label: 'Home', href: '/' },
@@ -339,6 +342,56 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
             ))}
           </div>
         </section>
+
+        {screenshots.length > 0 ? (
+          <section style={{ marginBottom: '3rem' }}>
+            <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>
+              See {product.name} in action
+            </h2>
+            <p style={{ margin: '0 0 1.25rem', color: '#475569', lineHeight: 1.8 }}>
+              These product screenshots show the actual {product.name} interface near the features and workflows they support.
+            </p>
+            <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('320px'), gap: '1.25rem' }}>
+              {screenshots.map((shot) => (
+                <figure
+                  key={shot.src}
+                  style={{
+                    margin: 0,
+                    background: 'white',
+                    border: `1px solid ${product.theme.lightBorder}`,
+                    borderRadius: '8px',
+                    overflow: 'hidden',
+                    boxShadow: '0 14px 36px rgba(15,23,42,0.08)',
+                  }}
+                >
+                  <Image
+                    src={shot.src}
+                    alt={shot.alt}
+                    width={shot.width}
+                    height={shot.height}
+                    sizes="(min-width: 1024px) 560px, 100vw"
+                    style={{
+                      display: 'block',
+                      width: '100%',
+                      height: 'auto',
+                    }}
+                  />
+                  <figcaption
+                    style={{
+                      padding: '0.85rem 1rem',
+                      color: '#334155',
+                      lineHeight: 1.65,
+                      fontSize: '0.95rem',
+                      borderTop: '1px solid #e5e7eb',
+                    }}
+                  >
+                    {shot.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+          </section>
+        ) : null}
 
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>How it works</h2>

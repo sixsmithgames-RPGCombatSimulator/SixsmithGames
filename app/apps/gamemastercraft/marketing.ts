@@ -48,6 +48,13 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
     label: 'Explore Features',
     href: '#features',
   },
+  heroMedia: {
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/gamemastercraft/gamemastercraft-campaign-dashboard-npcs-factions-locations-session-notes.jpg',
+    alt: 'GameMasterCraft campaign dashboard showing a tabletop RPG campaign workspace for NPCs, factions, locations, and session notes',
+    overlayLabel: 'See the campaign workspace',
+    caption:
+      'A campaign dashboard built around NPCs, factions, locations, session notes, and the material a game master needs to reuse.',
+  },
   whatItIs: [
     'Every long-running campaign reaches the point where memory is not enough. The party returns to a town you improvised six sessions ago. An NPC they ignored becomes important. A faction they insulted should probably respond. A clue from months back suddenly matters again.',
     'GameMasterCraft is built for that moment. It gives game masters one place to organize the people, places, factions, hooks, timelines, secrets, and session notes that make a campaign feel alive. Instead of digging through scattered documents or trying to remember what you meant three months ago, you can build from the campaign\'s existing canon.',

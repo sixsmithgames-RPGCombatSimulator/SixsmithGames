@@ -22,26 +22,32 @@ CLOUDINARY_API_SECRET=your_actual_api_secret_here
 
 **Important:** Never commit `.env.local` to git! It's already in `.gitignore`.
 
-### 2. Organize your screenshots
+### 2. Organize your screenshots (SEO-Focused)
 
-Create a local directory (not in git) with your screenshots organized by app:
+Create a local directory (not in git) with screenshots organized by app. **Use descriptive, SEO-friendly filenames:**
 
 ```
 screenshots/
   vcs/
-    battle-view-1.png
-    initiative-tracker.png
+    vcs-character-sheet-editor-dnd-5e-combat-stats-weapons.png
+    vcs-spellbook-page-spellcasting-slots-wizard.png
   contentcraft/
-    ai-generation.png
-    world-map.png
+    contentcraft-ai-worldbuilding-npc-generator.png
   fourstargeneral/
-    strategic-map.png
-    tactical-combat.png
+    four-star-general-tactical-combat-wwii-hex-strategy-map.png
+    four-star-general-supply-management-requisition-screen.png
   gravity/
-    fleet-battle.png
+    gravity-fleet-battle-space-combat.png
   mastertyping/
-    gameplay.png
+    mastertyping-typing-practice-speed-test.png
 ```
+
+**Filename guidelines:**
+- Include product name and key feature
+- Use descriptive keywords (what's shown, what it does)
+- Use lowercase with dashes (kebab-case)
+- Avoid spaces, underscores, or generic names like `screenshot-01.png`
+- Target 3-6 descriptive words
 
 ### 3. Upload screenshots
 
@@ -56,6 +62,32 @@ The script will:
 - Organize them by app name
 - Automatically optimize file sizes
 - Print out the URLs you can use in your code
+
+## 4. Register screenshots (SEO-Optimized)
+
+After uploading, register each screenshot in `lib/screenshots.ts` with SEO metadata:
+
+```ts
+export const productScreenshots = {
+  fourStarGeneral: [
+    {
+      src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/fourstargeneral/four-star-general-tactical-combat-wwii-hex-strategy-map.jpg',
+      alt: 'Four Star General tactical combat screen showing infantry, armor, artillery, and supply units on a WWII hex battlefield',
+      caption: 'Command combined arms forces across a readable WWII hex battlefield.',
+      width: 1400,
+      height: 900,
+    },
+  ],
+};
+```
+
+**Registry requirements:**
+- Use consistent URL pattern with `f_auto,q_auto,w_1400` transformations
+- Write descriptive alt text (10-15 words minimum)
+- Include captions for context near the image
+- Match screenshot to relevant page copy
+- Keep one canonical Cloudinary URL per screenshot across the site so crawlers see stable image references
+- Configure Cloudinary in `next.config.ts` `images.remotePatterns` before using remote screenshots with `next/image`
 
 ## Using Screenshots in Your App
 
@@ -72,24 +104,56 @@ Use the secure URL provided by the upload script:
 />
 ```
 
-### Option 2: Next.js Image Component (Recommended)
+### Option 2: Screenshot Registry (Recommended for SEO)
 
-For better performance, use Next.js Image component:
+Use the centralized registry for consistent URLs, alt text, and captions:
+
+```tsx
+import Image from 'next/image';
+import { productScreenshots } from '@/lib/screenshots';
+
+// In your page component
+const screenshots = productScreenshots.fourStarGeneral;
+
+<section>
+  {screenshots.map((shot) => (
+    <figure key={shot.src}>
+      <Image
+        src={shot.src}
+        alt={shot.alt}
+        width={shot.width}
+        height={shot.height}
+      />
+      <figcaption>{shot.caption}</figcaption>
+    </figure>
+  ))}
+</section>
+```
+
+**Benefits:**
+- Single source of truth for all screenshots
+- SEO metadata (alt, caption) co-located with URLs
+- Prevents random hardcoded URLs in components
+- Easy to update across the site
+
+### Option 3: Next.js Image Component (Manual)
+
+For one-off images not in the registry:
 
 ```tsx
 import Image from 'next/image';
 
 <Image
-  src="https://res.cloudinary.com/dxz6khmew/image/upload/sixsmith-games/vcs/battle-view-1.png"
-  alt="Battle view screenshot"
-  width={1200}
-  height={800}
-  quality={90}
-  priority={false}
+  src="https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/vcs/battle-view-1.jpg"
+  alt="Battle view screenshot showing initiative tracker and combat grid"
+  width={1400}
+  height={900}
 />
 ```
 
-### Option 3: next-cloudinary (Advanced)
+For normal product-page screenshots, prefer Cloudinary `q_auto` in the URL instead of passing a fixed `quality` prop. Newer Next.js versions validate image quality values, and Cloudinary is already doing the delivery optimization here.
+
+### Option 4: next-cloudinary (Advanced)
 
 For automatic format optimization and transformations:
 
