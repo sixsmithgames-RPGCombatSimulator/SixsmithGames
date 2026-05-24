@@ -74,11 +74,11 @@ export const productScreenshots = {
       height: 900,
     },
     {
-      src: getCloudinaryUrl('fourstargeneral', 'four-star-general-requisition-unit-catalog-scrolled-view.jpg'),
-      alt: 'Four Star General requisition screen scrolled through unit and logistics choices with requisition costs and remaining budget',
-      caption: 'Scroll the requisition catalog and build a force with visible costs, role coverage, and remaining budget.',
-      width: 1400,
-      height: 900,
+      src: getCloudinaryUrl('fourstargeneral', 'four-star-general-requisition-unit-catalog-scrolled-multi-branch-allocation.jpg'),
+      alt: 'Four Star General requisition catalog scrolled to show infantry, engineering, support, and logistics unit allocations with remaining requisition budget',
+      caption: 'Scroll the requisition catalog to compare infantry, support, and logistics branches while spending against a live budget.',
+      width: 1794,
+      height: 937,
     },
     {
       src: getCloudinaryUrl('fourstargeneral', 'four-star-general-frontline-units-deployment-map-closeup.jpg'),
@@ -88,11 +88,11 @@ export const productScreenshots = {
       height: 900,
     },
     {
-      src: getCloudinaryUrl('fourstargeneral', 'four-star-general-intel-overlay-active-combat-units.jpg'),
-      alt: 'Four Star General tactical combat closeup showing active units, engagement overlays, and terrain pressure along a hex frontline',
-      caption: 'Command active engagements on a readable hex battlefield with unit contact, overlays, and terrain pressure in view.',
-      width: 1400,
-      height: 900,
+      src: getCloudinaryUrl('fourstargeneral', 'four-star-general-intel-overlay-live-combat-log-heavy-tank-company.jpg'),
+      alt: 'Four Star General tactical combat screen showing heavy tank company orders, movement overlays, enemy contact, and live activity log updates',
+      caption: 'Use intel overlays, order panels, and a live combat log to read active engagements and react turn by turn.',
+      width: 1778,
+      height: 916,
     },
   ] as Screenshot[],
 
