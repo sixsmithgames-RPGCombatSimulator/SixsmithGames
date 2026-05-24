@@ -191,40 +191,28 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
   const heroShot = screenshots[0];
   const snippets = [
     {
-      title: 'Turn order beside the battlefield',
-      copy:
-        'Initiative, the active combatant, and the action panel sit beside the map so the GM is not running combat from a separate tracker.',
-      shot: heroShot,
-      objectPosition: 'left center',
-      transformOrigin: 'left center',
-      zoom: 1.9,
+      tag: 'Initiative',
+      title: 'Turn order stays visible',
+      copy: 'Initiative, the active combatant, and turn controls stay beside the battlefield, so the GM does not have to manage combat from a separate tracker.',
+      shot: screenshots[1],
     },
     {
-      title: 'Map tools stay in reach',
-      copy:
-        'Fog, measuring, grid, snap, layers, token roster, and map uploads stay close to the battlefield instead of hiding behind another screen.',
-      shot: heroShot,
-      objectPosition: 'center top',
-      transformOrigin: 'center top',
-      zoom: 2.2,
+      tag: 'Map Tools',
+      title: 'Map tools stay within reach',
+      copy: 'Fog, measuring, grid controls, snapping, drawing, uploads, and token layers are available directly above the battlefield.',
+      shot: screenshots[2],
     },
     {
-      title: 'Token-linked character context',
-      copy:
-        'Click a token and the relevant sheet context is already in the combat room: stats, AC, hit points, speed, and survivability.',
-      shot: heroShot,
-      objectPosition: 'right center',
-      transformOrigin: 'right center',
-      zoom: 1.85,
+      tag: 'Character Context',
+      title: 'Tokens open the right context',
+      copy: 'Click a token and the relevant sheet context is already there: AC, hit points, speed, stats, actions, equipment, spells, and notes.',
+      shot: screenshots[3],
     },
     {
-      title: 'A battle map players can read',
-      copy:
-        'The grid, tokens, fog, and visible map state make online and hybrid D&D combat easier to follow without passing screenshots around.',
-      shot: heroShot,
-      objectPosition: 'center center',
-      transformOrigin: 'center center',
-      zoom: 1.55,
+      tag: 'Player View',
+      title: 'Players can read the battlefield',
+      copy: 'The grid, tokens, fog, and visible map state help online and hybrid players understand the encounter without waiting for screenshot updates.',
+      shot: screenshots[4],
     },
   ];
 
@@ -254,11 +242,11 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
             D&D combat tracker with battle map
           </p>
           <h2 style={{ margin: '0 0 0.9rem', fontSize: '2.35rem', lineHeight: 1.12, fontWeight: 900 }}>
-            Run the fight from one readable combat room.
+            Run the whole encounter from one view.
           </h2>
           <p style={{ margin: 0, color: 'rgba(226,232,240,0.88)', fontSize: '1rem', lineHeight: 1.85 }}>
-            Virtual Combat Simulator is built for game masters who need the tactical layer of a VTT without the sprawl:
-            battle map, tokens, initiative, HP, conditions, fog, measurements, and player visibility in the same browser-based encounter view.
+            Virtual Combat Simulator gives game masters a focused combat workspace: map, tokens, initiative, fog of war,
+            measurements, character context, and player visibility in one browser-based encounter view.
           </p>
         </div>
 
@@ -303,15 +291,26 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
           >
             <div style={{ maxWidth: '520px' }}>
               <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.55rem', lineHeight: 1.18, fontWeight: 900 }}>
-                The encounter view is the product.
+                Run the whole encounter from one view.
               </h3>
               <p style={{ margin: 0, color: 'rgba(241,245,249,0.9)', lineHeight: 1.75 }}>
-                This is where VCS earns its keep: the GM can read the battlefield, advance turns, check token-linked stats,
-                and keep online or hybrid players oriented without sending map screenshots around.
+                Track the battlefield, initiative, tokens, fog, measurements, and character details without jumping between
+                disconnected tools.
               </p>
             </div>
           </figcaption>
         </figure>
+
+        <p
+          style={{
+            margin: '1.1rem 0 0',
+            color: 'rgba(241,245,249,0.92)',
+            fontSize: '1.05rem',
+            fontWeight: 800,
+          }}
+        >
+          Built for the moment combat starts.
+        </p>
 
         <div
           style={{
@@ -332,21 +331,28 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
                 boxShadow: '0 18px 44px rgba(0,0,0,0.2)',
               }}
             >
-              <div style={{ position: 'relative', minHeight: '160px', overflow: 'hidden', background: '#0f172a' }}>
+              <div style={{ position: 'relative', minHeight: '190px', overflow: 'hidden', background: '#0f172a' }}>
                 <Image
                   src={snippet.shot.src}
                   alt={snippet.shot.alt}
                   fill
                   sizes="(min-width: 1024px) 280px, 100vw"
-                  style={{
-                    objectFit: 'cover',
-                    objectPosition: snippet.objectPosition,
-                    transform: `scale(${snippet.zoom})`,
-                    transformOrigin: snippet.transformOrigin,
-                  }}
+                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
                 />
               </div>
               <div style={{ padding: '1rem' }}>
+                <p
+                  style={{
+                    margin: '0 0 0.45rem',
+                    color: '#d6b574',
+                    fontSize: '0.72rem',
+                    fontWeight: 900,
+                    letterSpacing: '0.06em',
+                    textTransform: 'uppercase',
+                  }}
+                >
+                  {snippet.tag}
+                </p>
                 <h3 style={{ margin: '0 0 0.45rem', color: '#f8fafc', fontSize: '1rem', fontWeight: 900 }}>
                   {snippet.title}
                 </h3>
@@ -357,6 +363,58 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
             </article>
           ))}
         </div>
+
+        <section
+          style={{
+            marginTop: '1.2rem',
+            padding: '1.4rem',
+            borderRadius: '8px',
+            border: '1px solid rgba(214,181,116,0.42)',
+            background: 'rgba(15,23,42,0.8)',
+          }}
+        >
+          <h3 style={{ margin: '0 0 0.5rem', color: '#f8fafc', fontSize: '1.28rem', fontWeight: 900 }}>
+            Try the encounter view free.
+          </h3>
+          <p style={{ margin: '0 0 1rem', color: 'rgba(241,245,249,0.88)', lineHeight: 1.75 }}>
+            Open VCS, place a few tokens, test the map tools, and see whether the combat flow fits your table.
+          </p>
+          <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
+            <LaunchAppButton
+              appSlug="virtual-combat-simulator"
+              deepLinkPath="/battleroom"
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '0.85rem 1.35rem',
+                borderRadius: '999px',
+                background: '#d6b574',
+                color: '#111827',
+                textDecoration: 'none',
+                fontWeight: 900,
+                border: 'none',
+                cursor: 'pointer',
+              }}
+            >
+              Start Free
+            </LaunchAppButton>
+            <Link
+              href={product.pricingPath}
+              style={{
+                display: 'inline-flex',
+                alignItems: 'center',
+                padding: '0.85rem 1.35rem',
+                borderRadius: '999px',
+                border: '1px solid rgba(214,181,116,0.45)',
+                color: '#f8fafc',
+                textDecoration: 'none',
+                fontWeight: 800,
+              }}
+            >
+              See pricing
+            </Link>
+          </div>
+        </section>
       </div>
     </section>
   );

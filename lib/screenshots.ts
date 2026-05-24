@@ -99,10 +99,42 @@ export const productScreenshots = {
   virtualCombatSimulator: [
     {
       src: getCloudinaryUrl('vcs', 'virtual-combat-simulator-dnd-battle-room-map-tokens-initiative-character-sheet.jpg'),
-      alt: 'Virtual Combat Simulator D&D battle room showing a tactical battle map with grid and tokens, initiative tracker, action panel, fog controls, and a token-linked character sheet',
-      caption: 'Run D&D combat from one battle room with the battlefield, turn order, token actions, hit points, conditions, and character context visible together.',
+      alt: 'Virtual Combat Simulator encounter view showing battle map, tokens, initiative tracker, combat actions, fog controls, and a token-linked character sheet in one workspace',
+      caption: 'Run the whole encounter from one view.',
       width: 1905,
       height: 907,
+    },
+    {
+      src: getCloudinaryUrl('vcs', 'vcs-initiative-tracker-turn-order.jpg'),
+      alt: 'Virtual Combat Simulator initiative tracker beside the battle map',
+      caption:
+        'Initiative, the active combatant, and turn controls stay beside the battlefield, so the GM does not have to manage combat from a separate tracker.',
+      width: 370,
+      height: 760,
+    },
+    {
+      src: getCloudinaryUrl('vcs', 'vcs-map-tools-fog-grid-measurement.jpg'),
+      alt: 'Virtual Combat Simulator map tools for fog of war, measurement, grid, snap, drawing, and token layers',
+      caption:
+        'Fog, measuring, grid controls, snapping, drawing, uploads, and token layers are available directly above the battlefield.',
+      width: 1180,
+      height: 430,
+    },
+    {
+      src: getCloudinaryUrl('vcs', 'vcs-token-linked-character-sheet.jpg'),
+      alt: 'Selected combat token linked to a character sheet in Virtual Combat Simulator',
+      caption:
+        'Click a token and the relevant sheet context is already there: AC, hit points, speed, stats, actions, equipment, spells, and notes.',
+      width: 1330,
+      height: 740,
+    },
+    {
+      src: getCloudinaryUrl('vcs', 'vcs-player-visible-battle-map.jpg'),
+      alt: 'Virtual Combat Simulator battle map with grid, fog of war, and player-visible tokens',
+      caption:
+        'The grid, tokens, fog, and visible map state help online and hybrid players understand the encounter without waiting for screenshot updates.',
+      width: 900,
+      height: 700,
     },
   ] as Screenshot[],
 
