@@ -215,6 +215,74 @@ export default function HomePage() {
           </div>
         </section>
 
+        <section
+          id="support"
+          style={{
+            marginBottom: '3rem',
+            position: 'relative',
+            overflow: 'hidden',
+            borderRadius: '26px',
+            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+            background: 'linear-gradient(135deg, #241811 0%, #4a2e1f 62%, #76502d 100%)',
+            color: '#fffaf0',
+            boxShadow: '0 18px 48px rgba(36,24,17,0.18)',
+          }}
+        >
+          <div
+            aria-hidden="true"
+            style={{
+              position: 'absolute',
+              width: '260px',
+              height: '260px',
+              right: '-80px',
+              top: '-120px',
+              borderRadius: '50%',
+              background: 'rgba(211,178,122,0.16)',
+            }}
+          />
+          <div style={{ position: 'relative', maxWidth: '780px' }}>
+            <div
+              style={{
+                marginBottom: '0.8rem',
+                color: '#e5c995',
+                fontSize: '0.78rem',
+                fontWeight: 800,
+                letterSpacing: '0.1em',
+                textTransform: 'uppercase',
+              }}
+            >
+              Independent by design
+            </div>
+            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', lineHeight: 1.15, fontWeight: 900, margin: '0 0 0.85rem' }}>
+              Sixsmith Games is built by one independent developer.
+            </h2>
+            <p style={{ margin: '0 0 1.35rem', maxWidth: '690px', color: 'rgba(255,250,240,0.84)', lineHeight: 1.85 }}>
+              I design, build, and maintain everything you see here. If you like what I am making and want to help me keep at it, consider buying me a coffee. It is a small gesture, but a genuinely appreciated one.
+            </p>
+            <form action="/api/coffee-checkout" method="post">
+              <button
+                type="submit"
+                style={{
+                  display: 'inline-flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  padding: '0.95rem 1.45rem',
+                  border: '1px solid #ead4aa',
+                  borderRadius: '999px',
+                  background: '#fffaf0',
+                  color: '#3b271a',
+                  font: 'inherit',
+                  fontWeight: 800,
+                  cursor: 'pointer',
+                  boxShadow: '0 10px 28px rgba(0,0,0,0.2)',
+                }}
+              >
+                Buy me a coffee
+              </button>
+            </form>
+          </div>
+        </section>
+
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Where to go next</h2>
           <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>

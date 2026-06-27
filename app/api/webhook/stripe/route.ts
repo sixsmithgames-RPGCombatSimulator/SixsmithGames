@@ -61,6 +61,11 @@ export async function POST(req: NextRequest) {
 }
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  if (session.metadata?.supportType === 'coffee') {
+    console.log(`Coffee support payment completed: ${session.id}`);
+    return;
+  }
+
   const clerkUserId = session.metadata?.clerkUserId;
   const planId = session.metadata?.planId;
 
