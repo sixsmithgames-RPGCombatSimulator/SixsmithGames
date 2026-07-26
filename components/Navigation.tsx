@@ -14,10 +14,13 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useState } from 'react';
 
-import { isSagaCraftOwnerEmail } from '@/lib/productVisibility';
+import {
+  isContentCraftOwnerEmail,
+  isSagaCraftOwnerEmail,
+} from '@/lib/productVisibility';
 import styles from './Navigation.module.css';
 
-const STUDIO_URL = 'https://gamemaster-studio.vercel.app';
+const STUDIO_URL = 'https://gmstudio.sixsmithgames.com';
 
 const primaryLinks = [
   { label: 'Why Studio', href: '/#why-studio' },
@@ -28,7 +31,6 @@ const primaryLinks = [
 ];
 
 const secondaryProducts = [
-  { label: 'ContentCraft', href: '/apps/contentcraft' },
   { label: 'Four Star General', href: '/apps/fourstargeneral' },
   { label: 'MasterTyping', href: '/apps/mastertyping' },
   { label: 'Gravity', href: '/apps/gravity' },
@@ -41,9 +43,13 @@ export default function Navigation() {
   const ownerCanSeeSagaCraft = isSagaCraftOwnerEmail(
     user?.primaryEmailAddress?.emailAddress,
   );
-  const tuckedProducts = ownerCanSeeSagaCraft
-    ? [...secondaryProducts, { label: 'SagaCraft', href: '/apps/sagacraft' }]
-    : secondaryProducts;
+  const ownerEmail = user?.primaryEmailAddress?.emailAddress;
+  const ownerCanSeeContentCraft = isContentCraftOwnerEmail(ownerEmail);
+  const tuckedProducts = [
+    ...secondaryProducts,
+    ...(ownerCanSeeContentCraft ? [{ label: 'ContentCraft', href: '/apps/contentcraft' }] : []),
+    ...(ownerCanSeeSagaCraft ? [{ label: 'SagaCraft', href: '/apps/sagacraft' }] : []),
+  ];
 
   function closeMenus() {
     setMobileMenuOpen(false);

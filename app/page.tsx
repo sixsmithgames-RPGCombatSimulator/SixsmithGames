@@ -15,6 +15,7 @@ import MarketingLink from '@/components/MarketingLink';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { buildPageMetadata } from '@/lib/metadata';
+import { pricingCatalog } from '@/lib/pricingCatalog';
 import { productScreenshots } from '@/lib/screenshots';
 import { createFaqSchema } from '@/lib/schema';
 import styles from './flagship.module.css';
@@ -38,7 +39,7 @@ const faq = [
   {
     question: 'Can I subscribe to GameMasterCraft or VCS on its own?',
     answer:
-      'Yes. GameMasterCraft AI is $9.99 per month, and the Virtual Combat Simulator GM plan is $9.99 per month. The full GameMaster Studio plan includes both for $14.99 per month.',
+      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $9.99 per month at the current founding price. The full GameMaster Studio plan is $14.99 per month while the early-GM offer is open; the intended regular rates are $19.99 and $29.99.',
   },
   {
     question: 'Does combat automatically change my campaign notes?',
@@ -251,18 +252,22 @@ export default function HomePage() {
 
       <section className={styles.pricingSection}>
         <div className={styles.sectionHeading}>
-          <p className={styles.eyebrow}>Pick the piece you need</p>
+          <p className={styles.eyebrow}>Founding table pricing</p>
           <h2>One Studio. Two modules. No forced bundle.</h2>
           <p>
-            Use the full loop for $14.99 a month, or keep GameMasterCraft and VCS
-            as individual subscriptions for $9.99 a month each.
+            The founding prices below are the amounts charged today. The regular
+            rates are shown so you can see the early-GM offer clearly.
           </p>
         </div>
 
         <div className={styles.priceGrid}>
           <article>
             <p className={styles.planName}>GameMasterCraft AI</p>
-            <p className={styles.price}><strong>$9.99</strong> / month</p>
+            <p className={styles.price}>
+              <span className={styles.regularPrice}>Regularly $19.99 / month</span>
+              <strong>${pricingCatalog['ai-features'].monthlyPrice.toFixed(2)}</strong> / month
+            </p>
+            <p className={styles.priceLabel}>Founding price today</p>
             <ul>
               <li>Campaign workspace</li>
               <li>AI-assisted prep</li>
@@ -276,7 +281,11 @@ export default function HomePage() {
           <article className={styles.featuredPlan}>
             <span className={styles.bestValue}>Best value</span>
             <p className={styles.planName}>GameMaster Studio</p>
-            <p className={styles.price}><strong>$14.99</strong> / month</p>
+            <p className={styles.price}>
+              <span className={styles.regularPrice}>Regularly $29.99 / month</span>
+              <strong>${pricingCatalog.bundle.monthlyPrice.toFixed(2)}</strong> / month
+            </p>
+            <p className={styles.priceLabel}>Founding price today</p>
             <ul>
               <li>Everything in GameMasterCraft AI</li>
               <li>VCS paid Game Master tools</li>
@@ -289,7 +298,11 @@ export default function HomePage() {
 
           <article>
             <p className={styles.planName}>VCS Game Master</p>
-            <p className={styles.price}><strong>$9.99</strong> / month</p>
+            <p className={styles.price}>
+              <span className={styles.regularPrice}>Regularly $19.99 / month</span>
+              <strong>${pricingCatalog['virtual-combat-simulator'].monthlyPrice.toFixed(2)}</strong> / month
+            </p>
+            <p className={styles.priceLabel}>Founding price today</p>
             <ul>
               <li>Battle map and token tools</li>
               <li>Initiative and turn control</li>

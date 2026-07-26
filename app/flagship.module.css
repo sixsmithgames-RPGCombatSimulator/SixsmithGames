@@ -419,6 +419,10 @@
 .price {
   margin: 1rem 0 1.25rem;
   color: #a69c8e;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.18rem;
 }
 
 .price strong {
@@ -426,6 +430,21 @@
   font-family: Georgia, 'Times New Roman', serif;
   font-size: 2.75rem;
   font-weight: 600;
+}
+
+.regularPrice {
+  color: #948b80;
+  font-size: 0.78rem;
+  text-decoration: line-through;
+}
+
+.priceLabel {
+  margin: -0.9rem 0 1.2rem;
+  color: var(--gold);
+  font-size: 0.68rem;
+  font-weight: 900;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
 }
 
 .priceGrid ul {

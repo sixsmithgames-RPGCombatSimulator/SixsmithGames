@@ -4,7 +4,7 @@ Last updated: April 18, 2026
 
 ## Purpose
 
-This document defines the reporting view needed to monitor organic search traffic, AI referral traffic, landing-page performance, and product conversion paths for `sixsmithgames.com`.
+This document defines the reporting view needed to monitor organic search traffic, AI referral traffic, landing-page performance, and product conversion paths for `gmstudio.sixsmithgames.com`.
 
 ## Instrumentation already implemented
 
@@ -69,4 +69,4 @@ Create a GA4 exploration or Looker Studio report with the following sections:
 
 ## Search Console note
 
-Submit `https://sixsmithgames.com/sitemap.xml` to Google Search Console after deployment. That step requires Search Console access and is not completed by local code changes alone.
+Submit `https://gmstudio.sixsmithgames.com/sitemap.xml` to Google Search Console after deployment. That step requires Search Console access and is not completed by local code changes alone.

@@ -11,7 +11,10 @@ import {
   PUBLIC_PRODUCT_DEFINITIONS,
   PRODUCT_DEFINITIONS_BY_SLUG,
 } from '@/lib/productContent';
-import { canCurrentUserSeeSagaCraft } from '@/lib/productVisibility.server';
+import {
+  canCurrentUserSeeContentCraft,
+  canCurrentUserSeeSagaCraft,
+} from '@/lib/productVisibility.server';
 import { pageGutter } from '@/lib/responsive';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/site';
@@ -36,7 +39,19 @@ export async function generateMetadata({
     });
   }
 
-  if (definition.slug === 'sagacraft') {
+  if (definition.slug === 'sagacraft' || definition.slug === 'contentcraft') {
+    const canSee = definition.slug === 'sagacraft'
+      ? await canCurrentUserSeeSagaCraft()
+      : await canCurrentUserSeeContentCraft();
+    if (!canSee) {
+      return buildPageMetadata({
+        title: 'Help | Sixsmith Games',
+        description: 'The requested help page is not available.',
+        path: '/help',
+        noIndex: true,
+      });
+    }
+
     return {
       ...buildPageMetadata({
         title: `${definition.name} Help | Sixsmith Games`,
@@ -66,8 +81,11 @@ export default async function ProductHelpIndexPage({
     notFound();
   }
 
-  if (definition.slug === 'sagacraft' && !(await canCurrentUserSeeSagaCraft())) {
-    notFound();
+  if (definition.slug === 'sagacraft' || definition.slug === 'contentcraft') {
+    const canSee = definition.slug === 'sagacraft'
+      ? await canCurrentUserSeeSagaCraft()
+      : await canCurrentUserSeeContentCraft();
+    if (!canSee) notFound();
   }
 
   const breadcrumbItems = [

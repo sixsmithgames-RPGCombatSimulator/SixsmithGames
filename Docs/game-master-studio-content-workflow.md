@@ -128,8 +128,8 @@ utm_content=<specific-asset-name>
 Examples:
 
 ```text
-https://sixsmithgames.com/?utm_source=youtube&utm_medium=video&utm_campaign=gamemaster-studio-launch&utm_content=90-second-workflow
-https://sixsmithgames.com/pricing?utm_source=email&utm_medium=email&utm_campaign=gamemaster-studio-launch&utm_content=founder-note
+https://gmstudio.sixsmithgames.com/?utm_source=youtube&utm_medium=video&utm_campaign=gamemaster-studio-launch&utm_content=90-second-workflow
+https://gmstudio.sixsmithgames.com/pricing?utm_source=email&utm_medium=email&utm_campaign=gamemaster-studio-launch&utm_content=founder-note
 ```
 
 ## Release checks

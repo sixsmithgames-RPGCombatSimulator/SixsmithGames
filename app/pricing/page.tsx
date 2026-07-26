@@ -11,13 +11,14 @@ import type { Metadata } from 'next';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { buildPageMetadata } from '@/lib/metadata';
+import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 import { createFaqSchema } from '@/lib/schema';
 import styles from './pricing.module.css';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'GameMaster Studio Pricing | Studio, GameMasterCraft, or VCS',
   description:
-    'Choose GameMaster Studio for $14.99 a month, GameMasterCraft AI for $9.99 a month, or Virtual Combat Simulator GM for $9.99 a month.',
+    'Get GameMaster Studio, GameMasterCraft AI, or Virtual Combat Simulator at founding introductory pricing while the early-GM offer is open.',
   path: '/pricing',
 });
 
@@ -26,7 +27,8 @@ const plans = [
     id: 'ai-features',
     name: 'GameMasterCraft AI',
     eyebrow: 'Campaign side',
-    price: '$9.99',
+    currentPrice: pricingCatalog['ai-features'].monthlyPrice,
+    standardPrice: pricingCatalog['ai-features'].standardMonthlyPrice,
     description:
       'For GMs who want campaign memory and AI-assisted prep, but already have the table side covered.',
     features: [
@@ -40,7 +42,8 @@ const plans = [
     id: 'bundle',
     name: 'GameMaster Studio',
     eyebrow: 'Campaign + table',
-    price: '$14.99',
+    currentPrice: pricingCatalog.bundle.monthlyPrice,
+    standardPrice: pricingCatalog.bundle.standardMonthlyPrice,
     description:
       'For GMs who want the full rhythm: prepare the campaign in GameMasterCraft and run the encounter in VCS.',
     features: [
@@ -55,7 +58,8 @@ const plans = [
     id: 'virtual-combat-simulator',
     name: 'VCS Game Master',
     eyebrow: 'Table side',
-    price: '$9.99',
+    currentPrice: pricingCatalog['virtual-combat-simulator'].monthlyPrice,
+    standardPrice: pricingCatalog['virtual-combat-simulator'].standardMonthlyPrice,
     description:
       'For GMs who need a cleaner battle room without adding a campaign planning subscription.',
     features: [
@@ -71,12 +75,12 @@ const faq = [
   {
     question: 'Do I have to buy the full Studio plan?',
     answer:
-      'No. GameMasterCraft AI and VCS Game Master stay available as individual $9.99 monthly subscriptions. Choose Studio only when you want both.',
+      'No. GameMasterCraft AI and VCS Game Master stay available as individual subscriptions. Their current founding price is $9.99/month each; choose Studio when you want both.',
   },
   {
-    question: 'Why is Studio $14.99 instead of $19.98?',
+    question: 'What makes the current price introductory?',
     answer:
-      'Studio bundles the two $9.99 plans and saves you $5 each month. It is the better fit when both campaign prep and encounter control are part of your regular GM work.',
+      'The prices shown as founding are the prices charged today while the early-GM offer is open: $9.99/month for either module and $14.99/month for the full Studio. The intended standard rates are $19.99/month and $29.99/month respectively. We will announce any future change before it happens.',
   },
   {
     question: 'Can I try the tools before subscribing?',
@@ -101,11 +105,13 @@ export default function PricingPage() {
       <StructuredDataScript data={createFaqSchema(faq)} />
 
       <section className={styles.hero}>
-        <p className={styles.eyebrow}>Simple monthly plans</p>
-        <h1>Bring the whole Studio, or take the module you need.</h1>
+        <p className={styles.eyebrow}>Founding table pricing</p>
+        <h1>Get the whole Studio while the founding price is open.</h1>
         <p>
-          No need to pay for both if your current setup already handles half the
-          job. GameMasterCraft and VCS remain available on their own.
+          Start with the campaign side, the table side, or the full loop. The
+          prices marked founding are the real monthly prices at checkout for
+          early Game Masters; the regular rates are shown so the offer is easy
+          to understand.
         </p>
       </section>
 
@@ -113,7 +119,7 @@ export default function PricingPage() {
         <section className={styles.planSection} aria-labelledby="plans-heading">
           <div className={styles.sectionHeading}>
             <p className={styles.eyebrow}>Choose your side of the screen</p>
-            <h2 id="plans-heading">Three plans. One honest difference.</h2>
+            <h2 id="plans-heading">Three plans. One clear founding offer.</h2>
           </div>
 
           <div className={styles.planGrid}>
@@ -126,9 +132,15 @@ export default function PricingPage() {
                 <p className={styles.planEyebrow}>{plan.eyebrow}</p>
                 <h3>{plan.name}</h3>
                 <p className={styles.price}>
-                  <strong>{plan.price}</strong>
+                  {plan.standardPrice && (
+                    <span className={styles.regularPrice}>
+                      Regularly {formatMonthlyPrice(plan.standardPrice)}
+                    </span>
+                  )}
+                  <strong>{formatMonthlyPrice(plan.currentPrice).replace('/month', '')}</strong>
                   <span> / month</span>
                 </p>
+                <p className={styles.priceLabel}>Founding price today</p>
                 <p className={styles.description}>{plan.description}</p>
                 <ul>
                   {plan.features.map((feature) => (
@@ -142,7 +154,9 @@ export default function PricingPage() {
             ))}
           </div>
           <p className={styles.finePrint}>
-            Prices are in US dollars and renew monthly until canceled.
+            Prices are in US dollars and renew monthly until canceled. Founding
+            prices are the amounts charged today; standard rates are shown for
+            comparison and will not change without notice.
           </p>
         </section>
 
@@ -188,9 +202,9 @@ export default function PricingPage() {
                 </tr>
                 <tr>
                   <th scope="row">Monthly price</th>
-                  <td>$9.99</td>
-                  <td><strong>$14.99</strong></td>
-                  <td>$9.99</td>
+                  <td><strong>$9.99</strong><small>founding · $19.99 regular</small></td>
+                  <td><strong>$14.99</strong><small>founding · $29.99 regular</small></td>
+                  <td><strong>$9.99</strong><small>founding · $19.99 regular</small></td>
                 </tr>
               </tbody>
             </table>

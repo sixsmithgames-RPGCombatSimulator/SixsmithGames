@@ -3,8 +3,8 @@
 Status: ready for first recording and design pass  
 Campaign: `gamemaster-studio-launch`  
 Primary audience: GMs running online or hybrid tabletop RPG campaigns  
-Primary CTA: Start free at `https://sixsmithgames.com/sign-up`  
-Pricing CTA: Compare plans at `https://sixsmithgames.com/pricing`
+Primary CTA: Start free at `https://gmstudio.sixsmithgames.com/sign-up`
+Pricing CTA: Compare plans at `https://gmstudio.sixsmithgames.com/pricing`
 
 ## Campaign idea
 
@@ -25,8 +25,8 @@ GameMasterCraft and encounter control in Virtual Combat Simulator.
   notes, and campaign continuity.
 - VCS puts maps, tokens, initiative, hit points, conditions, and combat controls
   in the encounter workspace.
-- GameMaster Studio is $14.99 per month.
-- GameMasterCraft AI and VCS GM remain separate $9.99 monthly subscriptions.
+- GameMaster Studio is currently $14.99 per month at the founding price (regularly $29.99).
+- GameMasterCraft AI and VCS GM remain separate $9.99 monthly subscriptions at the founding price (regularly $19.99 each).
 - The server-side handoff foundation exists, but the customer-facing handoff is
   not yet finished.
 - Today, the GM chooses what encounter results become campaign history.
@@ -109,7 +109,7 @@ Voice:
 > Use the full Studio for fourteen ninety-nine a month, or keep GameMasterCraft
 > and VCS on their own for nine ninety-nine each.
 
-On-screen text: `$14.99 Studio · $9.99 each standalone`
+On-screen text: `Founding: $14.99 Studio · $9.99 each standalone`
 
 **1:22–1:30 — CTA**
 
@@ -120,7 +120,7 @@ Voice:
 > Start free at Sixsmith Games, and spend your prep on the game instead of
 > finding the prep.
 
-On-screen text: `sixsmithgames.com`
+On-screen text: `gmstudio.sixsmithgames.com`
 
 ## VEED Free initial edit recipe
 
@@ -189,7 +189,7 @@ Footer:
 
 CTA:
 
-`Start free at sixsmithgames.com`
+`Start free at gmstudio.sixsmithgames.com`
 
 ## Founder email
 
@@ -209,12 +209,13 @@ You still make the call about what becomes campaign truth. The customer-facing
 handoff is being finished, so combat does not quietly rewrite your campaign
 behind the screen.
 
-The full Studio is $14.99 a month. If you only need one side, GameMasterCraft AI
-and VCS GM remain available at $9.99 a month each.
+The full Studio is currently $14.99 a month at the founding price (regularly $29.99).
+If you only need one side, GameMasterCraft AI and VCS GM remain available at
+$9.99 a month each at the founding price (regularly $19.99 each).
 
 Start free:
 
-`https://sixsmithgames.com/sign-up?utm_source=email&utm_medium=email&utm_campaign=gamemaster-studio-launch&utm_content=founder-note`
+`https://gmstudio.sixsmithgames.com/sign-up?utm_source=email&utm_medium=email&utm_campaign=gamemaster-studio-launch&utm_content=founder-note`
 
 — Sixsmith Games
 
@@ -231,7 +232,7 @@ in GameMasterCraft, encounter control in VCS.
 
 Start free:
 
-`https://sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=notes-and-vtt`
+`https://gmstudio.sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=notes-and-vtt`
 
 ### Post 2: the honest workflow
 
@@ -244,7 +245,7 @@ the next round of prep.
 No claim that the handoff is automatic. Just a cleaner place for each part of
 the work.
 
-`https://sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=gm-decides-canon`
+`https://gmstudio.sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=gm-decides-canon`
 
 ### Post 3: the plans
 
@@ -256,7 +257,7 @@ its own.
 
 Want both? GameMaster Studio saves $5 a month.
 
-`https://sixsmithgames.com/pricing?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=three-plans`
+`https://gmstudio.sixsmithgames.com/pricing?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=three-plans`
 
 ## Article outline for ChatGPT Work
 

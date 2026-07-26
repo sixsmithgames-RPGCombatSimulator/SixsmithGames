@@ -7,7 +7,7 @@ import { buildPageMetadata } from '@/lib/metadata';
 import { PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
-import { SITE_NAME } from '@/lib/site';
+import { SITE_NAME, SITE_URL } from '@/lib/site';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Sixsmith Games Facts | Official Product Names, URLs, Platforms, and Access',
@@ -53,10 +53,10 @@ export default function FactsPage() {
               <strong>Studio summary:</strong> GameMaster Studio combines campaign preparation in GameMasterCraft with encounter control in Virtual Combat Simulator for tabletop game masters.
             </p>
             <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
-              <strong>Support:</strong> <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/support</Link>
+              <strong>Support:</strong> <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 700 }}>{`${SITE_URL}/support`}</Link>
             </p>
             <p style={{ margin: 0, color: '#334155', lineHeight: 1.8 }}>
-              <strong>Facts page:</strong> <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/about/facts</Link>
+              <strong>Facts page:</strong> <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 700 }}>{`${SITE_URL}/about/facts`}</Link>
             </p>
           </div>
         </section>
@@ -80,7 +80,7 @@ export default function FactsPage() {
                     href={product.officialPath}
                     style={{ color: '#1d4ed8', fontWeight: 700, overflowWrap: 'anywhere' }}
                   >
-                    {`https://sixsmithgames.com${product.officialPath}`}
+                    {`${SITE_URL}${product.officialPath}`}
                   </Link>
                 </p>
                 <p style={{ margin: 0, color: '#334155', lineHeight: 1.8 }}>

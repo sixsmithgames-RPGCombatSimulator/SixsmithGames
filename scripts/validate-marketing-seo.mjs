@@ -1,7 +1,7 @@
 import { mkdirSync, writeFileSync } from 'node:fs';
 
 const BASE_URL = process.argv[2] || 'http://127.0.0.1:3100';
-const SITE_URL = 'https://sixsmithgames.com';
+const SITE_URL = 'https://gmstudio.sixsmithgames.com';
 const OUTPUT_DIR = new URL('../test-results/', import.meta.url);
 
 const REQUIRED_PRODUCT_H2S = [

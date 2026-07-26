@@ -19,7 +19,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   category: 'D&D combat tracker with battle map and initiative management',
   primaryAudience: 'Game masters and tabletop RPG players, especially D&D-adjacent groups',
   platform: 'Browser-based web app',
-  pricingModel: 'Free to start. Upgrade to the Game Master plan at $9.99/month for more storage and expanded GM features',
+  pricingModel: 'Free to start. Founding Game Master price $9.99/month (regularly $19.99/month) for more storage and expanded GM features while the early-GM offer is open',
   availability: 'Open in your browser and run combats right away. The paid upgrade is there when you need it, not before',
   applicationCategory: 'GameApplication',
   operatingSystem: 'Web browser',
@@ -29,7 +29,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   helpPath: '/help/virtual-combat-simulator',
   supportPath: '/support',
   appUrl: APP_URLS['virtual-combat-simulator'],
-  relatedProducts: ['contentcraft'],
+  relatedProducts: [],
   supportingArticleSlugs: [
     'what-is-virtual-combat-simulator',
     'how-to-run-faster-dnd-combats-online',
@@ -115,7 +115,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'Virtual Combat Simulator is free to start. Signed-in users get the core combat management tool, and a paid Game Master plan at $9.99 per month adds more storage and additional GM-oriented capability for groups that run encounters often.',
+    'Virtual Combat Simulator is free to start. Signed-in users get the core combat management tool, and the current founding Game Master price of $9.99 per month (regularly $19.99/month) adds more storage and additional GM-oriented capability for groups that run encounters often.',
     'Try the core tool first, then decide whether the paid layer matches how often you run encounters.',
   ],
   faq: [
@@ -147,7 +147,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     {
       question: 'How does pricing work for Virtual Combat Simulator?',
       answer:
-        'Virtual Combat Simulator is free to start, with an optional $9.99 per month Game Master subscription. The free path covers the core encounter use case, while the paid tier is the upgrade for more storage and expanded GM capability.',
+        'Virtual Combat Simulator is free to start, with an optional Game Master subscription at the current founding price of $9.99 per month (regularly $19.99/month). The free path covers the core encounter use case, while the paid tier is the upgrade for more storage and expanded GM capability.',
     },
   ],
   gettingStarted: [

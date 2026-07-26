@@ -15,6 +15,8 @@ export interface PricingCatalogEntry {
   name: string;
   slug?: string;
   monthlyPrice: number;
+  /** Intended standard monthly rate shown for comparison with the founding offer. */
+  standardMonthlyPrice?: number;
   productId?: string;
   icon?: string;
   color: string;
@@ -29,6 +31,7 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
     name: 'GameMasterCraft AI',
     slug: 'ai-features',
     monthlyPrice: 9.99,
+    standardMonthlyPrice: 19.99,
     icon: '/icons/contentcraft-optimized.png',
     color: '#a855f7',
     gradient: 'linear-gradient(135deg, #7c3aed, #2563eb)',
@@ -44,6 +47,7 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
     name: 'Virtual Combat Simulator',
     slug: 'virtual-combat-simulator',
     monthlyPrice: 9.99,
+    standardMonthlyPrice: 19.99,
     productId: 'prod_U0bDDphtA7GnSP',
     icon: '/icons/vcs-optimized.png',
     color: '#ef4444',
@@ -91,6 +95,7 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
     planId: 'bundle',
     name: 'GameMaster Studio',
     monthlyPrice: 14.99,
+    standardMonthlyPrice: 29.99,
     productId: 'prod_UGroftGaUS7177',
     color: '#4c1d95',
     gradient: 'linear-gradient(135deg, #312e81, #7c3aed)',

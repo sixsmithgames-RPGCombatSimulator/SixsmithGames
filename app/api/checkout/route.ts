@@ -8,12 +8,13 @@ import Stripe from 'stripe';
 import { auth, currentUser } from '@clerk/nextjs/server';
 import { PLANS } from '@/lib/subscription';
 import { sendFacebookEvents, buildUserData, generateEventId } from '@/lib/facebookConversions';
+import { isContentCraftOwnerEmail } from '@/lib/productVisibility';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2026-01-28.clover',
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://sixsmithgames.com';
+const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://gmstudio.sixsmithgames.com';
 const FACEBOOK_PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
 const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_ACCESS_TOKEN;
 
@@ -25,10 +26,21 @@ export async function POST(req: NextRequest) {
     }
 
     const user = await currentUser();
-    const email = user?.primaryEmailAddress?.emailAddress;
+    const primaryEmail = user?.primaryEmailAddress;
+    const email = primaryEmail?.emailAddress;
 
     const body = await req.json();
     const { planId } = body as { planId: string };
+
+    // ContentCraft checkout is private too: only the verified owner can reach
+    // the hidden product's billing path from an app or a guessed URL.
+    if (
+      planId === 'contentcraft'
+      && (primaryEmail?.verification?.status !== 'verified'
+        || !isContentCraftOwnerEmail(email))
+    ) {
+      return NextResponse.json({ error: 'Not found' }, { status: 404 });
+    }
 
     const plan = PLANS[planId];
     if (!plan) {

@@ -46,7 +46,12 @@ const handleRequestWithClerk = clerkMiddleware(async (auth, request) => {
     }
   }
 
-  if (process.env.NODE_ENV === 'production' && host === `www.${SITE_HOSTNAME}`) {
+  // Keep the former apex site useful as a compatibility address while the
+  // flagship site uses its clearer product-specific canonical hostname.
+  if (
+    process.env.NODE_ENV === 'production'
+    && (host === 'sixsmithgames.com' || host === 'www.sixsmithgames.com' || host === `www.${SITE_HOSTNAME}`)
+  ) {
     const url = request.nextUrl.clone();
     url.host = SITE_HOSTNAME;
     url.protocol = 'https';

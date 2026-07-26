@@ -1,8 +1,8 @@
 /**
  * Site footer with the flagship and its two modules in the primary positions.
  *
- * Secondary products remain discoverable in a quieter column. SagaCraft is not
- * included because this server-rendered footer is public.
+ * Secondary products remain discoverable in a quieter column. Private products
+ * are omitted because this server-rendered footer is public.
  */
 
 import Image from 'next/image';
@@ -40,7 +40,6 @@ export default function Footer() {
 
         <div>
           <h2>More from Sixsmith Games</h2>
-          <Link href="/apps/contentcraft">ContentCraft</Link>
           <Link href="/apps/fourstargeneral">Four Star General</Link>
           <Link href="/apps/mastertyping">MasterTyping</Link>
           <Link href="/apps/gravity">Gravity</Link>

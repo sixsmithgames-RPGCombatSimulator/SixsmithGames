@@ -126,7 +126,7 @@ fly deploy
 NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY=pk_live_xxx
 STRIPE_SECRET_KEY=sk_live_xxx
 STRIPE_PRICE_ID=price_xxx
-NEXT_PUBLIC_URL=https://www.sixsmithgames.com
+NEXT_PUBLIC_URL=https://gmstudio.sixsmithgames.com
 ```
 
 ### Optional

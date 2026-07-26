@@ -77,7 +77,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       summary: 'Virtual Combat Simulator is free to start. The Game Master subscription adds storage and expanded GM tools for groups that run encounters regularly.',
       paragraphs: [
         'The core combat management tool is free for signed-in users. You can set up maps, place tokens, run initiative, track hit points and conditions, and keep the table synced without paying anything.',
-        'The Game Master plan at $9.99 per month adds more encounter storage and expanded GM capability for game masters who run sessions frequently and want more headroom. Try the free tier first, then decide whether the upgrade fits your session cadence.',
+        'The Game Master plan is currently $9.99 per month at the founding price (regularly $19.99) and adds more encounter storage and expanded GM capability for game masters who run sessions frequently and want more headroom. Try the free tier first, then decide whether the upgrade fits your session cadence.',
         'For account questions, billing, or anything related to subscriptions, use the support page. The pricing page has the full comparison of what each tier includes.',
       ],
       bullets: [

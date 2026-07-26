@@ -148,12 +148,14 @@ export const PRODUCT_DEFINITIONS: ProductDefinition[] = [
 /**
  * Public product collections must use this list.
  *
- * SagaCraft remains in PRODUCT_DEFINITIONS so the owner-only page and its
- * historical content still work. It is deliberately absent here so public
- * navigation, search feeds, help indexes, and browser sweeps do not expose it.
+ * Private products remain in PRODUCT_DEFINITIONS so their owner-only pages and
+ * historical content still work. They are deliberately absent here so public
+ * navigation, search feeds, help indexes, and browser sweeps do not expose them.
  */
 export const PUBLIC_PRODUCT_DEFINITIONS: ProductDefinition[] =
-  PRODUCT_DEFINITIONS.filter((product) => product.slug !== 'sagacraft');
+  PRODUCT_DEFINITIONS.filter(
+    (product) => product.slug !== 'sagacraft' && product.slug !== 'contentcraft',
+  );
 
 export const PRODUCT_DEFINITIONS_BY_SLUG = Object.fromEntries(
   PRODUCT_DEFINITIONS.map((product) => [product.slug, product]),

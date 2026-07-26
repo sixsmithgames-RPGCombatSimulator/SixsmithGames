@@ -17,7 +17,6 @@ export const publicRoutes = [
   '/',
   '/about',
   '/about/facts',
-  '/apps/contentcraft',
   ...productRoutes,
   '/apps/virtual-combat-simulator/character-sheet',
   '/account',
