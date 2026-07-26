@@ -22,6 +22,10 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+// Keep direct private-news links owner-aware instead of emitting a public
+// static page that could reveal a hidden product name in its metadata.
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getNewsPostBySlug(slug);

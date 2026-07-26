@@ -1,7 +1,12 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
+jest.mock('../../lib/productVisibility.server', () => ({
+  canCurrentUserSeeContentCraft: jest.fn().mockResolvedValue(false),
+}));
+
 import { PUBLIC_PRODUCT_DEFINITIONS } from '../../lib/productContent';
+import { getAllArticles, getAllArticleTags } from '../../lib/blog';
 import {
   isContentCraftOwnerEmail,
   isSagaCraftOwnerEmail,
@@ -21,6 +26,15 @@ describe('GameMaster Studio product visibility', () => {
     for (const plan of Object.values(PLANS)) {
       expect(plan.apps).not.toContain('sagacraft');
     }
+  });
+
+  it('keeps ContentCraft articles and tags out of public content collections', async () => {
+    const publicArticles = await getAllArticles();
+    const publicTags = await getAllArticleTags();
+
+    expect(publicArticles.every((article) => !article.relatedProducts.includes('contentcraft'))).toBe(true);
+    expect(publicArticles.some((article) => article.slug === 'what-is-contentcraft')).toBe(false);
+    expect(publicTags).not.toContain('contentcraft');
   });
 
   it('recognizes only the configured owner email', () => {

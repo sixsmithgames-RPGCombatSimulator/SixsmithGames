@@ -21,6 +21,10 @@ export async function generateStaticParams() {
   return posts.map((post) => ({ slug: post.slug }));
 }
 
+// Private ContentCraft articles use the same server-side viewer check as the
+// private product page, so direct owner links can work without public indexing.
+export const dynamic = 'force-dynamic';
+
 export async function generateMetadata({ params }: { params: Promise<{ slug: string }> }) {
   const { slug } = await params;
   const post = await getArticleBySlug(slug);

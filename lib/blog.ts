@@ -1,5 +1,6 @@
 import { BLOG_POSTS } from '@/lib/blogPosts';
 import type { BlogPost, PostContentType } from '@/lib/blogTypes';
+import { canCurrentUserSeeContentCraft } from '@/lib/productVisibility.server';
 import { isAppSlug } from '@/lib/subscription';
 
 export type { BlogPost } from '@/lib/blogTypes';
@@ -96,8 +97,30 @@ async function allPosts(): Promise<BlogPost[]> {
   );
 }
 
+function isPrivatePost(post: BlogPost): boolean {
+  // ContentCraft articles are retained for the owner's private workspace, but
+  // they must not appear in public article lists, tags, feeds, or the sitemap.
+  return post.relatedProducts.includes('contentcraft') || post.slug === 'what-is-contentcraft';
+}
+
+async function publicPosts(): Promise<BlogPost[]> {
+  return (await allPosts()).filter((post) => !isPrivatePost(post));
+}
+
+async function findPostForCurrentViewer(slug: string, contentType: PostContentType): Promise<BlogPost | undefined> {
+  const post = (await allPosts()).find(
+    (candidate) => candidate.slug === slug && (candidate.contentType ?? 'article') === contentType,
+  );
+
+  if (!post || !isPrivatePost(post)) return post;
+
+  // Direct links remain useful to the owner, while anonymous requests fail
+  // closed instead of revealing a private article title or product reference.
+  return (await canCurrentUserSeeContentCraft()) ? post : undefined;
+}
+
 async function postsByType(contentType: PostContentType): Promise<BlogPost[]> {
-  return (await allPosts()).filter((post) => (post.contentType ?? 'article') === contentType);
+  return (await publicPosts()).filter((post) => (post.contentType ?? 'article') === contentType);
 }
 
 async function featuredPostsByType(contentType: PostContentType): Promise<BlogPost[]> {
@@ -105,7 +128,7 @@ async function featuredPostsByType(contentType: PostContentType): Promise<BlogPo
 }
 
 async function getPostBySlugAndType(slug: string, contentType: PostContentType): Promise<BlogPost | undefined> {
-  return (await postsByType(contentType)).find((post) => post.slug === slug);
+  return findPostForCurrentViewer(slug, contentType);
 }
 
 async function getRecentPostsByType(contentType: PostContentType, count: number): Promise<BlogPost[]> {
@@ -123,24 +146,26 @@ async function getPostsByTagAndType(tag: string, contentType: PostContentType): 
 }
 
 export async function getAllPosts(): Promise<BlogPost[]> {
-  return allPosts();
+  return publicPosts();
 }
 
 export async function getFeaturedPosts(): Promise<BlogPost[]> {
-  return (await allPosts()).filter((post) => post.featured);
+  return (await publicPosts()).filter((post) => post.featured);
 }
 
 export async function getPostBySlug(slug: string): Promise<BlogPost | undefined> {
-  return (await allPosts()).find((post) => post.slug === slug);
+  const post = (await allPosts()).find((candidate) => candidate.slug === slug);
+  if (!post || !isPrivatePost(post)) return post;
+  return (await canCurrentUserSeeContentCraft()) ? post : undefined;
 }
 
 export async function getRecentPosts(count: number): Promise<BlogPost[]> {
-  return (await allPosts()).slice(0, count);
+  return (await publicPosts()).slice(0, count);
 }
 
 export async function getAllTags(): Promise<string[]> {
   const tags = new Set<string>();
-  (await allPosts()).forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
+  (await publicPosts()).forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
   return Array.from(tags).sort((a, b) => a.localeCompare(b));
 }
 
