@@ -1,3 +1,6 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
 import { PUBLIC_PRODUCT_DEFINITIONS } from '../../lib/productContent';
 import {
   isSagaCraftOwnerEmail,
@@ -20,5 +23,16 @@ describe('GameMaster Studio product visibility', () => {
     expect(isSagaCraftOwnerEmail(SAGACRAFT_OWNER_EMAIL)).toBe(true);
     expect(isSagaCraftOwnerEmail('another@example.com')).toBe(false);
     expect(isSagaCraftOwnerEmail(undefined)).toBe(false);
+  });
+
+  it('does not expose static SagaCraft metadata to an anonymous 404 response', () => {
+    const layoutSource = fs.readFileSync(
+      path.join(process.cwd(), 'app/apps/sagacraft/layout.tsx'),
+      'utf8',
+    );
+
+    expect(layoutSource).not.toContain('export const metadata');
+    expect(layoutSource).toContain("title: 'Page not found | Sixsmith Games'");
+    expect(layoutSource).toContain('await canCurrentUserSeeSagaCraft()');
   });
 });
