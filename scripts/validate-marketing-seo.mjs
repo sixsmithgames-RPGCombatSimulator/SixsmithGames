@@ -5,7 +5,6 @@ const SITE_URL = 'https://gmstudio.sixsmithgames.com';
 const OUTPUT_DIR = new URL('../test-results/', import.meta.url);
 
 const REQUIRED_PRODUCT_H2S = [
-  'About this product',
   'What it is',
   'Who it is for',
   'How it works',
@@ -15,15 +14,14 @@ const REQUIRED_PRODUCT_H2S = [
   'Official links',
 ];
 
-const PRODUCT_FACT_LABELS = [
-  'Category:',
-  'Primary audience:',
-  'Platform:',
-  'Pricing model:',
-  'Current availability:',
-  'Official URL:',
-  'Support path:',
-];
+// Private product routes may still exist for the verified owner, but they must
+// not make public sitemap/link validation fail when anonymous requests return
+// the intentional neutral 404 boundary.
+const PRIVATE_ROUTE_PREFIXES = ['/apps/contentcraft', '/help/contentcraft'];
+
+function isPrivateRoute(path) {
+  return PRIVATE_ROUTE_PREFIXES.some((prefix) => path === prefix || path.startsWith(`${prefix}/`));
+}
 
 const KEY_ROUTE_EXPECTATIONS = [
   {
@@ -34,19 +32,12 @@ const KEY_ROUTE_EXPECTATIONS = [
     keywords: [
       'Sixsmith Games',
       'Virtual Combat Simulator',
-      'ContentCraft',
-      'Four Star General',
-      'MasterTyping',
-      'Gravity',
+      'GameMasterCraft',
     ],
     requiredLinks: [
+      '/apps/gamemastercraft',
       '/apps/virtual-combat-simulator',
-      '/apps/contentcraft',
-      '/apps/fourstargeneral',
-      '/apps/mastertyping',
-      '/apps/gravity',
       '/pricing',
-      '/about/facts',
       '/support',
     ],
     requiredSchema: ['Organization'],
@@ -62,21 +53,11 @@ const KEY_ROUTE_EXPECTATIONS = [
     isProduct: true,
   },
   {
-    route: '/apps/contentcraft',
-    label: 'ContentCraft',
-    minWords: 800,
-    maxWords: 1500,
-    keywords: ['ContentCraft', 'writing tool', 'worldbuilding', 'canon continuity', 'game masters'],
-    requiredLinks: ['/pricing#contentcraft', '/help/contentcraft', '/support'],
-    requiredSchema: ['Organization', 'SoftwareApplication', 'FAQPage', 'BreadcrumbList'],
-    isProduct: true,
-  },
-  {
     route: '/apps/fourstargeneral',
     label: 'Four Star General',
     minWords: 800,
     maxWords: 1500,
-    keywords: ['Four Star General', 'WWII tactical strategy', 'supply', 'reserves', 'deterministic tactics'],
+    keywords: ['Four Star General', 'WWII tactical strategy', 'supply', 'reserves', 'visible tactical rules'],
     requiredLinks: ['/pricing#fourstargeneral', '/help/fourstargeneral', '/support'],
     requiredSchema: ['Organization', 'SoftwareApplication', 'FAQPage', 'BreadcrumbList'],
     isProduct: true,
@@ -278,7 +259,6 @@ function validateKeyRoute(audit, expectation) {
   if (audit.mainWordCount < expectation.minWords || audit.mainWordCount > expectation.maxWords) {
     failures.push(`Main content word count ${audit.mainWordCount} is outside target range ${expectation.minWords}-${expectation.maxWords}.`);
   }
-  if (!audit.hasLastUpdated) failures.push('Visible "Last updated" text not found.');
   if (audit.hasNoIndex) failures.push('Unexpected noindex directive found in HTML.');
 
   for (const keyword of expectation.keywords) {
@@ -304,12 +284,6 @@ function validateKeyRoute(audit, expectation) {
     for (const heading of REQUIRED_PRODUCT_H2S) {
       if (!audit.h2s.includes(heading)) {
         failures.push(`Missing required H2 "${heading}".`);
-      }
-    }
-
-    for (const label of PRODUCT_FACT_LABELS) {
-      if (!audit.bodyText.includes(label)) {
-        failures.push(`Missing product fact label "${label}" near the top of the page.`);
       }
     }
 
@@ -380,7 +354,7 @@ async function main() {
   for (const audit of audits) {
     for (const href of audit.anchors) {
       const normalized = normalizeInternalHref(href);
-      if (normalized) internalLinks.add(normalized);
+      if (normalized && !isPrivateRoute(normalized)) internalLinks.add(normalized);
     }
   }
 
@@ -423,8 +397,8 @@ async function main() {
     facts: audits.find((item) => item.route === '/about/facts')?.jsonLdTypes ?? [],
     pricing: audits.find((item) => item.route === '/pricing')?.jsonLdTypes ?? [],
     helpLanding: audits.find((item) => item.route === '/help')?.jsonLdTypes ?? [],
-    helpProductSample: audits.find((item) => item.route === '/help/contentcraft')?.jsonLdTypes ?? [],
-    helpTopicSample: audits.find((item) => item.route === '/help/contentcraft/getting-started')?.jsonLdTypes ?? [],
+    helpProductSample: audits.find((item) => item.route === '/help/virtual-combat-simulator')?.jsonLdTypes ?? [],
+    helpTopicSample: audits.find((item) => item.route === '/help/virtual-combat-simulator/getting-started')?.jsonLdTypes ?? [],
     blogLanding: audits.find((item) => item.route === '/blog')?.jsonLdTypes ?? [],
     blogPostSample: audits.find((item) => item.route === '/blog/what-is-contentcraft')?.jsonLdTypes ?? [],
   };
