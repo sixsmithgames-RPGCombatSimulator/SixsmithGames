@@ -1,0 +1,103 @@
+/* Footer typography stays restrained so the flagship message remains clear. */
+.footer {
+  padding: clamp(3rem, 7vw, 5.5rem) var(--page-gutter) 1.5rem;
+  border-top: 1px solid rgba(226, 193, 130, 0.14);
+  background: #090b0f;
+  color: #f6efe3;
+}
+
+.grid {
+  width: min(1200px, 100%);
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: minmax(260px, 1.5fr) repeat(3, minmax(150px, 1fr));
+  gap: clamp(2rem, 5vw, 4rem);
+}
+
+.brand {
+  display: flex;
+  align-items: flex-start;
+  gap: 1rem;
+}
+
+.brand img {
+  width: 54px;
+  height: 54px;
+  flex: 0 0 auto;
+}
+
+.brand strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.3rem;
+}
+
+.brand p {
+  max-width: 390px;
+  margin: 0.75rem 0 0;
+  color: #a99f91;
+  line-height: 1.7;
+}
+
+.grid h2 {
+  margin: 0 0 1rem;
+  color: #c99a4d;
+  font-size: 0.75rem;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.grid > div:not(.brand) {
+  display: flex;
+  flex-direction: column;
+}
+
+.grid a,
+.legal a {
+  min-height: 40px;
+  color: #bdb4a7;
+  display: inline-flex;
+  align-items: center;
+  font-size: 0.9rem;
+  text-decoration: none;
+}
+
+.grid a:hover,
+.legal a:hover {
+  color: #f1c97b;
+}
+
+.legal {
+  width: min(1200px, 100%);
+  margin: 3.5rem auto 0;
+  padding-top: 1.25rem;
+  border-top: 1px solid rgba(255, 255, 255, 0.07);
+  color: #746d63;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  font-size: 0.78rem;
+}
+
+.legal div {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 1.2rem;
+}
+
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 580px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .legal {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+}

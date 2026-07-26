@@ -1,0 +1,73 @@
+/* The banner is readable without taking over the page on small screens. */
+.banner {
+  position: fixed;
+  right: 1rem;
+  bottom: 1rem;
+  left: 1rem;
+  z-index: 2000;
+  width: min(760px, calc(100% - 2rem));
+  margin: 0 auto;
+  padding: 1rem 1.1rem;
+  border: 1px solid rgba(233, 196, 126, 0.35);
+  border-radius: 16px;
+  background: #171a22;
+  color: #f8f2e8;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.2rem;
+  box-shadow: 0 18px 60px rgba(0, 0, 0, 0.5);
+}
+
+.banner strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.05rem;
+}
+
+.banner p {
+  margin: 0.35rem 0 0;
+  color: #bcb3a6;
+  font-size: 0.84rem;
+  line-height: 1.55;
+}
+
+.banner a {
+  color: #e9c47e;
+}
+
+.actions {
+  display: flex;
+  flex: 0 0 auto;
+  gap: 0.6rem;
+}
+
+.actions button {
+  min-height: 44px;
+  padding: 0.65rem 0.9rem;
+  border: 1px solid #4a4d56;
+  border-radius: 999px;
+  background: transparent;
+  color: #e8e1d7;
+  font: inherit;
+  font-size: 0.82rem;
+  font-weight: 800;
+  cursor: pointer;
+}
+
+.actions .accept {
+  border-color: #dfad59;
+  background: #dfad59;
+  color: #1b1208;
+}
+
+@media (max-width: 650px) {
+  .banner {
+    align-items: stretch;
+    flex-direction: column;
+  }
+
+  .actions {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+  }
+}

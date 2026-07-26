@@ -9,15 +9,16 @@ import { buildPageMetadata } from '@/lib/metadata';
 import {
   HELP_TOPIC_ORDER,
   HELP_TOPIC_TITLES,
-  PRODUCT_DEFINITIONS,
+  PUBLIC_PRODUCT_DEFINITIONS,
   PRODUCT_DEFINITIONS_BY_SLUG,
 } from '@/lib/productContent';
+import { canCurrentUserSeeSagaCraft } from '@/lib/productVisibility.server';
 import { pageGutter } from '@/lib/responsive';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/site';
 
 export function generateStaticParams() {
-  return PRODUCT_DEFINITIONS.flatMap((product) =>
+  return PUBLIC_PRODUCT_DEFINITIONS.flatMap((product) =>
     HELP_TOPIC_ORDER.map((topic) => ({ product: product.slug, topic })),
   );
 }
@@ -39,6 +40,17 @@ export async function generateMetadata({
     });
   }
 
+  if (definition.slug === 'sagacraft') {
+    return {
+      ...buildPageMetadata({
+        title: `${definition.name} Help | Sixsmith Games`,
+        description: `Private help for ${definition.name}.`,
+        path: `/help/${definition.slug}/${topic}`,
+      }),
+      robots: { index: false, follow: false },
+    };
+  }
+
   return buildPageMetadata({
     title: `${definition.name} ${HELP_TOPIC_TITLES[topic as keyof typeof HELP_TOPIC_TITLES]} | Sixsmith Games Help`,
     description: `Read ${HELP_TOPIC_TITLES[topic as keyof typeof HELP_TOPIC_TITLES].toLowerCase()} guidance for ${definition.name}.`,
@@ -56,6 +68,10 @@ export default async function HelpTopicPage({
   const isValidTopic = HELP_TOPIC_ORDER.includes(topic as (typeof HELP_TOPIC_ORDER)[number]);
 
   if (!definition || !isValidTopic) {
+    notFound();
+  }
+
+  if (definition.slug === 'sagacraft' && !(await canCurrentUserSeeSagaCraft())) {
     notFound();
   }
 

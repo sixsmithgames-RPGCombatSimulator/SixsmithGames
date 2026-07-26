@@ -1,221 +1,212 @@
-import type { Metadata } from 'next';
-import Link from 'next/link';
+/**
+ * Flagship pricing page.
+ *
+ * Only GameMaster Studio and its two standalone modules belong here. Prices and
+ * plan IDs reuse the existing Stripe setup; this page changes the presentation,
+ * not the billing contract.
+ */
 
-import FacebookViewContent from '@/components/FacebookViewContent';
-import LaunchAppButton from '@/components/LaunchAppButton';
-import ModernBackground from '@/components/ModernBackground';
+import type { Metadata } from 'next';
+
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { buildPageMetadata } from '@/lib/metadata';
-import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
-import { fluidGrid, pageGutter } from '@/lib/responsive';
 import { createFaqSchema } from '@/lib/schema';
+import styles from './pricing.module.css';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Pricing | Sixsmith Games Products, Plans, and Access',
+  title: 'GameMaster Studio Pricing | Studio, GameMasterCraft, or VCS',
   description:
-    'Compare pricing and access across Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity.',
+    'Choose GameMaster Studio for $14.99 a month, GameMasterCraft AI for $9.99 a month, or Virtual Combat Simulator GM for $9.99 a month.',
   path: '/pricing',
 });
 
-const pricingFaq = [
+const plans = [
   {
-    question: 'Can I try the products before paying?',
-    answer:
-      'All our products are free to start. Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, and MasterTyping are all free to open and use. You only need a subscription when you want AI-assisted features — the core tools work without paying.',
+    id: 'ai-features',
+    name: 'GameMasterCraft AI',
+    eyebrow: 'Campaign side',
+    price: '$9.99',
+    description:
+      'For GMs who want campaign memory and AI-assisted prep, but already have the table side covered.',
+    features: [
+      'Campaign workspace for NPCs, factions, places, lore, and recaps',
+      'AI-assisted brainstorming and prep',
+      'Keep using the core campaign workspace without the VCS plan',
+    ],
+    cta: 'Choose GameMasterCraft',
   },
   {
-    question: 'When do I need a subscription?',
-    answer:
-      'The $9.99/month subscription unlocks AI assistance across GameMasterCraft and SagaCraft. This includes AI brainstorming, drafting help, outlining support, and revision suggestions. The core organizational features — character tracking, plot management, timelines, lore — are free.',
+    id: 'bundle',
+    name: 'GameMaster Studio',
+    eyebrow: 'Campaign + table',
+    price: '$14.99',
+    description:
+      'For GMs who want the full rhythm: prepare the campaign in GameMasterCraft and run the encounter in VCS.',
+    features: [
+      'Everything in GameMasterCraft AI',
+      'VCS paid Game Master tools',
+      'Save $5 each month compared with both standalone plans',
+    ],
+    cta: 'Choose Studio',
+    featured: true,
   },
   {
-    question: 'Is there a deal for Game Masters who want AI in both tools?',
-    answer:
-      'Yes. There is a bundle that combines AI access for GameMasterCraft and Virtual Combat Simulator for Game Masters who want the campaign workspace and the combat tool together with full AI features.',
-  },
-  {
-    question: 'What is Gravity and why does it not have a price yet?',
-    answer:
-      'Gravity is a simultaneous-turn strategy game currently in early beta. The browser build is still limited to the studio team and testers, so there is no open signup or paid plan listed yet. The product page has the details.',
-  },
-  {
-    question: 'Which product is right for me?',
-    answer:
-      'Use Virtual Combat Simulator if you run tabletop RPG encounters and want faster, cleaner combat management. Use GameMasterCraft if you are a game master who needs to organize campaigns, NPCs, factions, and session continuity. Use SagaCraft if you are writing fiction and need to track characters, plots, chapters, and story canon. Use Four Star General if you want serious WWII tactical strategy. Use MasterTyping if you want to improve your typing speed and accuracy. Use Gravity if simultaneous-turn strategy with ship systems sounds like your game.',
+    id: 'virtual-combat-simulator',
+    name: 'VCS Game Master',
+    eyebrow: 'Table side',
+    price: '$9.99',
+    description:
+      'For GMs who need a cleaner battle room without adding a campaign planning subscription.',
+    features: [
+      'Battle map, tokens, fog, grid, and measurement tools',
+      'Initiative, hit points, conditions, and turn control',
+      'Paid storage and Game Master tools',
+    ],
+    cta: 'Choose VCS',
   },
 ];
 
-function formatPrice(value?: number) {
-  return typeof value === 'number' ? `$${value.toFixed(2)}/month` : 'See page for details';
-}
+const faq = [
+  {
+    question: 'Do I have to buy the full Studio plan?',
+    answer:
+      'No. GameMasterCraft AI and VCS Game Master stay available as individual $9.99 monthly subscriptions. Choose Studio only when you want both.',
+  },
+  {
+    question: 'Why is Studio $14.99 instead of $19.98?',
+    answer:
+      'Studio bundles the two $9.99 plans and saves you $5 each month. It is the better fit when both campaign prep and encounter control are part of your regular GM work.',
+  },
+  {
+    question: 'Can I try the tools before subscribing?',
+    answer:
+      'Yes. Both tools are free to open and try. Choose a paid plan when you want GameMasterCraft AI features, the paid VCS Game Master tools, or both.',
+  },
+  {
+    question: 'Can I cancel later?',
+    answer:
+      'Subscriptions are monthly. You can manage your plan from your account and stop the next renewal when you no longer need it.',
+  },
+  {
+    question: 'Does Studio automatically sync every campaign and combat change?',
+    answer:
+      'Not yet. The handoff foundation is built, while the customer-facing connection is still being finished. Today, the GM chooses what encounter details become campaign history.',
+  },
+];
 
 export default function PricingPage() {
   return (
-    <div style={{ background: '#f8fafc' }}>
-      <FacebookViewContent
-        contentId="pricing_page"
-        contentName="Pricing Page"
-        contentType="page"
-      />
-      <StructuredDataScript data={createFaqSchema(pricingFaq)} />
+    <div className={styles.page}>
+      <StructuredDataScript data={createFaqSchema(faq)} />
 
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1d4ed8 45%, #7c3aed 100%)',
-          color: 'white',
-          padding: '78px 0 72px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <ModernBackground />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.14)', zIndex: 1 }} />
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: '860px' }}>
-            <div
-              style={{
-                display: 'inline-block',
-                marginBottom: '1rem',
-                padding: '0.45rem 0.95rem',
-                borderRadius: '999px',
-                background: 'rgba(255,255,255,0.12)',
-                border: '1px solid rgba(255,255,255,0.16)',
-                fontSize: '0.82rem',
-                fontWeight: 800,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Pricing and access
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4rem)', lineHeight: 1.06, fontWeight: 900, margin: '0 0 1rem' }}>
-              Most products are free to start. One requires a subscription. Here is what you get either way.
-            </h1>
-            <p style={{ fontSize: '1.12rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              All products are free to open and use. Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, and MasterTyping are free to start. The $9.99/month subscription unlocks AI features across GameMasterCraft and SagaCraft. Gravity is in early beta with no paid plan listed yet.
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              For the games and tools, paid upgrades add something specific — more storage, more scenarios, expanded history — but you can start without paying. For GameMasterCraft and SagaCraft, the core workspace is free. AI assistance requires a subscription, handled inside the apps.
-            </p>
-          </div>
-        </div>
+      <section className={styles.hero}>
+        <p className={styles.eyebrow}>Simple monthly plans</p>
+        <h1>Bring the whole Studio, or take the module you need.</h1>
+        <p>
+          No need to pay for both if your current setup already handles half the
+          job. GameMasterCraft and VCS remain available on their own.
+        </p>
       </section>
 
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
-        <section style={{ marginBottom: '2.5rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Free to start — AI features are the upgrade</h2>
-          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            All products are free to open and use. Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, and MasterTyping all let you start without paying. The paid upgrades add specific features: more storage and GM tools for VCS, more scenarios for Four Star General, deeper history for MasterTyping, and AI assistance for GameMasterCraft and SagaCraft.
-          </p>
-          <p style={{ margin: 0, color: '#334155', lineHeight: 1.85 }}>
-            GameMasterCraft and SagaCraft give you the full organizational workspace for free — NPCs, factions, characters, plots, timelines, lore. When you want AI brainstorming, drafting help, or revision suggestions, the app will prompt you to subscribe. $9.99 a month or $99 a year.
-          </p>
-        </section>
+      <main>
+        <section className={styles.planSection} aria-labelledby="plans-heading">
+          <div className={styles.sectionHeading}>
+            <p className={styles.eyebrow}>Choose your side of the screen</p>
+            <h2 id="plans-heading">Three plans. One honest difference.</h2>
+          </div>
 
-        <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>What each product costs</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
-            {PRODUCT_DEFINITIONS.filter(p => p.slug !== 'contentcraft').map((product) => (
+          <div className={styles.planGrid}>
+            {plans.map((plan) => (
               <article
-                key={product.slug}
-                id={product.slug}
-                style={{
-                  background: 'white',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '22px',
-                  overflow: 'hidden',
-                  boxShadow: '0 12px 30px rgba(15,23,42,0.05)',
-                }}
+                key={plan.id}
+                className={plan.featured ? styles.featured : undefined}
               >
-                <div style={{ background: product.theme.gradient, color: 'white', padding: '1rem 1.1rem' }}>
-                  <div style={{ fontSize: '0.8rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.9 }}>
-                    {product.category}
-                  </div>
-                  <h3 style={{ margin: '0.45rem 0 0.3rem', fontSize: '1.3rem', fontWeight: 800 }}>{product.name}</h3>
-                  <p style={{ margin: 0, lineHeight: 1.7, color: 'rgba(255,255,255,0.88)' }}>{product.primaryAudience}</p>
-                </div>
-                <div style={{ padding: '1.1rem 1.15rem' }}>
-                  <p style={{ margin: '0 0 0.7rem', color: '#0f172a', fontSize: '1.2rem', fontWeight: 900 }}>
-                    {product.offerPrice ? formatPrice(product.offerPrice) : (product.slug === 'gamemastercraft' || product.slug === 'sagacraft') ? 'Free (AI features $9.99/mo)' : 'Free to start'}
-                  </p>
-                  <p style={{ margin: '0 0 0.8rem', color: '#334155', lineHeight: 1.8 }}>
-                    {product.pricingModel}.
-                  </p>
-                  <p style={{ margin: '0 0 1rem', color: '#475569', lineHeight: 1.8 }}>
-                    {product.availability}.
-                  </p>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem', marginBottom: '1rem' }}>
-                    <Link
-                      href={product.officialPath}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        padding: '0.82rem 1.1rem',
-                        borderRadius: '999px',
-                        background: '#0f172a',
-                        color: 'white',
-                        textDecoration: 'none',
-                        fontWeight: 800,
-                      }}
-                    >
-                      Visit {product.name}
-                    </Link>
-                    <Link
-                      href={product.helpPath}
-                      style={{
-                        display: 'inline-flex',
-                        alignItems: 'center',
-                        padding: '0.82rem 1.1rem',
-                        borderRadius: '999px',
-                        background: product.theme.tint,
-                        border: `1px solid ${product.theme.lightBorder}`,
-                        color: product.theme.dark,
-                        textDecoration: 'none',
-                        fontWeight: 800,
-                      }}
-                    >
-                      Help and docs
-                    </Link>
-                  </div>
-                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.75rem' }}>
-                    <LaunchAppButton
-                      appSlug={product.slug}
-                      style={{
-                        background: product.theme.dark,
-                        color: 'white',
-                        padding: '0.82rem 1.1rem',
-                        borderRadius: '999px',
-                        fontWeight: 800,
-                        border: 'none',
-                        cursor: 'pointer',
-                      }}
-                    >
-                      {product.slug === 'gravity' ? 'Open Gravity' : `Try ${product.name}`}
-                    </LaunchAppButton>
-                  </div>
-                </div>
+                {plan.featured && <span className={styles.valueFlag}>Best value</span>}
+                <p className={styles.planEyebrow}>{plan.eyebrow}</p>
+                <h3>{plan.name}</h3>
+                <p className={styles.price}>
+                  <strong>{plan.price}</strong>
+                  <span> / month</span>
+                </p>
+                <p className={styles.description}>{plan.description}</p>
+                <ul>
+                  {plan.features.map((feature) => (
+                    <li key={feature}>{feature}</li>
+                  ))}
+                </ul>
+                <SubscribeButton planId={plan.id} className={styles.planButton}>
+                  {plan.cta}
+                </SubscribeButton>
               </article>
             ))}
           </div>
+          <p className={styles.finePrint}>
+            Prices are in US dollars and renew monthly until canceled.
+          </p>
         </section>
 
-        <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Frequently asked questions</h2>
-          <div style={{ display: 'grid', gap: '0.8rem' }}>
-            {pricingFaq.map((entry) => (
-              <details
-                key={entry.question}
-                style={{
-                  background: 'white',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '18px',
-                  padding: '0.95rem 1rem',
-                  boxShadow: '0 8px 24px rgba(15,23,42,0.04)',
-                }}
-              >
-                <summary style={{ cursor: 'pointer', fontWeight: 800, color: '#0f172a' }}>{entry.question}</summary>
-                <p style={{ margin: '0.9rem 0 0', color: '#475569', lineHeight: 1.8 }}>{entry.answer}</p>
+        <section className={styles.comparisonSection} aria-labelledby="comparison-heading">
+          <div className={styles.sectionHeading}>
+            <p className={styles.eyebrow}>At a glance</p>
+            <h2 id="comparison-heading">What lives in each plan</h2>
+          </div>
+          <div className={styles.tableWrap}>
+            <table>
+              <thead>
+                <tr>
+                  <th scope="col">What you get</th>
+                  <th scope="col">GameMasterCraft</th>
+                  <th scope="col">Studio</th>
+                  <th scope="col">VCS</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">Campaign workspace</th>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <th scope="row">GameMasterCraft AI help</th>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
+                  <th scope="row">VCS encounter room</th>
+                  <td>—</td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">VCS paid GM tools</th>
+                  <td>—</td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                </tr>
+                <tr>
+                  <th scope="row">Monthly price</th>
+                  <td>$9.99</td>
+                  <td><strong>$14.99</strong></td>
+                  <td>$9.99</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </section>
+
+        <section className={styles.faqSection} aria-labelledby="faq-heading">
+          <div className={styles.sectionHeading}>
+            <p className={styles.eyebrow}>Questions before the session</p>
+            <h2 id="faq-heading">The details, without the fog.</h2>
+          </div>
+          <div className={styles.faqList}>
+            {faq.map((entry) => (
+              <details key={entry.question}>
+                <summary>{entry.question}</summary>
+                <p>{entry.answer}</p>
               </details>
             ))}
           </div>

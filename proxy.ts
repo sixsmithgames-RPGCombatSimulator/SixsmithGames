@@ -1,5 +1,5 @@
 import { clerkMiddleware, createRouteMatcher } from '@clerk/nextjs/server';
-import { NextResponse } from 'next/server';
+import { NextResponse, type NextFetchEvent, type NextRequest } from 'next/server';
 
 import { SITE_HOSTNAME } from '@/lib/site';
 
@@ -24,7 +24,7 @@ function slugifyTag(tag: string) {
     .replace(/-+/g, '-');
 }
 
-export default clerkMiddleware(async (auth, request) => {
+const handleRequestWithClerk = clerkMiddleware(async (auth, request) => {
   const host = request.headers.get('x-forwarded-host') || request.headers.get('host') || '';
   const legacyDestination = LEGACY_REDIRECTS[request.nextUrl.pathname];
 
@@ -74,6 +74,28 @@ export default clerkMiddleware(async (auth, request) => {
     await auth.protect();
   }
 });
+
+/**
+ * Keep public localhost pages independent from Clerk's production handshake.
+ *
+ * The live site still passes every matched request through Clerk. During local
+ * development, public pages do not need an auth handshake; skipping it avoids
+ * a localhost self-proxy loop while protected account and API routes continue
+ * through the normal Clerk middleware.
+ */
+export default function proxy(request: NextRequest, event: NextFetchEvent) {
+  const isApiRoute = request.nextUrl.pathname.startsWith('/api/');
+  const canSkipLocalClerk =
+    process.env.NODE_ENV === 'development'
+    && !isProtectedRoute(request)
+    && !isApiRoute;
+
+  if (canSkipLocalClerk) {
+    return NextResponse.next();
+  }
+
+  return handleRequestWithClerk(request, event);
+}
 
 export const config = {
   matcher: [

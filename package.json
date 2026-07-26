@@ -7,6 +7,7 @@
     "build": "next build",
     "start": "next start",
     "lint": "next lint",
+    "content:validate": "node scripts/validate-gamemaster-content-kit.mjs",
     "test": "npm run test:jest && npm run test:playwright",
     "test:jest": "node ./node_modules/jest/bin/jest.js --runInBand",
     "test:playwright": "node ./node_modules/@playwright/test/cli.js test",

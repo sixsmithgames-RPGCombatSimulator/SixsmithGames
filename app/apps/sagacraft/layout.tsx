@@ -9,6 +9,7 @@ export const metadata = buildPageMetadata({
   title: product.title,
   description: product.metaDescription,
   path: product.officialPath,
+  noIndex: true,
 });
 
 export default function SagaCraftLayout({ children }: { children: ReactNode }) {

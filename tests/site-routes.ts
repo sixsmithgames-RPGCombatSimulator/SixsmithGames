@@ -1,14 +1,14 @@
 import { BLOG_POSTS } from '../lib/blogPosts';
 import { toTagRoute } from '../lib/blogTags';
-import { HELP_TOPIC_ORDER, PRODUCT_DEFINITIONS } from '../lib/productContent';
+import { HELP_TOPIC_ORDER, PUBLIC_PRODUCT_DEFINITIONS } from '../lib/productContent';
 
 const blogTagRoutes = Array.from(
   new Set(BLOG_POSTS.flatMap((post) => post.tags.map((tag) => toTagRoute(tag)))),
 ).sort();
 
 const blogPostRoutes = BLOG_POSTS.map((post) => `/blog/${post.slug}`);
-const productRoutes = PRODUCT_DEFINITIONS.map((product) => `/apps/${product.slug}`);
-const helpRoutes = PRODUCT_DEFINITIONS.flatMap((product) => [
+const productRoutes = PUBLIC_PRODUCT_DEFINITIONS.map((product) => `/apps/${product.slug}`);
+const helpRoutes = PUBLIC_PRODUCT_DEFINITIONS.flatMap((product) => [
   `/help/${product.slug}`,
   ...HELP_TOPIC_ORDER.map((topic) => `/help/${product.slug}/${topic}`),
 ]);
@@ -17,8 +17,11 @@ export const publicRoutes = [
   '/',
   '/about',
   '/about/facts',
+  '/apps/contentcraft',
   ...productRoutes,
+  '/apps/virtual-combat-simulator/character-sheet',
   '/account',
+  '/articles',
   '/blog',
   ...blogPostRoutes,
   ...blogTagRoutes,

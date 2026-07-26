@@ -145,6 +145,16 @@ export const PRODUCT_DEFINITIONS: ProductDefinition[] = [
   fourStarGeneralProductDefinition,
 ];
 
+/**
+ * Public product collections must use this list.
+ *
+ * SagaCraft remains in PRODUCT_DEFINITIONS so the owner-only page and its
+ * historical content still work. It is deliberately absent here so public
+ * navigation, search feeds, help indexes, and browser sweeps do not expose it.
+ */
+export const PUBLIC_PRODUCT_DEFINITIONS: ProductDefinition[] =
+  PRODUCT_DEFINITIONS.filter((product) => product.slug !== 'sagacraft');
+
 export const PRODUCT_DEFINITIONS_BY_SLUG = Object.fromEntries(
   PRODUCT_DEFINITIONS.map((product) => [product.slug, product]),
 ) as Record<AppSlug, ProductDefinition>;

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import { buildPageMetadata } from '@/lib/metadata';
-import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
 import { SITE_NAME } from '@/lib/site';
@@ -50,7 +50,7 @@ export default function FactsPage() {
               <strong>Brand spelling:</strong> Sixsmith Games.
             </p>
             <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
-              <strong>Studio summary:</strong> Sixsmith Games builds browser-based games and creative tools for game masters, writers, worldbuilders, strategy players, and people who want practical typing improvement.
+              <strong>Studio summary:</strong> GameMaster Studio combines campaign preparation in GameMasterCraft with encounter control in Virtual Combat Simulator for tabletop game masters.
             </p>
             <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
               <strong>Support:</strong> <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 700 }}>https://sixsmithgames.com/support</Link>
@@ -64,7 +64,7 @@ export default function FactsPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Product list</h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
-            {PRODUCT_DEFINITIONS.map((product) => (
+            {PUBLIC_PRODUCT_DEFINITIONS.map((product) => (
               <article key={product.slug} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
                 <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>{product.name}</h3>
                 <p style={{ margin: '0 0 0.75rem', color: '#475569', lineHeight: 1.8 }}>{product.oneSentence}</p>
@@ -76,13 +76,21 @@ export default function FactsPage() {
                 </p>
                 <p style={{ margin: '0 0 0.35rem', color: '#334155', lineHeight: 1.8 }}>
                   <strong>Official page:</strong>{' '}
-                  <Link href={product.officialPath} style={{ color: '#1d4ed8', fontWeight: 700 }}>
+                  <Link
+                    href={product.officialPath}
+                    style={{ color: '#1d4ed8', fontWeight: 700, overflowWrap: 'anywhere' }}
+                  >
                     {`https://sixsmithgames.com${product.officialPath}`}
                   </Link>
                 </p>
                 <p style={{ margin: 0, color: '#334155', lineHeight: 1.8 }}>
                   <strong>Official app URL:</strong>{' '}
-                  <a href={product.appUrl} target="_blank" rel="noopener noreferrer" style={{ color: '#1d4ed8', fontWeight: 700 }}>
+                  <a
+                    href={product.appUrl}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    style={{ color: '#1d4ed8', fontWeight: 700, overflowWrap: 'anywhere' }}
+                  >
                     {product.appUrl}
                   </a>
                 </p>
@@ -97,7 +105,7 @@ export default function FactsPage() {
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What games and tools does Sixsmith Games make?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Sixsmith Games makes Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity. The official product pages linked above describe the audience and current scope for each one.
+                GameMaster Studio is the flagship, built from GameMasterCraft and Virtual Combat Simulator. Sixsmith Games also keeps public pages for Four Star General, MasterTyping, Gravity, and other tucked-away products.
               </p>
             </div>
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
@@ -110,12 +118,6 @@ export default function FactsPage() {
               <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is GameMasterCraft?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
                 GameMasterCraft is a campaign planning workspace for tabletop RPG game masters. It helps organize NPCs, factions, locations, session notes, and campaign continuity. The core workspace is free — AI features require a subscription.
-              </p>
-            </div>
-            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is SagaCraft?</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                SagaCraft is a story continuity workspace for fiction writers. It helps organize characters, plots, chapters, settings, timelines, and lore. The core workspace is free — AI writing assistance requires a subscription.
               </p>
             </div>
           </div>

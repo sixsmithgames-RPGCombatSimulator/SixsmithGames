@@ -8,15 +8,16 @@ import { buildPageMetadata } from '@/lib/metadata';
 import {
   HELP_TOPIC_ORDER,
   HELP_TOPIC_TITLES,
-  PRODUCT_DEFINITIONS,
+  PUBLIC_PRODUCT_DEFINITIONS,
   PRODUCT_DEFINITIONS_BY_SLUG,
 } from '@/lib/productContent';
+import { canCurrentUserSeeSagaCraft } from '@/lib/productVisibility.server';
 import { pageGutter } from '@/lib/responsive';
 import { createBreadcrumbSchema } from '@/lib/schema';
 import { SITE_URL } from '@/lib/site';
 
 export function generateStaticParams() {
-  return PRODUCT_DEFINITIONS.map((product) => ({ product: product.slug }));
+  return PUBLIC_PRODUCT_DEFINITIONS.map((product) => ({ product: product.slug }));
 }
 
 export async function generateMetadata({
@@ -35,6 +36,17 @@ export async function generateMetadata({
     });
   }
 
+  if (definition.slug === 'sagacraft') {
+    return {
+      ...buildPageMetadata({
+        title: `${definition.name} Help | Sixsmith Games`,
+        description: `Private help for ${definition.name}.`,
+        path: definition.helpPath,
+      }),
+      robots: { index: false, follow: false },
+    };
+  }
+
   return buildPageMetadata({
     title: `${definition.name} Help | Getting Started, Core Features, and Product Scope`,
     description: `Read help for ${definition.name}, including getting started, core features, common use cases, current scope, and pricing basics.`,
@@ -51,6 +63,10 @@ export default async function ProductHelpIndexPage({
   const definition = PRODUCT_DEFINITIONS_BY_SLUG[product as keyof typeof PRODUCT_DEFINITIONS_BY_SLUG];
 
   if (!definition) {
+    notFound();
+  }
+
+  if (definition.slug === 'sagacraft' && !(await canCurrentUserSeeSagaCraft())) {
     notFound();
   }
 

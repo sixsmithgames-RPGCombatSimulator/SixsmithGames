@@ -7,6 +7,7 @@
 
 import { useUser, SignInButton } from '@clerk/nextjs';
 import { APP_URLS, PLANS, type AppSlug, type SubscriptionInfo } from '@/lib/subscription';
+import { isSagaCraftOwnerEmail } from '@/lib/productVisibility';
 import { useSubscriptionAccess } from '@/lib/useSubscriptionAccess';
 import { cardPadding, fluidGrid, pageGutter, touchTargetClassName } from '@/lib/responsive';
 
@@ -102,7 +103,12 @@ export default function AccountPage() {
   const sub = accessInfo || EMPTY_SUBSCRIPTION_INFO;
   const isActive = sub.accessibleApps.length > 0 || sub.isAdmin;
   const freeAppSlugs: AppSlug[] = ['virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
-  const visibleApps = appDetails.filter((app) => app.slug !== 'gravity' || sub.isDummySubscriber);
+  const ownerCanSeeSagaCraft = isSagaCraftOwnerEmail(email);
+  const visibleApps = appDetails.filter((app) => {
+    if (app.slug === 'sagacraft') return ownerCanSeeSagaCraft;
+    if (app.slug === 'gravity') return sub.isDummySubscriber;
+    return true;
+  });
 
   const card: React.CSSProperties = {
     background: 'white',
@@ -197,7 +203,7 @@ export default function AccountPage() {
               ) : (
                 <div style={{ display: 'flex', alignItems: 'center', gap: '1.5rem', flexWrap: 'wrap' }}>
                   <p style={{ color: '#6b7280', fontSize: '0.9375rem', margin: 0 }}>
-                    You don&apos;t have an active AI subscription. All products are free to use — AI features in GameMasterCraft and SagaCraft require a paid plan.
+                    You don&apos;t have an active Studio subscription. GameMasterCraft AI and the paid VCS Game Master tools require a plan.
                   </p>
                   <a href="/pricing" className={touchTargetClassName} style={{
                     display: 'inline-block', background: 'linear-gradient(135deg, #2563eb, #7c3aed)',
@@ -321,7 +327,7 @@ export default function AccountPage() {
               Start with any product — upgrade for AI features
             </h2>
             <p style={{ color: 'rgba(255,255,255,0.7)', fontSize: '1rem', margin: '0 0 1.75rem', maxWidth: '480px', marginLeft: 'auto', marginRight: 'auto' }}>
-              All products are free to start. GameMasterCraft and SagaCraft include AI assistance with a subscription — brainstorming, drafting help, and revision support.
+              GameMasterCraft and VCS are free to start. Subscribe to either module on its own, or choose Studio for both.
             </p>
             <a href="/pricing" className={touchTargetClassName} style={{
               display: 'inline-block', background: 'white', color: '#1e3a8a',

@@ -2,13 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 
 import { buildPageMetadata } from '@/lib/metadata';
-import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { fluidGrid, pageGutter } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Products | Sixsmith Games Product Lineup',
   description:
-    'Explore the full Sixsmith Games lineup: Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity.',
+    'Explore GameMaster Studio and the public Sixsmith Games product lineup.',
   path: '/tools',
 });
 
@@ -30,7 +30,7 @@ export default function ToolsPage() {
 
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `2.5rem ${pageGutter} 4rem` }}>
         <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('260px'), gap: '1rem' }}>
-          {PRODUCT_DEFINITIONS.map((product) => (
+          {PUBLIC_PRODUCT_DEFINITIONS.map((product) => (
             <article key={product.slug} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', overflow: 'hidden', boxShadow: '0 10px 28px rgba(15,23,42,0.05)' }}>
               <div style={{ background: product.theme.gradient, color: 'white', padding: '1rem 1.1rem' }}>
                 <p style={{ margin: 0, fontSize: '0.8rem', fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase', opacity: 0.88 }}>

@@ -15,7 +15,7 @@ export function createOrganizationSchema() {
     url: SITE_URL,
     logo: `${SITE_URL}/apple-icon.png`,
     description:
-      'Sixsmith Games builds browser-based games and creative tools for game masters, writers, worldbuilders, strategy players, and people who want practical typing improvement.',
+      'Sixsmith Games builds GameMaster Studio for campaign preparation in GameMasterCraft and encounter control in Virtual Combat Simulator.',
     contactPoint: {
       '@type': 'ContactPoint',
       contactType: 'customer support',

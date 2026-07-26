@@ -130,11 +130,19 @@ export default function SubscribeButton({
   const activePlans = getActivePlans(user?.publicMetadata);
   const metadataCanAccessThisApp = planId === 'bundle'
     ? activePlans.includes('bundle')
+    : planId === 'ai-features'
+      ? activePlans.includes('ai-features') || activePlans.includes('bundle')
     : appPlanId && isAppPlanId
       ? canAccessApp(appPlanId, user?.publicMetadata)
       : false;
   const serverCanAccessThisApp = planId === 'bundle'
     ? Boolean(accessInfo?.plans.includes('bundle') || accessInfo?.isAdmin)
+    : planId === 'ai-features'
+      ? Boolean(
+        accessInfo?.plans.includes('ai-features')
+        || accessInfo?.plans.includes('bundle')
+        || accessInfo?.isAdmin,
+      )
     : appPlanId && isAppPlanId
       ? Boolean(accessInfo?.accessibleApps.includes(appPlanId))
       : false;

@@ -9,25 +9,25 @@ export const rootViewport: Viewport = {
 
 export const rootMetadata: Metadata = {
   metadataBase: new URL(SITE_URL),
-  title: 'Sixsmith Games - Browser-Based Games and Tools',
+  title: 'GameMaster Studio | Campaign Prep and VTT Combat',
   description: SITE_DESCRIPTION,
   keywords: [
     'Sixsmith Games',
     'Virtual Combat Simulator',
     'GameMasterCraft',
-    'SagaCraft',
     'MasterTyping',
     'Four Star General',
     'tactical combat simulator',
     'campaign planning for game masters',
-    'novel writing tools',
+    'VTT for game masters',
+    'RPG campaign management',
     'WWII tactical strategy game',
     'typing training for creators and gamers',
   ],
   openGraph: {
-    title: 'Sixsmith Games - Browser-Based Games and Tools',
+    title: 'GameMaster Studio | Campaign Prep and VTT Combat',
     description:
-      'Explore Virtual Combat Simulator, GameMasterCraft, SagaCraft, Four Star General, MasterTyping, and Gravity on the official Sixsmith Games site.',
+      'Prepare the campaign in GameMasterCraft and run the encounter in Virtual Combat Simulator.',
     url: '/',
     siteName: SITE_NAME,
     locale: 'en_US',
@@ -36,9 +36,9 @@ export const rootMetadata: Metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Sixsmith Games - Browser-Based Games and Tools',
+    title: 'GameMaster Studio | Campaign Prep and VTT Combat',
     description:
-      'Official product pages, pricing, help, and blog content for the Sixsmith Games lineup.',
+      'Campaign memory and VTT encounter control for tabletop game masters.',
     images: ['/apple-icon.png'],
   },
   alternates: {

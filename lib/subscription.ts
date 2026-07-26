@@ -34,16 +34,16 @@ export interface PlanInfo {
 export const PLANS: Record<string, PlanInfo> = {
   bundle: {
     id: 'bundle',
-    name: 'AI Features + VCS Bundle',
+    name: 'GameMaster Studio',
     price: pricingCatalog.bundle.monthlyPrice,
-    apps: ['gamemastercraft', 'sagacraft', 'virtual-combat-simulator'],
+    apps: ['gamemastercraft', 'virtual-combat-simulator'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_BUNDLE || 'price_1TIK5IGeOb0qevnhqqzkBPtv',
   },
   'ai-features': {
     id: 'ai-features',
-    name: 'AI Features',
+    name: 'GameMasterCraft AI',
     price: pricingCatalog['ai-features'].monthlyPrice,
-    apps: ['gamemastercraft', 'sagacraft'],
+    apps: ['gamemastercraft'],
     stripePriceId: process.env.NEXT_PUBLIC_STRIPE_PRICE_CONTENTCRAFT || 'price_1T2a1NGeOb0qevnhOaJNFSyf',
   },
   'virtual-combat-simulator': {

@@ -1,0 +1,233 @@
+/* Fixed navigation uses the same warm, low-light palette as the flagship page. */
+.header {
+  position: fixed;
+  inset: 0 0 auto;
+  z-index: 1000;
+  border-bottom: 1px solid rgba(226, 193, 130, 0.16);
+  background: rgba(11, 13, 18, 0.94);
+  color: #fff9ed;
+  backdrop-filter: blur(18px);
+}
+
+.nav {
+  width: min(1440px, 100%);
+  min-height: 76px;
+  margin: 0 auto;
+  padding: 0 var(--page-gutter);
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.brand {
+  min-width: 220px;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.72rem;
+  color: inherit;
+  text-decoration: none;
+}
+
+.brand img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+}
+
+.brand span {
+  display: grid;
+  line-height: 1.08;
+}
+
+.brand strong {
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.08rem;
+  letter-spacing: 0.01em;
+}
+
+.brand small {
+  margin-top: 0.25rem;
+  color: #b8ad9b;
+  font-size: 0.66rem;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.desktopLinks {
+  margin-left: auto;
+  display: flex;
+  align-items: center;
+  gap: clamp(0.65rem, 1.5vw, 1.25rem);
+}
+
+.navLink,
+.moreButton,
+.signInLink {
+  min-height: 44px;
+  padding: 0.35rem 0;
+  border: 0;
+  background: none;
+  color: #d9d1c4;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font: inherit;
+  font-size: 0.88rem;
+  font-weight: 700;
+  text-decoration: none;
+  white-space: nowrap;
+  cursor: pointer;
+}
+
+.navLink:hover,
+.moreButton:hover,
+.signInLink:hover {
+  color: #f1c97b;
+}
+
+.moreMenu {
+  position: relative;
+}
+
+.dropdown {
+  position: absolute;
+  top: calc(100% + 0.55rem);
+  right: 0;
+  min-width: 245px;
+  padding: 0.55rem;
+  border: 1px solid rgba(226, 193, 130, 0.2);
+  border-radius: 14px;
+  background: #151821;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+}
+
+.dropdown p,
+.mobilePanel > p {
+  margin: 0;
+  padding: 0.6rem 0.75rem;
+  color: #927f61;
+  font-size: 0.68rem;
+  font-weight: 800;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.dropdown a {
+  min-height: 44px;
+  padding: 0.65rem 0.75rem;
+  border-radius: 9px;
+  color: #e8e0d3;
+  display: flex;
+  align-items: center;
+  font-size: 0.9rem;
+  font-weight: 650;
+  text-decoration: none;
+}
+
+.dropdown a:hover {
+  background: rgba(241, 201, 123, 0.09);
+  color: #f1c97b;
+}
+
+.desktopAccount {
+  margin-left: clamp(0.4rem, 1vw, 0.85rem);
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+}
+
+.primaryCta {
+  min-height: 44px;
+  padding: 0.68rem 1.05rem;
+  border: 1px solid #e7bd6c;
+  border-radius: 999px;
+  background: linear-gradient(135deg, #f1d18f, #c9903c);
+  color: #1b1208;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.88rem;
+  font-weight: 850;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 8px 24px rgba(201, 144, 60, 0.2);
+}
+
+.primaryCta:hover {
+  filter: brightness(1.07);
+  transform: translateY(-1px);
+}
+
+.mobileButton,
+.mobilePanel {
+  display: none;
+}
+
+@media (max-width: 1120px) {
+  .desktopLinks,
+  .desktopAccount {
+    display: none;
+  }
+
+  .mobileButton {
+    width: 44px;
+    height: 44px;
+    margin-left: auto;
+    border: 1px solid rgba(226, 193, 130, 0.22);
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.04);
+    color: #fff9ed;
+    display: grid;
+    place-items: center;
+    font-size: 1.35rem;
+    cursor: pointer;
+  }
+
+  .mobilePanel {
+    max-height: calc(100vh - 76px);
+    padding: 0.75rem var(--page-gutter) 1.25rem;
+    border-top: 1px solid rgba(226, 193, 130, 0.12);
+    background: #0d1016;
+    display: grid;
+    overflow-y: auto;
+  }
+
+  .mobilePanel > a,
+  .mobileAccount > a {
+    min-height: 48px;
+    padding: 0.7rem 0.75rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.06);
+    color: #ece3d6;
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    text-decoration: none;
+  }
+
+  .mobileAccount {
+    margin-top: 0.75rem;
+    display: grid;
+    gap: 0.6rem;
+  }
+
+  .mobileAccount .primaryCta {
+    border-bottom: 1px solid #e7bd6c;
+    color: #1b1208;
+    justify-content: center;
+  }
+}
+
+@media (max-width: 420px) {
+  .brand {
+    min-width: 0;
+  }
+
+  .brand strong {
+    font-size: 0.96rem;
+  }
+
+  .brand small {
+    font-size: 0.58rem;
+  }
+}

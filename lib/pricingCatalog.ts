@@ -26,17 +26,17 @@ export interface PricingCatalogEntry {
 export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
   'ai-features': {
     planId: 'ai-features',
-    name: 'AI Features',
+    name: 'GameMasterCraft AI',
     slug: 'ai-features',
     monthlyPrice: 9.99,
     icon: '/icons/contentcraft-optimized.png',
     color: '#a855f7',
     gradient: 'linear-gradient(135deg, #7c3aed, #2563eb)',
-    summary: 'AI assistance for GameMasterCraft and SagaCraft — brainstorming, drafting, outlining, and revision help.',
+    summary: 'AI help for campaign prep, NPCs, locations, factions, and the pieces you need before game night.',
     highlights: [
-      'AI brainstorming and drafting in GameMasterCraft',
-      'AI writing assistance in SagaCraft',
-      'Works across both creative tools',
+      'AI-assisted campaign brainstorming',
+      'Prep help for NPCs, places, and factions',
+      'Your campaign workspace stays usable without AI',
     ],
   },
   'virtual-combat-simulator': {
@@ -89,16 +89,16 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
   },
   bundle: {
     planId: 'bundle',
-    name: 'AI Features + VCS Bundle',
+    name: 'GameMaster Studio',
     monthlyPrice: 14.99,
     productId: 'prod_UGroftGaUS7177',
     color: '#4c1d95',
     gradient: 'linear-gradient(135deg, #312e81, #7c3aed)',
-    summary: 'One monthly plan for AI features in GameMasterCraft/SagaCraft plus Virtual Combat Simulator upgrades.',
+    summary: 'Campaign prep in GameMasterCraft plus the paid Game Master tools in Virtual Combat Simulator.',
     highlights: [
-      'AI features for GameMasterCraft and SagaCraft',
-      'Virtual Combat Simulator paid features',
-      'Monthly bundle price: $14.99',
+      'GameMasterCraft AI-assisted prep',
+      'Virtual Combat Simulator GM tools',
+      'One subscription for the campaign and the table',
     ],
   },
 };

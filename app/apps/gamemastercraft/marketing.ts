@@ -28,7 +28,7 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
   helpPath: '/help/gamemastercraft',
   supportPath: '/support',
   appUrl: APP_URLS.gamemastercraft,
-  relatedProducts: ['virtual-combat-simulator', 'sagacraft'],
+  relatedProducts: ['virtual-combat-simulator'],
   supportingArticleSlugs: [],
   theme: {
     gradient: 'linear-gradient(135deg, #1a0533 0%, #3b0764 46%, #7c3aed 100%)',
@@ -150,9 +150,9 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
         'GameMasterCraft is for campaign planning, worldbuilding, lore, NPCs, factions, locations, and session continuity. Virtual Combat Simulator is for running tactical tabletop combat with maps, tokens, initiative, and encounter flow.',
     },
     {
-      question: 'How is GameMasterCraft different from SagaCraft?',
+      question: 'Can I subscribe to GameMasterCraft without VCS?',
       answer:
-        'GameMasterCraft is for tabletop RPG game masters preparing campaigns and sessions. SagaCraft is for fiction writers organizing novels, series, characters, chapters, timelines, and story continuity.',
+        'Yes. GameMasterCraft AI remains available as its own $9.99 monthly subscription. Choose the full GameMaster Studio plan only when you also want the paid Game Master tools in Virtual Combat Simulator.',
     },
   ],
   gettingStarted: [

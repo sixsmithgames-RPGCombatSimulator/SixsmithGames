@@ -4,7 +4,7 @@ import Link from 'next/link';
 import Breadcrumbs from '@/components/Breadcrumbs';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import { buildPageMetadata } from '@/lib/metadata';
-import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { fluidGrid, pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
 
@@ -54,7 +54,7 @@ export default function AboutPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Products and audiences</h2>
           <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('240px'), gap: '1rem' }}>
-            {PRODUCT_DEFINITIONS.map((product) => (
+            {PUBLIC_PRODUCT_DEFINITIONS.map((product) => (
               <article key={product.slug} style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.1rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
                 <h3 style={{ margin: '0 0 0.4rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>
                   <Link href={product.officialPath} style={{ color: '#0f172a', textDecoration: 'none' }}>

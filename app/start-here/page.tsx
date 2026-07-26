@@ -26,13 +26,6 @@ const paths = [
     accent: '#7c3aed',
   },
   {
-    title: 'I want to write my novel',
-    href: '/apps/sagacraft',
-    description: 'Use SagaCraft for fiction writing, character tracking, plots, chapters, and story continuity.',
-    button: 'Go to SagaCraft',
-    accent: '#2563eb',
-  },
-  {
     title: 'I want a strategy game',
     href: '/apps/fourstargeneral',
     description: 'Use Four Star General for WWII tactical command and play.',

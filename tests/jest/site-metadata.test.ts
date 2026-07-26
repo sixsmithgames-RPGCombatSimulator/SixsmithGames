@@ -84,8 +84,12 @@ describe('route coverage', () => {
   it('covers every static app route in the Playwright sweep', () => {
     const staticRoutes = discoverStaticPageRoutes(path.join(process.cwd(), 'app'));
     const normalizedPublicRoutes = new Set(publicRoutes.map((route) => route.split('?')[0]));
+    const ownerOnlyRoutes = new Set(['/apps/sagacraft']);
 
     for (const route of staticRoutes) {
+      // Owner-only routes are tested through access-control tests, never the
+      // anonymous public-browser sweep.
+      if (ownerOnlyRoutes.has(route)) continue;
       expect(normalizedPublicRoutes).toContain(route);
     }
   });

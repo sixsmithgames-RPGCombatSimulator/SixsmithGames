@@ -2,6 +2,7 @@ import 'server-only';
 
 import type { AppSlug, BillingRecord, SubscriptionInfo, SubscriptionStatus } from '@/lib/subscription';
 import { getActivePlans, hasActiveSubscription, PLANS } from '@/lib/subscription';
+import { isSagaCraftOwnerEmail } from '@/lib/productVisibility';
 
 type EmailAddressLike = {
   emailAddress?: string | null;
@@ -10,8 +11,8 @@ type EmailAddressLike = {
   } | null;
 } | null | undefined;
 
-const ALL_APPS: AppSlug[] = ['contentcraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
-const ALL_NON_GRAVITY_APPS: AppSlug[] = ['contentcraft', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
+const ALL_APPS: AppSlug[] = ['contentcraft', 'gamemastercraft', 'gravity', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
+const ALL_NON_GRAVITY_APPS: AppSlug[] = ['contentcraft', 'gamemastercraft', 'virtual-combat-simulator', 'fourstargeneral', 'mastertyping'];
 
 const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com', 'quentind@gmail.com', 'djmerdur@gmail.com'];
 
@@ -50,12 +51,15 @@ export function getResolvedAccessibleApps(
   publicMetadata: Record<string, unknown> | undefined | null,
   primaryEmail: EmailAddressLike
 ): AppSlug[] {
+  const verifiedEmail = getVerifiedPrimaryEmail(primaryEmail);
+  const ownerCanSeeSagaCraft = isSagaCraftOwnerEmail(verifiedEmail);
+
   if (isDummySubscriber(primaryEmail)) {
-    return ALL_APPS;
+    return ownerCanSeeSagaCraft ? [...ALL_APPS, 'sagacraft'] : ALL_APPS;
   }
 
   if (isAdminEmail(primaryEmail)) {
-    return ALL_NON_GRAVITY_APPS;
+    return ownerCanSeeSagaCraft ? [...ALL_NON_GRAVITY_APPS, 'sagacraft'] : ALL_NON_GRAVITY_APPS;
   }
 
   if (!hasActiveSubscription(publicMetadata)) return [];
@@ -65,6 +69,12 @@ export function getResolvedAccessibleApps(
   for (const planId of plans) {
     const plan = PLANS[planId];
     if (plan) plan.apps.forEach((app) => apps.add(app));
+  }
+
+  // SagaCraft is not granted by a public subscription while it is owner-only.
+  apps.delete('sagacraft');
+  if (ownerCanSeeSagaCraft) {
+    apps.add('sagacraft');
   }
 
   return Array.from(apps);
@@ -78,6 +88,7 @@ export function getResolvedSubscriptionInfo(
   const dummy = isDummySubscriber(primaryEmail);
 
   if (dummy) {
+    const dummyApps = getResolvedAccessibleApps(publicMetadata, primaryEmail);
     return {
       status: 'active',
       plan: 'bundle',
@@ -88,7 +99,7 @@ export function getResolvedSubscriptionInfo(
       nextBillingDate: '2026-03-01',
       billingHistory: DUMMY_BILLING_HISTORY,
       memberSince: '2025-09-01',
-      accessibleApps: ALL_APPS,
+      accessibleApps: dummyApps,
     };
   }
 

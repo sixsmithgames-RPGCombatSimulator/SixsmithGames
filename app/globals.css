@@ -38,8 +38,11 @@ body {
   overflow-x: clip;
 }
 
-main {
+.site-main {
   width: 100%;
+  min-height: 100vh;
+  padding-top: 76px;
+  overflow-x: clip;
 }
 
 img,

@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { getAllArticles, getFeaturedArticles } from '@/lib/blog';
 import { buildPageMetadata } from '@/lib/metadata';
 import { renderInline } from '@/components/PostBody';
-import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { pageGutter } from '@/lib/responsive';
 
 export const metadata: Metadata = buildPageMetadata({
@@ -68,7 +68,7 @@ export default async function ArticlesPage() {
         <section style={{ marginBottom: '2.5rem' }}>
           <h2 style={{ margin: '0 0 1rem', fontSize: '1.9rem', fontWeight: 900, color: '#0f172a' }}>Browse by product</h2>
           <div style={{ display: 'grid', gap: '1rem' }}>
-            {PRODUCT_DEFINITIONS.filter((product) => allPosts.some((post) => post.relatedProducts.includes(product.slug))).map((product) => {
+            {PUBLIC_PRODUCT_DEFINITIONS.filter((product) => allPosts.some((post) => post.relatedProducts.includes(product.slug))).map((product) => {
               const productPosts = allPosts.filter((post) => post.relatedProducts.includes(product.slug));
               return (
                 <section

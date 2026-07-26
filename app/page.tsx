@@ -1,315 +1,344 @@
+/**
+ * GameMaster Studio flagship landing page.
+ *
+ * The copy speaks directly to tabletop GMs and stays within verified product
+ * behavior. In particular, it describes the current GMC-to-VCS workflow as a
+ * deliberate handoff rather than claiming an automatic sync that is not yet in
+ * the customer interface.
+ */
+
 import type { Metadata } from 'next';
+import Image from 'next/image';
 import Link from 'next/link';
 
-import ModernBackground from '@/components/ModernBackground';
+import MarketingLink from '@/components/MarketingLink';
+import StructuredDataScript from '@/components/StructuredDataScript';
+import SubscribeButton from '@/components/SubscribeButton';
 import { buildPageMetadata } from '@/lib/metadata';
-import { PRODUCT_DEFINITIONS } from '@/lib/productContent';
-import { fluidGrid, pageGutter } from '@/lib/responsive';
-
-export const dynamic = 'force-static';
+import { productScreenshots } from '@/lib/screenshots';
+import { createFaqSchema } from '@/lib/schema';
+import styles from './flagship.module.css';
 
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Sixsmith Games | Browser-Based Games and Tools for GMs, Writers, Strategy Players, and Typists',
+  title: 'GameMaster Studio | Campaign Prep and VTT Combat for Game Masters',
   description:
-    'Sixsmith Games makes browser-based tools and games for D&D combat management, worldbuilding, WWII tactical strategy, typing practice, and simultaneous-turn strategy.',
+    'Keep campaign lore, NPCs, factions, maps, tokens, initiative, hit points, and conditions under control with GameMasterCraft and Virtual Combat Simulator.',
   path: '/',
 });
 
-const featuredProducts = [
-  ...PRODUCT_DEFINITIONS.filter((product) => product.slug !== 'gravity'),
-  PRODUCT_DEFINITIONS.find((product) => product.slug === 'gravity')!,
+const gmcScreenshot = productScreenshots.gameMasterCraft[2];
+const vcsScreenshot = productScreenshots.virtualCombatSimulator[0];
+
+const faq = [
+  {
+    question: 'What is GameMaster Studio?',
+    answer:
+      'GameMaster Studio brings GameMasterCraft and Virtual Combat Simulator together for game masters. GameMasterCraft holds the campaign side of the work. VCS handles the live encounter side.',
+  },
+  {
+    question: 'Can I subscribe to GameMasterCraft or VCS on its own?',
+    answer:
+      'Yes. GameMasterCraft AI is $9.99 per month, and the Virtual Combat Simulator GM plan is $9.99 per month. The full GameMaster Studio plan includes both for $14.99 per month.',
+  },
+  {
+    question: 'Does combat automatically change my campaign notes?',
+    answer:
+      'Not yet. The handoff foundation is in place, but the customer-facing workflow is still being finished. Today, you choose what encounter details belong in campaign history and carry those consequences into your next prep.',
+  },
+  {
+    question: 'Can I start without paying?',
+    answer:
+      'Yes. You can open the tools and get a feel for the workflow before choosing a paid plan. Paid plans unlock the AI-assisted GameMasterCraft features and the paid Game Master tools in VCS.',
+  },
+];
+
+const workflowSteps = [
+  {
+    number: '01',
+    title: 'Build the campaign',
+    body: 'Keep the NPCs, factions, places, lore, and loose threads you will need again in GameMasterCraft.',
+  },
+  {
+    number: '02',
+    title: 'Prep what matters tonight',
+    body: 'Pull together the people, stakes, and encounter details that are likely to reach the table.',
+  },
+  {
+    number: '03',
+    title: 'Run the fight in VCS',
+    body: 'Keep the map, tokens, initiative, hit points, conditions, and combat controls in one battle room.',
+  },
+  {
+    number: '04',
+    title: 'Carry the consequences forward',
+    body: 'Save the combat record, decide what becomes campaign truth, and start the next session with the fallout already in mind.',
+  },
 ];
 
 export default function HomePage() {
   return (
-    <div style={{ background: '#f8fafc' }}>
-      <section
-        style={{
-          background: 'linear-gradient(135deg, #0f172a 0%, #1e3a8a 45%, #312e81 72%, #7c2d12 100%)',
-          color: 'white',
-          padding: '78px 0 72px',
-          position: 'relative',
-          overflow: 'hidden',
-        }}
-      >
-        <ModernBackground />
-        <div style={{ position: 'absolute', inset: 0, background: 'rgba(15,23,42,0.18)', zIndex: 1 }} />
-        <div style={{ maxWidth: '1200px', margin: '0 auto', padding: `0 ${pageGutter}`, position: 'relative', zIndex: 2 }}>
-          <div style={{ maxWidth: '820px' }}>
-            <div
-              style={{
-                display: 'inline-block',
-                marginBottom: '1rem',
-                padding: '0.45rem 0.95rem',
-                borderRadius: '999px',
-                background: 'rgba(255,255,255,0.12)',
-                border: '1px solid rgba(255,255,255,0.16)',
-                fontSize: '0.82rem',
-                fontWeight: 800,
-                letterSpacing: '0.08em',
-                textTransform: 'uppercase',
-              }}
+    <div className={styles.page}>
+      <StructuredDataScript data={createFaqSchema(faq)} />
+
+      <section className={styles.hero}>
+        <div className={styles.heroGlow} aria-hidden="true" />
+        <div className={styles.heroCopy}>
+          <p className={styles.eyebrow}>GameMaster Studio</p>
+          <h1>
+            Keep the campaign straight.
+            <span>Run the fight.</span>
+          </h1>
+          <p className={styles.heroLead}>
+            GameMasterCraft keeps hold of the people, places, factions, and lore.
+            Virtual Combat Simulator keeps the map, tokens, initiative, hit
+            points, and conditions moving when the dice hit the table.
+          </p>
+          <div className={styles.heroActions}>
+            <MarketingLink
+              href="/sign-up"
+              className={styles.goldButton}
+              eventName="studio_signup_click"
+              eventData={{ placement: 'hero', plan: 'free_start' }}
             >
-              Sixsmith Games
-            </div>
-            <h1 style={{ fontSize: 'clamp(2.3rem, 6vw, 4.2rem)', lineHeight: 1.05, fontWeight: 900, margin: '0 0 1rem' }}>
-              Browser-based tools and games for game masters, writers, strategy players, and typists.
-            </h1>
-            <p style={{ fontSize: '1.16rem', lineHeight: 1.9, color: 'rgba(255,255,255,0.9)', margin: '0 0 1rem' }}>
-              Virtual Combat Simulator helps game masters run tabletop combat without the paper chase. GameMasterCraft is your campaign workspace for NPCs, factions, locations, and session continuity. SagaCraft keeps your novel organized — characters, plots, timelines, and story canon that actually holds together. Four Star General is serious WWII tactics with no hidden dice. MasterTyping is typing practice for adults who want real improvement. Gravity is simultaneous-turn strategy built around locked orders, ship systems, and hard tactical tradeoffs.
-            </p>
-            <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.84)', margin: '0 0 1.4rem' }}>
-              Pick the one you came here for. If you are not sure yet, the Start Here guide walks you to the right page in a minute.
-            </p>
-            <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
-              <Link
-                href="/tools"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '0.95rem 1.45rem',
-                  borderRadius: '999px',
-                  background: 'white',
-                  color: '#1d4ed8',
-                  fontWeight: 800,
-                  textDecoration: 'none',
-                }}
-              >
-                Find the right product
-              </Link>
-              <Link
-                href="/about/facts"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  padding: '0.95rem 1.45rem',
-                  borderRadius: '999px',
-                  background: 'rgba(255,255,255,0.12)',
-                  border: '1px solid rgba(255,255,255,0.18)',
-                  color: 'white',
-                  fontWeight: 800,
-                  textDecoration: 'none',
-                }}
-              >
-                Read the Sixsmith Games facts
-              </Link>
-            </div>
+              Start free
+            </MarketingLink>
+            <MarketingLink
+              href="#workflow"
+              className={styles.ghostButton}
+              eventName="studio_workflow_click"
+              eventData={{ placement: 'hero' }}
+            >
+              See the workflow
+            </MarketingLink>
+          </div>
+          <p className={styles.heroNote}>
+            Free to start. Choose Studio or subscribe to either module on its own.
+          </p>
+        </div>
+
+        <div className={styles.heroVisual} aria-label="GameMaster Studio product views">
+          <div className={`${styles.screenCard} ${styles.campaignScreen}`}>
+            <span>Campaign side · GameMasterCraft</span>
+            <Image
+              src={gmcScreenshot.src}
+              alt={gmcScreenshot.alt}
+              width={gmcScreenshot.width}
+              height={gmcScreenshot.height}
+              priority
+              sizes="(max-width: 900px) 92vw, 46vw"
+            />
+          </div>
+          <div className={`${styles.screenCard} ${styles.combatScreen}`}>
+            <span>Table side · VCS</span>
+            <Image
+              src={vcsScreenshot.src}
+              alt={vcsScreenshot.alt}
+              width={vcsScreenshot.width}
+              height={vcsScreenshot.height}
+              priority
+              sizes="(max-width: 900px) 92vw, 46vw"
+            />
           </div>
         </div>
       </section>
 
-      <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
-        <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>What Sixsmith Games builds</h2>
-          <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('240px'), gap: '1rem' }}>
-            {featuredProducts.map((product) => (
-              <article
-                key={product.slug}
-                style={{
-                  background: 'white',
-                  border: '1px solid #e5e7eb',
-                  borderRadius: '22px',
-                  padding: '1.15rem 1.2rem',
-                  boxShadow: '0 10px 28px rgba(15,23,42,0.05)',
-                }}
-              >
-                <div
-                  style={{
-                    display: 'inline-block',
-                    marginBottom: '0.7rem',
-                    padding: '0.3rem 0.7rem',
-                    borderRadius: '999px',
-                    background: product.theme.tint,
-                    border: `1px solid ${product.theme.lightBorder}`,
-                    color: product.theme.dark,
-                    fontSize: '0.78rem',
-                    fontWeight: 800,
-                    letterSpacing: '0.06em',
-                    textTransform: 'uppercase',
-                  }}
-                >
-                  {product.category}
-                </div>
-                <h3 style={{ margin: '0 0 0.55rem', fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>
-                  <Link href={product.officialPath} style={{ color: '#0f172a', textDecoration: 'none' }}>
-                    {product.name}
-                  </Link>
-                </h3>
-                <p style={{ margin: '0 0 0.7rem', color: '#334155', lineHeight: 1.8 }}>{product.oneSentence}</p>
-                <p style={{ margin: '0 0 0.9rem', color: '#475569', lineHeight: 1.75 }}>
-                  {product.primaryAudience}.
-                </p>
-                <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.65rem' }}>
-                  <Link href={product.officialPath} style={{ color: product.theme.accent, fontWeight: 800, textDecoration: 'none' }}>
-                    See {product.name}
-                  </Link>
-                </div>
-              </article>
-            ))}
-          </div>
-        </section>
+      <div className={styles.tableStrip}>
+        <span>Browser-based</span>
+        <span>Free to start</span>
+        <span>Campaign prep + encounter control</span>
+        <span>Keep the final call in the GM&apos;s hands</span>
+      </div>
 
-        <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Start with the product that fits how you play, write, or practice</h2>
-          <div style={{ display: 'grid', gap: '1rem' }}>
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Virtual Combat Simulator if you want faster tabletop RPG encounters.</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Virtual Combat Simulator is the right fit when the real problem is battle-map clarity, initiative handling, tokens, hit points, and encounter flow. If you are a game master who wants a focused D&amp;D combat simulator, start with{' '}
-                <Link href="/apps/virtual-combat-simulator" style={{ color: '#1d4ed8', fontWeight: 700, textDecoration: 'underline' }}>
-                  the D&amp;D combat simulator product page
-                </Link>
-                .
-              </p>
-            </div>
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose GameMasterCraft if you run tabletop RPGs and need your campaign organized.</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                GameMasterCraft is for game masters running campaigns that outgrow notebook scribbles. NPCs, factions, locations, session notes, and lore that stays consistent across sessions. Start with{' '}
-                <Link href="/apps/gamemastercraft" style={{ color: '#7c3aed', fontWeight: 700, textDecoration: 'underline' }}>
-                  the campaign planning tool for game masters
-                </Link>
-                .
-              </p>
-            </div>
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose SagaCraft if you are writing fiction and your story is getting complicated.</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                SagaCraft is for novelists and fiction writers organizing characters, plots, chapters, and continuity. When your story bible is scattered across twenty files, start with{' '}
-                <Link href="/apps/sagacraft" style={{ color: '#2563eb', fontWeight: 700, textDecoration: 'underline' }}>
-                  the story continuity workspace for writers
-                </Link>
-                .
-              </p>
-            </div>
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Four Star General if you want serious WWII tactical strategy.</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Four Star General is for players who want skill-based tactics, hard command decisions, supply, reserves, and mission profiles. If you care more about those choices than spectacle, go to{' '}
-                <Link href="/apps/fourstargeneral" style={{ color: '#b45309', fontWeight: 700, textDecoration: 'underline' }}>
-                  the WWII tactical strategy game page
-                </Link>
-                .
-              </p>
-            </div>
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose MasterTyping if you want typing practice that still feels like a game.</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                MasterTyping is for people who want typing improvement, skill building, and practice consistency without a dead training loop. If you want a typing practice game with assessment, drills, progression, and better habit-building, use{' '}
-                <Link href="/apps/mastertyping" style={{ color: '#16a34a', fontWeight: 700, textDecoration: 'underline' }}>
-                  the typing practice game page
-                </Link>
-                .
-              </p>
-            </div>
-            <div style={{ background: 'white', borderRadius: '20px', border: '1px solid #e5e7eb', padding: '1.2rem 1.25rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
-              <h3 style={{ margin: '0 0 0.5rem', fontSize: '1.15rem', fontWeight: 800, color: '#0f172a' }}>Choose Gravity if you want simultaneous-turn tactical challenge.</h3>
-              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                Gravity is for strategy and board-game players who want locked orders, ship systems management, and simultaneous turns where planning actually matters. If that sounds like your kind of game, start with{' '}
-                <Link href="/apps/gravity" style={{ color: '#0ea5e9', fontWeight: 700, textDecoration: 'underline' }}>
-                  the Gravity product page
-                </Link>
-                .
-              </p>
-            </div>
-          </div>
-        </section>
-
-        <section
-          id="support"
-          style={{
-            marginBottom: '3rem',
-            position: 'relative',
-            overflow: 'hidden',
-            borderRadius: '26px',
-            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
-            background: 'linear-gradient(135deg, #241811 0%, #4a2e1f 62%, #76502d 100%)',
-            color: '#fffaf0',
-            boxShadow: '0 18px 48px rgba(36,24,17,0.18)',
-          }}
-        >
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              width: '260px',
-              height: '260px',
-              right: '-80px',
-              top: '-120px',
-              borderRadius: '50%',
-              background: 'rgba(211,178,122,0.16)',
-            }}
-          />
-          <div style={{ position: 'relative', maxWidth: '780px' }}>
-            <div
-              style={{
-                marginBottom: '0.8rem',
-                color: '#e5c995',
-                fontSize: '0.78rem',
-                fontWeight: 800,
-                letterSpacing: '0.1em',
-                textTransform: 'uppercase',
-              }}
-            >
-              Independent by design
-            </div>
-            <h2 style={{ fontSize: 'clamp(1.8rem, 4vw, 2.5rem)', lineHeight: 1.15, fontWeight: 900, margin: '0 0 0.85rem' }}>
-              Sixsmith Games is built by one independent developer.
-            </h2>
-            <p style={{ margin: '0 0 1.35rem', maxWidth: '690px', color: 'rgba(255,250,240,0.84)', lineHeight: 1.85 }}>
-              I design, build, and maintain everything you see here. If you like what I am making and want to help me keep at it, consider buying me a coffee. It is a small gesture, but a genuinely appreciated one.
+      <section id="why-studio" className={styles.problemSection}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>The part nobody misses</p>
+          <h2>Your notes know the villain. Your VTT does not.</h2>
+          <p>
+            The session starts, five tabs open, and the one detail you need is
+            buried in last month&apos;s notes. Studio gives the campaign and the
+            encounter a clear place to live.
+          </p>
+        </div>
+        <div className={styles.problemGrid}>
+          <article>
+            <span aria-hidden="true">✦</span>
+            <h3>Stop rebuilding context</h3>
+            <p>
+              Keep recurring NPCs, factions, places, and consequences where you
+              can find them before the recap turns into archaeology.
             </p>
-            <form action="/api/coffee-checkout" method="post">
-              <button
-                type="submit"
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  justifyContent: 'center',
-                  padding: '0.95rem 1.45rem',
-                  border: '1px solid #ead4aa',
-                  borderRadius: '999px',
-                  background: '#fffaf0',
-                  color: '#3b271a',
-                  font: 'inherit',
-                  fontWeight: 800,
-                  cursor: 'pointer',
-                  boxShadow: '0 10px 28px rgba(0,0,0,0.2)',
-                }}
-              >
-                Buy me a coffee
-              </button>
-            </form>
-          </div>
-        </section>
+          </article>
+          <article>
+            <span aria-hidden="true">⚔</span>
+            <h3>Keep combat on one screen</h3>
+            <p>
+              Run the battle map, turn order, tokens, hit points, conditions,
+              and the active combatant from a shared encounter view.
+            </p>
+          </article>
+          <article>
+            <span aria-hidden="true">◆</span>
+            <h3>Decide what becomes canon</h3>
+            <p>
+              A dropped sword can be forgotten. A dead rival cannot. You decide
+              which table events belong in the campaign&apos;s future.
+            </p>
+          </article>
+        </div>
+      </section>
 
-        <section style={{ marginBottom: '3rem' }}>
-          <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Where to go next</h2>
-          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Each product page shows what the product does, who it is for, and how to get started.
+      <section className={styles.modulesSection}>
+        <div className={styles.moduleCopy}>
+          <p className={styles.eyebrow}>Campaign side</p>
+          <h2>GameMasterCraft remembers what the party changed.</h2>
+          <p>
+            Keep NPCs, factions, locations, lore, timelines, recaps, and the
+            hooks you promised yourself you would remember in one campaign
+            workspace. Add AI help when you want a faster first pass at prep.
           </p>
-          <p style={{ margin: '0 0 0.9rem', color: '#334155', lineHeight: 1.85 }}>
-            Pricing, help, articles, and official product details are all one click away.
+          <Link href="/apps/gamemastercraft">See GameMasterCraft →</Link>
+        </div>
+        <div className={styles.moduleImage}>
+          <Image
+            src={gmcScreenshot.src}
+            alt={gmcScreenshot.alt}
+            width={gmcScreenshot.width}
+            height={gmcScreenshot.height}
+            sizes="(max-width: 900px) 92vw, 48vw"
+          />
+        </div>
+
+        <div className={`${styles.moduleCopy} ${styles.combatCopy}`}>
+          <p className={styles.eyebrow}>Table side</p>
+          <h2>VCS keeps the fight readable when the turn gets messy.</h2>
+          <p>
+            Put the battle map, tokens, initiative, hit points, conditions,
+            character context, fog, measuring, and combat controls together so
+            everyone can see what matters now.
           </p>
-          <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.8rem' }}>
-            <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Pricing and access
-            </Link>
-            <Link href="/help" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Help and support
-            </Link>
-            <Link href="/articles" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Read the articles
-            </Link>
-            <Link href="/blog" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Blog
-            </Link>
-            <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 800, textDecoration: 'none' }}>
-              Contact support
-            </Link>
-          </div>
-        </section>
-      </main>
+          <Link href="/apps/virtual-combat-simulator">See VCS →</Link>
+        </div>
+        <div className={`${styles.moduleImage} ${styles.combatImage}`}>
+          <Image
+            src={vcsScreenshot.src}
+            alt={vcsScreenshot.alt}
+            width={vcsScreenshot.width}
+            height={vcsScreenshot.height}
+            sizes="(max-width: 900px) 92vw, 48vw"
+          />
+        </div>
+      </section>
+
+      <section id="workflow" className={styles.workflowSection}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>One GM rhythm</p>
+          <h2>From “what did they do?” to “roll initiative.”</h2>
+          <p>
+            The current workflow keeps you in control of the handoff. Automation
+            will not quietly rewrite the campaign behind your screen.
+          </p>
+        </div>
+        <ol className={styles.workflowGrid}>
+          {workflowSteps.map((step) => (
+            <li key={step.number}>
+              <span>{step.number}</span>
+              <h3>{step.title}</h3>
+              <p>{step.body}</p>
+            </li>
+          ))}
+        </ol>
+      </section>
+
+      <section className={styles.pricingSection}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>Pick the piece you need</p>
+          <h2>One Studio. Two modules. No forced bundle.</h2>
+          <p>
+            Use the full loop for $14.99 a month, or keep GameMasterCraft and VCS
+            as individual subscriptions for $9.99 a month each.
+          </p>
+        </div>
+
+        <div className={styles.priceGrid}>
+          <article>
+            <p className={styles.planName}>GameMasterCraft AI</p>
+            <p className={styles.price}><strong>$9.99</strong> / month</p>
+            <ul>
+              <li>Campaign workspace</li>
+              <li>AI-assisted prep</li>
+              <li>NPC, faction, place, and lore support</li>
+            </ul>
+            <SubscribeButton planId="ai-features" className={styles.planButton}>
+              Choose GameMasterCraft
+            </SubscribeButton>
+          </article>
+
+          <article className={styles.featuredPlan}>
+            <span className={styles.bestValue}>Best value</span>
+            <p className={styles.planName}>GameMaster Studio</p>
+            <p className={styles.price}><strong>$14.99</strong> / month</p>
+            <ul>
+              <li>Everything in GameMasterCraft AI</li>
+              <li>VCS paid Game Master tools</li>
+              <li>Save $5 compared with both separately</li>
+            </ul>
+            <SubscribeButton planId="bundle" className={styles.planButton}>
+              Choose Studio
+            </SubscribeButton>
+          </article>
+
+          <article>
+            <p className={styles.planName}>VCS Game Master</p>
+            <p className={styles.price}><strong>$9.99</strong> / month</p>
+            <ul>
+              <li>Battle map and token tools</li>
+              <li>Initiative and turn control</li>
+              <li>Paid storage and GM tools</li>
+            </ul>
+            <SubscribeButton
+              planId="virtual-combat-simulator"
+              className={styles.planButton}
+            >
+              Choose VCS
+            </SubscribeButton>
+          </article>
+        </div>
+        <Link href="/pricing" className={styles.pricingLink}>
+          Compare the plans in full →
+        </Link>
+      </section>
+
+      <section className={styles.faqSection}>
+        <div className={styles.sectionHeading}>
+          <p className={styles.eyebrow}>Before you commit</p>
+          <h2>Straight answers for game masters.</h2>
+        </div>
+        <div className={styles.faqList}>
+          {faq.map((entry) => (
+            <details key={entry.question}>
+              <summary>{entry.question}</summary>
+              <p>{entry.answer}</p>
+            </details>
+          ))}
+        </div>
+      </section>
+
+      <section className={styles.finalCta}>
+        <p className={styles.eyebrow}>Your next session is coming</p>
+        <h2>Spend the prep on the game, not on finding the prep.</h2>
+        <p>
+          Start free, bring over one campaign, and see whether the Studio rhythm
+          fits the way you run.
+        </p>
+        <MarketingLink
+          href="/sign-up"
+          className={styles.goldButton}
+          eventName="studio_signup_click"
+          eventData={{ placement: 'final_cta', plan: 'free_start' }}
+        >
+          Start free
+        </MarketingLink>
+      </section>
     </div>
   );
 }

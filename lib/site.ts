@@ -2,7 +2,7 @@ export const SITE_NAME = 'Sixsmith Games';
 export const SITE_URL = 'https://sixsmithgames.com';
 export const SITE_HOSTNAME = 'sixsmithgames.com';
 export const SITE_DESCRIPTION =
-  'Sixsmith Games builds browser-based games and creative tools for game masters, worldbuilders, writers, strategy players, and people who want practical typing improvement.';
+  'GameMaster Studio combines campaign preparation in GameMasterCraft with encounter control in Virtual Combat Simulator for tabletop game masters.';
 
 export const DEFAULT_OG_IMAGE = {
   url: '/apple-icon.png',

@@ -6,7 +6,7 @@ import {
   getAllNewsTags,
 } from '@/lib/blog';
 import { slugifyTag } from '@/lib/blogTags';
-import { HELP_TOPIC_ORDER, PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { HELP_TOPIC_ORDER, PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
 import { SITE_URL } from '@/lib/site';
 
 /**
@@ -31,7 +31,6 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     '/privacy',
     '/terms',
     '/apps/gamemastercraft',
-    '/apps/sagacraft',
     '/apps/virtual-combat-simulator',
     '/apps/virtual-combat-simulator/character-sheet',
     '/apps/fourstargeneral',
@@ -43,7 +42,7 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: path === '' ? 1 : 0.8,
   }));
 
-  const helpPages: MetadataRoute.Sitemap = PRODUCT_DEFINITIONS.flatMap((product) => [
+  const helpPages: MetadataRoute.Sitemap = PUBLIC_PRODUCT_DEFINITIONS.flatMap((product) => [
     {
       url: `${SITE_URL}${product.helpPath}`,
       changefreq: 'weekly',
