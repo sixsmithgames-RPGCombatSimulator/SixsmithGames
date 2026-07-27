@@ -1,5 +1,6 @@
 import { BLOG_POSTS } from '@/lib/blogPosts';
 import type { BlogPost, PostContentType } from '@/lib/blogTypes';
+import { slugifyTag } from '@/lib/blogTags';
 import { canCurrentUserSeeContentCraft } from '@/lib/productVisibility.server';
 import { isAppSlug } from '@/lib/subscription';
 
@@ -103,6 +104,15 @@ function isPrivatePost(post: BlogPost): boolean {
   return post.relatedProducts.includes('contentcraft') || post.slug === 'what-is-contentcraft';
 }
 
+// These tags identify private product content when dynamic posts arrive from
+// the editorial feed without a relatedProducts value. Keeping the rule here
+// means tag hubs and sitemap generation share the same public privacy boundary.
+const PRIVATE_PUBLIC_TAGS = new Set(['contentcraft']);
+
+function isPrivatePublicTag(tag: string): boolean {
+  return PRIVATE_PUBLIC_TAGS.has(slugifyTag(tag));
+}
+
 async function publicPosts(): Promise<BlogPost[]> {
   return (await allPosts()).filter((post) => !isPrivatePost(post));
 }
@@ -137,7 +147,11 @@ async function getRecentPostsByType(contentType: PostContentType, count: number)
 
 async function getTagsByType(contentType: PostContentType): Promise<string[]> {
   const tags = new Set<string>();
-  (await postsByType(contentType)).forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
+  (await postsByType(contentType)).forEach((post) =>
+    post.tags
+      .filter((tag) => !isPrivatePublicTag(tag))
+      .forEach((tag) => tags.add(tag)),
+  );
   return Array.from(tags).sort((a, b) => a.localeCompare(b));
 }
 
@@ -165,12 +179,16 @@ export async function getRecentPosts(count: number): Promise<BlogPost[]> {
 
 export async function getAllTags(): Promise<string[]> {
   const tags = new Set<string>();
-  (await publicPosts()).forEach((post) => post.tags.forEach((tag) => tags.add(tag)));
+  (await publicPosts()).forEach((post) =>
+    post.tags
+      .filter((tag) => !isPrivatePublicTag(tag))
+      .forEach((tag) => tags.add(tag)),
+  );
   return Array.from(tags).sort((a, b) => a.localeCompare(b));
 }
 
 export async function getPostsByTag(tag: string): Promise<BlogPost[]> {
-  return (await allPosts()).filter((post) => post.tags.includes(tag));
+  return (await publicPosts()).filter((post) => post.tags.includes(tag));
 }
 
 export async function getAllArticles(): Promise<BlogPost[]> {
