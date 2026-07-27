@@ -15,7 +15,7 @@ export interface PricingCatalogEntry {
   name: string;
   slug?: string;
   monthlyPrice: number;
-  /** Intended standard monthly rate shown for comparison with the founding offer. */
+  /** Planned future monthly rate; it must never be presented as a price already charged. */
   standardMonthlyPrice?: number;
   productId?: string;
   icon?: string;
@@ -116,6 +116,7 @@ export const pricingCatalogList: PricingCatalogEntry[] = [
   pricingCatalog.bundle,
 ];
 
+/** Formats a numeric monthly charge consistently for all customer-facing price copy. */
 export function formatMonthlyPrice(price: number): string {
   return `$${price.toFixed(2)}/month`;
 }

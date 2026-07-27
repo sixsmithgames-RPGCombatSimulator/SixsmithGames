@@ -1,25 +1,32 @@
 import type { ProductDefinition } from '@/lib/productContent';
 import { APP_URLS } from '@/lib/subscription';
 
+/**
+ * Public VCS product story.
+ *
+ * SmartPaste is described as a reviewed intake workflow, not a promise of
+ * perfect parsing or permission to copy protected material. This keeps the
+ * strongest customer benefit aligned with the product's provenance controls.
+ */
 export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   slug: 'virtual-combat-simulator',
   name: 'Virtual Combat Simulator',
   descriptor: 'D&D combat simulator and battle map control room',
-  h1: 'Virtual Combat Simulator for D&D combat management',
-  title: 'Virtual Combat Simulator | D&D Combat Tracker with Battle Map and Initiative',
+  h1: 'Paste the character. Review the sheet. Run the fight.',
+  title: 'Virtual Combat Simulator | SmartPaste Character Import and D&D Combat Tracker',
   metaDescription:
-    'D&D combat tracker with battle map, tokens, and initiative management. Run faster D&D combat online with this combat management tool for game masters — a focused alternative to complex VTTs.',
+    'Use SmartPaste to review character text, then run D&D-style encounters with the same character sheet, battle map, tokens, initiative, hit points, and conditions.',
   heroEyebrow: 'Tabletop RPG Combat Management',
   heroValue:
-    'Run the fight in one browser tab — battle map, tokens, initiative, HP, conditions, action flow, and character context where the GM actually needs them.',
+    'Bring in permitted character text with SmartPaste, review what VCS recognized, then run the fight with the sheet, map, tokens, initiative, HP, conditions, and action flow in one browser tab.',
   heroSummary:
-    'Virtual Combat Simulator is for game masters and players who want D&D combat to run cleanly. Use it as a focused combat room for tactical encounters: keep the battlefield readable, keep turn order visible, and keep online or hybrid players synchronized without bouncing between a map app, dice app, character sheet, and scratch-paper initiative tracker.',
+    'Virtual Combat Simulator is for game masters and players who want D&D-style combat to run cleanly. SmartPaste sorts the abilities, weapons, spells, features, equipment, and notes it recognizes into a reviewable character sheet. Once you approve the result, that character is ready for the same focused room as the battle map, turn order, hit points, and conditions.',
   oneSentence:
     'Virtual Combat Simulator is a browser-based combat management tool for tabletop roleplaying games.',
   category: 'D&D combat tracker with battle map and initiative management',
   primaryAudience: 'Game masters and tabletop RPG players, especially D&D-adjacent groups',
   platform: 'Browser-based web app',
-  pricingModel: 'Free to start. Founding Game Master price $9.99/month (regularly $19.99/month) for more storage and expanded GM features while the early-GM offer is open',
+  pricingModel: 'Free to start. The founding Game Master price is $9.99/month while the early-GM offer is open; the planned standard price is $19.99/month',
   availability: 'Open in your browser and run combats right away. The paid upgrade is there when you need it, not before',
   applicationCategory: 'GameApplication',
   operatingSystem: 'Web browser',
@@ -64,7 +71,7 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   whatItIs: [
     'Virtual Combat Simulator is a focused combat simulator for tabletop RPG encounters. It is built around the part of play that often slows a session down: battle maps, tokens, initiative, hit points, conditions, and the moment-to-moment flow of combat.',
     'Virtual Combat Simulator is not an all-purpose campaign manager or a giant everything-in-one virtual tabletop. It is built to keep combat clear, synchronized, and easy to run for a game master who wants tactical clarity without burying the table under extra interface weight.',
-    'Virtual Combat Simulator is built around D&D-style encounter management.',
+    'SmartPaste is the front door for character data. Paste text you created, own, licensed, or are otherwise permitted to use; review recognized and uncertain choices; then apply the approved result to the character sheet used beside the battle map.',
   ],
   whoItIsFor: [
     'Virtual Combat Simulator is for game masters who want a cleaner way to run tactical combats without bouncing between battle maps, initiative trackers, notes, and character references.',
@@ -77,12 +84,18 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator also solves the visibility problem that shows up in hybrid or online play. When the battle map, tokens, and combat state live in different places, players stop reading the situation clearly. A single encounter view keeps the fight readable and helps everyone stay engaged.',
   ],
   howItWorks: [
-    'Set up or load the encounter map, place tokens, and establish the battle space the table will use.',
+    'Paste permitted character text into SmartPaste, review the abilities, weapons, spells, features, equipment, and longer notes it recognizes, and approve only what belongs on the sheet.',
+    'Set up or load the encounter map, place the approved character on a token, and establish the battle space the table will use.',
     'Track initiative, turn order, action flow, hit points, conditions, and other combat state from the same encounter view.',
     'Keep players synced to the same battle state so everyone can follow movement, token positions, and the current turn without extra bookkeeping.',
     'Use the product as the combat layer of the session while the game master keeps the narrative, rulings, and pacing in motion.',
   ],
   keyFeatures: [
+    {
+      title: 'SmartPaste character import',
+      description:
+        'Paste character text you are permitted to use, review what VCS recognized or inferred, and apply the approved details to a character sheet instead of retyping the whole thing.',
+    },
     {
       title: 'Battle map encounter control',
       description:
@@ -104,18 +117,13 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
         'Support online and hybrid play by giving players a shared combat view instead of a fragmented chain of screenshots and verbal corrections.',
     },
     {
-      title: 'Import-ready sheets and data',
-      description:
-        'Use import flows and visible stats so character and monster information is close to the encounter instead of hidden in another system.',
-    },
-    {
       title: 'Game Master upgrade path',
       description:
         'Start with the core encounter tools, then move into the paid Game Master tier when you need more storage and expanded capability.',
     },
   ],
   pricingAndAccess: [
-    'Virtual Combat Simulator is free to start. Signed-in users get the core combat management tool, and the current founding Game Master price of $9.99 per month (regularly $19.99/month) adds more storage and additional GM-oriented capability for groups that run encounters often.',
+    'Virtual Combat Simulator is free to start. Signed-in users get the core combat management tool, and the current founding Game Master price of $9.99 per month adds more storage and additional GM-oriented capability for groups that run encounters often. The planned standard price is $19.99 per month; that is a future price, not a former price.',
     'Try the core tool first, then decide whether the paid layer matches how often you run encounters.',
   ],
   faq: [
@@ -123,6 +131,11 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
       question: 'What is Virtual Combat Simulator?',
       answer:
         'Virtual Combat Simulator is a browser-based combat simulator for tabletop RPG encounters. Virtual Combat Simulator keeps battle maps, tokens, initiative, hit points, and encounter flow together so a game master can run combat with less bookkeeping.',
+    },
+    {
+      question: 'What does SmartPaste do?',
+      answer:
+        'SmartPaste takes character text you created, own, licensed, or are otherwise permitted to use and sorts the details it recognizes into the VCS character sheet. It labels source and certainty and asks you to review the result before applying it. Built-in rules text is limited to SRD-backed material.',
     },
     {
       question: 'Is Virtual Combat Simulator a VTT?',
@@ -147,16 +160,18 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     {
       question: 'How does pricing work for Virtual Combat Simulator?',
       answer:
-        'Virtual Combat Simulator is free to start, with an optional Game Master subscription at the current founding price of $9.99 per month (regularly $19.99/month). The free path covers the core encounter use case, while the paid tier is the upgrade for more storage and expanded GM capability.',
+        'Virtual Combat Simulator is free to start, with an optional Game Master subscription at the current founding price of $9.99 per month. The free path covers the core encounter use case, while the paid tier is the upgrade for more storage and expanded GM capability. The planned standard price is $19.99 per month.',
     },
   ],
   gettingStarted: [
-    'Open the Virtual Combat Simulator page to confirm it fits D&D-style encounter management rather than broader campaign tooling.',
-    'Launch the browser app, prepare a battle map, and place the tokens or encounter state you need for the session.',
+    'Open the character sheet and use SmartPaste with text you created, own, licensed, or are otherwise permitted to use.',
+    'Review what VCS recognized, correct uncertain choices, and apply only the character details you approve.',
+    'Prepare a battle map and place the approved character and other tokens you need for the session.',
     'Use initiative, turn order, hit points, and conditions from the same combat view so the table can follow the fight without side tools.',
     'If it becomes part of your regular game master workflow, check the pricing page for the Game Master upgrade.',
   ],
   commonUseCases: [
+    'Bringing a character into the battle room without retyping every ability, weapon, spell, feature, item, and longer note by hand.',
     'Running faster D&D combats online when the group needs maps, tokens, initiative, and hit points in one place.',
     'Managing hybrid combats where some players are remote and everyone needs the same encounter view.',
     'Handling boss fights or set-piece encounters where conditions, movement, and turn order can become hard to track verbally.',
@@ -166,12 +181,13 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator is a combat management tool, not a general campaign wiki or universal gaming platform.',
     'Virtual Combat Simulator focuses on battle maps, tokens, initiative, encounter flow, and related combat state. It is not meant to replace every tabletop tool a group might use.',
     'Virtual Combat Simulator is intentionally D&D-adjacent and tabletop RPG-specific because that is who the product is built for.',
+    'SmartPaste organizes user-permitted text and SRD-backed material for review. It does not grant rights to protected source text and does not promise a perfect import from every format.',
   ],
   featureDeepDives: [
     {
       title: 'Character sheet',
       description:
-        'A full tour of the Virtual Combat Simulator character sheet — ability scores, combat stats, spells, actions, features, equipment, biography, SmartPaste import, and the link to tokens in the battle room.',
+        'See how SmartPaste turns permitted character text into a reviewable VCS sheet, then tour the ability scores, combat stats, spells, actions, features, equipment, biography, and battle-room token link.',
       href: '/apps/virtual-combat-simulator/character-sheet',
       linkLabel: 'Tour the character sheet',
     },

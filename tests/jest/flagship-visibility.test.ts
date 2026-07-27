@@ -69,4 +69,36 @@ describe('GameMaster Studio product visibility', () => {
     expect(layoutSource).toContain("title: 'Page not found | Sixsmith Games'");
     expect(layoutSource).toContain('canCurrentUserSeeContentCraft');
   });
+
+  it('promotes SmartPaste with review and content-rights boundaries', () => {
+    const smartPasteSources = [
+      'app/page.tsx',
+      'app/apps/virtual-combat-simulator/marketing.ts',
+      'app/apps/virtual-combat-simulator/character-sheet/page.tsx',
+      'app/pricing/page.tsx',
+      'lib/helpContent.ts',
+    ].map((relativePath) => fs.readFileSync(path.join(process.cwd(), relativePath), 'utf8'));
+    const publicSmartPasteCopy = smartPasteSources.join('\n');
+
+    expect(publicSmartPasteCopy).toContain('SmartPaste character import');
+    expect(publicSmartPasteCopy).toContain('review');
+    expect(publicSmartPasteCopy).toContain('created, own, licensed');
+    expect(publicSmartPasteCopy).toContain('SRD-backed');
+    expect(publicSmartPasteCopy).not.toContain('D&D Beyond');
+    expect(publicSmartPasteCopy).not.toContain('Roll20');
+  });
+
+  it('labels planned standard prices as future prices rather than former discounts', () => {
+    const pricingSources = [
+      'app/page.tsx',
+      'app/pricing/page.tsx',
+      'app/apps/gamemastercraft/marketing.ts',
+      'app/apps/virtual-combat-simulator/marketing.ts',
+      'lib/helpContent.ts',
+    ].map((relativePath) => fs.readFileSync(path.join(process.cwd(), relativePath), 'utf8'));
+    const publicPricingCopy = pricingSources.join('\n');
+
+    expect(publicPricingCopy).toContain('planned standard');
+    expect(publicPricingCopy).not.toMatch(/Regularly\s+\$?\{?\$?(19|29)\.99/i);
+  });
 });

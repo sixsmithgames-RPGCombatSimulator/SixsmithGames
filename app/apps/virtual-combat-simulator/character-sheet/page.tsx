@@ -17,6 +17,7 @@ export const dynamic = 'force-static';
 const product = virtualCombatSimulatorProductDefinition;
 const CHARACTER_SHEET_DEEP_LINK = '/character/edit/new';
 
+/** Builds a stable local URL for a verified character-sheet screenshot. */
 function shotUrl(filename: string) {
   return `/images/vcs/${filename}`;
 }
@@ -171,6 +172,32 @@ const sheetZones: SheetZone[] = [
   },
 ];
 
+/**
+ * Explains the SmartPaste workflow in the same order a GM experiences it.
+ * Every step preserves the product's human-review and content-rights rules.
+ */
+const smartPasteSteps = [
+  {
+    number: '01',
+    title: 'Paste what you are allowed to use',
+    body: 'Bring character text you created, own, licensed, or are otherwise permitted to use. SmartPaste does not grant permission to copy protected source material.',
+  },
+  {
+    number: '02',
+    title: 'Review what VCS recognized',
+    body: 'Check abilities, weapons, spells, features, equipment, longer notes, source labels, and any uncertain or conflicting choices before they touch the sheet.',
+  },
+  {
+    number: '03',
+    title: 'Approve the character you will run',
+    body: 'Apply only the details you accept. That finished sheet is the one your token uses in the battle room.',
+  },
+];
+
+/**
+ * Covers character-sheet buying and usage questions. SmartPaste answers stay
+ * precise about review, provenance, and permitted source text.
+ */
 const sheetFaq = [
   {
     question: 'Is the Virtual Combat Simulator character sheet tied to D&D 5e?',
@@ -195,7 +222,12 @@ const sheetFaq = [
   {
     question: 'What does Smart Paste do?',
     answer:
-      'Smart Paste takes a block of text from a character builder, PDF, or notes app and classifies it into the canonical character model. Ability scores go to the ability grid, compact identity goes to the identity header, weapons go to the weapons table, spells go to the spells table, and long prose goes to the Character details page instead of landing in the Background field. Smart Paste is strict on purpose — the weapon table and the identity fields reject content that does not match their shape.',
+      'SmartPaste takes character text you created, own, licensed, or are otherwise permitted to use and sorts the parts it recognizes into the VCS character model. Ability scores go to the ability grid, weapons go to the weapons table, spells go to the spellbook, and longer prose goes to Character details. It labels source and certainty and asks you to review the result before applying it.',
+  },
+  {
+    question: 'Does SmartPaste include protected rulebook content?',
+    answer:
+      'No. VCS keeps its built-in rules-text baseline limited to SRD-backed or other openly licensed material already included in the product. SmartPaste is for text you created, own, licensed, or are otherwise permitted to use, and it requires you to confirm that before applying an import.',
   },
   {
     question: 'Is the character sheet the same as the token on the battle map?',
@@ -216,6 +248,10 @@ const breadcrumbItems = [
   { label: 'Character sheet', href: '/apps/virtual-combat-simulator/character-sheet' },
 ];
 
+/**
+ * Renders one captioned product screenshot and optionally makes the complete
+ * figure a tracked link to the public character-sheet editor.
+ */
 function Figure({
   filename,
   alt,
@@ -289,6 +325,7 @@ function Figure({
   );
 }
 
+/** Shares the high-contrast launch-button treatment used on dark sections. */
 function heroLaunchButtonStyle(): React.CSSProperties {
   return {
     background: 'white',
@@ -307,6 +344,7 @@ function heroLaunchButtonStyle(): React.CSSProperties {
   };
 }
 
+/** Shares the smaller launch-button treatment used beside feature descriptions. */
 function inlineLaunchButtonStyle(): React.CSSProperties {
   return {
     background: product.theme.accent,
@@ -325,6 +363,7 @@ function inlineLaunchButtonStyle(): React.CSSProperties {
   };
 }
 
+/** Renders the SmartPaste and character-sheet tour without exposing private character data. */
 export default function VcsCharacterSheetPage() {
   return (
     <div style={{ background: '#f8fafc' }}>
@@ -394,7 +433,7 @@ export default function VcsCharacterSheetPage() {
                   margin: '0 0 1rem',
                 }}
               >
-                The Virtual Combat Simulator D&amp;D character sheet editor
+                SmartPaste character import, built into the VCS character sheet
               </h1>
               <p
                 style={{
@@ -404,10 +443,17 @@ export default function VcsCharacterSheetPage() {
                   margin: '0 0 1rem',
                 }}
               >
-                Build your adventurer in one place — identity, combat stats, weapons, ability scores, skills, spells, equipment, wealth, features, and long-form character details — then hand them to a token on the battle map.
+                Paste character text you are permitted to use. SmartPaste sorts
+                the abilities, weapons, spells, features, equipment, and longer
+                notes it recognizes into one reviewable sheet. You make the
+                final call before anything is applied.
               </p>
               <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
-                Click the sheet to open the editor — no sign-in required. Play with ability scores, weapons, spells, and equipment right in your browser. Sign in only when you want to save your character, upload a portrait, or drop them onto a battle map.
+                Click the sheet to open the editor — no sign-in required. Play
+                with ability scores, weapons, spells, and equipment right in
+                your browser. Sign in when you want to use SmartPaste, save the
+                character, upload a portrait, print, or drop the character onto
+                a battle map.
               </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem' }}>
                 <LaunchAppButton
@@ -495,6 +541,77 @@ export default function VcsCharacterSheetPage() {
       </section>
 
       <main style={{ maxWidth: '1200px', margin: '0 auto', padding: `3rem ${pageGutter} 5rem` }}>
+        {/* Keep the source-rights boundary beside the feature promise so a GM
+            sees it before deciding what to paste, not after the import begins. */}
+        <section
+          id="smartpaste"
+          style={{
+            marginBottom: '3rem',
+            background: product.theme.dark,
+            color: 'white',
+            borderRadius: '22px',
+            padding: 'clamp(1.5rem, 4vw, 2.5rem)',
+            boxShadow: '0 20px 48px rgba(15,23,42,0.2)',
+          }}
+        >
+          <p
+            style={{
+              margin: '0 0 0.7rem',
+              color: '#f6d89a',
+              fontSize: '0.78rem',
+              fontWeight: 900,
+              letterSpacing: '0.09em',
+              textTransform: 'uppercase',
+            }}
+          >
+            SmartPaste character import
+          </p>
+          <h2 style={{ fontSize: 'clamp(1.75rem, 4vw, 2.4rem)', fontWeight: 900, margin: '0 0 0.8rem' }}>
+            Paste the sheet. Review the choices. Run the character.
+          </h2>
+          <p style={{ margin: '0 0 1.5rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.8, maxWidth: '780px' }}>
+            SmartPaste handles the sorting work while you keep control of what
+            reaches the sheet. Messy text becomes a review you can check; only
+            the details you approve are applied.
+          </p>
+          <ol
+            style={{
+              listStyle: 'none',
+              margin: 0,
+              padding: 0,
+              display: 'grid',
+              gridTemplateColumns: fluidGrid('240px'),
+              gap: '1rem',
+            }}
+          >
+            {smartPasteSteps.map((step) => (
+              <li
+                key={step.number}
+                style={{
+                  padding: '1.1rem',
+                  borderRadius: '16px',
+                  background: 'rgba(255,255,255,0.08)',
+                  border: '1px solid rgba(255,255,255,0.14)',
+                }}
+              >
+                <span style={{ color: '#f6d89a', fontWeight: 900 }}>{step.number}</span>
+                <h3 style={{ margin: '0.45rem 0', fontSize: '1.05rem' }}>{step.title}</h3>
+                <p style={{ margin: 0, color: 'rgba(255,255,255,0.8)', lineHeight: 1.7 }}>{step.body}</p>
+              </li>
+            ))}
+          </ol>
+          <div style={{ marginTop: '1.4rem' }}>
+            <LaunchAppButton
+              appSlug={product.slug}
+              deepLinkPath={CHARACTER_SHEET_DEEP_LINK}
+              openPublic
+              style={heroLaunchButtonStyle()}
+            >
+              Open the character sheet
+            </LaunchAppButton>
+          </div>
+        </section>
+
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>
             Four pages, one character

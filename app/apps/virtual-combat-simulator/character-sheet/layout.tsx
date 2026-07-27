@@ -3,12 +3,13 @@ import type { ReactNode } from 'react';
 import { buildPageMetadata } from '@/lib/metadata';
 
 export const metadata = buildPageMetadata({
-  title: 'Character Sheet | Virtual Combat Simulator',
+  title: 'SmartPaste Character Import and Character Sheet | VCS',
   description:
-    'Tour the Virtual Combat Simulator character sheet: ability scores, combat stats, spells, actions, features, equipment, biography, SmartPaste import, and the link to tokens in the battle room.',
+    'Paste permitted character text, review what SmartPaste recognizes, and use the approved VCS character sheet with its token in the battle room.',
   path: '/apps/virtual-combat-simulator/character-sheet',
 });
 
+/** Supplies route metadata while leaving the static character-sheet page unchanged. */
 export default function VcsCharacterSheetLayout({ children }: { children: ReactNode }) {
   return children;
 }

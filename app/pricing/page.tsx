@@ -22,6 +22,10 @@ export const metadata: Metadata = buildPageMetadata({
   path: '/pricing',
 });
 
+/**
+ * Keeps the three flagship offers in one reviewable catalog. Current checkout
+ * prices and planned standard prices remain separate fields on purpose.
+ */
 const plans = [
   {
     id: 'ai-features',
@@ -63,9 +67,9 @@ const plans = [
     description:
       'For GMs who need a cleaner battle room without adding a campaign planning subscription.',
     features: [
+      'SmartPaste character import with review before applying',
       'Battle map, tokens, fog, grid, and measurement tools',
       'Initiative, hit points, conditions, and turn control',
-      'Paid storage and Game Master tools',
     ],
     cta: 'Choose VCS',
   },
@@ -80,7 +84,7 @@ const faq = [
   {
     question: 'What makes the current price introductory?',
     answer:
-      'The prices shown as founding are the prices charged today while the early-GM offer is open: $9.99/month for either module and $14.99/month for the full Studio. The intended standard rates are $19.99/month and $29.99/month respectively. We will announce any future change before it happens.',
+      'The prices shown as founding are the prices charged today while the early-GM offer is open: $9.99/month for either module and $14.99/month for the full Studio. The planned standard prices are $19.99/month for either module and $29.99/month for Studio. Those are future price plans, not former prices. We will announce any change before it happens.',
   },
   {
     question: 'Can I try the tools before subscribing?',
@@ -99,6 +103,7 @@ const faq = [
   },
 ];
 
+/** Renders current checkout offers without presenting future prices as past discounts. */
 export default function PricingPage() {
   return (
     <div className={styles.page}>
@@ -110,8 +115,8 @@ export default function PricingPage() {
         <p>
           Start with the campaign side, the table side, or the full loop. The
           prices marked founding are the real monthly prices at checkout for
-          early Game Masters; the regular rates are shown so the offer is easy
-          to understand.
+          early Game Masters. The planned standard prices are where we expect
+          each plan to land later, and we will tell you before that changes.
         </p>
       </section>
 
@@ -132,15 +137,18 @@ export default function PricingPage() {
                 <p className={styles.planEyebrow}>{plan.eyebrow}</p>
                 <h3>{plan.name}</h3>
                 <p className={styles.price}>
-                  {plan.standardPrice && (
-                    <span className={styles.regularPrice}>
-                      Regularly {formatMonthlyPrice(plan.standardPrice)}
-                    </span>
-                  )}
                   <strong>{formatMonthlyPrice(plan.currentPrice).replace('/month', '')}</strong>
                   <span> / month</span>
                 </p>
-                <p className={styles.priceLabel}>Founding price today</p>
+                <p className={styles.priceLabel}>
+                  Founding price today
+                  {plan.standardPrice ? (
+                    <>
+                      <br />
+                      Planned standard {formatMonthlyPrice(plan.standardPrice)}
+                    </>
+                  ) : null}
+                </p>
                 <p className={styles.description}>{plan.description}</p>
                 <ul>
                   {plan.features.map((feature) => (
@@ -155,8 +163,9 @@ export default function PricingPage() {
           </div>
           <p className={styles.finePrint}>
             Prices are in US dollars and renew monthly until canceled. Founding
-            prices are the amounts charged today; standard rates are shown for
-            comparison and will not change without notice.
+            prices are the amounts charged today. Planned standard prices are
+            future pricing intentions, not former prices, and will not take
+            effect without notice.
           </p>
         </section>
 
@@ -201,10 +210,16 @@ export default function PricingPage() {
                   <td><span className={styles.yes}>Yes</span></td>
                 </tr>
                 <tr>
+                  <th scope="row">SmartPaste character import</th>
+                  <td>—</td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                </tr>
+                <tr>
                   <th scope="row">Monthly price</th>
-                  <td><strong>$9.99</strong><small>founding · $19.99 regular</small></td>
-                  <td><strong>$14.99</strong><small>founding · $29.99 regular</small></td>
-                  <td><strong>$9.99</strong><small>founding · $19.99 regular</small></td>
+                  <td><strong>$9.99</strong><small>founding · $19.99 planned standard</small></td>
+                  <td><strong>$14.99</strong><small>founding · $29.99 planned standard</small></td>
+                  <td><strong>$9.99</strong><small>founding · $19.99 planned standard</small></td>
                 </tr>
               </tbody>
             </table>

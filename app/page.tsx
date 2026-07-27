@@ -23,13 +23,18 @@ import styles from './flagship.module.css';
 export const metadata: Metadata = buildPageMetadata({
   title: 'GameMaster Studio | Campaign Prep and VTT Combat for Game Masters',
   description:
-    'Keep campaign lore, NPCs, factions, maps, tokens, initiative, hit points, and conditions under control with GameMasterCraft and Virtual Combat Simulator.',
+    'Keep campaign lore, NPCs, factions, maps, tokens, initiative, hit points, conditions, and SmartPaste character imports under control with GameMaster Studio.',
   path: '/',
 });
 
 const gmcScreenshot = productScreenshots.gameMasterCraft[2];
 const vcsScreenshot = productScreenshots.virtualCombatSimulator[0];
 
+/**
+ * Answers the buying questions that must be clear before a Game Master starts.
+ * SmartPaste wording deliberately includes review and content-rights boundaries
+ * so the headline benefit never outruns the shipped product or its source rules.
+ */
 const faq = [
   {
     question: 'What is GameMaster Studio?',
@@ -39,7 +44,12 @@ const faq = [
   {
     question: 'Can I subscribe to GameMasterCraft or VCS on its own?',
     answer:
-      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $9.99 per month at the current founding price. The full GameMaster Studio plan is $14.99 per month while the early-GM offer is open; the intended regular rates are $19.99 and $29.99.',
+      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $9.99 per month at the current founding price. The full GameMaster Studio plan is $14.99 per month while the early-GM offer is open. The planned standard prices are $19.99 for either module and $29.99 for Studio.',
+  },
+  {
+    question: 'What does SmartPaste do?',
+    answer:
+      'SmartPaste takes character text you created, own, licensed, or are otherwise permitted to use and sorts the parts it recognizes into the VCS character sheet. You review abilities, weapons, spells, features, equipment, longer notes, and any uncertain choices before applying them. VCS keeps its built-in rules-text baseline limited to SRD-backed material.',
   },
   {
     question: 'Does combat automatically change my campaign notes?',
@@ -53,6 +63,10 @@ const faq = [
   },
 ];
 
+/**
+ * Shows the real, currently manual Studio rhythm. The VCS step includes
+ * SmartPaste because character intake is a verified part of encounter setup.
+ */
 const workflowSteps = [
   {
     number: '01',
@@ -67,7 +81,7 @@ const workflowSteps = [
   {
     number: '03',
     title: 'Run the fight in VCS',
-    body: 'Keep the map, tokens, initiative, hit points, conditions, and combat controls in one battle room.',
+    body: 'Use SmartPaste to review permitted character text, then keep the approved sheet, map, tokens, initiative, hit points, conditions, and combat controls in one battle room.',
   },
   {
     number: '04',
@@ -76,6 +90,7 @@ const workflowSteps = [
   },
 ];
 
+/** Renders the flagship acquisition page using only claims approved in the register. */
 export default function HomePage() {
   return (
     <div className={styles.page}>
@@ -146,7 +161,7 @@ export default function HomePage() {
       <div className={styles.tableStrip}>
         <span>Browser-based</span>
         <span>Free to start</span>
-        <span>Campaign prep + encounter control</span>
+        <span>SmartPaste character import</span>
         <span>Keep the final call in the GM&apos;s hands</span>
       </div>
 
@@ -213,11 +228,13 @@ export default function HomePage() {
           <p className={styles.eyebrow}>Table side</p>
           <h2>VCS keeps the fight readable when the turn gets messy.</h2>
           <p>
-            Put the battle map, tokens, initiative, hit points, conditions,
-            character context, fog, measuring, and combat controls together so
-            everyone can see what matters now.
+            Paste character text you are permitted to use, let SmartPaste sort
+            the pieces it recognizes, and review every uncertain choice before
+            it reaches the sheet. That same character can then sit behind the
+            token you run beside the map, initiative, hit points, conditions,
+            fog, measuring, and combat controls.
           </p>
-          <Link href="/apps/virtual-combat-simulator">See VCS →</Link>
+          <Link href="/apps/virtual-combat-simulator">See SmartPaste and VCS →</Link>
         </div>
         <div className={`${styles.moduleImage} ${styles.combatImage}`}>
           <Image
@@ -235,8 +252,8 @@ export default function HomePage() {
           <p className={styles.eyebrow}>One GM rhythm</p>
           <h2>From “what did they do?” to “roll initiative.”</h2>
           <p>
-            The current workflow keeps you in control of the handoff. Automation
-            will not quietly rewrite the campaign behind your screen.
+            Nothing gets added to campaign history behind your back. You decide
+            what still matters after the dice stop rolling.
           </p>
         </div>
         <ol className={styles.workflowGrid}>
@@ -255,8 +272,8 @@ export default function HomePage() {
           <p className={styles.eyebrow}>Founding table pricing</p>
           <h2>One Studio. Two modules. No forced bundle.</h2>
           <p>
-            The founding prices below are the amounts charged today. The regular
-            rates are shown so you can see the early-GM offer clearly.
+            The founding prices below are what you pay today. The planned
+            standard prices show where each plan is headed.
           </p>
         </div>
 
@@ -264,10 +281,13 @@ export default function HomePage() {
           <article>
             <p className={styles.planName}>GameMasterCraft AI</p>
             <p className={styles.price}>
-              <span className={styles.regularPrice}>Regularly $19.99 / month</span>
               <strong>${pricingCatalog['ai-features'].monthlyPrice.toFixed(2)}</strong> / month
             </p>
-            <p className={styles.priceLabel}>Founding price today</p>
+            <p className={styles.priceLabel}>
+              Founding price today
+              <br />
+              Planned standard $19.99/month
+            </p>
             <ul>
               <li>Campaign workspace</li>
               <li>AI-assisted prep</li>
@@ -282,10 +302,13 @@ export default function HomePage() {
             <span className={styles.bestValue}>Best value</span>
             <p className={styles.planName}>GameMaster Studio</p>
             <p className={styles.price}>
-              <span className={styles.regularPrice}>Regularly $29.99 / month</span>
               <strong>${pricingCatalog.bundle.monthlyPrice.toFixed(2)}</strong> / month
             </p>
-            <p className={styles.priceLabel}>Founding price today</p>
+            <p className={styles.priceLabel}>
+              Founding price today
+              <br />
+              Planned standard $29.99/month
+            </p>
             <ul>
               <li>Everything in GameMasterCraft AI</li>
               <li>VCS paid Game Master tools</li>
@@ -299,12 +322,15 @@ export default function HomePage() {
           <article>
             <p className={styles.planName}>VCS Game Master</p>
             <p className={styles.price}>
-              <span className={styles.regularPrice}>Regularly $19.99 / month</span>
               <strong>${pricingCatalog['virtual-combat-simulator'].monthlyPrice.toFixed(2)}</strong> / month
             </p>
-            <p className={styles.priceLabel}>Founding price today</p>
+            <p className={styles.priceLabel}>
+              Founding price today
+              <br />
+              Planned standard $19.99/month
+            </p>
             <ul>
-              <li>Battle map and token tools</li>
+              <li>SmartPaste and character sheets</li>
               <li>Initiative and turn control</li>
               <li>Paid storage and GM tools</li>
             </ul>

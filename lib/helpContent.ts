@@ -36,11 +36,11 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
         'For hybrid and online groups, the shared table state feature is the most immediate win. Players who are remote can follow the same encounter view as players at the table without the game master having to narrate every position update.',
       ],
       bullets: [
+        'SmartPaste character import: Paste permitted character text, review what VCS recognized or inferred, and apply only the approved details to the sheet.',
         'Battle map encounter control: Upload or prepare the battle map, place tokens, and keep the battlefield readable at a glance.',
         'Initiative and encounter flow: Track initiative, turn order, and combat state without separate tools pulling attention from the table.',
         'Token-linked hit points and conditions: Keep token placement, hit points, and condition tracking in the same encounter view.',
         'Shared table state: Give online and hybrid players a shared combat view instead of a fragmented chain of screenshots and verbal corrections.',
-        'Import-ready sheets and data: Keep character and monster information close to the encounter instead of hidden in another system.',
         'Game Master upgrade path: Start free, move to the paid GM tier when you need more storage and expanded capability.',
       ],
     },
@@ -77,7 +77,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       summary: 'Virtual Combat Simulator is free to start. The Game Master subscription adds storage and expanded GM tools for groups that run encounters regularly.',
       paragraphs: [
         'The core combat management tool is free for signed-in users. You can set up maps, place tokens, run initiative, track hit points and conditions, and keep the table synced without paying anything.',
-        'The Game Master plan is currently $9.99 per month at the founding price (regularly $19.99) and adds more encounter storage and expanded GM capability for game masters who run sessions frequently and want more headroom. Try the free tier first, then decide whether the upgrade fits your session cadence.',
+        'The Game Master plan is currently $9.99 per month at the founding price and adds more encounter storage and expanded GM capability for game masters who run sessions frequently and want more headroom. The planned standard price is $19.99 per month; that is a future price, not a former price. Try the free tier first, then decide whether the upgrade fits your session cadence.',
         'For account questions, billing, or anything related to subscriptions, use the support page. The pricing page has the full comparison of what each tier includes.',
       ],
       bullets: [
@@ -321,6 +321,10 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
   },
 };
 
+/**
+ * Returns help copy for one product and topic, preferring the tailored guidance
+ * above and falling back to the shared product definition when needed.
+ */
 export function getHelpTopicContent(product: ProductDefinition, topic: HelpTopicSlug): HelpTopicContent {
   const specific = productSpecificContent[product.slug]?.[topic];
 
