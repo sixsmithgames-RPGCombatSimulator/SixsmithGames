@@ -40,6 +40,7 @@ export default function Footer() {
 
         <div>
           <h2>More from Sixsmith Games</h2>
+          <Link href="/merch">Merchandise</Link>
           <Link href="/apps/fourstargeneral">Four Star General</Link>
           <Link href="/apps/mastertyping">MasterTyping</Link>
           <Link href="/apps/gravity">Gravity</Link>
@@ -59,6 +60,12 @@ export default function Footer() {
         <div>
           <Link href="/privacy">Privacy</Link>
           <Link href="/terms">Terms</Link>
+          <a href="https://sixsmith-games-shop.fourthwall.com/pages/terms-of-sale">
+            Merch terms
+          </a>
+          <a href="https://sixsmith-games-shop.fourthwall.com/pages/refund-return-policy">
+            Merch refunds
+          </a>
           <a href="mailto:info@sixsmithgames.com">info@sixsmithgames.com</a>
         </div>
       </div>

@@ -25,6 +25,40 @@ export function createOrganizationSchema() {
   };
 }
 
+/**
+ * Describes the merchandise page as a browsable collection without claiming
+ * that preview items have an active price or are already in stock.
+ */
+export function createMerchCollectionSchema(
+  products: Array<{ name: string; slug: string; description: string }>,
+) {
+  return {
+    '@context': 'https://schema.org',
+    '@type': 'CollectionPage',
+    name: 'Sixsmith Games tabletop RPG merchandise',
+    description:
+      'Sixsmith Games merchandise planned for Game Masters and tabletop RPG players.',
+    url: `${SITE_URL}/merch`,
+    mainEntity: {
+      '@type': 'ItemList',
+      itemListElement: products.map((product, index) => ({
+        '@type': 'ListItem',
+        position: index + 1,
+        url: `${SITE_URL}/merch#${product.slug}`,
+        item: {
+          '@type': 'Product',
+          name: product.name,
+          description: product.description,
+          brand: {
+            '@type': 'Brand',
+            name: SITE_NAME,
+          },
+        },
+      })),
+    },
+  };
+}
+
 export function createSoftwareApplicationSchema(product: ProductDefinition) {
   const screenshots = getProductScreenshots(product.slug);
   const schema: Record<string, unknown> = {

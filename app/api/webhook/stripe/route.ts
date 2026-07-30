@@ -61,6 +61,14 @@ export async function POST(req: NextRequest) {
 }
 
 async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+  // Merchandise is a one-time physical order, not a Clerk entitlement. The
+  // explicit fulfillment-ready switch means the owner has accepted the order
+  // handling path before this branch can receive a paid shop session.
+  if (session.metadata?.orderType === 'merchandise') {
+    console.log(`Merchandise Checkout Session completed: ${session.id}`);
+    return;
+  }
+
   if (session.metadata?.supportType === 'coffee') {
     console.log(`Coffee support payment completed: ${session.id}`);
     return;

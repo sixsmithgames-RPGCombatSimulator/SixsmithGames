@@ -27,6 +27,7 @@ export const publicRoutes = [
   '/checkout?planId=contentcraft',
   '/help',
   ...helpRoutes,
+  '/merch',
   '/pricing',
   '/privacy',
   '/sign-in',

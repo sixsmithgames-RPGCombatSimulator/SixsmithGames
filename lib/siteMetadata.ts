@@ -21,6 +21,8 @@ export const rootMetadata: Metadata = {
     'campaign planning for game masters',
     'VTT for game masters',
     'RPG campaign management',
+    'tabletop RPG merchandise',
+    'Game Master gifts',
     'WWII tactical strategy game',
     'typing training for creators and gamers',
   ],

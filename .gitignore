@@ -12,6 +12,12 @@
 /test-results
 /screenshots
 
+# Supplier-sized merchandise artwork and browser approval captures are local
+# build/review outputs. Web-sized approved mockups are served from Cloudinary.
+/assets/merch/fourthwall/*.png
+/assets/merch/fourthwall/*.jpg
+/assets/merch/fourthwall/mockups/
+
 # next.js
 /.next/
 /out/

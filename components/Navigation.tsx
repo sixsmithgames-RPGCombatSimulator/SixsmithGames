@@ -31,6 +31,7 @@ const primaryLinks = [
 ];
 
 const secondaryProducts = [
+  { label: 'Merchandise', href: '/merch' },
   { label: 'Four Star General', href: '/apps/fourstargeneral' },
   { label: 'MasterTyping', href: '/apps/mastertyping' },
   { label: 'Gravity', href: '/apps/gravity' },

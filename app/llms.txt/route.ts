@@ -10,6 +10,7 @@ export function GET() {
     `Canonical facts page: ${SITE_URL}/about/facts`,
     `Support: ${SITE_URL}/support`,
     `Pricing: ${SITE_URL}/pricing`,
+    `Merchandise: ${SITE_URL}/merch`,
     `Help index: ${SITE_URL}/help`,
     '',
     'GameMaster Studio products:',

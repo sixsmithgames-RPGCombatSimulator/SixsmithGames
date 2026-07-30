@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "next lint",
     "content:validate": "node scripts/validate-gamemaster-content-kit.mjs",
+    "merch:artwork": "node scripts/generate-fourthwall-merch-artwork.mjs",
     "test": "npm run test:jest && npm run test:playwright",
     "test:jest": "node ./node_modules/jest/bin/jest.js --runInBand",
     "test:playwright": "node ./node_modules/@playwright/test/cli.js test",
@@ -43,6 +44,8 @@
     "dotenv": "^17.3.1",
     "jest": "^30.3.0",
     "jest-environment-jsdom": "^30.2.0",
+    "jsqr": "1.4.0",
+    "qrcode": "1.5.4",
     "sharp": "^0.34.5"
   }
 }

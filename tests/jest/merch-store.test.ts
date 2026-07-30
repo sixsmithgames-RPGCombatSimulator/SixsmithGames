@@ -1,0 +1,121 @@
+import fs from 'node:fs';
+import path from 'node:path';
+
+import { MERCH_PRODUCTS } from '../../lib/merchCatalog';
+import { publicRoutes } from '../site-routes';
+
+/** Reads source used by guardrail tests and fails plainly when a file is missing. */
+function readProjectFile(relativePath: string): string {
+  return fs.readFileSync(path.join(process.cwd(), relativePath), 'utf8');
+}
+
+describe('Sixsmith Games merchandise catalog', () => {
+  it('uses stable, unique product and variant identifiers', () => {
+    const productSlugs = MERCH_PRODUCTS.map((product) => product.slug);
+    const environmentVariables = MERCH_PRODUCTS.flatMap((product) =>
+      product.variants.map((variant) => variant.priceEnvironmentVariable),
+    );
+
+    expect(new Set(productSlugs).size).toBe(productSlugs.length);
+    expect(new Set(environmentVariables).size).toBe(environmentVariables.length);
+
+    for (const product of MERCH_PRODUCTS) {
+      expect(product.slug).toMatch(/^[a-z0-9-]+$/);
+      expect(product.name.length).toBeGreaterThan(5);
+      expect(product.description.length).toBeGreaterThan(30);
+      expect(product.variants.length).toBeGreaterThan(0);
+      expect(new Set(product.variants.map((variant) => variant.id)).size)
+        .toBe(product.variants.length);
+    }
+  });
+
+  it('contains only the two approved public Fourthwall products', () => {
+    expect(MERCH_PRODUCTS.map((product) => product.slug)).toEqual([
+      'master-your-stories-hoodie',
+      'gateway-wyrm-desk-mat',
+    ]);
+    expect(MERCH_PRODUCTS.map((product) => product.shopPrice)).toEqual([
+      'From $44.00',
+      '$34.00',
+    ]);
+
+    for (const product of MERCH_PRODUCTS) {
+      expect(product.shopUrl).toMatch(
+        /^https:\/\/sixsmith-games-shop\.fourthwall\.com\/products\/[a-z0-9-]+$/,
+      );
+    }
+  });
+
+  it('documents every required Stripe Price setting in the environment example', () => {
+    const environmentExample = readProjectFile('.env.example');
+
+    for (const product of MERCH_PRODUCTS) {
+      for (const variant of product.variants) {
+        expect(environmentExample).toContain(`${variant.priceEnvironmentVariable}=`);
+      }
+    }
+  });
+});
+
+describe('merchandise commerce safeguards', () => {
+  it('keeps fulfillment, shipping, and one-time Stripe validation on the server', () => {
+    const storefrontSource = readProjectFile('lib/merchStorefront.server.ts');
+    const checkoutSource = readProjectFile('app/api/merch-checkout/route.ts');
+
+    expect(storefrontSource).toContain("process.env.MERCH_FULFILLMENT_READY === 'true'");
+    expect(storefrontSource).toContain("price.type !== 'one_time'");
+    expect(storefrontSource).toContain('sixsmith_merch_slug');
+    expect(storefrontSource).toContain('sixsmith_merch_variant');
+    expect(checkoutSource).toContain("mode: 'payment'");
+    expect(checkoutSource).toContain('shipping_address_collection');
+    expect(checkoutSource).toContain('shipping_options');
+    expect(checkoutSource).toContain(
+      'session_id={CHECKOUT_SESSION_ID}',
+    );
+    expect(checkoutSource).not.toContain('price_data');
+  });
+
+  it('verifies a paid merchandise session before showing order confirmation', () => {
+    const storefrontSource = readProjectFile('lib/merchStorefront.server.ts');
+    const pageSource = readProjectFile('app/merch/page.tsx');
+
+    expect(storefrontSource).toContain('confirmMerchCheckoutSession');
+    expect(storefrontSource).toContain("session.metadata?.orderType === 'merchandise'");
+    expect(storefrontSource).toContain("session.status === 'complete'");
+    expect(storefrontSource).toContain("session.payment_status === 'paid'");
+    expect(pageSource).toContain("'unconfirmed'");
+  });
+
+  it('routes paid merchandise away from subscription entitlement updates', () => {
+    const webhookSource = readProjectFile('app/api/webhook/stripe/route.ts');
+    const merchandiseBranch = webhookSource.indexOf("orderType === 'merchandise'");
+    const subscriptionMetadataRead = webhookSource.indexOf(
+      'const clerkUserId = session.metadata?.clerkUserId',
+    );
+
+    expect(merchandiseBranch).toBeGreaterThan(-1);
+    expect(subscriptionMetadataRead).toBeGreaterThan(merchandiseBranch);
+  });
+});
+
+describe('merchandise discovery', () => {
+  it('covers the store in navigation, footer, sitemap, and responsive routes', () => {
+    expect(publicRoutes).toContain('/merch');
+    expect(readProjectFile('components/Navigation.tsx')).toContain(
+      "{ label: 'Merchandise', href: '/merch' }",
+    );
+    expect(readProjectFile('components/Footer.tsx')).toContain(
+      '<Link href="/merch">Merchandise</Link>',
+    );
+    expect(readProjectFile('components/Footer.tsx')).toContain(
+      'https://sixsmith-games-shop.fourthwall.com/pages/terms-of-sale',
+    );
+    expect(readProjectFile('components/Footer.tsx')).toContain(
+      'https://sixsmith-games-shop.fourthwall.com/pages/refund-return-policy',
+    );
+    expect(readProjectFile('app/sitemap.ts')).toContain("'/merch'");
+    expect(readProjectFile('app/llms.txt/route.ts')).toContain(
+      '`Merchandise: ${SITE_URL}/merch`',
+    );
+  });
+});
