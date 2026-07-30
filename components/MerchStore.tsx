@@ -101,10 +101,6 @@ function readSavedCart(products: StorefrontMerchProduct[]): CartLine[] {
  * Displays the gamer-facing catalog and keeps all payment decisions on the server.
  */
 export default function MerchStore({ storefront, checkoutStatus }: MerchStoreProps) {
-  const categories = useMemo(
-    () => ['All gear', ...new Set(storefront.products.map((product) => product.category))],
-    [storefront.products],
-  );
   const initialSelections = useMemo(
     () =>
       Object.fromEntries(
@@ -117,7 +113,6 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
       ),
     [storefront.products],
   );
-  const [activeCategory, setActiveCategory] = useState('All gear');
   const [selectedVariants, setSelectedVariants] =
     useState<Record<string, string>>(initialSelections);
   const [cart, setCart] = useState<CartLine[]>([]);
@@ -163,9 +158,6 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
     }
   }, [cart, cartLoaded]);
 
-  const visibleProducts = storefront.products.filter(
-    (product) => activeCategory === 'All gear' || product.category === activeCategory,
-  );
   const cartDetails = cart.flatMap((line) => {
     const choice = findCartChoice(storefront.products, line);
     return choice ? [{ ...line, ...choice }] : [];
@@ -180,14 +172,6 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
     style: 'currency',
     currency: cartCurrency.toUpperCase(),
   }).format(cartTotal / 100);
-
-  /** Records the visible category choice without attaching visitor identity. */
-  function chooseCategory(category: string) {
-    setActiveCategory(category);
-    trackMarketingEvent('merch_category_selected', {
-      category: category.toLowerCase().replaceAll(' ', '_'),
-    });
-  }
 
   /** Adds or increments one verified product choice, capped at a practical amount. */
   function addToCart(product: StorefrontMerchProduct) {
@@ -323,37 +307,13 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
         </div>
       )}
 
-      <div className={styles.storeToolbar}>
-        <div className={styles.filters} role="group" aria-label="Filter merchandise">
-          {categories.map((category) => (
-            <button
-              key={category}
-              type="button"
-              className={activeCategory === category ? styles.activeFilter : undefined}
-              aria-pressed={activeCategory === category}
-              onClick={() => chooseCategory(category)}
-            >
-              {category}
-            </button>
-          ))}
-        </div>
-        {storefront.checkoutReady ? (
+      {storefront.checkoutReady && (
+        <div className={styles.storeToolbar}>
           <a href="#merch-cart" className={styles.cartJump}>
             Cart <span aria-label={`${cartCount} items`}>{cartCount}</span>
           </a>
-        ) : (
-          <p className={styles.previewCount} role="status">
-            {visibleProducts.length}{' '}
-            {storefront.ordersOpen
-              ? visibleProducts.length === 1
-                ? 'product ready'
-                : 'products ready'
-              : visibleProducts.length === 1
-                ? 'design in view'
-                : 'designs in view'}
-          </p>
-        )}
-      </div>
+        </div>
+      )}
 
       <div
         className={`${styles.shopLayout} ${
@@ -361,7 +321,7 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
         }`}
       >
         <div className={styles.productGrid}>
-          {visibleProducts.map((product, index) => {
+          {storefront.products.map((product, index) => {
             const purchasableVariants = product.variants.filter(
               (variant) => variant.purchasable,
             );
@@ -386,12 +346,6 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
                   </div>
                   <h2>{product.name}</h2>
                   <p className={styles.tableLine}>{product.tableLine}</p>
-                  <p>{product.description}</p>
-
-                  <div className={styles.designNote}>
-                    <strong>{product.shopUrl ? 'What you get' : 'The planned design'}</strong>
-                    <span>{product.design}</span>
-                  </div>
 
                   <ul className={styles.plannedChoices}>
                     {product.plannedChoices.map((choice) => (
@@ -399,57 +353,56 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
                     ))}
                   </ul>
 
-                  <div className={styles.priceRow}>
-                    <strong>
-                      {product.shopPrice
-                        ?? product.startingPrice
-                        ?? 'Final price comes before orders open'}
-                    </strong>
-                    {product.shopUrl ? (
-                      <span>Final total in Fourthwall checkout</span>
-                    ) : (
-                      !product.purchasable && <span>Preview only</span>
-                    )}
-                  </div>
-
                   {product.shopUrl ? (
-                    <a
-                      className={styles.shopLink}
-                      href={product.shopUrl}
-                      onClick={() =>
-                        trackMarketingEvent('merch_shop_opened', {
-                          product: product.slug,
-                          provider: 'fourthwall',
-                        })
-                      }
-                    >
-                      Choose your options in the shop
-                    </a>
-                  ) : product.purchasable ? (
-                    <div className={styles.purchaseRow}>
-                      <label>
-                        <span>Choose an option</span>
-                        <select
-                          value={selectedVariant}
-                          onChange={(event) =>
-                            setSelectedVariants((current) => ({
-                              ...current,
-                              [product.slug]: event.target.value,
-                            }))
-                          }
-                        >
-                          {purchasableVariants.map((variant) => (
-                            <option key={variant.id} value={variant.id}>
-                              {variant.label}
-                              {variant.formattedPrice ? ` — ${variant.formattedPrice}` : ''}
-                            </option>
-                          ))}
-                        </select>
-                      </label>
-                      <button type="button" onClick={() => addToCart(product)}>
-                        Add to cart
-                      </button>
+                    <div className={styles.buyRow}>
+                      <strong>{product.shopPrice}</strong>
+                      <a
+                        className={styles.shopLink}
+                        href={product.shopUrl}
+                        onClick={() =>
+                          trackMarketingEvent('merch_shop_opened', {
+                            product: product.slug,
+                            provider: 'fourthwall',
+                          })
+                        }
+                      >
+                        {product.artwork === 'hoodie'
+                          ? 'Shop the hoodie'
+                          : 'Shop the desk mat'}
+                      </a>
                     </div>
+                  ) : product.purchasable ? (
+                    <>
+                      <div className={styles.priceRow}>
+                        <strong>
+                          {product.startingPrice ?? 'Price available at checkout'}
+                        </strong>
+                      </div>
+                      <div className={styles.purchaseRow}>
+                        <label>
+                          <span>Choose an option</span>
+                          <select
+                            value={selectedVariant}
+                            onChange={(event) =>
+                              setSelectedVariants((current) => ({
+                                ...current,
+                                [product.slug]: event.target.value,
+                              }))
+                            }
+                          >
+                            {purchasableVariants.map((variant) => (
+                              <option key={variant.id} value={variant.id}>
+                                {variant.label}
+                                {variant.formattedPrice ? ` — ${variant.formattedPrice}` : ''}
+                              </option>
+                            ))}
+                          </select>
+                        </label>
+                        <button type="button" onClick={() => addToCart(product)}>
+                          Add to cart
+                        </button>
+                      </div>
+                    </>
                   ) : (
                     <a
                       className={styles.voteLink}

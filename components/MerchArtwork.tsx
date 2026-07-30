@@ -27,9 +27,9 @@ interface MerchArtworkProps {
  */
 const APPROVED_PRODUCT_MOCKUPS: Partial<Record<MerchArtworkKind, string>> = {
   hoodie:
-    'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/merch/master-your-stories-hoodie-back-black-fourthwall.jpg',
+    'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1785444317/sixsmith-games/merch/master-your-stories-hoodie-back-black-fourthwall.jpg',
   'desk-mat':
-    'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/merch/gateway-wyrm-desk-mat-dungeon-portal-fourthwall.jpg',
+    'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1785444314/sixsmith-games/merch/gateway-wyrm-desk-mat-dungeon-portal-fourthwall.jpg',
 };
 
 /**
@@ -112,19 +112,21 @@ export default function MerchArtwork({
 
   return (
     <div
-      className={styles.artwork}
+      className={`${styles.artwork} ${
+        approvedMockup ? styles.approvedArtwork : ''
+      }`}
       style={artworkStyle}
-      role="img"
-      aria-label={approvedMockup ? `${name} product mockup` : `${name} design preview`}
+      role={approvedMockup ? undefined : 'img'}
+      aria-label={approvedMockup ? undefined : `${name} design preview`}
     >
-      <div className={styles.previewLabel}>
-        {approvedMockup ? 'Ready to order' : 'Design preview'}
-      </div>
+      {!approvedMockup && (
+        <div className={styles.previewLabel}>Design preview</div>
+      )}
       {approvedMockup ? (
         <Image
           className={styles.approvedMockup}
           src={approvedMockup}
-          alt=""
+          alt={`${name}, customer-facing product mockup`}
           fill
           priority={priority}
           sizes="(max-width: 800px) 100vw, 50vw"

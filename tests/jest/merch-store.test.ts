@@ -99,6 +99,17 @@ describe('merchandise commerce safeguards', () => {
 });
 
 describe('merchandise discovery', () => {
+  it('uses clean customer-facing Cloudinary images instead of editor captures', () => {
+    const artworkSource = readProjectFile('components/MerchArtwork.tsx');
+    const pageSource = readProjectFile('app/merch/page.tsx');
+
+    expect(artworkSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785444317/');
+    expect(artworkSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785444314/');
+    expect(pageSource).not.toContain('SESSION NOTES');
+    expect(pageSource).not.toContain('ROLL FOR');
+    expect(pageSource).not.toContain('CONSEQUENCES');
+  });
+
   it('covers the store in navigation, footer, sitemap, and responsive routes', () => {
     expect(publicRoutes).toContain('/merch');
     expect(readProjectFile('components/Navigation.tsx')).toContain(

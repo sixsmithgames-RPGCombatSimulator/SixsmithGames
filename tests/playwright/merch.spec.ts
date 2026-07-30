@@ -12,18 +12,26 @@ test('approved merchandise is clearly ready to order', async ({ page }) => {
   await expect(
     page.getByRole('heading', {
       level: 1,
-      name: 'Bring a little of the game table with you.',
+      name: 'Gear for the game table.',
     }),
   ).toBeVisible();
 
-  const storeStatus = page.getByRole('region', { name: 'Store status' });
-  await expect(storeStatus).toContainText('Orders are open');
-  await expect(storeStatus).toContainText('Fourthwall');
   await expect(page.getByRole('complementary', { name: 'Cart' })).toHaveCount(0);
-  await expect(page.getByRole('status')).toContainText('2 products ready');
   await expect(
-    page.getByRole('link', { name: 'Choose your options in the shop' }),
-  ).toHaveCount(2);
+    page.getByRole('img', {
+      name: 'Master Your Stories Hoodie, customer-facing product mockup',
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole('img', {
+      name: 'Gateway Wyrm Desk Mat, customer-facing product mockup',
+    }),
+  ).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Shop the hoodie' })).toBeVisible();
+  await expect(page.getByRole('link', { name: 'Shop the desk mat' })).toBeVisible();
+  await expect(page.getByText('SESSION NOTES')).toHaveCount(0);
+  await expect(page.getByText('ROLL FOR CONSEQUENCES')).toHaveCount(0);
+  await expect(page.getByText('Upload image')).toHaveCount(0);
   await expect(
     page.getByRole('link', { name: 'Terms of Sale' }),
   ).toHaveAttribute(
@@ -36,12 +44,7 @@ test('approved merchandise is clearly ready to order', async ({ page }) => {
     'href',
     'https://sixsmith-games-shop.fourthwall.com/pages/refund-return-policy',
   );
-
-  await page.getByRole('button', { name: 'Wearables', exact: true }).click();
-  await expect(page.getByRole('button', { name: 'Wearables', exact: true }))
-    .toHaveAttribute('aria-pressed', 'true');
-  await expect(page.getByRole('status')).toContainText('1 product ready');
-  await expect(page.locator('article')).toHaveCount(1);
+  await expect(page.locator('article')).toHaveCount(2);
 });
 
 /**
