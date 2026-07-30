@@ -25,10 +25,7 @@ export function createOrganizationSchema() {
   };
 }
 
-/**
- * Describes the merchandise page as a browsable collection without claiming
- * that preview items have an active price or are already in stock.
- */
+/** Describes the live merchandise page as a browsable two-product collection. */
 export function createMerchCollectionSchema(
   products: Array<{ name: string; slug: string; description: string }>,
 ) {
@@ -37,7 +34,7 @@ export function createMerchCollectionSchema(
     '@type': 'CollectionPage',
     name: 'Sixsmith Games tabletop RPG merchandise',
     description:
-      'Sixsmith Games merchandise planned for Game Masters and tabletop RPG players.',
+      'Sixsmith Games gear for Game Masters, game nights, and tabletop RPG tables.',
     url: `${SITE_URL}/merch`,
     mainEntity: {
       '@type': 'ItemList',

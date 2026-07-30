@@ -40,9 +40,9 @@ interface MerchPageProps {
  */
 const faq = [
   {
-    question: 'When is my order made?',
+    question: 'When is my gear made?',
     answer:
-      'Fourthwall prints each item after you order it. Shipping choices, tax, and your final total appear before you pay.',
+      'Your hoodie or desk mat is made after you order it. You will see shipping choices, tax, and your final total before you pay.',
   },
   {
     question: 'What if it arrives damaged or printed wrong?',
@@ -57,7 +57,7 @@ const faq = [
 ];
 
 /**
- * Renders the approved collection and accepts only known checkout return flags.
+ * Renders the live collection and accepts only known checkout return flags.
  */
 export default async function MerchPage({ searchParams }: MerchPageProps) {
   // Start the storefront request before parsing the URL so independent work
@@ -101,7 +101,7 @@ export default async function MerchPage({ searchParams }: MerchPageProps) {
       <header className={styles.hero}>
         <p className={styles.eyebrow}>Sixsmith Games merchandise</p>
         <h1>Gear for the game table.</h1>
-        <p>Two approved pieces. Both ready to order.</p>
+        <p>Wear the story. Set the scene.</p>
       </header>
 
       <section className={styles.catalogSection} aria-label="Merchandise">
@@ -110,15 +110,15 @@ export default async function MerchPage({ searchParams }: MerchPageProps) {
 
       <section className={styles.orderFacts} aria-label="How orders work">
         <div>
-          <strong>Made to order</strong>
-          <span>Printed after you choose it.</span>
+          <strong>Made for your next session</strong>
+          <span>Choose your gear. We will make it for you.</span>
         </div>
         <div>
           <strong>Secure checkout</strong>
-          <span>Fourthwall handles payment.</span>
+          <span>Your payment stays protected.</span>
         </div>
         <div>
-          <strong>See the total first</strong>
+          <strong>No surprise totals</strong>
           <span>Shipping and tax appear before payment.</span>
         </div>
       </section>

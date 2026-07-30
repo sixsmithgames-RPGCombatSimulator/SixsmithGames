@@ -279,7 +279,7 @@ export const getMerchStorefront = cache(async (): Promise<MerchStorefront> => {
     // links directly to each verified listing rather than creating a second,
     // conflicting physical-goods checkout.
     notice =
-      'Orders are open in the Sixsmith Games Fourthwall shop. Each piece is printed to order, and shipping plus any tax are shown before you pay.';
+      'Orders are open. Each piece is made after you order it, and shipping plus any tax are shown before you pay.';
   } else if (!hasOneStoreCurrency) {
     // A mixed-currency catalog cannot produce a truthful cart total. Keep the
     // entire shop closed until every one-time Price uses the store currency.

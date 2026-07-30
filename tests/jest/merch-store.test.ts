@@ -108,6 +108,14 @@ describe('merchandise discovery', () => {
     expect(pageSource).not.toContain('SESSION NOTES');
     expect(pageSource).not.toContain('ROLL FOR');
     expect(pageSource).not.toContain('CONSEQUENCES');
+    expect(pageSource).not.toContain('Two approved pieces');
+    expect(pageSource).not.toContain('Fourthwall handles payment');
+    expect(readProjectFile('lib/merchStorefront.server.ts')).not.toContain(
+      'Sixsmith Games Fourthwall shop',
+    );
+    expect(readProjectFile('lib/schema.ts')).not.toContain(
+      'merchandise planned for',
+    );
   });
 
   it('covers the store in navigation, footer, sitemap, and responsive routes', () => {

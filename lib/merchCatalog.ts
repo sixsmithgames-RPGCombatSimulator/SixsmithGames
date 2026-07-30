@@ -108,7 +108,7 @@ export const MERCH_PRODUCTS: MerchProductDefinition[] = [
   {
     slug: 'gateway-wyrm-desk-mat',
     name: 'Gateway Wyrm Desk Mat',
-    category: 'Campaign desk',
+    category: 'At the table',
     artwork: 'desk-mat',
     badge: 'For crowded tables',
     tableLine: 'Set the scene before initiative is even rolled.',

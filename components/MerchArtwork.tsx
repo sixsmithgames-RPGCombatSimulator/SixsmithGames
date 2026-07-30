@@ -109,6 +109,10 @@ export default function MerchArtwork({
     '--merch-accent': accent,
   } as CSSProperties;
   const approvedMockup = APPROVED_PRODUCT_MOCKUPS[kind];
+  const productAlt =
+    kind === 'hoodie'
+      ? 'Back of the black Master Your Stories Hoodie with the Sixsmith Games crest'
+      : 'Gateway Wyrm Desk Mat with adventurers facing a blue-lit dungeon portal';
 
   return (
     <div
@@ -126,7 +130,7 @@ export default function MerchArtwork({
         <Image
           className={styles.approvedMockup}
           src={approvedMockup}
-          alt={`${name}, customer-facing product mockup`}
+          alt={productAlt}
           fill
           priority={priority}
           sizes="(max-width: 800px) 100vw, 50vw"

@@ -1,11 +1,11 @@
 import { expect, test } from '@playwright/test';
 
 /**
- * Exercises the customer-visible Fourthwall handoff without relying on
- * screenshots alone. These checks protect the page from regaining stale
- * preview language, dead product links, or hidden sale and refund rules.
+ * Exercises the shopper path without relying on screenshots alone. These
+ * checks keep internal review and fulfillment language out of the pitch while
+ * protecting the live product links and shop policies.
  */
-test('approved merchandise is clearly ready to order', async ({ page }) => {
+test('merchandise speaks to players and is ready to order', async ({ page }) => {
   await page.goto('/merch', { waitUntil: 'domcontentloaded' });
 
   await expect(page).toHaveTitle('Tabletop RPG Merchandise | Sixsmith Games');
@@ -15,16 +15,19 @@ test('approved merchandise is clearly ready to order', async ({ page }) => {
       name: 'Gear for the game table.',
     }),
   ).toBeVisible();
+  await expect(page.getByText('Wear the story. Set the scene.')).toBeVisible();
+  await expect(page.getByText(/\bapproved\b/i)).toHaveCount(0);
+  await expect(page.getByText(/Fourthwall/i)).toHaveCount(0);
 
   await expect(page.getByRole('complementary', { name: 'Cart' })).toHaveCount(0);
   await expect(
     page.getByRole('img', {
-      name: 'Master Your Stories Hoodie, customer-facing product mockup',
+      name: 'Back of the black Master Your Stories Hoodie with the Sixsmith Games crest',
     }),
   ).toBeVisible();
   await expect(
     page.getByRole('img', {
-      name: 'Gateway Wyrm Desk Mat, customer-facing product mockup',
+      name: 'Gateway Wyrm Desk Mat with adventurers facing a blue-lit dungeon portal',
     }),
   ).toBeVisible();
   await expect(page.getByRole('link', { name: 'Shop the hoodie' })).toBeVisible();
