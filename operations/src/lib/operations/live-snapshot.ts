@@ -132,6 +132,7 @@ interface StripePriceRecord {
   id: string;
   active: boolean;
   currency: string;
+  nickname: string | null;
   product: string;
   type: "one_time" | "recurring";
   unit_amount: number | null;
@@ -514,14 +515,14 @@ function formatPrice(price: StripePriceRecord): string {
   }).format((price.unit_amount ?? 0) / 100);
 
   if (!price.recurring) {
-    return `${amount} one time`;
+    return `${price.nickname ? `${price.nickname}: ` : ""}${amount} one time`;
   }
 
   const count = price.recurring.interval_count;
   const cadence = count === 1
     ? price.recurring.interval
     : `${count} ${price.recurring.interval}s`;
-  return `${amount} / ${cadence}`;
+  return `${price.nickname ? `${price.nickname}: ` : ""}${amount} / ${cadence}`;
 }
 
 /**

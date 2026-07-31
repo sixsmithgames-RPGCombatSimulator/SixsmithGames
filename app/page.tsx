@@ -39,12 +39,12 @@ const faq = [
   {
     question: 'What is GameMaster Studio?',
     answer:
-      'GameMaster Studio brings GameMasterCraft and Virtual Combat Simulator together for game masters. GameMasterCraft holds the campaign side of the work. VCS handles the live encounter side.',
+      'GameMaster Studio includes GameMasterCraft, Virtual Combat Simulator, and GameMaster Assistant. GameMasterCraft holds campaign canon, VCS handles live encounter mechanics, and GMA orchestrates the play experience between them.',
   },
   {
     question: 'Can I subscribe to GameMasterCraft or VCS on its own?',
     answer:
-      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $9.99 per month at the current founding price. The full GameMaster Studio plan is $14.99 per month while the early-GM offer is open. The planned standard prices are $19.99 for either module and $29.99 for Studio.',
+      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $9.99 per month at the current founding price. The full GameMaster Studio plan, including GameMaster Assistant, is $14.99 per month while the early-GM offer is open. Those introductory prices are about 50% off the decided standard prices of $19.99 for either module and $29.99 for Studio.',
   },
   {
     question: 'What does SmartPaste do?',
@@ -270,10 +270,10 @@ export default function HomePage() {
       <section className={styles.pricingSection}>
         <div className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Founding table pricing</p>
-          <h2>One Studio. Two modules. No forced bundle.</h2>
+          <h2>One Studio. Three connected tools. No forced bundle.</h2>
           <p>
-            The founding prices below are what you pay today. The planned
-            standard prices show where each plan is headed.
+            The founding prices below are what you pay today—about 50% off the
+            decided standard rates that apply after the introductory offer.
           </p>
         </div>
 
@@ -286,7 +286,7 @@ export default function HomePage() {
             <p className={styles.priceLabel}>
               Founding price today
               <br />
-              Planned standard $19.99/month
+              Standard $19.99/month
             </p>
             <ul>
               <li>Campaign workspace</li>
@@ -307,11 +307,12 @@ export default function HomePage() {
             <p className={styles.priceLabel}>
               Founding price today
               <br />
-              Planned standard $29.99/month
+              Standard $29.99/month
             </p>
             <ul>
               <li>Everything in GameMasterCraft AI</li>
               <li>VCS paid Game Master tools</li>
+              <li>GameMaster Assistant orchestration</li>
               <li>Save $5 compared with both separately</li>
             </ul>
             <SubscribeButton planId="bundle" className={styles.planButton}>
@@ -327,7 +328,7 @@ export default function HomePage() {
             <p className={styles.priceLabel}>
               Founding price today
               <br />
-              Planned standard $19.99/month
+              Standard $19.99/month
             </p>
             <ul>
               <li>SmartPaste and character sheets</li>

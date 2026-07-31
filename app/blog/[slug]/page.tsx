@@ -210,7 +210,7 @@ export default async function BlogPostPage({ params }: { params: Promise<{ slug:
         >
           <h3 style={{ color: 'white', fontSize: '1.5rem', fontWeight: '800', margin: '0 0 0.75rem' }}>Ready to create something?</h3>
           <p style={{ color: 'rgba(255,255,255,0.85)', fontSize: '1rem', margin: '0 0 1.5rem', lineHeight: 1.7 }}>
-            Subscribe to individual apps or get the Game Creator bundle.
+            Subscribe to an individual app or get the full GameMaster Studio.
           </p>
           <div style={{ display: 'flex', justifyContent: 'center', gap: '0.85rem', flexWrap: 'wrap' }}>
             <Link

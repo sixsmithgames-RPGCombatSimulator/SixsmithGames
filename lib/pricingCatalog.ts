@@ -15,7 +15,7 @@ export interface PricingCatalogEntry {
   name: string;
   slug?: string;
   monthlyPrice: number;
-  /** Planned future monthly rate; it must never be presented as a price already charged. */
+  /** Decided monthly rate that applies after the founding introductory offer ends. */
   standardMonthlyPrice?: number;
   productId?: string;
   icon?: string;
@@ -99,10 +99,11 @@ export const pricingCatalog: Record<PricingPlanId, PricingCatalogEntry> = {
     productId: 'prod_UGroftGaUS7177',
     color: '#4c1d95',
     gradient: 'linear-gradient(135deg, #312e81, #7c3aed)',
-    summary: 'Campaign prep in GameMasterCraft plus the paid Game Master tools in Virtual Combat Simulator.',
+    summary: 'GameMasterCraft campaign prep, Virtual Combat Simulator GM tools, and GameMaster Assistant orchestration.',
     highlights: [
       'GameMasterCraft AI-assisted prep',
       'Virtual Combat Simulator GM tools',
+      'GameMaster Assistant orchestration',
       'One subscription for the campaign and the table',
     ],
   },

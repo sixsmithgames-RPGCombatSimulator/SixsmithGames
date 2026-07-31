@@ -88,7 +88,7 @@ describe('GameMaster Studio product visibility', () => {
     expect(publicSmartPasteCopy).not.toContain('Roll20');
   });
 
-  it('labels planned standard prices as future prices rather than former discounts', () => {
+  it('publishes the decided standard prices alongside the founding offer', () => {
     const pricingSources = [
       'app/page.tsx',
       'app/pricing/page.tsx',
@@ -98,7 +98,10 @@ describe('GameMaster Studio product visibility', () => {
     ].map((relativePath) => fs.readFileSync(path.join(process.cwd(), relativePath), 'utf8'));
     const publicPricingCopy = pricingSources.join('\n');
 
-    expect(publicPricingCopy).toContain('planned standard');
-    expect(publicPricingCopy).not.toMatch(/Regularly\s+\$?\{?\$?(19|29)\.99/i);
+    expect(publicPricingCopy).toContain('about 50% off');
+    expect(publicPricingCopy).toContain('decided standard');
+    expect(publicPricingCopy).toContain('$19.99');
+    expect(publicPricingCopy).toContain('$29.99');
+    expect(publicPricingCopy).not.toContain('planned standard');
   });
 });

@@ -2,8 +2,8 @@
  * Flagship pricing page.
  *
  * Only GameMaster Studio and its two standalone modules belong here. Prices and
- * plan IDs reuse the existing Stripe setup; this page changes the presentation,
- * not the billing contract.
+ * plan IDs reuse the exact founding-price Stripe records. Decided standard
+ * prices remain separate records until the introductory offer ends.
  */
 
 import type { Metadata } from 'next';
@@ -24,7 +24,7 @@ export const metadata: Metadata = buildPageMetadata({
 
 /**
  * Keeps the three flagship offers in one reviewable catalog. Current checkout
- * prices and planned standard prices remain separate fields on purpose.
+ * prices and decided post-introductory prices remain separate fields on purpose.
  */
 const plans = [
   {
@@ -49,10 +49,11 @@ const plans = [
     currentPrice: pricingCatalog.bundle.monthlyPrice,
     standardPrice: pricingCatalog.bundle.standardMonthlyPrice,
     description:
-      'For GMs who want the full rhythm: prepare the campaign in GameMasterCraft and run the encounter in VCS.',
+      'For GMs who want the full rhythm: prepare in GameMasterCraft, orchestrate play with GMA, and run encounters in VCS.',
     features: [
       'Everything in GameMasterCraft AI',
       'VCS paid Game Master tools',
+      'GameMaster Assistant orchestration',
       'Save $5 each month compared with both standalone plans',
     ],
     cta: 'Choose Studio',
@@ -84,7 +85,7 @@ const faq = [
   {
     question: 'What makes the current price introductory?',
     answer:
-      'The prices shown as founding are the prices charged today while the early-GM offer is open: $9.99/month for either module and $14.99/month for the full Studio. The planned standard prices are $19.99/month for either module and $29.99/month for Studio. Those are future price plans, not former prices. We will announce any change before it happens.',
+      'The prices shown as founding are the prices charged today while the early-GM offer is open: $9.99/month for either module and $14.99/month for the full Studio. That is about 50% off the decided standard prices of $19.99/month for either module and $29.99/month for Studio. We will announce the transition before the introductory offer ends.',
   },
   {
     question: 'Can I try the tools before subscribing?',
@@ -103,7 +104,7 @@ const faq = [
   },
 ];
 
-/** Renders current checkout offers without presenting future prices as past discounts. */
+/** Renders exact current checkout prices beside the decided post-offer rates. */
 export default function PricingPage() {
   return (
     <div className={styles.page}>
@@ -115,8 +116,8 @@ export default function PricingPage() {
         <p>
           Start with the campaign side, the table side, or the full loop. The
           prices marked founding are the real monthly prices at checkout for
-          early Game Masters. The planned standard prices are where we expect
-          each plan to land later, and we will tell you before that changes.
+          early Game Masters—about 50% off the decided standard rates. We will
+          announce the transition before the introductory offer ends.
         </p>
       </section>
 
@@ -137,17 +138,16 @@ export default function PricingPage() {
                 <p className={styles.planEyebrow}>{plan.eyebrow}</p>
                 <h3>{plan.name}</h3>
                 <p className={styles.price}>
+                  {plan.standardPrice ? (
+                    <span className={styles.regularPrice}>
+                      Standard {formatMonthlyPrice(plan.standardPrice)}
+                    </span>
+                  ) : null}
                   <strong>{formatMonthlyPrice(plan.currentPrice).replace('/month', '')}</strong>
                   <span> / month</span>
                 </p>
                 <p className={styles.priceLabel}>
-                  Founding price today
-                  {plan.standardPrice ? (
-                    <>
-                      <br />
-                      Planned standard {formatMonthlyPrice(plan.standardPrice)}
-                    </>
-                  ) : null}
+                  Founding offer · about 50% off
                 </p>
                 <p className={styles.description}>{plan.description}</p>
                 <ul>
@@ -163,9 +163,9 @@ export default function PricingPage() {
           </div>
           <p className={styles.finePrint}>
             Prices are in US dollars and renew monthly until canceled. Founding
-            prices are the amounts charged today. Planned standard prices are
-            future pricing intentions, not former prices, and will not take
-            effect without notice.
+            prices are the amounts charged today. The standard prices shown are
+            the decided rates after the introductory offer and will not take
+            effect without advance notice.
           </p>
         </section>
 
@@ -210,6 +210,12 @@ export default function PricingPage() {
                   <td><span className={styles.yes}>Yes</span></td>
                 </tr>
                 <tr>
+                  <th scope="row">GameMaster Assistant orchestration</th>
+                  <td>—</td>
+                  <td><span className={styles.yes}>Yes</span></td>
+                  <td>—</td>
+                </tr>
+                <tr>
                   <th scope="row">SmartPaste character import</th>
                   <td>—</td>
                   <td><span className={styles.yes}>Yes</span></td>
@@ -217,9 +223,9 @@ export default function PricingPage() {
                 </tr>
                 <tr>
                   <th scope="row">Monthly price</th>
-                  <td><strong>$9.99</strong><small>founding · $19.99 planned standard</small></td>
-                  <td><strong>$14.99</strong><small>founding · $29.99 planned standard</small></td>
-                  <td><strong>$9.99</strong><small>founding · $19.99 planned standard</small></td>
+                  <td><strong>$9.99</strong><small>founding · $19.99 standard</small></td>
+                  <td><strong>$14.99</strong><small>founding · $29.99 standard</small></td>
+                  <td><strong>$9.99</strong><small>founding · $19.99 standard</small></td>
                 </tr>
               </tbody>
             </table>
