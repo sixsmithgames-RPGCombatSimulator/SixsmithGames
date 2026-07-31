@@ -32,7 +32,8 @@ export default async function CustomerDetailPage({ params }: CustomerPageProps) 
 
   if (!isPreview) {
     const snapshot = await getLiveOperationsSnapshot();
-    const customer = snapshot.customers.find((record) => record.id === id);
+    const customerId = decodeURIComponent(id);
+    const customer = snapshot.customers.find((record) => record.id === customerId);
 
     if (!customer) {
       notFound();
