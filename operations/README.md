@@ -80,12 +80,17 @@ STRIPE_SECRET_KEY=sk_...
 GMC_BASE_URL=https://gmcraft.sixsmithgames.com
 VCS_SERVICE_BASE_URL=https://virtualcombatsimulator-production.up.railway.app
 VCS_SERVICE_API_KEY=...
+VCS_SERVICE_OWNER_ID=user_...
 ```
 
 `STRIPE_WEBHOOK_SECRET` remains optional until an Operations-specific webhook
 route is implemented and verified. Do not reuse the public website's webhook
 secret for a different endpoint. Settings performs read-only capability probes;
 it does not create customers, change subscriptions, or mutate product data.
+
+`VCS_SERVICE_OWNER_ID` is optional when the Operations login email resolves in
+VCS. Set it to the owner's existing VCS Clerk user ID when the product account
+uses a legacy or different email mapping.
 
 Production reuses the existing Sixsmith Games Clerk instance rooted at
 `sixsmithgames.com`, whose sessions support the `operations` subdomain. The

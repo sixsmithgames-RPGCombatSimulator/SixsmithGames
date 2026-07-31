@@ -142,7 +142,12 @@ function IntegrationRow({
         <footer className={styles.integrationFooter}>
           <div><span>Next step</span><strong>{integration.nextStep}</strong></div>
           <div className={styles.integrationActions}>
-            <a className="button button-secondary" href="https://vercel.com/dashboard" rel="noreferrer" target="_blank">
+            <a
+              className="button button-secondary"
+              href="https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmith-games-operations/settings/environment-variables"
+              rel="noreferrer"
+              target="_blank"
+            >
               Environment settings <ExternalLink aria-hidden size={13} />
             </a>
             {integration.manageUrl ? (

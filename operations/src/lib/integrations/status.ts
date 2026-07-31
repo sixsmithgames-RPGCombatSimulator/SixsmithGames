@@ -457,6 +457,7 @@ async function getVcsSnapshot(
 ): Promise<IntegrationSnapshot> {
   const origin = normalizeServiceOrigin(process.env.VCS_SERVICE_BASE_URL);
   const serviceKey = process.env.VCS_SERVICE_API_KEY?.trim();
+  const ownerIdentifier = process.env.VCS_SERVICE_OWNER_ID?.trim() || context.allowedEmail;
 
   if (!origin) {
     return {
@@ -472,6 +473,7 @@ async function getVcsSnapshot(
       requirements: [
         { label: "VCS_SERVICE_BASE_URL", state: "missing", detail: "Production service origin" },
         { label: "VCS_SERVICE_API_KEY", state: "missing", detail: "Server-to-server read credential" },
+        { label: "VCS_SERVICE_OWNER_ID", state: "warning", detail: "Optional; defaults to the owner email" },
       ],
       capabilities: [],
       nextStep: "Add the production service origin and the existing service credential in Vercel.",
@@ -508,7 +510,7 @@ async function getVcsSnapshot(
     }
 
     const capabilityResponse = await probe(
-      `${origin}/api/service/content/${encodeURIComponent(context.allowedEmail)}`,
+      `${origin}/api/service/content/${encodeURIComponent(ownerIdentifier)}`,
       { headers: { Authorization: `Bearer ${serviceKey}` } },
     );
     if (!capabilityResponse.ok) {
@@ -529,6 +531,13 @@ async function getVcsSnapshot(
       requirements: [
         { label: "VCS service health", state: "complete", detail: "Live health probe succeeded" },
         { label: "VCS_SERVICE_API_KEY", state: "complete", detail: "Authenticated read succeeded" },
+        {
+          label: "VCS_SERVICE_OWNER_ID",
+          state: "complete",
+          detail: process.env.VCS_SERVICE_OWNER_ID?.trim()
+            ? "Dedicated VCS owner identifier is configured"
+            : "Using the authorized owner email",
+        },
         { label: "Usage feed", state: "warning", detail: "Initial daily ingestion is not running yet" },
       ],
       capabilities: ["Service health", "Owner-scoped product read"],
@@ -552,6 +561,11 @@ async function getVcsSnapshot(
           label: "VCS_SERVICE_API_KEY",
           state: serviceKey ? "warning" : "missing",
           detail: serviceKey ? "Present, but validation failed" : "Missing",
+        },
+        {
+          label: "VCS_SERVICE_OWNER_ID",
+          state: ownerIdentifier ? "complete" : "missing",
+          detail: ownerIdentifier ? "Owner scope is configured" : "Missing",
         },
       ],
       capabilities: [],
