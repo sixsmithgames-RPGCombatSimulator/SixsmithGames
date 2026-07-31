@@ -76,10 +76,14 @@ NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
 DATABASE_URL=postgresql://...
 ```
 
-Clerk should be configured in **Restricted** sign-up mode. The app performs the
-exact owner-email check server-side, so Clerk’s paid production allowlist
-feature is not required. Disable end-user email-address changes for the owner
-account so the authorization identifier remains stable.
+Production reuses the existing Sixsmith Games Clerk instance rooted at
+`sixsmithgames.com`, whose sessions support the `operations` subdomain. The
+middleware accepts Clerk sessions only from
+`https://operations.sixsmithgames.com`, and the app performs the exact owner
+email check again server-side. Other users in the shared Clerk directory cannot
+access operations data, so Clerk's paid production identifier allowlist is not
+required. Disable end-user email-address changes for the owner account so the
+authorization identifier remains stable.
 
 Do not deploy until connected mode and all secrets are present. A production
 preview deployment is intentionally rejected.

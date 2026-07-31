@@ -2,8 +2,15 @@ import { clerkMiddleware } from "@clerk/nextjs/server";
 import { NextResponse, type NextFetchEvent, type NextRequest } from "next/server";
 
 const RUNTIME_MODE = process.env.OPERATIONS_RUNTIME_MODE;
+const OPERATIONS_AUTHORIZED_PARTIES = [
+  "https://operations.sixsmithgames.com",
+];
 const CONNECTED_CLERK_PROXY =
-  RUNTIME_MODE === "connected" ? clerkMiddleware() : undefined;
+  RUNTIME_MODE === "connected"
+    ? clerkMiddleware({
+        authorizedParties: OPERATIONS_AUTHORIZED_PARTIES,
+      })
+    : undefined;
 
 /**
  * Purpose: Runs Clerk session parsing for connected environments while allowing explicit local preview review.
