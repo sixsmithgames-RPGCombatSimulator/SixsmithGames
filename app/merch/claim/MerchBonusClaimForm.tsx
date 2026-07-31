@@ -3,15 +3,23 @@
 'use client';
 
 import Link from 'next/link';
-import { useState, type FormEvent } from 'react';
+import { useEffect, useState, type FormEvent } from 'react';
 
 import styles from './claim.module.css';
 
 /** Submits only the public receipt number; account identity stays server-side. */
 export default function MerchBonusClaimForm() {
+  const [hydrated, setHydrated] = useState(false);
   const [orderNumber, setOrderNumber] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
+
+  useEffect(() => {
+    // Keep the submit control inert until React owns the form. Without this
+    // guard, a very fast tap during hydration could trigger the browser's
+    // default GET submission before the protected JSON request is attached.
+    setHydrated(true);
+  }, []);
 
   async function claimBonus(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
@@ -83,8 +91,12 @@ export default function MerchBonusClaimForm() {
             placeholder="Shown on your receipt"
             required
           />
-          <button type="submit" disabled={submitting}>
-            {submitting ? 'Checking order…' : 'Claim my Studio time'}
+          <button type="submit" disabled={!hydrated || submitting}>
+            {!hydrated
+              ? 'Preparing claim…'
+              : submitting
+                ? 'Checking order…'
+                : 'Claim my Studio time'}
           </button>
         </div>
         {message && <p role="status">{message}</p>}
