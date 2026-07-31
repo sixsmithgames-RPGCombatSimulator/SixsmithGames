@@ -10,7 +10,6 @@ import styles from './claim.module.css';
 /** Submits only the public receipt number; account identity stays server-side. */
 export default function MerchBonusClaimForm() {
   const [hydrated, setHydrated] = useState(false);
-  const [orderNumber, setOrderNumber] = useState('');
   const [message, setMessage] = useState<string | null>(null);
   const [submitting, setSubmitting] = useState(false);
 
@@ -24,6 +23,18 @@ export default function MerchBonusClaimForm() {
   async function claimBonus(event: FormEvent<HTMLFormElement>) {
     event.preventDefault();
     if (submitting) return;
+
+    // Read the receipt number from the submitted form itself. Keeping this
+    // field uncontrolled prevents an unrelated account-provider rerender from
+    // replacing a number the shopper just typed during page startup.
+    const submittedOrderNumber = new FormData(event.currentTarget).get('orderNumber');
+    const orderNumber = typeof submittedOrderNumber === 'string'
+      ? submittedOrderNumber.trim().toUpperCase()
+      : '';
+    if (!orderNumber) {
+      setMessage('Enter the order number shown on your merchandise receipt.');
+      return;
+    }
 
     setSubmitting(true);
     setMessage(null);
@@ -83,8 +94,6 @@ export default function MerchBonusClaimForm() {
           <input
             id="merch-order-number"
             name="orderNumber"
-            value={orderNumber}
-            onChange={(event) => setOrderNumber(event.target.value.toUpperCase())}
             autoComplete="off"
             inputMode="text"
             maxLength={32}
