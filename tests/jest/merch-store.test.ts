@@ -41,6 +41,9 @@ describe('Sixsmith Games merchandise catalog', () => {
       '$34.00',
     ]);
     expect(MERCH_PRODUCTS.map((product) => product.freeStudioMonths)).toEqual([3, 3, 1]);
+    expect(MERCH_PRODUCTS[0]?.tableLine).toBe(
+      'For cold convention halls, late night sessions, or when the monsters feel too real.',
+    );
 
     for (const product of MERCH_PRODUCTS) {
       expect(product.shopUrl).toMatch(

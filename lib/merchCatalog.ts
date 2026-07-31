@@ -102,7 +102,7 @@ export const MERCH_PRODUCTS: MerchProductDefinition[] = [
     category: 'Wearables',
     artwork: 'hoodie',
     badge: 'For late sessions',
-    tableLine: 'For cold convention halls, late sessions, and one more scene than anyone planned.',
+    tableLine: 'For cold convention halls, late night sessions, or when the monsters feel too real.',
     description:
       'A black, regular-fit GameMaster Studio hoodie for the Game Master who keeps the table moving.',
     design:

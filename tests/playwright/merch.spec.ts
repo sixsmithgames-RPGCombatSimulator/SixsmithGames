@@ -16,6 +16,14 @@ test('merchandise speaks to players and is ready to order', async ({ page }) => 
     }),
   ).toBeVisible();
   await expect(page.getByText('Wear the story. Set the scene.')).toBeVisible();
+  await expect(
+    page.getByText(
+      'For cold convention halls, late night sessions, or when the monsters feel too real.',
+    ),
+  ).toBeVisible();
+  await expect(
+    page.getByText('For cold convention halls, late sessions, and one more scene than anyone planned.'),
+  ).toHaveCount(0);
   await expect(page.getByText(/\bapproved\b/i)).toHaveCount(0);
   await expect(page.getByText(/Fourthwall/i)).toHaveCount(0);
 
