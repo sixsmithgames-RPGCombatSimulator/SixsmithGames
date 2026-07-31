@@ -17,12 +17,12 @@ const ALL_NON_GRAVITY_APPS: AppSlug[] = ['contentcraft', 'gamemastercraft', 'vir
 const DUMMY_BILLING_EMAILS = ['sexsmith2005@gmail.com', 'quentind@gmail.com', 'djmerdur@gmail.com'];
 
 const DUMMY_BILLING_HISTORY: BillingRecord[] = [
-  { id: 'inv_001', date: '2026-02-01', amount: 14.99, status: 'paid', description: 'GameMaster Studio - Monthly' },
-  { id: 'inv_002', date: '2026-01-01', amount: 14.99, status: 'paid', description: 'GameMaster Studio - Monthly' },
-  { id: 'inv_003', date: '2025-12-01', amount: 14.99, status: 'paid', description: 'GameMaster Studio - Monthly' },
-  { id: 'inv_004', date: '2025-11-01', amount: 14.99, status: 'paid', description: 'GameMaster Studio - Monthly' },
-  { id: 'inv_005', date: '2025-10-01', amount: 14.99, status: 'paid', description: 'GameMaster Studio - Monthly' },
-  { id: 'inv_006', date: '2025-09-01', amount: 14.99, status: 'paid', description: 'GameMaster Studio - Monthly' },
+  { id: 'inv_001', date: '2026-02-01', amount: 15, status: 'paid', description: 'GameMaster Studio - Monthly' },
+  { id: 'inv_002', date: '2026-01-01', amount: 15, status: 'paid', description: 'GameMaster Studio - Monthly' },
+  { id: 'inv_003', date: '2025-12-01', amount: 15, status: 'paid', description: 'GameMaster Studio - Monthly' },
+  { id: 'inv_004', date: '2025-11-01', amount: 15, status: 'paid', description: 'GameMaster Studio - Monthly' },
+  { id: 'inv_005', date: '2025-10-01', amount: 15, status: 'paid', description: 'GameMaster Studio - Monthly' },
+  { id: 'inv_006', date: '2025-09-01', amount: 15, status: 'paid', description: 'GameMaster Studio - Monthly' },
 ];
 
 const ADMIN_EMAILS = (process.env.ADMIN_EMAILS || '')

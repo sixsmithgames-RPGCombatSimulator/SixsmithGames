@@ -42,7 +42,7 @@ const faq = [
   {
     question: 'How does the GameMaster Studio coupon work?',
     answer:
-      'After a qualifying paid order is confirmed, use the same email for your merchandise order and Sixsmith Games account, then enter the receipt number on the claim page. A desk mat earns a one-use coupon covering one Studio month; either hoodie earns three months. Qualifying items in the same order add together. The coupon is claimed separately and does not change the merchandise price. If it starts a new Studio subscription, regular monthly billing begins after the coupon ends unless you cancel first. The coupon has no cash value and cannot be transferred.',
+      'After a qualifying paid order is confirmed, use the same email for your merchandise order and Sixsmith Games account, then enter the receipt number on the claim page. A desk mat earns a one-use coupon covering one Studio month; either hoodie earns three months. Qualifying items in the same order add together. The coupon is claimed separately and does not change the merchandise price. If it starts a new Studio subscription, standard monthly billing begins after the coupon ends unless you cancel first. The coupon has no cash value and cannot be transferred.',
   },
   {
     question: 'When is my gear made?',

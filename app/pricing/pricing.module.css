@@ -123,10 +123,9 @@
   font-weight: 600;
 }
 
-.regularPrice {
+.standardPrice {
   color: #948b80;
   font-size: 0.82rem;
-  text-decoration: line-through;
 }
 
 .priceLabel {

@@ -19,11 +19,11 @@ export const contentCraftProductDefinition: ProductDefinition = {
   category: 'Worldbuilding and writing tool with canon continuity support',
   primaryAudience: 'Writers, novelists, worldbuilders, and game masters',
   platform: 'Browser-based web app',
-  pricingModel: '$9.99/month or $99/year. Includes the full workspace, canon tracking, and built-in AI usage',
+  pricingModel: '$10.00/month or $99/year. Includes the full workspace, canon tracking, and built-in AI usage',
   availability: 'Subscribe to get full access. No free tier — the whole tool is inside the subscription',
   applicationCategory: 'WritingApplication',
   operatingSystem: 'Web browser',
-  offerPrice: 9.99,
+  offerPrice: 10,
   officialPath: '/apps/contentcraft',
   pricingPath: '/pricing#contentcraft',
   helpPath: '/help/contentcraft',
@@ -114,7 +114,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'ContentCraft is $9.99 per month or $99 per year. It is the one product in the Sixsmith Games lineup that requires a subscription from the start — the whole workspace comes together only when the canon, the project structure, and the drafting tools are in the same place.',
+    'ContentCraft is $10.00 per month or $99 per year. It is the one product in the Sixsmith Games lineup that requires a subscription from the start — the whole workspace comes together only when the canon, the project structure, and the drafting tools are in the same place.',
     'AI assistance is included, but the real value is the world you build inside the workspace. The AI helps when you want it. The canon, the connections, and the project memory are yours whether you use the AI features or not.',
   ],
   faq: [
@@ -146,7 +146,7 @@ export const contentCraftProductDefinition: ProductDefinition = {
     {
       question: 'How does pricing work for ContentCraft?',
       answer:
-        'ContentCraft is $9.99 per month or $99 per year. The subscription includes some built-in AI usage, with additional AI usage handled through bring-your-own or purchased credits when needed.',
+        'ContentCraft is $10.00 per month or $99 per year. The subscription includes some built-in AI usage, with additional AI usage handled through bring-your-own or purchased credits when needed.',
     },
   ],
   gettingStarted: [

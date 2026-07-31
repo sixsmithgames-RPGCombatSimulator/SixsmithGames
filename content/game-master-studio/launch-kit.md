@@ -25,8 +25,8 @@ GameMasterCraft and encounter control in Virtual Combat Simulator.
   notes, and campaign continuity.
 - VCS puts maps, tokens, initiative, hit points, conditions, and combat controls
   in the encounter workspace.
-- GameMaster Studio is currently $14.99 per month at the founding price (regularly $29.99).
-- GameMasterCraft AI and VCS GM remain separate $9.99 monthly subscriptions at the founding price (regularly $19.99 each).
+- GameMaster Studio is currently $15.00 per month at the founding price (standard $30.00).
+- GameMasterCraft AI and VCS GM remain separate $10.00 monthly subscriptions at the founding price (standard $20.00 each).
 - The server-side handoff foundation exists, but the customer-facing handoff is
   not yet finished.
 - Today, the GM chooses what encounter results become campaign history.
@@ -106,10 +106,10 @@ Screen: show the three pricing cards.
 
 Voice:
 
-> Use the full Studio for fourteen ninety-nine a month, or keep GameMasterCraft
-> and VCS on their own for nine ninety-nine each.
+> Use the full Studio for fifteen dollars a month, or keep GameMasterCraft
+> and VCS on their own for ten dollars each.
 
-On-screen text: `Founding: $14.99 Studio · $9.99 each standalone`
+On-screen text: `Founding: $15.00 Studio · $10.00 each standalone`
 
 **1:22–1:30 — CTA**
 
@@ -209,9 +209,9 @@ You still make the call about what becomes campaign truth. The customer-facing
 handoff is being finished, so combat does not quietly rewrite your campaign
 behind the screen.
 
-The full Studio is currently $14.99 a month at the founding price (regularly $29.99).
+The full Studio is currently $15.00 a month at the founding price (standard $30.00).
 If you only need one side, GameMasterCraft AI and VCS GM remain available at
-$9.99 a month each at the founding price (regularly $19.99 each).
+$10.00 a month each at the founding price (standard $20.00 each).
 
 Start free:
 

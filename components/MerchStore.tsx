@@ -363,7 +363,7 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
                     </strong>
                     <span>
                       Claim it after purchase with your order number and the same email.
-                      New subscriptions renew at the regular monthly price after the coupon
+                      New subscriptions renew at the standard monthly price after the coupon
                       ends unless canceled.
                     </span>
                   </div>

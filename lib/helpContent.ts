@@ -77,7 +77,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       summary: 'Virtual Combat Simulator is free to start. The Game Master subscription adds storage and expanded GM tools for groups that run encounters regularly.',
       paragraphs: [
         'The core combat management tool is free for signed-in users. You can set up maps, place tokens, run initiative, track hit points and conditions, and keep the table synced without paying anything.',
-        'The Game Master plan is currently $9.99 per month at the founding price and adds more encounter storage and expanded GM capability for game masters who run sessions frequently and want more headroom. That introductory offer is about 50% off the decided $19.99 per month standard price. Try the free tier first, then decide whether the upgrade fits your session cadence.',
+        'The Game Master plan is currently $10.00 per month at the founding price and adds more encounter storage and expanded GM capability for game masters who run sessions frequently and want more headroom. That introductory offer is 50% off the $20.00 per month standard price. Try the free tier first, then decide whether the upgrade fits your session cadence.',
         'For account questions, billing, or anything related to subscriptions, use the support page. The pricing page has the full comparison of what each tier includes.',
       ],
       bullets: [
@@ -151,7 +151,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       ],
     },
     'pricing-and-accounts': {
-      summary: 'ContentCraft is $9.99 per month or $99 per year. The subscription covers the full workspace — there is no free tier.',
+      summary: 'ContentCraft is $10.00 per month or $99 per year. The subscription covers the full workspace — there is no free tier.',
       paragraphs: [
         'ContentCraft is the one product in the Sixsmith Games lineup that requires a subscription before you can access it. The subscription covers everything: the canon library, project organization, AI-assisted drafting, review workflow, and export. There is no free version.',
         'The annual plan at $99 per year saves roughly two months compared to the monthly rate. Built-in AI usage is included in the subscription. If you use AI features heavily, additional usage can be handled through bring-your-own or purchased credits.',
@@ -228,9 +228,9 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       ],
     },
     'pricing-and-accounts': {
-      summary: 'Four Star General is free to play the tactical core. The paid tier at $1.99 per month unlocks more scenarios and content.',
+      summary: 'Four Star General is free to play the tactical core. The paid tier at $2.00 per month unlocks more scenarios and content.',
       paragraphs: [
-        'The base tactical core is free to access. You can play scenarios, learn how the game works, and see how battles resolve from your choices without paying anything. The paid content tier at $1.99 per month unlocks additional scenarios, units, and authored campaign content.',
+        'The base tactical core is free to access. You can play scenarios, learn how the game works, and see how battles resolve from your choices without paying anything. The paid content tier at $2.00 per month unlocks additional scenarios, units, and authored campaign content.',
         'The paid layer adds more to play, not access to start. The free core is not a trial with paywalled mechanics — it is a complete tactical experience. The paid tier expands the library of content you can play through.',
         'For account or billing questions, use the support page. The pricing page has the current breakdown of what each tier includes.',
       ],
@@ -256,7 +256,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
         'Use exercise mode or Pro mode to practice the specific areas surfaced by the assessment.',
         'Switch to game mode to keep repetition sustainable when focused drills start to feel monotonous.',
         'Check progress tracking regularly to see whether the practice is moving the right numbers.',
-        'If you want extended history and deeper review, check the premium tier at $1.99 per month.',
+        'If you want extended history and deeper review, check the premium tier at $2.00 per month.',
       ],
     },
     'core-features': {
@@ -293,7 +293,7 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       summary: 'MasterTyping is a typing practice app, not a typing test site or a full educational suite. The free core covers the practice loop; premium adds history.',
       paragraphs: [
         'MasterTyping is built for skill-building through repeated, structured practice. It is not a one-time speed test site, not a children\'s educational game, and not a full learning management system. It is a focused typing practice tool for people who want to get better and keep practicing.',
-        'The core practice loop — assessments, exercises, Pro mode, game mode, and progress tracking — is free. The premium tier at $1.99 per month adds extended history and deeper tracking. It does not lock the basic practice loop behind a paywall.',
+        'The core practice loop — assessments, exercises, Pro mode, game mode, and progress tracking — is free. The premium tier at $2.00 per month adds extended history and deeper tracking. It does not lock the basic practice loop behind a paywall.',
         'MasterTyping is browser-based and does not require a download. It is designed for repeat use, not a one-time visit. The improvement loop requires consistent practice, and the product is built to support that.',
       ],
       bullets: [
@@ -305,9 +305,9 @@ const productSpecificContent: Record<string, Record<HelpTopicSlug, Omit<HelpTopi
       ],
     },
     'pricing-and-accounts': {
-      summary: 'MasterTyping is free to use for core practice. The $1.99 per month premium layer adds extended history and deeper tracking.',
+      summary: 'MasterTyping is free to use for core practice. The $2.00 per month premium layer adds extended history and deeper tracking.',
       paragraphs: [
-        'The full practice loop — assessments, exercise mode, Pro mode, game mode, and progress tracking — is free. You do not need to pay to use the core product. The premium layer at $1.99 per month adds extended history and deeper tracking for users who want long-term progress review.',
+        'The full practice loop — assessments, exercise mode, Pro mode, game mode, and progress tracking — is free. You do not need to pay to use the core product. The premium layer at $2.00 per month adds extended history and deeper tracking for users who want long-term progress review.',
         'The premium tier is designed for users who have already built a practice habit and want more visibility into progress over time. It is not necessary to start and it is not required for real improvement. Build the habit first, then decide if extended tracking is worth it.',
         'For account or billing questions, use the support page. The pricing page has the full breakdown.',
       ],

@@ -148,7 +148,7 @@ export const MERCH_PRODUCTS: MerchProductDefinition[] = [
     shopUrl:
       'https://sixsmith-games-shop.fourthwall.com/products/master-your-stories-full-zip-hoodie',
     shopCta: 'Shop the zippered hoodie',
-    shopPrice: 'From $59.99',
+    shopPrice: 'From $60.00',
     freeStudioMonths: 3,
     variants: buildApparelVariants(
       'MASTER_YOUR_STORIES_FULL_ZIP_HOODIE',

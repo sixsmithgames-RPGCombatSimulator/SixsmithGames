@@ -31,7 +31,7 @@ export default function MerchBonusClaimPage() {
         <MerchBonusClaimForm />
         <p className={styles.helpText}>
           Existing Studio subscriptions get the earned time added. If the coupon
-          starts a new subscription, regular monthly billing begins after the
+          starts a new subscription, standard monthly billing begins after the
           coupon ends unless you cancel first. The coupon has no cash value and
           cannot be transferred.
         </p>

@@ -19,11 +19,11 @@ export const masterTypingProductDefinition: ProductDefinition = {
   category: 'Typing practice game and skill-building trainer',
   primaryAudience: 'People who want typing improvement without a childish or lifeless practice loop',
   platform: 'Browser-based web app',
-  pricingModel: 'Free to use for core practice. Add deeper tracking and extended history for $1.99/month',
+  pricingModel: 'Free to use for core practice. Add deeper tracking and extended history for $2.00/month',
   availability: 'Start practicing in your browser right now. The premium layer adds more history and tracking when you want it',
   applicationCategory: 'EducationalApplication',
   operatingSystem: 'Web browser',
-  offerPrice: 1.99,
+  offerPrice: 2,
   officialPath: '/apps/mastertyping',
   pricingPath: '/pricing#mastertyping',
   helpPath: '/help/mastertyping',
@@ -113,7 +113,7 @@ export const masterTypingProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'MasterTyping is a free core training product with an optional $1.99 per month premium layer. You get assessments, drills, practice, and game mode up front. The paid tier comes later, if you want it.',
+    'MasterTyping is a free core training product with an optional $2.00 per month premium layer. You get assessments, drills, practice, and game mode up front. The paid tier comes later, if you want it.',
     'The premium layer is about retained history and deeper tracking, not locking the basic practice loop. Build skill first, decide later whether the premium layer is worth it for you.',
   ],
   faq: [

@@ -44,7 +44,7 @@ const faq = [
   {
     question: 'Can I subscribe to GameMasterCraft or VCS on its own?',
     answer:
-      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $9.99 per month at the current founding price. The full GameMaster Studio plan, including GameMaster Assistant, is $14.99 per month while the early-GM offer is open. Those introductory prices are about 50% off the decided standard prices of $19.99 for either module and $29.99 for Studio.',
+      'Yes. GameMasterCraft AI and the Virtual Combat Simulator GM plan are each $10.00 per month at the current founding price. The full GameMaster Studio plan, including GameMaster Assistant, is $15.00 per month while the early-GM offer is open. Those introductory prices are 50% off the standard prices of $20.00 for either module and $30.00 for Studio.',
   },
   {
     question: 'What does SmartPaste do?',
@@ -270,10 +270,10 @@ export default function HomePage() {
       <section className={styles.pricingSection}>
         <div className={styles.sectionHeading}>
           <p className={styles.eyebrow}>Founding table pricing</p>
-          <h2>One Studio. Three connected tools. No forced bundle.</h2>
+          <h2>One Studio. Three tools. No forced bundle.</h2>
           <p>
-            The founding prices below are what you pay today—about 50% off the
-            decided standard rates that apply after the introductory offer.
+            The founding prices below are what you pay today—50% off the
+            standard rates that apply after the introductory offer.
           </p>
         </div>
 
@@ -286,7 +286,7 @@ export default function HomePage() {
             <p className={styles.priceLabel}>
               Founding price today
               <br />
-              Standard $19.99/month
+              Standard $20.00/month
             </p>
             <ul>
               <li>Campaign workspace</li>
@@ -307,7 +307,7 @@ export default function HomePage() {
             <p className={styles.priceLabel}>
               Founding price today
               <br />
-              Standard $29.99/month
+              Standard $30.00/month
             </p>
             <ul>
               <li>Everything in GameMasterCraft AI</li>
@@ -328,7 +328,7 @@ export default function HomePage() {
             <p className={styles.priceLabel}>
               Founding price today
               <br />
-              Standard $19.99/month
+              Standard $20.00/month
             </p>
             <ul>
               <li>SmartPaste and character sheets</li>

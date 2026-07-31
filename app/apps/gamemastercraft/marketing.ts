@@ -20,7 +20,7 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
   category: 'D&D campaign planning tool and campaign bible workspace',
   primaryAudience: 'Tabletop RPG game masters running long campaigns and homebrew worlds',
   platform: 'Browser-based web app',
-  pricingModel: 'Core campaign tools free. The founding AI price is $9.99/month while the early-GM offer is open—about 50% off the decided $19.99/month standard price',
+  pricingModel: 'Core campaign tools free. The founding AI price is $10.00/month while the early-GM offer is open—50% off the $20.00/month standard price',
   availability: 'Start your campaign now — NPCs, factions, locations, and session notes are free. Add AI help for brainstorming and prep whenever you are ready.',
   applicationCategory: 'WritingApplication',
   operatingSystem: 'Web browser',
@@ -153,7 +153,7 @@ export const gameMasterCraftProductDefinition: ProductDefinition = {
     {
       question: 'Can I subscribe to GameMasterCraft without VCS?',
       answer:
-        'Yes. GameMasterCraft AI remains available as its own subscription at the current founding price of $9.99/month—about 50% off the decided $19.99/month standard price. Choose the full GameMaster Studio plan when you also want the paid VCS Game Master tools and GameMaster Assistant orchestration.',
+        'Yes. GameMasterCraft AI remains available as its own subscription at the current founding price of $10.00/month—50% off the $20.00/month standard price. Choose the full GameMaster Studio plan when you also want the paid VCS Game Master tools and GameMaster Assistant orchestration.',
     },
   ],
   gettingStarted: [

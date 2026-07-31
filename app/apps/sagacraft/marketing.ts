@@ -19,7 +19,7 @@ export const sagaCraftProductDefinition: ProductDefinition = {
   category: 'Story bible software and novel continuity tool for writers',
   primaryAudience: 'Novelists, amateur writers, serial fiction authors, and worldbuilders',
   platform: 'Browser-based web app',
-  pricingModel: 'Core writing workspace free. AI drafting help $9.99/month when you want it',
+  pricingModel: 'Core writing workspace free. AI drafting help $10.00/month when you want it',
   availability: 'Start your story now — characters, plots, chapters, and timelines are free. Add AI assistance for drafting, outlining, and revision whenever you are ready.',
   applicationCategory: 'WritingApplication',
   operatingSystem: 'Web browser',

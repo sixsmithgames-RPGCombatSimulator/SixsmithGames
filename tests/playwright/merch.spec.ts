@@ -53,7 +53,7 @@ test('merchandise speaks to players and is ready to order', async ({ page }) => 
     has: page.getByRole('heading', { name: 'Master Your Stories Zippered Hoodie' }),
   });
   await expect(pulloverCard.getByText('$44.00', { exact: true })).toBeVisible();
-  await expect(zipperedCard.getByText('From $59.99', { exact: true })).toBeVisible();
+  await expect(zipperedCard.getByText('From $60.00', { exact: true })).toBeVisible();
   await expect(
     page.getByText('Earn a one-use Studio coupon: 3 months at no additional charge'),
   ).toHaveCount(2);
@@ -62,7 +62,7 @@ test('merchandise speaks to players and is ready to order', async ({ page }) => 
   ).toBeVisible();
   await expect(page.getByText(/Includes .*free month/i)).toHaveCount(0);
   await expect(
-    page.getByText(/New subscriptions renew at the regular monthly price/),
+    page.getByText(/New subscriptions renew at the standard monthly price/),
   ).toHaveCount(3);
   await expect(page.getByText('SESSION NOTES')).toHaveCount(0);
   await expect(page.getByText('ROLL FOR CONSEQUENCES')).toHaveCount(0);
@@ -113,7 +113,7 @@ test('merchandise bonus claim keeps account matching on the server', async ({ pa
     page.getByRole('main').getByRole('link', { name: 'Sign in', exact: true }),
   ).toBeVisible();
   await expect(
-    page.getByText(/regular monthly billing begins after the coupon ends unless you cancel first/),
+    page.getByText(/standard monthly billing begins after the coupon ends unless you cancel first/),
   ).toBeVisible();
 
   const claimButton = page.getByRole('button', { name: 'Claim my Studio time' });

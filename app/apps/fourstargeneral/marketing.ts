@@ -19,11 +19,11 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   category: 'WWII tactical strategy game',
   primaryAudience: 'Players of serious WWII tactical strategy and digital wargames',
   platform: 'Browser-based web game',
-  pricingModel: 'Free to play the tactical core. Unlock more scenarios, units, and content for $1.99/month',
+  pricingModel: 'Free to play the tactical core. Unlock more scenarios, units, and content for $2.00/month',
   availability: 'Jump into the tactical prototype right now. Paid content adds more to play, not access to start',
   applicationCategory: 'GameApplication',
   operatingSystem: 'Web browser',
-  offerPrice: 1.99,
+  offerPrice: 2,
   officialPath: '/apps/fourstargeneral',
   pricingPath: '/pricing#fourstargeneral',
   helpPath: '/help/fourstargeneral',
@@ -115,7 +115,7 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     },
   ],
   pricingAndAccess: [
-    'Four Star General is playable now, with optional paid content unlocks at $1.99 per month. This is not "pay to start." Start with the tactical core, then expand content if the game fits you.',
+    'Four Star General is playable now, with optional paid content unlocks at $2.00 per month. This is not "pay to start." Start with the tactical core, then expand content if the game fits you.',
     'Serious strategy players want to understand the systems first. Optional paid content works when the base tactical experience is already clear, and the added value is more units, more scenarios, and broader campaign-style content.',
   ],
   faq: [
@@ -147,7 +147,7 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
     {
       question: 'How does pricing work for Four Star General?',
       answer:
-        'Four Star General is playable now with optional $1.99 per month unlocks for more units, scenarios, and expanded content. Free core play with optional expansion content, not a hard paywall.',
+        'Four Star General is playable now with optional $2.00 per month unlocks for more units, scenarios, and expanded content. Free core play with optional expansion content, not a hard paywall.',
     },
   ],
   gettingStarted: [

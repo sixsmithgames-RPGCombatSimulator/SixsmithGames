@@ -80,12 +80,12 @@ const faq = [
   {
     question: 'Do I have to buy the full Studio plan?',
     answer:
-      'No. GameMasterCraft AI and VCS Game Master stay available as individual subscriptions. Their current founding price is $9.99/month each; choose Studio when you want both.',
+      'No. GameMasterCraft AI and VCS Game Master stay available as individual subscriptions. Their current founding price is $10.00/month each; choose Studio when you want both.',
   },
   {
     question: 'What makes the current price introductory?',
     answer:
-      'The prices shown as founding are the prices charged today while the early-GM offer is open: $9.99/month for either module and $14.99/month for the full Studio. That is about 50% off the decided standard prices of $19.99/month for either module and $29.99/month for Studio. We will announce the transition before the introductory offer ends.',
+      'The prices shown as founding are the prices charged today while the early-GM offer is open: $10.00/month for either module and $15.00/month for the full Studio. That is 50% off the standard prices of $20.00/month for either module and $30.00/month for Studio. We will announce the transition before the introductory offer ends.',
   },
   {
     question: 'Can I try the tools before subscribing?',
@@ -116,7 +116,7 @@ export default function PricingPage() {
         <p>
           Start with the campaign side, the table side, or the full loop. The
           prices marked founding are the real monthly prices at checkout for
-          early Game Masters—about 50% off the decided standard rates. We will
+          early Game Masters—50% off the standard rates. We will
           announce the transition before the introductory offer ends.
         </p>
       </section>
@@ -139,7 +139,7 @@ export default function PricingPage() {
                 <h3>{plan.name}</h3>
                 <p className={styles.price}>
                   {plan.standardPrice ? (
-                    <span className={styles.regularPrice}>
+                    <span className={styles.standardPrice}>
                       Standard {formatMonthlyPrice(plan.standardPrice)}
                     </span>
                   ) : null}
@@ -147,7 +147,7 @@ export default function PricingPage() {
                   <span> / month</span>
                 </p>
                 <p className={styles.priceLabel}>
-                  Founding offer · about 50% off
+                  Founding offer · 50% off
                 </p>
                 <p className={styles.description}>{plan.description}</p>
                 <ul>
@@ -223,9 +223,9 @@ export default function PricingPage() {
                 </tr>
                 <tr>
                   <th scope="row">Monthly price</th>
-                  <td><strong>$9.99</strong><small>founding · $19.99 standard</small></td>
-                  <td><strong>$14.99</strong><small>founding · $29.99 standard</small></td>
-                  <td><strong>$9.99</strong><small>founding · $19.99 standard</small></td>
+                  <td><strong>$10.00</strong><small>founding · $20.00 standard</small></td>
+                  <td><strong>$15.00</strong><small>founding · $30.00 standard</small></td>
+                  <td><strong>$10.00</strong><small>founding · $20.00 standard</small></td>
                 </tr>
               </tbody>
             </table>

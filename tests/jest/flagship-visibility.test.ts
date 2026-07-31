@@ -98,10 +98,10 @@ describe('GameMaster Studio product visibility', () => {
     ].map((relativePath) => fs.readFileSync(path.join(process.cwd(), relativePath), 'utf8'));
     const publicPricingCopy = pricingSources.join('\n');
 
-    expect(publicPricingCopy).toContain('about 50% off');
-    expect(publicPricingCopy).toContain('decided standard');
-    expect(publicPricingCopy).toContain('$19.99');
-    expect(publicPricingCopy).toContain('$29.99');
+    expect(publicPricingCopy).toContain('50% off');
+    expect(publicPricingCopy).toContain('standard');
+    expect(publicPricingCopy).toContain('$20.00');
+    expect(publicPricingCopy).toContain('$30.00');
     expect(publicPricingCopy).not.toContain('planned standard');
   });
 });
