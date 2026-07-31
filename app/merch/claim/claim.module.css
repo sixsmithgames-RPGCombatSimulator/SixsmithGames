@@ -138,6 +138,28 @@
 }
 
 @media (max-width: 620px) {
+  .page {
+    /* Keep the receipt controls above the compact consent prompt on phones. */
+    padding-top: 1.5rem;
+  }
+
+  .claimCard {
+    padding: 1.25rem;
+  }
+
+  .claimCard > p,
+  .claimCard li {
+    line-height: 1.55;
+  }
+
+  .claimCard ul {
+    margin: 0.8rem 0 1rem;
+  }
+
+  .accountGate {
+    margin-top: 1rem;
+  }
+
   .claimForm > div {
     grid-template-columns: 1fr;
   }

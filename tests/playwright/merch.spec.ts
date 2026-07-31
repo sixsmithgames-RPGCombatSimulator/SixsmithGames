@@ -89,7 +89,22 @@ test('merchandise bonus claim keeps account matching on the server', async ({ pa
     page.getByRole('main').getByRole('link', { name: 'Sign in', exact: true }),
   ).toBeVisible();
 
+  const claimButton = page.getByRole('button', { name: 'Claim my Studio time' });
+  const consentPrompt = page.getByRole('complementary', { name: 'Analytics preference' });
+  if (await consentPrompt.isVisible()) {
+    const [claimButtonBox, consentPromptBox] = await Promise.all([
+      claimButton.boundingBox(),
+      consentPrompt.boundingBox(),
+    ]);
+
+    // A first-time visitor should not have to guess that the receipt action is
+    // hidden behind the optional analytics prompt, especially on a phone.
+    expect(claimButtonBox, 'The claim button should have a measurable position.').not.toBeNull();
+    expect(consentPromptBox, 'The consent prompt should have a measurable position.').not.toBeNull();
+    expect(claimButtonBox!.y + claimButtonBox!.height).toBeLessThanOrEqual(consentPromptBox!.y);
+  }
+
   await page.getByLabel('Merchandise order number').fill('D3XZFWPP');
-  await page.getByRole('button', { name: 'Claim my Studio time' }).click();
+  await claimButton.click();
   await expect(page.getByRole('status')).toContainText('Sign in to claim your Studio time.');
 });
