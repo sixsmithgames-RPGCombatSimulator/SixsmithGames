@@ -60,10 +60,10 @@ export const OPERATIONS_NAVIGATION: NavigationItem[] = [
   },
   {
     label: "Marketing",
-    href: "/campaigns/camp-gmc-ai-activation",
-    activePrefix: "/campaigns",
+    href: "/marketing",
+    activePrefix: "/marketing",
     icon: Megaphone,
-    description: "Campaign execution workspace",
+    description: "Campaign planning and performance",
   },
   {
     label: "Products",
@@ -81,10 +81,10 @@ export const OPERATIONS_NAVIGATION: NavigationItem[] = [
   },
   {
     label: "Accounting",
-    href: "/profitability",
-    activePrefix: "/profitability",
+    href: "/accounting",
+    activePrefix: "/accounting",
     icon: ReceiptText,
-    description: "Profitability and reconciliation",
+    description: "Collections, refunds, fees, and costs",
   },
   {
     label: "Tasks & Approvals",

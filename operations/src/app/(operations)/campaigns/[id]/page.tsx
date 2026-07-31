@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import { Check, Edit3, MoreHorizontal, ShieldCheck } from "lucide-react";
-import { notFound } from "next/navigation";
+import { notFound, redirect } from "next/navigation";
 import { getCampaignData } from "@/data/operations";
 import {
   ConnectedEmptyState,
@@ -27,6 +27,10 @@ export const metadata: Metadata = {
 export default async function CampaignPage({ params }: CampaignPageProps) {
   const { id } = await params;
   const { data, isPreview } = await getCampaignData(id);
+
+  if (!isPreview) {
+    redirect("/marketing");
+  }
 
   if (!data && isPreview) {
     notFound();

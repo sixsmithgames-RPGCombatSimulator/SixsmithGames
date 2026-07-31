@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Download, RefreshCw } from "lucide-react";
 import { ReconciliationWorkspace } from "@/components/operations/reconciliation-workspace";
+import { LiveSubscriptions } from "@/components/operations/live-workspaces";
 import { ConnectedEmptyState, PageHeading } from "@/components/operations/ui";
 import { getReconciliationData } from "@/data/operations";
+import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
 
 export const metadata: Metadata = {
   title: "Entitlement Reconciliation",
@@ -15,7 +17,11 @@ export const metadata: Metadata = {
  * Side effects: Enforces authorization through getReconciliationData.
  */
 export default async function ReconciliationPage() {
-  const { data } = await getReconciliationData();
+  const { data, isPreview } = await getReconciliationData();
+
+  if (!isPreview) {
+    return <LiveSubscriptions snapshot={await getLiveOperationsSnapshot()} />;
+  }
 
   return (
     <>

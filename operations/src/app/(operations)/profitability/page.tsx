@@ -1,6 +1,8 @@
 import type { Metadata } from "next";
 import { CalendarDays, Info } from "lucide-react";
 import { getProfitabilityData } from "@/data/operations";
+import { LiveAccounting } from "@/components/operations/live-workspaces";
+import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
 import {
   ConnectedEmptyState,
   MetricCard,
@@ -19,7 +21,11 @@ export const metadata: Metadata = {
  * Side effects: Enforces authorization through getProfitabilityData.
  */
 export default async function ProfitabilityPage() {
-  const { data } = await getProfitabilityData();
+  const { data, isPreview } = await getProfitabilityData();
+
+  if (!isPreview) {
+    return <LiveAccounting snapshot={await getLiveOperationsSnapshot()} title="Profitability" />;
+  }
 
   if (!data) {
     return (

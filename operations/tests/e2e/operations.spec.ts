@@ -61,7 +61,7 @@ test("provides clickable and truthful integration settings", async ({ page }) =>
   await expect(
     page.getByRole("heading", { level: 1, name: "Settings" }),
   ).toBeVisible();
-  await expect(page.getByText("Core services are checked from the server")).toBeVisible();
+  await expect(page.getByText("What Operations can access right now")).toBeVisible();
 
   const clerkControl = page.getByRole("button", { name: /Clerk authentication/ });
   await expect(clerkControl).toBeVisible();
@@ -77,4 +77,26 @@ test("provides clickable and truthful integration settings", async ({ page }) =>
     scrollWidth: document.documentElement.scrollWidth,
   }));
   expect(viewport.scrollWidth).toBe(viewport.clientWidth);
+});
+
+test("opens every primary operations workspace", async ({ page }) => {
+  const workspaces = [
+    ["/dashboard", "Dashboard"],
+    ["/customers", "Customers"],
+    ["/subscriptions/reconciliation", "Entitlement Reconciliation"],
+    ["/orders", "Orders"],
+    ["/crm", "CRM"],
+    ["/marketing", "Marketing"],
+    ["/products", "Products"],
+    ["/support", "Support"],
+    ["/accounting", "Accounting"],
+    ["/approvals", "Tasks & Approvals"],
+    ["/reports", "Reports"],
+    ["/settings", "Settings"],
+  ] as const;
+
+  for (const [path, heading] of workspaces) {
+    await page.goto(path);
+    await expect(page.getByRole("heading", { level: 1, name: heading })).toBeVisible();
+  }
 });

@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import Link from "next/link";
 import { ArrowRight, CheckCircle2, CircleAlert } from "lucide-react";
 import { getDashboardData } from "@/data/operations";
+import { LiveDashboard } from "@/components/operations/live-workspaces";
+import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
 import type { Severity, Tone } from "@/data/operations-types";
 import {
   ConnectedEmptyState,
@@ -30,7 +32,11 @@ const SEVERITY_TONES: Record<Severity, Tone> = {
  * Side effects: Enforces authorization through getDashboardData.
  */
 export default async function DashboardPage() {
-  const { data } = await getDashboardData();
+  const { data, isPreview } = await getDashboardData();
+
+  if (!isPreview) {
+    return <LiveDashboard snapshot={await getLiveOperationsSnapshot()} />;
+  }
 
   if (!data) {
     return (

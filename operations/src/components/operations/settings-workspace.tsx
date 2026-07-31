@@ -115,7 +115,7 @@ function IntegrationRow({
 
         <div className={styles.detailGrid}>
           <section aria-labelledby={`${panelId}-requirements`}>
-            <h3 id={`${panelId}-requirements`}>Configuration checklist</h3>
+            <h3 id={`${panelId}-requirements`}>What this connection needs</h3>
             <ul className={styles.requirementList}>
               {integration.requirements.map((requirement) => (
                 <li key={requirement.label}>
@@ -134,7 +134,11 @@ function IntegrationRow({
                 {integration.capabilities.map((capability) => <li key={capability}>{capability}</li>)}
               </ul>
             ) : (
-              <p className={styles.noCapabilities}>No operational capability has been verified yet.</p>
+              <p className={styles.noCapabilities}>
+                {integration.state === "deferred"
+                  ? "Operations does not currently need data from these applications."
+                  : "No operational capability has been verified yet."}
+              </p>
             )}
           </section>
         </div>
@@ -142,14 +146,16 @@ function IntegrationRow({
         <footer className={styles.integrationFooter}>
           <div><span>Next step</span><strong>{integration.nextStep}</strong></div>
           <div className={styles.integrationActions}>
-            <a
-              className="button button-secondary"
-              href="https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmith-games-operations/settings/environment-variables"
-              rel="noreferrer"
-              target="_blank"
-            >
-              Environment settings <ExternalLink aria-hidden size={13} />
-            </a>
+            {integration.state !== "deferred" ? (
+              <a
+                className="button button-secondary"
+                href="https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmith-games-operations/settings/environment-variables"
+                rel="noreferrer"
+                target="_blank"
+              >
+                Environment settings <ExternalLink aria-hidden size={13} />
+              </a>
+            ) : null}
             {integration.manageUrl ? (
               <a className="button button-primary" href={integration.manageUrl} rel="noreferrer" target="_blank">
                 Open provider <ExternalLink aria-hidden size={13} />
@@ -183,22 +189,22 @@ export function SettingsWorkspace({ overview }: { overview: IntegrationOverview 
           <span className={styles.summaryIcon}><ShieldCheck aria-hidden size={26} /></span>
           <div>
             <span className="eyebrow">Live configuration</span>
-            <h2>Core services are checked from the server</h2>
+            <h2>What Operations can access right now</h2>
             <p>
-              Provider secrets stay in Vercel. This page validates safe read capabilities and never returns secret values to the browser.
+              Each row explains whether Operations uses the service, what the check proves, and whether you need to do anything.
             </p>
           </div>
         </div>
         <dl>
-          <div><dt>Connected</dt><dd>{overview.connectedCount}</dd></div>
-          <div><dt>Needs setup</dt><dd>{overview.actionableCount}</dd></div>
-          <div><dt>Total sources</dt><dd>{overview.integrations.length}</dd></div>
+          <div><dt>Verified services</dt><dd>{overview.connectedCount}</dd></div>
+          <div><dt>Needs attention</dt><dd>{overview.actionableCount}</dd></div>
+          <div><dt>Reviewed here</dt><dd>{overview.integrations.length}</dd></div>
         </dl>
       </section>
 
       <section aria-labelledby="connector-heading" className={styles.connectorSection}>
         <div className={styles.sectionHeading}>
-          <div><h2 id="connector-heading">Connections</h2><p>Select a connection to review its setup, permissions, and next action.</p></div>
+          <div><h2 id="connector-heading">Services and data sources</h2><p>Select a row to see exactly what Operations can read and what it cannot.</p></div>
           <span><KeyRound aria-hidden size={15} /> Secrets are never displayed</span>
         </div>
         <div className={styles.integrationList}>

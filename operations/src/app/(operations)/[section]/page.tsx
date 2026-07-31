@@ -6,12 +6,15 @@ import {
   ClipboardCheck,
   Headphones,
   Megaphone,
+  ReceiptText,
   Settings,
   ShoppingCart,
 } from "lucide-react";
 import { notFound } from "next/navigation";
 import { PageHeading, StatusBadge } from "@/components/operations/ui";
+import { LiveSectionWorkspace } from "@/components/operations/live-workspaces";
 import { requireAuthorizedOperationsUser } from "@/lib/auth/authorized-user";
+import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
 
 interface SectionPageProps {
   params: Promise<{ section: string }>;
@@ -41,6 +44,12 @@ const WORKSPACE_SECTIONS = {
     description: "Customer cases, issue patterns, and feedback evidence",
     icon: Headphones,
     sources: ["Support inbox", "Product issues", "Customer identity links"],
+  },
+  accounting: {
+    title: "Accounting",
+    description: "Collections, refunds, fees, and the current cost-data boundary",
+    icon: ReceiptText,
+    sources: ["Stripe charges", "Stripe refunds", "Stripe balance transactions"],
   },
   approvals: {
     title: "Tasks & Approvals",
@@ -89,6 +98,15 @@ export default async function SectionPage({ params }: SectionPageProps) {
 
   const user = await requireAuthorizedOperationsUser();
   const Icon = configuration.icon;
+
+  if (!user.isPreview) {
+    return (
+      <LiveSectionWorkspace
+        section={section}
+        snapshot={await getLiveOperationsSnapshot()}
+      />
+    );
+  }
 
   return (
     <>

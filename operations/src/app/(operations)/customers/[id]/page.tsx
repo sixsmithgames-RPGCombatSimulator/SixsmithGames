@@ -3,6 +3,8 @@ import Link from "next/link";
 import { ArrowLeft, Check, MapPin, MessageSquare, Send } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getCustomerDetailData } from "@/data/operations";
+import { LiveCustomerDetail } from "@/components/operations/live-workspaces";
+import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
 import {
   ConnectedEmptyState,
   PageHeading,
@@ -27,6 +29,17 @@ export const metadata: Metadata = {
 export default async function CustomerDetailPage({ params }: CustomerPageProps) {
   const { id } = await params;
   const { data, isPreview } = await getCustomerDetailData(id);
+
+  if (!isPreview) {
+    const snapshot = await getLiveOperationsSnapshot();
+    const customer = snapshot.customers.find((record) => record.id === id);
+
+    if (!customer) {
+      notFound();
+    }
+
+    return <LiveCustomerDetail customer={customer} snapshot={snapshot} />;
+  }
 
   if (!data && isPreview) {
     notFound();

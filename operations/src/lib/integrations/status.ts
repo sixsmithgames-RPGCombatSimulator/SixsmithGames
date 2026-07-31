@@ -222,7 +222,7 @@ async function getNeonSnapshot(): Promise<IntegrationSnapshot> {
         { label: "Schema migrations", state: "complete", detail: "Applied during the Vercel build" },
       ],
       capabilities: ["Operational storage", "Audit-ready schema", "Serverless reads and writes"],
-      nextStep: "No infrastructure action is required. Source ingestion can now write normalized records.",
+      nextStep: "No infrastructure action is required. Operations reads and writes its own workflow records here.",
       manageUrl: "https://console.neon.tech/app/projects",
     };
   } catch {
@@ -314,10 +314,10 @@ async function getStripeSnapshot(): Promise<IntegrationSnapshot> {
           detail: webhookConfigured ? "Secret is configured" : "Deferred; manual reconciliation only",
         },
       ],
-      capabilities: ["Read account", "Read subscriptions", "Manual reconciliation"],
+      capabilities: ["Read customers", "Read subscriptions", "Read payments", "Read products and prices"],
       nextStep: webhookConfigured
-        ? "Validate webhook delivery before enabling near-real-time ingestion."
-        : "Run the first controlled read-only import; add webhooks in a later reviewed change.",
+        ? "No action is required. Live Operations pages read Stripe directly; the webhook can support later automation."
+        : "No action is required for live views. Add a webhook only when automated event processing is needed.",
       manageUrl: "https://dashboard.stripe.com/settings/user",
     };
   } catch {
@@ -358,7 +358,7 @@ async function getGameMasterCraftSnapshot(
       id: "gamemastercraft",
       name: "GameMasterCraft",
       category: "Product application",
-      description: "Campaign usage, activation, and entitlement evidence.",
+      description: "Owner sign-in and application availability; not customer usage data.",
       state: "identified_not_connected",
       statusLabel: "Ready to configure",
       tone: "gold",
@@ -379,7 +379,7 @@ async function getGameMasterCraftSnapshot(
       id: "gamemastercraft",
       name: "GameMasterCraft",
       category: "Product application",
-      description: "Campaign usage, activation, and entitlement evidence.",
+      description: "Owner sign-in and application availability; not customer usage data.",
       state: "configured",
       statusLabel: "Configured for production",
       tone: "purple",
@@ -409,19 +409,19 @@ async function getGameMasterCraftSnapshot(
       id: "gamemastercraft",
       name: "GameMasterCraft",
       category: "Product application",
-      description: "Campaign usage, activation, and entitlement evidence.",
+      description: "Owner sign-in and application availability; not customer usage data.",
       state: "connected",
-      statusLabel: "Authenticated",
+      statusLabel: "Owner access verified",
       tone: "green",
-      summary: "GameMasterCraft accepted the current owner's delegated Clerk token.",
+      summary: "GameMasterCraft accepted the current owner's sign-in. This proves the app is reachable for the owner; it does not import customers, usage, campaigns, or entitlements.",
       sourceOfTruth: "GameMasterCraft production application",
       requirements: [
         { label: "GMC_BASE_URL", state: "complete", detail: origin },
-        { label: "Delegated Clerk token", state: "complete", detail: "Authenticated health probe succeeded" },
-        { label: "Usage feed", state: "warning", detail: "Initial read-only ingestion is not running yet" },
+        { label: "Owner sign-in", state: "complete", detail: "Authenticated availability check succeeded" },
+        { label: "Customer usage endpoint", state: "warning", detail: "Not provided to Operations" },
       ],
-      capabilities: ["Authenticated health", "Shared owner identity"],
-      nextStep: "Define the first read-only usage query and record its freshness target.",
+      capabilities: ["Application availability", "Shared owner sign-in"],
+      nextStep: "No action is required. Add a customer-data connection only if GameMasterCraft later exposes an approved read endpoint.",
       manageUrl: "https://gmcraft.sixsmithgames.com",
     };
   } catch {
@@ -429,7 +429,7 @@ async function getGameMasterCraftSnapshot(
       id: "gamemastercraft",
       name: "GameMasterCraft",
       category: "Product application",
-      description: "Campaign usage, activation, and entitlement evidence.",
+      description: "Owner sign-in and application availability; not customer usage data.",
       state: "error",
       statusLabel: "Authentication error",
       tone: "red",
@@ -440,7 +440,7 @@ async function getGameMasterCraftSnapshot(
         { label: "Delegated Clerk token", state: "missing", detail: "Provider validation failed" },
       ],
       capabilities: [],
-      nextStep: "Review GMC's Clerk audience and authorized-party settings before ingestion.",
+      nextStep: "Review GMC's Clerk audience and authorized-party settings, then recheck owner access.",
       manageUrl: "https://gmcraft.sixsmithgames.com",
     };
   }
@@ -464,7 +464,7 @@ async function getVcsSnapshot(
       id: "vcs",
       name: "Virtual Combat Simulator",
       category: "Product application",
-      description: "Encounter usage, combat activity, and paid access evidence.",
+      description: "Service availability and one owner-scoped read; not customer usage data.",
       state: "identified_not_connected",
       statusLabel: "Ready to configure",
       tone: "gold",
@@ -493,7 +493,7 @@ async function getVcsSnapshot(
         id: "vcs",
         name: "Virtual Combat Simulator",
         category: "Product application",
-        description: "Encounter usage, combat activity, and paid access evidence.",
+        description: "Service availability and one owner-scoped read; not customer usage data.",
         state: "identified_not_connected",
         statusLabel: "Service online",
         tone: "gold",
@@ -522,11 +522,11 @@ async function getVcsSnapshot(
       id: "vcs",
       name: "Virtual Combat Simulator",
       category: "Product application",
-      description: "Encounter usage, combat activity, and paid access evidence.",
+      description: "Service availability and one owner-scoped read; not customer usage data.",
       state: "connected",
-      statusLabel: "Read access verified",
+      statusLabel: "Owner read verified",
       tone: "green",
-      summary: "VCS health and the owner-scoped service read both succeeded. No product data was changed.",
+      summary: "VCS is online and accepted one read for the owner account. This does not provide Operations with a list of customers, usage, or entitlements.",
       sourceOfTruth: "Virtual Combat Simulator production service",
       requirements: [
         { label: "VCS service health", state: "complete", detail: "Live health probe succeeded" },
@@ -538,10 +538,10 @@ async function getVcsSnapshot(
             ? "Dedicated VCS owner identifier is configured"
             : "Using the authorized owner email",
         },
-        { label: "Usage feed", state: "warning", detail: "Initial daily ingestion is not running yet" },
+        { label: "Customer usage endpoint", state: "warning", detail: "Not provided to Operations" },
       ],
-      capabilities: ["Service health", "Owner-scoped product read"],
-      nextStep: "Define the first read-only usage query and record its freshness target.",
+      capabilities: ["Service availability", "Owner-scoped content read"],
+      nextStep: "No action is required. Add a customer-data connection only if VCS later exposes an approved read endpoint.",
       manageUrl: "https://vcs.sixsmithgames.com",
     };
   } catch {
@@ -549,7 +549,7 @@ async function getVcsSnapshot(
       id: "vcs",
       name: "Virtual Combat Simulator",
       category: "Product application",
-      description: "Encounter usage, combat activity, and paid access evidence.",
+      description: "Service availability and one owner-scoped read; not customer usage data.",
       state: "error",
       statusLabel: "Connection error",
       tone: "red",
@@ -576,30 +576,29 @@ async function getVcsSnapshot(
 }
 
 /**
- * Purpose: Keeps sources with no approved machine-readable contract visible without pretending they work.
+ * Purpose: Keeps currently unused product applications visible without implying that setup is required.
  * Parameters: None.
- * Returns: A deferred snapshot for the public catalog and remaining product applications.
+ * Returns: A neutral snapshot for product applications Operations does not currently read.
  * Side effects: None.
  */
 function getDeferredSourcesSnapshot(): IntegrationSnapshot {
   return {
     id: "remaining-products",
-    name: "Website and remaining product apps",
+    name: "Other product applications",
     category: "Planned source",
-    description: "Public catalog, pricing, ContentCraft, Four Star General, MasterTyping, Gravity, and owner-only SagaCraft.",
+    description: "ContentCraft, Four Star General, MasterTyping, Gravity, SagaCraft, and the public website.",
     state: "deferred",
-    statusLabel: "Contracts required",
+    statusLabel: "Not used by Operations",
     tone: "slate",
-    summary: "These sources are known, but no approved production data contract exists for Operations yet.",
-    sourceOfTruth: "Each owning application; the public website for published catalog and pricing",
+    summary: "Operations is not reading these applications. Nothing is broken and there is nothing to configure unless a future workspace needs their data.",
+    sourceOfTruth: "Each application remains responsible for its own data",
     requirements: [
-      { label: "Stable read endpoint", state: "missing", detail: "Define per owning application" },
-      { label: "Least-privilege credential", state: "missing", detail: "Create only after the endpoint contract is approved" },
-      { label: "Freshness target", state: "warning", detail: "Daily initially, subject to capability review" },
+      { label: "Current action", state: "complete", detail: "None required" },
+      { label: "Customer data", state: "warning", detail: "Not requested from these applications" },
+      { label: "Future connection", state: "warning", detail: "Add only when a specific Operations feature needs it" },
     ],
     capabilities: [],
-    nextStep: "Add one read-only source contract at a time; do not share databases or invent usage records.",
-    manageUrl: "https://sixsmithgames.com",
+    nextStep: "No action is required now.",
   };
 }
 

@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import { Plus } from "lucide-react";
 import { CustomersWorkspace } from "@/components/operations/customers-workspace";
+import { LiveCustomers } from "@/components/operations/live-workspaces";
 import { ConnectedEmptyState, PageHeading } from "@/components/operations/ui";
 import { getCustomerDirectoryData } from "@/data/operations";
+import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
 
 export const metadata: Metadata = {
   title: "Customers",
@@ -15,7 +17,11 @@ export const metadata: Metadata = {
  * Side effects: Enforces authorization through getCustomerDirectoryData.
  */
 export default async function CustomersPage() {
-  const { data } = await getCustomerDirectoryData();
+  const { data, isPreview } = await getCustomerDirectoryData();
+
+  if (!isPreview) {
+    return <LiveCustomers snapshot={await getLiveOperationsSnapshot()} />;
+  }
 
   return (
     <>

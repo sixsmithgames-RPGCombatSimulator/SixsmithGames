@@ -166,9 +166,9 @@ export function Sparkline({
 }
 
 /**
- * Purpose: Renders an honest connected-mode state when no source records are ingested.
- * Parameters: workflow identifies the workspace that still needs connector data.
- * Returns: A setup-focused empty state with a link to Settings.
+ * Purpose: Renders an honest connected-mode state when a source-backed workflow has no records.
+ * Parameters: workflow identifies the workspace with no current source records.
+ * Returns: A zero-state with a link to the current source-status workspace.
  * Side effects: None.
  */
 export function ConnectedEmptyState({ workflow }: { workflow: string }) {
@@ -177,13 +177,13 @@ export function ConnectedEmptyState({ workflow }: { workflow: string }) {
       <span className="empty-icon">
         <BadgeCheck aria-hidden size={26} />
       </span>
-      <h2>{workflow} is ready to connect</h2>
+      <h2>{workflow} has no source records yet</h2>
       <p>
-        Authentication is active, but no source data has been ingested. Configure
-        the required connectors in Settings to populate this workspace.
+        The workspace is available, but its connected sources returned no records.
+        Settings explains what each service can currently provide.
       </p>
       <Link className="button button-primary" href="/settings">
-        Review integrations
+        View source status
       </Link>
     </section>
   );

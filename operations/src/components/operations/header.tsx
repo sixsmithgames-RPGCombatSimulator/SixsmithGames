@@ -1,7 +1,8 @@
 "use client";
 
 import { UserButton } from "@clerk/nextjs";
-import { Bell, ChevronDown, Menu, Search } from "lucide-react";
+import { Bell, Menu, Search } from "lucide-react";
+import Link from "next/link";
 import { useCallback, useEffect, useState } from "react";
 import { CommandSearch } from "@/components/operations/command-search";
 
@@ -56,19 +57,17 @@ export function OperationsHeader({
           type="button"
         >
           <Search aria-hidden size={18} />
-          <span>Search customers, orders, invoices, products…</span>
+          <span>Search operations workspaces…</span>
           <kbd>⌘ K</kbd>
         </button>
 
         <div className="topbar-actions">
-          <button aria-label="Notifications" className="notification-button" type="button">
+          <Link aria-label="Open tasks and approvals" className="notification-button" href="/approvals">
             <Bell aria-hidden size={20} />
-            <span>3</span>
-          </button>
+          </Link>
           <span className={`environment-pill ${isPreview ? "preview" : ""}`}>
             <i />
             {isPreview ? "Preview" : "Live"}
-            <ChevronDown aria-hidden size={14} />
           </span>
           {isPreview ? (
             <div className="user-summary">
