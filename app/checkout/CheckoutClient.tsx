@@ -7,10 +7,14 @@ import { pageGutter, touchTargetClassName } from '@/lib/responsive';
 
 interface CheckoutClientProps {
   planId: string;
+  merchOrder: string | null;
 }
 
-export default function CheckoutClient({ planId }: CheckoutClientProps) {
-  const checkoutPath = `/checkout?planId=${encodeURIComponent(planId)}`;
+/** Starts normal subscription checkout and carries an optional verified merch order. */
+export default function CheckoutClient({ planId, merchOrder }: CheckoutClientProps) {
+  const checkoutPath = `/checkout?planId=${encodeURIComponent(planId)}${
+    merchOrder ? `&merchOrder=${encodeURIComponent(merchOrder)}` : ''
+  }`;
   const { isLoaded, isSignedIn } = useUser();
   const [error, setError] = useState<string | null>(null);
   const startedRef = useRef(false);
@@ -28,7 +32,7 @@ export default function CheckoutClient({ planId }: CheckoutClientProps) {
         const res = await fetch('/api/checkout', {
           method: 'POST',
           headers: { 'Content-Type': 'application/json' },
-          body: JSON.stringify({ planId }),
+          body: JSON.stringify({ planId, merchOrder }),
         });
         const data = await res.json();
 
@@ -49,7 +53,7 @@ export default function CheckoutClient({ planId }: CheckoutClientProps) {
     return () => {
       isCancelled = true;
     };
-  }, [isLoaded, isSignedIn, planId]);
+  }, [isLoaded, isSignedIn, merchOrder, planId]);
 
   if (!isLoaded) {
     return (

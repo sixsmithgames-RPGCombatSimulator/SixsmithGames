@@ -1,0 +1,144 @@
+/* The claim page keeps the receipt step short and readable on any device. */
+.page {
+  min-height: 80vh;
+  padding: clamp(3rem, 8vw, 7rem) var(--page-gutter);
+  background: radial-gradient(circle at 50% 0, rgba(70, 118, 163, 0.2), transparent 34rem), #090b10;
+  color: #eee5d7;
+  display: grid;
+  place-items: start center;
+}
+
+.claimCard {
+  width: min(720px, 100%);
+  padding: clamp(1.5rem, 5vw, 3.5rem);
+  border: 1px solid rgba(226, 182, 96, 0.2);
+  border-radius: 24px;
+  background: #12161d;
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.35);
+}
+
+.eyebrow {
+  margin: 0 0 0.8rem;
+  color: #e2b660;
+  font-size: 0.72rem;
+  font-weight: 900;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.claimCard h1 {
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.3rem, 6vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  line-height: 1;
+}
+
+.claimCard > p,
+.claimCard li {
+  color: #aaa297;
+  line-height: 1.7;
+}
+
+.claimCard ul {
+  margin: 1.25rem 0 1.75rem;
+  padding-left: 1.2rem;
+}
+
+.claimForm {
+  display: grid;
+  gap: 0.55rem;
+}
+
+.claimForm label {
+  color: #e8dcc9;
+  font-size: 0.82rem;
+  font-weight: 850;
+}
+
+.claimForm > div {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.7rem;
+}
+
+.claimForm input,
+.claimForm button,
+.signInLink {
+  min-height: 48px;
+  border-radius: 10px;
+  font: inherit;
+}
+
+/* Sign-in stays explicit while the claim API remains the final access gate. */
+.accountGate {
+  margin-top: 1.5rem;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+  color: #b9ae9e;
+}
+
+.accountGate + .claimForm {
+  margin-top: 1rem;
+}
+
+.claimForm input {
+  min-width: 0;
+  padding: 0.75rem 0.85rem;
+  border: 1px solid rgba(226, 182, 96, 0.26);
+  background: #0a0d12;
+  color: #f3eadc;
+}
+
+.claimForm button,
+.signInLink {
+  padding: 0.75rem 1rem;
+  border: 1px solid #d6a653;
+  background: #d6a653;
+  color: #1b1208;
+  font-weight: 900;
+}
+
+.claimForm button:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
+.claimForm > p {
+  margin: 0.45rem 0 0;
+  color: #d8c29a;
+}
+
+.signInLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.helpText {
+  margin: 1.4rem 0 0;
+  font-size: 0.8rem;
+}
+
+.helpText a {
+  color: #e2b660;
+  font-weight: 800;
+}
+
+.claimForm input:focus-visible,
+.claimForm button:focus-visible,
+.signInLink:focus-visible,
+.helpText a:focus-visible {
+  outline: 3px solid #fff1c7;
+  outline-offset: 3px;
+}
+
+@media (max-width: 620px) {
+  .claimForm > div {
+    grid-template-columns: 1fr;
+  }
+}

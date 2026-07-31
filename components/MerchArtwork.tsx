@@ -16,21 +16,10 @@ interface MerchArtworkProps {
   kind: MerchArtworkKind;
   name: string;
   accent: string;
+  imageUrl?: string;
+  imageAlt?: string;
   priority?: boolean;
 }
-
-/**
- * Maps a product shape to its owner-approved Cloudinary listing mockup.
- *
- * The stable public IDs keep large image files out of Git while Cloudinary
- * handles responsive format and quality selection for the visitor's browser.
- */
-const APPROVED_PRODUCT_MOCKUPS: Partial<Record<MerchArtworkKind, string>> = {
-  hoodie:
-    'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1785444317/sixsmith-games/merch/master-your-stories-hoodie-back-black-fourthwall.jpg',
-  'desk-mat':
-    'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1785444314/sixsmith-games/merch/gateway-wyrm-desk-mat-dungeon-portal-fourthwall.jpg',
-};
 
 /**
  * Draws a familiar product outline without depending on unfinished photography.
@@ -43,7 +32,7 @@ function ProductSilhouette({ kind }: { kind: MerchArtworkKind }): ReactNode {
     );
   }
 
-  if (kind === 'hoodie') {
+  if (kind === 'hoodie' || kind === 'zip-hoodie') {
     return (
       <>
         <path d="M116 50c-33 0-55 21-55 52v11L31 133l26 40v89h118v-89l26-40-30-20v-11c0-31-22-52-55-52Z" />
@@ -103,34 +92,32 @@ export default function MerchArtwork({
   kind,
   name,
   accent,
+  imageUrl,
+  imageAlt,
   priority = false,
 }: MerchArtworkProps) {
   const artworkStyle = {
     '--merch-accent': accent,
   } as CSSProperties;
-  const approvedMockup = APPROVED_PRODUCT_MOCKUPS[kind];
-  const productAlt =
-    kind === 'hoodie'
-      ? 'Back of the black Master Your Stories Hoodie with the Sixsmith Games crest'
-      : 'Gateway Wyrm Desk Mat with adventurers facing a blue-lit dungeon portal';
+  const hasProductImage = Boolean(imageUrl && imageAlt);
 
   return (
     <div
       className={`${styles.artwork} ${
-        approvedMockup ? styles.approvedArtwork : ''
+        hasProductImage ? styles.approvedArtwork : ''
       }`}
       style={artworkStyle}
-      role={approvedMockup ? undefined : 'img'}
-      aria-label={approvedMockup ? undefined : `${name} design preview`}
+      role={hasProductImage ? undefined : 'img'}
+      aria-label={hasProductImage ? undefined : `${name} design preview`}
     >
-      {!approvedMockup && (
+      {!hasProductImage && (
         <div className={styles.previewLabel}>Design preview</div>
       )}
-      {approvedMockup ? (
+      {hasProductImage ? (
         <Image
           className={styles.approvedMockup}
-          src={approvedMockup}
-          alt={productAlt}
+          src={imageUrl!}
+          alt={imageAlt!}
           fill
           priority={priority}
           sizes="(max-width: 800px) 100vw, 50vw"

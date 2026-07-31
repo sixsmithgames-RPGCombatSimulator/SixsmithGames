@@ -74,7 +74,7 @@
 
 .productGrid {
   display: grid;
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: clamp(1rem, 2.5vw, 2rem);
 }
 
@@ -83,7 +83,7 @@
 }
 
 .previewLayout .productGrid {
-  grid-template-columns: repeat(2, minmax(0, 1fr));
+  grid-template-columns: repeat(3, minmax(0, 1fr));
 }
 
 .productCard {
@@ -162,6 +162,29 @@
   border-radius: 7px;
   color: #aaa194;
   font-size: 0.75rem;
+}
+
+/* The subscription bonus is purchase value, not fine print, so it sits before price. */
+.studioBonus {
+  margin-top: 1.1rem;
+  padding: 0.85rem 0.9rem;
+  border: 1px solid rgba(95, 158, 214, 0.3);
+  border-radius: 12px;
+  background: rgba(61, 111, 155, 0.13);
+  display: grid;
+  gap: 0.3rem;
+}
+
+.studioBonus strong {
+  color: #e6f2ff;
+  font-size: 0.88rem;
+  line-height: 1.35;
+}
+
+.studioBonus span {
+  color: #9eb4c7;
+  font-size: 0.72rem;
+  line-height: 1.45;
 }
 
 .buyRow {
@@ -487,6 +510,10 @@
   }
 
   .previewLayout .productGrid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .productGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }

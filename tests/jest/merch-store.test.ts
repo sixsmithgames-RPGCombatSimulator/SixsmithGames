@@ -1,7 +1,7 @@
 import fs from 'node:fs';
 import path from 'node:path';
 
-import { MERCH_PRODUCTS } from '../../lib/merchCatalog';
+import { calculateFreeStudioMonths, MERCH_PRODUCTS } from '../../lib/merchCatalog';
 import { publicRoutes } from '../site-routes';
 
 /** Reads source used by guardrail tests and fails plainly when a file is missing. */
@@ -29,15 +29,18 @@ describe('Sixsmith Games merchandise catalog', () => {
     }
   });
 
-  it('contains only the two approved public Fourthwall products', () => {
+  it('contains only the three approved public Fourthwall products', () => {
     expect(MERCH_PRODUCTS.map((product) => product.slug)).toEqual([
       'master-your-stories-hoodie',
+      'master-your-stories-full-zip-hoodie',
       'gateway-wyrm-desk-mat',
     ]);
     expect(MERCH_PRODUCTS.map((product) => product.shopPrice)).toEqual([
       'From $44.00',
+      '$59.99',
       '$34.00',
     ]);
+    expect(MERCH_PRODUCTS.map((product) => product.freeStudioMonths)).toEqual([3, 3, 1]);
 
     for (const product of MERCH_PRODUCTS) {
       expect(product.shopUrl).toMatch(
@@ -96,15 +99,44 @@ describe('merchandise commerce safeguards', () => {
     expect(merchandiseBranch).toBeGreaterThan(-1);
     expect(subscriptionMetadataRead).toBeGreaterThan(merchandiseBranch);
   });
+
+  it('adds Studio months by eligible item quantity and ignores unknown offers', () => {
+    expect(calculateFreeStudioMonths([
+      { slug: 'master-your-stories-hoodie', quantity: 1 },
+      { slug: 'master-your-stories-full-zip-hoodie', quantity: 2 },
+      { slug: 'gateway-wyrm-desk-mat', quantity: 3 },
+      { slug: 'not-a-sixsmith-product', quantity: 99 },
+    ])).toBe(12);
+  });
+
+  it('creates merchandise bonuses only from signed paid-order notifications', () => {
+    const webhookSource = readProjectFile('app/api/webhook/fourthwall/route.ts');
+    const bonusSource = readProjectFile('lib/merchBonus.server.ts');
+    const subscriptionCheckoutSource = readProjectFile('app/api/checkout/route.ts');
+
+    expect(webhookSource).toContain('x-fourthwall-hmac-sha256');
+    expect(webhookSource).toContain('timingSafeEqual');
+    expect(webhookSource).toContain("event.type !== 'ORDER_PLACED'");
+    expect(webhookSource).toContain('event.testMode');
+    expect(webhookSource).toContain("event.data.status !== 'CONFIRMED'");
+    expect(bonusSource).toContain('buyer_email_sha256');
+    expect(bonusSource).toContain('max_redemptions: 1');
+    expect(bonusSource).toContain('idempotencyKey');
+    expect(subscriptionCheckoutSource).toContain('promotion_code');
+    expect(subscriptionCheckoutSource).not.toContain('allow_promotion_codes');
+  });
 });
 
 describe('merchandise discovery', () => {
   it('uses clean customer-facing Cloudinary images instead of editor captures', () => {
     const artworkSource = readProjectFile('components/MerchArtwork.tsx');
+    const catalogSource = readProjectFile('lib/merchCatalog.ts');
     const pageSource = readProjectFile('app/merch/page.tsx');
 
-    expect(artworkSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785444317/');
-    expect(artworkSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785444314/');
+    expect(catalogSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785444317/');
+    expect(catalogSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785444314/');
+    expect(catalogSource).toContain('/e_trim:10/f_auto,q_auto,w_1400/v1785499541/');
+    expect(artworkSource).toContain('imageUrl');
     expect(pageSource).not.toContain('SESSION NOTES');
     expect(pageSource).not.toContain('ROLL FOR');
     expect(pageSource).not.toContain('CONSEQUENCES');

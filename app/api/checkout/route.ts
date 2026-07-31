@@ -9,6 +9,10 @@ import { auth, currentUser } from '@clerk/nextjs/server';
 import { PLANS } from '@/lib/subscription';
 import { sendFacebookEvents, buildUserData, generateEventId } from '@/lib/facebookConversions';
 import { isContentCraftOwnerEmail } from '@/lib/productVisibility';
+import {
+  findMerchBonusForBuyer,
+  normalizeFourthwallOrderNumber,
+} from '@/lib/merchBonus.server';
 
 const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2026-01-28.clover',
@@ -30,7 +34,7 @@ export async function POST(req: NextRequest) {
     const email = primaryEmail?.emailAddress;
 
     const body = await req.json();
-    const { planId } = body as { planId: string };
+    const { planId, merchOrder } = body as { planId: string; merchOrder?: string | null };
 
     // ContentCraft checkout is private too: only the verified owner can reach
     // the hidden product's billing path from an app or a guessed URL.
@@ -51,20 +55,68 @@ export async function POST(req: NextRequest) {
       return NextResponse.json({ error: 'Plan not configured' }, { status: 500 });
     }
 
+    let merchBonus: Awaited<ReturnType<typeof findMerchBonusForBuyer>> = null;
+    if (merchOrder) {
+      if (planId !== 'bundle') {
+        return NextResponse.json(
+          { error: 'Merchandise Studio time applies only to GameMaster Studio.' },
+          { status: 400 },
+        );
+      }
+      const normalizedOrder = normalizeFourthwallOrderNumber(merchOrder);
+      const signingSecret = process.env.FOURTHWALL_WEBHOOK_SECRET;
+      if (!normalizedOrder || !signingSecret || !email) {
+        return NextResponse.json({ error: 'The merchandise bonus is not valid.' }, { status: 400 });
+      }
+
+      merchBonus = await findMerchBonusForBuyer(
+        stripe,
+        normalizedOrder,
+        email,
+        signingSecret,
+      );
+      if (
+        !merchBonus
+        || !merchBonus.promotionCode.active
+        || merchBonus.promotionCode.times_redeemed > 0
+        || merchBonus.promotionCode.metadata?.claim_status !== 'available'
+      ) {
+        return NextResponse.json(
+          { error: 'The merchandise bonus is unavailable or has already been claimed.' },
+          { status: 409 },
+        );
+      }
+    }
+
     const session = await stripe.checkout.sessions.create({
       mode: 'subscription',
       payment_method_types: ['card'],
       line_items: [{ price: plan.stripePriceId, quantity: 1 }],
+      ...(merchBonus
+        ? { discounts: [{ promotion_code: merchBonus.promotionCode.id }] }
+        : {}),
       automatic_tax: { enabled: true },
       customer_email: email,
       metadata: {
         clerkUserId: userId,
         planId,
+        ...(merchBonus
+          ? {
+              merchBonusOrder: merchBonus.orderNumber,
+              merchBonusMonths: String(merchBonus.months),
+            }
+          : {}),
       },
       subscription_data: {
         metadata: {
           clerkUserId: userId,
           planId,
+          ...(merchBonus
+            ? {
+                merchBonusOrder: merchBonus.orderNumber,
+                merchBonusMonths: String(merchBonus.months),
+              }
+            : {}),
         },
       },
       success_url: `${BASE_URL}/account?checkout=success`,

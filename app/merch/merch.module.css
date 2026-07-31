@@ -93,6 +93,17 @@
   line-height: 1.5;
 }
 
+.orderFacts a {
+  color: #ddb467;
+  font-weight: 800;
+  text-underline-offset: 0.2em;
+}
+
+.orderFacts a:focus-visible {
+  outline: 3px solid #fff1c7;
+  outline-offset: 4px;
+}
+
 .faqSection {
   padding:
     clamp(3.5rem, 7vw, 6rem)

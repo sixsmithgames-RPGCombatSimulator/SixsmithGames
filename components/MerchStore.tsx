@@ -337,6 +337,8 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
                   kind={product.artwork}
                   name={product.name}
                   accent={product.accent}
+                  imageUrl={product.imageUrl}
+                  imageAlt={product.imageAlt}
                   priority={index === 0}
                 />
                 <div className={styles.productCopy}>
@@ -353,6 +355,15 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
                     ))}
                   </ul>
 
+                  <div className={styles.studioBonus}>
+                    <strong>
+                      Includes {product.freeStudioMonths} free{' '}
+                      {product.freeStudioMonths === 1 ? 'month' : 'months'} of
+                      GameMaster Studio
+                    </strong>
+                    <span>Use the same email for your shop order and Sixsmith Games account.</span>
+                  </div>
+
                   {product.shopUrl ? (
                     <div className={styles.buyRow}>
                       <strong>{product.shopPrice}</strong>
@@ -366,9 +377,7 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
                           })
                         }
                       >
-                        {product.artwork === 'hoodie'
-                          ? 'Shop the hoodie'
-                          : 'Shop the desk mat'}
+                        {product.shopCta}
                       </a>
                     </div>
                   ) : product.purchasable ? (

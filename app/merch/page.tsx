@@ -1,7 +1,7 @@
 /**
  * Sixsmith Games merchandise storefront.
  *
- * The page leads with the two real products and their direct purchase paths.
+ * The page leads with the three real products and their direct purchase paths.
  * Supporting information stays compact so a visitor can see the gear, price,
  * and next action before reading policy details.
  */
@@ -21,7 +21,7 @@ import styles from './merch.module.css';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Tabletop RPG Merchandise | Sixsmith Games',
   description:
-    'Shop the Master Your Stories Hoodie and Gateway Wyrm Desk Mat, made for Game Masters and tabletop RPG tables.',
+    'Shop Master Your Stories hoodies and the Gateway Wyrm Desk Mat, with GameMaster Studio time included.',
   path: '/merch',
 });
 
@@ -39,6 +39,11 @@ interface MerchPageProps {
  * The same wording powers the FAQ schema, keeping search markup honest.
  */
 const faq = [
+  {
+    question: 'How do I claim my free GameMaster Studio months?',
+    answer:
+      'Use the same email for your merchandise order and Sixsmith Games account. After the paid order is confirmed, sign in and enter the order number on the claim page. A desk mat includes one month; either hoodie includes three months. Qualifying items in the same order add together.',
+  },
   {
     question: 'When is my gear made?',
     answer:
@@ -118,8 +123,8 @@ export default async function MerchPage({ searchParams }: MerchPageProps) {
           <span>Your payment stays protected.</span>
         </div>
         <div>
-          <strong>No surprise totals</strong>
-          <span>Shipping and tax appear before payment.</span>
+          <strong>Studio time included</strong>
+          <span><a href="/merch/claim">Claim it with your order number.</a></span>
         </div>
       </section>
 
