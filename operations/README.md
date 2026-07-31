@@ -17,7 +17,9 @@ The application currently includes:
   actual evidence
 - Product-level profitability and contribution-margin analysis
 - Reserved, honest setup states for orders, CRM, products, support, approvals,
-  reports, and settings
+  and reports
+- Interactive Settings workspace with live Clerk, Neon, Stripe, GameMasterCraft,
+  and Virtual Combat Simulator capability checks
 - Responsive desktop and mobile navigation plus command search
 
 ## Runtime safety
@@ -74,7 +76,16 @@ NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=pk_...
 CLERK_SECRET_KEY=sk_...
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
 DATABASE_URL=postgresql://...
+STRIPE_SECRET_KEY=sk_...
+GMC_BASE_URL=https://gmcraft.sixsmithgames.com
+VCS_SERVICE_BASE_URL=https://virtualcombatsimulator-production.up.railway.app
+VCS_SERVICE_API_KEY=...
 ```
+
+`STRIPE_WEBHOOK_SECRET` remains optional until an Operations-specific webhook
+route is implemented and verified. Do not reuse the public website's webhook
+secret for a different endpoint. Settings performs read-only capability probes;
+it does not create customers, change subscriptions, or mutate product data.
 
 Production reuses the existing Sixsmith Games Clerk instance rooted at
 `sixsmithgames.com`, whose sessions support the `operations` subdomain. The
@@ -123,8 +134,9 @@ No paid service has been provisioned by this project.
 - The connected Vercel account and domain must be reviewed before deployment.
 - If Vercel requires a paid plan for this commercial use, deployment must wait
   for explicit owner approval.
-- Stripe, email, accounting, social, and product connectors remain unconfigured
-  until credentials and permissions are intentionally supplied.
+- Email, accounting, social, and product connectors without approved read
+  contracts remain deferred until credentials and permissions are intentionally
+  supplied.
 
 ## Quality checks
 
@@ -136,5 +148,5 @@ npm run test:e2e
 ```
 
 The browser verification pass covers desktop and mobile rendering, navigation,
-command search, Customer 360 navigation, and the guarded reconciliation
-proposal interaction.
+command search, Customer 360 navigation, the guarded reconciliation proposal
+interaction, and the clickable integration configuration workspace.

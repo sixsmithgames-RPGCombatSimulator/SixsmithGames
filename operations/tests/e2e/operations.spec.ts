@@ -54,3 +54,27 @@ test("opens responsive navigation on mobile", async ({ page, isMobile }) => {
     page.getByRole("link", { name: "Subscriptions", exact: true }),
   ).toBeVisible();
 });
+
+test("provides clickable and truthful integration settings", async ({ page }) => {
+  await page.goto("/settings");
+
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Settings" }),
+  ).toBeVisible();
+  await expect(page.getByText("Core services are checked from the server")).toBeVisible();
+
+  const clerkControl = page.getByRole("button", { name: /Clerk authentication/ });
+  await expect(clerkControl).toBeVisible();
+  await clerkControl.click();
+  await expect(page.getByText("Shared Sixsmith Games Clerk production instance")).toBeVisible();
+
+  const stripeControl = page.getByRole("button", { name: /Stripe billing/ });
+  await stripeControl.click();
+  await expect(page.getByText("Existing Sixsmith Games Stripe account")).toBeVisible();
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }));
+  expect(viewport.scrollWidth).toBe(viewport.clientWidth);
+});
