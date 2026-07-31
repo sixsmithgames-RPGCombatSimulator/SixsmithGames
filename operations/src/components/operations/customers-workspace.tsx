@@ -125,7 +125,7 @@ export function CustomersWorkspace({ data }: { data: CustomerDirectoryData }) {
               {customers.map((customer) => (
                 <tr key={customer.id}>
                   <td>
-                    <Link className="customer-name" href={`/customers/${customer.id}`}>
+                    <Link className="customer-name" href={`/crm/${customer.id}`}>
                       <span className="avatar">{customer.initials}</span>
                       <span><strong>{customer.name}</strong><small>{customer.email}</small></span>
                     </Link>
@@ -137,7 +137,7 @@ export function CustomersWorkspace({ data }: { data: CustomerDirectoryData }) {
                   <td><strong>{customer.mrr}</strong></td>
                   <td><span className="activity-cell"><strong>{customer.lastActivity}</strong><small>{customer.activitySource}</small></span></td>
                   <td><span className={customer.openIssues > 0 ? "issue-count has-issues" : "issue-count"}>{customer.openIssues}</span></td>
-                  <td><Link className="table-action" href={`/customers/${customer.id}`}>{customer.nextAction}</Link></td>
+                  <td><Link className="table-action" href={`/crm/${customer.id}`}>{customer.nextAction}</Link></td>
                 </tr>
               ))}
             </tbody>

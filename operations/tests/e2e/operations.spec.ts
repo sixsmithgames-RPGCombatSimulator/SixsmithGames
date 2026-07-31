@@ -17,11 +17,11 @@ test("renders the executive dashboard without horizontal page overflow", async (
   expect(viewport.scrollWidth).toBe(viewport.clientWidth);
 });
 
-test("opens a normalized customer 360 record", async ({ page }) => {
-  await page.goto("/customers");
+test("opens a normalized CRM customer record", async ({ page }) => {
+  await page.goto("/crm");
   await page.getByRole("link", { name: /Corin Halverson/ }).click();
 
-  await expect(page).toHaveURL(/customers\/cust-corin-halverson$/);
+  await expect(page).toHaveURL(/crm\/cust-corin-halverson$/);
   await expect(
     page.getByRole("heading", { level: 1, name: "Corin Halverson" }),
   ).toBeVisible();
@@ -82,7 +82,6 @@ test("provides clickable and truthful integration settings", async ({ page }) =>
 test("opens every primary operations workspace", async ({ page }) => {
   const workspaces = [
     ["/dashboard", "Dashboard"],
-    ["/customers", "Customers"],
     ["/subscriptions/reconciliation", "Entitlement Reconciliation"],
     ["/orders", "Orders"],
     ["/crm", "CRM"],

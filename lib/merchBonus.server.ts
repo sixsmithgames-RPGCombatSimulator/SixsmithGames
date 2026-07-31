@@ -13,7 +13,7 @@ import { createHash, createHmac } from 'node:crypto';
 
 import Stripe from 'stripe';
 
-import { calculateFreeStudioMonths } from '@/lib/merchCatalog';
+import { calculateFreeStudioMonths, getMerchProduct } from '@/lib/merchCatalog';
 import { PLANS } from '@/lib/subscription';
 
 const MAX_AUTOMATED_BONUS_MONTHS = 24;
@@ -47,6 +47,23 @@ export function normalizeFourthwallOrderNumber(value: string): string | null {
 /** Produces the same non-reversible email identity for webhook and claim paths. */
 export function hashMerchBuyerEmail(email: string): string {
   return createHash('sha256').update(email.trim().toLowerCase()).digest('hex');
+}
+
+/** Stores only approved merch slugs and quantities for truthful Operations counts. */
+function serializeMerchItems(order: FourthwallPaidOrder): string {
+  const quantities = new Map<string, number>();
+
+  for (const offer of order.offers) {
+    const quantity = offer.variant.quantity;
+    if (!getMerchProduct(offer.slug) || !Number.isInteger(quantity) || quantity <= 0) {
+      continue;
+    }
+    quantities.set(offer.slug, (quantities.get(offer.slug) ?? 0) + quantity);
+  }
+
+  return JSON.stringify(
+    [...quantities].map(([slug, quantity]) => ({ slug, quantity })),
+  );
 }
 
 /**
@@ -160,6 +177,7 @@ export async function recordPaidMerchBonus(
     fourthwall_order_id: order.id,
     fourthwall_order_number: orderNumber,
     free_studio_months: String(months),
+    merch_items_json: serializeMerchItems(order),
   };
 
   try {

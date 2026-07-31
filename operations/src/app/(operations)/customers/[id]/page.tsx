@@ -17,7 +17,7 @@ interface CustomerPageProps {
 }
 
 export const metadata: Metadata = {
-  title: "Customer 360",
+  title: "Customer CRM",
 };
 
 /**
@@ -58,7 +58,7 @@ export default async function CustomerDetailPage({ params }: CustomerPageProps) 
   return (
     <>
       <PageHeading
-        eyebrow="Customers / Customer 360"
+        eyebrow="CRM / Customer"
         title={data.name}
         description={`${data.email} · ${data.location}`}
         actions={
@@ -196,7 +196,7 @@ export default async function CustomerDetailPage({ params }: CustomerPageProps) 
         <div><span className="next-action-icon"><Send aria-hidden size={22} /></span><span><small>Recommended next action</small><strong>{data.nextAction.title}</strong><p>{data.nextAction.reason}</p></span></div>
         <button className="button button-gold" disabled type="button"><Send aria-hidden size={16} />Send update email</button>
       </section>
-      <Link className="back-link" href="/customers"><ArrowLeft aria-hidden size={15} />Back to customers</Link>
+      <Link className="back-link" href="/crm"><ArrowLeft aria-hidden size={15} />Back to CRM</Link>
     </>
   );
 }

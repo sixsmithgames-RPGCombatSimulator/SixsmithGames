@@ -3,7 +3,6 @@ import {
   BadgeCheck,
   BarChart3,
   Boxes,
-  CircleUserRound,
   ClipboardCheck,
   CreditCard,
   Headphones,
@@ -31,13 +30,6 @@ export const OPERATIONS_NAVIGATION: NavigationItem[] = [
     description: "Executive operating snapshot",
   },
   {
-    label: "Customers",
-    href: "/customers",
-    activePrefix: "/customers",
-    icon: CircleUserRound,
-    description: "Normalized customer 360",
-  },
-  {
     label: "Subscriptions",
     href: "/subscriptions/reconciliation",
     activePrefix: "/subscriptions",
@@ -56,7 +48,7 @@ export const OPERATIONS_NAVIGATION: NavigationItem[] = [
     href: "/crm",
     activePrefix: "/crm",
     icon: CreditCard,
-    description: "Lifecycle and outreach",
+    description: "Customer relationships and billing",
   },
   {
     label: "Marketing",

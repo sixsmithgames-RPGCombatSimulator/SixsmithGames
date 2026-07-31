@@ -28,6 +28,7 @@ export const publicRoutes = [
   '/help',
   ...helpRoutes,
   '/merch',
+  '/merch/claim',
   '/pricing',
   '/privacy',
   '/sign-in',

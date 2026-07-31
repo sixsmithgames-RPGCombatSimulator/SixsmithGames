@@ -5,7 +5,6 @@ import {
   CircleDollarSign,
   Database,
   ExternalLink,
-  UsersRound,
 } from "lucide-react";
 import { PageHeading, StatusBadge } from "@/components/operations/ui";
 import type {
@@ -134,7 +133,7 @@ export function LiveDashboard({ snapshot }: WorkspaceProps) {
           <section className="panel">
             <header className="panel-header">
               <div><h2>Revenue and customer activity</h2><p>Live Stripe and Clerk read</p></div>
-              <Link href="/customers">View customers</Link>
+              <Link href="/crm">Open CRM</Link>
             </header>
             {snapshot.customers.length === 0 ? (
               <HonestEmpty
@@ -147,7 +146,7 @@ export function LiveDashboard({ snapshot }: WorkspaceProps) {
                   <thead><tr><th>Customer</th><th>Lifecycle</th><th>Subscriptions</th><th>MRR</th><th>Sources</th></tr></thead>
                   <tbody>{snapshot.customers.slice(0, 8).map((customer) => (
                     <tr key={customer.id}>
-                      <td><Link className={styles.recordLink} href={`/customers/${encodeURIComponent(customer.id)}`}>{customer.displayName}</Link><small className={styles.subtle}>{customer.email}</small></td>
+                      <td><Link className={styles.recordLink} href={`/crm/${encodeURIComponent(customer.id)}`}>{customer.displayName}</Link><small className={styles.subtle}>{customer.email}</small></td>
                       <td><StatusBadge tone={customer.lifecycle === "Subscriber" ? "green" : customer.lifecycle === "Payment failed" ? "red" : "blue"}>{customer.lifecycle}</StatusBadge></td>
                       <td>{customer.subscriptionCount}</td>
                       <td>{formatMoney(customer.mrrCents, customer.currency)}</td>
@@ -172,13 +171,13 @@ export function LiveDashboard({ snapshot }: WorkspaceProps) {
             ) : (
               <div className="table-scroll">
                 <table className="data-table">
-                  <thead><tr><th>Product</th><th>Recurring prices</th><th>One-time prices</th><th>Status</th></tr></thead>
+                  <thead><tr><th>Product</th><th>Recurring prices</th><th>One-time prices</th><th>Active subscribers</th></tr></thead>
                   <tbody>{snapshot.products.slice(0, 8).map((product) => (
                     <tr key={product.id}>
                       <td><strong>{product.name}</strong><small className={styles.subtle}>{product.description}</small></td>
                       <td>{product.recurringPrices.length}</td>
                       <td>{product.oneTimePrices.length}</td>
-                      <td><StatusBadge tone={product.active ? "green" : "slate"}>{product.active ? "Active" : "Archived"}</StatusBadge></td>
+                      <td>{product.subscriberCount}</td>
                     </tr>
                   ))}</tbody>
                 </table>
@@ -207,14 +206,14 @@ export function LiveDashboard({ snapshot }: WorkspaceProps) {
   );
 }
 
-/** Purpose: Renders normalized real customer identities and billing relationships. */
-export function LiveCustomers({ snapshot }: WorkspaceProps) {
+/** Purpose: Renders the canonical customer relationship and billing directory. */
+export function LiveCrm({ snapshot }: WorkspaceProps) {
   return (
     <>
-      <PageHeading title="Customers" description="Clerk identities matched to Stripe billing customers" actions={<Freshness checkedAt={snapshot.checkedAt} />} />
+      <PageHeading title="CRM" description="Customer accounts, billing relationships, and account history" actions={<Freshness checkedAt={snapshot.checkedAt} />} />
       <div className={styles.notice}><Database aria-hidden size={18} /><span><strong>How matching works:</strong> records are joined by normalized email. A customer may exist only in Clerk, only in Stripe, or in both.</span></div>
       <section className="panel">
-        <header className="panel-header"><div><h2>{snapshot.customers.length} normalized customer{snapshot.customers.length === 1 ? "" : "s"}</h2><p>No demo customers are shown in production</p></div></header>
+        <header className="panel-header"><div><h2>{snapshot.customers.length} customer relationship{snapshot.customers.length === 1 ? "" : "s"}</h2><p>Open any customer to see their account, plans, and payments</p></div></header>
         {snapshot.customers.length === 0 ? (
           <HonestEmpty
             title={sourceReadFailed(snapshot, "stripe") || sourceReadFailed(snapshot, "clerk") ? "Customer data could not be fully read" : "No customers yet"}
@@ -223,13 +222,14 @@ export function LiveCustomers({ snapshot }: WorkspaceProps) {
         ) : (
           <div className="table-scroll">
             <table className="data-table">
-              <thead><tr><th>Customer</th><th>Lifecycle</th><th>Active plans</th><th>MRR</th><th>Source records</th><th>Created</th></tr></thead>
+              <thead><tr><th>Customer</th><th>Lifecycle</th><th>Active plans</th><th>MRR</th><th>Last sign-in</th><th>Source records</th><th>Created</th></tr></thead>
               <tbody>{snapshot.customers.map((customer) => (
                 <tr key={customer.id}>
-                  <td><Link className={styles.recordLink} href={`/customers/${encodeURIComponent(customer.id)}`}>{customer.displayName}</Link><small className={styles.subtle}>{customer.email}</small></td>
+                  <td><Link className={styles.recordLink} href={`/crm/${encodeURIComponent(customer.id)}`}>{customer.displayName}</Link><small className={styles.subtle}>{customer.email}</small></td>
                   <td><StatusBadge tone={customer.lifecycle === "Subscriber" ? "green" : customer.lifecycle === "Payment failed" ? "red" : "blue"}>{customer.lifecycle}</StatusBadge></td>
                   <td>{customer.activeSubscriptions}</td>
                   <td>{formatMoney(customer.mrrCents, customer.currency)}</td>
+                  <td>{customer.lastActiveAt ? formatDate(customer.lastActiveAt, true) : "Never"}</td>
                   <td>{customer.sources.join(" + ")}</td>
                   <td>{formatDate(customer.createdAt)}</td>
                 </tr>
@@ -249,7 +249,7 @@ export function LiveCustomerDetail({ customer, snapshot }: { customer: LiveCusto
 
   return (
     <>
-      <PageHeading eyebrow="Customer 360" title={customer.displayName} description={customer.email} actions={<StatusBadge tone={customer.lifecycle === "Subscriber" ? "green" : "blue"}>{customer.lifecycle}</StatusBadge>} />
+      <PageHeading eyebrow="CRM / Customer" title={customer.displayName} description={customer.email} actions={<a className="button button-primary" href={`mailto:${customer.email}`}>Email customer</a>} />
       <div className={styles.workspaceGrid}>
         <div className={styles.stack}>
           <section className="panel">
@@ -271,13 +271,15 @@ export function LiveCustomerDetail({ customer, snapshot }: { customer: LiveCusto
               <div><dt>Stripe customer</dt><dd>{customer.stripeCustomerId ?? "Not linked"}</dd></div>
               <div><dt>Sources</dt><dd>{customer.sources.join(" + ")}</dd></div>
               <div><dt>First observed</dt><dd>{formatDate(customer.createdAt)}</dd></div>
+              <div><dt>Last sign-in</dt><dd>{customer.lastActiveAt ? formatDate(customer.lastActiveAt, true) : "Never"}</dd></div>
+              <div><dt>Relationship stage</dt><dd>{customer.lifecycle}</dd></div>
             </dl>
           </section>
           <section className="panel">
             <header className="panel-header"><div><h2>Product activity</h2><p>Current connector capability</p></div></header>
             <div className={styles.notice}><CircleAlert aria-hidden size={18} /><span>GMC and VCS currently verify service access only. They do not yet provide an Operations endpoint that lists usage or entitlements for every customer, so this page does not guess those values.</span></div>
           </section>
-          <Link className="button button-secondary" href="/customers">Back to customers</Link>
+          <Link className="button button-secondary" href="/crm">Back to CRM</Link>
         </div>
       </div>
     </>
@@ -299,7 +301,7 @@ export function LiveSubscriptions({ snapshot }: WorkspaceProps) {
       <section className="panel">
         <header className="panel-header"><div><h2>{snapshot.subscriptions.length} Stripe subscription{snapshot.subscriptions.length === 1 ? "" : "s"}</h2><p>All current statuses</p></div></header>
         {snapshot.subscriptions.length === 0 ? <HonestEmpty title={sourceReadFailed(snapshot, "stripe") ? "Stripe subscriptions could not be read" : "No subscriptions in Stripe"} detail={sourceReadFailed(snapshot, "stripe") ? "The Stripe read failed for this request. Check Settings and retry before treating subscriptions as empty." : "The connected Stripe account currently has no subscription records. This is a verified zero-result, not a connector failure."} /> : (
-          <div className="table-scroll"><table className="data-table"><thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th>MRR</th><th>Current period end</th></tr></thead><tbody>{snapshot.subscriptions.map((subscription) => <tr key={subscription.id}><td><Link className={styles.recordLink} href={`/customers/${encodeURIComponent(subscription.customerId)}`}>{subscription.customerName}</Link><small className={styles.subtle}>{subscription.customerEmail}</small></td><td>{subscription.planNames.join(", ") || "Price only"}</td><td><StatusBadge tone={["active", "trialing"].includes(subscription.status) ? "green" : "orange"}>{subscription.status}{subscription.cancelAtPeriodEnd ? " · canceling" : ""}</StatusBadge></td><td>{formatMoney(subscription.mrrCents, subscription.currency)}</td><td>{subscription.currentPeriodEnd ? formatDate(subscription.currentPeriodEnd) : "Unavailable"}</td></tr>)}</tbody></table></div>
+          <div className="table-scroll"><table className="data-table"><thead><tr><th>Customer</th><th>Plan</th><th>Status</th><th>MRR</th><th>Current period end</th></tr></thead><tbody>{snapshot.subscriptions.map((subscription) => <tr key={subscription.id}><td><Link className={styles.recordLink} href={`/crm/${encodeURIComponent(subscription.customerId)}`}>{subscription.customerName}</Link><small className={styles.subtle}>{subscription.customerEmail}</small></td><td>{subscription.planNames.join(", ") || "Price only"}</td><td><StatusBadge tone={["active", "trialing"].includes(subscription.status) ? "green" : "orange"}>{subscription.status}{subscription.cancelAtPeriodEnd ? " · canceling" : ""}</StatusBadge></td><td>{formatMoney(subscription.mrrCents, subscription.currency)}</td><td>{subscription.currentPeriodEnd ? formatDate(subscription.currentPeriodEnd) : "Unavailable"}</td></tr>)}</tbody></table></div>
         )}
       </section>
     </>
@@ -332,12 +334,16 @@ export function LiveAccounting({ snapshot, title = "Accounting" }: WorkspaceProp
   );
 }
 
-/** Purpose: Renders the active Stripe product and price catalog. */
+/** Purpose: Renders active subscription products and the approved merch collection. */
 function ProductWorkspace({ snapshot }: WorkspaceProps) {
   return (
     <>
-      <PageHeading title="Products" description="Products and active prices from Stripe" actions={<Freshness checkedAt={snapshot.checkedAt} />} />
-      <section className="panel"><header className="panel-header"><div><h2>{snapshot.products.length} Stripe product{snapshot.products.length === 1 ? "" : "s"}</h2><p>Billing catalog; product-app usage is a separate source</p></div><a href="https://dashboard.stripe.com/products" rel="noreferrer" target="_blank">Open Stripe catalog</a></header>{snapshot.products.length === 0 ? <HonestEmpty title={sourceReadFailed(snapshot, "stripe") ? "Stripe products could not be read" : "No Stripe products"} detail={sourceReadFailed(snapshot, "stripe") ? "The Stripe read failed for this request. Check Settings and retry before treating the catalog as empty." : "The connected Stripe account returned no products."} /> : <div className="table-scroll"><table className="data-table"><thead><tr><th>Product</th><th>Recurring prices</th><th>One-time prices</th><th>Status</th><th>Created</th></tr></thead><tbody>{snapshot.products.map((product) => <tr key={product.id}><td><a className={styles.recordLink} href={`https://dashboard.stripe.com/products/${product.id}`} rel="noreferrer" target="_blank">{product.name}<ExternalLink aria-hidden size={12} /></a><small className={styles.subtle}>{product.description}</small></td><td><div className={styles.priceList}>{product.recurringPrices.length > 0 ? product.recurringPrices.map((price) => <span key={price}>{price}</span>) : "None"}</div></td><td><div className={styles.priceList}>{product.oneTimePrices.length > 0 ? product.oneTimePrices.map((price) => <span key={price}>{price}</span>) : "None"}</div></td><td><StatusBadge tone={product.active ? "green" : "slate"}>{product.active ? "Active" : "Archived"}</StatusBadge></td><td>{formatDate(product.createdAt)}</td></tr>)}</tbody></table></div>}</section>
+      <PageHeading title="Products" description="Subscriptions, pricing, merchandise, and verified customer counts" actions={<Freshness checkedAt={snapshot.checkedAt} />} />
+      <div className={styles.notice}><Database aria-hidden size={18} /><span><strong>What the counts mean:</strong> subscribers are distinct customers with active, trialing, or past-due Stripe subscriptions. Merch units include paid Fourthwall orders recorded by the signed webhook; orders from before that ledger are not inferred.</span></div>
+      <div className={styles.stack}>
+        <section className="panel"><header className="panel-header"><div><h2>Subscriptions & digital products</h2><p>{snapshot.products.length} active Stripe product{snapshot.products.length === 1 ? "" : "s"}</p></div><a href="https://dashboard.stripe.com/products" rel="noreferrer" target="_blank">Open Stripe catalog</a></header>{snapshot.products.length === 0 ? <HonestEmpty title={sourceReadFailed(snapshot, "stripe") ? "Stripe products could not be read" : "No active Stripe products"} detail={sourceReadFailed(snapshot, "stripe") ? "The Stripe read failed for this request. Check Settings and retry before treating the catalog as empty." : "The connected Stripe account returned no active products."} /> : <div className="table-scroll"><table className="data-table"><thead><tr><th>Product</th><th>Recurring prices</th><th>One-time prices</th><th>Active subscribers</th><th>Created</th></tr></thead><tbody>{snapshot.products.map((product) => <tr key={product.id}><td><a className={styles.recordLink} href={`https://dashboard.stripe.com/products/${product.id}`} rel="noreferrer" target="_blank">{product.name}<ExternalLink aria-hidden size={12} /></a><small className={styles.subtle}>{product.description}</small></td><td><div className={styles.priceList}>{product.recurringPrices.length > 0 ? product.recurringPrices.map((price) => <span key={price}>{price}</span>) : "None"}</div></td><td><div className={styles.priceList}>{product.oneTimePrices.length > 0 ? product.oneTimePrices.map((price) => <span key={price}>{price}</span>) : "None"}</div></td><td><strong>{product.subscriberCount}</strong></td><td>{formatDate(product.createdAt)}</td></tr>)}</tbody></table></div>}</section>
+        <section className="panel"><header className="panel-header"><div><h2>Merchandise</h2><p>Current approved Fourthwall collection</p></div><a href="https://sixsmith-games-shop.fourthwall.com" rel="noreferrer" target="_blank">Open merch store</a></header>{snapshot.merchProducts.length === 0 ? <HonestEmpty title={sourceReadFailed(snapshot, "merch-catalog") ? "Merchandise could not be read" : "No approved merchandise"} detail={sourceReadFailed(snapshot, "merch-catalog") ? "The public Sixsmith Games merch catalog did not answer this request. Retry before treating the collection as empty." : "No products with verified Fourthwall listings are currently published."} /> : <div className="table-scroll"><table className="data-table"><thead><tr><th>Merch item</th><th>Category</th><th>Current listing price</th><th>Studio bonus</th><th>Tracked units sold</th><th>Store</th></tr></thead><tbody>{snapshot.merchProducts.map((product) => <tr key={product.slug}><td><strong>{product.name}</strong></td><td>{product.category}</td><td>{product.price}</td><td>{product.freeStudioMonths} {product.freeStudioMonths === 1 ? "month" : "months"}</td><td><strong>{product.unitsSold ?? "Unavailable"}</strong></td><td><a className={styles.recordLink} href={product.shopUrl} rel="noreferrer" target="_blank">View listing<ExternalLink aria-hidden size={12} /></a></td></tr>)}</tbody></table></div>}</section>
+      </div>
     </>
   );
 }
@@ -346,10 +352,6 @@ function ProductWorkspace({ snapshot }: WorkspaceProps) {
 export function LiveSectionWorkspace({ section, snapshot }: WorkspaceProps & { section: string }) {
   if (section === "orders") {
     return <><PageHeading title="Orders & Payments" description="One-time and recurring Stripe charge activity" actions={<Freshness checkedAt={snapshot.checkedAt} />} /><section className="panel"><header className="panel-header"><div><h2>Payments</h2><p>Source: Stripe charges</p></div></header>{snapshot.payments.length === 0 ? <HonestEmpty title={sourceReadFailed(snapshot, "stripe") ? "Stripe payments could not be read" : "No orders or payments yet"} detail={sourceReadFailed(snapshot, "stripe") ? "The Stripe read failed for this request. Check Settings and retry before treating payment activity as empty." : "Stripe returned zero charge records. When the first checkout succeeds, it will appear here automatically."} /> : <PaymentTable payments={snapshot.payments} />}</section></>;
-  }
-
-  if (section === "crm") {
-    return <><PageHeading title="CRM" description="Relationships derived from current Clerk and Stripe identities" actions={<Freshness checkedAt={snapshot.checkedAt} />} /><div className={styles.notice}><UsersRound aria-hidden size={18} /><span>Operations does not yet have a separate outreach or email-history source. This view shows real registered and billing relationships only.</span></div><section className="panel">{snapshot.customers.length === 0 ? <HonestEmpty title="No CRM relationships yet" detail="Clerk and Stripe returned no identities to qualify or follow up." /> : <div className="table-scroll"><table className="data-table"><thead><tr><th>Relationship</th><th>Stage</th><th>Billing</th><th>Suggested next step</th></tr></thead><tbody>{snapshot.customers.map((customer) => <tr key={customer.id}><td><Link className={styles.recordLink} href={`/customers/${encodeURIComponent(customer.id)}`}>{customer.displayName}</Link><small className={styles.subtle}>{customer.email}</small></td><td>{customer.lifecycle}</td><td>{customer.activeSubscriptions > 0 ? `${customer.activeSubscriptions} active` : "No active subscription"}</td><td>{customer.lifecycle === "Registered" ? "Review onboarding after product activation data is available" : "Monitor billing status"}</td></tr>)}</tbody></table></div>}</section></>;
   }
 
   if (section === "products") return <ProductWorkspace snapshot={snapshot} />;
@@ -368,7 +370,7 @@ export function LiveSectionWorkspace({ section, snapshot }: WorkspaceProps & { s
   }
 
   if (section === "reports") {
-    return <><PageHeading title="Reports" description="Reproducible views generated from the current live snapshot" actions={<Freshness checkedAt={snapshot.checkedAt} />} /><div className={styles.reportGrid}><Link className={styles.reportCard} href="/dashboard"><span>Current</span><strong>Executive operating snapshot</strong><p>Subscribers, MRR, collected revenue, attention queue, catalog, and source health.</p></Link><Link className={styles.reportCard} href="/customers"><span>Current</span><strong>Customer and identity report</strong><p>{snapshot.customers.length} normalized Clerk and Stripe customer records.</p></Link><Link className={styles.reportCard} href="/subscriptions/reconciliation"><span>Current</span><strong>Subscription report</strong><p>{snapshot.subscriptions.length} Stripe subscriptions with normalized MRR and risk status.</p></Link><Link className={styles.reportCard} href="/orders"><span>Current</span><strong>Payments report</strong><p>{snapshot.payments.length} Stripe charge records with refunds and available fees.</p></Link><Link className={styles.reportCard} href="/products"><span>Current</span><strong>Product and pricing report</strong><p>{snapshot.products.length} Stripe products and their active price options.</p></Link><Link className={styles.reportCard} href="/accounting"><span>Current</span><strong>Financial operations report</strong><p>Collected revenue, refunds, fees, and clearly unavailable cost fields.</p></Link></div></>;
+    return <><PageHeading title="Reports" description="Reproducible views generated from the current live snapshot" actions={<Freshness checkedAt={snapshot.checkedAt} />} /><div className={styles.reportGrid}><Link className={styles.reportCard} href="/dashboard"><span>Current</span><strong>Executive operating snapshot</strong><p>Subscribers, MRR, collected revenue, attention queue, catalog, and source health.</p></Link><Link className={styles.reportCard} href="/crm"><span>Current</span><strong>CRM and identity report</strong><p>{snapshot.customers.length} normalized Clerk and Stripe customer records.</p></Link><Link className={styles.reportCard} href="/subscriptions/reconciliation"><span>Current</span><strong>Subscription report</strong><p>{snapshot.subscriptions.length} Stripe subscriptions with normalized MRR and risk status.</p></Link><Link className={styles.reportCard} href="/orders"><span>Current</span><strong>Payments report</strong><p>{snapshot.payments.length} Stripe charge records with refunds and available fees.</p></Link><Link className={styles.reportCard} href="/products"><span>Current</span><strong>Product and pricing report</strong><p>{snapshot.products.length} active Stripe products plus {snapshot.merchProducts.length} current merch listings.</p></Link><Link className={styles.reportCard} href="/accounting"><span>Current</span><strong>Financial operations report</strong><p>Collected revenue, refunds, fees, and clearly unavailable cost fields.</p></Link></div></>;
   }
 
   return <><PageHeading title="Workspace" description="This operations route is not implemented" /><section className="panel"><HonestEmpty title="Unknown workspace" detail="Use the primary navigation to open a supported operations view." /></section></>;

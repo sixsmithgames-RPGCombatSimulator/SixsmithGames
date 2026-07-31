@@ -35,6 +35,7 @@ export interface LiveCustomer {
   clerkUserId: string | null;
   stripeCustomerId: string | null;
   createdAt: string;
+  lastActiveAt: string | null;
   sources: string[];
 }
 
@@ -71,7 +72,18 @@ export interface LiveProduct {
   active: boolean;
   recurringPrices: string[];
   oneTimePrices: string[];
+  subscriberCount: number;
   createdAt: string;
+}
+
+export interface LiveMerchProduct {
+  slug: string;
+  name: string;
+  category: string;
+  price: string;
+  freeStudioMonths: number;
+  shopUrl: string;
+  unitsSold: number | null;
 }
 
 export interface LiveInternalSummary {
@@ -90,6 +102,7 @@ export interface LiveOperationsSnapshot {
   subscriptions: LiveSubscription[];
   payments: LivePayment[];
   products: LiveProduct[];
+  merchProducts: LiveMerchProduct[];
   sources: LiveSourceSummary[];
   internal: LiveInternalSummary;
   totals: {
@@ -177,6 +190,7 @@ interface StripeDataBundle {
 interface ClerkCustomerRecord {
   id: string;
   createdAt: number;
+  lastSignInAt: number | null;
   email: string;
   name: string;
 }
@@ -188,10 +202,37 @@ interface MutableCustomer {
   clerkUserId: string | null;
   stripeCustomerId: string | null;
   createdAt: string;
+  lastActiveAt: string | null;
   sources: Set<string>;
 }
 
+interface StripePromotionCodeRecord {
+  id: string;
+  metadata: Record<string, string> | null;
+}
+
+interface MerchCatalogRecord {
+  slug: string;
+  name: string;
+  category: string;
+  price: string;
+  freeStudioMonths: number;
+  shopUrl: string;
+}
+
+interface MerchCatalogBundle {
+  state: SourceState;
+  records: MerchCatalogRecord[];
+}
+
+interface MerchSalesBundle {
+  state: SourceState;
+  records: StripePromotionCodeRecord[];
+}
+
 const STRIPE_API_ROOT = "https://api.stripe.com/v1";
+const MERCH_CATALOG_ORIGIN = process.env.SIXSMITH_WEBSITE_ORIGIN?.trim()
+  || "https://sixsmithgames.com";
 const MAX_STRIPE_PAGES = 5;
 
 /**
@@ -297,6 +338,68 @@ async function loadStripeData(): Promise<StripeDataBundle> {
   }
 }
 
+/** Purpose: Reads paid-order merchandise line items recorded by the signed webhook. */
+async function loadMerchSales(): Promise<MerchSalesBundle> {
+  if (!process.env.STRIPE_SECRET_KEY?.trim()) {
+    return { state: "not_configured", records: [] };
+  }
+
+  try {
+    const promotionCodes = await fetchStripeList<StripePromotionCodeRecord>("promotion_codes");
+    const records = promotionCodes.filter(
+      (promotion) => promotion.metadata?.benefit_type === "merch_studio_months",
+    );
+    return { state: records.length > 0 ? "connected" : "empty", records };
+  } catch {
+    return { state: "error", records: [] };
+  }
+}
+
+/** Purpose: Reads the approved public merch catalog without duplicating product copy. */
+async function loadMerchCatalog(): Promise<MerchCatalogBundle> {
+  try {
+    const response = await fetch(`${MERCH_CATALOG_ORIGIN}/api/merch-catalog`, {
+      cache: "no-store",
+      signal: AbortSignal.timeout(10_000),
+    });
+    if (!response.ok) {
+      throw new Error("The public merchandise catalog could not be read.");
+    }
+
+    const payload = (await response.json()) as { products?: unknown };
+    if (!Array.isArray(payload.products)) {
+      throw new Error("The public merchandise catalog returned an invalid shape.");
+    }
+
+    const records = payload.products.flatMap<MerchCatalogRecord>((value) => {
+      if (!value || typeof value !== "object") return [];
+      const product = value as Record<string, unknown>;
+      if (
+        typeof product.slug !== "string"
+        || typeof product.name !== "string"
+        || typeof product.category !== "string"
+        || typeof product.price !== "string"
+        || typeof product.freeStudioMonths !== "number"
+        || typeof product.shopUrl !== "string"
+      ) {
+        return [];
+      }
+      return [{
+        slug: product.slug,
+        name: product.name,
+        category: product.category,
+        price: product.price,
+        freeStudioMonths: product.freeStudioMonths,
+        shopUrl: product.shopUrl,
+      }];
+    });
+
+    return { state: records.length > 0 ? "connected" : "empty", records };
+  } catch {
+    return { state: "error", records: [] };
+  }
+}
+
 /**
  * Purpose: Reads identities from the existing shared Clerk instance for customer normalization.
  * Parameters: None; the Clerk server SDK uses the configured production secret.
@@ -324,6 +427,7 @@ async function loadClerkCustomers(): Promise<{
       return [{
         id: user.id,
         createdAt: user.createdAt,
+        lastSignInAt: user.lastSignInAt,
         email,
         name: name || email,
       }];
@@ -442,6 +546,7 @@ function normalizeCustomers(
       clerkUserId: clerk.id,
       stripeCustomerId: null,
       createdAt: new Date(clerk.createdAt).toISOString(),
+      lastActiveAt: clerk.lastSignInAt ? new Date(clerk.lastSignInAt).toISOString() : null,
       sources: new Set(["Clerk"]),
     };
     customersByEmail.set(clerk.email, record);
@@ -457,6 +562,7 @@ function normalizeCustomers(
       clerkUserId: null,
       stripeCustomerId: stripe.id,
       createdAt: new Date(stripe.created * 1000).toISOString(),
+      lastActiveAt: null,
       sources: new Set<string>(),
     };
     record.stripeCustomerId = stripe.id;
@@ -580,13 +686,25 @@ function normalizePayments(
   }).sort((a, b) => b.createdAt.localeCompare(a.createdAt));
 }
 
-/** Purpose: Joins Stripe products to their active price options. */
+/** Purpose: Joins active Stripe products to price options and subscriber counts. */
 function normalizeProducts(
   products: StripeProductRecord[],
   prices: StripePriceRecord[],
+  subscriptions: StripeSubscriptionRecord[],
 ): LiveProduct[] {
-  return products.map((product) => {
+  const activeSubscriptions = subscriptions.filter((subscription) =>
+    ["active", "trialing", "past_due"].includes(subscription.status),
+  );
+
+  return products.filter((product) => product.active).map((product) => {
     const productPrices = prices.filter((price) => price.product === product.id && price.active);
+    const subscribers = new Set(
+      activeSubscriptions.flatMap((subscription) =>
+        subscription.items.data.some((item) => item.price.product === product.id)
+          ? [subscription.customer]
+          : [],
+      ),
+    );
     return {
       id: product.id,
       name: product.name,
@@ -594,9 +712,51 @@ function normalizeProducts(
       active: product.active,
       recurringPrices: productPrices.filter((price) => price.type === "recurring").map(formatPrice),
       oneTimePrices: productPrices.filter((price) => price.type === "one_time").map(formatPrice),
+      subscriberCount: subscribers.size,
       createdAt: new Date(product.created * 1000).toISOString(),
     };
   }).sort((a, b) => a.name.localeCompare(b.name));
+}
+
+/** Purpose: Combines public merch listings with units proven by signed order records. */
+function normalizeMerchProducts(
+  catalog: MerchCatalogRecord[],
+  sales: MerchSalesBundle,
+): LiveMerchProduct[] {
+  const soldBySlug = new Map<string, number>();
+
+  for (const promotion of sales.records) {
+    const serializedItems = promotion.metadata?.merch_items_json;
+    if (!serializedItems) continue;
+
+    try {
+      const items = JSON.parse(serializedItems) as unknown;
+      if (!Array.isArray(items)) continue;
+
+      for (const value of items) {
+        if (!value || typeof value !== "object") continue;
+        const item = value as Record<string, unknown>;
+        if (
+          typeof item.slug !== "string"
+          || typeof item.quantity !== "number"
+          || !Number.isInteger(item.quantity)
+          || item.quantity <= 0
+        ) {
+          continue;
+        }
+        soldBySlug.set(item.slug, (soldBySlug.get(item.slug) ?? 0) + item.quantity);
+      }
+    } catch {
+      continue;
+    }
+  }
+
+  return catalog.map((product) => ({
+    ...product,
+    unitsSold: ["error", "not_configured"].includes(sales.state)
+      ? null
+      : soldBySlug.get(product.slug) ?? 0,
+  }));
 }
 
 /**
@@ -612,15 +772,18 @@ export const getLiveOperationsSnapshot = cache(async (): Promise<LiveOperationsS
     throw new Error("Live operations data is unavailable in local preview mode.");
   }
 
-  const [stripe, clerk, internal] = await Promise.all([
+  const [stripe, clerk, internal, merchCatalog, merchSales] = await Promise.all([
     loadStripeData(),
     loadClerkCustomers(),
     loadInternalSummary(),
+    loadMerchCatalog(),
+    loadMerchSales(),
   ]);
   const customers = normalizeCustomers(clerk.records, stripe.customers, stripe.subscriptions);
   const subscriptions = normalizeSubscriptions(stripe.subscriptions, stripe.products, customers);
   const payments = normalizePayments(stripe.charges, customers);
-  const products = normalizeProducts(stripe.products, stripe.prices);
+  const products = normalizeProducts(stripe.products, stripe.prices, stripe.subscriptions);
+  const merchProducts = normalizeMerchProducts(merchCatalog.records, merchSales);
   const activeSubscriptions = subscriptions.filter((subscription) =>
     ["active", "trialing", "past_due"].includes(subscription.status),
   );
@@ -637,6 +800,7 @@ export const getLiveOperationsSnapshot = cache(async (): Promise<LiveOperationsS
     subscriptions,
     payments,
     products,
+    merchProducts,
     internal,
     sources: [
       {
@@ -647,6 +811,24 @@ export const getLiveOperationsSnapshot = cache(async (): Promise<LiveOperationsS
         detail: stripe.state === "error"
           ? "Stripe did not answer one or more read requests."
           : "Customers, subscriptions, payments, products, and prices checked live.",
+      },
+      {
+        key: "merch-catalog",
+        label: "Website merch catalog",
+        state: merchCatalog.state,
+        recordCount: merchCatalog.records.length,
+        detail: merchCatalog.state === "error"
+          ? "The public Sixsmith Games merchandise catalog could not be read."
+          : "Approved products and current Fourthwall listing links checked live.",
+      },
+      {
+        key: "merch-sales",
+        label: "Merch sales ledger",
+        state: merchSales.state,
+        recordCount: merchSales.records.length,
+        detail: merchSales.state === "error"
+          ? "The Stripe records created by paid Fourthwall webhooks could not be read."
+          : "Paid Fourthwall orders recorded by the signed webhook checked in Stripe.",
       },
       {
         key: "clerk",
