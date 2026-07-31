@@ -1,4 +1,4 @@
-/** Customer page for claiming GameMaster Studio time included with merchandise. */
+/** Customer page for claiming the separate Studio coupon earned from merchandise. */
 
 import type { Metadata } from 'next';
 
@@ -8,7 +8,7 @@ import styles from './claim.module.css';
 
 export const metadata: Metadata = buildPageMetadata({
   title: 'Claim Merchandise Studio Time | Sixsmith Games',
-  description: 'Claim the GameMaster Studio months included with qualifying Sixsmith Games merchandise.',
+  description: 'Claim the separate GameMaster Studio coupon earned from qualifying Sixsmith Games merchandise.',
   path: '/merch/claim',
 });
 
@@ -20,16 +20,21 @@ export default function MerchBonusClaimPage() {
         <p className={styles.eyebrow}>Your merch bonus</p>
         <h1>Bring your Studio time to the table.</h1>
         <p>
-          Use the same email for your merchandise order and your Sixsmith Games
-          account. Enter the order number from the paid receipt, and we will
-          match the bonus to you.
+          Your paid order unlocks a separate, one-use Studio coupon. Enter the
+          receipt number using the same email as your Sixsmith Games account.
         </p>
         <ul>
-          <li>Gateway Wyrm Desk Mat: one free month</li>
-          <li>Either Master Your Stories hoodie: three free months</li>
-          <li>Qualifying items in the same order add together</li>
+          <li>Gateway Wyrm Desk Mat: one Studio month</li>
+          <li>Either Master Your Stories hoodie: three Studio months</li>
+          <li>Qualifying items add together</li>
         </ul>
         <MerchBonusClaimForm />
+        <p className={styles.helpText}>
+          Existing Studio subscriptions get the earned time added. If the coupon
+          starts a new subscription, regular monthly billing begins after the
+          coupon ends unless you cancel first. The coupon has no cash value and
+          cannot be transferred.
+        </p>
         <p className={styles.helpText}>
           Already have a different Sixsmith Games plan? Contact{' '}
           <a href="mailto:info@sixsmithgames.com">info@sixsmithgames.com</a>{' '}

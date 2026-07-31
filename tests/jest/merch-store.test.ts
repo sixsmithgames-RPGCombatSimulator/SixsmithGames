@@ -36,8 +36,8 @@ describe('Sixsmith Games merchandise catalog', () => {
       'gateway-wyrm-desk-mat',
     ]);
     expect(MERCH_PRODUCTS.map((product) => product.shopPrice)).toEqual([
-      'From $44.00',
-      '$59.99',
+      '$44.00',
+      'From $59.99',
       '$34.00',
     ]);
     expect(MERCH_PRODUCTS.map((product) => product.freeStudioMonths)).toEqual([3, 3, 1]);

@@ -357,11 +357,15 @@ export default function MerchStore({ storefront, checkoutStatus }: MerchStorePro
 
                   <div className={styles.studioBonus}>
                     <strong>
-                      Includes {product.freeStudioMonths} free{' '}
-                      {product.freeStudioMonths === 1 ? 'month' : 'months'} of
-                      GameMaster Studio
+                      Earn a one-use Studio coupon: {product.freeStudioMonths}{' '}
+                      {product.freeStudioMonths === 1 ? 'month' : 'months'} at
+                      no additional charge
                     </strong>
-                    <span>Use the same email for your shop order and Sixsmith Games account.</span>
+                    <span>
+                      Claim it after purchase with your order number and the same email.
+                      New subscriptions renew at the regular monthly price after the coupon
+                      ends unless canceled.
+                    </span>
                   </div>
 
                   {product.shopUrl ? (

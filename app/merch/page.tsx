@@ -21,7 +21,7 @@ import styles from './merch.module.css';
 export const metadata: Metadata = buildPageMetadata({
   title: 'Tabletop RPG Merchandise | Sixsmith Games',
   description:
-    'Shop Master Your Stories hoodies and the Gateway Wyrm Desk Mat, with GameMaster Studio time included.',
+    'Shop Master Your Stories hoodies and the Gateway Wyrm Desk Mat, with a separate GameMaster Studio coupon earned after purchase.',
   path: '/merch',
 });
 
@@ -40,9 +40,9 @@ interface MerchPageProps {
  */
 const faq = [
   {
-    question: 'How do I claim my free GameMaster Studio months?',
+    question: 'How does the GameMaster Studio coupon work?',
     answer:
-      'Use the same email for your merchandise order and Sixsmith Games account. After the paid order is confirmed, sign in and enter the order number on the claim page. A desk mat includes one month; either hoodie includes three months. Qualifying items in the same order add together.',
+      'After a qualifying paid order is confirmed, use the same email for your merchandise order and Sixsmith Games account, then enter the receipt number on the claim page. A desk mat earns a one-use coupon covering one Studio month; either hoodie earns three months. Qualifying items in the same order add together. The coupon is claimed separately and does not change the merchandise price. If it starts a new Studio subscription, regular monthly billing begins after the coupon ends unless you cancel first. The coupon has no cash value and cannot be transferred.',
   },
   {
     question: 'When is my gear made?',
@@ -123,8 +123,8 @@ export default async function MerchPage({ searchParams }: MerchPageProps) {
           <span>Your payment stays protected.</span>
         </div>
         <div>
-          <strong>Studio time included</strong>
-          <span><a href="/merch/claim">Claim it with your order number.</a></span>
+          <strong>Separate Studio coupon</strong>
+          <span><a href="/merch/claim">Claim it after purchase with your order number.</a></span>
         </div>
       </section>
 
