@@ -12,7 +12,7 @@ const LEGACY_REDIRECTS: Record<string, string> = {
   '/apps/four-star-general': '/apps/fourstargeneral',
 };
 
-const isProtectedRoute = createRouteMatcher(['/account(.*)']);
+const isProtectedRoute = createRouteMatcher(['/account(.*)', '/app(.*)']);
 
 function slugifyTag(tag: string) {
   return tag

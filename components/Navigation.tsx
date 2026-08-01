@@ -18,9 +18,8 @@ import {
   isContentCraftOwnerEmail,
   isSagaCraftOwnerEmail,
 } from '@/lib/productVisibility';
+import StudioEntryLink from './StudioEntryLink';
 import styles from './Navigation.module.css';
-
-const STUDIO_URL = 'https://gmstudio.sixsmithgames.com';
 
 const primaryLinks = [
   { label: 'Why Studio', href: '/#why-studio' },
@@ -115,13 +114,13 @@ export default function Navigation() {
           {isSignedIn ? (
             <>
               <Link href="/account" className={styles.signInLink}>Account</Link>
-              <a href={STUDIO_URL} className={styles.primaryCta}>Open Studio</a>
+              <StudioEntryLink className={styles.primaryCta} placement="desktop_navigation" />
               <UserButton afterSignOutUrl="/" />
             </>
           ) : (
             <>
             <Link href="/sign-in" className={styles.signInLink}>Sign in</Link>
-            <Link href="/sign-up" className={styles.primaryCta}>Start free</Link>
+            <StudioEntryLink className={styles.primaryCta} placement="desktop_navigation" />
             </>
           )}
         </div>
@@ -157,14 +156,20 @@ export default function Navigation() {
             {isSignedIn ? (
               <>
                 <Link href="/account" onClick={closeMenus}>Account</Link>
-                <a href={STUDIO_URL} className={styles.primaryCta}>Open Studio</a>
+                <StudioEntryLink
+                  className={styles.primaryCta}
+                  placement="mobile_navigation"
+                  onActivate={closeMenus}
+                />
               </>
             ) : (
               <>
               <Link href="/sign-in" onClick={closeMenus}>Sign in</Link>
-              <Link href="/sign-up" className={styles.primaryCta} onClick={closeMenus}>
-                Start free
-              </Link>
+              <StudioEntryLink
+                className={styles.primaryCta}
+                placement="mobile_navigation"
+                onActivate={closeMenus}
+              />
               </>
             )}
           </div>
