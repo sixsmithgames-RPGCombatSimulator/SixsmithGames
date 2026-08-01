@@ -12,6 +12,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 
 import MarketingLink from '@/components/MarketingLink';
+import StudioEntryLink from '@/components/StudioEntryLink';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { buildPageMetadata } from '@/lib/metadata';
@@ -110,14 +111,10 @@ export default function HomePage() {
             points, and conditions moving when the dice hit the table.
           </p>
           <div className={styles.heroActions}>
-            <MarketingLink
-              href="/sign-up"
+            <StudioEntryLink
               className={styles.goldButton}
-              eventName="studio_signup_click"
-              eventData={{ placement: 'hero', plan: 'free_start' }}
-            >
-              Start free
-            </MarketingLink>
+              placement="hero"
+            />
             <MarketingLink
               href="#workflow"
               className={styles.ghostButton}
@@ -367,17 +364,13 @@ export default function HomePage() {
         <p className={styles.eyebrow}>Your next session is coming</p>
         <h2>Spend the prep on the game, not on finding the prep.</h2>
         <p>
-          Start free, bring over one campaign, and see whether the Studio rhythm
+          Start now, bring over one campaign, and see whether the Studio rhythm
           fits the way you run.
         </p>
-        <MarketingLink
-          href="/sign-up"
+        <StudioEntryLink
           className={styles.goldButton}
-          eventName="studio_signup_click"
-          eventData={{ placement: 'final_cta', plan: 'free_start' }}
-        >
-          Start free
-        </MarketingLink>
+          placement="final_cta"
+        />
       </section>
     </div>
   );
