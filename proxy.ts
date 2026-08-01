@@ -46,11 +46,12 @@ const handleRequestWithClerk = clerkMiddleware(async (auth, request) => {
     }
   }
 
-  // Keep the former apex site useful as a compatibility address while the
-  // flagship site uses its clearer product-specific canonical hostname.
+  // Keep the apex useful while marketing, pricing, account, and checkout use
+  // one canonical host. GameMaster Studio is a separate application at the
+  // gmstudio subdomain and is intentionally not handled by this project.
   if (
     process.env.NODE_ENV === 'production'
-    && (host === 'sixsmithgames.com' || host === 'www.sixsmithgames.com' || host === `www.${SITE_HOSTNAME}`)
+    && host === 'sixsmithgames.com'
   ) {
     const url = request.nextUrl.clone();
     url.host = SITE_HOSTNAME;

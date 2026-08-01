@@ -120,7 +120,7 @@ sixsmith-games-website/
 1. Push code to GitHub
 2. Import repository in Vercel
 3. Deploy automatically
-4. Add custom domain: gmstudio.sixsmithgames.com
+4. Add custom domain: www.sixsmithgames.com
 
 ### Option 2: Railway (Docker)
 
@@ -158,7 +158,7 @@ STRIPE_SECRET_KEY=sk_xxx
 STRIPE_PRICE_ID=price_xxx
 
 # Required for production
-NEXT_PUBLIC_URL=https://gmstudio.sixsmithgames.com
+NEXT_PUBLIC_URL=https://www.sixsmithgames.com
 
 # Optional
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
@@ -221,7 +221,8 @@ railway up
 - [ ] Set up uptime monitoring
 
 ### 4. DNS & Domain
-- [ ] Point gmstudio.sixsmithgames.com to Vercel and redirect the old apex host
+- [ ] Keep `www.sixsmithgames.com` and the apex redirect on this marketing project
+- [ ] Point `gmstudio.sixsmithgames.com` to the separate GameMaster Studio application project
 - [ ] Configure SSL certificates
 - [ ] Set up email (support@, etc.)
 
@@ -292,7 +293,8 @@ All product names, logos, and brands are property of Sixsmith Games and are prot
 
 ## Contact Information
 
-- **Website:** https://gmstudio.sixsmithgames.com
+- **Website:** https://www.sixsmithgames.com
+- **GameMaster Studio app:** https://gmstudio.sixsmithgames.com
 - **Licensing:** licensing@sixsmithgames.com
 - **Support:** support@sixsmithgames.com
 

@@ -73,7 +73,7 @@ Comment:
 ${comment.content}
 
 ---
-Approve or moderate at: https://gmstudio.sixsmithgames.com/blog/${comment.postSlug}
+Approve or moderate at: https://www.sixsmithgames.com/blog/${comment.postSlug}
   `.trim();
 
   // TODO: Integrate with email service (Resend, SendGrid, etc.)

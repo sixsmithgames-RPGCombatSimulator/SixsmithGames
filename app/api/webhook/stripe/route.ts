@@ -16,7 +16,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
 const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET!;
 const FACEBOOK_PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
 const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_ACCESS_TOKEN;
-const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://gmstudio.sixsmithgames.com';
+const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://www.sixsmithgames.com';
 
 export async function POST(req: NextRequest) {
   const body = await req.text();

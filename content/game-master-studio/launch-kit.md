@@ -3,8 +3,8 @@
 Status: ready for first recording and design pass  
 Campaign: `gamemaster-studio-launch`  
 Primary audience: GMs running online or hybrid tabletop RPG campaigns  
-Primary CTA: Start free at `https://gmstudio.sixsmithgames.com/sign-up`
-Pricing CTA: Compare plans at `https://gmstudio.sixsmithgames.com/pricing`
+Primary CTA: Start free at `https://www.sixsmithgames.com/sign-up`
+Pricing CTA: Compare plans at `https://www.sixsmithgames.com/pricing`
 
 ## Campaign idea
 
@@ -120,7 +120,7 @@ Voice:
 > Start free at Sixsmith Games, and spend your prep on the game instead of
 > finding the prep.
 
-On-screen text: `gmstudio.sixsmithgames.com`
+On-screen text: `www.sixsmithgames.com`
 
 ## VEED Free initial edit recipe
 
@@ -189,7 +189,7 @@ Footer:
 
 CTA:
 
-`Start free at gmstudio.sixsmithgames.com`
+`Start free at www.sixsmithgames.com`
 
 ## Founder email
 
@@ -215,7 +215,7 @@ $10.00 a month each at the founding price (standard $20.00 each).
 
 Start free:
 
-`https://gmstudio.sixsmithgames.com/sign-up?utm_source=email&utm_medium=email&utm_campaign=gamemaster-studio-launch&utm_content=founder-note`
+`https://www.sixsmithgames.com/sign-up?utm_source=email&utm_medium=email&utm_campaign=gamemaster-studio-launch&utm_content=founder-note`
 
 — Sixsmith Games
 
@@ -232,7 +232,7 @@ in GameMasterCraft, encounter control in VCS.
 
 Start free:
 
-`https://gmstudio.sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=notes-and-vtt`
+`https://www.sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=notes-and-vtt`
 
 ### Post 2: the honest workflow
 
@@ -245,7 +245,7 @@ the next round of prep.
 No claim that the handoff is automatic. Just a cleaner place for each part of
 the work.
 
-`https://gmstudio.sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=gm-decides-canon`
+`https://www.sixsmithgames.com/?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=gm-decides-canon`
 
 ### Post 3: the plans
 
@@ -257,7 +257,7 @@ its own.
 
 Want both? GameMaster Studio saves $5 a month.
 
-`https://gmstudio.sixsmithgames.com/pricing?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=three-plans`
+`https://www.sixsmithgames.com/pricing?utm_source=social&utm_medium=organic-social&utm_campaign=gamemaster-studio-launch&utm_content=three-plans`
 
 ## Article outline for ChatGPT Work
 
