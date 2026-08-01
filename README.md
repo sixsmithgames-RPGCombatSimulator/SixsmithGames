@@ -200,7 +200,7 @@ STRIPE_SECRET_KEY=sk_xxx
 STRIPE_PRICE_ID=price_xxx
 
 # Optional: Custom domain
-NEXT_PUBLIC_URL=https://gmstudio.sixsmithgames.com
+NEXT_PUBLIC_URL=https://www.sixsmithgames.com
 
 # Optional: Analytics
 NEXT_PUBLIC_GA_ID=G-XXXXXXXXXX
@@ -263,9 +263,10 @@ vercel
 
 1. In Vercel dashboard, go to your project
 2. Navigate to "Settings" → "Domains"
-3. Add `gmstudio.sixsmithgames.com` as the canonical custom domain and redirect the old apex host
-4. Follow Vercel's instructions to update DNS records
-5. Wait for DNS propagation (usually 24-48 hours)
+3. Add `www.sixsmithgames.com` as the canonical marketing domain and redirect the apex host to `www`
+4. Keep `gmstudio.sixsmithgames.com` on the separate GameMaster Studio application project
+5. Follow Vercel's instructions to update DNS records
+6. Wait for DNS propagation (usually 24-48 hours)
 
 ### Environment Variables (For Stripe Integration)
 

@@ -56,7 +56,8 @@ describe('GameMaster Studio application entry', () => {
 
     expect(proxySource).toContain("'/app(.*)'");
     expect(launchSource).toContain('redirect(STUDIO_APP_URL)');
-    expect(studioSource).toContain('https://gamemaster-studio.vercel.app/encounters');
+    expect(studioSource).toContain('https://gmstudio.sixsmithgames.com/encounters');
+    expect(studioSource).not.toContain('vercel.app');
   });
 });
 

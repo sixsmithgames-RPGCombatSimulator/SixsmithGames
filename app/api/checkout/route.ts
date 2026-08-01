@@ -18,7 +18,7 @@ const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
   apiVersion: '2026-01-28.clover',
 });
 
-const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://gmstudio.sixsmithgames.com';
+const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://www.sixsmithgames.com';
 const FACEBOOK_PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
 const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_ACCESS_TOKEN;
 
