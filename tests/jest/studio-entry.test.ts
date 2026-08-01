@@ -1,5 +1,24 @@
 import fs from 'node:fs';
 import path from 'node:path';
+import React from 'react';
+import { render, screen } from '@testing-library/react';
+
+const mockUseUser = jest.fn();
+
+jest.mock('@clerk/nextjs', () => ({
+  SignUpButton: ({ children }: { children: React.ReactNode }) => children,
+  useUser: () => mockUseUser(),
+}));
+
+jest.mock('next/link', () => ({
+  __esModule: true,
+  default: ({ children, href, ...props }: React.AnchorHTMLAttributes<HTMLAnchorElement>) => {
+    const React = jest.requireActual<typeof import('react')>('react');
+    return React.createElement('a', { href, ...props }, children);
+  },
+}));
+
+import StudioEntryLink from '../../components/StudioEntryLink';
 
 describe('GameMaster Studio application entry', () => {
   it('uses account-aware labels and one protected application handoff', () => {
@@ -38,5 +57,38 @@ describe('GameMaster Studio application entry', () => {
     expect(proxySource).toContain("'/app(.*)'");
     expect(launchSource).toContain('redirect(STUDIO_APP_URL)');
     expect(studioSource).toContain('https://gamemaster-studio.vercel.app/encounters');
+  });
+});
+
+describe('StudioEntryLink account states', () => {
+  afterEach(() => {
+    jest.clearAllMocks();
+  });
+
+  it('shows a disabled Start now control while the account is loading', () => {
+    mockUseUser.mockReturnValue({ isLoaded: false, isSignedIn: undefined });
+
+    render(React.createElement(StudioEntryLink, { placement: 'test' }));
+
+    expect(screen.getByRole('button', { name: 'Checking your account' })).toBeDisabled();
+    expect(screen.getByText('Start now')).toBeInTheDocument();
+  });
+
+  it('shows Start now to a signed-out visitor', () => {
+    mockUseUser.mockReturnValue({ isLoaded: true, isSignedIn: false });
+
+    render(React.createElement(StudioEntryLink, { placement: 'test' }));
+
+    expect(screen.getByRole('button', { name: 'Start now' })).toBeEnabled();
+    expect(screen.queryByRole('link', { name: 'Open app' })).not.toBeInTheDocument();
+  });
+
+  it('shows Open app to a signed-in visitor', () => {
+    mockUseUser.mockReturnValue({ isLoaded: true, isSignedIn: true });
+
+    render(React.createElement(StudioEntryLink, { placement: 'test' }));
+
+    expect(screen.getByRole('link', { name: 'Open app' })).toHaveAttribute('href', '/app');
+    expect(screen.queryByRole('button', { name: 'Start now' })).not.toBeInTheDocument();
   });
 });
