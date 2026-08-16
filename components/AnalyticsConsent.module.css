@@ -94,3 +94,27 @@
     font-size: 0.7rem;
   }
 }
+
+.settingsButton {
+  position: fixed;
+  right: 0.75rem;
+  bottom: 0.75rem;
+  z-index: 1900;
+  min-height: 36px;
+  padding: 0.45rem 0.7rem;
+  border: 1px solid rgba(233, 196, 126, 0.28);
+  border-radius: 999px;
+  background: rgba(23, 26, 34, 0.94);
+  color: #d9d1c5;
+  font: inherit;
+  font-size: 0.72rem;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.28);
+}
+
+.settingsButton:hover,
+.settingsButton:focus-visible {
+  border-color: #dfad59;
+  color: #f8f2e8;
+}

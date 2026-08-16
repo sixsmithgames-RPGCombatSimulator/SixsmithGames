@@ -5,6 +5,7 @@ import {
   databaseIsConfigured,
   verifyDatabaseConnection,
 } from "@/db/client";
+import { checkVercelWebAnalyticsConnection } from "@/lib/integrations/vercel-web-analytics";
 
 export type IntegrationState =
   | "connected"
@@ -23,7 +24,7 @@ export interface IntegrationRequirement {
 export interface IntegrationSnapshot {
   id: string;
   name: string;
-  category: "Core platform" | "Commerce" | "Product application" | "Planned source";
+  category: "Analytics & acquisition" | "Core platform" | "Commerce" | "Product application" | "Planned source";
   description: string;
   state: IntegrationState;
   statusLabel: string;
@@ -245,6 +246,77 @@ async function getNeonSnapshot(): Promise<IntegrationSnapshot> {
       manageUrl: "https://console.neon.tech/app/projects",
     };
   }
+}
+
+/**
+ * Purpose: Presents Vercel Web Analytics as a verified first-class Operations source.
+ * Parameters: context distinguishes visibly labeled local preview from connected production.
+ * Returns: Aggregate-read requirements, capabilities, and the current provider state.
+ * Side effects: Runs one cached aggregate count query in connected mode.
+ */
+async function getVercelAnalyticsSnapshot(
+  context: IntegrationCheckContext,
+): Promise<IntegrationSnapshot> {
+  const manageUrl =
+    process.env.VERCEL_ANALYTICS_DASHBOARD_URL?.trim()
+    || "https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmithgames/analytics";
+
+  if (context.isPreview) {
+    return {
+      id: "vercel-analytics",
+      name: "Vercel Web Analytics",
+      category: "Analytics & acquisition",
+      description: "Cookieless public-site traffic, routes, sources, geography, and devices.",
+      state: "configured",
+      statusLabel: "Preview mode",
+      tone: "purple",
+      summary: "The Analytics workspace is using labeled sample aggregates locally. Production performs a live read-only capability check.",
+      sourceOfTruth: "Vercel Web Analytics for the sixsmithgames production project",
+      requirements: [
+        { label: "Public-site collector", state: "warning", detail: "Verify after production deployment" },
+        { label: "Aggregate API token", state: "warning", detail: "Server-only; validated in connected mode" },
+        { label: "Raw visit storage", state: "complete", detail: "Not used by Operations" },
+      ],
+      capabilities: ["Analytics workspace preview", "Privacy boundary review"],
+      nextStep: "Verify the collector and aggregate token on the production custom domains.",
+      manageUrl,
+    };
+  }
+
+  const check = await checkVercelWebAnalyticsConnection();
+  const connected = check.state === "connected";
+  const unconfigured = check.state === "unconfigured";
+  return {
+    id: "vercel-analytics",
+    name: "Vercel Web Analytics",
+    category: "Analytics & acquisition",
+    description: "Cookieless public-site traffic, routes, sources, geography, and devices.",
+    state: connected ? "connected" : unconfigured ? "not_configured" : "error",
+    statusLabel: connected ? "Aggregate read verified" : unconfigured ? "Configuration required" : "Connection error",
+    tone: connected ? "green" : unconfigured ? "gold" : "red",
+    summary: check.message,
+    sourceOfTruth: `Vercel Web Analytics for the ${check.projectName} production project`,
+    requirements: [
+      {
+        label: "Server-only aggregate credential",
+        state: check.missingKeys.includes("VERCEL_ANALYTICS_READ_TOKEN") ? "missing" : connected ? "complete" : "warning",
+        detail: check.missingKeys.includes("VERCEL_ANALYTICS_READ_TOKEN") ? "Missing" : connected ? "Accepted by Vercel" : "Present, but not verified",
+      },
+      {
+        label: "Team and project scope",
+        state: check.missingKeys.some((key) => key.endsWith("_ID")) ? "missing" : connected ? "complete" : "warning",
+        detail: check.missingKeys.some((key) => key.endsWith("_ID")) ? "Incomplete" : check.projectName,
+      },
+      { label: "Raw visit storage", state: "complete", detail: "Not used by Operations" },
+    ],
+    capabilities: connected
+      ? ["Read production aggregates", "Traffic comparisons", "Routes and acquisition dimensions", "Collection freshness"]
+      : [],
+    nextStep: connected
+      ? "No action is required. Review traffic in the Analytics workspace."
+      : "Add or repair the read-only analytics environment values, then recheck connections.",
+    manageUrl: check.dashboardUrl,
+  };
 }
 
 /**
@@ -611,8 +683,9 @@ function getDeferredSourcesSnapshot(): IntegrationSnapshot {
 export async function getIntegrationOverview(
   context: IntegrationCheckContext,
 ): Promise<IntegrationOverview> {
-  const [neon, stripe, gamemastercraft, vcs] = await Promise.all([
+  const [neon, vercelAnalytics, stripe, gamemastercraft, vcs] = await Promise.all([
     getNeonSnapshot(),
+    getVercelAnalyticsSnapshot(context),
     getStripeSnapshot(),
     getGameMasterCraftSnapshot(context),
     getVcsSnapshot(context),
@@ -620,6 +693,7 @@ export async function getIntegrationOverview(
   const integrations = [
     getClerkSnapshot(context),
     neon,
+    vercelAnalytics,
     stripe,
     gamemastercraft,
     vcs,

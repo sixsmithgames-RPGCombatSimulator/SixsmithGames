@@ -7,6 +7,7 @@ import {
   CreditCard,
   Headphones,
   LayoutDashboard,
+  LineChart,
   Megaphone,
   ReceiptText,
   Settings,
@@ -28,6 +29,13 @@ export const OPERATIONS_NAVIGATION: NavigationItem[] = [
     activePrefix: "/dashboard",
     icon: LayoutDashboard,
     description: "Executive operating snapshot",
+  },
+  {
+    label: "Analytics",
+    href: "/analytics",
+    activePrefix: "/analytics",
+    icon: LineChart,
+    description: "Traffic and acquisition intelligence",
   },
   {
     label: "Subscriptions",

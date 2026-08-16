@@ -7,7 +7,8 @@
 'use client';
 
 import { useEffect } from 'react';
-import { trackMarketingEvent } from '@/lib/analytics';
+import { hasOptionalAnalyticsConsent, trackMarketingEvent } from '@/lib/analytics';
+import { isPublicAnalyticsPath } from '@/lib/analytics-policy';
 
 interface FacebookViewContentProps {
   contentId: string;
@@ -39,7 +40,12 @@ export default function FacebookViewContent({
     });
 
     // Send to Facebook Pixel if available
-    if (typeof window !== 'undefined' && (window as unknown as Record<string, unknown>).fbq) {
+    if (
+      typeof window !== 'undefined'
+      && hasOptionalAnalyticsConsent()
+      && isPublicAnalyticsPath(window.location.pathname)
+      && (window as unknown as Record<string, unknown>).fbq
+    ) {
       const fbq = (window as unknown as { fbq: (method: string, event: string, data?: Record<string, unknown>) => void }).fbq;
       
       const eventData: Record<string, unknown> = {

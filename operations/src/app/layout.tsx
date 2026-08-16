@@ -16,7 +16,7 @@ export const metadata: Metadata = {
     template: "%s | Sixsmith Games Operations",
   },
   description:
-    "Private control plane for Sixsmith Games customers, products, campaigns, approvals, and finances.",
+    "Private control plane for Sixsmith Games analytics, customers, products, campaigns, approvals, and finances.",
   robots: {
     index: false,
     follow: false,

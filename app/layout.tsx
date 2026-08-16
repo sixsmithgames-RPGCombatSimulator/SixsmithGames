@@ -1,5 +1,6 @@
 import { ClerkProvider } from '@clerk/nextjs';
 import './globals.css';
+import AnonymousWebAnalytics from '@/components/AnonymousWebAnalytics';
 import AnalyticsConsent from '@/components/AnalyticsConsent';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import Navigation from '@/components/Navigation';
@@ -30,6 +31,7 @@ export default function RootLayout({
           <Navigation />
           <main className="site-main">{children}</main>
           <Footer />
+          <AnonymousWebAnalytics />
           <AnalyticsConsent />
         </body>
       </html>

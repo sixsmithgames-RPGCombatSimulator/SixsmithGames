@@ -4,6 +4,7 @@ import { useState, useTransition } from "react";
 import { useRouter } from "next/navigation";
 import {
   Check,
+  ChartNoAxesCombined,
   ChevronDown,
   CircleAlert,
   Database,
@@ -27,6 +28,7 @@ const ICONS = {
   neon: Database,
   "remaining-products": CircleAlert,
   stripe: WalletCards,
+  "vercel-analytics": ChartNoAxesCombined,
   vcs: Gamepad2,
 } as const;
 

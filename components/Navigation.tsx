@@ -27,6 +27,7 @@ const primaryLinks = [
   { label: 'VCS', href: '/apps/virtual-combat-simulator' },
   { label: 'Pricing', href: '/pricing' },
   { label: 'Guides', href: '/articles' },
+  { label: 'Blog', href: '/blog' },
 ];
 
 const secondaryProducts = [

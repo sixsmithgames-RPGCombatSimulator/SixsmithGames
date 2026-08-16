@@ -20,6 +20,9 @@ The application currently includes:
   and reports
 - Interactive Settings workspace with live Clerk, Neon, Stripe, GameMasterCraft,
   and Virtual Combat Simulator capability checks
+- First-class Analytics workspace backed by Vercel's production aggregate API,
+  with traffic trends, routes, referrers, UTM sources, geography, devices,
+  browsers, comparison periods, freshness, and explicit collection boundaries
 - Responsive desktop and mobile navigation plus command search
 
 ## Runtime safety
@@ -81,6 +84,12 @@ GMC_BASE_URL=https://gmcraft.sixsmithgames.com
 VCS_SERVICE_BASE_URL=https://virtualcombatsimulator-production.up.railway.app
 VCS_SERVICE_API_KEY=...
 VCS_SERVICE_OWNER_ID=user_...
+VERCEL_ANALYTICS_READ_TOKEN=vcp_...
+VERCEL_ANALYTICS_TEAM_ID=team_MV7H5Yr78mJD46i3lMjAMjOc
+VERCEL_ANALYTICS_PROJECT_ID=prj_4q3lkO9SwySPux5Br1TaLKbYv0eD
+VERCEL_ANALYTICS_PROJECT_NAME=sixsmithgames
+VERCEL_ANALYTICS_DASHBOARD_URL=https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmithgames/analytics
+VERCEL_ANALYTICS_CUSTOM_EVENTS_ENABLED=false
 ```
 
 `STRIPE_WEBHOOK_SECRET` remains optional until an Operations-specific webhook
@@ -91,6 +100,13 @@ it does not create customers, change subscriptions, or mutate product data.
 `VCS_SERVICE_OWNER_ID` is optional when the Operations login email resolves in
 VCS. Set it to the owner's existing VCS Clerk user ID when the product account
 uses a legacy or different email mapping.
+
+`VERCEL_ANALYTICS_READ_TOKEN` is a server-only credential used only for
+read-only aggregate Web Analytics queries. Operations caches reports for 15
+minutes, requests only the production environment, and does not copy raw visit
+events into Neon. Missing or rejected credentials render an explicit source
+state instead of a misleading zero. Keep custom events disabled until the
+Vercel plan and spend are approved.
 
 Production reuses the existing Sixsmith Games Clerk instance rooted at
 `sixsmithgames.com`, whose sessions support the `operations` subdomain. The

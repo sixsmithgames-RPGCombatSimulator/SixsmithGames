@@ -72,6 +72,34 @@ test("provides clickable and truthful integration settings", async ({ page }) =>
   await stripeControl.click();
   await expect(page.getByText("Existing Sixsmith Games Stripe account")).toBeVisible();
 
+  const analyticsControl = page.getByRole("button", { name: /Vercel Web Analytics/ });
+  await analyticsControl.click();
+  await expect(
+    page.getByText("Vercel Web Analytics for the sixsmithgames production project"),
+  ).toBeVisible();
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }));
+  expect(viewport.scrollWidth).toBe(viewport.clientWidth);
+});
+
+test("renders first-class analytics with an explicit privacy boundary", async ({
+  page,
+}) => {
+  await page.goto("/analytics?range=30d");
+
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Analytics" }),
+  ).toBeVisible();
+  await expect(page.getByText("Cookieless aggregate measurement")).toBeVisible();
+  await expect(page.getByText("Phase 1 measurement boundary")).toBeVisible();
+  await expect(page.getByRole("link", { name: "Analytics", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+
   const viewport = await page.evaluate(() => ({
     clientWidth: document.documentElement.clientWidth,
     scrollWidth: document.documentElement.scrollWidth,
@@ -82,6 +110,7 @@ test("provides clickable and truthful integration settings", async ({ page }) =>
 test("opens every primary operations workspace", async ({ page }) => {
   const workspaces = [
     ["/dashboard", "Dashboard"],
+    ["/analytics", "Analytics"],
     ["/subscriptions/reconciliation", "Entitlement Reconciliation"],
     ["/orders", "Orders"],
     ["/crm", "CRM"],

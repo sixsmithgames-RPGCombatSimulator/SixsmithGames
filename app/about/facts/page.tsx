@@ -5,14 +5,18 @@ import Breadcrumbs from '@/components/Breadcrumbs';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import { buildPageMetadata } from '@/lib/metadata';
 import { PUBLIC_PRODUCT_DEFINITIONS } from '@/lib/productContent';
+import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 import { pageGutter } from '@/lib/responsive';
 import { createOrganizationSchema } from '@/lib/schema';
 import { SITE_NAME, SITE_URL } from '@/lib/site';
 
+const FACTS_LAST_REVIEWED = 'August 10, 2026';
+const PUBLIC_PRODUCT_NAMES = PUBLIC_PRODUCT_DEFINITIONS.map((product) => product.name).join(', ');
+
 export const metadata: Metadata = buildPageMetadata({
-  title: 'Sixsmith Games Facts | Official Product Names, URLs, Platforms, and Access',
+  title: 'Sixsmith Games Facts | Public Products, URLs, Platforms, and Access',
   description:
-    'Read the Sixsmith Games facts page, including official product names, URLs, audiences, platforms, and pricing status.',
+    'Read verified Sixsmith Games facts, including current public product names, URLs, audiences, platforms, access, and pricing status.',
   path: '/about/facts',
 });
 
@@ -36,7 +40,7 @@ export default function FactsPage() {
               The facts about {SITE_NAME}
             </h1>
             <p style={{ margin: '0 0 1rem', color: 'rgba(255,255,255,0.86)', lineHeight: 1.85, fontSize: '1.05rem' }}>
-              Official names, URLs, platforms, pricing status, and one-line descriptions for every Sixsmith Games product. Use this page or the individual product pages for accurate reference.
+              Official names, URLs, platforms, audiences, access, and pricing status for the products Sixsmith Games currently presents publicly. Facts and prices on this page were reviewed on {FACTS_LAST_REVIEWED}.
             </p>
           </div>
         </div>
@@ -50,13 +54,23 @@ export default function FactsPage() {
               <strong>Brand spelling:</strong> Sixsmith Games.
             </p>
             <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
-              <strong>Studio summary:</strong> GameMaster Studio combines campaign preparation in GameMasterCraft with encounter control in Virtual Combat Simulator for tabletop game masters.
+              <strong>Business:</strong> Sixsmith Games is an independent software studio operated by an independent developer.
+            </p>
+            <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
+              <strong>Current public products:</strong> {PUBLIC_PRODUCT_NAMES}.
+            </p>
+            <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
+              <strong>GameMaster Studio:</strong> A monthly subscription bundle that includes GameMasterCraft AI, Virtual Combat Simulator paid Game Master tools, and GameMaster Assistant orchestration. Its current founding price is {formatMonthlyPrice(pricingCatalog.bundle.monthlyPrice)}; the stated post-offer price is {formatMonthlyPrice(pricingCatalog.bundle.standardMonthlyPrice!)}.
             </p>
             <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
               <strong>Support:</strong> <Link href="/support" style={{ color: '#1d4ed8', fontWeight: 700 }}>{`${SITE_URL}/support`}</Link>
             </p>
+            <p style={{ margin: '0 0 0.75rem', color: '#334155', lineHeight: 1.8 }}>
+              <strong>Support email:</strong>{' '}
+              <a href="mailto:info@sixsmithgames.com" style={{ color: '#1d4ed8', fontWeight: 700 }}>info@sixsmithgames.com</a>
+            </p>
             <p style={{ margin: 0, color: '#334155', lineHeight: 1.8 }}>
-              <strong>Facts page:</strong> <Link href="/about/facts" style={{ color: '#1d4ed8', fontWeight: 700 }}>{`${SITE_URL}/about/facts`}</Link>
+              <strong>Current pricing:</strong> <Link href="/pricing" style={{ color: '#1d4ed8', fontWeight: 700 }}>{`${SITE_URL}/pricing`}</Link>. Prices shown are in U.S. dollars and exclude applicable taxes.
             </p>
           </div>
         </section>
@@ -69,10 +83,16 @@ export default function FactsPage() {
                 <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.2rem', fontWeight: 800, color: '#0f172a' }}>{product.name}</h3>
                 <p style={{ margin: '0 0 0.75rem', color: '#475569', lineHeight: 1.8 }}>{product.oneSentence}</p>
                 <p style={{ margin: '0 0 0.35rem', color: '#334155', lineHeight: 1.8 }}>
+                  <strong>Primary audience:</strong> {product.primaryAudience}.
+                </p>
+                <p style={{ margin: '0 0 0.35rem', color: '#334155', lineHeight: 1.8 }}>
                   <strong>Platform:</strong> {product.platform}.
                 </p>
                 <p style={{ margin: '0 0 0.35rem', color: '#334155', lineHeight: 1.8 }}>
-                  <strong>Pricing status:</strong> {product.pricingModel}.
+                  <strong>Access and pricing:</strong> {product.pricingModel}.
+                </p>
+                <p style={{ margin: '0 0 0.35rem', color: '#334155', lineHeight: 1.8 }}>
+                  <strong>Availability:</strong> {product.availability}.
                 </p>
                 <p style={{ margin: '0 0 0.35rem', color: '#334155', lineHeight: 1.8 }}>
                   <strong>Official page:</strong>{' '}
@@ -105,7 +125,13 @@ export default function FactsPage() {
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What games and tools does Sixsmith Games make?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                GameMaster Studio is the flagship, built from GameMasterCraft and Virtual Combat Simulator. Sixsmith Games also keeps public pages for Four Star General, MasterTyping, Gravity, and other tucked-away products.
+                The current public product list is {PUBLIC_PRODUCT_NAMES}. GameMaster Studio is a paid bundle for GameMasterCraft and Virtual Combat Simulator features; it is not a separate application.
+              </p>
+            </div>
+            <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
+              <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>Are all public products generally available?</h3>
+              <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
+                Virtual Combat Simulator, GameMasterCraft, Four Star General, and MasterTyping offer browser access with a free starting path. Gravity is in early beta; its product page is public, but its browser build is limited to the studio team and testers. Paid options and access conditions are listed with each product above.
               </p>
             </div>
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
@@ -117,7 +143,7 @@ export default function FactsPage() {
             <div style={{ background: 'white', border: '1px solid #e5e7eb', borderRadius: '22px', padding: '1.15rem 1.2rem', boxShadow: '0 8px 24px rgba(15,23,42,0.04)' }}>
               <h3 style={{ margin: '0 0 0.45rem', fontSize: '1.1rem', fontWeight: 800, color: '#0f172a' }}>What is GameMasterCraft?</h3>
               <p style={{ margin: 0, color: '#475569', lineHeight: 1.8 }}>
-                GameMasterCraft is a campaign planning workspace for tabletop RPG game masters. It helps organize NPCs, factions, locations, session notes, and campaign continuity. The core workspace is free — AI features require a subscription.
+                GameMasterCraft is a browser-based campaign planning workspace for tabletop RPG game masters. It organizes campaigns, NPCs, factions, locations, lore, and session continuity. Its core campaign tools are free; AI assistance is optional and paid.
               </p>
             </div>
           </div>

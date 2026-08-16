@@ -28,7 +28,8 @@ const sections = [
     title: '3. Information collected automatically',
     paragraphs: [
       'We and our service providers may automatically collect technical and usage information such as IP address, browser type, device information, pages viewed, referring pages, approximate location derived from IP, timestamps, and interactions with the services.',
-      'We also use cookies or similar technologies for authentication, session management, security, performance, and analytics.',
+      'The public site uses Vercel Web Analytics for aggregate page measurement without analytics cookies. Vercel derives a temporary visitor hash from the request, discards that visitor session after 24 hours, and does not let Sixsmith Games identify a person or follow them across different days or websites from that data.',
+      'Google Analytics and Meta measurement load only after you allow optional tracking. We also use cookies or similar technologies when needed for authentication, session management, security, and purchases.',
     ],
   },
   {
@@ -54,7 +55,7 @@ const sections = [
   {
     title: '6. How we share information',
     paragraphs: [
-      'We may share information with service providers that help us run the services. Based on the systems currently used by this site, those providers may include account and authentication providers such as Clerk, payment processors such as Stripe, analytics providers such as Google Analytics, hosting and infrastructure providers, code or content storage providers such as GitHub, and email or notification providers.',
+      'We may share information with service providers that help us run the services. Based on the systems currently used by this site, those providers may include account and authentication providers such as Clerk, payment processors such as Stripe, aggregate web analytics and hosting providers such as Vercel, optional analytics providers such as Google Analytics, optional marketing measurement providers such as Meta, code or content storage providers such as GitHub, and email or notification providers.',
       'We may also share information if required by law, to protect rights and safety, to enforce our terms, or in connection with a merger, acquisition, financing, or sale of assets.',
       'We do not share more information than is reasonably necessary for those purposes.',
     ],
@@ -63,13 +64,14 @@ const sections = [
     title: '7. Data retention',
     paragraphs: [
       'We keep information for as long as reasonably needed to provide the services, maintain business and tax records, resolve disputes, enforce agreements, and meet legal requirements. Different data types may be kept for different periods depending on why they were collected.',
+      'Vercel Web Analytics discards its temporary visitor session after 24 hours and retains aggregate reporting data according to the configured Vercel plan. Optional analytics and marketing data follow the retention settings configured with those providers. We will publish more specific product-event retention periods before identified cross-product analytics is enabled.',
     ],
   },
   {
     title: '8. Your choices',
     paragraphs: [
       'You can often access or update account information through your account provider, browser settings, or device settings. You can also contact us if you want to request access, correction, or deletion of personal information, subject to verification and any legal exceptions that apply.',
-      'You can control cookies through your browser, but some parts of the services may not work properly if key cookies are disabled.',
+      'The Privacy settings control on the site lets you allow or withdraw optional analytics and marketing measurement. You can also control cookies through your browser, but some parts of the services may not work properly if authentication or purchase cookies are disabled.',
     ],
   },
   {
@@ -104,8 +106,8 @@ export default function PrivacyPage() {
       eyebrow="Legal"
       title="Privacy Policy"
       summary="This policy describes what information Sixsmith Games collects, why it is collected, and when it may be shared in connection with the services."
-      effectiveDate="April 14, 2026"
-      notice="This policy reflects the flows currently present on the site, including account sign-in, subscription checkout, analytics, and blog comments."
+      effectiveDate="August 10, 2026"
+      notice="This policy reflects the flows currently present on the site, including account sign-in, subscription checkout, cookieless aggregate analytics, optional measurement, and blog comments."
       sections={sections}
     />
   );
