@@ -54,7 +54,9 @@ describe('GameMaster Studio application entry', () => {
     );
     const studioSource = fs.readFileSync(path.join(process.cwd(), 'lib/studio.ts'), 'utf8');
 
-    expect(proxySource).toContain("'/app(.*)'");
+    expect(proxySource).toContain("'/app',");
+    expect(proxySource).toContain("'/app/(.*)',");
+    expect(proxySource).not.toContain("'/app(.*)'");
     expect(launchSource).toContain('redirect(STUDIO_APP_URL)');
     expect(studioSource).toContain('https://gmstudio.sixsmithgames.com/encounters');
     expect(studioSource).not.toContain('vercel.app');
