@@ -43,6 +43,7 @@ const EVENT_PROPERTY_CATALOG: Record<string, ReadonlySet<string>> = {
   merch_interest_shared: new Set(['product']),
   merch_item_added: new Set(['product', 'variant']),
   merch_item_removed: new Set(['product', 'variant']),
+  merch_collection_click: new Set(['placement']),
   merch_shop_opened: new Set(['product', 'provider']),
   product_launch_click: new Set(['destination_type', 'product_slug', 'surface']),
   product_pricing_click: new Set(['destination_type', 'product_slug', 'surface']),

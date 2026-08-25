@@ -172,4 +172,13 @@ describe('merchandise discovery', () => {
       '`Merchandise: ${SITE_URL}/merch`',
     );
   });
+
+  it('promotes merchandise from the homepage without replacing the Studio pitch', () => {
+    const homeSource = readProjectFile('app/page.tsx');
+
+    expect(homeSource).toContain('Gear for the game table.');
+    expect(homeSource).toContain('href="/merch"');
+    expect(homeSource).toContain('eventName="merch_collection_click"');
+    expect(homeSource).toContain('Desk mat: 1 month · Either hoodie: 3 months');
+  });
 });

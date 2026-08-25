@@ -1,5 +1,18 @@
 import { expect, test } from '@playwright/test';
 
+test('homepage merchandise advert offers one clear path to the shop', async ({ page }) => {
+  await page.goto('/', { waitUntil: 'domcontentloaded' });
+
+  const advert = page.getByRole('region', { name: 'Gear for the game table.' });
+  await expect(advert).toBeVisible();
+  await expect(advert.getByRole('link', { name: 'Shop merchandise' })).toHaveAttribute(
+    'href',
+    '/merch',
+  );
+  await expect(advert.getByText('Desk mat: 1 month · Either hoodie: 3 months')).toBeVisible();
+  await expect(advert.getByRole('img')).toHaveCount(2);
+});
+
 /**
  * Exercises the shopper path without relying on screenshots alone. These
  * checks keep internal review and fulfillment language out of the pitch while

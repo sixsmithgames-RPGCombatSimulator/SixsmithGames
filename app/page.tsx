@@ -16,6 +16,7 @@ import StudioEntryLink from '@/components/StudioEntryLink';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
 import { buildPageMetadata } from '@/lib/metadata';
+import { getMerchProduct } from '@/lib/merchCatalog';
 import { pricingCatalog } from '@/lib/pricingCatalog';
 import { productScreenshots } from '@/lib/screenshots';
 import { createFaqSchema } from '@/lib/schema';
@@ -30,6 +31,8 @@ export const metadata: Metadata = buildPageMetadata({
 
 const gmcScreenshot = productScreenshots.gameMasterCraft[2];
 const vcsScreenshot = productScreenshots.virtualCombatSimulator[0];
+const merchHoodie = getMerchProduct('master-your-stories-hoodie');
+const merchDeskMat = getMerchProduct('gateway-wyrm-desk-mat');
 
 /**
  * Answers the buying questions that must be clear before a Game Master starts.
@@ -343,6 +346,54 @@ export default function HomePage() {
         <Link href="/pricing" className={styles.pricingLink}>
           Compare the plans in full →
         </Link>
+      </section>
+
+      <section className={styles.merchSection} aria-labelledby="homepage-merch-heading">
+        <div className={styles.merchPanel}>
+          <div className={styles.merchCopy}>
+            <p className={styles.eyebrow}>Beyond the screen</p>
+            <h2 id="homepage-merch-heading">Gear for the game table.</h2>
+            <p>
+              Wear the story or set the scene with Master Your Stories hoodies
+              and the Gateway Wyrm Desk Mat.
+            </p>
+            <div className={styles.merchBonus}>
+              <strong>Qualifying purchases earn a separate, one-use Studio coupon.</strong>
+              <span>Desk mat: 1 month · Either hoodie: 3 months</span>
+            </div>
+            <MarketingLink
+              href="/merch"
+              className={styles.goldButton}
+              eventName="merch_collection_click"
+              eventData={{ placement: 'homepage_after_pricing' }}
+            >
+              Shop merchandise
+            </MarketingLink>
+          </div>
+
+          <div className={styles.merchVisual} aria-label="Sixsmith Games merchandise">
+            {merchDeskMat?.imageUrl && merchDeskMat.imageAlt ? (
+              <div className={styles.merchDeskMat}>
+                <Image
+                  src={merchDeskMat.imageUrl}
+                  alt={merchDeskMat.imageAlt}
+                  fill
+                  sizes="(max-width: 800px) 88vw, 42vw"
+                />
+              </div>
+            ) : null}
+            {merchHoodie?.imageUrl && merchHoodie.imageAlt ? (
+              <div className={styles.merchHoodie}>
+                <Image
+                  src={merchHoodie.imageUrl}
+                  alt={merchHoodie.imageAlt}
+                  fill
+                  sizes="(max-width: 800px) 38vw, 18vw"
+                />
+              </div>
+            ) : null}
+          </div>
+        </div>
       </section>
 
       <section className={styles.faqSection}>

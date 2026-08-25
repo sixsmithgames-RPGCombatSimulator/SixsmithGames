@@ -487,6 +487,135 @@
   text-decoration: none;
 }
 
+.merchSection {
+  padding: clamp(3.5rem, 7vw, 6.5rem) var(--page-gutter);
+  background:
+    linear-gradient(135deg, rgba(183, 133, 63, 0.08), transparent 42%),
+    #0b0d12;
+}
+
+.merchPanel {
+  width: min(1160px, 100%);
+  min-height: 430px;
+  margin: 0 auto;
+  border: 1px solid rgba(228, 185, 101, 0.28);
+  border-radius: 28px;
+  overflow: hidden;
+  display: grid;
+  grid-template-columns: minmax(0, 0.92fr) minmax(440px, 1.08fr);
+  background:
+    radial-gradient(circle at 82% 18%, rgba(55, 137, 166, 0.2), transparent 34%),
+    linear-gradient(120deg, #17130f, #11151b 58%, #0c1118);
+  box-shadow: 0 32px 90px rgba(0, 0, 0, 0.3);
+}
+
+.merchCopy {
+  padding: clamp(2.2rem, 5vw, 4.5rem);
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.merchCopy h2 {
+  max-width: 520px;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.5rem, 5vw, 4.4rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.merchCopy > p:not(.eyebrow) {
+  max-width: 560px;
+  margin: 1.25rem 0 0;
+  color: #c9c0b2;
+  font-size: 1.05rem;
+  line-height: 1.75;
+}
+
+.merchBonus {
+  max-width: 560px;
+  margin-top: 1.5rem;
+  padding-top: 1.2rem;
+  border-top: 1px solid rgba(228, 185, 101, 0.2);
+  display: grid;
+  gap: 0.35rem;
+}
+
+.merchBonus strong {
+  color: #f0e6d6;
+  font-size: 0.95rem;
+  line-height: 1.5;
+}
+
+.merchBonus span {
+  color: var(--gold);
+  font-size: 0.78rem;
+  font-weight: 850;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+.merchCopy .goldButton {
+  margin-top: 1.8rem;
+}
+
+.merchVisual {
+  min-height: 430px;
+  position: relative;
+  overflow: hidden;
+}
+
+.merchVisual::before {
+  content: '';
+  position: absolute;
+  width: 420px;
+  height: 420px;
+  top: 1rem;
+  right: 1rem;
+  border: 1px solid rgba(228, 185, 101, 0.12);
+  border-radius: 50%;
+}
+
+.merchDeskMat,
+.merchHoodie {
+  position: absolute;
+  overflow: hidden;
+  background: #17191d;
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.42);
+}
+
+.merchDeskMat {
+  inset: 3.2rem 1.8rem 3.2rem 4rem;
+  border: 1px solid rgba(91, 176, 202, 0.35);
+  border-radius: 22px;
+  transform: rotate(2.5deg);
+}
+
+.merchHoodie {
+  width: 38%;
+  aspect-ratio: 0.82;
+  left: 1.2rem;
+  bottom: 1.3rem;
+  z-index: 1;
+  border: 1px solid rgba(228, 185, 101, 0.45);
+  border-radius: 18px;
+  transform: rotate(-4deg);
+}
+
+.merchDeskMat img {
+  object-fit: cover;
+}
+
+.merchHoodie img {
+  object-fit: cover;
+}
+
 .faqSection {
   background: #eee5d7;
   color: #1a1b1e;
@@ -564,6 +693,10 @@
   .workflowGrid {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
+
+  .merchPanel {
+    grid-template-columns: minmax(0, 1fr) minmax(360px, 0.9fr);
+  }
 }
 
 @media (max-width: 800px) {
@@ -587,6 +720,14 @@
 
   .combatCopy {
     margin-top: 3rem;
+  }
+
+  .merchPanel {
+    grid-template-columns: 1fr;
+  }
+
+  .merchVisual {
+    min-height: 380px;
   }
 }
 
@@ -628,5 +769,19 @@
 
   .workflowGrid {
     grid-template-columns: 1fr;
+  }
+
+  .merchVisual {
+    min-height: 300px;
+  }
+
+  .merchDeskMat {
+    inset: 2rem 1rem 2.2rem 2.4rem;
+  }
+
+  .merchHoodie {
+    width: 36%;
+    left: 0.7rem;
+    bottom: 0.8rem;
   }
 }
