@@ -19,7 +19,10 @@
       }
     ],
     "paths": {
-      "@/*": ["./src/*"]
+      "@/*": ["./src/*"],
+      "@sixsmith-games/product-activity-contracts": [
+        "../packages/product-activity-contracts/src/index.ts"
+      ]
     }
   },
   "include": [

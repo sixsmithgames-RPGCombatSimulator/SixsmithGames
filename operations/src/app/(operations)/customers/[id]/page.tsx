@@ -3,8 +3,10 @@ import Link from "next/link";
 import { ArrowLeft, Check, MapPin, MessageSquare, Send } from "lucide-react";
 import { notFound } from "next/navigation";
 import { getCustomerDetailData } from "@/data/operations";
+import { CustomerProductActivity } from "@/components/operations/customer-product-activity";
 import { LiveCustomerDetail } from "@/components/operations/live-workspaces";
 import { getLiveOperationsSnapshot } from "@/lib/operations/live-snapshot";
+import { getCustomerProductActivitySnapshot } from "@/lib/product-activity/read-model";
 import {
   ConnectedEmptyState,
   PageHeading,
@@ -28,7 +30,10 @@ export const metadata: Metadata = {
  */
 export default async function CustomerDetailPage({ params }: CustomerPageProps) {
   const { id } = await params;
-  const { data, isPreview } = await getCustomerDetailData(id);
+  const [{ data, isPreview }, productActivity] = await Promise.all([
+    getCustomerDetailData(id),
+    getCustomerProductActivitySnapshot(id),
+  ]);
 
   if (!isPreview) {
     const snapshot = await getLiveOperationsSnapshot();
@@ -39,7 +44,15 @@ export default async function CustomerDetailPage({ params }: CustomerPageProps) 
       notFound();
     }
 
-    return <LiveCustomerDetail customer={customer} snapshot={snapshot} />;
+    return (
+      <>
+        <LiveCustomerDetail customer={customer} snapshot={snapshot} />
+        <CustomerProductActivity
+          returnPath={`/customers/${encodeURIComponent(customer.id)}`}
+          snapshot={productActivity}
+        />
+      </>
+    );
   }
 
   if (!data && isPreview) {
@@ -191,6 +204,11 @@ export default async function CustomerDetailPage({ params }: CustomerPageProps) 
           </section>
         </div>
       </div>
+
+      <CustomerProductActivity
+        returnPath={`/customers/${encodeURIComponent(data.id)}`}
+        snapshot={productActivity}
+      />
 
       <section className="panel next-action-card">
         <div><span className="next-action-icon"><Send aria-hidden size={22} /></span><span><small>Recommended next action</small><strong>{data.nextAction.title}</strong><p>{data.nextAction.reason}</p></span></div>

@@ -54,6 +54,7 @@ export interface ReadyAnalyticsSnapshot extends AnalyticsSnapshotBase {
   devices: AnalyticsDimensionRow[];
   operatingSystems: AnalyticsDimensionRow[];
   browsers: AnalyticsDimensionRow[];
+  utmSourcesEnabled: boolean;
   utmSources: AnalyticsDimensionRow[];
   activeDays: number;
   customEvents: {
@@ -89,6 +90,7 @@ interface VercelAnalyticsConfig {
   projectId: string;
   projectName: string;
   dashboardUrl: string;
+  utmSourcesEnabled: boolean;
   customEventsEnabled: boolean;
 }
 
@@ -156,6 +158,8 @@ function getVercelAnalyticsConfig():
       projectId,
       projectName,
       dashboardUrl,
+      utmSourcesEnabled:
+        process.env.VERCEL_ANALYTICS_UTM_SOURCES_ENABLED === "true",
       customEventsEnabled:
         process.env.VERCEL_ANALYTICS_CUSTOM_EVENTS_ENABLED === "true",
     },
@@ -429,7 +433,9 @@ export async function getVercelWebAnalyticsSnapshot(
       queryVercel(aggregateUrl("deviceType", 10), config.token, `${range}-devices`),
       queryVercel(aggregateUrl("osName", 10), config.token, `${range}-operating-systems`),
       queryVercel(aggregateUrl("browserName", 10), config.token, `${range}-browsers`),
-      queryVercel(aggregateUrl("utmSource", 10), config.token, `${range}-utm-sources`),
+      config.utmSourcesEnabled
+        ? queryVercel(aggregateUrl("utmSource", 10), config.token, `${range}-utm-sources`)
+        : Promise.resolve({ data: [] }),
     ];
 
     if (config.customEventsEnabled) {
@@ -505,6 +511,7 @@ export async function getVercelWebAnalyticsSnapshot(
       devices: normalizeDimension(devicesPayload, "deviceType", totals.pageviews),
       operatingSystems: normalizeDimension(operatingSystemsPayload, "osName", totals.pageviews),
       browsers: normalizeDimension(browsersPayload, "browserName", totals.pageviews),
+      utmSourcesEnabled: config.utmSourcesEnabled,
       utmSources: normalizeDimension(utmSourcesPayload, "utmSource", totals.pageviews),
       activeDays: trend.filter((point) => point.pageviews > 0).length,
       customEvents: {
@@ -632,6 +639,7 @@ export function getPreviewWebAnalyticsSnapshot(range: AnalyticsRange): ReadyAnal
       ["Firefox", "Firefox", Math.round(totals.pageviews * 0.09)],
       ["Edge", "Edge", Math.round(totals.pageviews * 0.06)],
     ]),
+    utmSourcesEnabled: true,
     utmSources: dimension([
       ["(none)", "Direct / none", Math.round(totals.pageviews * 0.76)],
       ["youtube", "Youtube", Math.round(totals.pageviews * 0.11)],

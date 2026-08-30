@@ -349,13 +349,19 @@ export function AnalyticsWorkspace({ snapshot }: { snapshot: AnalyticsSnapshot }
 
           <div className={styles.twoColumnBottom}>
             <section className={styles.panel}>
-              <header className={styles.panelHeader}><div><span className={styles.sectionIcon}><MousePointerClick aria-hidden size={18} /></span><div><h2>Campaign source tags</h2><p>Allowlisted `utm_source` values when present</p></div></div></header>
-              <RankingTable rows={snapshot.utmSources} labelHeading="UTM source" emptyLabel="No UTM source data is available yet." />
+              <header className={styles.panelHeader}><div><span className={styles.sectionIcon}><MousePointerClick aria-hidden size={18} /></span><div><h2>Campaign source tags</h2><p>{snapshot.utmSourcesEnabled ? "Allowlisted `utm_source` values when present" : "Requires Vercel Web Analytics Plus or Enterprise"}</p></div></div></header>
+              <RankingTable
+                rows={snapshot.utmSources}
+                labelHeading="UTM source"
+                emptyLabel={snapshot.utmSourcesEnabled
+                  ? "No UTM source data is available yet."
+                  : "UTM source reporting is disabled on the current Vercel plan."}
+              />
             </section>
             <section className={styles.boundaryPanel}>
               <header><ShieldCheck aria-hidden size={21} /><div><h2>Phase 1 measurement boundary</h2><p>Maximum useful anonymous evidence before optional consent</p></div></header>
               <div className={styles.boundaryColumns}>
-                <div><strong>Reported now</strong><ul><li>Visit time and daily trend</li><li>Redacted public routes</li><li>Referrers and UTM source</li><li>Country, device, OS/browser aggregates</li></ul></div>
+                <div><strong>Reported now</strong><ul><li>Visit time and daily trend</li><li>Redacted public routes</li><li>Referrers{snapshot.utmSourcesEnabled ? " and UTM source" : ""}</li><li>Country, device, OS/browser aggregates</li></ul></div>
                 <div><strong>Not claimed yet</strong><ul><li>Persistent person identity</li><li>Cross-day user history</li><li>Reliable active duration</li><li>Private product content</li></ul></div>
               </div>
               <footer>

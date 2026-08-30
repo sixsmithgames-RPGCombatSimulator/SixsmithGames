@@ -1,11 +1,15 @@
 import {
   databaseIsConfigured,
+  getDatabase,
   verifyDatabaseConnection,
 } from "@/db/client";
+import { PRODUCT_INGESTION_CURSORS } from "@/db/schema";
+import { getProductActivityRuntimeConfig } from "@/lib/product-activity/config";
 
 export const dynamic = "force-dynamic";
 
 type DatabaseHealth = "connected" | "not_configured" | "unavailable";
+type ProductActivityHealth = "disabled" | "configured" | "misconfigured" | "unavailable";
 
 /**
  * Purpose: Normalizes the current deployment environment for operational diagnostics.
@@ -56,6 +60,26 @@ async function getDatabaseHealth(): Promise<DatabaseHealth> {
 }
 
 /**
+ * Purpose: Verifies that an enabled product activity ledger is configured and its migrated table can be read.
+ * Parameters: None; feature flags and the connected database provide the current state.
+ * Returns: Disabled, configured, misconfigured, or unavailable without exposing source URLs or credentials.
+ * Side effects: Issues one bounded table query only when the ledger feature is enabled.
+ */
+async function getProductActivityHealth(): Promise<ProductActivityHealth> {
+  const config = getProductActivityRuntimeConfig();
+  if (!config.ledgerEnabled) return "disabled";
+  if (config.sourceConfigurationError) return "misconfigured";
+  try {
+    await getDatabase().select({ id: PRODUCT_INGESTION_CURSORS.id }).from(PRODUCT_INGESTION_CURSORS).limit(1);
+    return "configured";
+  } catch (error) {
+    const message = error instanceof Error ? error.message : "Unknown error";
+    console.error(`Product activity health check failed: ${message}`);
+    return "unavailable";
+  }
+}
+
+/**
  * Purpose: Reports whether the production runtime, Clerk boundary, and Neon database are ready.
  * Parameters: None.
  * Returns: A JSON health response with HTTP 200 when connected or HTTP 503 when misconfigured.
@@ -67,12 +91,16 @@ export async function GET(): Promise<Response> {
     process.env.OPERATIONS_ALLOWED_EMAIL?.trim(),
   );
   const clerkConfigured = clerkIsConfigured();
-  const database = await getDatabaseHealth();
+  const [database, productActivity] = await Promise.all([
+    getDatabaseHealth(),
+    getProductActivityHealth(),
+  ]);
   const isHealthy =
     runtimeMode === "connected" &&
     allowedEmailConfigured &&
     clerkConfigured &&
-    database === "connected";
+    database === "connected" &&
+    !["misconfigured", "unavailable"].includes(productActivity);
 
   return Response.json(
     {
@@ -84,6 +112,7 @@ export async function GET(): Promise<Response> {
           ownerAllowlist: allowedEmailConfigured ? "configured" : "missing",
           clerk: clerkConfigured ? "configured" : "missing",
           database,
+          productActivity,
         },
       },
       meta: {

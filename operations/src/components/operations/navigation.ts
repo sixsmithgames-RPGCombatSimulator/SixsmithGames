@@ -10,6 +10,7 @@ import {
   LineChart,
   Megaphone,
   ReceiptText,
+  ScrollText,
   Settings,
   ShoppingCart,
 } from "lucide-react";
@@ -36,6 +37,13 @@ export const OPERATIONS_NAVIGATION: NavigationItem[] = [
     activePrefix: "/analytics",
     icon: LineChart,
     description: "Traffic and acquisition intelligence",
+  },
+  {
+    label: "Product Activity",
+    href: "/product-activity",
+    activePrefix: "/product-activity",
+    icon: ScrollText,
+    description: "Authoritative product use and source health",
   },
   {
     label: "Subscriptions",
