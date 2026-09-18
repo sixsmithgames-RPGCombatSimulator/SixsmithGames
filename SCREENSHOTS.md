@@ -208,6 +208,20 @@ Common transformations:
 ✓ **Responsive images** - Generate any size on demand
 ✓ **Free tier** - 25GB storage, 25GB bandwidth/month
 
+## Current VCS product gallery
+
+The current Virtual Combat Simulator product gallery was captured from product commit
+`0bf67b6c94969663ee9edfd96e7fa02245a86dfd` at 1600×900 on 2026-09-14.
+
+- Local masters and the capture manifest live under
+  `C:/SixsmithGames/listing-assets/gamemaster-studio/output/vcs-demo/trouble-at-briar-cross-v5/`.
+- Web derivatives use the Cloudinary public IDs
+  `sixsmith-games/vcs/vcs-current-*`.
+- `lib/screenshots.ts` is the canonical website registry for gallery URLs, alt text,
+  captions, and dimensions.
+- The character-sheet tour remains a separate set of smaller local images under
+  `public/images/vcs/`.
+
 ## Example: Adding Screenshots to Four Star General Page
 
 1. Upload screenshots:

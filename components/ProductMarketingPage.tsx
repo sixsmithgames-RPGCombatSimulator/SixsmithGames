@@ -192,26 +192,26 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
   const snippets = [
     {
       tag: 'Initiative',
-      title: 'Turn order stays visible',
-      copy: 'Initiative, the active combatant, and turn controls stay beside the battlefield, so the GM does not have to manage combat from a separate tracker.',
+      title: 'Start combat beside the map',
+      copy: 'Confirm initiative, see the active turn, and keep the next combatants and action controls in the same workspace.',
       shot: screenshots[1],
     },
     {
-      tag: 'Map Tools',
-      title: 'Map tools stay within reach',
-      copy: 'Fog, measuring, grid controls, snapping, drawing, uploads, and token layers are available directly above the battlefield.',
+      tag: 'Grid',
+      title: 'Tune the battlefield in place',
+      copy: 'Adjust grid visibility, opacity, size, rows, columns, and snapping directly over the encounter map.',
       shot: screenshots[2],
     },
     {
-      tag: 'Character Context',
-      title: 'Tokens open the right context',
-      copy: 'Click a token and the relevant sheet context is already there: AC, hit points, speed, stats, actions, equipment, spells, and notes.',
+      tag: 'Measurement',
+      title: 'Make tactical distance visible',
+      copy: 'Measure movement and range on the grid while the battlefield, initiative, and actions remain in view.',
       shot: screenshots[3],
     },
     {
-      tag: 'Player View',
-      title: 'Players can read the battlefield',
-      copy: 'The grid, tokens, fog, and visible map state help online and hybrid players understand the encounter without waiting for screenshot updates.',
+      tag: 'Consequences',
+      title: 'Manage hit points in context',
+      copy: 'Review current hit points and apply temporary hit points without leaving the encounter workspace.',
       shot: screenshots[4],
     },
   ];
@@ -239,14 +239,14 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
               textTransform: 'uppercase',
             }}
           >
-            D&D combat tracker with battle map
+            Tabletop RPG combat workspace
           </p>
           <h2 style={{ margin: '0 0 0.9rem', fontSize: '2.35rem', lineHeight: 1.12, fontWeight: 900 }}>
-            Run the whole encounter from one view.
+            See the real combat workflow.
           </h2>
           <p style={{ margin: 0, color: 'rgba(226,232,240,0.88)', fontSize: '1rem', lineHeight: 1.85 }}>
-            Virtual Combat Simulator gives game masters a focused combat workspace: map, tokens, initiative, fog of war,
-            measurements, character context, and player visibility in one browser-based encounter view.
+            These current product screens show how a game master stages the battlefield, starts initiative, measures a
+            tactical decision, and manages consequences without changing tools.
           </p>
         </div>
 
@@ -254,7 +254,6 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
           style={{
             margin: 0,
             position: 'relative',
-            minHeight: '620px',
             borderRadius: '8px',
             overflow: 'hidden',
             background: '#0f172a',
@@ -262,40 +261,29 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
             boxShadow: '0 28px 80px rgba(0,0,0,0.45)',
           }}
         >
-          <Image
-            src={heroShot.src}
-            alt={heroShot.alt}
-            fill
-            priority
-            sizes="100vw"
-            style={{ objectFit: 'cover', objectPosition: 'center center' }}
-          />
-          <div
-            aria-hidden="true"
-            style={{
-              position: 'absolute',
-              inset: 0,
-              background:
-                'linear-gradient(90deg, rgba(8,11,18,0.9) 0%, rgba(8,11,18,0.62) 32%, rgba(8,11,18,0.16) 68%, rgba(8,11,18,0.58) 100%)',
-            }}
-          />
+          <div style={{ position: 'relative', aspectRatio: '16 / 9', background: '#0f172a' }}>
+            <Image
+              src={heroShot.src}
+              alt={heroShot.alt}
+              fill
+              priority
+              sizes="100vw"
+              style={{ objectFit: 'contain', objectPosition: 'center center' }}
+            />
+          </div>
           <figcaption
             style={{
-              position: 'relative',
-              zIndex: 1,
-              minHeight: '620px',
-              display: 'flex',
-              alignItems: 'flex-end',
-              padding: '2rem',
+              padding: '1.25rem 1.4rem',
+              borderTop: '1px solid rgba(214,181,116,0.28)',
+              background: 'rgba(15,23,42,0.96)',
             }}
           >
             <div style={{ maxWidth: '520px' }}>
               <h3 style={{ margin: '0 0 0.75rem', fontSize: '1.55rem', lineHeight: 1.18, fontWeight: 900 }}>
-                Run the whole encounter from one view.
+                Stage the encounter with the whole room visible.
               </h3>
               <p style={{ margin: 0, color: 'rgba(241,245,249,0.9)', lineHeight: 1.75 }}>
-                Track the battlefield, initiative, tokens, fog, measurements, and character details without jumping between
-                disconnected tools.
+                The current interface puts the battle map, tokens, initiative, actions, layers, and minimap in one readable workspace.
               </p>
             </div>
           </figcaption>
@@ -315,7 +303,7 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
         <div
           style={{
             display: 'grid',
-            gridTemplateColumns: fluidGrid('250px'),
+            gridTemplateColumns: fluidGrid('440px'),
             gap: '1rem',
             marginTop: '1.25rem',
           }}
@@ -331,13 +319,13 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
                 boxShadow: '0 18px 44px rgba(0,0,0,0.2)',
               }}
             >
-              <div style={{ position: 'relative', minHeight: '190px', overflow: 'hidden', background: '#0f172a' }}>
+              <div style={{ position: 'relative', aspectRatio: '16 / 9', overflow: 'hidden', background: '#0f172a' }}>
                 <Image
                   src={snippet.shot.src}
                   alt={snippet.shot.alt}
                   fill
                   sizes="(min-width: 1024px) 280px, 100vw"
-                  style={{ objectFit: 'cover', objectPosition: 'center center' }}
+                  style={{ objectFit: 'contain', objectPosition: 'center center' }}
                 />
               </div>
               <div style={{ padding: '1rem' }}>
@@ -374,10 +362,10 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
           }}
         >
           <h3 style={{ margin: '0 0 0.5rem', color: '#f8fafc', fontSize: '1.28rem', fontWeight: 900 }}>
-            Try the encounter view free.
+            See whether the combat flow fits your table.
           </h3>
           <p style={{ margin: '0 0 1rem', color: 'rgba(241,245,249,0.88)', lineHeight: 1.75 }}>
-            Open VCS, place a few tokens, test the map tools, and see whether the combat flow fits your table.
+            Open the battle room first. If VCS earns a place in your regular sessions, compare the founding Game Master plan at $10 per month with the $20 standard price.
           </p>
           <div style={{ display: 'flex', gap: '0.8rem', flexWrap: 'wrap' }}>
             <LaunchAppButton
@@ -396,7 +384,7 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
                 cursor: 'pointer',
               }}
             >
-              Start Free
+              Open a combat room
             </LaunchAppButton>
             <Link
               href={product.pricingPath}
@@ -411,7 +399,7 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
                 fontWeight: 800,
               }}
             >
-              See pricing
+              Compare plans
             </Link>
           </div>
         </section>

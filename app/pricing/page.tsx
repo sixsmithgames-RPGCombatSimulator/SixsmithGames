@@ -116,7 +116,7 @@ export default function PricingPage() {
         <p>
           Start with the campaign side, the table side, or the full loop. The
           prices marked founding are the real monthly prices at checkout for
-          early Game Masters—50% off the standard rates. We will
+          early Game Masters, 50% off the standard rates. We will
           announce the transition before the introductory offer ends.
         </p>
       </section>
@@ -189,35 +189,35 @@ export default function PricingPage() {
                   <th scope="row">Campaign workspace</th>
                   <td><span className={styles.yes}>Yes</span></td>
                   <td><span className={styles.yes}>Yes</span></td>
-                  <td>—</td>
+                  <td>No</td>
                 </tr>
                 <tr>
                   <th scope="row">GameMasterCraft AI help</th>
                   <td><span className={styles.yes}>Yes</span></td>
                   <td><span className={styles.yes}>Yes</span></td>
-                  <td>—</td>
+                  <td>No</td>
                 </tr>
                 <tr>
                   <th scope="row">VCS encounter room</th>
-                  <td>—</td>
+                  <td>No</td>
                   <td><span className={styles.yes}>Yes</span></td>
                   <td><span className={styles.yes}>Yes</span></td>
                 </tr>
                 <tr>
                   <th scope="row">VCS paid GM tools</th>
-                  <td>—</td>
+                  <td>No</td>
                   <td><span className={styles.yes}>Yes</span></td>
                   <td><span className={styles.yes}>Yes</span></td>
                 </tr>
                 <tr>
                   <th scope="row">GameMaster Assistant orchestration</th>
-                  <td>—</td>
+                  <td>No</td>
                   <td><span className={styles.yes}>Yes</span></td>
-                  <td>—</td>
+                  <td>No</td>
                 </tr>
                 <tr>
                   <th scope="row">SmartPaste character import</th>
-                  <td>—</td>
+                  <td>No</td>
                   <td><span className={styles.yes}>Yes</span></td>
                   <td><span className={styles.yes}>Yes</span></td>
                 </tr>

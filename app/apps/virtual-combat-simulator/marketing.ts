@@ -12,22 +12,22 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   slug: 'virtual-combat-simulator',
   name: 'Virtual Combat Simulator',
   descriptor: 'D&D combat simulator and battle map control room',
-  h1: 'Paste the character. Review the sheet. Run the fight.',
-  title: 'Virtual Combat Simulator | SmartPaste Character Import and D&D Combat Tracker',
+  h1: 'Run the fight from one clear battle room.',
+  title: 'Virtual Combat Simulator | Battle Map, Initiative, Tokens, and Combat Tracking',
   metaDescription:
-    'Use SmartPaste to review character text, then run D&D-style encounters with the same character sheet, battle map, tokens, initiative, hit points, and conditions.',
+    'Run tabletop RPG encounters with a battle map, tokens, initiative, actions, hit points, conditions, grid tools, and measurement in one browser workspace.',
   heroEyebrow: 'Tabletop RPG Combat Management',
   heroValue:
-    'Bring in permitted character text with SmartPaste, review what VCS recognized, then run the fight with the sheet, map, tokens, initiative, HP, conditions, and action flow in one browser tab.',
+    'Keep the battle map, tokens, initiative, actions, hit points, conditions, grid tools, and measurement together in one browser workspace.',
   heroSummary:
-    'Virtual Combat Simulator is for game masters and players who want D&D-style combat to run cleanly. SmartPaste sorts the abilities, weapons, spells, features, equipment, and notes it recognizes into a reviewable character sheet. Once you approve the result, that character is ready for the same focused room as the battle map, turn order, hit points, and conditions.',
+    'Virtual Combat Simulator gives game masters a focused place to stage the encounter, start initiative, make tactical decisions, and manage consequences. Start with the core encounter tools. The founding Game Master plan is $10 per month while the early offer is open, compared with the $20 standard price.',
   oneSentence:
     'Virtual Combat Simulator is a browser-based combat management tool for tabletop roleplaying games.',
   category: 'D&D combat tracker with battle map and initiative management',
   primaryAudience: 'Game masters and tabletop RPG players, especially D&D-adjacent groups',
   platform: 'Browser-based web app',
-  pricingModel: 'Free to start. The founding Game Master price is $10.00/month while the early-GM offer is open—50% off the $20.00/month standard price',
-  availability: 'Open in your browser and run combats right away. The paid upgrade is there when you need it, not before',
+  pricingModel: 'Free to start. The founding Game Master price is $10.00/month while the early-GM offer is open, 50% off the $20.00/month standard price',
+  availability: 'Open in your browser and run combats right away. The paid upgrade is there when you need it, not before.',
   applicationCategory: 'GameApplication',
   operatingSystem: 'Web browser',
   offerPrice: 10,
@@ -56,21 +56,21 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
   },
   secondaryCta: {
     kind: 'link',
-    label: 'Tour the character sheet',
-    href: '/apps/virtual-combat-simulator/character-sheet',
+    label: 'Compare plans',
+    href: '/pricing#virtual-combat-simulator',
   },
   primaryDeepLinkPath: '/battleroom',
   heroMedia: {
-    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/vcs/virtual-combat-simulator-dnd-battle-room-map-tokens-initiative-character-sheet.jpg',
-    alt: 'Virtual Combat Simulator D&D battle room showing a tactical battle map with grid and tokens, initiative tracker, action panel, fog controls, and character sheet context',
-    overlayLabel: 'Open the battle room',
+    src: 'https://res.cloudinary.com/dxz6khmew/image/upload/f_auto,q_auto,w_1400/sixsmith-games/vcs/vcs-current-battle-room-map-tokens-initiative.jpg',
+    alt: 'Current Virtual Combat Simulator battle room showing a town map, four tokens, initiative, action controls, and minimap',
+    overlayLabel: 'Current battle room',
     deepLinkPath: '/battleroom',
     caption:
-      'The battle room brings the tactical parts of D&D combat into one view: map, tokens, initiative, actions, hit points, character context, fog, and player-safe visibility.',
+      'The current battle room keeps the map, tokens, initiative, actions, hit points, grid controls, measurement, and character context within reach.',
   },
   whatItIs: [
     'Virtual Combat Simulator is a focused combat simulator for tabletop RPG encounters. It is built around the part of play that often slows a session down: battle maps, tokens, initiative, hit points, conditions, and the moment-to-moment flow of combat.',
-    'Virtual Combat Simulator is not an all-purpose campaign manager or a giant everything-in-one virtual tabletop. It is built to keep combat clear, synchronized, and easy to run for a game master who wants tactical clarity without burying the table under extra interface weight.',
+    'Virtual Combat Simulator is not an all-purpose campaign manager or a giant everything-in-one virtual tabletop. It is built to keep combat clear and easy to run for a game master who wants tactical clarity without burying the table under extra interface weight.',
     'SmartPaste is the front door for character data. Paste text you created, own, licensed, or are otherwise permitted to use; review recognized and uncertain choices; then apply the approved result to the character sheet used beside the battle map.',
   ],
   whoItIsFor: [
@@ -84,18 +84,13 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
     'Virtual Combat Simulator also solves the visibility problem that shows up in hybrid or online play. When the battle map, tokens, and combat state live in different places, players stop reading the situation clearly. A single encounter view keeps the fight readable and helps everyone stay engaged.',
   ],
   howItWorks: [
-    'Paste permitted character text into SmartPaste, review the abilities, weapons, spells, features, equipment, and longer notes it recognizes, and approve only what belongs on the sheet.',
-    'Set up or load the encounter map, place the approved character on a token, and establish the battle space the table will use.',
-    'Track initiative, turn order, action flow, hit points, conditions, and other combat state from the same encounter view.',
-    'Keep players synced to the same battle state so everyone can follow movement, token positions, and the current turn without extra bookkeeping.',
-    'Use the product as the combat layer of the session while the game master keeps the narrative, rulings, and pacing in motion.',
+    'Set up or load the encounter map, tune the grid, and place the tokens the fight needs.',
+    'Confirm initiative and keep the active combatant and turn controls beside the battlefield.',
+    'Measure movement and range, use the action controls, and track hit points and conditions from the same encounter view.',
+    'Open linked character context when the fight calls for details from a sheet.',
+    'Use SmartPaste when you want to bring permitted character text into a reviewable sheet before play.',
   ],
   keyFeatures: [
-    {
-      title: 'SmartPaste character import',
-      description:
-        'Paste character text you are permitted to use, review what VCS recognized or inferred, and apply the approved details to a character sheet instead of retyping the whole thing.',
-    },
     {
       title: 'Battle map encounter control',
       description:
@@ -107,14 +102,19 @@ export const virtualCombatSimulatorProductDefinition: ProductDefinition = {
         'Track initiative, turn order, and combat state without separate spreadsheets or side tools pulling attention away from the table.',
     },
     {
-      title: 'Token-linked hit points and conditions',
+      title: 'Hit points and conditions',
       description:
         'Keep token placement, hit points, and condition tracking tied to the same encounter view so the game master can act quickly.',
     },
     {
-      title: 'Shared table state',
+      title: 'Grid and measurement tools',
       description:
-        'Support online and hybrid play by giving players a shared combat view instead of a fragmented chain of screenshots and verbal corrections.',
+        'Adjust the grid and measure tactical distance directly over the map without moving the fight to a separate tool.',
+    },
+    {
+      title: 'SmartPaste character import',
+      description:
+        'Paste character text you are permitted to use, review what VCS recognized or inferred, and apply the approved details to a character sheet instead of retyping the whole thing.',
     },
     {
       title: 'Game Master upgrade path',
