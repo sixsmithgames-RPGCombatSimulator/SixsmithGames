@@ -47,6 +47,7 @@
 }
 
 .planSection,
+.hoodieSection,
 .comparisonSection,
 .faqSection {
   padding: clamp(4.5rem, 10vw, 8rem) var(--page-gutter);
@@ -191,6 +192,119 @@
   text-align: center;
 }
 
+.hoodieSection {
+  padding-top: 0;
+}
+
+.hoodieOffer {
+  width: min(1060px, 100%);
+  margin: 0 auto;
+  overflow: hidden;
+  border: 1px solid rgba(228, 185, 101, 0.26);
+  border-radius: 24px;
+  background:
+    radial-gradient(circle at 18% 32%, rgba(164, 85, 53, 0.2), transparent 42%),
+    #11141b;
+  display: grid;
+  grid-template-columns: minmax(280px, 0.86fr) minmax(0, 1.14fr);
+  box-shadow: 0 30px 90px rgba(0, 0, 0, 0.24);
+}
+
+.hoodieVisual {
+  position: relative;
+  min-height: 480px;
+  background: linear-gradient(145deg, rgba(255, 255, 255, 0.035), rgba(0, 0, 0, 0.16));
+}
+
+.hoodieVisual::after {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(90deg, transparent 70%, #11141b);
+  content: '';
+  pointer-events: none;
+}
+
+.hoodieVisual img {
+  object-fit: contain;
+  padding: clamp(1.5rem, 4vw, 3rem);
+}
+
+.hoodieCopy {
+  padding: clamp(2.25rem, 5vw, 4.75rem);
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+}
+
+.hoodieCopy h2 {
+  max-width: 650px;
+  margin: 0;
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: clamp(2.1rem, 4.4vw, 3.9rem);
+  font-weight: 600;
+  letter-spacing: -0.045em;
+  line-height: 1;
+  text-wrap: balance;
+}
+
+.hoodieLead {
+  max-width: 620px;
+  margin: 1.3rem 0 0;
+  color: var(--muted);
+  font-size: 1.02rem;
+  line-height: 1.7;
+}
+
+.hoodieValue {
+  margin-top: 1.5rem;
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+}
+
+.hoodieValue strong {
+  color: var(--gold);
+  font-family: Georgia, 'Times New Roman', serif;
+  font-size: 1.65rem;
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.hoodieValue span {
+  color: #c5bcaf;
+  font-size: 0.88rem;
+  line-height: 1.45;
+}
+
+.hoodieButton {
+  min-height: 50px;
+  margin-top: 1.7rem;
+  padding: 0.82rem 1.35rem;
+  border: 1px solid #d5a653;
+  border-radius: 999px;
+  background: #d5a653;
+  color: #1a1107;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 900;
+  text-decoration: none;
+}
+
+.hoodieButton:hover {
+  filter: brightness(1.08);
+  transform: translateY(-1px);
+}
+
+.hoodieTerms {
+  max-width: 650px;
+  margin: 1rem 0 0;
+  color: #81796e;
+  font-size: 0.72rem;
+  line-height: 1.55;
+}
+
 .comparisonSection {
   border-block: 1px solid rgba(55, 40, 24, 0.12);
   background: #eee5d7;
@@ -299,5 +413,29 @@
 
   .description {
     min-height: 0;
+  }
+
+  .hoodieOffer {
+    grid-template-columns: 1fr;
+  }
+
+  .hoodieVisual {
+    min-height: 370px;
+  }
+
+  .hoodieVisual::after {
+    background: linear-gradient(180deg, transparent 72%, #11141b);
+  }
+}
+
+@media (max-width: 520px) {
+  .hoodieVisual {
+    min-height: 310px;
+  }
+
+  .hoodieValue {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 0.2rem;
   }
 }

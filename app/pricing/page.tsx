@@ -7,9 +7,12 @@
  */
 
 import type { Metadata } from 'next';
+import Image from 'next/image';
 
+import MarketingLink from '@/components/MarketingLink';
 import StructuredDataScript from '@/components/StructuredDataScript';
 import SubscribeButton from '@/components/SubscribeButton';
+import { getMerchProduct } from '@/lib/merchCatalog';
 import { buildPageMetadata } from '@/lib/metadata';
 import { formatMonthlyPrice, pricingCatalog } from '@/lib/pricingCatalog';
 import { createFaqSchema } from '@/lib/schema';
@@ -75,6 +78,8 @@ const plans = [
     cta: 'Choose VCS',
   },
 ];
+
+const hoodie = getMerchProduct('master-your-stories-hoodie');
 
 const faq = [
   {
@@ -167,6 +172,51 @@ export default function PricingPage() {
             the decided rates after the introductory offer and will not take
             effect without advance notice.
           </p>
+        </section>
+
+        <section className={styles.hoodieSection} aria-labelledby="hoodie-offer-heading">
+          <div className={styles.hoodieOffer}>
+            {hoodie?.imageUrl && hoodie.imageAlt ? (
+              <div className={styles.hoodieVisual}>
+                <Image
+                  src={hoodie.imageUrl}
+                  alt={hoodie.imageAlt}
+                  fill
+                  sizes="(max-width: 760px) 86vw, 34vw"
+                />
+              </div>
+            ) : null}
+
+            <div className={styles.hoodieCopy}>
+              <p className={styles.eyebrow}>A little more for the Game Master</p>
+              <h2 id="hoodie-offer-heading">
+                Get three Studio months with either hoodie.
+              </h2>
+              <p className={styles.hoodieLead}>
+                Pick the pullover or zippered Master Your Stories hoodie and
+                earn a separate, one-use coupon covering three months of
+                GameMaster Studio at no additional charge.
+              </p>
+              <div className={styles.hoodieValue}>
+                <strong>3 months</strong>
+                <span>Campaign prep, AI help, and VCS Game Master tools</span>
+              </div>
+              <MarketingLink
+                href="/merch"
+                className={styles.hoodieButton}
+                eventName="merch_collection_click"
+                eventData={{ placement: 'pricing_after_plans' }}
+              >
+                Shop the hoodies
+              </MarketingLink>
+              <p className={styles.hoodieTerms}>
+                Available after a qualifying paid order and claimed separately
+                with the matching order email. If the coupon starts a new Studio
+                subscription, standard monthly billing begins after it ends
+                unless you cancel first. No cash value; nontransferable.
+              </p>
+            </div>
+          </div>
         </section>
 
         <section className={styles.comparisonSection} aria-labelledby="comparison-heading">
