@@ -13,6 +13,23 @@ test('homepage merchandise advert offers one clear path to the shop', async ({ p
   await expect(advert.getByRole('img')).toHaveCount(2);
 });
 
+test('pricing presents the hoodie bonus without competing with plan selection', async ({ page }) => {
+  await page.goto('/pricing', { waitUntil: 'domcontentloaded' });
+
+  const offer = page.getByRole('region', {
+    name: 'Get three Studio months with either hoodie.',
+  });
+
+  await expect(offer).toBeVisible();
+  await expect(offer.getByText('3 months', { exact: true })).toBeVisible();
+  await expect(offer.getByRole('link', { name: 'Shop the hoodies' })).toHaveAttribute(
+    'href',
+    '/merch',
+  );
+  await expect(offer.getByRole('img')).toHaveCount(1);
+  await expect(offer.getByText(/standard monthly billing begins after it ends/)).toBeVisible();
+});
+
 /**
  * Exercises the shopper path without relying on screenshots alone. These
  * checks keep internal review and fulfillment language out of the pitch while
