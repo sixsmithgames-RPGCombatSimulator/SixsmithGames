@@ -9,16 +9,20 @@ import Stripe from 'stripe';
 import { clerkClient } from '@clerk/nextjs/server';
 import { sendFacebookEvents, buildUserData, generateEventId } from '@/lib/facebookConversions';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-01-28.clover',
-});
-
-const WEBHOOK_SECRET = process.env.STRIPE_WEBHOOK_SECRET!;
 const FACEBOOK_PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
 const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_ACCESS_TOKEN;
 const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://www.sixsmithgames.com';
 
 export async function POST(req: NextRequest) {
+  const stripeSecret = process.env.STRIPE_SECRET_KEY;
+  const webhookSecret = process.env.STRIPE_WEBHOOK_SECRET;
+  if (!stripeSecret || !webhookSecret) {
+    return NextResponse.json({ error: 'Webhook is unavailable' }, { status: 503 });
+  }
+
+  const stripe = new Stripe(stripeSecret, {
+    apiVersion: '2026-01-28.clover',
+  });
   const body = await req.text();
   const sig = req.headers.get('stripe-signature');
 
@@ -28,7 +32,7 @@ export async function POST(req: NextRequest) {
 
   let event: Stripe.Event;
   try {
-    event = stripe.webhooks.constructEvent(body, sig, WEBHOOK_SECRET);
+    event = stripe.webhooks.constructEvent(body, sig, webhookSecret);
   } catch (err) {
     console.error('Webhook signature verification failed:', err);
     return NextResponse.json({ error: 'Invalid signature' }, { status: 400 });
@@ -38,7 +42,7 @@ export async function POST(req: NextRequest) {
     switch (event.type) {
       case 'checkout.session.completed': {
         const session = event.data.object as Stripe.Checkout.Session;
-        await handleCheckoutCompleted(session);
+        await handleCheckoutCompleted(stripe, session);
         break;
       }
       case 'customer.subscription.updated': {
@@ -60,7 +64,10 @@ export async function POST(req: NextRequest) {
   return NextResponse.json({ received: true });
 }
 
-async function handleCheckoutCompleted(session: Stripe.Checkout.Session) {
+async function handleCheckoutCompleted(
+  stripe: Stripe,
+  session: Stripe.Checkout.Session,
+) {
   // Merchandise is a one-time physical order, not a Clerk entitlement. The
   // explicit fulfillment-ready switch means the owner has accepted the order
   // handling path before this branch can receive a paid shop session.

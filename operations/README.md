@@ -23,6 +23,10 @@ The application currently includes:
 - First-class Analytics workspace backed by Vercel's production aggregate API,
   with traffic trends, routes, referrers, UTM sources, geography, devices,
   browsers, comparison periods, freshness, and explicit collection boundaries
+- First-class Product Activity workspace backed by a source-authoritative,
+  identified operational ledger with DAU/WAU/MAU, explicit active time,
+  product-defined sessions and outcomes, entity summaries, Customer 360 cards,
+  source freshness, rejected-record quarantine, and support deletion
 - Responsive desktop and mobile navigation plus command search
 
 ## Runtime safety
@@ -89,7 +93,13 @@ VERCEL_ANALYTICS_TEAM_ID=team_MV7H5Yr78mJD46i3lMjAMjOc
 VERCEL_ANALYTICS_PROJECT_ID=prj_4q3lkO9SwySPux5Br1TaLKbYv0eD
 VERCEL_ANALYTICS_PROJECT_NAME=sixsmithgames
 VERCEL_ANALYTICS_DASHBOARD_URL=https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmithgames/analytics
+VERCEL_ANALYTICS_UTM_SOURCES_ENABLED=false
 VERCEL_ANALYTICS_CUSTOM_EVENTS_ENABLED=false
+PRODUCT_ACTIVITY_LEDGER_ENABLED=false
+PRODUCT_ACTIVITY_AUTO_SYNC_ENABLED=false
+PRODUCT_ACTIVITY_STALE_AFTER_MINUTES=60
+PRODUCT_ACTIVITY_SOURCES_JSON=[]
+VCS_PRODUCT_ACTIVITY_READ_TOKEN=
 ```
 
 `STRIPE_WEBHOOK_SECRET` remains optional until an Operations-specific webhook
@@ -105,8 +115,28 @@ uses a legacy or different email mapping.
 read-only aggregate Web Analytics queries. Operations caches reports for 15
 minutes, requests only the production environment, and does not copy raw visit
 events into Neon. Missing or rejected credentials render an explicit source
-state instead of a misleading zero. Keep custom events disabled until the
-Vercel plan and spend are approved.
+state instead of a misleading zero. Keep UTM source dimensions and custom
+events disabled until the required Vercel capability and spend are approved.
+
+Product Activity is a separate data class. Its source feeds contain identified,
+committed operational facts needed for customer support and product operations;
+they do not contain optional click or screen telemetry. Leave the ledger flag
+off until migration `0001_whole_garia.sql` is applied. Source configuration is
+a JSON array of `key`, `label`, `baseUrl`, `environment`, `productSlugs`,
+`tokenEnvironmentVariable`, and `enabled`. Credentials remain in the named
+server-only variables and never appear in the JSON descriptor. Each source must
+provide the following scoped, read-only endpoints:
+
+- `GET /api/service/operations/v1/activity-events`
+- `GET /api/service/operations/v1/entities`
+- `GET /api/service/operations/v1/health`
+
+Operations uses opaque cursors and at-least-once delivery. A source event ID is
+projected once, newer entity revisions replace older summaries, an interrupted
+page never advances its cursor, and schema or identity-link failures are stored
+as fingerprints rather than unsafe source payloads. Enable auto-sync only after
+the pilot source has passed reconciliation; manual synchronization remains
+available in the Product Activity workspace.
 
 Production reuses the existing Sixsmith Games Clerk instance rooted at
 `sixsmithgames.com`, whose sessions support the `operations` subdomain. The
@@ -138,6 +168,8 @@ The schema is in [`src/db/schema.ts`](./src/db/schema.ts). It models:
 - approval decisions and exception work
 - normalized economic events
 - integration freshness and immutable audit events
+- product accounts, immutable activity events, current entity summaries, daily
+  rollups, opaque ingestion cursors, and payload-free rejection records
 
 Generate and apply migrations only after a real Neon development database is
 linked:
@@ -165,6 +197,7 @@ No paid service has been provisioned by this project.
 npm run typecheck
 npm run lint
 npm run build
+npm run test:unit
 npm run test:e2e
 ```
 

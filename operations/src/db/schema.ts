@@ -1,5 +1,6 @@
 import {
   boolean,
+  date,
   index,
   integer,
   jsonb,
@@ -74,6 +75,35 @@ export const INTEGRATION_STATUS_ENUM = pgEnum("integration_status", [
   "unconfigured",
 ]);
 
+export const PRODUCT_ENVIRONMENT_ENUM = pgEnum("product_environment", [
+  "production",
+  "preview",
+  "development",
+  "test",
+]);
+
+export const PRODUCT_ACTIVITY_AUTHORITY_ENUM = pgEnum(
+  "product_activity_authority",
+  ["server_confirmed", "client_observed"],
+);
+
+export const PRODUCT_USAGE_CONTEXT_ENUM = pgEnum("product_usage_context", [
+  "customer",
+  "owner",
+  "internal_test",
+  "automation",
+]);
+
+export const PRODUCT_ACTIVITY_PRIVACY_ENUM = pgEnum(
+  "product_activity_privacy",
+  ["identified_operational", "identified_private_summary"],
+);
+
+export const PRODUCT_INGESTION_STATUS_ENUM = pgEnum(
+  "product_ingestion_status",
+  ["fresh", "stale", "unavailable", "rejected", "unconfigured", "disabled"],
+);
+
 export const CUSTOMERS = pgTable(
   "customers",
   {
@@ -136,6 +166,265 @@ export const PRODUCTS = pgTable(
     }).notNull(),
   },
   (table) => [uniqueIndex("products_slug_unique").on(table.slug)],
+);
+
+export const PRODUCT_ACCOUNTS = pgTable(
+  "product_accounts",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    customerId: uuid("customer_id")
+      .references(() => CUSTOMERS.id, { onDelete: "restrict" })
+      .notNull(),
+    productId: uuid("product_id")
+      .references(() => PRODUCTS.id, { onDelete: "restrict" })
+      .notNull(),
+    sourceIdentityId: uuid("source_identity_id")
+      .references(() => SOURCE_IDENTITIES.id, { onDelete: "restrict" })
+      .notNull(),
+    sourceKey: text("source_key").notNull(),
+    firstSeenAt: timestamp("first_seen_at", { withTimezone: true }).notNull(),
+    lastSeenAt: timestamp("last_seen_at", { withTimezone: true }).notNull(),
+    lastMeaningfulActivityAt: timestamp("last_meaningful_activity_at", {
+      withTimezone: true,
+    }),
+    synchronizationStatus: PRODUCT_INGESTION_STATUS_ENUM(
+      "synchronization_status",
+    ).notNull(),
+    createdAt: timestamp("created_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("product_accounts_source_product_unique").on(
+      table.sourceKey,
+      table.sourceIdentityId,
+      table.productId,
+    ),
+    index("product_accounts_customer_index").on(table.customerId),
+    index("product_accounts_product_activity_index").on(
+      table.productId,
+      table.lastMeaningfulActivityAt,
+    ),
+  ],
+);
+
+export const PRODUCT_ENTITY_SNAPSHOTS = pgTable(
+  "product_entity_snapshots",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    productAccountId: uuid("product_account_id")
+      .references(() => PRODUCT_ACCOUNTS.id, { onDelete: "restrict" })
+      .notNull(),
+    customerId: uuid("customer_id")
+      .references(() => CUSTOMERS.id, { onDelete: "restrict" })
+      .notNull(),
+    productId: uuid("product_id")
+      .references(() => PRODUCTS.id, { onDelete: "restrict" })
+      .notNull(),
+    sourceKey: text("source_key").notNull(),
+    environment: PRODUCT_ENVIRONMENT_ENUM("environment").notNull(),
+    authorityClass: PRODUCT_ACTIVITY_AUTHORITY_ENUM("authority_class").notNull(),
+    usageContext: PRODUCT_USAGE_CONTEXT_ENUM("usage_context").notNull(),
+    aggregateType: text("aggregate_type").notNull(),
+    sourceAggregateId: text("source_aggregate_id").notNull(),
+    sourceRevision: integer("source_revision").notNull(),
+    displayLabel: text("display_label"),
+    status: text("status").notNull(),
+    sourceCreatedAt: timestamp("source_created_at", { withTimezone: true }).notNull(),
+    lastMeaningfulActivityAt: timestamp("last_meaningful_activity_at", {
+      withTimezone: true,
+    }),
+    counters: jsonb("counters").$type<Record<string, number>>().notNull(),
+    sourceUrl: text("source_url"),
+    privacyClassification: PRODUCT_ACTIVITY_PRIVACY_ENUM(
+      "privacy_classification",
+    ).notNull(),
+    synchronizedAt: timestamp("synchronized_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("product_entity_source_aggregate_unique").on(
+      table.sourceKey,
+      table.productId,
+      table.aggregateType,
+      table.sourceAggregateId,
+    ),
+    index("product_entity_customer_product_index").on(
+      table.customerId,
+      table.productId,
+    ),
+    index("product_entity_activity_index").on(table.lastMeaningfulActivityAt),
+  ],
+);
+
+export const PRODUCT_ACTIVITY_EVENTS = pgTable(
+  "product_activity_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    productAccountId: uuid("product_account_id")
+      .references(() => PRODUCT_ACCOUNTS.id, { onDelete: "restrict" })
+      .notNull(),
+    customerId: uuid("customer_id")
+      .references(() => CUSTOMERS.id, { onDelete: "restrict" })
+      .notNull(),
+    productId: uuid("product_id")
+      .references(() => PRODUCTS.id, { onDelete: "restrict" })
+      .notNull(),
+    sourceIdentityId: uuid("source_identity_id")
+      .references(() => SOURCE_IDENTITIES.id, { onDelete: "restrict" })
+      .notNull(),
+    sourceKey: text("source_key").notNull(),
+    sourceEventId: text("source_event_id").notNull(),
+    contractVersion: integer("contract_version").notNull(),
+    eventVersion: integer("event_version").notNull(),
+    eventType: text("event_type").notNull(),
+    environment: PRODUCT_ENVIRONMENT_ENUM("environment").notNull(),
+    occurredAt: timestamp("occurred_at", { withTimezone: true }).notNull(),
+    receivedAt: timestamp("received_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    sourceApplication: text("source_application").notNull(),
+    sourceApplicationVersion: text("source_application_version").notNull(),
+    authorityClass: PRODUCT_ACTIVITY_AUTHORITY_ENUM("authority_class").notNull(),
+    usageContext: PRODUCT_USAGE_CONTEXT_ENUM("usage_context").notNull(),
+    aggregateType: text("aggregate_type").notNull(),
+    sourceAggregateId: text("source_aggregate_id").notNull(),
+    sourceRevision: integer("source_revision").notNull(),
+    activitySessionId: text("activity_session_id"),
+    correlationId: text("correlation_id"),
+    outcome: text("outcome").notNull(),
+    dimensions: jsonb("dimensions")
+      .$type<Record<string, string | number | boolean | null>>()
+      .notNull(),
+    privacyClassification: PRODUCT_ACTIVITY_PRIVACY_ENUM(
+      "privacy_classification",
+    ).notNull(),
+    metricVersion: integer("metric_version").notNull(),
+    isMeaningful: boolean("is_meaningful").notNull(),
+    activeSeconds: integer("active_seconds").default(0).notNull(),
+  },
+  (table) => [
+    uniqueIndex("product_activity_source_event_unique").on(
+      table.sourceKey,
+      table.sourceEventId,
+    ),
+    index("product_activity_customer_occurred_index").on(
+      table.customerId,
+      table.occurredAt,
+    ),
+    index("product_activity_product_occurred_index").on(
+      table.productId,
+      table.occurredAt,
+    ),
+    index("product_activity_session_index").on(table.activitySessionId),
+  ],
+);
+
+export const PRODUCT_ACTIVITY_DAILY = pgTable(
+  "product_activity_daily",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    customerId: uuid("customer_id")
+      .references(() => CUSTOMERS.id, { onDelete: "restrict" })
+      .notNull(),
+    productId: uuid("product_id")
+      .references(() => PRODUCTS.id, { onDelete: "restrict" })
+      .notNull(),
+    productAccountId: uuid("product_account_id")
+      .references(() => PRODUCT_ACCOUNTS.id, { onDelete: "restrict" })
+      .notNull(),
+    activityDate: date("activity_date").notNull(),
+    environment: PRODUCT_ENVIRONMENT_ENUM("environment").notNull(),
+    usageContext: PRODUCT_USAGE_CONTEXT_ENUM("usage_context").notNull(),
+    eventCount: integer("event_count").default(0).notNull(),
+    meaningfulEventCount: integer("meaningful_event_count").default(0).notNull(),
+    sessionCount: integer("session_count").default(0).notNull(),
+    completionCount: integer("completion_count").default(0).notNull(),
+    activeSeconds: integer("active_seconds").default(0).notNull(),
+    selectedCounters: jsonb("selected_counters")
+      .$type<Record<string, number>>()
+      .default({})
+      .notNull(),
+    metricVersion: integer("metric_version").notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("product_activity_daily_unique").on(
+      table.productAccountId,
+      table.activityDate,
+      table.environment,
+      table.usageContext,
+    ),
+    index("product_activity_daily_customer_date_index").on(
+      table.customerId,
+      table.activityDate,
+    ),
+    index("product_activity_daily_product_date_index").on(
+      table.productId,
+      table.activityDate,
+    ),
+  ],
+);
+
+export const PRODUCT_INGESTION_CURSORS = pgTable(
+  "product_ingestion_cursors",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    sourceKey: text("source_key").notNull(),
+    environment: PRODUCT_ENVIRONMENT_ENUM("environment").notNull(),
+    eventCursor: text("event_cursor"),
+    entityCursor: text("entity_cursor"),
+    status: PRODUCT_INGESTION_STATUS_ENUM("status").notNull(),
+    sourceGeneratedAt: timestamp("source_generated_at", { withTimezone: true }),
+    lastAttemptAt: timestamp("last_attempt_at", { withTimezone: true }),
+    lastSuccessfulSyncAt: timestamp("last_successful_sync_at", { withTimezone: true }),
+    lastErrorCode: text("last_error_code"),
+    lastErrorSummary: text("last_error_summary"),
+    acceptedEventCount: integer("accepted_event_count").default(0).notNull(),
+    rejectedEventCount: integer("rejected_event_count").default(0).notNull(),
+    updatedAt: timestamp("updated_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    uniqueIndex("product_ingestion_source_environment_unique").on(
+      table.sourceKey,
+      table.environment,
+    ),
+    index("product_ingestion_status_index").on(table.status),
+  ],
+);
+
+export const PRODUCT_EVENT_REJECTIONS = pgTable(
+  "product_event_rejections",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    sourceKey: text("source_key").notNull(),
+    environment: PRODUCT_ENVIRONMENT_ENUM("environment").notNull(),
+    sourceEventId: text("source_event_id"),
+    contractVersion: integer("contract_version"),
+    eventVersion: integer("event_version"),
+    rejectionCode: text("rejection_code").notNull(),
+    rejectionSummary: text("rejection_summary").notNull(),
+    payloadFingerprint: text("payload_fingerprint").notNull(),
+    occurredAt: timestamp("occurred_at", { withTimezone: true }),
+    rejectedAt: timestamp("rejected_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+  },
+  (table) => [
+    index("product_rejections_source_time_index").on(
+      table.sourceKey,
+      table.rejectedAt,
+    ),
+    index("product_rejections_code_index").on(table.rejectionCode),
+  ],
 );
 
 export const SUBSCRIPTIONS = pgTable(

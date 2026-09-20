@@ -14,16 +14,21 @@ import {
   normalizeFourthwallOrderNumber,
 } from '@/lib/merchBonus.server';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY!, {
-  apiVersion: '2026-01-28.clover',
-});
-
 const BASE_URL = process.env.NEXT_PUBLIC_URL || 'https://www.sixsmithgames.com';
 const FACEBOOK_PIXEL_ID = process.env.FACEBOOK_PIXEL_ID;
 const FACEBOOK_ACCESS_TOKEN = process.env.FACEBOOK_ACCESS_TOKEN;
 
 export async function POST(req: NextRequest) {
   try {
+    const stripeSecret = process.env.STRIPE_SECRET_KEY;
+    if (!stripeSecret) {
+      return NextResponse.json({ error: 'Checkout is unavailable' }, { status: 503 });
+    }
+
+    const stripe = new Stripe(stripeSecret, {
+      apiVersion: '2026-01-28.clover',
+    });
+
     const { userId } = await auth();
     if (!userId) {
       return NextResponse.json({ error: 'Unauthorized' }, { status: 401 });

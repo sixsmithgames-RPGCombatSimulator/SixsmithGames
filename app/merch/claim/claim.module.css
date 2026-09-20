@@ -137,6 +137,14 @@
   outline-offset: 3px;
 }
 
+@media (min-width: 651px) and (max-height: 900px) {
+  .page {
+    /* Keep the receipt action above the first-visit consent prompt on shorter
+       desktop displays without compressing the claim card itself. */
+    padding-top: 3rem;
+  }
+}
+
 @media (max-width: 620px) {
   .page {
     /* Keep the receipt controls above the compact consent prompt on phones. */

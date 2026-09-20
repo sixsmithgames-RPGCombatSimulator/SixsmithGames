@@ -29,6 +29,8 @@ const sections = [
     paragraphs: [
       'We and our service providers may automatically collect technical and usage information such as IP address, browser type, device information, pages viewed, referring pages, approximate location derived from IP, timestamps, and interactions with the services.',
       'The public site uses Vercel Web Analytics for aggregate page measurement without analytics cookies. Vercel derives a temporary visitor hash from the request, discards that visitor session after 24 hours, and does not let Sixsmith Games identify a person or follow them across different days or websites from that data.',
+      'When you use a signed-in Sixsmith Games product, we may record account-linked operational activity such as creating or archiving a room or project, starting or completing a mission or game session, completing a typing exercise, or confirming a connected product workflow. These records use a stable account-provider identifier and are kept separate from optional click, screen-flow, and diagnostic analytics.',
+      'Operational activity records contain bounded event names, timestamps, outcomes, source and product identifiers, and limited summaries or counters needed for support and product operations. They are not intended to include campaign text, notes, chat, prompts, character sheets, typed text, keystrokes, map contents, or unrestricted product content.',
       'Google Analytics and Meta measurement load only after you allow optional tracking. We also use cookies or similar technologies when needed for authentication, session management, security, and purchases.',
     ],
   },
@@ -50,6 +52,7 @@ const sections = [
       'To process billing, taxes, and receipts.',
       'To operate comments, support, and product communications.',
       'To analyze traffic and improve performance, content, and features.',
+      'To provide account support using confirmed product activity and owned-object summaries.',
     ],
   },
   {
@@ -64,14 +67,14 @@ const sections = [
     title: '7. Data retention',
     paragraphs: [
       'We keep information for as long as reasonably needed to provide the services, maintain business and tax records, resolve disputes, enforce agreements, and meet legal requirements. Different data types may be kept for different periods depending on why they were collected.',
-      'Vercel Web Analytics discards its temporary visitor session after 24 hours and retains aggregate reporting data according to the configured Vercel plan. Optional analytics and marketing data follow the retention settings configured with those providers. We will publish more specific product-event retention periods before identified cross-product analytics is enabled.',
+      'Vercel Web Analytics discards its temporary visitor session after 24 hours and retains aggregate reporting data according to the configured Vercel plan. Optional analytics and marketing data follow the retention settings configured with those providers. Identified operational activity uses separate retention rules; the proposed starting periods are 13 months for detailed events and 36 months for daily aggregates, subject to legal and privacy review before production rollout.',
     ],
   },
   {
     title: '8. Your choices',
     paragraphs: [
       'You can often access or update account information through your account provider, browser settings, or device settings. You can also contact us if you want to request access, correction, or deletion of personal information, subject to verification and any legal exceptions that apply.',
-      'The Privacy settings control on the site lets you allow or withdraw optional analytics and marketing measurement. You can also control cookies through your browser, but some parts of the services may not work properly if authentication or purchase cookies are disabled.',
+      'The Privacy settings control on the site lets you allow or withdraw optional analytics and marketing measurement. That choice does not remove account-linked operational records required to operate and support signed-in products. You may contact us to request deletion of personal information and product activity, subject to identity verification and legal exceptions. You can also control cookies through your browser, but some parts of the services may not work properly if authentication or purchase cookies are disabled.',
     ],
   },
   {
@@ -106,8 +109,8 @@ export default function PrivacyPage() {
       eyebrow="Legal"
       title="Privacy Policy"
       summary="This policy describes what information Sixsmith Games collects, why it is collected, and when it may be shared in connection with the services."
-      effectiveDate="August 10, 2026"
-      notice="This policy reflects the flows currently present on the site, including account sign-in, subscription checkout, cookieless aggregate analytics, optional measurement, and blog comments."
+      effectiveDate="August 22, 2026"
+      notice="This policy reflects account sign-in, subscription checkout, account-linked operational activity, cookieless aggregate analytics, optional measurement, and blog comments. Product-activity retention periods remain subject to legal and privacy review before production ingestion is enabled."
       sections={sections}
     />
   );

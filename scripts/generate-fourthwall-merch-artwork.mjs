@@ -13,11 +13,13 @@
  * silently reach the print file.
  */
 
-import { mkdir } from 'node:fs/promises';
+import { readFileSync } from 'node:fs';
+import { mkdir, writeFile } from 'node:fs/promises';
 import { fileURLToPath } from 'node:url';
 import path from 'node:path';
 
 import jsQR from 'jsqr';
+import opentype from 'opentype.js';
 import QRCode from 'qrcode';
 import sharp from 'sharp';
 
@@ -35,6 +37,14 @@ const LOGO_PATH = path.join(
   'icons',
   'sixsmith-logo.png',
 );
+const WORDMARK_FONT_PATH = path.join(
+  REPOSITORY_ROOT,
+  'assets',
+  'merch',
+  'fonts',
+  'fondamento',
+  'Fondamento-Regular.ttf',
+);
 const DUNGEON_PANORAMA_PATH = path.join(
   OUTPUT_DIRECTORY,
   'source',
@@ -43,6 +53,14 @@ const DUNGEON_PANORAMA_PATH = path.join(
 const WEBSITE_DISPLAY_TEXT = 'SIXSMITHGAMES.COM';
 const WEBSITE_QR_URL = 'https://sixsmithgames.com/';
 
+const wordmarkFontBuffer = readFileSync(WORDMARK_FONT_PATH);
+const wordmarkFont = opentype.parse(
+  wordmarkFontBuffer.buffer.slice(
+    wordmarkFontBuffer.byteOffset,
+    wordmarkFontBuffer.byteOffset + wordmarkFontBuffer.byteLength,
+  ),
+);
+
 /**
  * Hoodie colors mirror the parchment, brass, and blue-light palette used by
  * GameMaster Studio. The desk-mat palette lives in its approved source image.
@@ -50,10 +68,7 @@ const WEBSITE_QR_URL = 'https://sixsmithgames.com/';
 const COLORS = {
   white: '#ffffff',
   parchment: '#f5ead2',
-  mutedParchment: '#c9bda7',
-  brass: '#d7a548',
   warmBrass: '#f0c56a',
-  blue: '#4a9cdb',
 };
 
 /**
@@ -69,6 +84,45 @@ function escapeSvgText(value) {
     .replaceAll('>', '&gt;')
     .replaceAll('"', '&quot;')
     .replaceAll("'", '&apos;');
+}
+
+/**
+ * Converts one centered line of lettering into SVG path geometry.
+ *
+ * Fourthwall still receives a high-resolution transparent PNG, but the source
+ * lockup is built from glyph outlines rather than a live SVG text element.
+ * This keeps the decorative lettering deterministic on every machine and
+ * prevents a supplier renderer from substituting a plain fallback font.
+ */
+function centeredLetterPath(
+  text,
+  { centerX, baseline, fontSize, maxWidth },
+) {
+  const unpositionedPath = wordmarkFont.getPath(text, 0, baseline, fontSize, {
+    kerning: true,
+  });
+  const bounds = unpositionedPath.getBoundingBox();
+  const width = bounds.x2 - bounds.x1;
+  const fittedFontSize =
+    maxWidth && width > maxWidth
+      ? fontSize * (maxWidth / width)
+      : fontSize;
+  const fittedPath = wordmarkFont.getPath(text, 0, baseline, fittedFontSize, {
+    kerning: true,
+  });
+  const fittedBounds = fittedPath.getBoundingBox();
+  const left = centerX - (fittedBounds.x1 + fittedBounds.x2) / 2;
+  const positionedPath = wordmarkFont.getPath(
+    text,
+    left,
+    baseline,
+    fittedFontSize,
+    {
+      kerning: true,
+    },
+  );
+
+  return positionedPath.toPathData(2);
 }
 
 /**
@@ -102,22 +156,21 @@ function hoodieFrontSvg() {
 }
 
 /**
- * Builds the transparent typography layer for the hoodie back.
+ * Builds the transparent vector-art layer for the hoodie back.
  *
  * The current back layout follows Mike's message-first hierarchy:
  *
- * 1. `MASTER YOUR STORIES` leads below the hood-clearance area and invites
- *    confident ownership without implying that the wearer's current stories
- *    are not good.
- * 2. `GAMEMASTER STUDIO` follows immediately below the tagline.
+ * 1. `Master Your Stories` is a clean, mixed-case Fondamento wordmark rather
+ *    than a live text element. Parchment keeps it readable on black fabric.
+ * 2. `GameMaster Studio` is also converted to paths and sits immediately
+ *    below the wordmark.
  * 3. The real Sixsmith Games logo occupies the middle of the composition.
  * 4. The old horizontal rule and spelled-out publisher line are absent.
  * 5. The permanent website address anchors the bottom of the print.
  *
- * The tagline, product name, and logo are shifted downward together by 300
- * source pixels. The website and QR stay fixed, tightening the lower spacing
- * by the same amount and shortening the visible composition without changing
- * the permanent QR geometry.
+ * The two lettering lines sit as one compact lockup just above the crest. The
+ * approved treatment intentionally omits stars, lines, gems, runes, and other
+ * flourishes so the fantasy character comes entirely from the letterforms.
  *
  * The verified QR is composited separately below the website address so it
  * remains pixel-perfect rather than being approximated inside SVG markup.
@@ -127,22 +180,24 @@ function hoodieFrontSvg() {
 function hoodieBackSvg() {
   const width = 4200;
   const height = 5000;
-  const tagline = 'MASTER YOUR STORIES';
+  const titlePath = centeredLetterPath('Master Your Stories', {
+    centerX: 2100,
+    baseline: 1240,
+    fontSize: 405,
+    maxWidth: 3500,
+  });
+  const productPath = centeredLetterPath('GameMaster Studio', {
+    centerX: 2100,
+    baseline: 1510,
+    fontSize: 175,
+    maxWidth: 2100,
+  });
 
   return `
     <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-      <text x="2100" y="880" text-anchor="middle"
-            fill="${COLORS.white}"
-            font-family="Arial, Helvetica, sans-serif"
-            font-size="270"
-            font-weight="900"
-            letter-spacing="4">${escapeSvgText(tagline)}</text>
-      <text x="2100" y="1270" text-anchor="middle"
-            fill="${COLORS.white}"
-            font-family="Arial, Helvetica, sans-serif"
-            font-size="205"
-            font-weight="800"
-            letter-spacing="14">GAMEMASTER STUDIO</text>
+      <path d="${titlePath}" fill="${COLORS.parchment}" />
+      <path d="${productPath}" fill="${COLORS.warmBrass}" />
+
       <text x="2100" y="4075" text-anchor="middle"
             fill="${COLORS.white}"
             font-family="Arial, Helvetica, sans-serif"
@@ -324,7 +379,15 @@ async function renderDeskMatArtwork() {
  */
 async function main() {
   await mkdir(OUTPUT_DIRECTORY, { recursive: true });
+  await mkdir(path.join(OUTPUT_DIRECTORY, 'source'), { recursive: true });
   const websiteQrCode = await createVerifiedWebsiteQrCode();
+  const hoodieBackVector = hoodieBackSvg();
+  const hoodieBackVectorPath = path.join(
+    OUTPUT_DIRECTORY,
+    'source',
+    'master-your-stories-hoodie-back-fondamento-v9.svg',
+  );
+  await writeFile(hoodieBackVectorPath, hoodieBackVector.trim(), 'utf8');
 
   const generatedFiles = await Promise.all([
     renderHoodieArtwork({
@@ -336,13 +399,13 @@ async function main() {
       logoTop: 70,
     }),
     renderHoodieArtwork({
-      svg: hoodieBackSvg(),
-      outputName: 'session-zero-hoodie-back-hood-clearance-qr-v7-4200x5000.png',
+      svg: hoodieBackVector,
+      outputName: 'master-your-stories-hoodie-back-fondamento-v9-4200x5000.png',
       logoWidth: 2300,
       logoHeight: 2238,
       logoLeft: 950,
-      // Lower the brand group below the hood while tightening lower spacing.
-      logoTop: 1550,
+      // Pull the wordmark, product line, and crest into one compact lockup.
+      logoTop: 1640,
       additionalLayers: [
         {
           input: websiteQrCode,
@@ -358,6 +421,7 @@ async function main() {
   for (const generatedFile of generatedFiles) {
     console.log(generatedFile);
   }
+  console.log(hoodieBackVectorPath);
 }
 
 await main();

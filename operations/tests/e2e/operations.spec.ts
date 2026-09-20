@@ -26,6 +26,8 @@ test("opens a normalized CRM customer record", async ({ page }) => {
     page.getByRole("heading", { level: 1, name: "Corin Halverson" }),
   ).toBeVisible();
   await expect(page.getByText("Identity links")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Product activity ledger" })).toBeVisible();
+  await expect(page.getByText("The Ashen Vault")).toBeVisible();
 });
 
 test("keeps sample reconciliation corrections non-persistent", async ({
@@ -107,10 +109,37 @@ test("renders first-class analytics with an explicit privacy boundary", async ({
   expect(viewport.scrollWidth).toBe(viewport.clientWidth);
 });
 
+test("reports source-authoritative product activity without masking source failures", async ({
+  page,
+}) => {
+  await page.goto("/product-activity");
+
+  await expect(
+    page.getByRole("heading", { level: 1, name: "Product Activity" }),
+  ).toBeVisible();
+  await expect(page.getByText("Operational activity ledger")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Source health" })).toBeVisible();
+  await expect(page.getByText("VCS authoritative feed")).toBeVisible();
+  await expect(page.getByText("The source is unavailable; no zero-activity claim is made.")).toBeVisible();
+  await expect(page.getByText("Privacy boundary")).toBeVisible();
+  await expect(page.getByRole("button", { name: "Synchronize sources" })).toBeDisabled();
+  await expect(page.getByRole("link", { name: "Product Activity", exact: true })).toHaveAttribute(
+    "aria-current",
+    "page",
+  );
+
+  const viewport = await page.evaluate(() => ({
+    clientWidth: document.documentElement.clientWidth,
+    scrollWidth: document.documentElement.scrollWidth,
+  }));
+  expect(viewport.scrollWidth).toBe(viewport.clientWidth);
+});
+
 test("opens every primary operations workspace", async ({ page }) => {
   const workspaces = [
     ["/dashboard", "Dashboard"],
     ["/analytics", "Analytics"],
+    ["/product-activity", "Product Activity"],
     ["/subscriptions/reconciliation", "Entitlement Reconciliation"],
     ["/orders", "Orders"],
     ["/crm", "CRM"],
