@@ -114,9 +114,9 @@ export const MERCH_PRODUCTS: MerchProductDefinition[] = [
     ],
     accent: '#a45535',
     imageUrl:
-      'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1785444317/sixsmith-games/merch/master-your-stories-hoodie-back-black-fourthwall.jpg',
+      'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1789867900/sixsmith-games/merch/master-your-stories-hoodie-back-black-fourthwall.jpg',
     imageAlt:
-      'Back of the black Master Your Stories pullover hoodie with the Sixsmith Games crest',
+      'Back of the black Master Your Stories pullover hoodie with mixed-case fantasy lettering, the Sixsmith Games crest, website, and QR code',
     shopUrl:
       'https://sixsmith-games-shop.fourthwall.com/products/master-your-stories-hoodie',
     shopCta: 'Shop the hoodie',
@@ -142,9 +142,9 @@ export const MERCH_PRODUCTS: MerchProductDefinition[] = [
     ],
     accent: '#446f9f',
     imageUrl:
-      'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1785499541/sixsmith-games/merch/master-your-stories-full-zip-hoodie-back-fourthwall.avif',
+      'https://res.cloudinary.com/dxz6khmew/image/upload/e_trim:10/f_auto,q_auto,w_1400/v1789867902/sixsmith-games/merch/master-your-stories-full-zip-hoodie-back-fourthwall.jpg',
     imageAlt:
-      'Back of the black Master Your Stories zippered hoodie with the Sixsmith Games crest',
+      'Back of the black Master Your Stories zippered hoodie with mixed-case fantasy lettering, the Sixsmith Games crest, website, and QR code',
     shopUrl:
       'https://sixsmith-games-shop.fourthwall.com/products/master-your-stories-full-zip-hoodie',
     shopCta: 'Shop the zippered hoodie',
