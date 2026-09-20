@@ -37,13 +37,13 @@ const LOGO_PATH = path.join(
   'icons',
   'sixsmith-logo.png',
 );
-const FANTASY_FONT_PATH = path.join(
+const WORDMARK_FONT_PATH = path.join(
   REPOSITORY_ROOT,
   'assets',
   'merch',
   'fonts',
-  'cinzel-decorative',
-  'CinzelDecorative-Black.ttf',
+  'fondamento',
+  'Fondamento-Regular.ttf',
 );
 const DUNGEON_PANORAMA_PATH = path.join(
   OUTPUT_DIRECTORY,
@@ -53,11 +53,11 @@ const DUNGEON_PANORAMA_PATH = path.join(
 const WEBSITE_DISPLAY_TEXT = 'SIXSMITHGAMES.COM';
 const WEBSITE_QR_URL = 'https://sixsmithgames.com/';
 
-const fantasyFontBuffer = readFileSync(FANTASY_FONT_PATH);
-const fantasyFont = opentype.parse(
-  fantasyFontBuffer.buffer.slice(
-    fantasyFontBuffer.byteOffset,
-    fantasyFontBuffer.byteOffset + fantasyFontBuffer.byteLength,
+const wordmarkFontBuffer = readFileSync(WORDMARK_FONT_PATH);
+const wordmarkFont = opentype.parse(
+  wordmarkFontBuffer.buffer.slice(
+    wordmarkFontBuffer.byteOffset,
+    wordmarkFontBuffer.byteOffset + wordmarkFontBuffer.byteLength,
   ),
 );
 
@@ -68,10 +68,7 @@ const fantasyFont = opentype.parse(
 const COLORS = {
   white: '#ffffff',
   parchment: '#f5ead2',
-  mutedParchment: '#c9bda7',
-  brass: '#d7a548',
   warmBrass: '#f0c56a',
-  blue: '#4a9cdb',
 };
 
 /**
@@ -97,15 +94,33 @@ function escapeSvgText(value) {
  * This keeps the decorative lettering deterministic on every machine and
  * prevents a supplier renderer from substituting a plain fallback font.
  */
-function centeredLetterPath(text, { centerX, baseline, fontSize }) {
-  const unpositionedPath = fantasyFont.getPath(text, 0, baseline, fontSize, {
+function centeredLetterPath(
+  text,
+  { centerX, baseline, fontSize, maxWidth },
+) {
+  const unpositionedPath = wordmarkFont.getPath(text, 0, baseline, fontSize, {
     kerning: true,
   });
   const bounds = unpositionedPath.getBoundingBox();
-  const left = centerX - (bounds.x1 + bounds.x2) / 2;
-  const positionedPath = fantasyFont.getPath(text, left, baseline, fontSize, {
+  const width = bounds.x2 - bounds.x1;
+  const fittedFontSize =
+    maxWidth && width > maxWidth
+      ? fontSize * (maxWidth / width)
+      : fontSize;
+  const fittedPath = wordmarkFont.getPath(text, 0, baseline, fittedFontSize, {
     kerning: true,
   });
+  const fittedBounds = fittedPath.getBoundingBox();
+  const left = centerX - (fittedBounds.x1 + fittedBounds.x2) / 2;
+  const positionedPath = wordmarkFont.getPath(
+    text,
+    left,
+    baseline,
+    fittedFontSize,
+    {
+      kerning: true,
+    },
+  );
 
   return positionedPath.toPathData(2);
 }
@@ -145,18 +160,17 @@ function hoodieFrontSvg() {
  *
  * The current back layout follows Mike's message-first hierarchy:
  *
- * 1. `MASTER YOUR STORIES` is an outlined decorative wordmark rather than a
- *    live text element. Brass, blue, and parchment echo the crest without
- *    sacrificing distance readability.
- * 2. `GAMEMASTER STUDIO` is also converted to paths and sits immediately
+ * 1. `Master Your Stories` is a clean, mixed-case Fondamento wordmark rather
+ *    than a live text element. Parchment keeps it readable on black fabric.
+ * 2. `GameMaster Studio` is also converted to paths and sits immediately
  *    below the wordmark.
  * 3. The real Sixsmith Games logo occupies the middle of the composition.
  * 4. The old horizontal rule and spelled-out publisher line are absent.
  * 5. The permanent website address anchors the bottom of the print.
  *
- * The two lettering lines sit as one compact lockup just above the crest.
- * Small symmetrical star and rune strokes provide the magical character; they
- * remain supporting details so the phrase still reads at storefront size.
+ * The two lettering lines sit as one compact lockup just above the crest. The
+ * approved treatment intentionally omits stars, lines, gems, runes, and other
+ * flourishes so the fantasy character comes entirely from the letterforms.
  *
  * The verified QR is composited separately below the website address so it
  * remains pixel-perfect rather than being approximated inside SVG markup.
@@ -166,90 +180,23 @@ function hoodieFrontSvg() {
 function hoodieBackSvg() {
   const width = 4200;
   const height = 5000;
-  const titlePaths = [
-    centeredLetterPath('MASTER', {
-      centerX: 935,
-      baseline: 1260,
-      fontSize: 245,
-    }),
-    centeredLetterPath('YOUR', {
-      centerX: 2112,
-      baseline: 1260,
-      fontSize: 245,
-    }),
-    centeredLetterPath('STORIES', {
-      centerX: 3278,
-      baseline: 1260,
-      fontSize: 245,
-    }),
-  ];
-  const productPaths = [
-    centeredLetterPath('GAMEMASTER', {
-      centerX: 1687,
-      baseline: 1515,
-      fontSize: 155,
-    }),
-    centeredLetterPath('STUDIO', {
-      centerX: 2804,
-      baseline: 1515,
-      fontSize: 155,
-    }),
-  ];
+  const titlePath = centeredLetterPath('Master Your Stories', {
+    centerX: 2100,
+    baseline: 1240,
+    fontSize: 405,
+    maxWidth: 3500,
+  });
+  const productPath = centeredLetterPath('GameMaster Studio', {
+    centerX: 2100,
+    baseline: 1510,
+    fontSize: 175,
+    maxWidth: 2100,
+  });
 
   return `
     <svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
-      <defs>
-        <linearGradient id="wordmark-gold" x1="0" y1="0" x2="0" y2="1">
-          <stop offset="0" stop-color="${COLORS.white}" />
-          <stop offset="0.48" stop-color="${COLORS.parchment}" />
-          <stop offset="1" stop-color="${COLORS.warmBrass}" />
-        </linearGradient>
-      </defs>
-
-      <g fill="none"
-         stroke="${COLORS.blue}"
-         stroke-opacity="0.82"
-         stroke-width="34"
-         stroke-linejoin="round">
-        ${titlePaths.map((titlePath) => `<path d="${titlePath}" />`).join('\n')}
-      </g>
-      <g fill="url(#wordmark-gold)"
-         stroke="${COLORS.brass}"
-         stroke-width="13"
-         stroke-linejoin="round"
-         paint-order="stroke fill">
-        ${titlePaths.map((titlePath) => `<path d="${titlePath}" />`).join('\n')}
-      </g>
-
-      <g fill="none" stroke="${COLORS.warmBrass}" stroke-linecap="round" stroke-linejoin="round">
-        <path d="M155 1165 C225 1088 292 1050 382 1038 M155 1165 C225 1242 292 1280 382 1292" stroke-width="16" />
-        <path d="M4045 1165 C3975 1088 3908 1050 3818 1038 M4045 1165 C3975 1242 3908 1280 3818 1292" stroke-width="16" />
-        <path d="M126 1165 L155 1136 L184 1165 L155 1194 Z" fill="${COLORS.blue}" stroke-width="10" />
-        <path d="M4074 1165 L4045 1136 L4016 1165 L4045 1194 Z" fill="${COLORS.blue}" stroke-width="10" />
-      </g>
-
-      <g fill="${COLORS.warmBrass}">
-        <path d="M2100 900 L2120 947 L2167 967 L2120 987 L2100 1034 L2080 987 L2033 967 L2080 947 Z" />
-        <circle cx="1984" cy="967" r="12" fill="${COLORS.blue}" />
-        <circle cx="2216" cy="967" r="12" fill="${COLORS.blue}" />
-      </g>
-
-      <g fill="${COLORS.parchment}"
-         stroke="#162d46"
-         stroke-width="10"
-         stroke-linejoin="round"
-         paint-order="stroke fill">
-        ${productPaths.map((productPath) => `<path d="${productPath}" />`).join('\n')}
-      </g>
-      <path d="M1180 1582 C1505 1548 1750 1550 1920 1584 L2100 1618 L2280 1584 C2450 1550 2695 1548 3020 1582"
-            fill="none"
-            stroke="${COLORS.warmBrass}"
-            stroke-width="12"
-            stroke-linecap="round" />
-      <path d="M2072 1618 L2100 1590 L2128 1618 L2100 1646 Z"
-            fill="${COLORS.blue}"
-            stroke="${COLORS.warmBrass}"
-            stroke-width="8" />
+      <path d="${titlePath}" fill="${COLORS.parchment}" />
+      <path d="${productPath}" fill="${COLORS.warmBrass}" />
 
       <text x="2100" y="4075" text-anchor="middle"
             fill="${COLORS.white}"
@@ -438,7 +385,7 @@ async function main() {
   const hoodieBackVectorPath = path.join(
     OUTPUT_DIRECTORY,
     'source',
-    'master-your-stories-hoodie-back-vector-lockup-v8.svg',
+    'master-your-stories-hoodie-back-fondamento-v9.svg',
   );
   await writeFile(hoodieBackVectorPath, hoodieBackVector.trim(), 'utf8');
 
@@ -453,7 +400,7 @@ async function main() {
     }),
     renderHoodieArtwork({
       svg: hoodieBackVector,
-      outputName: 'master-your-stories-hoodie-back-vector-lockup-v8-4200x5000.png',
+      outputName: 'master-your-stories-hoodie-back-fondamento-v9-4200x5000.png',
       logoWidth: 2300,
       logoHeight: 2238,
       logoLeft: 950,
