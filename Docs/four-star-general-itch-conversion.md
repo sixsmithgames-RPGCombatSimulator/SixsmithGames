@@ -2,6 +2,9 @@
 
 Last updated: October 4, 2026
 
+Status: Live in production on the public website, Four Star General, and the
+Operations Analytics report
+
 ## Positioning decision
 
 - **Audience:** Serious WWII strategy and hex-wargame players discovering Four Star General on itch.io.
@@ -55,3 +58,14 @@ and customer record belong to the same person. A random browser-tab session
 identifier is added only after optional analytics consent. Operations customer
 records are labeled as all-source context until a reviewed consented
 attribution join exists.
+
+## Production verification
+
+- The deployed Four Star General app preserves the itch.io source, medium, and
+  campaign on sign-in and purchase links while retaining required destination
+  parameters.
+- The deployed public product page presents `Play free in browser` as the
+  primary action and sends players to `https://fsg.sixsmithgames.com`.
+- Browser console checks completed without errors on both live surfaces.
+- A browser-style first-party analytics event sent through the public website
+  was accepted by the live Operations ingestion path.

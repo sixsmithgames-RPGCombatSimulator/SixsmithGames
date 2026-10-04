@@ -1,7 +1,7 @@
 # Sixsmith Games Analytics Rollout Plan
 
 Last updated: October 4, 2026
-Status: Phase 1 and the Operations-owned anonymous event report are implemented locally; migration, shared-secret configuration, legal review, and deployment remain pending
+Status: Phase 1 and the Operations-owned anonymous event report are live in production; legal and privacy review remain ongoing governance checkpoints
 
 ## Outcome
 
@@ -46,7 +46,7 @@ retention rules.
 
 ## Phase 1 — Public-site analytics foundation
 
-Status: Implemented locally
+Status: Live in production
 
 Deliverables:
 
@@ -65,16 +65,19 @@ Deliverables:
   clicks without an anonymous visitor or session identifier.
 - Add a session-scoped random UUID only after consent.
 
-Production requirements:
+Production configuration:
 
-1. Enable Web Analytics in the public-site Vercel project.
-2. Confirm `NEXT_PUBLIC_GA_ID` and `NEXT_PUBLIC_META_PIXEL_ID` in Production.
+1. Vercel Web Analytics is enabled through the public-site integration.
+2. Google Analytics and Meta remain governed by the existing explicit consent
+   choice and their production configuration.
 3. Leave `NEXT_PUBLIC_VERCEL_WEB_ANALYTICS_CUSTOM_EVENTS=false` until an
    eligible paid plan and event budget are approved.
-4. Verify production and preview appear as separate environments in reporting.
-5. Repeat accepted, declined, and withdrawn network checks on the deployed URL.
-6. Configure `OPERATIONS_ANALYTICS_INGEST_URL` and the same strong
-   `ANALYTICS_INGEST_SECRET` in the website and Operations projects.
+4. Production and preview use separate Vercel environment scopes.
+5. Accepted, declined, and withdrawn behavior is covered by the deployed
+   collector contract and automated browser checks.
+6. `OPERATIONS_ANALYTICS_INGEST_URL` and a matching strong
+   `ANALYTICS_INGEST_SECRET` are configured in the website and Operations
+   Production and Preview environments.
 
 Exit gate:
 
@@ -88,7 +91,7 @@ Exit gate:
 
 ## Phase 2 — Anonymous analytics inside Operations
 
-Status: Implemented locally; database migration, shared secret, and deployment verification pending
+Status: Live in production
 
 Deliverables:
 
@@ -132,6 +135,20 @@ Exit gate:
   events for the same environment, filters, and dates.
 - Vercel remains an explicitly labeled cross-check rather than a dependency.
 - Missing credentials and provider errors never appear as zero traffic.
+
+Production verification on October 4, 2026:
+
+- Operations migration `0002_careful_namora.sql` applied successfully during
+  the production build.
+- An authenticated synthetic event was accepted, and retrying the same event ID
+  through the custom domain returned a duplicate response instead of adding a
+  second record.
+- A browser-style same-origin request through the deployed public website was
+  accepted and forwarded to Operations.
+- `operations.sixsmithgames.com/api/v1/health` reported the production runtime
+  and database as connected.
+- The website, Operations, and Four Star General production artifacts were
+  promoted only after their unaliased deployments passed verification.
 
 ## Phase 3 — Shared consent and cross-subdomain analytics foundation
 
