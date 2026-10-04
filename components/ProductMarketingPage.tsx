@@ -64,6 +64,7 @@ function renderButton(product: ProductDefinition, tone: 'primary' | 'secondary')
         style={commonStyle}
         deepLinkPath={tone === 'primary' ? product.primaryDeepLinkPath : undefined}
         openPublic={tone === 'primary' ? product.primaryOpenPublic : undefined}
+        analyticsSurface={`product_hero_${tone}`}
       >
         {cta.label}
       </LaunchAppButton>
@@ -85,7 +86,14 @@ function renderButton(product: ProductDefinition, tone: 'primary' | 'secondary')
 
   if (cta.href) {
     return (
-      <Link href={cta.href} style={commonStyle}>
+      <Link
+        href={cta.href}
+        style={commonStyle}
+        data-analytics-event={cta.href.startsWith('/pricing') ? 'product_pricing_click' : undefined}
+        data-product-slug={product.slug}
+        data-destination-type={cta.href.startsWith('/pricing') ? 'pricing' : 'internal_link'}
+        data-analytics-surface={`product_hero_${tone}`}
+      >
         {cta.label}
       </Link>
     );
@@ -388,6 +396,10 @@ function renderVirtualCombatSimulatorShowcase(product: ProductDefinition, screen
             </LaunchAppButton>
             <Link
               href={product.pricingPath}
+              data-analytics-event="product_pricing_click"
+              data-product-slug={product.slug}
+              data-destination-type="pricing"
+              data-analytics-surface="pricing_and_access"
               style={{
                 display: 'inline-flex',
                 alignItems: 'center',
@@ -441,7 +453,7 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
         style={{
           background: product.theme.gradient,
           color: 'white',
-          padding: '84px 0 76px',
+          padding: product.slug === 'fourstargeneral' ? '56px 0 64px' : '84px 0 76px',
           position: 'relative',
           overflow: 'hidden',
         }}
@@ -477,7 +489,9 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
               </div>
               <h1
                 style={{
-                  fontSize: 'clamp(2.2rem, 6vw, 4rem)',
+                  fontSize: product.slug === 'fourstargeneral'
+                    ? 'clamp(2.2rem, 5vw, 3.55rem)'
+                    : 'clamp(2.2rem, 6vw, 4rem)',
                   lineHeight: 1.08,
                   fontWeight: 900,
                   margin: '0 0 1rem',
@@ -488,13 +502,13 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
               <p style={{ fontSize: '1.14rem', lineHeight: 1.85, color: 'rgba(255,255,255,0.92)', margin: '0 0 1rem' }}>
                 {product.heroValue}
               </p>
-              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: '0 0 1.5rem' }}>
-                {product.heroSummary}
-              </p>
               <div style={{ display: 'flex', flexWrap: 'wrap', gap: '0.85rem', marginBottom: '1rem' }}>
                 {renderButton(product, 'primary')}
                 {renderButton(product, 'secondary')}
               </div>
+              <p style={{ fontSize: '1rem', lineHeight: 1.8, color: 'rgba(255,255,255,0.86)', margin: 0 }}>
+                {product.heroSummary}
+              </p>
             </div>
             {product.heroMedia ? (
               <div>
@@ -747,8 +761,22 @@ export default async function ProductMarketingPage({ product }: ProductMarketing
         <section style={{ marginBottom: '3rem' }}>
           <h2 style={{ fontSize: '2rem', fontWeight: 900, color: '#0f172a', margin: '0 0 1rem' }}>Official links</h2>
           <div style={{ display: 'grid', gridTemplateColumns: fluidGrid('240px'), gap: '1rem', marginBottom: '1.5rem' }}>
-            {renderOfficialLink(product.pricingPath, `${product.name} pricing`, `See current pricing and how to get started with ${product.name}.`)}
-            {renderOfficialLink(product.appUrl, `Try ${product.name}`, `Open the official ${product.name} app or play experience.`)}
+            <div
+              data-analytics-event="product_pricing_click"
+              data-product-slug={product.slug}
+              data-destination-type="pricing"
+              data-analytics-surface="official_links"
+            >
+              {renderOfficialLink(product.pricingPath, `${product.name} pricing`, `See current pricing and how to get started with ${product.name}.`)}
+            </div>
+            <div
+              data-analytics-event="product_launch_click"
+              data-product-slug={product.slug}
+              data-destination-type="app"
+              data-analytics-surface="official_links"
+            >
+              {renderOfficialLink(product.appUrl, `Try ${product.name}`, `Open the official ${product.name} app or play experience.`)}
+            </div>
             {renderOfficialLink(product.helpPath, `${product.name} help`, `Read getting-started notes, core features, common use cases, and current scope for ${product.name}.`)}
             {renderOfficialLink(product.supportPath, 'Support and contact', 'Reach the Sixsmith Games support team for help, product questions, and contact details.')}
           </div>

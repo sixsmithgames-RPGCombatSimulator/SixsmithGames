@@ -2,6 +2,10 @@ import type { Metadata } from "next";
 import { AnalyticsWorkspace } from "@/components/operations/analytics-workspace";
 import { requireAuthorizedOperationsUser } from "@/lib/auth/authorized-user";
 import {
+  getFirstPartyWebAnalyticsSnapshot,
+  getPreviewFirstPartyWebAnalyticsSnapshot,
+} from "@/lib/integrations/first-party-web-analytics";
+import {
   getPreviewWebAnalyticsSnapshot,
   getVercelWebAnalyticsSnapshot,
   resolveAnalyticsRange,
@@ -25,9 +29,15 @@ interface AnalyticsPageProps {
 export default async function AnalyticsPage({ searchParams }: AnalyticsPageProps) {
   const user = await requireAuthorizedOperationsUser();
   const range = resolveAnalyticsRange((await searchParams).range);
-  const snapshot = user.isPreview
-    ? getPreviewWebAnalyticsSnapshot(range)
-    : await getVercelWebAnalyticsSnapshot(range);
+  const [snapshot, firstPartySnapshot] = user.isPreview
+    ? [
+        getPreviewWebAnalyticsSnapshot(range),
+        getPreviewFirstPartyWebAnalyticsSnapshot(range),
+      ]
+    : await Promise.all([
+        getVercelWebAnalyticsSnapshot(range),
+        getFirstPartyWebAnalyticsSnapshot(range),
+      ]);
 
-  return <AnalyticsWorkspace snapshot={snapshot} />;
+  return <AnalyticsWorkspace snapshot={snapshot} firstPartySnapshot={firstPartySnapshot} />;
 }

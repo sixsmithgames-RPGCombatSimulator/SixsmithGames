@@ -5,6 +5,11 @@ import {
   sanitizeAnalyticsProperties,
 } from '../../lib/analytics-policy';
 import { inferTrafficContext } from '../../lib/analytics';
+import {
+  classifyAnalyticsDevice,
+  isAnalyticsBot,
+  normalizeFirstPartyAnalyticsEvent,
+} from '../../lib/first-party-analytics-contract';
 
 describe('analytics privacy policy', () => {
   it('removes every query parameter and fragment from anonymous page views', () => {
@@ -71,5 +76,77 @@ describe('analytics privacy policy', () => {
       sourceType: 'referral',
       sourceDetail: 'invalid_referrer',
     });
+  });
+
+  it('recognizes itch.io as a game marketplace and preserves bounded campaign tags', () => {
+    expect(
+      inferTrafficContext(
+        'https://sixsmithgames.itch.io/four-star-general',
+        '?utm_medium=game_listing&utm_campaign=four_star_general',
+        '/apps/fourstargeneral',
+      ),
+    ).toEqual({
+      sourceType: 'game_marketplace',
+      sourceDetail: 'itch.io',
+      landingPath: '/apps/fourstargeneral',
+      utmSource: 'itchio',
+      utmMedium: 'game_listing',
+      utmCampaign: 'four_star_general',
+    });
+  });
+
+  it('normalizes first-party events without accepting identity or private routes', () => {
+    const now = Date.parse('2026-10-04T16:00:00.000Z');
+    const normalized = normalizeFirstPartyAnalyticsEvent({
+      contract_version: 1,
+      event_id: '0199aa11-2222-7333-8444-555566667777',
+      event_name: 'product_launch_click',
+      occurred_at: '2026-10-04T15:59:30.000Z',
+      path: '/apps/fourstargeneral?email=private@example.com',
+      source_type: 'game_marketplace',
+      source_detail: 'itch.io',
+      landing_path: '/apps/fourstargeneral',
+      utm_source: 'itchio',
+      utm_medium: 'game_listing',
+      utm_campaign: 'four_star_general',
+      consent_state: 'accepted',
+      session_id: '0199bb11-2222-7333-8444-555566667777',
+      properties: {
+        product_slug: 'fourstargeneral',
+        destination_type: 'app',
+        email: 'private@example.com',
+      },
+    }, {
+      countryCode: 'us',
+      deviceType: 'desktop',
+      environment: 'production',
+      now,
+    });
+
+    expect(normalized).toMatchObject({
+      path: '/apps/fourstargeneral',
+      country_code: 'US',
+      session_id: '0199bb11-2222-7333-8444-555566667777',
+      properties: {
+        product_slug: 'fourstargeneral',
+        destination_type: 'app',
+      },
+    });
+    expect(
+      normalizeFirstPartyAnalyticsEvent({
+        ...normalized,
+        path: '/apps/contentcraft/private-project',
+      }, {
+        deviceType: 'desktop',
+        environment: 'production',
+        now,
+      }),
+    ).toBeNull();
+  });
+
+  it('keeps only coarse device evidence and rejects obvious bots', () => {
+    expect(classifyAnalyticsDevice('Mozilla/5.0 (iPhone; CPU iPhone OS 18_0)')).toBe('mobile');
+    expect(classifyAnalyticsDevice('Mozilla/5.0 (Windows NT 10.0; Win64; x64)')).toBe('desktop');
+    expect(isAnalyticsBot('Googlebot/2.1')).toBe(true);
   });
 });

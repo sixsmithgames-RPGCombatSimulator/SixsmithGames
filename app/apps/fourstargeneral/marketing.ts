@@ -5,15 +5,15 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   slug: 'fourstargeneral',
   name: 'Four Star General',
   descriptor: 'WWII tactical strategy game with skill-based tactics',
-  h1: 'Four Star General for serious WWII tactical strategy',
+  h1: 'Command a WWII battlefield where every decision is visible',
   title: 'Four Star General | Skill-Based WWII Tactical Strategy Game',
   metaDescription:
     'Four Star General is a WWII tactical strategy game focused on supply, reserves, urgent command decisions, and visible tactical rules.',
-  heroEyebrow: 'WWII Tactical Strategy',
+  heroEyebrow: 'Free browser wargame',
   heroValue:
-    'Win or lose, you will know exactly why. Every battle comes down to your deployment, your reserves, and your read of the mission — not a dice roll that hid the answer.',
+    'Deploy your force, protect supply, commit reserves, and read the mission. Win or lose, the tactical rules show you why.',
   heroSummary:
-    'Four Star General is for players who like WWII strategy and are tired of games where the rules turn out to be smoke. Here, supply matters, reserves matter, terrain matters, and the next run is yours to improve.',
+    'Play the tactical core free in your browser. If the command model fits you, optional $2 monthly content adds more scenarios, units, and expanded play.',
   oneSentence:
     'Four Star General is a browser-based WWII tactical strategy game where battle outcomes follow your decisions, not hidden dice.',
   category: 'WWII tactical strategy game',
@@ -44,13 +44,13 @@ export const fourStarGeneralProductDefinition: ProductDefinition = {
   },
   primaryCta: {
     kind: 'launch',
-    label: 'Play now',
+    label: 'Play free in browser',
     appSlug: 'fourstargeneral',
   },
   primaryOpenPublic: true,
   secondaryCta: {
     kind: 'link',
-    label: 'See upgrades',
+    label: 'See the $2 expansion',
     href: '/pricing#fourstargeneral',
   },
   heroMedia: {

@@ -15,6 +15,13 @@
       "when": 1787411447963,
       "tag": "0001_whole_garia",
       "breakpoints": true
+    },
+    {
+      "idx": 2,
+      "version": "7",
+      "when": 1791091483026,
+      "tag": "0002_careful_namora",
+      "breakpoints": true
     }
   ]
 }

@@ -96,6 +96,9 @@ test("renders first-class analytics with an explicit privacy boundary", async ({
     page.getByRole("heading", { level: 1, name: "Analytics" }),
   ).toBeVisible();
   await expect(page.getByText("Cookieless aggregate measurement")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Four Star General acquisition and conversion" })).toBeVisible();
+  await expect(page.getByText("itch.io-attributed views")).toBeVisible();
+  await expect(page.getByRole("heading", { name: "Measurement boundary", exact: true })).toBeVisible();
   await expect(page.getByText("Phase 1 measurement boundary")).toBeVisible();
   await expect(page.getByRole("link", { name: "Analytics", exact: true })).toHaveAttribute(
     "aria-current",

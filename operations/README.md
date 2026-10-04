@@ -23,6 +23,10 @@ The application currently includes:
 - First-class Analytics workspace backed by Vercel's production aggregate API,
   with traffic trends, routes, referrers, UTM sources, geography, devices,
   browsers, comparison periods, freshness, and explicit collection boundaries
+- Operations-owned first-party web analytics ledger for redacted page views,
+  visible active time, allowlisted conversion clicks, itch.io attribution,
+  consented session counts, and all-source registration context without IP
+  addresses, raw user agents, or anonymous persistent identifiers
 - First-class Product Activity workspace backed by a source-authoritative,
   identified operational ledger with DAU/WAU/MAU, explicit active time,
   product-defined sessions and outcomes, entity summaries, Customer 360 cards,
@@ -95,6 +99,7 @@ VERCEL_ANALYTICS_PROJECT_NAME=sixsmithgames
 VERCEL_ANALYTICS_DASHBOARD_URL=https://vercel.com/sixsmithgames-rpgcombatsimulators-projects/sixsmithgames/analytics
 VERCEL_ANALYTICS_UTM_SOURCES_ENABLED=false
 VERCEL_ANALYTICS_CUSTOM_EVENTS_ENABLED=false
+ANALYTICS_INGEST_SECRET=
 PRODUCT_ACTIVITY_LEDGER_ENABLED=false
 PRODUCT_ACTIVITY_AUTO_SYNC_ENABLED=false
 PRODUCT_ACTIVITY_STALE_AFTER_MINUTES=60
@@ -117,6 +122,15 @@ minutes, requests only the production environment, and does not copy raw visit
 events into Neon. Missing or rejected credentials render an explicit source
 state instead of a misleading zero. Keep UTM source dimensions and custom
 events disabled until the required Vercel capability and spend are approved.
+
+`ANALYTICS_INGEST_SECRET` authenticates the public website's server-to-server
+`POST /api/v1/analytics/events` calls. The public browser never receives this
+secret. Events are allowlisted, idempotent, and retained for 120 days. Before
+optional consent they contain no visitor or session identifier. After consent,
+the browser may include a random session-scoped UUID so Operations can count
+sessions and group actions within that browser tab without learning an account
+identity. Country and device are reduced to coarse categories; IP addresses and
+raw user-agent strings are never stored.
 
 Product Activity is a separate data class. Its source feeds contain identified,
 committed operational facts needed for customer support and product operations;
@@ -168,6 +182,7 @@ The schema is in [`src/db/schema.ts`](./src/db/schema.ts). It models:
 - approval decisions and exception work
 - normalized economic events
 - integration freshness and immutable audit events
+- privacy-minimized first-party website events with bounded retention
 - product accounts, immutable activity events, current entity summaries, daily
   rollups, opaque ingestion cursors, and payload-free rejection records
 

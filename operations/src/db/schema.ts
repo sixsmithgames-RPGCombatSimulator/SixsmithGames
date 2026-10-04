@@ -427,6 +427,52 @@ export const PRODUCT_EVENT_REJECTIONS = pgTable(
   ],
 );
 
+export const WEB_ANALYTICS_EVENTS = pgTable(
+  "web_analytics_events",
+  {
+    id: uuid("id").defaultRandom().primaryKey(),
+    eventId: text("event_id").notNull(),
+    contractVersion: integer("contract_version").notNull(),
+    eventName: text("event_name").notNull(),
+    environment: PRODUCT_ENVIRONMENT_ENUM("environment").notNull(),
+    occurredAt: timestamp("occurred_at", { withTimezone: true }).notNull(),
+    receivedAt: timestamp("received_at", { withTimezone: true })
+      .defaultNow()
+      .notNull(),
+    path: text("path").notNull(),
+    landingPath: text("landing_path").notNull(),
+    sourceType: text("source_type").notNull(),
+    sourceDetail: text("source_detail").notNull(),
+    utmSource: text("utm_source"),
+    utmMedium: text("utm_medium"),
+    utmCampaign: text("utm_campaign"),
+    consentState: text("consent_state").notNull(),
+    sessionId: text("session_id"),
+    countryCode: text("country_code").notNull(),
+    deviceType: text("device_type").notNull(),
+    productSlug: text("product_slug"),
+    destinationType: text("destination_type"),
+    surface: text("surface"),
+    engagementSeconds: integer("engagement_seconds"),
+  },
+  (table) => [
+    uniqueIndex("web_analytics_event_id_unique").on(table.eventId),
+    index("web_analytics_occurred_index").on(table.occurredAt),
+    index("web_analytics_event_occurred_index").on(
+      table.eventName,
+      table.occurredAt,
+    ),
+    index("web_analytics_source_occurred_index").on(
+      table.sourceDetail,
+      table.occurredAt,
+    ),
+    index("web_analytics_product_occurred_index").on(
+      table.productSlug,
+      table.occurredAt,
+    ),
+  ],
+);
+
 export const SUBSCRIPTIONS = pgTable(
   "subscriptions",
   {

@@ -16,6 +16,8 @@ interface LaunchAppButtonProps {
   style?: React.CSSProperties;
   children: React.ReactNode;
   autoLaunch?: boolean;
+  /** Stable placement label used by the aggregate conversion report. */
+  analyticsSurface?: string;
   /**
    * Optional path appended to the app URL so signed-in users land directly on a specific in-app
    * surface (e.g. `/character/edit/new`). For signed-out users, the same path is threaded through
@@ -38,7 +40,7 @@ function renderStaticButton(label: string, style?: React.CSSProperties) {
   );
 }
 
-function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath }: LaunchAppButtonProps) {
+function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath, analyticsSurface }: LaunchAppButtonProps) {
   const { isLoaded, isSignedIn } = useUser();
   const { accessInfo, loading: accessLoading } = useSubscriptionAccess(isLoaded && Boolean(isSignedIn));
 
@@ -78,6 +80,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath 
             trackMarketingEvent('product_launch_click', {
               product_slug: appSlug,
               destination_type: 'app',
+              surface: analyticsSurface,
             });
           }}
           style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
@@ -108,6 +111,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath 
           trackMarketingEvent('product_launch_click', {
             product_slug: appSlug,
             destination_type: 'app',
+            surface: analyticsSurface,
           });
         }}
         style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
@@ -124,6 +128,7 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath 
         trackMarketingEvent('product_pricing_click', {
           product_slug: appSlug,
           destination_type: 'pricing',
+          surface: analyticsSurface,
         });
       }}
       style={{ ...style, textDecoration: 'none', display: 'inline-block', textAlign: 'center' }}
@@ -134,6 +139,31 @@ function LaunchButtonInner({ appSlug, style, children, autoLaunch, deepLinkPath 
 }
 
 export default function LaunchAppButton(props: LaunchAppButtonProps) {
+  const publicAppUrl = APP_URLS[props.appSlug];
+  if (props.openPublic && publicAppUrl) {
+    const destination = props.deepLinkPath
+      ? `${publicAppUrl}${props.deepLinkPath}`
+      : publicAppUrl;
+
+    return (
+      <a
+        href={destination}
+        target="_blank"
+        rel="noopener noreferrer"
+        style={{ ...props.style, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+        onClick={() => {
+          trackMarketingEvent('product_launch_click', {
+            product_slug: props.appSlug,
+            destination_type: 'app',
+            surface: props.analyticsSurface ?? 'public_direct',
+          });
+        }}
+      >
+        {props.children}
+      </a>
+    );
+  }
+
   if (props.appSlug === 'gravity') {
     return (
       <>
@@ -151,49 +181,32 @@ export default function LaunchAppButton(props: LaunchAppButtonProps) {
         <LaunchButtonInner {...props} />
       </SignedIn>
       <SignedOut>
-        {props.openPublic && APP_URLS[props.appSlug] ? (
-          <a
-            href={props.deepLinkPath ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}` : APP_URLS[props.appSlug]}
-            target="_blank"
-            rel="noopener noreferrer"
-            style={{ ...props.style, textDecoration: 'none', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}
+        <SignInButton
+          mode="modal"
+          forceRedirectUrl={
+            props.deepLinkPath && APP_URLS[props.appSlug]
+              ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
+              : undefined
+          }
+          signUpForceRedirectUrl={
+            props.deepLinkPath && APP_URLS[props.appSlug]
+              ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
+              : undefined
+          }
+        >
+          <button
+            style={props.style}
             onClick={() => {
-              trackMarketingEvent('product_launch_click', {
+              trackMarketingEvent('product_sign_in_prompt_click', {
                 product_slug: props.appSlug,
-                destination_type: 'app',
-                surface: 'public_direct',
+                destination_type: 'sign_in',
+                surface: props.analyticsSurface,
               });
             }}
           >
-            {props.children}
-          </a>
-        ) : (
-          <SignInButton
-            mode="modal"
-            forceRedirectUrl={
-              props.deepLinkPath && APP_URLS[props.appSlug]
-                ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
-                : undefined
-            }
-            signUpForceRedirectUrl={
-              props.deepLinkPath && APP_URLS[props.appSlug]
-                ? `${APP_URLS[props.appSlug]}${props.deepLinkPath}`
-                : undefined
-            }
-          >
-            <button
-              style={props.style}
-              onClick={() => {
-                trackMarketingEvent('product_sign_in_prompt_click', {
-                  product_slug: props.appSlug,
-                  destination_type: 'sign_in',
-                });
-              }}
-            >
-              {props.deepLinkPath ? props.children : "Play now — it's free"}
-            </button>
-          </SignInButton>
-        )}
+            {props.deepLinkPath ? props.children : "Play now — it's free"}
+          </button>
+        </SignInButton>
       </SignedOut>
     </>
   );

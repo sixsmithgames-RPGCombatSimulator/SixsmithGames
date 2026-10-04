@@ -8,6 +8,7 @@ import {
   Clock3,
   ExternalLink,
   Eye,
+  Gamepad2,
   Gauge,
   Globe2,
   Laptop2,
@@ -15,6 +16,8 @@ import {
   MousePointerClick,
   Route,
   ShieldCheck,
+  Timer,
+  UserPlus,
   UsersRound,
 } from "lucide-react";
 import { PageHeading, StatusBadge } from "@/components/operations/ui";
@@ -25,6 +28,11 @@ import {
   type AnalyticsTotals,
   type ReadyAnalyticsSnapshot,
 } from "@/lib/integrations/vercel-web-analytics";
+import {
+  type FirstPartyAnalyticsSnapshot,
+  type FirstPartyDimensionRow,
+  type ReadyFirstPartyAnalyticsSnapshot,
+} from "@/lib/integrations/first-party-web-analytics";
 import styles from "./analytics-workspace.module.css";
 
 const NUMBER_FORMAT = new Intl.NumberFormat("en-US");
@@ -130,6 +138,189 @@ function RankingTable({
   );
 }
 
+function FirstPartyRankingTable({
+  rows,
+  emptyLabel,
+  labelHeading,
+}: {
+  rows: FirstPartyDimensionRow[];
+  emptyLabel: string;
+  labelHeading: string;
+}) {
+  if (rows.length === 0) return <p className={styles.emptyList}>{emptyLabel}</p>;
+
+  return (
+    <div className={styles.tableScroll}>
+      <table className={styles.rankingTable}>
+        <thead><tr><th>{labelHeading}</th><th>Count</th><th>Share</th></tr></thead>
+        <tbody>
+          {rows.map((row) => (
+            <tr key={row.key}>
+              <td><strong>{row.label}</strong><span><i style={{ width: `${Math.min(row.share * 100, 100)}%` }} /></span></td>
+              <td>{formatNumber(row.count)}</td>
+              <td>{PERCENT_FORMAT.format(row.share)}</td>
+            </tr>
+          ))}
+        </tbody>
+      </table>
+    </div>
+  );
+}
+
+function formatDuration(seconds: number | null): string {
+  if (seconds === null) return "—";
+  if (seconds < 60) return `${seconds}s`;
+  return `${Math.floor(seconds / 60)}m ${seconds % 60}s`;
+}
+
+function FirstPartyTrendChart({ snapshot }: { snapshot: ReadyFirstPartyAnalyticsSnapshot }) {
+  const maximum = Math.max(...snapshot.trend.map((point) => Math.max(point.pageviews, point.conversionClicks)), 1);
+  const middleIndex = Math.floor((snapshot.trend.length - 1) / 2);
+
+  return (
+    <div className={styles.trendChart}>
+      <div className={styles.chartLegend}>
+        <span><i className={styles.viewsKey} /> Page views</span>
+        <span><i className={styles.visitorsKey} /> Conversion clicks</span>
+      </div>
+      <div
+        aria-label={`Daily first-party page views and conversion clicks for the last ${snapshot.rangeLabel}`}
+        className={styles.plot}
+        role="img"
+      >
+        {snapshot.trend.map((point, index) => (
+          <span className={styles.dayColumn} key={point.date} title={`${point.date}: ${point.pageviews} views, ${point.conversionClicks} conversion clicks`}>
+            <i className={styles.dayViews} style={{ height: `${Math.max(2, (point.pageviews / maximum) * 100)}%` }} />
+            <i className={styles.dayVisitors} style={{ height: `${Math.max(2, (point.conversionClicks / maximum) * 100)}%` }} />
+            {index === 0 || index === middleIndex || index === snapshot.trend.length - 1 ? (
+              <small>{SHORT_DATE_FORMAT.format(new Date(`${point.date}T00:00:00Z`))}</small>
+            ) : null}
+          </span>
+        ))}
+      </div>
+      <ul className="sr-only">
+        {snapshot.trend.map((point) => (
+          <li key={point.date}>{point.date}: {point.pageviews} page views and {point.conversionClicks} conversion clicks</li>
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+function FirstPartyUnavailable({ snapshot }: { snapshot: Exclude<FirstPartyAnalyticsSnapshot, ReadyFirstPartyAnalyticsSnapshot> }) {
+  return (
+    <section className={styles.unavailable}>
+      <span className={styles.unavailableIcon}><Activity aria-hidden size={27} /></span>
+      <div>
+        <span className={styles.kicker}>Operations first-party analytics</span>
+        <h2>The aggregate ledger is not available yet</h2>
+        <p>{snapshot.message}</p>
+        <p className={styles.truthNote}>No sample traffic or false zero is substituted for this source.</p>
+      </div>
+    </section>
+  );
+}
+
+function FirstPartyReport({ snapshot }: { snapshot: ReadyFirstPartyAnalyticsSnapshot }) {
+  const fsgLaunchRate = snapshot.fsg.productPageviews > 0
+    ? snapshot.fsg.launchClicks / snapshot.fsg.productPageviews
+    : null;
+
+  return (
+    <>
+      <section className={styles.sourceStrip}>
+        <span className={styles.liveMark}><ShieldCheck aria-hidden size={20} /></span>
+        <div><small>Primary collection</small><strong>Cookieless aggregate measurement</strong></div>
+        <span><Clock3 aria-hidden size={15} /> Through {formatDateTime(snapshot.dataThrough)}</span>
+        <span><Gauge aria-hidden size={15} /> {snapshot.retentionDays}-day retention</span>
+        <span><ShieldCheck aria-hidden size={15} /> No IP, email, or raw user agent stored</span>
+      </section>
+
+      <section aria-label="First-party analytics summary" className={styles.metricGrid}>
+        <Metric
+          icon={Eye}
+          label="Public page views"
+          value={formatNumber(snapshot.totals.pageviews)}
+          detail="First-party events with redacted paths and no anonymous visitor ID"
+          comparison={{ current: snapshot.totals.pageviews, previous: snapshot.previousTotals.pageviews }}
+        />
+        <Metric
+          icon={MousePointerClick}
+          label="Conversion clicks"
+          value={formatNumber(snapshot.totals.conversionClicks)}
+          detail="Allowlisted launch, pricing, sign-in, and other cataloged CTA actions"
+          comparison={{ current: snapshot.totals.conversionClicks, previous: snapshot.previousTotals.conversionClicks }}
+        />
+        <Metric
+          icon={Timer}
+          label="Average active time"
+          value={formatDuration(snapshot.totals.averageActiveSeconds)}
+          detail={`${formatNumber(snapshot.totals.engagedPageExits)} page exits reported visible active time`}
+        />
+        <Metric
+          icon={UserPlus}
+          label="New customer records"
+          value={formatNumber(snapshot.totals.newAccounts)}
+          detail="All-source Operations customer records; not attributed to an anonymous visit"
+          comparison={{ current: snapshot.totals.newAccounts, previous: snapshot.previousTotals.newAccounts }}
+        />
+      </section>
+
+      <section className={styles.trendPanel}>
+        <header className={styles.panelHeader}>
+          <div><span className={styles.sectionIcon}><BarChart3 aria-hidden size={18} /></span><div><h2>First-party trend</h2><p>Daily public-page views and allowlisted conversion actions</p></div></div>
+          <strong>{formatNumber(snapshot.totals.pageviews)} total views</strong>
+        </header>
+        <FirstPartyTrendChart snapshot={snapshot} />
+      </section>
+
+      <section className={styles.funnelPanel}>
+        <header className={styles.panelHeader}>
+          <div><span className={styles.sectionIcon}><Gamepad2 aria-hidden size={18} /></span><div><h2>Four Star General acquisition and conversion</h2><p>itch.io → FSG → product page, play, pricing, and sign-in evidence</p></div></div>
+          <strong>{fsgLaunchRate === null ? "No product-page baseline" : `${PERCENT_FORMAT.format(fsgLaunchRate)} page-to-play rate`}</strong>
+        </header>
+        <div className={styles.funnelGrid}>
+          <article><span>1</span><small>itch.io-attributed views</small><strong>{formatNumber(snapshot.fsg.itchAttributedPageviews)}</strong></article>
+          <article><span>2</span><small>FSG product-page views</small><strong>{formatNumber(snapshot.fsg.productPageviews)}</strong></article>
+          <article><span>3</span><small>Play clicks</small><strong>{formatNumber(snapshot.fsg.launchClicks)}</strong></article>
+          <article><span>4</span><small>Pricing clicks</small><strong>{formatNumber(snapshot.fsg.pricingClicks)}</strong></article>
+          <article><span>5</span><small>Sign-in prompts</small><strong>{formatNumber(snapshot.fsg.signInPrompts)}</strong></article>
+          <article><span>6</span><small>New customer records, all sources</small><strong>{formatNumber(snapshot.fsg.newAccountsAllSources)}</strong></article>
+        </div>
+        <footer>
+          Anonymous steps are aggregate period totals, not a person-level path. Consented session IDs are random and session-scoped; {formatNumber(snapshot.totals.consentedSessions)} were observed in this period.
+        </footer>
+      </section>
+
+      <div className={styles.twoColumn}>
+        <section className={styles.panel}>
+          <header className={styles.panelHeader}><div><span className={styles.sectionIcon}><Link2 aria-hidden size={18} /></span><div><h2>Acquisition sources</h2><p>UTM source first, then privacy-safe referrer category</p></div></div></header>
+          <FirstPartyRankingTable rows={snapshot.sources} labelHeading="Source" emptyLabel="No source evidence is available yet." />
+        </section>
+        <section className={styles.panel}>
+          <header className={styles.panelHeader}><div><span className={styles.sectionIcon}><MousePointerClick aria-hidden size={18} /></span><div><h2>Conversion actions</h2><p>Allowlisted semantic clicks across public pages</p></div></div></header>
+          <FirstPartyRankingTable rows={snapshot.events} labelHeading="Action" emptyLabel="No conversion actions are available yet." />
+        </section>
+      </div>
+
+      <div className={styles.twoColumn}>
+        <section className={styles.panel}>
+          <header className={styles.panelHeader}><div><span className={styles.sectionIcon}><Route aria-hidden size={18} /></span><div><h2>First-party routes</h2><p>Public paths with queries and fragments removed</p></div></div></header>
+          <FirstPartyRankingTable rows={snapshot.routes} labelHeading="Route" emptyLabel="No route evidence is available yet." />
+        </section>
+        <section className={styles.boundaryPanel}>
+          <header><ShieldCheck aria-hidden size={21} /><div><h2>Measurement boundary</h2><p>Maximum useful evidence before optional consent</p></div></header>
+          <div className={styles.boundaryColumns}>
+            <div><strong>Reported now</strong><ul><li>Visit timestamp and public route</li><li>itch.io and campaign attribution</li><li>Allowlisted CTA clicks</li><li>Visible active time per page exit</li><li>Country and device category</li></ul></div>
+            <div><strong>Not claimed</strong><ul><li>Anonymous unique visitors</li><li>Anonymous cross-page journeys</li><li>Anonymous people or accounts</li><li>Private product content</li><li>Account attribution without consent</li></ul></div>
+          </div>
+          <footer><Activity aria-hidden size={16} />PostHog remains deferred. This ledger is provider-independent and Operations-owned.</footer>
+        </section>
+      </div>
+    </>
+  );
+}
+
 function Breakdown({
   title,
   icon: Icon,
@@ -212,31 +403,23 @@ function EmptyAnalytics({ snapshot }: { snapshot: ReadyAnalyticsSnapshot }) {
 function UnavailableAnalytics({ snapshot }: { snapshot: Exclude<AnalyticsSnapshot, ReadyAnalyticsSnapshot> }) {
   const isConfiguration = snapshot.state === "unconfigured";
   return (
-    <>
-      <PageHeading
-        eyebrow="Acquisition intelligence"
-        title="Analytics"
-        description="Anonymous production traffic, acquisition sources, routes, devices, and collection health"
-        actions={<StatusBadge tone={isConfiguration ? "gold" : "red"}>{isConfiguration ? "Configuration required" : "Source unavailable"}</StatusBadge>}
-      />
-      <section className={styles.unavailable}>
-        <span className={styles.unavailableIcon}>{isConfiguration ? <Gauge aria-hidden size={27} /> : <Activity aria-hidden size={27} />}</span>
-        <div>
-          <span className={styles.kicker}>Vercel Web Analytics · {snapshot.projectName}</span>
-          <h2>{isConfiguration ? "Connect the aggregate reporting credential" : "The live report could not be refreshed"}</h2>
-          <p>{snapshot.message}</p>
-          {snapshot.missingKeys.length > 0 ? (
-            <div className={styles.requirements}>
-              {snapshot.missingKeys.map((key) => <code key={key}>{key}</code>)}
-            </div>
-          ) : null}
-          <p className={styles.truthNote}>Operations never substitutes sample data or zero traffic for a failed production source.</p>
-        </div>
-        <Link href={snapshot.dashboardUrl} target="_blank" rel="noreferrer">
-          Open Vercel project <ExternalLink aria-hidden size={14} />
-        </Link>
-      </section>
-    </>
+    <section className={styles.unavailable}>
+      <span className={styles.unavailableIcon}>{isConfiguration ? <Gauge aria-hidden size={27} /> : <Activity aria-hidden size={27} />}</span>
+      <div>
+        <span className={styles.kicker}>Secondary source · Vercel Web Analytics · {snapshot.projectName}</span>
+        <h2>{isConfiguration ? "Connect the aggregate reporting credential" : "The Vercel cross-check could not be refreshed"}</h2>
+        <p>{snapshot.message}</p>
+        {snapshot.missingKeys.length > 0 ? (
+          <div className={styles.requirements}>
+            {snapshot.missingKeys.map((key) => <code key={key}>{key}</code>)}
+          </div>
+        ) : null}
+        <p className={styles.truthNote}>The Operations-owned report above remains independent of this provider state.</p>
+      </div>
+      <Link href={snapshot.dashboardUrl} target="_blank" rel="noreferrer">
+        Open Vercel project <ExternalLink aria-hidden size={14} />
+      </Link>
+    </section>
   );
 }
 
@@ -250,27 +433,33 @@ function viewsPerVisitor(totals: AnalyticsTotals): string {
  * Returns: Connected analytics, an honest empty state, or an actionable provider state.
  * Side effects: None.
  */
-export function AnalyticsWorkspace({ snapshot }: { snapshot: AnalyticsSnapshot }) {
-  if (snapshot.state !== "ready") {
-    return <UnavailableAnalytics snapshot={snapshot} />;
-  }
-
+export function AnalyticsWorkspace({
+  snapshot,
+  firstPartySnapshot,
+}: {
+  snapshot: AnalyticsSnapshot;
+  firstPartySnapshot: FirstPartyAnalyticsSnapshot;
+}) {
+  const firstPartyReady = firstPartySnapshot.state === "ready";
+  const range = firstPartySnapshot.range;
   return (
     <>
       <PageHeading
         eyebrow="Acquisition intelligence"
         title="Analytics"
-        description="Anonymous production traffic, acquisition sources, routes, devices, and collection health"
+        description="First-party traffic, active time, acquisition sources, conversion actions, customer records, and provider health"
         actions={
           <div className={styles.headingActions}>
-            <StatusBadge tone={snapshot.sourceMode === "live" ? "green" : "purple"}>
-              {snapshot.sourceMode === "live" ? "Live aggregate source" : "Preview sample"}
+            <StatusBadge tone={firstPartyReady ? (firstPartySnapshot.sourceMode === "live" ? "green" : "purple") : "red"}>
+              {firstPartyReady
+                ? firstPartySnapshot.sourceMode === "live" ? "First-party ledger live" : "Preview sample"
+                : "Ledger unavailable"}
             </StatusBadge>
             <nav aria-label="Analytics date range" className={styles.rangePicker}>
               {Object.entries(ANALYTICS_RANGES).map(([key, definition]) => (
                 <Link
-                  aria-current={snapshot.range === key ? "page" : undefined}
-                  className={snapshot.range === key ? styles.activeRange : undefined}
+                  aria-current={range === key ? "page" : undefined}
+                  className={range === key ? styles.activeRange : undefined}
                   href={`/analytics?range=${key}`}
                   key={key}
                 >
@@ -282,16 +471,27 @@ export function AnalyticsWorkspace({ snapshot }: { snapshot: AnalyticsSnapshot }
         }
       />
 
-      <section className={styles.sourceStrip}>
-        <span className={styles.liveMark}><ShieldCheck aria-hidden size={20} /></span>
-        <div><small>Phase 1 collection</small><strong>Cookieless aggregate measurement</strong></div>
-        <span><Clock3 aria-hidden size={15} /> Through {formatDateTime(snapshot.dataThrough)}</span>
-        <span><Gauge aria-hidden size={15} /> Refreshes every {snapshot.cacheSeconds / 60} minutes</span>
-        <Link href={snapshot.dashboardUrl} target="_blank" rel="noreferrer">Source dashboard <ExternalLink aria-hidden size={13} /></Link>
-      </section>
+      {firstPartySnapshot.state === "ready"
+        ? <FirstPartyReport snapshot={firstPartySnapshot} />
+        : <FirstPartyUnavailable snapshot={firstPartySnapshot} />}
 
-      {snapshot.totals.pageviews === 0 ? <EmptyAnalytics snapshot={snapshot} /> : (
+      <div className={styles.providerHeading}>
+        <div><span>Secondary provider cross-check</span><h2>Vercel Web Analytics</h2></div>
+        <p>Visitor estimates and browser/OS aggregates when the current Vercel plan exposes its reporting API.</p>
+      </div>
+
+      {snapshot.state !== "ready" ? <UnavailableAnalytics snapshot={snapshot} /> : (
         <>
+          <section className={styles.sourceStrip}>
+            <span className={styles.liveMark}><ShieldCheck aria-hidden size={20} /></span>
+            <div><small>Secondary source</small><strong>Vercel aggregate cross-check</strong></div>
+            <span><Clock3 aria-hidden size={15} /> Through {formatDateTime(snapshot.dataThrough)}</span>
+            <span><Gauge aria-hidden size={15} /> Refreshes every {snapshot.cacheSeconds / 60} minutes</span>
+            <Link href={snapshot.dashboardUrl} target="_blank" rel="noreferrer">Source dashboard <ExternalLink aria-hidden size={13} /></Link>
+          </section>
+
+          {snapshot.totals.pageviews === 0 ? <EmptyAnalytics snapshot={snapshot} /> : (
+            <>
           <section aria-label="Analytics summary" className={styles.metricGrid}>
             <Metric
               icon={UsersRound}
@@ -372,6 +572,8 @@ export function AnalyticsWorkspace({ snapshot }: { snapshot: AnalyticsSnapshot }
               </footer>
             </section>
           </div>
+            </>
+          )}
         </>
       )}
     </>

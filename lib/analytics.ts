@@ -19,6 +19,8 @@ declare global {
       sourceDetail: string;
       landingPath: string;
       utmSource: string;
+      utmMedium: string;
+      utmCampaign: string;
     };
   }
 }
@@ -26,13 +28,88 @@ declare global {
 const AI_SOURCES = ['chatgpt.com', 'chat.openai.com', 'openai', 'claude.ai', 'anthropic', 'perplexity.ai'];
 const SEARCH_SOURCES = ['google.', 'bing.', 'yahoo.', 'duckduckgo.', 'search.brave.', 'ecosia.'];
 const CONSENT_STORAGE_KEY = 'sixsmith_analytics_consent';
+const CONSENTED_SESSION_STORAGE_KEY = 'sixsmith_analytics_session_id';
 const VERCEL_CUSTOM_EVENTS_ENABLED =
   process.env.NEXT_PUBLIC_VERCEL_WEB_ANALYTICS_CUSTOM_EVENTS === 'true';
 
+function optionalAnalyticsConsentState(): 'accepted' | 'declined' | 'unset' {
+  if (typeof window === 'undefined') return 'unset';
+  const value = window.localStorage.getItem(CONSENT_STORAGE_KEY);
+  return value === 'accepted' || value === 'declined' ? value : 'unset';
+}
+
+function consentedSessionId(): string | undefined {
+  if (optionalAnalyticsConsentState() !== 'accepted') return undefined;
+
+  const existing = window.sessionStorage.getItem(CONSENTED_SESSION_STORAGE_KEY);
+  if (existing) return existing;
+
+  const sessionId = window.crypto.randomUUID();
+  window.sessionStorage.setItem(CONSENTED_SESSION_STORAGE_KEY, sessionId);
+  return sessionId;
+}
+
+function sendFirstPartyEvent(
+  eventName: string,
+  parameters: Record<string, AnalyticsParameterValue>,
+  pathOverride?: string,
+) {
+  if (typeof window === 'undefined') return;
+  const path = pathOverride ?? window.location.pathname;
+  if (!isPublicAnalyticsPath(path)) return;
+
+  const safeEventName = sanitizeAnalyticsEventName(eventName);
+  const safeParameters = sanitizeAnalyticsProperties(safeEventName ?? '', parameters);
+  if (!safeEventName || !safeParameters) return;
+
+  const context = window.__sixsmithTrafficContext ?? inferTrafficContext(
+    document.referrer,
+    window.location.search,
+    path,
+  );
+  const consentState = optionalAnalyticsConsentState();
+  const sessionId = consentedSessionId();
+  const payload = JSON.stringify({
+    contract_version: 1,
+    event_id: window.crypto.randomUUID(),
+    event_name: safeEventName,
+    occurred_at: new Date().toISOString(),
+    path,
+    source_type: context.sourceType,
+    source_detail: context.sourceDetail,
+    landing_path: context.landingPath,
+    utm_source: context.utmSource,
+    utm_medium: context.utmMedium,
+    utm_campaign: context.utmCampaign,
+    consent_state: consentState,
+    ...(sessionId ? { session_id: sessionId } : {}),
+    properties: safeParameters,
+  });
+  const body = new Blob([payload], { type: 'application/json' });
+
+  if (navigator.sendBeacon('/api/analytics/events', body)) return;
+
+  void fetch('/api/analytics/events', {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: payload,
+    keepalive: true,
+  });
+}
+
 /** Returns whether this browser has explicitly allowed optional analytics. */
 export function hasOptionalAnalyticsConsent(): boolean {
-  if (typeof window === 'undefined') return false;
-  return window.localStorage.getItem(CONSENT_STORAGE_KEY) === 'accepted';
+  return optionalAnalyticsConsentState() === 'accepted';
+}
+
+/** Records a redacted public page view in the first-party aggregate ledger. */
+export function trackFirstPartyPageView(pathname: string) {
+  sendFirstPartyEvent('page_view', {}, pathname);
+}
+
+/** Records visible active time for one public page without persistent identity. */
+export function trackFirstPartyPageEngagement(pathname: string, activeSeconds: number) {
+  sendFirstPartyEvent('page_engaged', { engagement_seconds: activeSeconds }, pathname);
 }
 
 /**
@@ -50,6 +127,8 @@ export function trackMarketingEvent(
   const safeEventName = sanitizeAnalyticsEventName(eventName);
   const safeParameters = sanitizeAnalyticsProperties(safeEventName ?? '', parameters);
   if (!safeEventName || !safeParameters) return;
+
+  sendFirstPartyEvent(safeEventName, safeParameters);
 
   if (VERCEL_CUSTOM_EVENTS_ENABLED) {
     if (!window.va) {
@@ -109,6 +188,23 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
     : normalizedUtmSource
       ? 'other'
       : '';
+  const normalizeCampaignDimension = (value: string | null) => {
+    const normalized = (value ?? '').trim().toLowerCase();
+    return /^[a-z0-9._-]{1,80}$/.test(normalized) ? normalized : normalized ? 'other' : '';
+  };
+  const utmMedium = normalizeCampaignDimension(params.get('utm_medium'));
+  const utmCampaign = normalizeCampaignDimension(params.get('utm_campaign'));
+
+  if (['itch', 'itchio', 'itch.io'].includes(utmSource)) {
+    return {
+      sourceType: 'game_marketplace',
+      sourceDetail: 'itch.io',
+      landingPath: pathname,
+      utmSource: 'itchio',
+      utmMedium,
+      utmCampaign,
+    };
+  }
 
   if (AI_SOURCES.some((source) => utmSource.includes(source))) {
     return {
@@ -116,6 +212,8 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
       sourceDetail: utmSource,
       landingPath: pathname,
       utmSource,
+      utmMedium,
+      utmCampaign,
     };
   }
 
@@ -125,6 +223,8 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
       sourceDetail: utmSource,
       landingPath: pathname,
       utmSource,
+      utmMedium,
+      utmCampaign,
     };
   }
 
@@ -134,11 +234,24 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
       sourceDetail: 'direct',
       landingPath: pathname,
       utmSource,
+      utmMedium,
+      utmCampaign,
     };
   }
 
   try {
     const hostname = new URL(referrer).hostname.toLowerCase();
+
+    if (hostname === 'itch.io' || hostname.endsWith('.itch.io')) {
+      return {
+        sourceType: 'game_marketplace',
+        sourceDetail: 'itch.io',
+        landingPath: pathname,
+        utmSource: utmSource || 'itchio',
+        utmMedium,
+        utmCampaign,
+      };
+    }
 
     if (AI_SOURCES.some((source) => hostname.includes(source))) {
       return {
@@ -146,6 +259,8 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
         sourceDetail: hostname,
         landingPath: pathname,
         utmSource,
+        utmMedium,
+        utmCampaign,
       };
     }
 
@@ -155,6 +270,8 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
         sourceDetail: hostname,
         landingPath: pathname,
         utmSource,
+        utmMedium,
+        utmCampaign,
       };
     }
 
@@ -163,6 +280,8 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
       sourceDetail: hostname,
       landingPath: pathname,
       utmSource,
+      utmMedium,
+      utmCampaign,
     };
   } catch {
     return {
@@ -170,6 +289,8 @@ export function inferTrafficContext(referrer: string, search: string, pathname: 
       sourceDetail: 'invalid_referrer',
       landingPath: pathname,
       utmSource,
+      utmMedium,
+      utmCampaign,
     };
   }
 }

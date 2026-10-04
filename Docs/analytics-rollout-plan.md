@@ -1,7 +1,7 @@
 # Sixsmith Games Analytics Rollout Plan
 
-Last updated: August 10, 2026  
-Status: Phase 1 implemented locally and awaiting deployment configuration
+Last updated: October 4, 2026
+Status: Phase 1 and the Operations-owned anonymous event report are implemented locally; migration, shared-secret configuration, legal review, and deployment remain pending
 
 ## Outcome
 
@@ -25,8 +25,9 @@ Collected before consent:
   by Vercel Web Analytics
 - a Vercel-managed request hash that cannot follow a visitor across different
   days or websites and whose visitor session expires after 24 hours
-- approved semantic event names and catalog properties when Vercel custom
-  events are explicitly enabled on an eligible plan
+- allowlisted first-party page views, visible active time, and conversion clicks
+- bounded source, medium, campaign, landing path, country, and device category
+- a random session-scoped UUID only after optional analytics consent
 
 Not collected before consent:
 
@@ -37,6 +38,7 @@ Not collected before consent:
 - keystrokes, form values, mouse coordinates, or session replay
 - owner-only ContentCraft or SagaCraft routes or events
 - cross-day or cross-product identity stitching
+- an anonymous identifier that joins one page to another
 
 Operational security logs needed to authenticate requests, prevent abuse, or
 complete purchases remain separate from analytics and use their own purpose and
@@ -57,6 +59,11 @@ Deliverables:
 - Update the privacy notice and environment template.
 - Keep anonymous Vercel custom events disabled until the Vercel plan and event
   cost are explicitly approved.
+- Add a same-origin first-party event route that rejects bots, private routes,
+  unsafe properties, stale events, and cross-origin requests.
+- Record public page views, visible active time, and allowlisted conversion
+  clicks without an anonymous visitor or session identifier.
+- Add a session-scoped random UUID only after consent.
 
 Production requirements:
 
@@ -66,6 +73,8 @@ Production requirements:
    eligible paid plan and event budget are approved.
 4. Verify production and preview appear as separate environments in reporting.
 5. Repeat accepted, declined, and withdrawn network checks on the deployed URL.
+6. Configure `OPERATIONS_ANALYTICS_INGEST_URL` and the same strong
+   `ANALYTICS_INGEST_SECRET` in the website and Operations projects.
 
 Exit gate:
 
@@ -74,41 +83,54 @@ Exit gate:
 - Declining produces no Google or Meta request.
 - Accepting loads Google and Meta and records cataloged events.
 - Withdrawing stops optional events and clears known optional cookies.
+- Anonymous first-party events contain no session or visitor identifier.
+- Consented first-party events use only a random browser-tab session UUID.
 
 ## Phase 2 — Anonymous analytics inside Operations
 
-Status: Implemented locally; production token and deployment verification pending
+Status: Implemented locally; database migration, shared secret, and deployment verification pending
 
 Deliverables:
 
-- Add a Vercel Web Analytics connector to Operations using a server-only token,
-  team ID, and public-site project ID.
+- Store privacy-minimized first-party website events in Operations-owned Neon
+  with idempotent event IDs and 120-day retention.
+- Keep the Vercel Web Analytics connector as a secondary source for visitor,
+  browser, and operating-system estimates when the plan exposes its API.
 - Query the aggregated Web Analytics API; do not request or store a raw drain.
 - Cache bounded reports and display source freshness and failure states.
 - Add an Acquisition workspace with visitors, page views, routes, referrers,
   countries, device classes, browsers, and bounce rate.
-- Add aggregate semantic-event reports when custom events are approved.
+- Add aggregate semantic-event reports without requiring paid Vercel custom
+  events.
 - Add period comparisons for 7, 30, and 90 days.
 
 Implemented workspace:
 
 - Dedicated primary-navigation Analytics route rather than a generic report.
+- Primary first-party report for page views, active time, allowlisted CTA
+  actions, consented sessions, coarse country/device, and all-source customer
+  records.
+- Four Star General report for itch.io-attributed views, product-page views,
+  play clicks, pricing clicks, sign-in prompts, and directional conversion.
 - Production-only aggregate API queries cached on a shared 15-minute boundary.
 - Current/prior period totals, daily trend, routes, referrers, UTM sources,
   countries, devices, operating systems, and browsers.
 - Vercel capability status in Settings plus explicit unconfigured, provider
   error, true-zero, preview, and freshness states.
-- No raw visit storage or anonymous identity join in Operations.
+- No IP address, raw user agent, email, account identity, free-form content, or
+  anonymous identity join in Operations.
 
 Pre-consent value:
 
-- Nearly the entire workspace is populated by anonymous aggregate data.
+- The primary report is populated by anonymous first-party events even when
+  Vercel's reporting API is unavailable on the current plan.
 - No customer timeline or returning-user history is claimed in this phase.
 
 Exit gate:
 
-- Operations totals match the Vercel dashboard for the same project,
-  environment, filters, and dates.
+- Website event requests reach Operations and reconcile with synthetic test
+  events for the same environment, filters, and dates.
+- Vercel remains an explicitly labeled cross-check rather than a dependency.
 - Missing credentials and provider errors never appear as zero traffic.
 
 ## Phase 3 — Shared consent and cross-subdomain analytics foundation
@@ -138,7 +160,7 @@ Exit gate:
 - No optional provider initializes before the applicable choice.
 - Sign-out clears any consented analytics identity added in later phases.
 
-## Phase 4 — First-party semantic product and revenue events
+## Phase 4 — First-party product and revenue truth
 
 Status: Planned
 
@@ -151,9 +173,10 @@ Deliverables:
 - Add server-authoritative events for account, checkout, subscription, refund,
   and product milestones.
 - Generate event IDs and enforce idempotency for first-use and webhook events.
-- Create a bounded Operations event intake and aggregate store in Neon.
-- Before consent, accept only non-identifying aggregate properties and roll
-  them up on a short schedule; do not store a durable visitor or session key.
+- Extend the bounded Operations intake beyond the implemented website catalog
+  to product milestones and server-authoritative revenue events.
+- Before consent, continue accepting only non-identifying aggregate properties;
+  do not store a durable visitor or session key.
 - After consent, allow a pseudonymous subject and session key under the Phase 5
   identity contract.
 
@@ -174,7 +197,7 @@ Exit gate:
 - Client success pages never create revenue truth.
 - Retry and duplicate delivery cannot inflate first-use or revenue counts.
 
-## Phase 5 — Consented identity, sessions, retention, and Customer 360
+## Phase 5 — Consented identity, retention, and Customer 360
 
 Status: Planned
 
@@ -183,8 +206,8 @@ Deliverables:
 - Define a stable pseudonymous analytics subject derived from Clerk identity;
   never use email as the analytics key.
 - Join anonymous history only when the user has consented and policy permits it.
-- Measure active time with visibility-aware activity windows and heartbeats,
-  not merely the time between opening and closing a tab.
+- Extend the implemented visibility-aware page active time into consented
+  cross-page and product-session analysis.
 - Add first seen, last seen, active days, sessions, active minutes, products
   used, activation milestones, and a bounded recent-event timeline to Customer
   360.
@@ -248,7 +271,8 @@ Exit gate:
 - Vercel anonymous page analytics may use the current plan allocation.
 - Vercel custom events remain disabled until paid-plan eligibility and event
   budget are approved.
-- Neon event volume receives retention and rollup limits before ingestion.
+- The website-event ledger is capped at 120 days; future identified product and
+  revenue events require their own retention and rollup limits before ingestion.
 - PostHog is not provisioned until Phase 6 receives explicit approval.
 - Every provider must have a spend cap or a hard collection limit where the
   provider supports one.

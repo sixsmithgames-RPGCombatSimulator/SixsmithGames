@@ -176,9 +176,10 @@ export default function AnalyticsConsent() {
           <div>
             <strong>Your table, your call.</strong>
             <p>
-              We collect anonymous, cookieless page counts. With your permission,
-              optional analytics and marketing tools can measure more detailed visits
-              and actions. The site works the same if you say no. Read our{' '}
+              We collect anonymous, cookieless counts for public pages, visible active
+              time, and selected product links. With your permission, optional analytics
+              and marketing tools can measure sessions and more detailed visits. The site
+              works the same if you say no. Read our{' '}
               <a href="/privacy">privacy policy</a>.
             </p>
           </div>

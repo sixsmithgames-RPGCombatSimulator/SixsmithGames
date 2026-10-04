@@ -49,3 +49,51 @@ test('optional analytics providers load only after opt-in and stay off after wit
   await page.waitForTimeout(500);
   expect(providerRequests).toHaveLength(requestCountAfterWithdrawal);
 });
+
+test('first-party analytics captures itch.io page and CTA evidence without a pre-consent identifier', async ({
+  page,
+}) => {
+  const events: Array<Record<string, unknown>> = [];
+  await page.route('**/api/analytics/events', async (route) => {
+    const body = route.request().postData();
+    if (body) events.push(JSON.parse(body) as Record<string, unknown>);
+    await route.fulfill({ status: 202, body: '' });
+  });
+
+  await page.goto(
+    '/apps/fourstargeneral?utm_source=itchio&utm_medium=game_listing&utm_campaign=four_star_general',
+    { waitUntil: 'domcontentloaded' },
+  );
+
+  const playCta = page.getByRole('link', { name: 'Play free in browser' });
+  await expect(playCta).toBeVisible();
+  await expect(playCta).toHaveAttribute('href', 'https://fsg.sixsmithgames.com');
+
+  await expect.poll(() => events.some((event) => event.event_name === 'page_view')).toBe(true);
+  const pageView = events.find((event) => event.event_name === 'page_view');
+  expect(pageView).toMatchObject({
+    path: '/apps/fourstargeneral',
+    source_type: 'game_marketplace',
+    source_detail: 'itch.io',
+    utm_source: 'itchio',
+    utm_medium: 'game_listing',
+    utm_campaign: 'four_star_general',
+    consent_state: 'unset',
+  });
+  expect(pageView).not.toHaveProperty('session_id');
+
+  await page.getByRole('link', { name: 'See the $2 expansion' }).click();
+  await expect.poll(() => events.some((event) => event.event_name === 'product_pricing_click')).toBe(true);
+  const pricingClick = events.find((event) => event.event_name === 'product_pricing_click');
+  expect(pricingClick).toMatchObject({
+    event_name: 'product_pricing_click',
+    path: '/apps/fourstargeneral',
+    consent_state: 'unset',
+    properties: {
+      product_slug: 'fourstargeneral',
+      destination_type: 'pricing',
+      surface: 'product_hero_secondary',
+    },
+  });
+  expect(pricingClick).not.toHaveProperty('session_id');
+});
